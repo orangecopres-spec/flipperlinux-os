@@ -1,0 +1,2917 @@
+
+build/f7-firmware-D/.extapps/accessor_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <_ZN7WIEGANDC1Ev>:
+constexpr uint32_t clocks_in_ms = 64 * 1000;
+const GpioPin* const pinD0 = &gpio_ext_pa4;
+const GpioPin* const pinD1 = &gpio_ext_pa7;
+
+WIEGAND::WIEGAND() {
+}
+   0:	4770      	bx	lr
+	...
+
+00000004 <_ZN7WIEGAND7getCodeEv>:
+
+unsigned long WIEGAND::getCode() {
+    return _code;
+}
+   4:	4b01      	ldr	r3, [pc, #4]	@ (c <_ZN7WIEGAND7getCodeEv+0x8>)
+   6:	6818      	ldr	r0, [r3, #0]
+   8:	4770      	bx	lr
+   a:	bf00      	nop
+   c:	00000000 	.word	0x00000000
+
+00000010 <_ZN7WIEGAND11getCodeHighEv>:
+
+unsigned long WIEGAND::getCodeHigh() {
+    return _codeHigh;
+}
+  10:	4b01      	ldr	r3, [pc, #4]	@ (18 <_ZN7WIEGAND11getCodeHighEv+0x8>)
+  12:	6818      	ldr	r0, [r3, #0]
+  14:	4770      	bx	lr
+  16:	bf00      	nop
+  18:	00000000 	.word	0x00000000
+
+0000001c <_ZN7WIEGAND14getWiegandTypeEv>:
+
+int WIEGAND::getWiegandType() {
+    return _wiegandType;
+}
+  1c:	4b01      	ldr	r3, [pc, #4]	@ (24 <_ZN7WIEGAND14getWiegandTypeEv+0x8>)
+  1e:	6818      	ldr	r0, [r3, #0]
+  20:	4770      	bx	lr
+  22:	bf00      	nop
+  24:	00000000 	.word	0x00000000
+
+00000028 <_ZN7WIEGAND5beginEv>:
+static void input_isr_d1(void* _ctx) {
+    WIEGAND* _this = static_cast<WIEGAND*>(_ctx);
+    _this->ReadD1();
+}
+
+void WIEGAND::begin() {
+  28:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+  2a:	4604      	mov	r4, r0
+    _lastWiegand = 0;
+  2c:	2300      	movs	r3, #0
+  2e:	4a0f      	ldr	r2, [pc, #60]	@ (6c <_ZN7WIEGAND5beginEv+0x44>)
+  30:	6013      	str	r3, [r2, #0]
+    _cardTempHigh = 0;
+  32:	4a0f      	ldr	r2, [pc, #60]	@ (70 <_ZN7WIEGAND5beginEv+0x48>)
+  34:	6013      	str	r3, [r2, #0]
+    _cardTemp = 0;
+  36:	4a0f      	ldr	r2, [pc, #60]	@ (74 <_ZN7WIEGAND5beginEv+0x4c>)
+  38:	6013      	str	r3, [r2, #0]
+    _code = 0;
+  3a:	4a0f      	ldr	r2, [pc, #60]	@ (78 <_ZN7WIEGAND5beginEv+0x50>)
+  3c:	6013      	str	r3, [r2, #0]
+    _wiegandType = 0;
+  3e:	4a0f      	ldr	r2, [pc, #60]	@ (7c <_ZN7WIEGAND5beginEv+0x54>)
+  40:	6013      	str	r3, [r2, #0]
+    _bitCount = 0;
+  42:	4a0f      	ldr	r2, [pc, #60]	@ (80 <_ZN7WIEGAND5beginEv+0x58>)
+  44:	6013      	str	r3, [r2, #0]
+
+    furi_hal_gpio_init_simple(pinD0, GpioModeInterruptFall); // Set D0 pin as input
+  46:	4d0f      	ldr	r5, [pc, #60]	@ (84 <_ZN7WIEGAND5beginEv+0x5c>)
+  48:	2107      	movs	r1, #7
+  4a:	4628      	mov	r0, r5
+  4c:	4f0e      	ldr	r7, [pc, #56]	@ (88 <_ZN7WIEGAND5beginEv+0x60>)
+  4e:	47b8      	blx	r7
+    furi_hal_gpio_init_simple(pinD1, GpioModeInterruptFall); // Set D1 pin as input
+  50:	4e0e      	ldr	r6, [pc, #56]	@ (8c <_ZN7WIEGAND5beginEv+0x64>)
+  52:	2107      	movs	r1, #7
+  54:	4630      	mov	r0, r6
+  56:	47b8      	blx	r7
+
+    furi_hal_gpio_add_int_callback(pinD0, input_isr_d0, this);
+  58:	4622      	mov	r2, r4
+  5a:	490d      	ldr	r1, [pc, #52]	@ (90 <_ZN7WIEGAND5beginEv+0x68>)
+  5c:	4628      	mov	r0, r5
+  5e:	4d0d      	ldr	r5, [pc, #52]	@ (94 <_ZN7WIEGAND5beginEv+0x6c>)
+  60:	47a8      	blx	r5
+    furi_hal_gpio_add_int_callback(pinD1, input_isr_d1, this);
+  62:	4622      	mov	r2, r4
+  64:	490c      	ldr	r1, [pc, #48]	@ (98 <_ZN7WIEGAND5beginEv+0x70>)
+  66:	4630      	mov	r0, r6
+  68:	47a8      	blx	r5
+}
+  6a:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
+	...
+
+0000009c <_ZN7WIEGAND3endEv>:
+
+void WIEGAND::end() {
+  9c:	b570      	push	{r4, r5, r6, lr}
+    furi_hal_gpio_remove_int_callback(pinD0);
+  9e:	4c07      	ldr	r4, [pc, #28]	@ (bc <_ZN7WIEGAND3endEv+0x20>)
+  a0:	4620      	mov	r0, r4
+  a2:	4e07      	ldr	r6, [pc, #28]	@ (c0 <_ZN7WIEGAND3endEv+0x24>)
+  a4:	47b0      	blx	r6
+    furi_hal_gpio_remove_int_callback(pinD1);
+  a6:	4d07      	ldr	r5, [pc, #28]	@ (c4 <_ZN7WIEGAND3endEv+0x28>)
+  a8:	4628      	mov	r0, r5
+  aa:	47b0      	blx	r6
+
+    furi_hal_gpio_init_simple(pinD0, GpioModeAnalog);
+  ac:	2105      	movs	r1, #5
+  ae:	4620      	mov	r0, r4
+  b0:	4c05      	ldr	r4, [pc, #20]	@ (c8 <_ZN7WIEGAND3endEv+0x2c>)
+  b2:	47a0      	blx	r4
+    furi_hal_gpio_init_simple(pinD1, GpioModeAnalog);
+  b4:	2105      	movs	r1, #5
+  b6:	4628      	mov	r0, r5
+  b8:	47a0      	blx	r4
+}
+  ba:	bd70      	pop	{r4, r5, r6, pc}
+	...
+
+000000cc <_ZN7WIEGAND6ReadD0Ev>:
+
+void WIEGAND::ReadD0() {
+    _bitCount++; // Increment bit count for Interrupt connected to D0
+  cc:	4a0d      	ldr	r2, [pc, #52]	@ (104 <_ZN7WIEGAND6ReadD0Ev+0x38>)
+  ce:	6813      	ldr	r3, [r2, #0]
+  d0:	3301      	adds	r3, #1
+  d2:	6013      	str	r3, [r2, #0]
+    if(_bitCount > 31) // If bit count more than 31, process high bits
+  d4:	2b1f      	cmp	r3, #31
+  d6:	dd0f      	ble.n	f8 <_ZN7WIEGAND6ReadD0Ev+0x2c>
+    {
+        _cardTempHigh |= ((0x80000000 & _cardTemp) >> 31); //	shift value to high bits
+  d8:	480b      	ldr	r0, [pc, #44]	@ (108 <_ZN7WIEGAND6ReadD0Ev+0x3c>)
+  da:	6802      	ldr	r2, [r0, #0]
+  dc:	490b      	ldr	r1, [pc, #44]	@ (10c <_ZN7WIEGAND6ReadD0Ev+0x40>)
+  de:	680b      	ldr	r3, [r1, #0]
+  e0:	ea43 73d2 	orr.w	r3, r3, r2, lsr #31
+  e4:	600b      	str	r3, [r1, #0]
+        _cardTempHigh <<= 1;
+  e6:	005b      	lsls	r3, r3, #1
+  e8:	600b      	str	r3, [r1, #0]
+        _cardTemp <<= 1;
+  ea:	0052      	lsls	r2, r2, #1
+  ec:	6002      	str	r2, [r0, #0]
+    } else {
+        _cardTemp <<= 1; // D0 represent binary 0, so just left shift card data
+    }
+    _lastWiegand = DWT->CYCCNT; // Keep track of last wiegand bit received
+  ee:	4b08      	ldr	r3, [pc, #32]	@ (110 <_ZN7WIEGAND6ReadD0Ev+0x44>)
+  f0:	685a      	ldr	r2, [r3, #4]
+  f2:	4b08      	ldr	r3, [pc, #32]	@ (114 <_ZN7WIEGAND6ReadD0Ev+0x48>)
+  f4:	601a      	str	r2, [r3, #0]
+}
+  f6:	4770      	bx	lr
+        _cardTemp <<= 1; // D0 represent binary 0, so just left shift card data
+  f8:	4a03      	ldr	r2, [pc, #12]	@ (108 <_ZN7WIEGAND6ReadD0Ev+0x3c>)
+  fa:	6813      	ldr	r3, [r2, #0]
+  fc:	005b      	lsls	r3, r3, #1
+  fe:	6013      	str	r3, [r2, #0]
+ 100:	e7f5      	b.n	ee <_ZN7WIEGAND6ReadD0Ev+0x22>
+ 102:	bf00      	nop
+	...
+ 110:	e0001000 	.word	0xe0001000
+ 114:	00000000 	.word	0x00000000
+
+00000118 <_ZL12input_isr_d0Pv>:
+static void input_isr_d0(void* _ctx) {
+ 118:	b508      	push	{r3, lr}
+    _this->ReadD0();
+ 11a:	4b01      	ldr	r3, [pc, #4]	@ (120 <_ZL12input_isr_d0Pv+0x8>)
+ 11c:	4798      	blx	r3
+}
+ 11e:	bd08      	pop	{r3, pc}
+ 120:	00000000 	.word	0x00000000
+
+00000124 <_ZN7WIEGAND6ReadD1Ev>:
+
+void WIEGAND::ReadD1() {
+    _bitCount++; // Increment bit count for Interrupt connected to D1
+ 124:	4a10      	ldr	r2, [pc, #64]	@ (168 <_ZN7WIEGAND6ReadD1Ev+0x44>)
+ 126:	6813      	ldr	r3, [r2, #0]
+ 128:	3301      	adds	r3, #1
+ 12a:	6013      	str	r3, [r2, #0]
+    if(_bitCount > 31) // If bit count more than 31, process high bits
+ 12c:	2b1f      	cmp	r3, #31
+ 12e:	dd12      	ble.n	156 <_ZN7WIEGAND6ReadD1Ev+0x32>
+    {
+        _cardTempHigh |= ((0x80000000 & _cardTemp) >> 31); // shift value to high bits
+ 130:	490e      	ldr	r1, [pc, #56]	@ (16c <_ZN7WIEGAND6ReadD1Ev+0x48>)
+ 132:	680b      	ldr	r3, [r1, #0]
+ 134:	480e      	ldr	r0, [pc, #56]	@ (170 <_ZN7WIEGAND6ReadD1Ev+0x4c>)
+ 136:	6802      	ldr	r2, [r0, #0]
+ 138:	ea42 72d3 	orr.w	r2, r2, r3, lsr #31
+ 13c:	6002      	str	r2, [r0, #0]
+        _cardTempHigh <<= 1;
+ 13e:	0052      	lsls	r2, r2, #1
+ 140:	6002      	str	r2, [r0, #0]
+        _cardTemp |= 1;
+ 142:	f043 0301 	orr.w	r3, r3, #1
+ 146:	600b      	str	r3, [r1, #0]
+        _cardTemp <<= 1;
+ 148:	005b      	lsls	r3, r3, #1
+ 14a:	600b      	str	r3, [r1, #0]
+    } else {
+        _cardTemp |= 1; // D1 represent binary 1, so OR card data with 1 then
+        _cardTemp <<= 1; // left shift card data
+    }
+    _lastWiegand = DWT->CYCCNT; // Keep track of last wiegand bit received
+ 14c:	4b09      	ldr	r3, [pc, #36]	@ (174 <_ZN7WIEGAND6ReadD1Ev+0x50>)
+ 14e:	685a      	ldr	r2, [r3, #4]
+ 150:	4b09      	ldr	r3, [pc, #36]	@ (178 <_ZN7WIEGAND6ReadD1Ev+0x54>)
+ 152:	601a      	str	r2, [r3, #0]
+}
+ 154:	4770      	bx	lr
+        _cardTemp |= 1; // D1 represent binary 1, so OR card data with 1 then
+ 156:	4a05      	ldr	r2, [pc, #20]	@ (16c <_ZN7WIEGAND6ReadD1Ev+0x48>)
+ 158:	6813      	ldr	r3, [r2, #0]
+ 15a:	f043 0301 	orr.w	r3, r3, #1
+ 15e:	6013      	str	r3, [r2, #0]
+        _cardTemp <<= 1; // left shift card data
+ 160:	005b      	lsls	r3, r3, #1
+ 162:	6013      	str	r3, [r2, #0]
+ 164:	e7f2      	b.n	14c <_ZN7WIEGAND6ReadD1Ev+0x28>
+ 166:	bf00      	nop
+	...
+ 174:	e0001000 	.word	0xe0001000
+ 178:	00000000 	.word	0x00000000
+
+0000017c <_ZL12input_isr_d1Pv>:
+static void input_isr_d1(void* _ctx) {
+ 17c:	b508      	push	{r3, lr}
+    _this->ReadD1();
+ 17e:	4b01      	ldr	r3, [pc, #4]	@ (184 <_ZL12input_isr_d1Pv+0x8>)
+ 180:	4798      	blx	r3
+}
+ 182:	bd08      	pop	{r3, pc}
+ 184:	00000000 	.word	0x00000000
+
+00000188 <_ZN7WIEGAND9GetCardIdEPmS0_c>:
+
+unsigned long WIEGAND::GetCardId(unsigned long* codehigh, unsigned long* codelow, char bitlength) {
+    if(bitlength == 26) // EM tag
+ 188:	3a18      	subs	r2, #24
+ 18a:	2a0a      	cmp	r2, #10
+ 18c:	d81f      	bhi.n	1ce <_ZN7WIEGAND9GetCardIdEPmS0_c+0x46>
+ 18e:	e8df f002 	tbb	[pc, r2]
+ 192:	1e0a      	.short	0x1e0a
+ 194:	1e1e1e06 	.word	0x1e1e1e06
+ 198:	1e1a1e1e 	.word	0x1e1a1e1e
+ 19c:	0e          	.byte	0x0e
+ 19d:	00          	.byte	0x00
+        return (*codelow & 0x1FFFFFE) >> 1;
+ 19e:	6808      	ldr	r0, [r1, #0]
+ 1a0:	f3c0 0057 	ubfx	r0, r0, #1, #24
+ 1a4:	4770      	bx	lr
+
+    if(bitlength == 24) return (*codelow & 0x7FFFFE) >> 1;
+ 1a6:	6808      	ldr	r0, [r1, #0]
+ 1a8:	f3c0 0055 	ubfx	r0, r0, #1, #22
+ 1ac:	4770      	bx	lr
+
+    if(bitlength == 34) // Mifare
+    {
+        *codehigh = *codehigh & 0x03; // only need the 2 LSB of the codehigh
+ 1ae:	6803      	ldr	r3, [r0, #0]
+ 1b0:	f003 0303 	and.w	r3, r3, #3
+ 1b4:	6003      	str	r3, [r0, #0]
+        *codehigh <<= 30; // shift 2 LSB to MSB
+ 1b6:	079b      	lsls	r3, r3, #30
+ 1b8:	6003      	str	r3, [r0, #0]
+        *codelow >>= 1;
+ 1ba:	680b      	ldr	r3, [r1, #0]
+ 1bc:	085b      	lsrs	r3, r3, #1
+ 1be:	600b      	str	r3, [r1, #0]
+        return *codehigh | *codelow;
+ 1c0:	6800      	ldr	r0, [r0, #0]
+ 1c2:	4318      	orrs	r0, r3
+ 1c4:	4770      	bx	lr
+    }
+
+    if(bitlength == 32) {
+        return (*codelow & 0x7FFFFFFE) >> 1;
+ 1c6:	6808      	ldr	r0, [r1, #0]
+ 1c8:	f3c0 005d 	ubfx	r0, r0, #1, #30
+ 1cc:	4770      	bx	lr
+    }
+
+    return *codelow; // EM tag or Mifare without parity bits
+ 1ce:	6808      	ldr	r0, [r1, #0]
+}
+ 1d0:	4770      	bx	lr
+
+000001d2 <_Z28translateEnterEscapeKeyPressc>:
+
+char translateEnterEscapeKeyPress(char originalKeyPress) {
+    switch(originalKeyPress) {
+ 1d2:	280a      	cmp	r0, #10
+ 1d4:	d003      	beq.n	1de <_Z28translateEnterEscapeKeyPressc+0xc>
+ 1d6:	280b      	cmp	r0, #11
+ 1d8:	d102      	bne.n	1e0 <_Z28translateEnterEscapeKeyPressc+0xe>
+ 1da:	200d      	movs	r0, #13
+ 1dc:	4770      	bx	lr
+    case 0x0b: // 11 or * key
+        return 0x0d; // 13 or ASCII ENTER
+
+    case 0x0a: // 10 or # key
+        return 0x1b; // 27 or ASCII ESCAPE
+ 1de:	201b      	movs	r0, #27
+
+    default:
+        return originalKeyPress;
+    }
+}
+ 1e0:	4770      	bx	lr
+	...
+
+000001e4 <_ZN7WIEGAND19DoWiegandConversionEv>:
+
+bool WIEGAND::DoWiegandConversion() {
+    unsigned long cardID;
+    unsigned long sysTick = DWT->CYCCNT;
+ 1e4:	4b47      	ldr	r3, [pc, #284]	@ (304 <_ZN7WIEGAND19DoWiegandConversionEv+0x120>)
+ 1e6:	685a      	ldr	r2, [r3, #4]
+
+    if((sysTick - _lastWiegand) >
+ 1e8:	4b47      	ldr	r3, [pc, #284]	@ (308 <_ZN7WIEGAND19DoWiegandConversionEv+0x124>)
+ 1ea:	681b      	ldr	r3, [r3, #0]
+ 1ec:	1ad3      	subs	r3, r2, r3
+ 1ee:	4947      	ldr	r1, [pc, #284]	@ (30c <_ZN7WIEGAND19DoWiegandConversionEv+0x128>)
+ 1f0:	428b      	cmp	r3, r1
+ 1f2:	f240 8084 	bls.w	2fe <_ZN7WIEGAND19DoWiegandConversionEv+0x11a>
+bool WIEGAND::DoWiegandConversion() {
+ 1f6:	b570      	push	{r4, r5, r6, lr}
+       (25 * clocks_in_ms)) // if no more signal coming through after 25ms
+    {
+        if((_bitCount == 24) || (_bitCount == 26) || (_bitCount == 32) || (_bitCount == 34) ||
+ 1f8:	4b45      	ldr	r3, [pc, #276]	@ (310 <_ZN7WIEGAND19DoWiegandConversionEv+0x12c>)
+ 1fa:	681c      	ldr	r4, [r3, #0]
+ 1fc:	2c18      	cmp	r4, #24
+ 1fe:	d019      	beq.n	234 <_ZN7WIEGAND19DoWiegandConversionEv+0x50>
+ 200:	2c28      	cmp	r4, #40	@ 0x28
+ 202:	dc09      	bgt.n	218 <_ZN7WIEGAND19DoWiegandConversionEv+0x34>
+ 204:	2c1a      	cmp	r4, #26
+ 206:	db11      	blt.n	22c <_ZN7WIEGAND19DoWiegandConversionEv+0x48>
+ 208:	f1a4 011a 	sub.w	r1, r4, #26
+ 20c:	f644 1341 	movw	r3, #18753	@ 0x4941
+ 210:	40cb      	lsrs	r3, r1
+ 212:	f013 0f01 	tst.w	r3, #1
+ 216:	d10d      	bne.n	234 <_ZN7WIEGAND19DoWiegandConversionEv+0x50>
+                _code = cardID;
+                return true;
+            }
+        } else {
+            // well time over 25 ms and bitCount !=8 , !=26, !=34 , must be noise or nothing then.
+            _lastWiegand = sysTick;
+ 218:	4b3b      	ldr	r3, [pc, #236]	@ (308 <_ZN7WIEGAND19DoWiegandConversionEv+0x124>)
+ 21a:	601a      	str	r2, [r3, #0]
+            _bitCount = 0;
+ 21c:	2000      	movs	r0, #0
+ 21e:	4b3c      	ldr	r3, [pc, #240]	@ (310 <_ZN7WIEGAND19DoWiegandConversionEv+0x12c>)
+ 220:	6018      	str	r0, [r3, #0]
+            _cardTemp = 0;
+ 222:	4b3c      	ldr	r3, [pc, #240]	@ (314 <_ZN7WIEGAND19DoWiegandConversionEv+0x130>)
+ 224:	6018      	str	r0, [r3, #0]
+            _cardTempHigh = 0;
+ 226:	4b3c      	ldr	r3, [pc, #240]	@ (318 <_ZN7WIEGAND19DoWiegandConversionEv+0x134>)
+ 228:	6018      	str	r0, [r3, #0]
+            return false;
+        }
+    } else
+        return false;
+}
+ 22a:	bd70      	pop	{r4, r5, r6, pc}
+ 22c:	2c04      	cmp	r4, #4
+ 22e:	d001      	beq.n	234 <_ZN7WIEGAND19DoWiegandConversionEv+0x50>
+ 230:	2c08      	cmp	r4, #8
+ 232:	d1f1      	bne.n	218 <_ZN7WIEGAND19DoWiegandConversionEv+0x34>
+            _codeHigh = 0;
+ 234:	4b39      	ldr	r3, [pc, #228]	@ (31c <_ZN7WIEGAND19DoWiegandConversionEv+0x138>)
+ 236:	2100      	movs	r1, #0
+ 238:	6019      	str	r1, [r3, #0]
+            _cardTemp >>= 1;
+ 23a:	4936      	ldr	r1, [pc, #216]	@ (314 <_ZN7WIEGAND19DoWiegandConversionEv+0x130>)
+ 23c:	680b      	ldr	r3, [r1, #0]
+ 23e:	0858      	lsrs	r0, r3, #1
+ 240:	6008      	str	r0, [r1, #0]
+            if(_bitCount > 32) _cardTempHigh >>= 1;
+ 242:	2c20      	cmp	r4, #32
+ 244:	dd03      	ble.n	24e <_ZN7WIEGAND19DoWiegandConversionEv+0x6a>
+ 246:	4d34      	ldr	r5, [pc, #208]	@ (318 <_ZN7WIEGAND19DoWiegandConversionEv+0x134>)
+ 248:	6829      	ldr	r1, [r5, #0]
+ 24a:	0849      	lsrs	r1, r1, #1
+ 24c:	6029      	str	r1, [r5, #0]
+            if(_bitCount == 8) // keypress wiegand with integrity
+ 24e:	2c08      	cmp	r4, #8
+ 250:	d015      	beq.n	27e <_ZN7WIEGAND19DoWiegandConversionEv+0x9a>
+            } else if(4 == _bitCount) {
+ 252:	2c04      	cmp	r4, #4
+ 254:	d02f      	beq.n	2b6 <_ZN7WIEGAND19DoWiegandConversionEv+0xd2>
+            } else if(40 == _bitCount) {
+ 256:	2c28      	cmp	r4, #40	@ 0x28
+ 258:	d13e      	bne.n	2d8 <_ZN7WIEGAND19DoWiegandConversionEv+0xf4>
+                _cardTempHigh >>= 1;
+ 25a:	4a2f      	ldr	r2, [pc, #188]	@ (318 <_ZN7WIEGAND19DoWiegandConversionEv+0x134>)
+ 25c:	6813      	ldr	r3, [r2, #0]
+ 25e:	085b      	lsrs	r3, r3, #1
+ 260:	6013      	str	r3, [r2, #0]
+                _code = _cardTemp;
+ 262:	492f      	ldr	r1, [pc, #188]	@ (320 <_ZN7WIEGAND19DoWiegandConversionEv+0x13c>)
+ 264:	6008      	str	r0, [r1, #0]
+                _codeHigh = _cardTempHigh;
+ 266:	492d      	ldr	r1, [pc, #180]	@ (31c <_ZN7WIEGAND19DoWiegandConversionEv+0x138>)
+ 268:	600b      	str	r3, [r1, #0]
+                _wiegandType = _bitCount;
+ 26a:	4b2e      	ldr	r3, [pc, #184]	@ (324 <_ZN7WIEGAND19DoWiegandConversionEv+0x140>)
+ 26c:	601c      	str	r4, [r3, #0]
+                _bitCount = 0;
+ 26e:	2300      	movs	r3, #0
+ 270:	4927      	ldr	r1, [pc, #156]	@ (310 <_ZN7WIEGAND19DoWiegandConversionEv+0x12c>)
+ 272:	600b      	str	r3, [r1, #0]
+                _cardTemp = 0;
+ 274:	4927      	ldr	r1, [pc, #156]	@ (314 <_ZN7WIEGAND19DoWiegandConversionEv+0x130>)
+ 276:	600b      	str	r3, [r1, #0]
+                _cardTempHigh = 0;
+ 278:	6013      	str	r3, [r2, #0]
+                return true;
+ 27a:	2001      	movs	r0, #1
+ 27c:	e7d5      	b.n	22a <_ZN7WIEGAND19DoWiegandConversionEv+0x46>
+                char highNibble = (_cardTemp & 0xf0) >> 4;
+ 27e:	f3c3 1343 	ubfx	r3, r3, #5, #4
+                char lowNibble = (_cardTemp & 0x0f);
+ 282:	f000 000f 	and.w	r0, r0, #15
+                _wiegandType = _bitCount;
+ 286:	4927      	ldr	r1, [pc, #156]	@ (324 <_ZN7WIEGAND19DoWiegandConversionEv+0x140>)
+ 288:	600c      	str	r4, [r1, #0]
+                _bitCount = 0;
+ 28a:	2100      	movs	r1, #0
+ 28c:	4c20      	ldr	r4, [pc, #128]	@ (310 <_ZN7WIEGAND19DoWiegandConversionEv+0x12c>)
+ 28e:	6021      	str	r1, [r4, #0]
+                _cardTemp = 0;
+ 290:	4c20      	ldr	r4, [pc, #128]	@ (314 <_ZN7WIEGAND19DoWiegandConversionEv+0x130>)
+ 292:	6021      	str	r1, [r4, #0]
+                _cardTempHigh = 0;
+ 294:	4c20      	ldr	r4, [pc, #128]	@ (318 <_ZN7WIEGAND19DoWiegandConversionEv+0x134>)
+ 296:	6021      	str	r1, [r4, #0]
+                   (~highNibble & 0x0f)) // check if low nibble matches the "NOT" of high nibble.
+ 298:	43db      	mvns	r3, r3
+ 29a:	f003 030f 	and.w	r3, r3, #15
+                if(lowNibble ==
+ 29e:	4298      	cmp	r0, r3
+ 2a0:	d003      	beq.n	2aa <_ZN7WIEGAND19DoWiegandConversionEv+0xc6>
+                    _lastWiegand = sysTick;
+ 2a2:	4b19      	ldr	r3, [pc, #100]	@ (308 <_ZN7WIEGAND19DoWiegandConversionEv+0x124>)
+ 2a4:	601a      	str	r2, [r3, #0]
+                    return false;
+ 2a6:	2000      	movs	r0, #0
+ 2a8:	e7bf      	b.n	22a <_ZN7WIEGAND19DoWiegandConversionEv+0x46>
+                    _code = (int)translateEnterEscapeKeyPress(lowNibble);
+ 2aa:	4b1f      	ldr	r3, [pc, #124]	@ (328 <_ZN7WIEGAND19DoWiegandConversionEv+0x144>)
+ 2ac:	4798      	blx	r3
+ 2ae:	4b1c      	ldr	r3, [pc, #112]	@ (320 <_ZN7WIEGAND19DoWiegandConversionEv+0x13c>)
+ 2b0:	6018      	str	r0, [r3, #0]
+                    return true;
+ 2b2:	2001      	movs	r0, #1
+ 2b4:	e7b9      	b.n	22a <_ZN7WIEGAND19DoWiegandConversionEv+0x46>
+                _code = (int)translateEnterEscapeKeyPress(_cardTemp & 0x0000000F);
+ 2b6:	f000 000f 	and.w	r0, r0, #15
+ 2ba:	4b1b      	ldr	r3, [pc, #108]	@ (328 <_ZN7WIEGAND19DoWiegandConversionEv+0x144>)
+ 2bc:	4798      	blx	r3
+ 2be:	4b18      	ldr	r3, [pc, #96]	@ (320 <_ZN7WIEGAND19DoWiegandConversionEv+0x13c>)
+ 2c0:	6018      	str	r0, [r3, #0]
+                _wiegandType = _bitCount;
+ 2c2:	4b18      	ldr	r3, [pc, #96]	@ (324 <_ZN7WIEGAND19DoWiegandConversionEv+0x140>)
+ 2c4:	601c      	str	r4, [r3, #0]
+                _bitCount = 0;
+ 2c6:	2300      	movs	r3, #0
+ 2c8:	4a11      	ldr	r2, [pc, #68]	@ (310 <_ZN7WIEGAND19DoWiegandConversionEv+0x12c>)
+ 2ca:	6013      	str	r3, [r2, #0]
+                _cardTemp = 0;
+ 2cc:	4a11      	ldr	r2, [pc, #68]	@ (314 <_ZN7WIEGAND19DoWiegandConversionEv+0x130>)
+ 2ce:	6013      	str	r3, [r2, #0]
+                _cardTempHigh = 0;
+ 2d0:	4a11      	ldr	r2, [pc, #68]	@ (318 <_ZN7WIEGAND19DoWiegandConversionEv+0x134>)
+ 2d2:	6013      	str	r3, [r2, #0]
+                return true;
+ 2d4:	2001      	movs	r0, #1
+ 2d6:	e7a8      	b.n	22a <_ZN7WIEGAND19DoWiegandConversionEv+0x46>
+                cardID = GetCardId(&_cardTempHigh, &_cardTemp, _bitCount);
+ 2d8:	4e0e      	ldr	r6, [pc, #56]	@ (314 <_ZN7WIEGAND19DoWiegandConversionEv+0x130>)
+ 2da:	4d0f      	ldr	r5, [pc, #60]	@ (318 <_ZN7WIEGAND19DoWiegandConversionEv+0x134>)
+ 2dc:	b2e2      	uxtb	r2, r4
+ 2de:	4631      	mov	r1, r6
+ 2e0:	4628      	mov	r0, r5
+ 2e2:	4b12      	ldr	r3, [pc, #72]	@ (32c <_ZN7WIEGAND19DoWiegandConversionEv+0x148>)
+ 2e4:	4798      	blx	r3
+                _wiegandType = _bitCount;
+ 2e6:	4a0a      	ldr	r2, [pc, #40]	@ (310 <_ZN7WIEGAND19DoWiegandConversionEv+0x12c>)
+ 2e8:	6811      	ldr	r1, [r2, #0]
+ 2ea:	4b0e      	ldr	r3, [pc, #56]	@ (324 <_ZN7WIEGAND19DoWiegandConversionEv+0x140>)
+ 2ec:	6019      	str	r1, [r3, #0]
+                _bitCount = 0;
+ 2ee:	2300      	movs	r3, #0
+ 2f0:	6013      	str	r3, [r2, #0]
+                _cardTemp = 0;
+ 2f2:	6033      	str	r3, [r6, #0]
+                _cardTempHigh = 0;
+ 2f4:	602b      	str	r3, [r5, #0]
+                _code = cardID;
+ 2f6:	4b0a      	ldr	r3, [pc, #40]	@ (320 <_ZN7WIEGAND19DoWiegandConversionEv+0x13c>)
+ 2f8:	6018      	str	r0, [r3, #0]
+                return true;
+ 2fa:	2001      	movs	r0, #1
+ 2fc:	e795      	b.n	22a <_ZN7WIEGAND19DoWiegandConversionEv+0x46>
+        return false;
+ 2fe:	2000      	movs	r0, #0
+}
+ 300:	4770      	bx	lr
+ 302:	bf00      	nop
+ 304:	e0001000 	.word	0xe0001000
+ 308:	00000000 	.word	0x00000000
+ 30c:	00186a00 	.word	0x00186a00
+	...
+
+00000330 <_ZN7WIEGAND9availableEv>:
+bool WIEGAND::available() {
+ 330:	b530      	push	{r4, r5, lr}
+ 332:	b083      	sub	sp, #12
+    FURI_CRITICAL_ENTER();
+ 334:	466d      	mov	r5, sp
+ 336:	4628      	mov	r0, r5
+ 338:	4b05      	ldr	r3, [pc, #20]	@ (350 <_ZN7WIEGAND9availableEv+0x20>)
+ 33a:	4798      	blx	r3
+    ret = DoWiegandConversion();
+ 33c:	4b05      	ldr	r3, [pc, #20]	@ (354 <_ZN7WIEGAND9availableEv+0x24>)
+ 33e:	4798      	blx	r3
+ 340:	4604      	mov	r4, r0
+    FURI_CRITICAL_EXIT();
+ 342:	e895 0003 	ldmia.w	r5, {r0, r1}
+ 346:	4b04      	ldr	r3, [pc, #16]	@ (358 <_ZN7WIEGAND9availableEv+0x28>)
+ 348:	4798      	blx	r3
+}
+ 34a:	4620      	mov	r0, r4
+ 34c:	b003      	add	sp, #12
+ 34e:	bd30      	pop	{r4, r5, pc}
+	...
+
+0000035c <_ZN18AccessorSceneStart7on_exitEP11AccessorApp>:
+    }
+
+    return consumed;
+}
+
+void AccessorSceneStart::on_exit(AccessorApp* app) {
+ 35c:	b570      	push	{r4, r5, r6, lr}
+ 35e:	b082      	sub	sp, #8
+    Popup* popup = app->get_view_manager()->get_popup();
+ 360:	4608      	mov	r0, r1
+ 362:	4b0c      	ldr	r3, [pc, #48]	@ (394 <_ZN18AccessorSceneStart7on_exitEP11AccessorApp+0x38>)
+ 364:	4798      	blx	r3
+ 366:	4b0c      	ldr	r3, [pc, #48]	@ (398 <_ZN18AccessorSceneStart7on_exitEP11AccessorApp+0x3c>)
+ 368:	4798      	blx	r3
+ 36a:	4604      	mov	r4, r0
+    popup_set_header(popup, NULL, 0, 0, AlignCenter, AlignBottom);
+ 36c:	2303      	movs	r3, #3
+ 36e:	9301      	str	r3, [sp, #4]
+ 370:	2504      	movs	r5, #4
+ 372:	9500      	str	r5, [sp, #0]
+ 374:	2300      	movs	r3, #0
+ 376:	461a      	mov	r2, r3
+ 378:	4619      	mov	r1, r3
+ 37a:	4e08      	ldr	r6, [pc, #32]	@ (39c <_ZN18AccessorSceneStart7on_exitEP11AccessorApp+0x40>)
+ 37c:	47b0      	blx	r6
+    popup_set_text(popup, NULL, 0, 0, AlignCenter, AlignTop);
+ 37e:	2302      	movs	r3, #2
+ 380:	9301      	str	r3, [sp, #4]
+ 382:	9500      	str	r5, [sp, #0]
+ 384:	2300      	movs	r3, #0
+ 386:	461a      	mov	r2, r3
+ 388:	4619      	mov	r1, r3
+ 38a:	4620      	mov	r0, r4
+ 38c:	4c04      	ldr	r4, [pc, #16]	@ (3a0 <_ZN18AccessorSceneStart7on_exitEP11AccessorApp+0x44>)
+ 38e:	47a0      	blx	r4
+}
+ 390:	b002      	add	sp, #8
+ 392:	bd70      	pop	{r4, r5, r6, pc}
+	...
+
+000003a4 <_ZN18AccessorSceneStart8on_enterEP11AccessorApp>:
+void AccessorSceneStart::on_enter(AccessorApp* app) {
+ 3a4:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+ 3a8:	b082      	sub	sp, #8
+ 3aa:	460c      	mov	r4, r1
+    AccessorAppViewManager* view_manager = app->get_view_manager();
+ 3ac:	4608      	mov	r0, r1
+ 3ae:	4b13      	ldr	r3, [pc, #76]	@ (3fc <_ZN18AccessorSceneStart8on_enterEP11AccessorApp+0x58>)
+ 3b0:	4798      	blx	r3
+ 3b2:	4605      	mov	r5, r0
+    Popup* popup = view_manager->get_popup();
+ 3b4:	4b12      	ldr	r3, [pc, #72]	@ (400 <_ZN18AccessorSceneStart8on_enterEP11AccessorApp+0x5c>)
+ 3b6:	4798      	blx	r3
+ 3b8:	4606      	mov	r6, r0
+    popup_set_header(popup, "Accessor App", 64, 16, AlignCenter, AlignBottom);
+ 3ba:	2303      	movs	r3, #3
+ 3bc:	9301      	str	r3, [sp, #4]
+ 3be:	2704      	movs	r7, #4
+ 3c0:	9700      	str	r7, [sp, #0]
+ 3c2:	2310      	movs	r3, #16
+ 3c4:	2240      	movs	r2, #64	@ 0x40
+ 3c6:	490f      	ldr	r1, [pc, #60]	@ (404 <_ZN18AccessorSceneStart8on_enterEP11AccessorApp+0x60>)
+ 3c8:	f8df 8050 	ldr.w	r8, [pc, #80]	@ 41c <_ZN18AccessorSceneStart8on_enterEP11AccessorApp+0x78>
+ 3cc:	47c0      	blx	r8
+    app->set_text_store("[??????]");
+ 3ce:	490e      	ldr	r1, [pc, #56]	@ (408 <_ZN18AccessorSceneStart8on_enterEP11AccessorApp+0x64>)
+ 3d0:	4620      	mov	r0, r4
+ 3d2:	4b0e      	ldr	r3, [pc, #56]	@ (40c <_ZN18AccessorSceneStart8on_enterEP11AccessorApp+0x68>)
+ 3d4:	4798      	blx	r3
+    popup_set_text(popup, app->get_text_store(), 64, 22, AlignCenter, AlignTop);
+ 3d6:	4620      	mov	r0, r4
+ 3d8:	4b0d      	ldr	r3, [pc, #52]	@ (410 <_ZN18AccessorSceneStart8on_enterEP11AccessorApp+0x6c>)
+ 3da:	4798      	blx	r3
+ 3dc:	4601      	mov	r1, r0
+ 3de:	2302      	movs	r3, #2
+ 3e0:	9301      	str	r3, [sp, #4]
+ 3e2:	9700      	str	r7, [sp, #0]
+ 3e4:	2316      	movs	r3, #22
+ 3e6:	2240      	movs	r2, #64	@ 0x40
+ 3e8:	4630      	mov	r0, r6
+ 3ea:	4c0a      	ldr	r4, [pc, #40]	@ (414 <_ZN18AccessorSceneStart8on_enterEP11AccessorApp+0x70>)
+ 3ec:	47a0      	blx	r4
+    view_manager->switch_to(AccessorAppViewManager::ViewType::Popup);
+ 3ee:	2101      	movs	r1, #1
+ 3f0:	4628      	mov	r0, r5
+ 3f2:	4b09      	ldr	r3, [pc, #36]	@ (418 <_ZN18AccessorSceneStart8on_enterEP11AccessorApp+0x74>)
+ 3f4:	4798      	blx	r3
+}
+ 3f6:	b002      	add	sp, #8
+ 3f8:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+	...
+ 404:	00000008 	.word	0x00000008
+ 408:	00000018 	.word	0x00000018
+	...
+
+00000420 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent>:
+bool AccessorSceneStart::on_event(AccessorApp* app, AccessorEvent* event) {
+ 420:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+ 424:	b08a      	sub	sp, #40	@ 0x28
+    if(event->type == AccessorEvent::Type::Tick) {
+ 426:	7914      	ldrb	r4, [r2, #4]
+ 428:	b11c      	cbz	r4, 432 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x12>
+}
+ 42a:	2000      	movs	r0, #0
+ 42c:	b00a      	add	sp, #40	@ 0x28
+ 42e:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+ 432:	460d      	mov	r5, r1
+        WIEGAND* wiegand = app->get_wiegand();
+ 434:	4608      	mov	r0, r1
+ 436:	4b59      	ldr	r3, [pc, #356]	@ (59c <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x17c>)
+ 438:	4798      	blx	r3
+ 43a:	4606      	mov	r6, r0
+        Popup* popup = app->get_view_manager()->get_popup();
+ 43c:	4628      	mov	r0, r5
+ 43e:	4b58      	ldr	r3, [pc, #352]	@ (5a0 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x180>)
+ 440:	4798      	blx	r3
+ 442:	4b58      	ldr	r3, [pc, #352]	@ (5a4 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x184>)
+ 444:	4798      	blx	r3
+ 446:	4607      	mov	r7, r0
+        OneWireHost* onewire_host = app->get_one_wire();
+ 448:	4628      	mov	r0, r5
+ 44a:	4b57      	ldr	r3, [pc, #348]	@ (5a8 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x188>)
+ 44c:	4798      	blx	r3
+ 44e:	4680      	mov	r8, r0
+        uint8_t data[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+ 450:	4a56      	ldr	r2, [pc, #344]	@ (5ac <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x18c>)
+ 452:	ab06      	add	r3, sp, #24
+ 454:	e892 0003 	ldmia.w	r2, {r0, r1}
+ 458:	e883 0003 	stmia.w	r3, {r0, r1}
+        if(wiegand->available()) {
+ 45c:	4630      	mov	r0, r6
+ 45e:	4b54      	ldr	r3, [pc, #336]	@ (5b0 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x190>)
+ 460:	4798      	blx	r3
+ 462:	2800      	cmp	r0, #0
+ 464:	d052      	beq.n	50c <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0xec>
+            type = wiegand->getWiegandType();
+ 466:	4630      	mov	r0, r6
+ 468:	4b52      	ldr	r3, [pc, #328]	@ (5b4 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x194>)
+ 46a:	4798      	blx	r3
+ 46c:	fa5f f880 	uxtb.w	r8, r0
+            for(uint8_t i = 0; i < 4; i++) {
+ 470:	e00b      	b.n	48a <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x6a>
+                data[i] = wiegand->getCode() >> (i * 8);
+ 472:	4630      	mov	r0, r6
+ 474:	4b50      	ldr	r3, [pc, #320]	@ (5b8 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x198>)
+ 476:	4798      	blx	r3
+ 478:	00e3      	lsls	r3, r4, #3
+ 47a:	40d8      	lsrs	r0, r3
+ 47c:	f104 0328 	add.w	r3, r4, #40	@ 0x28
+ 480:	446b      	add	r3, sp
+ 482:	f803 0c10 	strb.w	r0, [r3, #-16]
+            for(uint8_t i = 0; i < 4; i++) {
+ 486:	3401      	adds	r4, #1
+ 488:	b2e4      	uxtb	r4, r4
+ 48a:	2c03      	cmp	r4, #3
+ 48c:	d9f1      	bls.n	472 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x52>
+            for(uint8_t i = 4; i < 8; i++) {
+ 48e:	2404      	movs	r4, #4
+ 490:	e00d      	b.n	4ae <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x8e>
+                data[i] = wiegand->getCodeHigh() >> ((i - 4) * 8);
+ 492:	4630      	mov	r0, r6
+ 494:	4b49      	ldr	r3, [pc, #292]	@ (5bc <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x19c>)
+ 496:	4798      	blx	r3
+ 498:	1f23      	subs	r3, r4, #4
+ 49a:	00db      	lsls	r3, r3, #3
+ 49c:	fa20 f303 	lsr.w	r3, r0, r3
+ 4a0:	f104 0228 	add.w	r2, r4, #40	@ 0x28
+ 4a4:	446a      	add	r2, sp
+ 4a6:	f802 3c10 	strb.w	r3, [r2, #-16]
+            for(uint8_t i = 4; i < 8; i++) {
+ 4aa:	3401      	adds	r4, #1
+ 4ac:	b2e4      	uxtb	r4, r4
+ 4ae:	2c07      	cmp	r4, #7
+ 4b0:	d9ef      	bls.n	492 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x72>
+        if(type > 0) {
+ 4b2:	f1b8 0f00 	cmp.w	r8, #0
+ 4b6:	d0b8      	beq.n	42a <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0xa>
+            if(type == 255) {
+ 4b8:	f1b8 0fff 	cmp.w	r8, #255	@ 0xff
+ 4bc:	d058      	beq.n	570 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x150>
+                    data[3],
+ 4be:	f89d 301b 	ldrb.w	r3, [sp, #27]
+                    data[2],
+ 4c2:	f89d 201a 	ldrb.w	r2, [sp, #26]
+                    data[1],
+ 4c6:	f89d 1019 	ldrb.w	r1, [sp, #25]
+                    data[0],
+ 4ca:	f89d 0018 	ldrb.w	r0, [sp, #24]
+                app->set_text_store(
+ 4ce:	f8cd 8010 	str.w	r8, [sp, #16]
+ 4d2:	9003      	str	r0, [sp, #12]
+ 4d4:	9102      	str	r1, [sp, #8]
+ 4d6:	9201      	str	r2, [sp, #4]
+ 4d8:	9300      	str	r3, [sp, #0]
+ 4da:	f89d 301c 	ldrb.w	r3, [sp, #28]
+ 4de:	f89d 201d 	ldrb.w	r2, [sp, #29]
+ 4e2:	4937      	ldr	r1, [pc, #220]	@ (5c0 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x1a0>)
+ 4e4:	4628      	mov	r0, r5
+ 4e6:	4c37      	ldr	r4, [pc, #220]	@ (5c4 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x1a4>)
+ 4e8:	47a0      	blx	r4
+            popup_set_text(popup, app->get_text_store(), 64, 22, AlignCenter, AlignTop);
+ 4ea:	4628      	mov	r0, r5
+ 4ec:	4b36      	ldr	r3, [pc, #216]	@ (5c8 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x1a8>)
+ 4ee:	4798      	blx	r3
+ 4f0:	4601      	mov	r1, r0
+ 4f2:	2302      	movs	r3, #2
+ 4f4:	9301      	str	r3, [sp, #4]
+ 4f6:	2304      	movs	r3, #4
+ 4f8:	9300      	str	r3, [sp, #0]
+ 4fa:	2316      	movs	r3, #22
+ 4fc:	2240      	movs	r2, #64	@ 0x40
+ 4fe:	4638      	mov	r0, r7
+ 500:	4c32      	ldr	r4, [pc, #200]	@ (5cc <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x1ac>)
+ 502:	47a0      	blx	r4
+            app->notify_success();
+ 504:	4628      	mov	r0, r5
+ 506:	4b32      	ldr	r3, [pc, #200]	@ (5d0 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x1b0>)
+ 508:	4798      	blx	r3
+ 50a:	e78e      	b.n	42a <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0xa>
+            FURI_CRITICAL_ENTER();
+ 50c:	a808      	add	r0, sp, #32
+ 50e:	4b31      	ldr	r3, [pc, #196]	@ (5d4 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x1b4>)
+ 510:	4798      	blx	r3
+            if(onewire_host_reset(onewire_host)) {
+ 512:	4640      	mov	r0, r8
+ 514:	4b30      	ldr	r3, [pc, #192]	@ (5d8 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x1b8>)
+ 516:	4798      	blx	r3
+ 518:	b930      	cbnz	r0, 528 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x108>
+            FURI_CRITICAL_EXIT();
+ 51a:	ab0a      	add	r3, sp, #40	@ 0x28
+ 51c:	e913 0003 	ldmdb	r3, {r0, r1}
+ 520:	4b2e      	ldr	r3, [pc, #184]	@ (5dc <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x1bc>)
+ 522:	4798      	blx	r3
+ 524:	46a0      	mov	r8, r4
+ 526:	e7c4      	b.n	4b2 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x92>
+                onewire_host_write(onewire_host, 0x33);
+ 528:	2133      	movs	r1, #51	@ 0x33
+ 52a:	4640      	mov	r0, r8
+ 52c:	4b2c      	ldr	r3, [pc, #176]	@ (5e0 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x1c0>)
+ 52e:	4798      	blx	r3
+                for(uint8_t i = 0; i < 8; i++) {
+ 530:	4626      	mov	r6, r4
+ 532:	e009      	b.n	548 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x128>
+                    data[i] = onewire_host_read(onewire_host);
+ 534:	4640      	mov	r0, r8
+ 536:	4b2b      	ldr	r3, [pc, #172]	@ (5e4 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x1c4>)
+ 538:	4798      	blx	r3
+ 53a:	f106 0328 	add.w	r3, r6, #40	@ 0x28
+ 53e:	446b      	add	r3, sp
+ 540:	f803 0c10 	strb.w	r0, [r3, #-16]
+                for(uint8_t i = 0; i < 8; i++) {
+ 544:	3601      	adds	r6, #1
+ 546:	b2f6      	uxtb	r6, r6
+ 548:	2e07      	cmp	r6, #7
+ 54a:	d9f3      	bls.n	534 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x114>
+ 54c:	e00c      	b.n	568 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x148>
+                    data[i] = data[i + 1];
+ 54e:	1c63      	adds	r3, r4, #1
+ 550:	f104 0229 	add.w	r2, r4, #41	@ 0x29
+ 554:	446a      	add	r2, sp
+ 556:	f812 2c10 	ldrb.w	r2, [r2, #-16]
+ 55a:	f104 0128 	add.w	r1, r4, #40	@ 0x28
+ 55e:	eb0d 0401 	add.w	r4, sp, r1
+ 562:	f804 2c10 	strb.w	r2, [r4, #-16]
+                for(uint8_t i = 0; i < 7; i++) {
+ 566:	b2dc      	uxtb	r4, r3
+ 568:	2c06      	cmp	r4, #6
+ 56a:	d9f0      	bls.n	54e <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x12e>
+                type = 255;
+ 56c:	24ff      	movs	r4, #255	@ 0xff
+ 56e:	e7d4      	b.n	51a <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0xfa>
+                    data[3],
+ 570:	f89d 301b 	ldrb.w	r3, [sp, #27]
+                    data[2],
+ 574:	f89d 201a 	ldrb.w	r2, [sp, #26]
+                    data[1],
+ 578:	f89d 1019 	ldrb.w	r1, [sp, #25]
+                    data[0]);
+ 57c:	f89d 0018 	ldrb.w	r0, [sp, #24]
+                app->set_text_store(
+ 580:	9003      	str	r0, [sp, #12]
+ 582:	9102      	str	r1, [sp, #8]
+ 584:	9201      	str	r2, [sp, #4]
+ 586:	9300      	str	r3, [sp, #0]
+ 588:	f89d 301c 	ldrb.w	r3, [sp, #28]
+ 58c:	f89d 201d 	ldrb.w	r2, [sp, #29]
+ 590:	4915      	ldr	r1, [pc, #84]	@ (5e8 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x1c8>)
+ 592:	4628      	mov	r0, r5
+ 594:	4c0b      	ldr	r4, [pc, #44]	@ (5c4 <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0x1a4>)
+ 596:	47a0      	blx	r4
+ 598:	e7a7      	b.n	4ea <_ZN18AccessorSceneStart8on_eventEP11AccessorAppP13AccessorEvent+0xca>
+ 59a:	bf00      	nop
+	...
+ 5c0:	00000048 	.word	0x00000048
+	...
+ 5e8:	00000024 	.word	0x00000024
+
+000005ec <accessor_app>:
+#include "accessor_app.h"
+
+// app enter function
+extern "C" int32_t accessor_app(void* p) {
+ 5ec:	b510      	push	{r4, lr}
+    UNUSED(p);
+    AccessorApp* app = new AccessorApp();
+ 5ee:	20d0      	movs	r0, #208	@ 0xd0
+ 5f0:	4b08      	ldr	r3, [pc, #32]	@ (614 <accessor_app+0x28>)
+ 5f2:	4798      	blx	r3
+ 5f4:	4604      	mov	r4, r0
+ 5f6:	4b08      	ldr	r3, [pc, #32]	@ (618 <accessor_app+0x2c>)
+ 5f8:	4798      	blx	r3
+    app->run();
+ 5fa:	4620      	mov	r0, r4
+ 5fc:	4b07      	ldr	r3, [pc, #28]	@ (61c <accessor_app+0x30>)
+ 5fe:	4798      	blx	r3
+    delete app;
+ 600:	b134      	cbz	r4, 610 <accessor_app+0x24>
+ 602:	4620      	mov	r0, r4
+ 604:	4b06      	ldr	r3, [pc, #24]	@ (620 <accessor_app+0x34>)
+ 606:	4798      	blx	r3
+ 608:	21d0      	movs	r1, #208	@ 0xd0
+ 60a:	4620      	mov	r0, r4
+ 60c:	4b05      	ldr	r3, [pc, #20]	@ (624 <accessor_app+0x38>)
+ 60e:	4798      	blx	r3
+
+    return 255;
+}
+ 610:	20ff      	movs	r0, #255	@ 0xff
+ 612:	bd10      	pop	{r4, pc}
+	...
+
+00000628 <_ZN11AccessorApp16get_view_managerEv>:
+    onewire_host_free(onewire_host);
+}
+
+AccessorAppViewManager* AccessorApp::get_view_manager() {
+    return &view;
+}
+ 628:	3010      	adds	r0, #16
+ 62a:	4770      	bx	lr
+
+0000062c <_ZN11AccessorApp14notify_successEv>:
+
+void AccessorApp::notify_green_blink() {
+    notification_message(notification, &sequence_blink_green_10);
+}
+
+void AccessorApp::notify_success() {
+ 62c:	b508      	push	{r3, lr}
+    notification_message(notification, &sequence_success);
+ 62e:	4903      	ldr	r1, [pc, #12]	@ (63c <_ZN11AccessorApp14notify_successEv+0x10>)
+ 630:	f8d0 00c4 	ldr.w	r0, [r0, #196]	@ 0xc4
+ 634:	4b02      	ldr	r3, [pc, #8]	@ (640 <_ZN11AccessorApp14notify_successEv+0x14>)
+ 636:	4798      	blx	r3
+}
+ 638:	bd08      	pop	{r3, pc}
+ 63a:	bf00      	nop
+	...
+
+00000644 <_ZN11AccessorApp14get_text_storeEv>:
+
+/*************************** TEXT STORE *****************************/
+
+char* AccessorApp::get_text_store() {
+    return text_store;
+}
+ 644:	303c      	adds	r0, #60	@ 0x3c
+ 646:	4770      	bx	lr
+
+00000648 <_ZN11AccessorApp14set_text_storeEPKcz>:
+
+uint8_t AccessorApp::get_text_store_size() {
+    return text_store_size;
+}
+
+void AccessorApp::set_text_store(const char* text...) {
+ 648:	b40e      	push	{r1, r2, r3}
+ 64a:	b510      	push	{r4, lr}
+ 64c:	b083      	sub	sp, #12
+ 64e:	ab05      	add	r3, sp, #20
+ 650:	f853 2b04 	ldr.w	r2, [r3], #4
+    va_list args;
+    va_start(args, text);
+ 654:	9301      	str	r3, [sp, #4]
+
+    vsnprintf(text_store, text_store_size, text, args);
+ 656:	2180      	movs	r1, #128	@ 0x80
+ 658:	303c      	adds	r0, #60	@ 0x3c
+ 65a:	4c03      	ldr	r4, [pc, #12]	@ (668 <_ZN11AccessorApp14set_text_storeEPKcz+0x20>)
+ 65c:	47a0      	blx	r4
+
+    va_end(args);
+}
+ 65e:	b003      	add	sp, #12
+ 660:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
+ 664:	b003      	add	sp, #12
+ 666:	4770      	bx	lr
+ 668:	00000000 	.word	0x00000000
+
+0000066c <_ZN11AccessorApp11get_wiegandEv>:
+
+/*************************** APP RESOURCES *****************************/
+
+WIEGAND* AccessorApp::get_wiegand() {
+    return &wiegand;
+}
+ 66c:	30bd      	adds	r0, #189	@ 0xbd
+ 66e:	4770      	bx	lr
+
+00000670 <_ZN11AccessorApp12get_one_wireEv>:
+
+OneWireHost* AccessorApp::get_one_wire() {
+    return onewire_host;
+}
+ 670:	f8d0 00c0 	ldr.w	r0, [r0, #192]	@ 0xc0
+ 674:	4770      	bx	lr
+	...
+
+00000678 <_ZN11AccessorApp18get_previous_sceneEv>:
+AccessorApp::Scene AccessorApp::get_previous_scene() {
+ 678:	b510      	push	{r4, lr}
+       *  %list.  Iteration is done in ordinary element order.
+       */
+      _GLIBCXX_NODISCARD
+      iterator
+      begin() _GLIBCXX_NOEXCEPT
+      { return iterator(this->_M_impl._M_node._M_next); }
+ 67a:	6803      	ldr	r3, [r0, #0]
+    Scene scene = previous_scenes_list.front();
+ 67c:	7a1c      	ldrb	r4, [r3, #8]
+    previous_scenes_list.pop_front();
+ 67e:	4b02      	ldr	r3, [pc, #8]	@ (688 <_ZN11AccessorApp18get_previous_sceneEv+0x10>)
+ 680:	4798      	blx	r3
+}
+ 682:	4620      	mov	r0, r4
+ 684:	bd10      	pop	{r4, pc}
+ 686:	bf00      	nop
+ 688:	00000000 	.word	0x00000000
+
+0000068c <_ZN11AccessorAppD1Ev>:
+AccessorApp::~AccessorApp() {
+ 68c:	b538      	push	{r3, r4, r5, lr}
+ 68e:	4604      	mov	r4, r0
+    power_enable_otg(power, false);
+ 690:	2100      	movs	r1, #0
+ 692:	f8d0 00cc 	ldr.w	r0, [r0, #204]	@ 0xcc
+ 696:	4b0f      	ldr	r3, [pc, #60]	@ (6d4 <_ZN11AccessorAppD1Ev+0x48>)
+ 698:	4798      	blx	r3
+    expansion_enable(expansion);
+ 69a:	f8d4 00c8 	ldr.w	r0, [r4, #200]	@ 0xc8
+ 69e:	4b0e      	ldr	r3, [pc, #56]	@ (6d8 <_ZN11AccessorAppD1Ev+0x4c>)
+ 6a0:	4798      	blx	r3
+    furi_record_close(RECORD_EXPANSION);
+ 6a2:	480e      	ldr	r0, [pc, #56]	@ (6dc <_ZN11AccessorAppD1Ev+0x50>)
+ 6a4:	4d0e      	ldr	r5, [pc, #56]	@ (6e0 <_ZN11AccessorAppD1Ev+0x54>)
+ 6a6:	47a8      	blx	r5
+    furi_record_close(RECORD_NOTIFICATION);
+ 6a8:	480e      	ldr	r0, [pc, #56]	@ (6e4 <_ZN11AccessorAppD1Ev+0x58>)
+ 6aa:	47a8      	blx	r5
+    furi_record_close(RECORD_POWER);
+ 6ac:	480e      	ldr	r0, [pc, #56]	@ (6e8 <_ZN11AccessorAppD1Ev+0x5c>)
+ 6ae:	47a8      	blx	r5
+    onewire_host_free(onewire_host);
+ 6b0:	f8d4 00c0 	ldr.w	r0, [r4, #192]	@ 0xc0
+ 6b4:	4b0d      	ldr	r3, [pc, #52]	@ (6ec <_ZN11AccessorAppD1Ev+0x60>)
+ 6b6:	4798      	blx	r3
+		 typename _Alloc_traits::is_always_equal{})
+      { }
+#endif
+
+      ~_Rb_tree() _GLIBCXX_NOEXCEPT
+      { _M_erase(_M_begin()); }
+ 6b8:	6ae1      	ldr	r1, [r4, #44]	@ 0x2c
+ 6ba:	f104 0024 	add.w	r0, r4, #36	@ 0x24
+ 6be:	4b0c      	ldr	r3, [pc, #48]	@ (6f0 <_ZN11AccessorAppD1Ev+0x64>)
+ 6c0:	4798      	blx	r3
+}
+ 6c2:	f104 0010 	add.w	r0, r4, #16
+ 6c6:	4b0b      	ldr	r3, [pc, #44]	@ (6f4 <_ZN11AccessorAppD1Ev+0x68>)
+ 6c8:	4798      	blx	r3
+      { _M_clear(); }
+ 6ca:	4620      	mov	r0, r4
+ 6cc:	4b0a      	ldr	r3, [pc, #40]	@ (6f8 <_ZN11AccessorAppD1Ev+0x6c>)
+ 6ce:	4798      	blx	r3
+ 6d0:	4620      	mov	r0, r4
+ 6d2:	bd38      	pop	{r3, r4, r5, pc}
+	...
+ 6dc:	00000080 	.word	0x00000080
+ 6e0:	00000000 	.word	0x00000000
+ 6e4:	0000008c 	.word	0x0000008c
+ 6e8:	0000009c 	.word	0x0000009c
+	...
+
+000006fc <_ZN11AccessorAppC1Ev>:
+AccessorApp::AccessorApp()
+ 6fc:	b5f0      	push	{r4, r5, r6, r7, lr}
+ 6fe:	b08b      	sub	sp, #44	@ 0x2c
+ 700:	4604      	mov	r4, r0
+    : text_store{0} {
+ 702:	2500      	movs	r5, #0
+ 704:	f88d 5010 	strb.w	r5, [sp, #16]
+ 708:	ab04      	add	r3, sp, #16
+ 70a:	9302      	str	r3, [sp, #8]
+ 70c:	2601      	movs	r6, #1
+ 70e:	9603      	str	r6, [sp, #12]
+ 710:	ab05      	add	r3, sp, #20
+ 712:	aa02      	add	r2, sp, #8
+ 714:	ca06      	ldmia	r2, {r1, r2}
+ 716:	4f28      	ldr	r7, [pc, #160]	@ (7b8 <_ZN11AccessorAppC1Ev+0xbc>)
+ 718:	47b8      	blx	r7
+ 71a:	7326      	strb	r6, [r4, #12]
+ 71c:	f104 0010 	add.w	r0, r4, #16
+ 720:	4b26      	ldr	r3, [pc, #152]	@ (7bc <_ZN11AccessorAppC1Ev+0xc0>)
+ 722:	4798      	blx	r3
+ 724:	2004      	movs	r0, #4
+ 726:	4b26      	ldr	r3, [pc, #152]	@ (7c0 <_ZN11AccessorAppC1Ev+0xc4>)
+ 728:	4798      	blx	r3
+    std::list<Scene> previous_scenes_list = {Scene::Exit};
+    Scene current_scene = Scene::Start;
+    AccessorAppViewManager view;
+
+    std::map<Scene, AccessorScene*> scenes = {
+        {Scene::Start, new AccessorSceneStart()},
+ 72a:	6005      	str	r5, [r0, #0]
+#pragma once
+#include "../accessor_app.h"
+
+class AccessorApp;
+
+class AccessorScene {
+ 72c:	4b25      	ldr	r3, [pc, #148]	@ (7c4 <_ZN11AccessorAppC1Ev+0xc8>)
+ 72e:	6003      	str	r3, [r0, #0]
+#pragma once
+#include "accessor_scene_generic.h"
+
+class AccessorSceneStart : public AccessorScene {
+ 730:	4b25      	ldr	r3, [pc, #148]	@ (7c8 <_ZN11AccessorAppC1Ev+0xcc>)
+ 732:	6003      	str	r3, [r0, #0]
+      template<typename _U1, typename _U2>
+	requires (_S_constructible<_U1, _U2>())
+	constexpr explicit(!_S_convertible<_U1, _U2>())
+	pair(_U1&& __x, _U2&& __y)
+	noexcept(_S_nothrow_constructible<_U1, _U2>())
+	: first(std::forward<_U1>(__x)), second(std::forward<_U2>(__y))
+ 734:	f88d 6020 	strb.w	r6, [sp, #32]
+ 738:	9009      	str	r0, [sp, #36]	@ 0x24
+ 73a:	ab08      	add	r3, sp, #32
+ 73c:	9306      	str	r3, [sp, #24]
+ 73e:	9607      	str	r6, [sp, #28]
+      // 2103. propagate_on_container_move_assignment
+      typedef std::true_type propagate_on_container_move_assignment;
+#endif
+
+      _GLIBCXX20_CONSTEXPR
+      __new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+ 740:	466a      	mov	r2, sp
+ 742:	a906      	add	r1, sp, #24
+ 744:	c903      	ldmia	r1, {r0, r1}
+ 746:	e882 0003 	stmia.w	r2, {r0, r1}
+      _M_header._M_color = _S_red;
+ 74a:	f884 5028 	strb.w	r5, [r4, #40]	@ 0x28
+      _M_header._M_parent = 0;
+ 74e:	62e5      	str	r5, [r4, #44]	@ 0x2c
+      _M_header._M_left = &_M_header;
+ 750:	f104 0228 	add.w	r2, r4, #40	@ 0x28
+ 754:	6322      	str	r2, [r4, #48]	@ 0x30
+      _M_header._M_right = &_M_header;
+ 756:	6362      	str	r2, [r4, #52]	@ 0x34
+      _M_node_count = 0;
+ 758:	63a5      	str	r5, [r4, #56]	@ 0x38
+       */
+      map(initializer_list<value_type> __l,
+	  const _Compare& __comp = _Compare(),
+	  const allocator_type& __a = allocator_type())
+      : _M_t(__comp, _Pair_alloc_type(__a))
+      { _M_t._M_insert_range_unique(__l.begin(), __l.end()); }
+ 75a:	aa0a      	add	r2, sp, #40	@ 0x28
+ 75c:	4619      	mov	r1, r3
+ 75e:	f104 0024 	add.w	r0, r4, #36	@ 0x24
+ 762:	4b1a      	ldr	r3, [pc, #104]	@ (7cc <_ZN11AccessorAppC1Ev+0xd0>)
+ 764:	4798      	blx	r3
+ 766:	2281      	movs	r2, #129	@ 0x81
+ 768:	4629      	mov	r1, r5
+ 76a:	f104 003c 	add.w	r0, r4, #60	@ 0x3c
+ 76e:	4b18      	ldr	r3, [pc, #96]	@ (7d0 <_ZN11AccessorAppC1Ev+0xd4>)
+ 770:	4798      	blx	r3
+ 772:	f104 00bd 	add.w	r0, r4, #189	@ 0xbd
+ 776:	4b17      	ldr	r3, [pc, #92]	@ (7d4 <_ZN11AccessorAppC1Ev+0xd8>)
+ 778:	4798      	blx	r3
+    notification = static_cast<NotificationApp*>(furi_record_open(RECORD_NOTIFICATION));
+ 77a:	4817      	ldr	r0, [pc, #92]	@ (7d8 <_ZN11AccessorAppC1Ev+0xdc>)
+ 77c:	4d17      	ldr	r5, [pc, #92]	@ (7dc <_ZN11AccessorAppC1Ev+0xe0>)
+ 77e:	47a8      	blx	r5
+ 780:	f8c4 00c4 	str.w	r0, [r4, #196]	@ 0xc4
+    expansion = static_cast<Expansion*>(furi_record_open(RECORD_EXPANSION));
+ 784:	4816      	ldr	r0, [pc, #88]	@ (7e0 <_ZN11AccessorAppC1Ev+0xe4>)
+ 786:	47a8      	blx	r5
+ 788:	f8c4 00c8 	str.w	r0, [r4, #200]	@ 0xc8
+    power = static_cast<Power*>(furi_record_open(RECORD_POWER));
+ 78c:	4815      	ldr	r0, [pc, #84]	@ (7e4 <_ZN11AccessorAppC1Ev+0xe8>)
+ 78e:	47a8      	blx	r5
+ 790:	f8c4 00cc 	str.w	r0, [r4, #204]	@ 0xcc
+    onewire_host = onewire_host_alloc(&gpio_ibutton);
+ 794:	4814      	ldr	r0, [pc, #80]	@ (7e8 <_ZN11AccessorAppC1Ev+0xec>)
+ 796:	4b15      	ldr	r3, [pc, #84]	@ (7ec <_ZN11AccessorAppC1Ev+0xf0>)
+ 798:	4798      	blx	r3
+ 79a:	f8c4 00c0 	str.w	r0, [r4, #192]	@ 0xc0
+    expansion_disable(expansion);
+ 79e:	f8d4 00c8 	ldr.w	r0, [r4, #200]	@ 0xc8
+ 7a2:	4b13      	ldr	r3, [pc, #76]	@ (7f0 <_ZN11AccessorAppC1Ev+0xf4>)
+ 7a4:	4798      	blx	r3
+    power_enable_otg(power, true);
+ 7a6:	4631      	mov	r1, r6
+ 7a8:	f8d4 00cc 	ldr.w	r0, [r4, #204]	@ 0xcc
+ 7ac:	4b11      	ldr	r3, [pc, #68]	@ (7f4 <_ZN11AccessorAppC1Ev+0xf8>)
+ 7ae:	4798      	blx	r3
+}
+ 7b0:	4620      	mov	r0, r4
+ 7b2:	b00b      	add	sp, #44	@ 0x2c
+ 7b4:	bdf0      	pop	{r4, r5, r6, r7, pc}
+ 7b6:	bf00      	nop
+	...
+ 7c4:	00000008 	.word	0x00000008
+ 7c8:	00000008 	.word	0x00000008
+	...
+ 7d8:	0000008c 	.word	0x0000008c
+ 7dc:	00000000 	.word	0x00000000
+ 7e0:	00000080 	.word	0x00000080
+ 7e4:	0000009c 	.word	0x0000009c
+	...
+
+000007f8 <_ZN11AccessorApp24switch_to_previous_sceneEh>:
+bool AccessorApp::switch_to_previous_scene(uint8_t count) {
+ 7f8:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+ 7fc:	4605      	mov	r5, r0
+ 7fe:	460e      	mov	r6, r1
+    for(uint8_t i = 0; i < count; i++) {
+ 800:	2400      	movs	r4, #0
+    Scene previous_scene = Scene::Start;
+ 802:	2701      	movs	r7, #1
+    for(uint8_t i = 0; i < count; i++) {
+ 804:	e001      	b.n	80a <_ZN11AccessorApp24switch_to_previous_sceneEh+0x12>
+ 806:	3401      	adds	r4, #1
+ 808:	b2e4      	uxtb	r4, r4
+ 80a:	42b4      	cmp	r4, r6
+ 80c:	d205      	bcs.n	81a <_ZN11AccessorApp24switch_to_previous_sceneEh+0x22>
+        previous_scene = get_previous_scene();
+ 80e:	4628      	mov	r0, r5
+ 810:	4b10      	ldr	r3, [pc, #64]	@ (854 <_ZN11AccessorApp24switch_to_previous_sceneEh+0x5c>)
+ 812:	4798      	blx	r3
+        if(previous_scene == Scene::Exit) break;
+ 814:	4607      	mov	r7, r0
+ 816:	2800      	cmp	r0, #0
+ 818:	d1f5      	bne.n	806 <_ZN11AccessorApp24switch_to_previous_sceneEh+0xe>
+    if(previous_scene == Scene::Exit) {
+ 81a:	b917      	cbnz	r7, 822 <_ZN11AccessorApp24switch_to_previous_sceneEh+0x2a>
+        return true;
+ 81c:	2001      	movs	r0, #1
+}
+ 81e:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+        scenes[current_scene]->on_exit(this);
+ 822:	f105 0624 	add.w	r6, r5, #36	@ 0x24
+ 826:	f105 080c 	add.w	r8, r5, #12
+ 82a:	4641      	mov	r1, r8
+ 82c:	4630      	mov	r0, r6
+ 82e:	4c0a      	ldr	r4, [pc, #40]	@ (858 <_ZN11AccessorApp24switch_to_previous_sceneEh+0x60>)
+ 830:	47a0      	blx	r4
+ 832:	6800      	ldr	r0, [r0, #0]
+ 834:	6803      	ldr	r3, [r0, #0]
+ 836:	689b      	ldr	r3, [r3, #8]
+ 838:	4629      	mov	r1, r5
+ 83a:	4798      	blx	r3
+        current_scene = previous_scene;
+ 83c:	732f      	strb	r7, [r5, #12]
+        scenes[current_scene]->on_enter(this);
+ 83e:	4641      	mov	r1, r8
+ 840:	4630      	mov	r0, r6
+ 842:	47a0      	blx	r4
+ 844:	6800      	ldr	r0, [r0, #0]
+ 846:	6803      	ldr	r3, [r0, #0]
+ 848:	681b      	ldr	r3, [r3, #0]
+ 84a:	4629      	mov	r1, r5
+ 84c:	4798      	blx	r3
+        return false;
+ 84e:	2000      	movs	r0, #0
+ 850:	e7e5      	b.n	81e <_ZN11AccessorApp24switch_to_previous_sceneEh+0x26>
+ 852:	bf00      	nop
+	...
+
+0000085c <_ZN11AccessorApp3runEv>:
+void AccessorApp::run(void) {
+ 85c:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+ 860:	b082      	sub	sp, #8
+ 862:	4604      	mov	r4, r0
+    wiegand.begin();
+ 864:	f100 08bd 	add.w	r8, r0, #189	@ 0xbd
+ 868:	4640      	mov	r0, r8
+ 86a:	4b21      	ldr	r3, [pc, #132]	@ (8f0 <_ZN11AccessorApp3runEv+0x94>)
+ 86c:	4798      	blx	r3
+    onewire_host_start(onewire_host);
+ 86e:	f8d4 00c0 	ldr.w	r0, [r4, #192]	@ 0xc0
+ 872:	4b20      	ldr	r3, [pc, #128]	@ (8f4 <_ZN11AccessorApp3runEv+0x98>)
+ 874:	4798      	blx	r3
+    scenes[current_scene]->on_enter(this);
+ 876:	f104 0624 	add.w	r6, r4, #36	@ 0x24
+ 87a:	f104 070c 	add.w	r7, r4, #12
+ 87e:	4639      	mov	r1, r7
+ 880:	4630      	mov	r0, r6
+ 882:	4b1d      	ldr	r3, [pc, #116]	@ (8f8 <_ZN11AccessorApp3runEv+0x9c>)
+ 884:	4798      	blx	r3
+ 886:	6800      	ldr	r0, [r0, #0]
+ 888:	6803      	ldr	r3, [r0, #0]
+ 88a:	681b      	ldr	r3, [r3, #0]
+ 88c:	4621      	mov	r1, r4
+ 88e:	4798      	blx	r3
+    bool exit = false;
+ 890:	2500      	movs	r5, #0
+    while(!exit) {
+ 892:	b9d5      	cbnz	r5, 8ca <_ZN11AccessorApp3runEv+0x6e>
+        view.receive_event(&event);
+ 894:	4669      	mov	r1, sp
+ 896:	f104 0010 	add.w	r0, r4, #16
+ 89a:	4b18      	ldr	r3, [pc, #96]	@ (8fc <_ZN11AccessorApp3runEv+0xa0>)
+ 89c:	4798      	blx	r3
+        consumed = scenes[current_scene]->on_event(this, &event);
+ 89e:	4639      	mov	r1, r7
+ 8a0:	4630      	mov	r0, r6
+ 8a2:	4b15      	ldr	r3, [pc, #84]	@ (8f8 <_ZN11AccessorApp3runEv+0x9c>)
+ 8a4:	4798      	blx	r3
+ 8a6:	6800      	ldr	r0, [r0, #0]
+ 8a8:	6803      	ldr	r3, [r0, #0]
+ 8aa:	685b      	ldr	r3, [r3, #4]
+ 8ac:	466a      	mov	r2, sp
+ 8ae:	4621      	mov	r1, r4
+ 8b0:	4798      	blx	r3
+        if(!consumed) {
+ 8b2:	2800      	cmp	r0, #0
+ 8b4:	d1ed      	bne.n	892 <_ZN11AccessorApp3runEv+0x36>
+            if(event.type == AccessorEvent::Type::Back) {
+ 8b6:	f89d 3004 	ldrb.w	r3, [sp, #4]
+ 8ba:	2b01      	cmp	r3, #1
+ 8bc:	d1e9      	bne.n	892 <_ZN11AccessorApp3runEv+0x36>
+                exit = switch_to_previous_scene();
+ 8be:	2101      	movs	r1, #1
+ 8c0:	4620      	mov	r0, r4
+ 8c2:	4b0f      	ldr	r3, [pc, #60]	@ (900 <_ZN11AccessorApp3runEv+0xa4>)
+ 8c4:	4798      	blx	r3
+ 8c6:	4605      	mov	r5, r0
+ 8c8:	e7e3      	b.n	892 <_ZN11AccessorApp3runEv+0x36>
+    scenes[current_scene]->on_exit(this);
+ 8ca:	4639      	mov	r1, r7
+ 8cc:	4630      	mov	r0, r6
+ 8ce:	4b0a      	ldr	r3, [pc, #40]	@ (8f8 <_ZN11AccessorApp3runEv+0x9c>)
+ 8d0:	4798      	blx	r3
+ 8d2:	6800      	ldr	r0, [r0, #0]
+ 8d4:	6803      	ldr	r3, [r0, #0]
+ 8d6:	689b      	ldr	r3, [r3, #8]
+ 8d8:	4621      	mov	r1, r4
+ 8da:	4798      	blx	r3
+    wiegand.end();
+ 8dc:	4640      	mov	r0, r8
+ 8de:	4b09      	ldr	r3, [pc, #36]	@ (904 <_ZN11AccessorApp3runEv+0xa8>)
+ 8e0:	4798      	blx	r3
+    onewire_host_stop(onewire_host);
+ 8e2:	f8d4 00c0 	ldr.w	r0, [r4, #192]	@ 0xc0
+ 8e6:	4b08      	ldr	r3, [pc, #32]	@ (908 <_ZN11AccessorApp3runEv+0xac>)
+ 8e8:	4798      	blx	r3
+}
+ 8ea:	b002      	add	sp, #8
+ 8ec:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+	...
+
+0000090c <_ZN22AccessorAppViewManagerC1Ev>:
+#include "accessor_view_manager.h"
+#include "accessor_event.h"
+#include "callback_connector.h"
+
+AccessorAppViewManager::AccessorAppViewManager() {
+ 90c:	b570      	push	{r4, r5, r6, lr}
+ 90e:	b082      	sub	sp, #8
+ 910:	4604      	mov	r4, r0
+    event_queue = furi_message_queue_alloc(10, sizeof(AccessorEvent));
+ 912:	2108      	movs	r1, #8
+ 914:	200a      	movs	r0, #10
+ 916:	4b13      	ldr	r3, [pc, #76]	@ (964 <_ZN22AccessorAppViewManagerC1Ev+0x58>)
+ 918:	4798      	blx	r3
+ 91a:	6020      	str	r0, [r4, #0]
+
+    view_holder = view_holder_alloc();
+ 91c:	4b12      	ldr	r3, [pc, #72]	@ (968 <_ZN22AccessorAppViewManagerC1Ev+0x5c>)
+ 91e:	4798      	blx	r3
+ 920:	60a0      	str	r0, [r4, #8]
+    auto callback =
+        cbc::obtain_connector(this, &AccessorAppViewManager::view_holder_back_callback);
+ 922:	4b12      	ldr	r3, [pc, #72]	@ (96c <_ZN22AccessorAppViewManagerC1Ev+0x60>)
+ 924:	9300      	str	r3, [sp, #0]
+ 926:	2600      	movs	r6, #0
+ 928:	9601      	str	r6, [sp, #4]
+ 92a:	ab02      	add	r3, sp, #8
+ 92c:	e913 0006 	ldmdb	r3, {r1, r2}
+ 930:	4620      	mov	r0, r4
+ 932:	4b0f      	ldr	r3, [pc, #60]	@ (970 <_ZN22AccessorAppViewManagerC1Ev+0x64>)
+ 934:	4798      	blx	r3
+ 936:	4605      	mov	r5, r0
+
+    // allocate views
+    submenu = submenu_alloc();
+ 938:	4b0e      	ldr	r3, [pc, #56]	@ (974 <_ZN22AccessorAppViewManagerC1Ev+0x68>)
+ 93a:	4798      	blx	r3
+ 93c:	60e0      	str	r0, [r4, #12]
+    popup = popup_alloc();
+ 93e:	4b0e      	ldr	r3, [pc, #56]	@ (978 <_ZN22AccessorAppViewManagerC1Ev+0x6c>)
+ 940:	4798      	blx	r3
+ 942:	6120      	str	r0, [r4, #16]
+
+    // set back callback
+    view_holder_set_back_callback(view_holder, callback, NULL);
+ 944:	4632      	mov	r2, r6
+ 946:	4629      	mov	r1, r5
+ 948:	68a0      	ldr	r0, [r4, #8]
+ 94a:	4b0c      	ldr	r3, [pc, #48]	@ (97c <_ZN22AccessorAppViewManagerC1Ev+0x70>)
+ 94c:	4798      	blx	r3
+
+    gui = static_cast<Gui*>(furi_record_open(RECORD_GUI));
+ 94e:	480c      	ldr	r0, [pc, #48]	@ (980 <_ZN22AccessorAppViewManagerC1Ev+0x74>)
+ 950:	4b0c      	ldr	r3, [pc, #48]	@ (984 <_ZN22AccessorAppViewManagerC1Ev+0x78>)
+ 952:	4798      	blx	r3
+ 954:	4601      	mov	r1, r0
+ 956:	6060      	str	r0, [r4, #4]
+    view_holder_attach_to_gui(view_holder, gui);
+ 958:	68a0      	ldr	r0, [r4, #8]
+ 95a:	4b0b      	ldr	r3, [pc, #44]	@ (988 <_ZN22AccessorAppViewManagerC1Ev+0x7c>)
+ 95c:	4798      	blx	r3
+}
+ 95e:	4620      	mov	r0, r4
+ 960:	b002      	add	sp, #8
+ 962:	bd70      	pop	{r4, r5, r6, pc}
+	...
+ 980:	000000a4 	.word	0x000000a4
+	...
+
+0000098c <_ZN22AccessorAppViewManagerD1Ev>:
+
+AccessorAppViewManager::~AccessorAppViewManager() {
+ 98c:	b510      	push	{r4, lr}
+ 98e:	4604      	mov	r4, r0
+    // remove current view
+    view_holder_set_view(view_holder, NULL);
+ 990:	2100      	movs	r1, #0
+ 992:	6880      	ldr	r0, [r0, #8]
+ 994:	4b09      	ldr	r3, [pc, #36]	@ (9bc <_ZN22AccessorAppViewManagerD1Ev+0x30>)
+ 996:	4798      	blx	r3
+    // free view modules
+    furi_record_close(RECORD_GUI);
+ 998:	4809      	ldr	r0, [pc, #36]	@ (9c0 <_ZN22AccessorAppViewManagerD1Ev+0x34>)
+ 99a:	4b0a      	ldr	r3, [pc, #40]	@ (9c4 <_ZN22AccessorAppViewManagerD1Ev+0x38>)
+ 99c:	4798      	blx	r3
+    submenu_free(submenu);
+ 99e:	68e0      	ldr	r0, [r4, #12]
+ 9a0:	4b09      	ldr	r3, [pc, #36]	@ (9c8 <_ZN22AccessorAppViewManagerD1Ev+0x3c>)
+ 9a2:	4798      	blx	r3
+    popup_free(popup);
+ 9a4:	6920      	ldr	r0, [r4, #16]
+ 9a6:	4b09      	ldr	r3, [pc, #36]	@ (9cc <_ZN22AccessorAppViewManagerD1Ev+0x40>)
+ 9a8:	4798      	blx	r3
+    // free view holder
+    view_holder_free(view_holder);
+ 9aa:	68a0      	ldr	r0, [r4, #8]
+ 9ac:	4b08      	ldr	r3, [pc, #32]	@ (9d0 <_ZN22AccessorAppViewManagerD1Ev+0x44>)
+ 9ae:	4798      	blx	r3
+    // free event queue
+    furi_message_queue_free(event_queue);
+ 9b0:	6820      	ldr	r0, [r4, #0]
+ 9b2:	4b08      	ldr	r3, [pc, #32]	@ (9d4 <_ZN22AccessorAppViewManagerD1Ev+0x48>)
+ 9b4:	4798      	blx	r3
+}
+ 9b6:	4620      	mov	r0, r4
+ 9b8:	bd10      	pop	{r4, pc}
+ 9ba:	bf00      	nop
+ 9bc:	00000000 	.word	0x00000000
+ 9c0:	000000a4 	.word	0x000000a4
+	...
+
+000009d8 <_ZN22AccessorAppViewManager9switch_toENS_8ViewTypeE>:
+
+void AccessorAppViewManager::switch_to(ViewType type) {
+ 9d8:	b510      	push	{r4, lr}
+ 9da:	4604      	mov	r4, r0
+    View* view;
+
+    switch(type) {
+ 9dc:	b131      	cbz	r1, 9ec <_ZN22AccessorAppViewManager9switch_toENS_8ViewTypeE+0x14>
+ 9de:	2901      	cmp	r1, #1
+ 9e0:	d10c      	bne.n	9fc <_ZN22AccessorAppViewManager9switch_toENS_8ViewTypeE+0x24>
+    case ViewType::Submenu:
+        view = submenu_get_view(submenu);
+        break;
+    case ViewType::Popup:
+        view = popup_get_view(popup);
+ 9e2:	6900      	ldr	r0, [r0, #16]
+ 9e4:	4b07      	ldr	r3, [pc, #28]	@ (a04 <sukima352+0x4>)
+ 9e6:	4798      	blx	r3
+ 9e8:	4601      	mov	r1, r0
+        break;
+ 9ea:	e003      	b.n	9f4 <_ZN22AccessorAppViewManager9switch_toENS_8ViewTypeE+0x1c>
+        view = submenu_get_view(submenu);
+ 9ec:	68c0      	ldr	r0, [r0, #12]
+ 9ee:	4b06      	ldr	r3, [pc, #24]	@ (a08 <sukima352+0x8>)
+ 9f0:	4798      	blx	r3
+ 9f2:	4601      	mov	r1, r0
+    default:
+        furi_crash();
+    }
+
+    view_holder_set_view(view_holder, view);
+ 9f4:	68a0      	ldr	r0, [r4, #8]
+ 9f6:	4b05      	ldr	r3, [pc, #20]	@ (a0c <sukima352+0xc>)
+ 9f8:	4798      	blx	r3
+}
+ 9fa:	bd10      	pop	{r4, pc}
+        furi_crash();
+ 9fc:	f04f 0c00 	mov.w	ip, #0
+
+00000a00 <sukima352>:
+ a00:	4b03      	ldr	r3, [pc, #12]	@ (a10 <sukima352+0x10>)
+ a02:	4798      	blx	r3
+	...
+
+00000a14 <_ZN22AccessorAppViewManager9get_popupEv>:
+    return submenu;
+}
+
+Popup* AccessorAppViewManager::get_popup() {
+    return popup;
+}
+ a14:	6900      	ldr	r0, [r0, #16]
+ a16:	4770      	bx	lr
+
+00000a18 <_ZN22AccessorAppViewManager13receive_eventEP13AccessorEvent>:
+
+void AccessorAppViewManager::receive_event(AccessorEvent* event) {
+ a18:	b510      	push	{r4, lr}
+ a1a:	460c      	mov	r4, r1
+    if(furi_message_queue_get(event_queue, event, 100) != FuriStatusOk) {
+ a1c:	2264      	movs	r2, #100	@ 0x64
+ a1e:	6800      	ldr	r0, [r0, #0]
+ a20:	4b02      	ldr	r3, [pc, #8]	@ (a2c <_ZN22AccessorAppViewManager13receive_eventEP13AccessorEvent+0x14>)
+ a22:	4798      	blx	r3
+ a24:	b108      	cbz	r0, a2a <_ZN22AccessorAppViewManager13receive_eventEP13AccessorEvent+0x12>
+        event->type = AccessorEvent::Type::Tick;
+ a26:	2300      	movs	r3, #0
+ a28:	7123      	strb	r3, [r4, #4]
+    }
+}
+ a2a:	bd10      	pop	{r4, pc}
+ a2c:	00000000 	.word	0x00000000
+
+00000a30 <_ZN22AccessorAppViewManager10send_eventEP13AccessorEvent>:
+
+void AccessorAppViewManager::send_event(AccessorEvent* event) {
+ a30:	b508      	push	{r3, lr}
+    FuriStatus result = furi_message_queue_put(event_queue, event, 0);
+ a32:	2200      	movs	r2, #0
+ a34:	6800      	ldr	r0, [r0, #0]
+ a36:	4b04      	ldr	r3, [pc, #16]	@ (a48 <sukima481+0x6>)
+ a38:	4798      	blx	r3
+    furi_check(result == FuriStatusOk);
+ a3a:	b900      	cbnz	r0, a3e <_ZN22AccessorAppViewManager10send_eventEP13AccessorEvent+0xe>
+}
+ a3c:	bd08      	pop	{r3, pc}
+    furi_check(result == FuriStatusOk);
+ a3e:	f04f 0c02 	mov.w	ip, #2
+
+00000a42 <sukima481>:
+ a42:	4b02      	ldr	r3, [pc, #8]	@ (a4c <sukima481+0xa>)
+ a44:	4798      	blx	r3
+ a46:	bf00      	nop
+	...
+
+00000a50 <_ZN22AccessorAppViewManager25view_holder_back_callbackEPv>:
+
+void AccessorAppViewManager::view_holder_back_callback(void*) {
+    if(event_queue != NULL) {
+ a50:	6803      	ldr	r3, [r0, #0]
+ a52:	b153      	cbz	r3, a6a <_ZN22AccessorAppViewManager25view_holder_back_callbackEPv+0x1a>
+void AccessorAppViewManager::view_holder_back_callback(void*) {
+ a54:	b500      	push	{lr}
+ a56:	b083      	sub	sp, #12
+        AccessorEvent event;
+        event.type = AccessorEvent::Type::Back;
+ a58:	2301      	movs	r3, #1
+ a5a:	f88d 3004 	strb.w	r3, [sp, #4]
+        send_event(&event);
+ a5e:	4669      	mov	r1, sp
+ a60:	4b02      	ldr	r3, [pc, #8]	@ (a6c <_ZN22AccessorAppViewManager25view_holder_back_callbackEPv+0x1c>)
+ a62:	4798      	blx	r3
+    }
+}
+ a64:	b003      	add	sp, #12
+ a66:	f85d fb04 	ldr.w	pc, [sp], #4
+ a6a:	4770      	bx	lr
+ a6c:	00000000 	.word	0x00000000
+
+00000a70 <_ZdlPvj>:
+ a70:	f7ff bffe 	b.w	c32 <_ZdlPv>
+
+00000a74 <_Znwj>:
+ a74:	2801      	cmp	r0, #1
+ a76:	bf38      	it	cc
+ a78:	2001      	movcc	r0, #1
+ a7a:	b510      	push	{r4, lr}
+ a7c:	4604      	mov	r4, r0
+ a7e:	4620      	mov	r0, r4
+ a80:	f7ff fffe 	bl	0 <malloc>
+ a84:	b100      	cbz	r0, a88 <_Znwj+0x14>
+ a86:	bd10      	pop	{r4, pc}
+ a88:	f7ff fffe 	bl	c38 <_ZSt15get_new_handlerv>
+ a8c:	b908      	cbnz	r0, a92 <_Znwj+0x1e>
+ a8e:	f7ff fffe 	bl	0 <abort>
+ a92:	4780      	blx	r0
+ a94:	e7f3      	b.n	a7e <_Znwj+0xa>
+
+00000a96 <_ZNSt8__detail15_List_node_base7_M_hookEPS0_>:
+ a96:	684b      	ldr	r3, [r1, #4]
+ a98:	6001      	str	r1, [r0, #0]
+ a9a:	6043      	str	r3, [r0, #4]
+ a9c:	6018      	str	r0, [r3, #0]
+ a9e:	6048      	str	r0, [r1, #4]
+ aa0:	4770      	bx	lr
+
+00000aa2 <_ZNSt8__detail15_List_node_base9_M_unhookEv>:
+ aa2:	e9d0 3200 	ldrd	r3, r2, [r0]
+ aa6:	6013      	str	r3, [r2, #0]
+ aa8:	605a      	str	r2, [r3, #4]
+ aaa:	4770      	bx	lr
+
+00000aac <_ZStL25local_Rb_tree_rotate_leftPSt18_Rb_tree_node_baseRS0_>:
+ aac:	68c3      	ldr	r3, [r0, #12]
+ aae:	689a      	ldr	r2, [r3, #8]
+ ab0:	60c2      	str	r2, [r0, #12]
+ ab2:	b510      	push	{r4, lr}
+ ab4:	b102      	cbz	r2, ab8 <_ZStL25local_Rb_tree_rotate_leftPSt18_Rb_tree_node_baseRS0_+0xc>
+ ab6:	6050      	str	r0, [r2, #4]
+ ab8:	6842      	ldr	r2, [r0, #4]
+ aba:	605a      	str	r2, [r3, #4]
+ abc:	680c      	ldr	r4, [r1, #0]
+ abe:	4284      	cmp	r4, r0
+ ac0:	d103      	bne.n	aca <_ZStL25local_Rb_tree_rotate_leftPSt18_Rb_tree_node_baseRS0_+0x1e>
+ ac2:	600b      	str	r3, [r1, #0]
+ ac4:	6098      	str	r0, [r3, #8]
+ ac6:	6043      	str	r3, [r0, #4]
+ ac8:	bd10      	pop	{r4, pc}
+ aca:	6891      	ldr	r1, [r2, #8]
+ acc:	4281      	cmp	r1, r0
+ ace:	bf0c      	ite	eq
+ ad0:	6093      	streq	r3, [r2, #8]
+ ad2:	60d3      	strne	r3, [r2, #12]
+ ad4:	e7f6      	b.n	ac4 <_ZStL25local_Rb_tree_rotate_leftPSt18_Rb_tree_node_baseRS0_+0x18>
+
+00000ad6 <_ZStL26local_Rb_tree_rotate_rightPSt18_Rb_tree_node_baseRS0_>:
+ ad6:	6883      	ldr	r3, [r0, #8]
+ ad8:	68da      	ldr	r2, [r3, #12]
+ ada:	6082      	str	r2, [r0, #8]
+ adc:	b510      	push	{r4, lr}
+ ade:	b102      	cbz	r2, ae2 <_ZStL26local_Rb_tree_rotate_rightPSt18_Rb_tree_node_baseRS0_+0xc>
+ ae0:	6050      	str	r0, [r2, #4]
+ ae2:	6842      	ldr	r2, [r0, #4]
+ ae4:	605a      	str	r2, [r3, #4]
+ ae6:	680c      	ldr	r4, [r1, #0]
+ ae8:	4284      	cmp	r4, r0
+ aea:	d103      	bne.n	af4 <_ZStL26local_Rb_tree_rotate_rightPSt18_Rb_tree_node_baseRS0_+0x1e>
+ aec:	600b      	str	r3, [r1, #0]
+ aee:	60d8      	str	r0, [r3, #12]
+ af0:	6043      	str	r3, [r0, #4]
+ af2:	bd10      	pop	{r4, pc}
+ af4:	68d1      	ldr	r1, [r2, #12]
+ af6:	4281      	cmp	r1, r0
+ af8:	bf0c      	ite	eq
+ afa:	60d3      	streq	r3, [r2, #12]
+ afc:	6093      	strne	r3, [r2, #8]
+ afe:	e7f6      	b.n	aee <_ZStL26local_Rb_tree_rotate_rightPSt18_Rb_tree_node_baseRS0_+0x18>
+
+00000b00 <_ZStL23local_Rb_tree_incrementPSt18_Rb_tree_node_base>:
+ b00:	68c3      	ldr	r3, [r0, #12]
+ b02:	b123      	cbz	r3, b0e <_ZStL23local_Rb_tree_incrementPSt18_Rb_tree_node_base+0xe>
+ b04:	4618      	mov	r0, r3
+ b06:	689b      	ldr	r3, [r3, #8]
+ b08:	2b00      	cmp	r3, #0
+ b0a:	d1fb      	bne.n	b04 <_ZStL23local_Rb_tree_incrementPSt18_Rb_tree_node_base+0x4>
+ b0c:	4770      	bx	lr
+ b0e:	6843      	ldr	r3, [r0, #4]
+ b10:	68da      	ldr	r2, [r3, #12]
+ b12:	4282      	cmp	r2, r0
+ b14:	d004      	beq.n	b20 <_ZStL23local_Rb_tree_incrementPSt18_Rb_tree_node_base+0x20>
+ b16:	68c2      	ldr	r2, [r0, #12]
+ b18:	4293      	cmp	r3, r2
+ b1a:	bf18      	it	ne
+ b1c:	4618      	movne	r0, r3
+ b1e:	4770      	bx	lr
+ b20:	4618      	mov	r0, r3
+ b22:	685b      	ldr	r3, [r3, #4]
+ b24:	e7f4      	b.n	b10 <_ZStL23local_Rb_tree_incrementPSt18_Rb_tree_node_base+0x10>
+
+00000b26 <_ZStL23local_Rb_tree_decrementPSt18_Rb_tree_node_base>:
+ b26:	7802      	ldrb	r2, [r0, #0]
+ b28:	4603      	mov	r3, r0
+ b2a:	b92a      	cbnz	r2, b38 <_ZStL23local_Rb_tree_decrementPSt18_Rb_tree_node_base+0x12>
+ b2c:	6842      	ldr	r2, [r0, #4]
+ b2e:	6852      	ldr	r2, [r2, #4]
+ b30:	4282      	cmp	r2, r0
+ b32:	d101      	bne.n	b38 <_ZStL23local_Rb_tree_decrementPSt18_Rb_tree_node_base+0x12>
+ b34:	68d0      	ldr	r0, [r2, #12]
+ b36:	4770      	bx	lr
+ b38:	689a      	ldr	r2, [r3, #8]
+ b3a:	b122      	cbz	r2, b46 <_ZStL23local_Rb_tree_decrementPSt18_Rb_tree_node_base+0x20>
+ b3c:	4610      	mov	r0, r2
+ b3e:	68d2      	ldr	r2, [r2, #12]
+ b40:	2a00      	cmp	r2, #0
+ b42:	d1fb      	bne.n	b3c <_ZStL23local_Rb_tree_decrementPSt18_Rb_tree_node_base+0x16>
+ b44:	4770      	bx	lr
+ b46:	6858      	ldr	r0, [r3, #4]
+ b48:	6882      	ldr	r2, [r0, #8]
+ b4a:	429a      	cmp	r2, r3
+ b4c:	d000      	beq.n	b50 <_ZStL23local_Rb_tree_decrementPSt18_Rb_tree_node_base+0x2a>
+ b4e:	4770      	bx	lr
+ b50:	4603      	mov	r3, r0
+ b52:	6840      	ldr	r0, [r0, #4]
+ b54:	e7f8      	b.n	b48 <_ZStL23local_Rb_tree_decrementPSt18_Rb_tree_node_base+0x22>
+
+00000b56 <_ZSt18_Rb_tree_incrementPSt18_Rb_tree_node_base>:
+ b56:	f7ff bffe 	b.w	b00 <_ZStL23local_Rb_tree_incrementPSt18_Rb_tree_node_base>
+
+00000b5a <_ZSt18_Rb_tree_decrementPSt18_Rb_tree_node_base>:
+ b5a:	f7ff bffe 	b.w	b26 <_ZStL23local_Rb_tree_decrementPSt18_Rb_tree_node_base>
+
+00000b5e <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_>:
+ b5e:	e92d 43f8 	stmdb	sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
+ b62:	461d      	mov	r5, r3
+ b64:	1d1f      	adds	r7, r3, #4
+ b66:	2300      	movs	r3, #0
+ b68:	e9c1 3302 	strd	r3, r3, [r1, #8]
+ b6c:	460c      	mov	r4, r1
+ b6e:	604a      	str	r2, [r1, #4]
+ b70:	700b      	strb	r3, [r1, #0]
+ b72:	b1a0      	cbz	r0, b9e <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x40>
+ b74:	4295      	cmp	r5, r2
+ b76:	6091      	str	r1, [r2, #8]
+ b78:	d102      	bne.n	b80 <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x22>
+ b7a:	6069      	str	r1, [r5, #4]
+ b7c:	60ec      	str	r4, [r5, #12]
+ b7e:	e003      	b.n	b88 <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x2a>
+ b80:	68ab      	ldr	r3, [r5, #8]
+ b82:	4293      	cmp	r3, r2
+ b84:	bf08      	it	eq
+ b86:	60a9      	streq	r1, [r5, #8]
+ b88:	f04f 0900 	mov.w	r9, #0
+ b8c:	f04f 0801 	mov.w	r8, #1
+ b90:	686b      	ldr	r3, [r5, #4]
+ b92:	42a3      	cmp	r3, r4
+ b94:	d132      	bne.n	bfc <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x9e>
+ b96:	2201      	movs	r2, #1
+ b98:	701a      	strb	r2, [r3, #0]
+ b9a:	e8bd 83f8 	ldmia.w	sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
+ b9e:	60d1      	str	r1, [r2, #12]
+ ba0:	68eb      	ldr	r3, [r5, #12]
+ ba2:	4293      	cmp	r3, r2
+ ba4:	d1f0      	bne.n	b88 <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x2a>
+ ba6:	e7e9      	b.n	b7c <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x1e>
+ ba8:	68c3      	ldr	r3, [r0, #12]
+ baa:	42a3      	cmp	r3, r4
+ bac:	d103      	bne.n	bb6 <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x58>
+ bae:	4639      	mov	r1, r7
+ bb0:	f7ff fffe 	bl	aac <_ZStL25local_Rb_tree_rotate_leftPSt18_Rb_tree_node_baseRS0_>
+ bb4:	4604      	mov	r4, r0
+ bb6:	6863      	ldr	r3, [r4, #4]
+ bb8:	4639      	mov	r1, r7
+ bba:	f883 8000 	strb.w	r8, [r3]
+ bbe:	4630      	mov	r0, r6
+ bc0:	f886 9000 	strb.w	r9, [r6]
+ bc4:	f7ff fffe 	bl	ad6 <_ZStL26local_Rb_tree_rotate_rightPSt18_Rb_tree_node_baseRS0_>
+ bc8:	e7e2      	b.n	b90 <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x32>
+ bca:	b133      	cbz	r3, bda <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x7c>
+ bcc:	781a      	ldrb	r2, [r3, #0]
+ bce:	b922      	cbnz	r2, bda <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x7c>
+ bd0:	f880 8000 	strb.w	r8, [r0]
+ bd4:	f883 8000 	strb.w	r8, [r3]
+ bd8:	e021      	b.n	c1e <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0xc0>
+ bda:	6883      	ldr	r3, [r0, #8]
+ bdc:	42a3      	cmp	r3, r4
+ bde:	d103      	bne.n	be8 <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x8a>
+ be0:	4639      	mov	r1, r7
+ be2:	f7ff fffe 	bl	ad6 <_ZStL26local_Rb_tree_rotate_rightPSt18_Rb_tree_node_baseRS0_>
+ be6:	4604      	mov	r4, r0
+ be8:	6863      	ldr	r3, [r4, #4]
+ bea:	4639      	mov	r1, r7
+ bec:	f883 8000 	strb.w	r8, [r3]
+ bf0:	4630      	mov	r0, r6
+ bf2:	f886 9000 	strb.w	r9, [r6]
+ bf6:	f7ff fffe 	bl	aac <_ZStL25local_Rb_tree_rotate_leftPSt18_Rb_tree_node_baseRS0_>
+ bfa:	e7c9      	b.n	b90 <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x32>
+ bfc:	6860      	ldr	r0, [r4, #4]
+ bfe:	7802      	ldrb	r2, [r0, #0]
+ c00:	2a00      	cmp	r2, #0
+ c02:	d1c8      	bne.n	b96 <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x38>
+ c04:	6846      	ldr	r6, [r0, #4]
+ c06:	68b3      	ldr	r3, [r6, #8]
+ c08:	4283      	cmp	r3, r0
+ c0a:	d1de      	bne.n	bca <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x6c>
+ c0c:	68f2      	ldr	r2, [r6, #12]
+ c0e:	2a00      	cmp	r2, #0
+ c10:	d0ca      	beq.n	ba8 <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x4a>
+ c12:	7811      	ldrb	r1, [r2, #0]
+ c14:	2900      	cmp	r1, #0
+ c16:	d1c7      	bne.n	ba8 <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x4a>
+ c18:	2101      	movs	r1, #1
+ c1a:	7019      	strb	r1, [r3, #0]
+ c1c:	7011      	strb	r1, [r2, #0]
+ c1e:	f886 9000 	strb.w	r9, [r6]
+ c22:	4634      	mov	r4, r6
+ c24:	e7b4      	b.n	b90 <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x32>
+
+00000c26 <_ZSt17__throw_bad_allocv>:
+ c26:	b508      	push	{r3, lr}
+ c28:	f7ff fffe 	bl	0 <abort>
+
+00000c2c <_ZSt28__throw_bad_array_new_lengthv>:
+ c2c:	b508      	push	{r3, lr}
+ c2e:	f7ff fffe 	bl	0 <abort>
+
+00000c32 <_ZdlPv>:
+ c32:	f7ff bffe 	b.w	0 <free>
+	...
+
+00000c38 <_ZSt15get_new_handlerv>:
+ c38:	4b02      	ldr	r3, [pc, #8]	@ (c44 <_ZSt15get_new_handlerv+0xc>)
+ c3a:	6818      	ldr	r0, [r3, #0]
+ c3c:	f3bf 8f5b 	dmb	ish
+ c40:	4770      	bx	lr
+ c42:	bf00      	nop
+ c44:	0000001c 	.word	0x0000001c
+
+Disassembly of section .text._ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE14_M_lower_boundEPSt13_Rb_tree_nodeIS6_EPSt18_Rb_tree_node_baseRS3_:
+
+00000000 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE14_M_lower_boundEPSt13_Rb_tree_nodeIS6_EPSt18_Rb_tree_node_baseRS3_>:
+
+  template<typename _Key, typename _Val, typename _KeyOfValue,
+	   typename _Compare, typename _Alloc>
+    typename _Rb_tree<_Key, _Val, _KeyOfValue,
+		      _Compare, _Alloc>::iterator
+    _Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::
+   0:	4610      	mov	r0, r2
+    _M_lower_bound(_Link_type __x, _Base_ptr __y,
+		   const _Key& __k)
+    {
+      while (__x != 0)
+   2:	b171      	cbz	r1, 22 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE14_M_lower_boundEPSt13_Rb_tree_nodeIS6_EPSt18_Rb_tree_node_baseRS3_+0x22>
+    _Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::
+   4:	b500      	push	{lr}
+   6:	e001      	b.n	c <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE14_M_lower_boundEPSt13_Rb_tree_nodeIS6_EPSt18_Rb_tree_node_baseRS3_+0xc>
+      { return static_cast<_Link_type>(__x->_M_right); }
+   8:	68c9      	ldr	r1, [r1, #12]
+      while (__x != 0)
+   a:	b141      	cbz	r1, 1e <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE14_M_lower_boundEPSt13_Rb_tree_nodeIS6_EPSt18_Rb_tree_node_baseRS3_+0x1e>
+    struct less : public binary_function<_Tp, _Tp, bool>
+    {
+      _GLIBCXX14_CONSTEXPR
+      bool
+      operator()(const _Tp& __x, const _Tp& __y) const
+      { return __x < __y; }
+   c:	f891 e010 	ldrb.w	lr, [r1, #16]
+  10:	f893 c000 	ldrb.w	ip, [r3]
+	if (!_M_impl._M_key_compare(_S_key(__x), __k))
+  14:	45e6      	cmp	lr, ip
+  16:	d3f7      	bcc.n	8 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE14_M_lower_boundEPSt13_Rb_tree_nodeIS6_EPSt18_Rb_tree_node_baseRS3_+0x8>
+	  __y = __x, __x = _S_left(__x);
+  18:	4608      	mov	r0, r1
+  1a:	6889      	ldr	r1, [r1, #8]
+  1c:	e7f5      	b.n	a <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE14_M_lower_boundEPSt13_Rb_tree_nodeIS6_EPSt18_Rb_tree_node_baseRS3_+0xa>
+	else
+	  __x = _S_right(__x);
+      return iterator(__y);
+    }
+  1e:	f85d fb04 	ldr.w	pc, [sp], #4
+  22:	4770      	bx	lr
+
+Disassembly of section .text._ZNSt3mapIN11AccessorApp5SceneEP13AccessorSceneSt4lessIS1_ESaISt4pairIKS1_S3_EEE11lower_boundERS7_:
+
+00000000 <_ZNSt3mapIN11AccessorApp5SceneEP13AccessorSceneSt4lessIS1_ESaISt4pairIKS1_S3_EEE11lower_boundERS7_>:
+       *  that matches the given key.  If unsuccessful it returns an iterator
+       *  pointing to the first element that has a greater value than given key
+       *  or end() if no such element exists.
+       */
+      iterator
+      lower_bound(const key_type& __x)
+   0:	b510      	push	{r4, lr}
+   2:	460b      	mov	r3, r1
+      { return _M_lower_bound(_M_begin(), _M_end(), __k); }
+   4:	1d02      	adds	r2, r0, #4
+   6:	6881      	ldr	r1, [r0, #8]
+   8:	4c01      	ldr	r4, [pc, #4]	@ (10 <_ZNSt3mapIN11AccessorApp5SceneEP13AccessorSceneSt4lessIS1_ESaISt4pairIKS1_S3_EEE11lower_boundERS7_+0x10>)
+   a:	47a0      	blx	r4
+      { return _M_t.lower_bound(__x); }
+   c:	bd10      	pop	{r4, pc}
+   e:	bf00      	nop
+  10:	00000000 	.word	0x00000000
+
+Disassembly of section .text._ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE24_M_get_insert_unique_posERS3_:
+
+00000000 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE24_M_get_insert_unique_posERS3_>:
+	   typename _Compare, typename _Alloc>
+    pair<typename _Rb_tree<_Key, _Val, _KeyOfValue,
+			   _Compare, _Alloc>::_Base_ptr,
+	 typename _Rb_tree<_Key, _Val, _KeyOfValue,
+			   _Compare, _Alloc>::_Base_ptr>
+    _Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::
+   0:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+   2:	4607      	mov	r7, r0
+   4:	4615      	mov	r5, r2
+      { return static_cast<_Link_type>(this->_M_impl._M_header._M_parent); }
+   6:	688c      	ldr	r4, [r1, #8]
+      { return &this->_M_impl._M_header; }
+   8:	1d0e      	adds	r6, r1, #4
+    _M_get_insert_unique_pos(const key_type& __k)
+    {
+      typedef pair<_Base_ptr, _Base_ptr> _Res;
+      _Link_type __x = _M_begin();
+      _Base_ptr __y = _M_end();
+      bool __comp = true;
+   a:	2201      	movs	r2, #1
+      while (__x != 0)
+   c:	e002      	b.n	14 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE24_M_get_insert_unique_posERS3_+0x14>
+      { return static_cast<_Link_type>(__x->_M_right); }
+   e:	68e3      	ldr	r3, [r4, #12]
+    _Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::
+  10:	4626      	mov	r6, r4
+  12:	461c      	mov	r4, r3
+      while (__x != 0)
+  14:	b14c      	cbz	r4, 2a <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE24_M_get_insert_unique_posERS3_+0x2a>
+  16:	f895 c000 	ldrb.w	ip, [r5]
+  1a:	7c23      	ldrb	r3, [r4, #16]
+  1c:	459c      	cmp	ip, r3
+  1e:	bf34      	ite	cc
+  20:	2201      	movcc	r2, #1
+  22:	2200      	movcs	r2, #0
+	{
+	  __y = __x;
+	  __comp = _M_impl._M_key_compare(__k, _S_key(__x));
+	  __x = __comp ? _S_left(__x) : _S_right(__x);
+  24:	d2f3      	bcs.n	e <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE24_M_get_insert_unique_posERS3_+0xe>
+      { return static_cast<_Link_type>(__x->_M_left); }
+  26:	68a3      	ldr	r3, [r4, #8]
+  28:	e7f2      	b.n	10 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE24_M_get_insert_unique_posERS3_+0x10>
+      : _M_node(__x) { }
+  2a:	4630      	mov	r0, r6
+	}
+      iterator __j = iterator(__y);
+      if (__comp)
+  2c:	b122      	cbz	r2, 38 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE24_M_get_insert_unique_posERS3_+0x38>
+      { return iterator(this->_M_impl._M_header._M_left); }
+  2e:	68cb      	ldr	r3, [r1, #12]
+	{
+	  if (__j == begin())
+  30:	42b3      	cmp	r3, r6
+  32:	d009      	beq.n	48 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE24_M_get_insert_unique_posERS3_+0x48>
+	_M_node = _Rb_tree_decrement(_M_node);
+  34:	4b08      	ldr	r3, [pc, #32]	@ (58 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE24_M_get_insert_unique_posERS3_+0x58>)
+  36:	4798      	blx	r3
+  38:	7c02      	ldrb	r2, [r0, #16]
+  3a:	782b      	ldrb	r3, [r5, #0]
+	    return _Res(__x, __y);
+	  else
+	    --__j;
+	}
+      if (_M_impl._M_key_compare(_S_key(__j._M_node), __k))
+  3c:	429a      	cmp	r2, r3
+  3e:	d206      	bcs.n	4e <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE24_M_get_insert_unique_posERS3_+0x4e>
+  40:	603c      	str	r4, [r7, #0]
+  42:	607e      	str	r6, [r7, #4]
+	return _Res(__x, __y);
+      return _Res(__j._M_node, 0);
+    }
+  44:	4638      	mov	r0, r7
+  46:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
+  48:	603c      	str	r4, [r7, #0]
+  4a:	607e      	str	r6, [r7, #4]
+	{ }
+  4c:	e7fa      	b.n	44 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE24_M_get_insert_unique_posERS3_+0x44>
+      : first(__x), second(__y)
+  4e:	6038      	str	r0, [r7, #0]
+  50:	2300      	movs	r3, #0
+  52:	607b      	str	r3, [r7, #4]
+  54:	e7f6      	b.n	44 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE24_M_get_insert_unique_posERS3_+0x44>
+  56:	bf00      	nop
+  58:	00000000 	.word	0x00000000
+
+Disassembly of section .text._ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_:
+
+00000000 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_>:
+	   typename _Compare, typename _Alloc>
+    pair<typename _Rb_tree<_Key, _Val, _KeyOfValue,
+			   _Compare, _Alloc>::_Base_ptr,
+	 typename _Rb_tree<_Key, _Val, _KeyOfValue,
+			   _Compare, _Alloc>::_Base_ptr>
+    _Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::
+   0:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+   4:	4607      	mov	r7, r0
+   6:	4688      	mov	r8, r1
+   8:	461d      	mov	r5, r3
+      { return &this->_M_impl._M_header; }
+   a:	1d0b      	adds	r3, r1, #4
+    {
+      iterator __pos = __position._M_const_cast();
+      typedef pair<_Base_ptr, _Base_ptr> _Res;
+
+      // end()
+      if (__pos._M_node == _M_end())
+   c:	429a      	cmp	r2, r3
+   e:	d012      	beq.n	36 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0x36>
+  10:	4614      	mov	r4, r2
+  12:	782e      	ldrb	r6, [r5, #0]
+  14:	7c13      	ldrb	r3, [r2, #16]
+	      && _M_impl._M_key_compare(_S_key(_M_rightmost()), __k))
+	    return _Res(0, _M_rightmost());
+	  else
+	    return _M_get_insert_unique_pos(__k);
+	}
+      else if (_M_impl._M_key_compare(__k, _S_key(__pos._M_node)))
+  16:	42b3      	cmp	r3, r6
+  18:	d92c      	bls.n	74 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0x74>
+	{
+	  // First, try before...
+	  iterator __before = __pos;
+	  if (__pos._M_node == _M_leftmost()) // begin()
+  1a:	68cb      	ldr	r3, [r1, #12]
+  1c:	4293      	cmp	r3, r2
+  1e:	d01d      	beq.n	5c <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0x5c>
+	_M_node = _Rb_tree_decrement(_M_node);
+  20:	4610      	mov	r0, r2
+  22:	4b25      	ldr	r3, [pc, #148]	@ (b8 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0xb8>)
+  24:	4798      	blx	r3
+  26:	7c03      	ldrb	r3, [r0, #16]
+	    return _Res(_M_leftmost(), _M_leftmost());
+	  else if (_M_impl._M_key_compare(_S_key((--__before)._M_node), __k))
+  28:	42b3      	cmp	r3, r6
+  2a:	d21d      	bcs.n	68 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0x68>
+      { return static_cast<_Link_type>(__x->_M_right); }
+  2c:	68c3      	ldr	r3, [r0, #12]
+	    {
+	      if (_S_right(__before._M_node) == 0)
+  2e:	b1c3      	cbz	r3, 62 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0x62>
+	: first(std::forward<_U1>(__x)), second(std::forward<_U2>(__y))
+  30:	603c      	str	r4, [r7, #0]
+  32:	607c      	str	r4, [r7, #4]
+	{ }
+  34:	e00f      	b.n	56 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0x56>
+      { return _M_impl._M_node_count; }
+  36:	694b      	ldr	r3, [r1, #20]
+	      && _M_impl._M_key_compare(_S_key(_M_rightmost()), __k))
+  38:	b143      	cbz	r3, 4c <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0x4c>
+  3a:	690b      	ldr	r3, [r1, #16]
+  3c:	7c1a      	ldrb	r2, [r3, #16]
+  3e:	7829      	ldrb	r1, [r5, #0]
+  40:	4291      	cmp	r1, r2
+  42:	d903      	bls.n	4c <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0x4c>
+      : first(__x), second(__y)
+  44:	2200      	movs	r2, #0
+  46:	6002      	str	r2, [r0, #0]
+  48:	6043      	str	r3, [r0, #4]
+  4a:	e004      	b.n	56 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0x56>
+	    return _M_get_insert_unique_pos(__k);
+  4c:	462a      	mov	r2, r5
+  4e:	4641      	mov	r1, r8
+  50:	4638      	mov	r0, r7
+  52:	4b1a      	ldr	r3, [pc, #104]	@ (bc <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0xbc>)
+  54:	4798      	blx	r3
+	    return _M_get_insert_unique_pos(__k);
+	}
+      else
+	// Equivalent keys.
+	return _Res(__pos._M_node, 0);
+    }
+  56:	4638      	mov	r0, r7
+  58:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+	: first(std::forward<_U1>(__x)), second(std::forward<_U2>(__y))
+  5c:	6003      	str	r3, [r0, #0]
+  5e:	6043      	str	r3, [r0, #4]
+	{ }
+  60:	e7f9      	b.n	56 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0x56>
+      : first(__x), second(__y)
+  62:	603b      	str	r3, [r7, #0]
+  64:	6078      	str	r0, [r7, #4]
+  66:	e7f6      	b.n	56 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0x56>
+	    return _M_get_insert_unique_pos(__k);
+  68:	462a      	mov	r2, r5
+  6a:	4641      	mov	r1, r8
+  6c:	4638      	mov	r0, r7
+  6e:	4b13      	ldr	r3, [pc, #76]	@ (bc <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0xbc>)
+  70:	4798      	blx	r3
+  72:	e7f0      	b.n	56 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0x56>
+      else if (_M_impl._M_key_compare(_S_key(__pos._M_node), __k))
+  74:	42b3      	cmp	r3, r6
+  76:	d21a      	bcs.n	ae <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0xae>
+	  if (__pos._M_node == _M_rightmost())
+  78:	690b      	ldr	r3, [r1, #16]
+  7a:	4293      	cmp	r3, r2
+  7c:	d00a      	beq.n	94 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0x94>
+	_M_node = _Rb_tree_increment(_M_node);
+  7e:	4610      	mov	r0, r2
+  80:	4b0f      	ldr	r3, [pc, #60]	@ (c0 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0xc0>)
+  82:	4798      	blx	r3
+  84:	7c03      	ldrb	r3, [r0, #16]
+	  else if (_M_impl._M_key_compare(__k, _S_key((++__after)._M_node)))
+  86:	429e      	cmp	r6, r3
+  88:	d20b      	bcs.n	a2 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0xa2>
+      { return static_cast<_Link_type>(__x->_M_right); }
+  8a:	68e3      	ldr	r3, [r4, #12]
+	      if (_S_right(__pos._M_node) == 0)
+  8c:	b133      	cbz	r3, 9c <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0x9c>
+	: first(std::forward<_U1>(__x)), second(std::forward<_U2>(__y))
+  8e:	6038      	str	r0, [r7, #0]
+  90:	6078      	str	r0, [r7, #4]
+	{ }
+  92:	e7e0      	b.n	56 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0x56>
+      : first(__x), second(__y)
+  94:	2200      	movs	r2, #0
+  96:	6002      	str	r2, [r0, #0]
+  98:	6043      	str	r3, [r0, #4]
+  9a:	e7dc      	b.n	56 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0x56>
+  9c:	603b      	str	r3, [r7, #0]
+  9e:	607c      	str	r4, [r7, #4]
+  a0:	e7d9      	b.n	56 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0x56>
+	    return _M_get_insert_unique_pos(__k);
+  a2:	462a      	mov	r2, r5
+  a4:	4641      	mov	r1, r8
+  a6:	4638      	mov	r0, r7
+  a8:	4b04      	ldr	r3, [pc, #16]	@ (bc <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0xbc>)
+  aa:	4798      	blx	r3
+  ac:	e7d3      	b.n	56 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0x56>
+  ae:	603a      	str	r2, [r7, #0]
+  b0:	2300      	movs	r3, #0
+  b2:	6043      	str	r3, [r0, #4]
+  b4:	e7cf      	b.n	56 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS6_ERS3_+0x56>
+  b6:	bf00      	nop
+	...
+
+Disassembly of section .text._ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE14_M_insert_nodeEPSt18_Rb_tree_node_baseSE_PSt13_Rb_tree_nodeIS6_E:
+
+00000000 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE14_M_insert_nodeEPSt18_Rb_tree_node_baseSE_PSt13_Rb_tree_nodeIS6_E>:
+
+#if __cplusplus >= 201103L
+  template<typename _Key, typename _Val, typename _KeyOfValue,
+	   typename _Compare, typename _Alloc>
+    auto
+    _Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::
+   0:	b570      	push	{r4, r5, r6, lr}
+   2:	4604      	mov	r4, r0
+   4:	461d      	mov	r5, r3
+    _M_insert_node(_Base_ptr __x, _Base_ptr __p, _Link_type __z)
+    -> iterator
+    {
+      bool __insert_left = (__x != 0 || __p == _M_end()
+			    || _M_impl._M_key_compare(_S_key(__z),
+   6:	b149      	cbz	r1, 1c <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE14_M_insert_nodeEPSt18_Rb_tree_node_baseSE_PSt13_Rb_tree_nodeIS6_E+0x1c>
+   8:	2001      	movs	r0, #1
+						      _S_key(__p)));
+
+      _Rb_tree_insert_and_rebalance(__insert_left, __z, __p,
+   a:	1d23      	adds	r3, r4, #4
+   c:	4629      	mov	r1, r5
+   e:	4e0a      	ldr	r6, [pc, #40]	@ (38 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE14_M_insert_nodeEPSt18_Rb_tree_node_baseSE_PSt13_Rb_tree_nodeIS6_E+0x38>)
+  10:	47b0      	blx	r6
+				    this->_M_impl._M_header);
+      ++_M_impl._M_node_count;
+  12:	6963      	ldr	r3, [r4, #20]
+  14:	3301      	adds	r3, #1
+  16:	6163      	str	r3, [r4, #20]
+      return iterator(__z);
+    }
+  18:	4628      	mov	r0, r5
+  1a:	bd70      	pop	{r4, r5, r6, pc}
+      { return &this->_M_impl._M_header; }
+  1c:	1d03      	adds	r3, r0, #4
+      bool __insert_left = (__x != 0 || __p == _M_end()
+  1e:	429a      	cmp	r2, r3
+  20:	d005      	beq.n	2e <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE14_M_insert_nodeEPSt18_Rb_tree_node_baseSE_PSt13_Rb_tree_nodeIS6_E+0x2e>
+  22:	7c2b      	ldrb	r3, [r5, #16]
+  24:	7c11      	ldrb	r1, [r2, #16]
+			    || _M_impl._M_key_compare(_S_key(__z),
+  26:	4299      	cmp	r1, r3
+  28:	d803      	bhi.n	32 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE14_M_insert_nodeEPSt18_Rb_tree_node_baseSE_PSt13_Rb_tree_nodeIS6_E+0x32>
+  2a:	2000      	movs	r0, #0
+  2c:	e7ed      	b.n	a <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE14_M_insert_nodeEPSt18_Rb_tree_node_baseSE_PSt13_Rb_tree_nodeIS6_E+0xa>
+  2e:	2001      	movs	r0, #1
+  30:	e7eb      	b.n	a <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE14_M_insert_nodeEPSt18_Rb_tree_node_baseSE_PSt13_Rb_tree_nodeIS6_E+0xa>
+  32:	2001      	movs	r0, #1
+  34:	e7e9      	b.n	a <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE14_M_insert_nodeEPSt18_Rb_tree_node_baseSE_PSt13_Rb_tree_nodeIS6_E+0xa>
+  36:	bf00      	nop
+  38:	00000000 	.word	0x00000000
+
+Disassembly of section .text._ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE10_Auto_node9_M_insertES2_IPSt18_Rb_tree_node_baseSF_E:
+
+00000000 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE10_Auto_node9_M_insertES2_IPSt18_Rb_tree_node_baseSF_E>:
+	_M_insert(pair<_Base_ptr, _Base_ptr> __p)
+   0:	b530      	push	{r4, r5, lr}
+   2:	b083      	sub	sp, #12
+   4:	4604      	mov	r4, r0
+   6:	ab02      	add	r3, sp, #8
+   8:	e903 0006 	stmdb	r3, {r1, r2}
+	  auto __it = _M_t._M_insert_node(__p.first, __p.second, _M_node);
+   c:	6843      	ldr	r3, [r0, #4]
+   e:	6800      	ldr	r0, [r0, #0]
+  10:	4d02      	ldr	r5, [pc, #8]	@ (1c <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE10_Auto_node9_M_insertES2_IPSt18_Rb_tree_node_baseSF_E+0x1c>)
+  12:	47a8      	blx	r5
+	  _M_node = nullptr;
+  14:	2300      	movs	r3, #0
+  16:	6063      	str	r3, [r4, #4]
+	}
+  18:	b003      	add	sp, #12
+  1a:	bd30      	pop	{r4, r5, pc}
+  1c:	00000000 	.word	0x00000000
+
+Disassembly of section .text._ZNSt15__new_allocatorISt10_List_nodeIN11AccessorApp5SceneEEE10deallocateEPS3_j:
+
+00000000 <_ZNSt15__new_allocatorISt10_List_nodeIN11AccessorApp5SceneEEE10deallocateEPS3_j>:
+	return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+      }
+
+      // __p is not permitted to be a null pointer.
+      void
+      deallocate(_Tp* __p, size_type __n __attribute__ ((__unused__)))
+   0:	b508      	push	{r3, lr}
+   2:	4608      	mov	r0, r1
+	    _GLIBCXX_OPERATOR_DELETE(_GLIBCXX_SIZED_DEALLOC(__p, __n),
+				     std::align_val_t(alignof(_Tp)));
+	    return;
+	  }
+#endif
+	_GLIBCXX_OPERATOR_DELETE(_GLIBCXX_SIZED_DEALLOC(__p, __n));
+   4:	eb02 0242 	add.w	r2, r2, r2, lsl #1
+   8:	0091      	lsls	r1, r2, #2
+   a:	4b01      	ldr	r3, [pc, #4]	@ (10 <_ZNSt15__new_allocatorISt10_List_nodeIN11AccessorApp5SceneEEE10deallocateEPS3_j+0x10>)
+   c:	4798      	blx	r3
+      }
+   e:	bd08      	pop	{r3, pc}
+  10:	00000000 	.word	0x00000000
+
+Disassembly of section .text._ZNSt15__allocated_ptrISaISt10_List_nodeIN11AccessorApp5SceneEEEED2Ev:
+
+00000000 <_ZNSt15__allocated_ptrISaISt10_List_nodeIN11AccessorApp5SceneEEEED1Ev>:
+      __allocated_ptr(__allocated_ptr&& __gd) noexcept
+      : _M_alloc(__gd._M_alloc), _M_ptr(__gd._M_ptr)
+      { __gd._M_ptr = nullptr; }
+
+      /// Deallocate the owned pointer
+      ~__allocated_ptr()
+   0:	b510      	push	{r4, lr}
+   2:	4604      	mov	r4, r0
+      {
+	if (_M_ptr != nullptr)
+   4:	6841      	ldr	r1, [r0, #4]
+   6:	b119      	cbz	r1, 10 <_ZNSt15__allocated_ptrISaISt10_List_nodeIN11AccessorApp5SceneEEEED1Ev+0x10>
+	if (std::__is_constant_evaluated())
+	  {
+	    ::operator delete(__p);
+	    return;
+	  }
+	__allocator_base<_Tp>::deallocate(__p, __n);
+   8:	2201      	movs	r2, #1
+   a:	6800      	ldr	r0, [r0, #0]
+   c:	4b01      	ldr	r3, [pc, #4]	@ (14 <_ZNSt15__allocated_ptrISaISt10_List_nodeIN11AccessorApp5SceneEEEED1Ev+0x14>)
+   e:	4798      	blx	r3
+	  std::allocator_traits<_Alloc>::deallocate(*_M_alloc, _M_ptr, 1);
+      }
+  10:	4620      	mov	r0, r4
+  12:	bd10      	pop	{r4, pc}
+  14:	00000000 	.word	0x00000000
+
+Disassembly of section .text._ZNSt7__cxx1110_List_baseIN11AccessorApp5SceneESaIS2_EE8_M_clearEv:
+
+00000000 <_ZNSt7__cxx1110_List_baseIN11AccessorApp5SceneESaIS2_EE8_M_clearEv>:
+_GLIBCXX_BEGIN_NAMESPACE_VERSION
+_GLIBCXX_BEGIN_NAMESPACE_CONTAINER
+
+  template<typename _Tp, typename _Alloc>
+    void
+    _List_base<_Tp, _Alloc>::
+   0:	b538      	push	{r3, r4, r5, lr}
+   2:	4604      	mov	r4, r0
+    _M_clear() _GLIBCXX_NOEXCEPT
+    {
+      typedef _List_node<_Tp>  _Node;
+      __detail::_List_node_base* __cur = _M_impl._M_node._M_next;
+   4:	6801      	ldr	r1, [r0, #0]
+      while (__cur != &_M_impl._M_node)
+   6:	e005      	b.n	14 <_ZNSt7__cxx1110_List_baseIN11AccessorApp5SceneESaIS2_EE8_M_clearEv+0x14>
+	{
+	  _Node* __tmp = static_cast<_Node*>(__cur);
+	  __cur = __tmp->_M_next;
+   8:	680d      	ldr	r5, [r1, #0]
+   a:	2201      	movs	r2, #1
+   c:	4620      	mov	r0, r4
+   e:	4b03      	ldr	r3, [pc, #12]	@ (1c <_ZNSt7__cxx1110_List_baseIN11AccessorApp5SceneESaIS2_EE8_M_clearEv+0x1c>)
+  10:	4798      	blx	r3
+  12:	4629      	mov	r1, r5
+      while (__cur != &_M_impl._M_node)
+  14:	428c      	cmp	r4, r1
+  16:	d1f7      	bne.n	8 <_ZNSt7__cxx1110_List_baseIN11AccessorApp5SceneESaIS2_EE8_M_clearEv+0x8>
+#else
+	  _Tp_alloc_type(_M_get_Node_allocator()).destroy(__val);
+#endif
+	  _M_put_node(__tmp);
+	}
+    }
+  18:	bd38      	pop	{r3, r4, r5, pc}
+  1a:	bf00      	nop
+  1c:	00000000 	.word	0x00000000
+
+Disassembly of section .text._ZNSt7__cxx114listIN11AccessorApp5SceneESaIS2_EE8_M_eraseESt14_List_iteratorIS2_E:
+
+00000000 <_ZNSt7__cxx114listIN11AccessorApp5SceneESaIS2_EE8_M_eraseESt14_List_iteratorIS2_E>:
+       }
+#endif
+
+      // Erases element at position given.
+      void
+      _M_erase(iterator __position) _GLIBCXX_NOEXCEPT
+   0:	b538      	push	{r3, r4, r5, lr}
+   2:	4604      	mov	r4, r0
+   4:	460d      	mov	r5, r1
+      void _M_dec_size(size_t __n) { _M_impl._M_node._M_size -= __n; }
+   6:	6883      	ldr	r3, [r0, #8]
+   8:	3b01      	subs	r3, #1
+   a:	6083      	str	r3, [r0, #8]
+      {
+	this->_M_dec_size(1);
+	__position._M_node->_M_unhook();
+   c:	4608      	mov	r0, r1
+   e:	4b04      	ldr	r3, [pc, #16]	@ (20 <_ZNSt7__cxx114listIN11AccessorApp5SceneESaIS2_EE8_M_eraseESt14_List_iteratorIS2_E+0x20>)
+  10:	4798      	blx	r3
+  12:	2201      	movs	r2, #1
+  14:	4629      	mov	r1, r5
+  16:	4620      	mov	r0, r4
+  18:	4b02      	ldr	r3, [pc, #8]	@ (24 <_ZNSt7__cxx114listIN11AccessorApp5SceneESaIS2_EE8_M_eraseESt14_List_iteratorIS2_E+0x24>)
+  1a:	4798      	blx	r3
+#else
+	_Tp_alloc_type(_M_get_Node_allocator()).destroy(__n->_M_valptr());
+#endif
+
+	_M_put_node(__n);
+      }
+  1c:	bd38      	pop	{r3, r4, r5, pc}
+  1e:	bf00      	nop
+	...
+
+Disassembly of section .text._ZNSt7__cxx114listIN11AccessorApp5SceneESaIS2_EE9pop_frontEv:
+
+00000000 <_ZNSt7__cxx114listIN11AccessorApp5SceneESaIS2_EE9pop_frontEv>:
+      pop_front() _GLIBCXX_NOEXCEPT
+   0:	b508      	push	{r3, lr}
+      { this->_M_erase(begin()); }
+   2:	6801      	ldr	r1, [r0, #0]
+   4:	4b01      	ldr	r3, [pc, #4]	@ (c <_ZNSt7__cxx114listIN11AccessorApp5SceneESaIS2_EE9pop_frontEv+0xc>)
+   6:	4798      	blx	r3
+   8:	bd08      	pop	{r3, pc}
+   a:	bf00      	nop
+   c:	00000000 	.word	0x00000000
+
+Disassembly of section .text._ZNSt15__new_allocatorISt13_Rb_tree_nodeISt4pairIKN11AccessorApp5SceneEP13AccessorSceneEEE10deallocateEPS8_j:
+
+00000000 <_ZNSt15__new_allocatorISt13_Rb_tree_nodeISt4pairIKN11AccessorApp5SceneEP13AccessorSceneEEE10deallocateEPS8_j>:
+      deallocate(_Tp* __p, size_type __n __attribute__ ((__unused__)))
+   0:	b508      	push	{r3, lr}
+   2:	4608      	mov	r0, r1
+	_GLIBCXX_OPERATOR_DELETE(_GLIBCXX_SIZED_DEALLOC(__p, __n));
+   4:	eb02 0242 	add.w	r2, r2, r2, lsl #1
+   8:	00d1      	lsls	r1, r2, #3
+   a:	4b01      	ldr	r3, [pc, #4]	@ (10 <_ZNSt15__new_allocatorISt13_Rb_tree_nodeISt4pairIKN11AccessorApp5SceneEP13AccessorSceneEEE10deallocateEPS8_j+0x10>)
+   c:	4798      	blx	r3
+      }
+   e:	bd08      	pop	{r3, pc}
+  10:	00000000 	.word	0x00000000
+
+Disassembly of section .text._ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE10_Auto_nodeD2Ev:
+
+00000000 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE10_Auto_nodeD1Ev>:
+	~_Auto_node()
+   0:	b510      	push	{r4, lr}
+   2:	4604      	mov	r4, r0
+	  if (_M_node)
+   4:	6841      	ldr	r1, [r0, #4]
+   6:	b119      	cbz	r1, 10 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE10_Auto_nodeD1Ev+0x10>
+   8:	2201      	movs	r2, #1
+   a:	6800      	ldr	r0, [r0, #0]
+   c:	4b01      	ldr	r3, [pc, #4]	@ (14 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE10_Auto_nodeD1Ev+0x14>)
+   e:	4798      	blx	r3
+	}
+  10:	4620      	mov	r0, r4
+  12:	bd10      	pop	{r4, pc}
+  14:	00000000 	.word	0x00000000
+
+Disassembly of section .text._ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE8_M_eraseEPSt13_Rb_tree_nodeIS6_E:
+
+00000000 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE8_M_eraseEPSt13_Rb_tree_nodeIS6_E>:
+    _Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::
+   0:	b570      	push	{r4, r5, r6, lr}
+   2:	4605      	mov	r5, r0
+   4:	460c      	mov	r4, r1
+      while (__x != 0)
+   6:	b15c      	cbz	r4, 20 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE8_M_eraseEPSt13_Rb_tree_nodeIS6_E+0x20>
+	  _M_erase(_S_right(__x));
+   8:	68e1      	ldr	r1, [r4, #12]
+   a:	4628      	mov	r0, r5
+   c:	4b05      	ldr	r3, [pc, #20]	@ (24 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE8_M_eraseEPSt13_Rb_tree_nodeIS6_E+0x24>)
+   e:	4798      	blx	r3
+      { return static_cast<_Link_type>(__x->_M_left); }
+  10:	68a6      	ldr	r6, [r4, #8]
+  12:	2201      	movs	r2, #1
+  14:	4621      	mov	r1, r4
+  16:	4628      	mov	r0, r5
+  18:	4b03      	ldr	r3, [pc, #12]	@ (28 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE8_M_eraseEPSt13_Rb_tree_nodeIS6_E+0x28>)
+  1a:	4798      	blx	r3
+	  __x = __y;
+  1c:	4634      	mov	r4, r6
+  1e:	e7f2      	b.n	6 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE8_M_eraseEPSt13_Rb_tree_nodeIS6_E+0x6>
+    }
+  20:	bd70      	pop	{r4, r5, r6, pc}
+  22:	bf00      	nop
+	...
+
+Disassembly of section .text._ZNSt15__new_allocatorISt10_List_nodeIN11AccessorApp5SceneEEE8allocateEjPKv:
+
+00000000 <_ZNSt15__new_allocatorISt10_List_nodeIN11AccessorApp5SceneEEE8allocateEjPKv>:
+      allocate(size_type __n, const void* = static_cast<const void*>(0))
+   0:	b508      	push	{r3, lr}
+	if (__builtin_expect(__n > this->_M_max_size(), false))
+   2:	4b08      	ldr	r3, [pc, #32]	@ (24 <_ZNSt15__new_allocatorISt10_List_nodeIN11AccessorApp5SceneEEE8allocateEjPKv+0x24>)
+   4:	4299      	cmp	r1, r3
+   6:	d805      	bhi.n	14 <_ZNSt15__new_allocatorISt10_List_nodeIN11AccessorApp5SceneEEE8allocateEjPKv+0x14>
+	return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+   8:	eb01 0141 	add.w	r1, r1, r1, lsl #1
+   c:	0088      	lsls	r0, r1, #2
+   e:	4b06      	ldr	r3, [pc, #24]	@ (28 <_ZNSt15__new_allocatorISt10_List_nodeIN11AccessorApp5SceneEEE8allocateEjPKv+0x28>)
+  10:	4798      	blx	r3
+      }
+  12:	bd08      	pop	{r3, pc}
+	    if (__n > (std::size_t(-1) / sizeof(_Tp)))
+  14:	4b05      	ldr	r3, [pc, #20]	@ (2c <_ZNSt15__new_allocatorISt10_List_nodeIN11AccessorApp5SceneEEE8allocateEjPKv+0x2c>)
+  16:	4299      	cmp	r1, r3
+  18:	d901      	bls.n	1e <_ZNSt15__new_allocatorISt10_List_nodeIN11AccessorApp5SceneEEE8allocateEjPKv+0x1e>
+	      std::__throw_bad_array_new_length();
+  1a:	4b05      	ldr	r3, [pc, #20]	@ (30 <_ZNSt15__new_allocatorISt10_List_nodeIN11AccessorApp5SceneEEE8allocateEjPKv+0x30>)
+  1c:	4798      	blx	r3
+	    std::__throw_bad_alloc();
+  1e:	4b05      	ldr	r3, [pc, #20]	@ (34 <_ZNSt15__new_allocatorISt10_List_nodeIN11AccessorApp5SceneEEE8allocateEjPKv+0x34>)
+  20:	4798      	blx	r3
+  22:	bf00      	nop
+  24:	0aaaaaaa 	.word	0x0aaaaaaa
+  28:	00000000 	.word	0x00000000
+  2c:	15555555 	.word	0x15555555
+	...
+
+Disassembly of section .text._ZNSt7__cxx114listIN11AccessorApp5SceneESaIS2_EE14_M_create_nodeIJRKS2_EEEPSt10_List_nodeIS2_EDpOT_:
+
+00000000 <_ZNSt7__cxx114listIN11AccessorApp5SceneESaIS2_EE14_M_create_nodeIJRKS2_EEEPSt10_List_nodeIS2_EDpOT_>:
+	_M_create_node(_Args&&... __args)
+   0:	b570      	push	{r4, r5, r6, lr}
+   2:	b082      	sub	sp, #8
+   4:	4606      	mov	r6, r0
+   6:	460d      	mov	r5, r1
+	return __allocator_base<_Tp>::allocate(__n, 0);
+   8:	2200      	movs	r2, #0
+   a:	2101      	movs	r1, #1
+   c:	4b07      	ldr	r3, [pc, #28]	@ (2c <_ZNSt7__cxx114listIN11AccessorApp5SceneESaIS2_EE14_M_create_nodeIJRKS2_EEEPSt10_List_nodeIS2_EDpOT_+0x2c>)
+   e:	4798      	blx	r3
+  10:	4604      	mov	r4, r0
+      : _M_alloc(std::__addressof(__a)), _M_ptr(__ptr)
+  12:	9600      	str	r6, [sp, #0]
+  14:	9001      	str	r0, [sp, #4]
+  template<typename _Tp, typename... _Args>
+    constexpr auto
+    construct_at(_Tp* __location, _Args&&... __args)
+    noexcept(noexcept(::new((void*)0) _Tp(std::declval<_Args>()...)))
+    -> decltype(::new((void*)0) _Tp(std::declval<_Args>()...))
+    { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+  16:	782b      	ldrb	r3, [r5, #0]
+  18:	7203      	strb	r3, [r0, #8]
+
+      /// Release ownership of the owned pointer
+      __allocated_ptr&
+      operator=(std::nullptr_t) noexcept
+      {
+	_M_ptr = nullptr;
+  1a:	2300      	movs	r3, #0
+  1c:	9301      	str	r3, [sp, #4]
+	}
+  1e:	4668      	mov	r0, sp
+  20:	4b03      	ldr	r3, [pc, #12]	@ (30 <_ZNSt7__cxx114listIN11AccessorApp5SceneESaIS2_EE14_M_create_nodeIJRKS2_EEEPSt10_List_nodeIS2_EDpOT_+0x30>)
+  22:	4798      	blx	r3
+  24:	4620      	mov	r0, r4
+  26:	b002      	add	sp, #8
+  28:	bd70      	pop	{r4, r5, r6, pc}
+  2a:	bf00      	nop
+	...
+
+Disassembly of section .text._ZNSt7__cxx114listIN11AccessorApp5SceneESaIS2_EE9_M_insertIJRKS2_EEEvSt14_List_iteratorIS2_EDpOT_:
+
+00000000 <_ZNSt7__cxx114listIN11AccessorApp5SceneESaIS2_EE9_M_insertIJRKS2_EEEvSt14_List_iteratorIS2_EDpOT_>:
+       _M_insert(iterator __position, _Args&&... __args)
+   0:	b538      	push	{r3, r4, r5, lr}
+   2:	4604      	mov	r4, r0
+   4:	460d      	mov	r5, r1
+	 _Node* __tmp = _M_create_node(std::forward<_Args>(__args)...);
+   6:	4611      	mov	r1, r2
+   8:	4b04      	ldr	r3, [pc, #16]	@ (1c <_ZNSt7__cxx114listIN11AccessorApp5SceneESaIS2_EE9_M_insertIJRKS2_EEEvSt14_List_iteratorIS2_EDpOT_+0x1c>)
+   a:	4798      	blx	r3
+	 __tmp->_M_hook(__position._M_node);
+   c:	4629      	mov	r1, r5
+   e:	4b04      	ldr	r3, [pc, #16]	@ (20 <_ZNSt7__cxx114listIN11AccessorApp5SceneESaIS2_EE9_M_insertIJRKS2_EEEvSt14_List_iteratorIS2_EDpOT_+0x20>)
+  10:	4798      	blx	r3
+      void _M_inc_size(size_t __n) { _M_impl._M_node._M_size += __n; }
+  12:	68a3      	ldr	r3, [r4, #8]
+  14:	3301      	adds	r3, #1
+  16:	60a3      	str	r3, [r4, #8]
+       }
+  18:	bd38      	pop	{r3, r4, r5, pc}
+  1a:	bf00      	nop
+	...
+
+Disassembly of section .text._ZNSt7__cxx114listIN11AccessorApp5SceneESaIS2_EE12emplace_backIJRKS2_EEERS2_DpOT_:
+
+00000000 <_ZNSt7__cxx114listIN11AccessorApp5SceneESaIS2_EE12emplace_backIJRKS2_EEERS2_DpOT_>:
+	emplace_back(_Args&&... __args)
+   0:	b510      	push	{r4, lr}
+   2:	4604      	mov	r4, r0
+   4:	460a      	mov	r2, r1
+	  this->_M_insert(end(), std::forward<_Args>(__args)...);
+   6:	4601      	mov	r1, r0
+   8:	4b02      	ldr	r3, [pc, #8]	@ (14 <_ZNSt7__cxx114listIN11AccessorApp5SceneESaIS2_EE12emplace_backIJRKS2_EEERS2_DpOT_+0x14>)
+   a:	4798      	blx	r3
+	_M_node = _M_node->_M_prev;
+   c:	6860      	ldr	r0, [r4, #4]
+	}
+   e:	3008      	adds	r0, #8
+  10:	bd10      	pop	{r4, pc}
+  12:	bf00      	nop
+  14:	00000000 	.word	0x00000000
+
+Disassembly of section .text._ZNSt7__cxx114listIN11AccessorApp5SceneESaIS2_EEC2ESt16initializer_listIS2_ERKS3_:
+
+00000000 <_ZNSt7__cxx114listIN11AccessorApp5SceneESaIS2_EEC1ESt16initializer_listIS2_ERKS3_>:
+      list(initializer_list<value_type> __l,
+   0:	b570      	push	{r4, r5, r6, lr}
+   2:	b082      	sub	sp, #8
+   4:	4605      	mov	r5, r0
+   6:	ab02      	add	r3, sp, #8
+   8:	e903 0006 	stmdb	r3, {r1, r2}
+	this->_M_next = this->_M_prev = this;
+   c:	6040      	str	r0, [r0, #4]
+   e:	6000      	str	r0, [r0, #0]
+	this->_M_size = 0;
+  10:	2300      	movs	r3, #0
+  12:	6083      	str	r3, [r0, #8]
+      constexpr size_type
+      size() const noexcept { return _M_len; }
+
+      // First element.
+      constexpr const_iterator
+      begin() const noexcept { return _M_array; }
+  14:	460c      	mov	r4, r1
+      size() const noexcept { return _M_len; }
+  16:	4616      	mov	r6, r2
+
+      // One past the last element.
+      constexpr const_iterator
+      end() const noexcept { return begin() + size(); }
+  18:	440e      	add	r6, r1
+	_M_initialize_dispatch(_InputIterator __first, _InputIterator __last,
+  1a:	e004      	b.n	26 <_ZNSt7__cxx114listIN11AccessorApp5SceneESaIS2_EEC1ESt16initializer_listIS2_ERKS3_+0x26>
+	    emplace_back(*__first);
+  1c:	4621      	mov	r1, r4
+  1e:	4628      	mov	r0, r5
+  20:	4b03      	ldr	r3, [pc, #12]	@ (30 <_ZNSt7__cxx114listIN11AccessorApp5SceneESaIS2_EEC1ESt16initializer_listIS2_ERKS3_+0x30>)
+  22:	4798      	blx	r3
+	  for (; __first != __last; ++__first)
+  24:	3401      	adds	r4, #1
+  26:	42b4      	cmp	r4, r6
+  28:	d1f8      	bne.n	1c <_ZNSt7__cxx114listIN11AccessorApp5SceneESaIS2_EEC1ESt16initializer_listIS2_ERKS3_+0x1c>
+      { _M_initialize_dispatch(__l.begin(), __l.end(), __false_type()); }
+  2a:	4628      	mov	r0, r5
+  2c:	b002      	add	sp, #8
+  2e:	bd70      	pop	{r4, r5, r6, pc}
+  30:	00000000 	.word	0x00000000
+
+Disassembly of section .text._ZNSt15__new_allocatorISt13_Rb_tree_nodeISt4pairIKN11AccessorApp5SceneEP13AccessorSceneEEE8allocateEjPKv:
+
+00000000 <_ZNSt15__new_allocatorISt13_Rb_tree_nodeISt4pairIKN11AccessorApp5SceneEP13AccessorSceneEEE8allocateEjPKv>:
+      allocate(size_type __n, const void* = static_cast<const void*>(0))
+   0:	b508      	push	{r3, lr}
+	if (__builtin_expect(__n > this->_M_max_size(), false))
+   2:	4b08      	ldr	r3, [pc, #32]	@ (24 <_ZNSt15__new_allocatorISt13_Rb_tree_nodeISt4pairIKN11AccessorApp5SceneEP13AccessorSceneEEE8allocateEjPKv+0x24>)
+   4:	4299      	cmp	r1, r3
+   6:	d805      	bhi.n	14 <_ZNSt15__new_allocatorISt13_Rb_tree_nodeISt4pairIKN11AccessorApp5SceneEP13AccessorSceneEEE8allocateEjPKv+0x14>
+	return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+   8:	eb01 0141 	add.w	r1, r1, r1, lsl #1
+   c:	00c8      	lsls	r0, r1, #3
+   e:	4b06      	ldr	r3, [pc, #24]	@ (28 <_ZNSt15__new_allocatorISt13_Rb_tree_nodeISt4pairIKN11AccessorApp5SceneEP13AccessorSceneEEE8allocateEjPKv+0x28>)
+  10:	4798      	blx	r3
+      }
+  12:	bd08      	pop	{r3, pc}
+	    if (__n > (std::size_t(-1) / sizeof(_Tp)))
+  14:	4b05      	ldr	r3, [pc, #20]	@ (2c <_ZNSt15__new_allocatorISt13_Rb_tree_nodeISt4pairIKN11AccessorApp5SceneEP13AccessorSceneEEE8allocateEjPKv+0x2c>)
+  16:	4299      	cmp	r1, r3
+  18:	d901      	bls.n	1e <_ZNSt15__new_allocatorISt13_Rb_tree_nodeISt4pairIKN11AccessorApp5SceneEP13AccessorSceneEEE8allocateEjPKv+0x1e>
+	      std::__throw_bad_array_new_length();
+  1a:	4b05      	ldr	r3, [pc, #20]	@ (30 <_ZNSt15__new_allocatorISt13_Rb_tree_nodeISt4pairIKN11AccessorApp5SceneEP13AccessorSceneEEE8allocateEjPKv+0x30>)
+  1c:	4798      	blx	r3
+	    std::__throw_bad_alloc();
+  1e:	4b05      	ldr	r3, [pc, #20]	@ (34 <_ZNSt15__new_allocatorISt13_Rb_tree_nodeISt4pairIKN11AccessorApp5SceneEP13AccessorSceneEEE8allocateEjPKv+0x34>)
+  20:	4798      	blx	r3
+  22:	bf00      	nop
+  24:	05555555 	.word	0x05555555
+  28:	00000000 	.word	0x00000000
+  2c:	0aaaaaaa 	.word	0x0aaaaaaa
+	...
+
+Disassembly of section .text._ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE14_M_create_nodeIJRKS6_EEEPSt13_Rb_tree_nodeIS6_EDpOT_:
+
+00000000 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE14_M_create_nodeIJRKS6_EEEPSt13_Rb_tree_nodeIS6_EDpOT_>:
+	_M_create_node(_Args&&... __args)
+   0:	b510      	push	{r4, lr}
+   2:	460c      	mov	r4, r1
+   4:	2200      	movs	r2, #0
+   6:	2101      	movs	r1, #1
+   8:	4b05      	ldr	r3, [pc, #20]	@ (20 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE14_M_create_nodeIJRKS6_EEEPSt13_Rb_tree_nodeIS6_EDpOT_+0x20>)
+   a:	4798      	blx	r3
+   c:	4603      	mov	r3, r0
+   e:	f100 0210 	add.w	r2, r0, #16
+  12:	e894 0003 	ldmia.w	r4, {r0, r1}
+  16:	e882 0003 	stmia.w	r2, {r0, r1}
+	}
+  1a:	4618      	mov	r0, r3
+  1c:	bd10      	pop	{r4, pc}
+  1e:	bf00      	nop
+  20:	00000000 	.word	0x00000000
+
+Disassembly of section .text._ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE10_M_insert_IRKS6_NSC_11_Alloc_nodeEEESt17_Rb_tree_iteratorIS6_EPSt18_Rb_tree_node_baseSK_OT_RT0_:
+
+00000000 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE10_M_insert_IRKS6_NSC_11_Alloc_nodeEEESt17_Rb_tree_iteratorIS6_EPSt18_Rb_tree_node_baseSK_OT_RT0_>:
+      _Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::
+   0:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+   2:	4604      	mov	r4, r0
+   4:	4616      	mov	r6, r2
+			      || _M_impl._M_key_compare(_KeyOfValue()(__v),
+   6:	b189      	cbz	r1, 2c <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE10_M_insert_IRKS6_NSC_11_Alloc_nodeEEESt17_Rb_tree_iteratorIS6_EPSt18_Rb_tree_node_baseSK_OT_RT0_+0x2c>
+   8:	2701      	movs	r7, #1
+	  { return _M_t._M_create_node(_GLIBCXX_FORWARD(_Arg, __arg)); }
+   a:	4619      	mov	r1, r3
+   c:	9b06      	ldr	r3, [sp, #24]
+   e:	6818      	ldr	r0, [r3, #0]
+  10:	4b0d      	ldr	r3, [pc, #52]	@ (48 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE10_M_insert_IRKS6_NSC_11_Alloc_nodeEEESt17_Rb_tree_iteratorIS6_EPSt18_Rb_tree_node_baseSK_OT_RT0_+0x48>)
+  12:	4798      	blx	r3
+  14:	4605      	mov	r5, r0
+	_Rb_tree_insert_and_rebalance(__insert_left, __z, __p,
+  16:	1d23      	adds	r3, r4, #4
+  18:	4632      	mov	r2, r6
+  1a:	4601      	mov	r1, r0
+  1c:	4638      	mov	r0, r7
+  1e:	4e0b      	ldr	r6, [pc, #44]	@ (4c <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE10_M_insert_IRKS6_NSC_11_Alloc_nodeEEESt17_Rb_tree_iteratorIS6_EPSt18_Rb_tree_node_baseSK_OT_RT0_+0x4c>)
+  20:	47b0      	blx	r6
+	++_M_impl._M_node_count;
+  22:	6963      	ldr	r3, [r4, #20]
+  24:	3301      	adds	r3, #1
+  26:	6163      	str	r3, [r4, #20]
+      }
+  28:	4628      	mov	r0, r5
+  2a:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
+      { return &this->_M_impl._M_header; }
+  2c:	1d02      	adds	r2, r0, #4
+	bool __insert_left = (__x != 0 || __p == _M_end()
+  2e:	4296      	cmp	r6, r2
+  30:	d005      	beq.n	3e <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE10_M_insert_IRKS6_NSC_11_Alloc_nodeEEESt17_Rb_tree_iteratorIS6_EPSt18_Rb_tree_node_baseSK_OT_RT0_+0x3e>
+  32:	781a      	ldrb	r2, [r3, #0]
+  34:	7c31      	ldrb	r1, [r6, #16]
+			      || _M_impl._M_key_compare(_KeyOfValue()(__v),
+  36:	4291      	cmp	r1, r2
+  38:	d803      	bhi.n	42 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE10_M_insert_IRKS6_NSC_11_Alloc_nodeEEESt17_Rb_tree_iteratorIS6_EPSt18_Rb_tree_node_baseSK_OT_RT0_+0x42>
+  3a:	2700      	movs	r7, #0
+  3c:	e7e5      	b.n	a <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE10_M_insert_IRKS6_NSC_11_Alloc_nodeEEESt17_Rb_tree_iteratorIS6_EPSt18_Rb_tree_node_baseSK_OT_RT0_+0xa>
+  3e:	2701      	movs	r7, #1
+  40:	e7e3      	b.n	a <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE10_M_insert_IRKS6_NSC_11_Alloc_nodeEEESt17_Rb_tree_iteratorIS6_EPSt18_Rb_tree_node_baseSK_OT_RT0_+0xa>
+  42:	2701      	movs	r7, #1
+  44:	e7e1      	b.n	a <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE10_M_insert_IRKS6_NSC_11_Alloc_nodeEEESt17_Rb_tree_iteratorIS6_EPSt18_Rb_tree_node_baseSK_OT_RT0_+0xa>
+  46:	bf00      	nop
+	...
+
+Disassembly of section .text._ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE17_M_insert_unique_IRKS6_NSC_11_Alloc_nodeEEESt17_Rb_tree_iteratorIS6_ESt23_Rb_tree_const_iteratorIS6_EOT_RT0_:
+
+00000000 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE17_M_insert_unique_IRKS6_NSC_11_Alloc_nodeEEESt17_Rb_tree_iteratorIS6_ESt23_Rb_tree_const_iteratorIS6_EOT_RT0_>:
+      _Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::
+   0:	b5f0      	push	{r4, r5, r6, r7, lr}
+   2:	b085      	sub	sp, #20
+   4:	4604      	mov	r4, r0
+   6:	4615      	mov	r5, r2
+   8:	461e      	mov	r6, r3
+	= _M_get_insert_hint_unique_pos(__position, _KeyOfValue()(__v));
+   a:	4613      	mov	r3, r2
+   c:	460a      	mov	r2, r1
+   e:	4601      	mov	r1, r0
+  10:	a802      	add	r0, sp, #8
+  12:	4f07      	ldr	r7, [pc, #28]	@ (30 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE17_M_insert_unique_IRKS6_NSC_11_Alloc_nodeEEESt17_Rb_tree_iteratorIS6_ESt23_Rb_tree_const_iteratorIS6_EOT_RT0_+0x30>)
+  14:	47b8      	blx	r7
+      if (__res.second)
+  16:	9a03      	ldr	r2, [sp, #12]
+  18:	b13a      	cbz	r2, 2a <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE17_M_insert_unique_IRKS6_NSC_11_Alloc_nodeEEESt17_Rb_tree_iteratorIS6_ESt23_Rb_tree_const_iteratorIS6_EOT_RT0_+0x2a>
+	return _M_insert_(__res.first, __res.second,
+  1a:	9600      	str	r6, [sp, #0]
+  1c:	462b      	mov	r3, r5
+  1e:	9902      	ldr	r1, [sp, #8]
+  20:	4620      	mov	r0, r4
+  22:	4c04      	ldr	r4, [pc, #16]	@ (34 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE17_M_insert_unique_IRKS6_NSC_11_Alloc_nodeEEESt17_Rb_tree_iteratorIS6_ESt23_Rb_tree_const_iteratorIS6_EOT_RT0_+0x34>)
+  24:	47a0      	blx	r4
+    }
+  26:	b005      	add	sp, #20
+  28:	bdf0      	pop	{r4, r5, r6, r7, pc}
+      return iterator(__res.first);
+  2a:	9802      	ldr	r0, [sp, #8]
+  2c:	e7fb      	b.n	26 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE17_M_insert_unique_IRKS6_NSC_11_Alloc_nodeEEESt17_Rb_tree_iteratorIS6_ESt23_Rb_tree_const_iteratorIS6_EOT_RT0_+0x26>
+  2e:	bf00      	nop
+	...
+
+Disassembly of section .text._ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE22_M_insert_range_uniqueIPKS6_EENSt9enable_ifIXsrSt7is_sameIS6_NSt15iterator_traitsIT_E10value_typeEE5valueEvE4typeESJ_SJ_:
+
+00000000 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE22_M_insert_range_uniqueIPKS6_EENSt9enable_ifIXsrSt7is_sameIS6_NSt15iterator_traitsIT_E10value_typeEE5valueEvE4typeESJ_SJ_>:
+	_M_insert_range_unique(_InputIterator __first, _InputIterator __last)
+   0:	b5f0      	push	{r4, r5, r6, r7, lr}
+   2:	b083      	sub	sp, #12
+   4:	4605      	mov	r5, r0
+   6:	460c      	mov	r4, r1
+   8:	4617      	mov	r7, r2
+	: _M_t(__t) { }
+   a:	9001      	str	r0, [sp, #4]
+   c:	e006      	b.n	1c <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE22_M_insert_range_uniqueIPKS6_EENSt9enable_ifIXsrSt7is_sameIS6_NSt15iterator_traitsIT_E10value_typeEE5valueEvE4typeESJ_SJ_+0x1c>
+	    _M_insert_unique_(end(), *__first, __an);
+   e:	ab01      	add	r3, sp, #4
+  10:	4622      	mov	r2, r4
+  12:	1d29      	adds	r1, r5, #4
+  14:	4628      	mov	r0, r5
+  16:	4e03      	ldr	r6, [pc, #12]	@ (24 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE22_M_insert_range_uniqueIPKS6_EENSt9enable_ifIXsrSt7is_sameIS6_NSt15iterator_traitsIT_E10value_typeEE5valueEvE4typeESJ_SJ_+0x24>)
+  18:	47b0      	blx	r6
+	  for (; __first != __last; ++__first)
+  1a:	3408      	adds	r4, #8
+  1c:	42bc      	cmp	r4, r7
+  1e:	d1f6      	bne.n	e <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE22_M_insert_range_uniqueIPKS6_EENSt9enable_ifIXsrSt7is_sameIS6_NSt15iterator_traitsIT_E10value_typeEE5valueEvE4typeESJ_SJ_+0xe>
+	}
+  20:	b003      	add	sp, #12
+  22:	bdf0      	pop	{r4, r5, r6, r7, pc}
+  24:	00000000 	.word	0x00000000
+
+Disassembly of section .text._ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE14_M_create_nodeIJRKSt21piecewise_construct_tSt5tupleIJRS3_EESH_IJEEEEEPSt13_Rb_tree_nodeIS6_EDpOT_:
+
+00000000 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE14_M_create_nodeIJRKSt21piecewise_construct_tSt5tupleIJRS3_EESH_IJEEEEEPSt13_Rb_tree_nodeIS6_EDpOT_>:
+	_M_create_node(_Args&&... __args)
+   0:	b510      	push	{r4, lr}
+   2:	b082      	sub	sp, #8
+   4:	4614      	mov	r4, r2
+   6:	2200      	movs	r2, #0
+   8:	2101      	movs	r1, #1
+   a:	4b05      	ldr	r3, [pc, #20]	@ (20 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE14_M_create_nodeIJRKSt21piecewise_construct_tSt5tupleIJRS3_EESH_IJEEEEEPSt13_Rb_tree_nodeIS6_EDpOT_+0x20>)
+   c:	4798      	blx	r3
+      _Tuple_impl(_Tuple_impl&&) = default;
+#else
+      constexpr
+      _Tuple_impl(_Tuple_impl&& __in)
+      noexcept(is_nothrow_move_constructible<_Head>::value)
+      : _Base(static_cast<_Base&&>(__in))
+   e:	6822      	ldr	r2, [r4, #0]
+  10:	9201      	str	r2, [sp, #4]
+	     typename... _Args2, size_t... _Indexes2>
+      _GLIBCXX20_CONSTEXPR inline
+      pair<_T1, _T2>::
+      pair(tuple<_Args1...>& __tuple1, tuple<_Args2...>& __tuple2,
+	   _Index_tuple<_Indexes1...>, _Index_tuple<_Indexes2...>)
+      : first(std::forward<_Args1>(std::get<_Indexes1>(__tuple1))...),
+  12:	7812      	ldrb	r2, [r2, #0]
+  14:	7402      	strb	r2, [r0, #16]
+	second(std::forward<_Args2>(std::get<_Indexes2>(__tuple2))...)
+  16:	2200      	movs	r2, #0
+  18:	6142      	str	r2, [r0, #20]
+	}
+  1a:	b002      	add	sp, #8
+  1c:	bd10      	pop	{r4, pc}
+  1e:	bf00      	nop
+  20:	00000000 	.word	0x00000000
+
+Disassembly of section .text._ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE22_M_emplace_hint_uniqueIJRKSt21piecewise_construct_tSt5tupleIJRS3_EESH_IJEEEEESt17_Rb_tree_iteratorIS6_ESt23_Rb_tree_const_iteratorIS6_EDpOT_:
+
+00000000 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE22_M_emplace_hint_uniqueIJRKSt21piecewise_construct_tSt5tupleIJRS3_EESH_IJEEEEESt17_Rb_tree_iteratorIS6_ESt23_Rb_tree_const_iteratorIS6_EDpOT_>:
+
+  template<typename _Key, typename _Val, typename _KeyOfValue,
+	   typename _Compare, typename _Alloc>
+    template<typename... _Args>
+      auto
+      _Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>::
+   0:	b570      	push	{r4, r5, r6, lr}
+   2:	b084      	sub	sp, #16
+   4:	4604      	mov	r4, r0
+   6:	460d      	mov	r5, r1
+   8:	4611      	mov	r1, r2
+   a:	461a      	mov	r2, r3
+	  : _M_t(__t),
+   c:	9002      	str	r0, [sp, #8]
+	    _M_node(__t._M_create_node(std::forward<_Args>(__args)...))
+   e:	9b08      	ldr	r3, [sp, #32]
+  10:	4e0d      	ldr	r6, [pc, #52]	@ (48 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE22_M_emplace_hint_uniqueIJRKSt21piecewise_construct_tSt5tupleIJRS3_EESH_IJEEEEESt17_Rb_tree_iteratorIS6_ESt23_Rb_tree_const_iteratorIS6_EDpOT_+0x48>)
+  12:	47b0      	blx	r6
+  14:	9003      	str	r0, [sp, #12]
+      _M_emplace_hint_unique(const_iterator __pos, _Args&&... __args)
+      -> iterator
+      {
+	_Auto_node __z(*this, std::forward<_Args>(__args)...);
+	auto __res = _M_get_insert_hint_unique_pos(__pos, __z._M_key());
+  16:	f100 0310 	add.w	r3, r0, #16
+  1a:	462a      	mov	r2, r5
+  1c:	4621      	mov	r1, r4
+  1e:	4668      	mov	r0, sp
+  20:	4c0a      	ldr	r4, [pc, #40]	@ (4c <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE22_M_emplace_hint_uniqueIJRKSt21piecewise_construct_tSt5tupleIJRS3_EESH_IJEEEEESt17_Rb_tree_iteratorIS6_ESt23_Rb_tree_const_iteratorIS6_EDpOT_+0x4c>)
+  22:	47a0      	blx	r4
+	if (__res.second)
+  24:	9b01      	ldr	r3, [sp, #4]
+  26:	b163      	cbz	r3, 42 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE22_M_emplace_hint_uniqueIJRKSt21piecewise_construct_tSt5tupleIJRS3_EESH_IJEEEEESt17_Rb_tree_iteratorIS6_ESt23_Rb_tree_const_iteratorIS6_EDpOT_+0x42>
+	  return __z._M_insert(__res);
+  28:	466b      	mov	r3, sp
+  2a:	e893 0006 	ldmia.w	r3, {r1, r2}
+  2e:	a802      	add	r0, sp, #8
+  30:	4b07      	ldr	r3, [pc, #28]	@ (50 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE22_M_emplace_hint_uniqueIJRKSt21piecewise_construct_tSt5tupleIJRS3_EESH_IJEEEEESt17_Rb_tree_iteratorIS6_ESt23_Rb_tree_const_iteratorIS6_EDpOT_+0x50>)
+  32:	4798      	blx	r3
+  34:	4604      	mov	r4, r0
+	return iterator(__res.first);
+      }
+  36:	a802      	add	r0, sp, #8
+  38:	4b06      	ldr	r3, [pc, #24]	@ (54 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE22_M_emplace_hint_uniqueIJRKSt21piecewise_construct_tSt5tupleIJRS3_EESH_IJEEEEESt17_Rb_tree_iteratorIS6_ESt23_Rb_tree_const_iteratorIS6_EDpOT_+0x54>)
+  3a:	4798      	blx	r3
+  3c:	4620      	mov	r0, r4
+  3e:	b004      	add	sp, #16
+  40:	bd70      	pop	{r4, r5, r6, pc}
+	return iterator(__res.first);
+  42:	9c00      	ldr	r4, [sp, #0]
+  44:	e7f7      	b.n	36 <_ZNSt8_Rb_treeIN11AccessorApp5SceneESt4pairIKS1_P13AccessorSceneESt10_Select1stIS6_ESt4lessIS1_ESaIS6_EE22_M_emplace_hint_uniqueIJRKSt21piecewise_construct_tSt5tupleIJRS3_EESH_IJEEEEESt17_Rb_tree_iteratorIS6_ESt23_Rb_tree_const_iteratorIS6_EDpOT_+0x36>
+  46:	bf00      	nop
+	...
+
+Disassembly of section .text._ZNSt3mapIN11AccessorApp5SceneEP13AccessorSceneSt4lessIS1_ESaISt4pairIKS1_S3_EEEixERS7_:
+
+00000000 <_ZNSt3mapIN11AccessorApp5SceneEP13AccessorSceneSt4lessIS1_ESaISt4pairIKS1_S3_EEEixERS7_>:
+      operator[](const key_type& __k)
+   0:	b530      	push	{r4, r5, lr}
+   2:	b085      	sub	sp, #20
+   4:	4604      	mov	r4, r0
+   6:	460d      	mov	r5, r1
+	iterator __i = lower_bound(__k);
+   8:	4b0a      	ldr	r3, [pc, #40]	@ (34 <_ZNSt3mapIN11AccessorApp5SceneEP13AccessorSceneSt4lessIS1_ESaISt4pairIKS1_S3_EEEixERS7_+0x34>)
+   a:	4798      	blx	r3
+      { return iterator(&this->_M_impl._M_header); }
+   c:	1d23      	adds	r3, r4, #4
+      { return __x._M_node == __y._M_node; }
+   e:	4601      	mov	r1, r0
+	if (__i == end() || key_comp()(__k, (*__i).first))
+  10:	4283      	cmp	r3, r0
+  12:	d003      	beq.n	1c <_ZNSt3mapIN11AccessorApp5SceneEP13AccessorSceneSt4lessIS1_ESaISt4pairIKS1_S3_EEEixERS7_+0x1c>
+  14:	782a      	ldrb	r2, [r5, #0]
+  16:	7c03      	ldrb	r3, [r0, #16]
+  18:	429a      	cmp	r2, r3
+  1a:	d207      	bcs.n	2c <_ZNSt3mapIN11AccessorApp5SceneEP13AccessorSceneSt4lessIS1_ESaISt4pairIKS1_S3_EEEixERS7_+0x2c>
+      : _M_head_impl(__h) { }
+  1c:	9502      	str	r5, [sp, #8]
+	  __i = _M_t._M_emplace_hint_unique(__i, std::piecewise_construct,
+  1e:	ab03      	add	r3, sp, #12
+  20:	9300      	str	r3, [sp, #0]
+  22:	ab02      	add	r3, sp, #8
+  24:	4a04      	ldr	r2, [pc, #16]	@ (38 <_ZNSt3mapIN11AccessorApp5SceneEP13AccessorSceneSt4lessIS1_ESaISt4pairIKS1_S3_EEEixERS7_+0x38>)
+  26:	4620      	mov	r0, r4
+  28:	4c04      	ldr	r4, [pc, #16]	@ (3c <_ZNSt3mapIN11AccessorApp5SceneEP13AccessorSceneSt4lessIS1_ESaISt4pairIKS1_S3_EEEixERS7_+0x3c>)
+  2a:	47a0      	blx	r4
+      }
+  2c:	3014      	adds	r0, #20
+  2e:	b005      	add	sp, #20
+  30:	bd30      	pop	{r4, r5, pc}
+  32:	bf00      	nop
+	...
+
+Disassembly of section .text._ZN3cbc7Details17FuncMemberWrapperILj0E22AccessorAppViewManagervJPvEE8MetaCallES3_:
+
+00000000 <_ZN3cbc7Details17FuncMemberWrapperILj0E22AccessorAppViewManagervJPvEE8MetaCallES3_>:
+        const_member = ptr;
+        return ConstMetaCall;
+    }
+
+private:
+    static auto MetaCall(Args... args) {
+   0:	b508      	push	{r3, lr}
+   2:	4601      	mov	r1, r0
+        return (*obj.*member)(args...);
+   4:	4b0a      	ldr	r3, [pc, #40]	@ (30 <_ZN3cbc7Details17FuncMemberWrapperILj0E22AccessorAppViewManagervJPvEE8MetaCallES3_+0x30>)
+   6:	685b      	ldr	r3, [r3, #4]
+   8:	f013 0f01 	tst.w	r3, #1
+   c:	d00c      	beq.n	28 <_ZN3cbc7Details17FuncMemberWrapperILj0E22AccessorAppViewManagervJPvEE8MetaCallES3_+0x28>
+   e:	105a      	asrs	r2, r3, #1
+  10:	4808      	ldr	r0, [pc, #32]	@ (34 <_ZN3cbc7Details17FuncMemberWrapperILj0E22AccessorAppViewManagervJPvEE8MetaCallES3_+0x34>)
+  12:	6800      	ldr	r0, [r0, #0]
+  14:	5880      	ldr	r0, [r0, r2]
+  16:	4a06      	ldr	r2, [pc, #24]	@ (30 <_ZN3cbc7Details17FuncMemberWrapperILj0E22AccessorAppViewManagervJPvEE8MetaCallES3_+0x30>)
+  18:	6812      	ldr	r2, [r2, #0]
+  1a:	5882      	ldr	r2, [r0, r2]
+  1c:	4805      	ldr	r0, [pc, #20]	@ (34 <_ZN3cbc7Details17FuncMemberWrapperILj0E22AccessorAppViewManagervJPvEE8MetaCallES3_+0x34>)
+  1e:	6800      	ldr	r0, [r0, #0]
+  20:	eb00 0063 	add.w	r0, r0, r3, asr #1
+  24:	4790      	blx	r2
+    }
+  26:	bd08      	pop	{r3, pc}
+        return (*obj.*member)(args...);
+  28:	4a01      	ldr	r2, [pc, #4]	@ (30 <_ZN3cbc7Details17FuncMemberWrapperILj0E22AccessorAppViewManagervJPvEE8MetaCallES3_+0x30>)
+  2a:	6812      	ldr	r2, [r2, #0]
+  2c:	e7f6      	b.n	1c <_ZN3cbc7Details17FuncMemberWrapperILj0E22AccessorAppViewManagervJPvEE8MetaCallES3_+0x1c>
+  2e:	bf00      	nop
+	...
+
+Disassembly of section .text._ZN3cbc16obtain_connectorILj0E22AccessorAppViewManagervJPvEEEDaPT0_MS3_FT1_DpT2_E:
+
+00000000 <_ZN3cbc16obtain_connectorILj0E22AccessorAppViewManagervJPvEEEDaPT0_MS3_FT1_DpT2_E>:
+}
+
+} //end of Details scope
+
+template <std::size_t tag = 0, typename T, typename Ret, typename... Args>
+auto obtain_connector(T* t, Ret (T::*ptr)(Args...)) {
+   0:	b410      	push	{r4}
+   2:	b085      	sub	sp, #20
+   4:	4604      	mov	r4, r0
+   6:	4668      	mov	r0, sp
+   8:	e880 0006 	stmia.w	r0, {r1, r2}
+   c:	ab02      	add	r3, sp, #8
+   e:	c803      	ldmia	r0, {r0, r1}
+  10:	e883 0005 	stmia.w	r3, {r0, r2}
+        obj = t;
+  14:	4905      	ldr	r1, [pc, #20]	@ (2c <_ZN3cbc16obtain_connectorILj0E22AccessorAppViewManagervJPvEEEDaPT0_MS3_FT1_DpT2_E+0x2c>)
+  16:	600c      	str	r4, [r1, #0]
+        member = ptr;
+  18:	4c05      	ldr	r4, [pc, #20]	@ (30 <_ZN3cbc16obtain_connectorILj0E22AccessorAppViewManagervJPvEEEDaPT0_MS3_FT1_DpT2_E+0x30>)
+  1a:	e893 0003 	ldmia.w	r3, {r0, r1}
+  1e:	e884 0005 	stmia.w	r4, {r0, r2}
+    return Details::FuncMemberWrapper<tag, T, Ret, Args...>::instantiate(t, ptr);
+}
+  22:	4804      	ldr	r0, [pc, #16]	@ (34 <_ZN3cbc16obtain_connectorILj0E22AccessorAppViewManagervJPvEEEDaPT0_MS3_FT1_DpT2_E+0x34>)
+  24:	b005      	add	sp, #20
+  26:	f85d 4b04 	ldr.w	r4, [sp], #4
+  2a:	4770      	bx	lr
+	...

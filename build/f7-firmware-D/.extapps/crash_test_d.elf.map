@@ -1,0 +1,230 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/crash_test/crash_test.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/crash_test/crash_test.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/crash_test/crash_test.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/crash_test/crash_test.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/f7-firmware-D/.extapps/crash_test/crash_test.o
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libstdc++_nano.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libsupc++_nano.a
+
+.text           0x00000000      0x290
+ *(.text)
+ *(.stub)
+ *(.text*)
+ .text.crash_test_exit_callback
+                0x00000000        0x6 build/f7-firmware-D/.extapps/crash_test/crash_test.o
+ *fill*         0x00000006        0x2 
+ .text.crash_test_corrupt_heap_underflow
+                0x00000008       0x38 build/f7-firmware-D/.extapps/crash_test/crash_test.o
+ .text.crash_test_corrupt_heap_overflow
+                0x00000040       0x60 build/f7-firmware-D/.extapps/crash_test/crash_test.o
+ .text.crash_test_submenu_callback
+                0x000000a0       0x74 build/f7-firmware-D/.extapps/crash_test/crash_test.o
+ .text.crash_test_alloc
+                0x00000114       0xf8 build/f7-firmware-D/.extapps/crash_test/crash_test.o
+                0x00000114                crash_test_alloc
+ .text.crash_test_free
+                0x0000020c       0x40 build/f7-firmware-D/.extapps/crash_test/crash_test.o
+                0x0000020c                crash_test_free
+ .text.crash_test_run
+                0x0000024c       0x20 build/f7-firmware-D/.extapps/crash_test/crash_test.o
+                0x0000024c                crash_test_run
+ .text.crash_test_app
+                0x0000026c       0x24 build/f7-firmware-D/.extapps/crash_test/crash_test.o
+                0x0000026c                crash_test_app
+ *(.text.*)
+ *(.text._*)
+ *(.init)
+ *(.fini)
+
+.rodata         0x00000290      0x122
+ *(.rodata)
+ *(.rodata1)
+ *(.rodata.*)
+ .rodata.crash_test_corrupt_heap_underflow.str1.4
+                0x00000290       0x3c build/f7-firmware-D/.extapps/crash_test/crash_test.o
+ .rodata.crash_test_submenu_callback.str1.4
+                0x000002cc       0x7a build/f7-firmware-D/.extapps/crash_test/crash_test.o
+ *fill*         0x00000346        0x2 
+ .rodata.crash_test_alloc.str1.4
+                0x00000348       0x6a build/f7-firmware-D/.extapps/crash_test/crash_test.o
+
+.data
+ *(.data)
+ *(.data1)
+ *(.data.*)
+
+.bss
+ *(.bss)
+ *(.bss*)
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x58
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x58 build/f7-firmware-D/.extapps/crash_test/crash_test.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000      0xc76
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000      0xc76 build/f7-firmware-D/.extapps/crash_test/crash_test.o
+
+.debug_abbrev   0x00000000      0x2b2
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x2b2 build/f7-firmware-D/.extapps/crash_test/crash_test.o
+
+.debug_line     0x00000000      0x4f2
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x2dc build/f7-firmware-D/.extapps/crash_test/crash_test.o
+ .debug_line.text.crash_test_exit_callback
+                0x000002dc       0x1b build/f7-firmware-D/.extapps/crash_test/crash_test.o
+ .debug_line.text.crash_test_corrupt_heap_underflow
+                0x000002f7       0x26 build/f7-firmware-D/.extapps/crash_test/crash_test.o
+ .debug_line.text.crash_test_corrupt_heap_overflow
+                0x0000031d       0x3b build/f7-firmware-D/.extapps/crash_test/crash_test.o
+ .debug_line.text.crash_test_submenu_callback
+                0x00000358       0xc5 build/f7-firmware-D/.extapps/crash_test/crash_test.o
+ .debug_line.text.crash_test_alloc
+                0x0000041d       0x5b build/f7-firmware-D/.extapps/crash_test/crash_test.o
+ .debug_line.text.crash_test_free
+                0x00000478       0x24 build/f7-firmware-D/.extapps/crash_test/crash_test.o
+ .debug_line.text.crash_test_run
+                0x0000049c       0x22 build/f7-firmware-D/.extapps/crash_test/crash_test.o
+ .debug_line.text.crash_test_app
+                0x000004be       0x34 build/f7-firmware-D/.extapps/crash_test/crash_test.o
+ .debug_line_end
+                0x000004f2        0x0 build/f7-firmware-D/.extapps/crash_test/crash_test.o
+
+.debug_frame    0x00000000       0xe0
+ *(.debug_frame)
+ .debug_frame   0x00000000       0xe0 build/f7-firmware-D/.extapps/crash_test/crash_test.o
+
+.debug_str      0x00000000      0x701
+ *(.debug_str)
+ .debug_str     0x00000000      0x701 build/f7-firmware-D/.extapps/crash_test/crash_test.o
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+ *(.debug_line_str)
+
+.debug_loclists
+                0x00000000      0x313
+ *(.debug_loclists)
+ .debug_loclists
+                0x00000000      0x313 build/f7-firmware-D/.extapps/crash_test/crash_test.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x00000000       0x3e
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x00000000       0x3e build/f7-firmware-D/.extapps/crash_test/crash_test.o
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.ARM.attributes
+                0x00000000       0x34
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x34 build/f7-firmware-D/.extapps/crash_test/crash_test.o
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+
+/DISCARD/
+ *(.comment)
+ *(.comment.*)
+ *(.llvmbc)
+ *(.llvmcmd)
+OUTPUT(build/f7-firmware-D/.extapps/crash_test_d.elf elf32-littlearm)
+LOAD linker stubs

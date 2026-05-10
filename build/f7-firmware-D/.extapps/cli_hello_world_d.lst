@@ -1,0 +1,29 @@
+
+build/f7-firmware-D/.extapps/cli_hello_world_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <execute>:
+#include "../cli_main_commands.h"
+
+static void execute(PipeSide* pipe, FuriString* args, void* context) {
+   0:	b508      	push	{r3, lr}
+    UNUSED(pipe);
+    UNUSED(args);
+    UNUSED(context);
+    puts("Hello, World!");
+   2:	4802      	ldr	r0, [pc, #8]	@ (c <execute+0xc>)
+   4:	4b02      	ldr	r3, [pc, #8]	@ (10 <execute+0x10>)
+   6:	4798      	blx	r3
+}
+   8:	bd08      	pop	{r3, pc}
+   a:	bf00      	nop
+	...
+
+00000014 <cli_hello_world_ep>:
+
+CLI_COMMAND_INTERFACE(hello_world, execute, CliCommandFlagParallelSafe, 768, CLI_APPID);
+  14:	4800      	ldr	r0, [pc, #0]	@ (18 <cli_hello_world_ep+0x4>)
+  16:	4770      	bx	lr
+  18:	00000020 	.word	0x00000020

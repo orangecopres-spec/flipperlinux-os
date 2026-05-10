@@ -1,0 +1,134 @@
+
+build/f7-firmware-D/.extapps/example_plugins_multi_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <example_plugins_multi_app>:
+
+#include <furi.h>
+
+#define TAG "ExamplePlugins"
+
+int32_t example_plugins_multi_app(void* p) {
+   0:	e92d 43f8 	stmdb	sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
+    UNUSED(p);
+
+    FURI_LOG_I(TAG, "Starting");
+   4:	4a25      	ldr	r2, [pc, #148]	@ (9c <example_plugins_multi_app+0x9c>)
+   6:	4926      	ldr	r1, [pc, #152]	@ (a0 <example_plugins_multi_app+0xa0>)
+   8:	2004      	movs	r0, #4
+   a:	4b26      	ldr	r3, [pc, #152]	@ (a4 <example_plugins_multi_app+0xa4>)
+   c:	4798      	blx	r3
+
+    PluginManager* manager =
+        plugin_manager_alloc(PLUGIN_APP_ID, PLUGIN_API_VERSION, firmware_api_interface);
+   e:	4b26      	ldr	r3, [pc, #152]	@ (a8 <example_plugins_multi_app+0xa8>)
+  10:	681a      	ldr	r2, [r3, #0]
+  12:	2101      	movs	r1, #1
+  14:	4825      	ldr	r0, [pc, #148]	@ (ac <example_plugins_multi_app+0xac>)
+  16:	4b26      	ldr	r3, [pc, #152]	@ (b0 <example_plugins_multi_app+0xb0>)
+  18:	4798      	blx	r3
+  1a:	4680      	mov	r8, r0
+
+    if(plugin_manager_load_all(manager, APP_DATA_PATH("plugins")) != PluginManagerErrorNone) {
+  1c:	4925      	ldr	r1, [pc, #148]	@ (b4 <example_plugins_multi_app+0xb4>)
+  1e:	4b26      	ldr	r3, [pc, #152]	@ (b8 <example_plugins_multi_app+0xb8>)
+  20:	4798      	blx	r3
+  22:	b958      	cbnz	r0, 3c <example_plugins_multi_app+0x3c>
+        FURI_LOG_E(TAG, "Failed to load all libs");
+        return 0;
+    }
+
+    uint32_t plugin_count = plugin_manager_get_count(manager);
+  24:	4640      	mov	r0, r8
+  26:	4b25      	ldr	r3, [pc, #148]	@ (bc <example_plugins_multi_app+0xbc>)
+  28:	4798      	blx	r3
+  2a:	4681      	mov	r9, r0
+    FURI_LOG_I(TAG, "Loaded %lu plugin(s)", plugin_count);
+  2c:	4603      	mov	r3, r0
+  2e:	4a24      	ldr	r2, [pc, #144]	@ (c0 <example_plugins_multi_app+0xc0>)
+  30:	491b      	ldr	r1, [pc, #108]	@ (a0 <example_plugins_multi_app+0xa0>)
+  32:	2004      	movs	r0, #4
+  34:	4c1b      	ldr	r4, [pc, #108]	@ (a4 <example_plugins_multi_app+0xa4>)
+  36:	47a0      	blx	r4
+
+    for(uint32_t i = 0; i < plugin_count; i++) {
+  38:	2500      	movs	r5, #0
+  3a:	e022      	b.n	82 <example_plugins_multi_app+0x82>
+        FURI_LOG_E(TAG, "Failed to load all libs");
+  3c:	4a21      	ldr	r2, [pc, #132]	@ (c4 <example_plugins_multi_app+0xc4>)
+  3e:	4918      	ldr	r1, [pc, #96]	@ (a0 <example_plugins_multi_app+0xa0>)
+  40:	2002      	movs	r0, #2
+  42:	4b18      	ldr	r3, [pc, #96]	@ (a4 <example_plugins_multi_app+0xa4>)
+  44:	4798      	blx	r3
+        return 0;
+  46:	e026      	b.n	96 <example_plugins_multi_app+0x96>
+        const ExamplePlugin* plugin = plugin_manager_get_ep(manager, i);
+  48:	4629      	mov	r1, r5
+  4a:	4640      	mov	r0, r8
+  4c:	4b1e      	ldr	r3, [pc, #120]	@ (c8 <example_plugins_multi_app+0xc8>)
+  4e:	4798      	blx	r3
+  50:	4604      	mov	r4, r0
+        FURI_LOG_I(TAG, "plugin name: %s", plugin->name);
+  52:	4f13      	ldr	r7, [pc, #76]	@ (a0 <example_plugins_multi_app+0xa0>)
+  54:	6803      	ldr	r3, [r0, #0]
+  56:	4a1d      	ldr	r2, [pc, #116]	@ (cc <example_plugins_multi_app+0xcc>)
+  58:	4639      	mov	r1, r7
+  5a:	2004      	movs	r0, #4
+  5c:	4e11      	ldr	r6, [pc, #68]	@ (a4 <example_plugins_multi_app+0xa4>)
+  5e:	47b0      	blx	r6
+        FURI_LOG_I(TAG, "plugin method1: %d", plugin->method1());
+  60:	6863      	ldr	r3, [r4, #4]
+  62:	4798      	blx	r3
+  64:	4603      	mov	r3, r0
+  66:	4a1a      	ldr	r2, [pc, #104]	@ (d0 <example_plugins_multi_app+0xd0>)
+  68:	4639      	mov	r1, r7
+  6a:	2004      	movs	r0, #4
+  6c:	47b0      	blx	r6
+        FURI_LOG_I(TAG, "plugin method2(7,8): %d", plugin->method2(7, 8));
+  6e:	68a3      	ldr	r3, [r4, #8]
+  70:	2108      	movs	r1, #8
+  72:	2007      	movs	r0, #7
+  74:	4798      	blx	r3
+  76:	4603      	mov	r3, r0
+  78:	4a16      	ldr	r2, [pc, #88]	@ (d4 <example_plugins_multi_app+0xd4>)
+  7a:	4639      	mov	r1, r7
+  7c:	2004      	movs	r0, #4
+  7e:	47b0      	blx	r6
+    for(uint32_t i = 0; i < plugin_count; i++) {
+  80:	3501      	adds	r5, #1
+  82:	454d      	cmp	r5, r9
+  84:	d3e0      	bcc.n	48 <example_plugins_multi_app+0x48>
+    }
+
+    plugin_manager_free(manager);
+  86:	4640      	mov	r0, r8
+  88:	4b13      	ldr	r3, [pc, #76]	@ (d8 <example_plugins_multi_app+0xd8>)
+  8a:	4798      	blx	r3
+    FURI_LOG_I(TAG, "Goodbye!");
+  8c:	4a13      	ldr	r2, [pc, #76]	@ (dc <example_plugins_multi_app+0xdc>)
+  8e:	4904      	ldr	r1, [pc, #16]	@ (a0 <example_plugins_multi_app+0xa0>)
+  90:	2004      	movs	r0, #4
+  92:	4b04      	ldr	r3, [pc, #16]	@ (a4 <example_plugins_multi_app+0xa4>)
+  94:	4798      	blx	r3
+
+    return 0;
+}
+  96:	2000      	movs	r0, #0
+  98:	e8bd 83f8 	ldmia.w	sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
+  9c:	00000000 	.word	0x00000000
+  a0:	0000000c 	.word	0x0000000c
+	...
+  ac:	0000001c 	.word	0x0000001c
+  b0:	00000000 	.word	0x00000000
+  b4:	0000002c 	.word	0x0000002c
+	...
+  c0:	00000054 	.word	0x00000054
+  c4:	0000003c 	.word	0x0000003c
+  c8:	00000000 	.word	0x00000000
+  cc:	0000006c 	.word	0x0000006c
+  d0:	0000007c 	.word	0x0000007c
+  d4:	00000090 	.word	0x00000090
+  d8:	00000000 	.word	0x00000000
+  dc:	000000a8 	.word	0x000000a8

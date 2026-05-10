@@ -1,0 +1,329 @@
+
+build/f7-firmware-D/.extapps/example_event_loop_mutex_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <event_loop_mutex_app_alloc>:
+        MUTEX_EVENT_AND_FLAGS,
+        event_loop_mutex_app_event_callback,
+        app);
+}
+
+static EventLoopMutexApp* event_loop_mutex_app_alloc(void) {
+   0:	b530      	push	{r4, r5, lr}
+   2:	b083      	sub	sp, #12
+    EventLoopMutexApp* app = malloc(sizeof(EventLoopMutexApp));
+   4:	2010      	movs	r0, #16
+   6:	4b0e      	ldr	r3, [pc, #56]	@ (40 <event_loop_mutex_app_alloc+0x40>)
+   8:	4798      	blx	r3
+   a:	4604      	mov	r4, r0
+
+    // Create an event loop instance.
+    app->event_loop = furi_event_loop_alloc();
+   c:	4b0d      	ldr	r3, [pc, #52]	@ (44 <event_loop_mutex_app_alloc+0x44>)
+   e:	4798      	blx	r3
+  10:	6020      	str	r0, [r4, #0]
+    // Create a worker thread instance.
+    app->worker_thread = furi_thread_alloc_ex(
+  12:	4623      	mov	r3, r4
+  14:	4a0c      	ldr	r2, [pc, #48]	@ (48 <event_loop_mutex_app_alloc+0x48>)
+  16:	f44f 6180 	mov.w	r1, #1024	@ 0x400
+  1a:	480c      	ldr	r0, [pc, #48]	@ (4c <event_loop_mutex_app_alloc+0x4c>)
+  1c:	4d0c      	ldr	r5, [pc, #48]	@ (50 <event_loop_mutex_app_alloc+0x50>)
+  1e:	47a8      	blx	r5
+  20:	6060      	str	r0, [r4, #4]
+        "EventLoopMutexWorker", 1024, event_loop_mutex_app_worker_thread, app);
+    // Create a mutex instance.
+    app->worker_mutex = furi_mutex_alloc(FuriMutexTypeNormal);
+  22:	2000      	movs	r0, #0
+  24:	4b0b      	ldr	r3, [pc, #44]	@ (54 <event_loop_mutex_app_alloc+0x54>)
+  26:	4798      	blx	r3
+  28:	4601      	mov	r1, r0
+  2a:	60a0      	str	r0, [r4, #8]
+    // Subscribe for the mutex release events.
+    // Note that since FuriEventLoopEventFlagOneShot is used, we will be automatically unsubscribed
+    // from events before entering the event processing callback. This is necessary in order to not
+    // trigger on events caused by releasing the mutex in the callback.
+    furi_event_loop_subscribe_mutex(
+  2c:	9400      	str	r4, [sp, #0]
+  2e:	4b0a      	ldr	r3, [pc, #40]	@ (58 <event_loop_mutex_app_alloc+0x58>)
+  30:	220d      	movs	r2, #13
+  32:	6820      	ldr	r0, [r4, #0]
+  34:	4d09      	ldr	r5, [pc, #36]	@ (5c <event_loop_mutex_app_alloc+0x5c>)
+  36:	47a8      	blx	r5
+        MUTEX_EVENT_AND_FLAGS,
+        event_loop_mutex_app_event_callback,
+        app);
+
+    return app;
+}
+  38:	4620      	mov	r0, r4
+  3a:	b003      	add	sp, #12
+  3c:	bd30      	pop	{r4, r5, pc}
+  3e:	bf00      	nop
+	...
+
+00000060 <event_loop_mutex_app_event_callback>:
+static void event_loop_mutex_app_event_callback(FuriEventLoopObject* object, void* context) {
+  60:	b530      	push	{r4, r5, lr}
+  62:	b083      	sub	sp, #12
+    furi_assert(context);
+  64:	b1d9      	cbz	r1, 9e <event_loop_mutex_app_event_callback+0x3e>
+  66:	4603      	mov	r3, r0
+  68:	460c      	mov	r4, r1
+    furi_assert(object == app->worker_mutex);
+  6a:	6888      	ldr	r0, [r1, #8]
+  6c:	4298      	cmp	r0, r3
+  6e:	d11a      	bne.n	a6 <sukima178+0x4>
+    furi_check(furi_mutex_acquire(app->worker_mutex, 0) == FuriStatusOk);
+  70:	2100      	movs	r1, #0
+  72:	4b13      	ldr	r3, [pc, #76]	@ (c0 <sukima225+0x6>)
+  74:	4798      	blx	r3
+  76:	b9d0      	cbnz	r0, ae <sukima196+0x4>
+    FURI_LOG_I(TAG, "Result available! Value: %u", app->worker_result);
+  78:	7b23      	ldrb	r3, [r4, #12]
+  7a:	4a12      	ldr	r2, [pc, #72]	@ (c4 <sukima225+0xa>)
+  7c:	4912      	ldr	r1, [pc, #72]	@ (c8 <sukima225+0xe>)
+  7e:	2004      	movs	r0, #4
+  80:	4d12      	ldr	r5, [pc, #72]	@ (cc <sukima225+0x12>)
+  82:	47a8      	blx	r5
+    furi_check(furi_mutex_release(app->worker_mutex) == FuriStatusOk);
+  84:	68a0      	ldr	r0, [r4, #8]
+  86:	4b12      	ldr	r3, [pc, #72]	@ (d0 <sukima225+0x16>)
+  88:	4798      	blx	r3
+  8a:	b9a0      	cbnz	r0, b6 <sukima212+0x4>
+    furi_event_loop_subscribe_mutex(
+  8c:	9400      	str	r4, [sp, #0]
+  8e:	4b11      	ldr	r3, [pc, #68]	@ (d4 <sukima225+0x1a>)
+  90:	220d      	movs	r2, #13
+  92:	68a1      	ldr	r1, [r4, #8]
+  94:	6820      	ldr	r0, [r4, #0]
+  96:	4c10      	ldr	r4, [pc, #64]	@ (d8 <sukima225+0x1e>)
+  98:	47a0      	blx	r4
+}
+  9a:	b003      	add	sp, #12
+  9c:	bd30      	pop	{r4, r5, pc}
+    furi_assert(context);
+  9e:	f04f 0c01 	mov.w	ip, #1
+
+000000a2 <sukima178>:
+  a2:	4b0e      	ldr	r3, [pc, #56]	@ (dc <sukima225+0x22>)
+  a4:	4798      	blx	r3
+    furi_assert(object == app->worker_mutex);
+  a6:	f04f 0c01 	mov.w	ip, #1
+
+000000aa <sukima196>:
+  aa:	4b0c      	ldr	r3, [pc, #48]	@ (dc <sukima225+0x22>)
+  ac:	4798      	blx	r3
+    furi_check(furi_mutex_acquire(app->worker_mutex, 0) == FuriStatusOk);
+  ae:	f04f 0c02 	mov.w	ip, #2
+
+000000b2 <sukima212>:
+  b2:	4b0a      	ldr	r3, [pc, #40]	@ (dc <sukima225+0x22>)
+  b4:	4798      	blx	r3
+    furi_check(furi_mutex_release(app->worker_mutex) == FuriStatusOk);
+  b6:	f04f 0c02 	mov.w	ip, #2
+
+000000ba <sukima225>:
+  ba:	4b08      	ldr	r3, [pc, #32]	@ (dc <sukima225+0x22>)
+  bc:	4798      	blx	r3
+  be:	bf00      	nop
+  c0:	00000000 	.word	0x00000000
+  c4:	00000018 	.word	0x00000018
+  c8:	00000034 	.word	0x00000034
+	...
+
+000000e0 <event_loop_mutex_app_worker_thread>:
+static int32_t event_loop_mutex_app_worker_thread(void* context) {
+  e0:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+    furi_assert(context);
+  e2:	b138      	cbz	r0, f4 <event_loop_mutex_app_worker_thread+0x14>
+  e4:	4606      	mov	r6, r0
+    FURI_LOG_I(TAG, "Worker thread started");
+  e6:	4a28      	ldr	r2, [pc, #160]	@ (188 <sukima417+0x1a>)
+  e8:	4928      	ldr	r1, [pc, #160]	@ (18c <sukima417+0x1e>)
+  ea:	2004      	movs	r0, #4
+  ec:	4b28      	ldr	r3, [pc, #160]	@ (190 <sukima417+0x22>)
+  ee:	4798      	blx	r3
+    for(uint32_t i = 0; i < WORKER_ITERATION_COUNT; ++i) {
+  f0:	2500      	movs	r5, #0
+  f2:	e00a      	b.n	10a <sukima315+0xa>
+    furi_assert(context);
+  f4:	f04f 0c01 	mov.w	ip, #1
+
+000000f8 <sukima296>:
+  f8:	4b26      	ldr	r3, [pc, #152]	@ (194 <sukima417+0x26>)
+  fa:	4798      	blx	r3
+        furi_check(furi_mutex_acquire(app->worker_mutex, FuriWaitForever) == FuriStatusOk);
+  fc:	f04f 0c02 	mov.w	ip, #2
+
+00000100 <sukima315>:
+ 100:	4b24      	ldr	r3, [pc, #144]	@ (194 <sukima417+0x26>)
+ 102:	4798      	blx	r3
+        furi_thread_yield();
+ 104:	4b24      	ldr	r3, [pc, #144]	@ (198 <sukima417+0x2a>)
+ 106:	4798      	blx	r3
+    for(uint32_t i = 0; i < WORKER_ITERATION_COUNT; ++i) {
+ 108:	3501      	adds	r5, #1
+ 10a:	2d09      	cmp	r5, #9
+ 10c:	d831      	bhi.n	172 <sukima417+0x4>
+        FURI_LOG_I(TAG, "Doing work ...");
+ 10e:	4a23      	ldr	r2, [pc, #140]	@ (19c <sukima417+0x2e>)
+ 110:	491e      	ldr	r1, [pc, #120]	@ (18c <sukima417+0x1e>)
+ 112:	2004      	movs	r0, #4
+ 114:	4b1e      	ldr	r3, [pc, #120]	@ (190 <sukima417+0x22>)
+ 116:	4798      	blx	r3
+        furi_check(furi_mutex_acquire(app->worker_mutex, FuriWaitForever) == FuriStatusOk);
+ 118:	f04f 31ff 	mov.w	r1, #4294967295	@ 0xffffffff
+ 11c:	68b0      	ldr	r0, [r6, #8]
+ 11e:	4b20      	ldr	r3, [pc, #128]	@ (1a0 <sukima417+0x32>)
+ 120:	4798      	blx	r3
+ 122:	2800      	cmp	r0, #0
+ 124:	d1ea      	bne.n	fc <sukima296+0x4>
+        const uint32_t work_time_ms = 900 + furi_hal_random_get() % 200;
+ 126:	4f1f      	ldr	r7, [pc, #124]	@ (1a4 <sukima417+0x36>)
+ 128:	47b8      	blx	r7
+ 12a:	4b1f      	ldr	r3, [pc, #124]	@ (1a8 <sukima417+0x3a>)
+ 12c:	fba3 2300 	umull	r2, r3, r3, r0
+ 130:	099b      	lsrs	r3, r3, #6
+ 132:	22c8      	movs	r2, #200	@ 0xc8
+ 134:	fb02 0313 	mls	r3, r2, r3, r0
+ 138:	f503 7461 	add.w	r4, r3, #900	@ 0x384
+        furi_delay_ms(work_time_ms);
+ 13c:	4620      	mov	r0, r4
+ 13e:	4b1b      	ldr	r3, [pc, #108]	@ (1ac <sukima417+0x3e>)
+ 140:	4798      	blx	r3
+        app->worker_result = furi_hal_random_get() % 0xFF;
+ 142:	47b8      	blx	r7
+ 144:	4a1a      	ldr	r2, [pc, #104]	@ (1b0 <sukima417+0x42>)
+ 146:	fba2 3200 	umull	r3, r2, r2, r0
+ 14a:	09d2      	lsrs	r2, r2, #7
+ 14c:	ebc2 2202 	rsb	r2, r2, r2, lsl #8
+ 150:	1a82      	subs	r2, r0, r2
+ 152:	7332      	strb	r2, [r6, #12]
+        FURI_LOG_I(TAG, "Work done in %lu ms", work_time_ms);
+ 154:	4623      	mov	r3, r4
+ 156:	4a17      	ldr	r2, [pc, #92]	@ (1b4 <sukima417+0x46>)
+ 158:	490c      	ldr	r1, [pc, #48]	@ (18c <sukima417+0x1e>)
+ 15a:	2004      	movs	r0, #4
+ 15c:	4c0c      	ldr	r4, [pc, #48]	@ (190 <sukima417+0x22>)
+ 15e:	47a0      	blx	r4
+        furi_check(furi_mutex_release(app->worker_mutex) == FuriStatusOk);
+ 160:	68b0      	ldr	r0, [r6, #8]
+ 162:	4b15      	ldr	r3, [pc, #84]	@ (1b8 <sukima417+0x4a>)
+ 164:	4798      	blx	r3
+ 166:	2800      	cmp	r0, #0
+ 168:	d0cc      	beq.n	104 <sukima315+0x4>
+ 16a:	f04f 0c02 	mov.w	ip, #2
+
+0000016e <sukima417>:
+ 16e:	4b09      	ldr	r3, [pc, #36]	@ (194 <sukima417+0x26>)
+ 170:	4798      	blx	r3
+    FURI_LOG_I(TAG, "All work done, worker thread out!");
+ 172:	4a12      	ldr	r2, [pc, #72]	@ (1bc <sukima417+0x4e>)
+ 174:	4905      	ldr	r1, [pc, #20]	@ (18c <sukima417+0x1e>)
+ 176:	2004      	movs	r0, #4
+ 178:	4b05      	ldr	r3, [pc, #20]	@ (190 <sukima417+0x22>)
+ 17a:	4798      	blx	r3
+    furi_event_loop_stop(app->event_loop);
+ 17c:	6830      	ldr	r0, [r6, #0]
+ 17e:	4b10      	ldr	r3, [pc, #64]	@ (1c0 <sukima417+0x52>)
+ 180:	4798      	blx	r3
+}
+ 182:	2000      	movs	r0, #0
+ 184:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
+ 186:	bf00      	nop
+ 188:	0000004c 	.word	0x0000004c
+ 18c:	00000034 	.word	0x00000034
+	...
+ 19c:	00000064 	.word	0x00000064
+	...
+ 1a8:	51eb851f 	.word	0x51eb851f
+ 1ac:	00000000 	.word	0x00000000
+ 1b0:	80808081 	.word	0x80808081
+ 1b4:	00000074 	.word	0x00000074
+ 1b8:	00000000 	.word	0x00000000
+ 1bc:	00000088 	.word	0x00000088
+ 1c0:	00000000 	.word	0x00000000
+
+000001c4 <event_loop_mutex_app_run>:
+    furi_event_loop_free(app->event_loop);
+
+    free(app);
+}
+
+static void event_loop_mutex_app_run(EventLoopMutexApp* app) {
+ 1c4:	b510      	push	{r4, lr}
+ 1c6:	4604      	mov	r4, r0
+    furi_thread_start(app->worker_thread);
+ 1c8:	6840      	ldr	r0, [r0, #4]
+ 1ca:	4b04      	ldr	r3, [pc, #16]	@ (1dc <event_loop_mutex_app_run+0x18>)
+ 1cc:	4798      	blx	r3
+    furi_event_loop_run(app->event_loop);
+ 1ce:	6820      	ldr	r0, [r4, #0]
+ 1d0:	4b03      	ldr	r3, [pc, #12]	@ (1e0 <event_loop_mutex_app_run+0x1c>)
+ 1d2:	4798      	blx	r3
+    furi_thread_join(app->worker_thread);
+ 1d4:	6860      	ldr	r0, [r4, #4]
+ 1d6:	4b03      	ldr	r3, [pc, #12]	@ (1e4 <event_loop_mutex_app_run+0x20>)
+ 1d8:	4798      	blx	r3
+}
+ 1da:	bd10      	pop	{r4, pc}
+	...
+
+000001e8 <event_loop_mutex_app_free>:
+static void event_loop_mutex_app_free(EventLoopMutexApp* app) {
+ 1e8:	b510      	push	{r4, lr}
+ 1ea:	4604      	mov	r4, r0
+    furi_event_loop_unsubscribe(app->event_loop, app->worker_mutex);
+ 1ec:	6881      	ldr	r1, [r0, #8]
+ 1ee:	6800      	ldr	r0, [r0, #0]
+ 1f0:	4b07      	ldr	r3, [pc, #28]	@ (210 <event_loop_mutex_app_free+0x28>)
+ 1f2:	4798      	blx	r3
+    furi_thread_free(app->worker_thread);
+ 1f4:	6860      	ldr	r0, [r4, #4]
+ 1f6:	4b07      	ldr	r3, [pc, #28]	@ (214 <event_loop_mutex_app_free+0x2c>)
+ 1f8:	4798      	blx	r3
+    furi_mutex_free(app->worker_mutex);
+ 1fa:	68a0      	ldr	r0, [r4, #8]
+ 1fc:	4b06      	ldr	r3, [pc, #24]	@ (218 <event_loop_mutex_app_free+0x30>)
+ 1fe:	4798      	blx	r3
+    furi_event_loop_free(app->event_loop);
+ 200:	6820      	ldr	r0, [r4, #0]
+ 202:	4b06      	ldr	r3, [pc, #24]	@ (21c <event_loop_mutex_app_free+0x34>)
+ 204:	4798      	blx	r3
+    free(app);
+ 206:	4620      	mov	r0, r4
+ 208:	4b05      	ldr	r3, [pc, #20]	@ (220 <event_loop_mutex_app_free+0x38>)
+ 20a:	4798      	blx	r3
+}
+ 20c:	bd10      	pop	{r4, pc}
+ 20e:	bf00      	nop
+	...
+
+00000224 <example_event_loop_mutex_app>:
+
+// The application's entry point - referenced in application.fam
+int32_t example_event_loop_mutex_app(void* arg) {
+ 224:	b510      	push	{r4, lr}
+    UNUSED(arg);
+
+    EventLoopMutexApp* app = event_loop_mutex_app_alloc();
+ 226:	4b05      	ldr	r3, [pc, #20]	@ (23c <example_event_loop_mutex_app+0x18>)
+ 228:	4798      	blx	r3
+ 22a:	4604      	mov	r4, r0
+    event_loop_mutex_app_run(app);
+ 22c:	4b04      	ldr	r3, [pc, #16]	@ (240 <example_event_loop_mutex_app+0x1c>)
+ 22e:	4798      	blx	r3
+    event_loop_mutex_app_free(app);
+ 230:	4620      	mov	r0, r4
+ 232:	4b04      	ldr	r3, [pc, #16]	@ (244 <example_event_loop_mutex_app+0x20>)
+ 234:	4798      	blx	r3
+
+    return 0;
+}
+ 236:	2000      	movs	r0, #0
+ 238:	bd10      	pop	{r4, pc}
+ 23a:	bf00      	nop
+	...

@@ -1,0 +1,7 @@
+firmware_api_interface U         
+furi_log_print_format U         
+plugin_manager_alloc U         
+plugin_manager_free U         
+plugin_manager_get_count U         
+plugin_manager_get_ep U         
+plugin_manager_load_all U         

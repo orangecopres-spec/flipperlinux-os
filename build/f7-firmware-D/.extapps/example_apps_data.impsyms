@@ -1,0 +1,8 @@
+furi_log_print_format U         
+furi_record_close U         
+furi_record_open U         
+storage_file_alloc U         
+storage_file_close U         
+storage_file_free U         
+storage_file_open U         
+storage_file_write U         

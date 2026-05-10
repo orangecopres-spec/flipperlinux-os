@@ -1,0 +1,414 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_max.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_max.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_max.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_max.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_min.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_min.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_min.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_min.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_number.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_number.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_number.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_number.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene.o
+LOAD build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_max.o
+LOAD build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_min.o
+LOAD build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_number.o
+LOAD build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+LOAD build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libstdc++_nano.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libsupc++_nano.a
+
+.text           0x00000000      0x4a4
+ *(.text)
+ *(.stub)
+ *(.text*)
+ .text.example_number_input_scene_input_max_callback
+                0x00000000       0x14 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_max.o
+                0x00000000                example_number_input_scene_input_max_callback
+ .text.example_number_input_scene_input_max_on_enter
+                0x00000014       0x54 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_max.o
+                0x00000014                example_number_input_scene_input_max_on_enter
+ .text.example_number_input_scene_input_max_on_event
+                0x00000068       0x28 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_max.o
+                0x00000068                example_number_input_scene_input_max_on_event
+ .text.example_number_input_scene_input_max_on_exit
+                0x00000090        0x2 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_max.o
+                0x00000090                example_number_input_scene_input_max_on_exit
+ *fill*         0x00000092        0x2 
+ .text.example_number_input_scene_input_min_callback
+                0x00000094       0x14 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_min.o
+                0x00000094                example_number_input_scene_input_min_callback
+ .text.example_number_input_scene_input_min_on_enter
+                0x000000a8       0x54 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_min.o
+                0x000000a8                example_number_input_scene_input_min_on_enter
+ .text.example_number_input_scene_input_min_on_event
+                0x000000fc       0x28 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_min.o
+                0x000000fc                example_number_input_scene_input_min_on_event
+ .text.example_number_input_scene_input_min_on_exit
+                0x00000124        0x2 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_min.o
+                0x00000124                example_number_input_scene_input_min_on_exit
+ *fill*         0x00000126        0x2 
+ .text.example_number_input_scene_input_number_callback
+                0x00000128       0x14 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_number.o
+                0x00000128                example_number_input_scene_input_number_callback
+ .text.example_number_input_scene_input_number_on_enter
+                0x0000013c       0x68 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_number.o
+                0x0000013c                example_number_input_scene_input_number_on_enter
+ .text.example_number_input_scene_input_number_on_event
+                0x000001a4       0x28 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_number.o
+                0x000001a4                example_number_input_scene_input_number_on_event
+ .text.example_number_input_scene_input_number_on_exit
+                0x000001cc        0x2 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_number.o
+                0x000001cc                example_number_input_scene_input_number_on_exit
+ *fill*         0x000001ce        0x2 
+ .text.example_number_input_scene_update_view
+                0x000001d0       0xa8 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+ .text.example_number_input_scene_confirm_dialog_callback
+                0x00000278       0x14 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+ .text.example_number_input_scene_show_number_on_enter
+                0x0000028c       0x28 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+                0x0000028c                example_number_input_scene_show_number_on_enter
+ .text.example_number_input_scene_show_number_on_event
+                0x000002b4       0x50 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+                0x000002b4                example_number_input_scene_show_number_on_event
+ .text.example_number_input_scene_show_number_on_exit
+                0x00000304        0x2 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+                0x00000304                example_number_input_scene_show_number_on_exit
+ *fill*         0x00000306        0x2 
+ .text.example_number_input_custom_event_callback
+                0x00000308       0x1c build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+                0x00000308                example_number_input_custom_event_callback
+ .text.example_number_input_alloc
+                0x00000324       0xb8 build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+ .text.example_number_input_back_event_callback
+                0x000003dc       0x1c build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+ .text.example_number_input_free
+                0x000003f8       0x6c build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+ .text.example_number_input
+                0x00000464       0x40 build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+                0x00000464                example_number_input
+ *(.text.*)
+ *(.text._*)
+ *(.init)
+ *(.fini)
+
+.rodata         0x000004a4       0xb0
+ *(.rodata)
+ *(.rodata1)
+ *(.rodata.*)
+ .rodata.example_number_input_scene_handlers
+                0x000004a4       0x10 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene.o
+                0x000004a4                example_number_input_scene_handlers
+ .rodata.example_number_input_on_exit_handlers
+                0x000004b4       0x10 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene.o
+                0x000004b4                example_number_input_on_exit_handlers
+ .rodata.example_number_input_on_event_handlers
+                0x000004c4       0x10 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene.o
+                0x000004c4                example_number_input_on_event_handlers
+ .rodata.example_number_input_on_enter_handlers
+                0x000004d4       0x10 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene.o
+                0x000004d4                example_number_input_on_enter_handlers
+ .rodata.example_number_input_scene_input_max_on_enter.str1.4
+                0x000004e4       0x18 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_max.o
+ .rodata.example_number_input_scene_input_min_on_enter.str1.4
+                0x000004fc       0x18 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_min.o
+ .rodata.example_number_input_scene_input_number_on_enter.str1.4
+                0x00000514       0x17 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_number.o
+ *fill*         0x0000052b        0x1 
+ .rodata.example_number_input_scene_update_view.str1.4
+                0x0000052c       0x23 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+ *fill*         0x0000054f        0x1 
+ .rodata.example_number_input_alloc.str1.4
+                0x00000550        0x4 build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+
+.data
+ *(.data)
+ *(.data1)
+ *(.data.*)
+
+.bss
+ *(.bss)
+ *(.bss*)
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x140
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x18 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene.o
+ .debug_aranges
+                0x00000018       0x38 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_max.o
+ .debug_aranges
+                0x00000050       0x38 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_min.o
+ .debug_aranges
+                0x00000088       0x38 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_number.o
+ .debug_aranges
+                0x000000c0       0x40 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+ .debug_aranges
+                0x00000100       0x40 build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x2a9f
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000      0x324 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene.o
+ .debug_info    0x00000324      0x65a build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_max.o
+ .debug_info    0x0000097e      0x659 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_min.o
+ .debug_info    0x00000fd7      0x6d0 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_number.o
+ .debug_info    0x000016a7      0x932 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+ .debug_info    0x00001fd9      0xac6 build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+
+.debug_abbrev   0x00000000      0xcf2
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x137 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene.o
+ .debug_abbrev  0x00000137      0x248 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_max.o
+ .debug_abbrev  0x0000037f      0x248 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_min.o
+ .debug_abbrev  0x000005c7      0x25d build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_number.o
+ .debug_abbrev  0x00000824      0x260 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+ .debug_abbrev  0x00000a84      0x26e build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+
+.debug_line     0x00000000     0x172d
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x1ac build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene.o
+ .debug_line_end
+                0x000001ac        0x0 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene.o
+ .debug_line    0x000001ac      0x28d build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_max.o
+ .debug_line.text.example_number_input_scene_input_max_callback
+                0x00000439       0x24 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_max.o
+ .debug_line.text.example_number_input_scene_input_max_on_enter
+                0x0000045d       0x79 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_max.o
+ .debug_line.text.example_number_input_scene_input_max_on_event
+                0x000004d6       0x32 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_max.o
+ .debug_line.text.example_number_input_scene_input_max_on_exit
+                0x00000508       0x18 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_max.o
+ .debug_line_end
+                0x00000520        0x0 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_max.o
+ .debug_line    0x00000520      0x28d build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_min.o
+ .debug_line.text.example_number_input_scene_input_min_callback
+                0x000007ad       0x24 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_min.o
+ .debug_line.text.example_number_input_scene_input_min_on_enter
+                0x000007d1       0x79 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_min.o
+ .debug_line.text.example_number_input_scene_input_min_on_event
+                0x0000084a       0x32 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_min.o
+ .debug_line.text.example_number_input_scene_input_min_on_exit
+                0x0000087c       0x18 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_min.o
+ .debug_line_end
+                0x00000894        0x0 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_min.o
+ .debug_line    0x00000894      0x360 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_number.o
+ .debug_line.text.example_number_input_scene_input_number_callback
+                0x00000bf4       0x24 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_number.o
+ .debug_line.text.example_number_input_scene_input_number_on_enter
+                0x00000c18       0x83 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_number.o
+ .debug_line.text.example_number_input_scene_input_number_on_event
+                0x00000c9b       0x32 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_number.o
+ .debug_line.text.example_number_input_scene_input_number_on_exit
+                0x00000ccd       0x18 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_number.o
+ .debug_line_end
+                0x00000ce5        0x0 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_number.o
+ .debug_line    0x00000ce5      0x3c7 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+ .debug_line.text.example_number_input_scene_update_view
+                0x000010ac       0x37 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+ .debug_line.text.example_number_input_scene_confirm_dialog_callback
+                0x000010e3       0x1d build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+ .debug_line.text.example_number_input_scene_show_number_on_enter
+                0x00001100       0x58 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+ .debug_line.text.example_number_input_scene_show_number_on_event
+                0x00001158       0x61 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+ .debug_line.text.example_number_input_scene_show_number_on_exit
+                0x000011b9       0x18 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+ .debug_line_end
+                0x000011d1        0x0 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+ .debug_line    0x000011d1      0x37a build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+ .debug_line.text.example_number_input_custom_event_callback
+                0x0000154b       0x5b build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+ .debug_line.text.example_number_input_alloc
+                0x000015a6       0x76 build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+ .debug_line.text.example_number_input_back_event_callback
+                0x0000161c       0x5b build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+ .debug_line.text.example_number_input_free
+                0x00001677       0x88 build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+ .debug_line.text.example_number_input
+                0x000016ff       0x2e build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+ .debug_line_end
+                0x0000172d        0x0 build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+
+.debug_frame    0x00000000      0x294
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x7c build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_max.o
+ .debug_frame   0x0000007c       0x7c build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_min.o
+ .debug_frame   0x000000f8       0x7c build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_number.o
+ .debug_frame   0x00000174       0x90 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+ .debug_frame   0x00000204       0x90 build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+
+.debug_str      0x00000000     0x296d
+ *(.debug_str)
+ .debug_str     0x00000000      0x697 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene.o
+ .debug_str     0x00000697      0x5bd build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_max.o
+ .debug_str     0x00000c54      0x5bd build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_min.o
+ .debug_str     0x00001211      0x5ef build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_number.o
+ .debug_str     0x00001800      0x837 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+ .debug_str     0x00002037      0x936 build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+ *(.debug_line_str)
+
+.debug_loclists
+                0x00000000      0x5fd
+ *(.debug_loclists)
+ .debug_loclists
+                0x00000000      0x101 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_max.o
+ .debug_loclists
+                0x00000101      0x101 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_min.o
+ .debug_loclists
+                0x00000202      0x101 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_number.o
+ .debug_loclists
+                0x00000303      0x1dc build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+ .debug_loclists
+                0x000004df      0x11e build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x00000000       0xc7
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x00000000       0x25 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_max.o
+ .debug_rnglists
+                0x00000025       0x25 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_min.o
+ .debug_rnglists
+                0x0000004a       0x25 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_number.o
+ .debug_rnglists
+                0x0000006f       0x2c build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+ .debug_rnglists
+                0x0000009b       0x2c build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.ARM.attributes
+                0x00000000       0x34
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x34 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene.o
+ .ARM.attributes
+                0x00000034       0x34 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_max.o
+ .ARM.attributes
+                0x00000068       0x34 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_min.o
+ .ARM.attributes
+                0x0000009c       0x34 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_input_number.o
+ .ARM.attributes
+                0x000000d0       0x34 build/f7-firmware-D/.extapps/example_number_input/scenes/example_number_input_scene_show_number.o
+ .ARM.attributes
+                0x00000104       0x34 build/f7-firmware-D/.extapps/example_number_input/example_number_input.o
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+
+/DISCARD/
+ *(.comment)
+ *(.comment.*)
+ *(.llvmbc)
+ *(.llvmcmd)
+OUTPUT(build/f7-firmware-D/.extapps/example_number_input_d.elf elf32-littlearm)
+LOAD linker stubs

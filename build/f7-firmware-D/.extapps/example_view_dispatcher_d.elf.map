@@ -1,0 +1,221 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libstdc++_nano.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libsupc++_nano.a
+
+.text           0x00000000      0x238
+ *(.text)
+ *(.stub)
+ *(.text*)
+ .text.example_view_dispatcher_app_alloc
+                0x00000000      0x110 build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+ .text.example_view_dispatcher_app_navigation_callback
+                0x00000110       0x20 build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+ .text.example_view_dispatcher_app_custom_event_callback
+                0x00000130       0x2c build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+ .text.example_view_dispatcher_app_submenu_callback
+                0x0000015c       0x24 build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+ .text.example_view_dispatcher_app_button_callback
+                0x00000180       0x28 build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+ .text.example_view_dispatcher_app_run
+                0x000001a8       0x1c build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+ .text.example_view_dispatcher_app_free
+                0x000001c4       0x50 build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+ .text.example_view_dispatcher_app
+                0x00000214       0x24 build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+                0x00000214                example_view_dispatcher_app
+ *(.text.*)
+ *(.text._*)
+ *(.init)
+ *(.fini)
+
+.rodata         0x00000238       0x33
+ *(.rodata)
+ *(.rodata1)
+ *(.rodata.*)
+ .rodata.example_view_dispatcher_app_alloc.str1.4
+                0x00000238       0x33 build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+
+.data
+ *(.data)
+ *(.data1)
+ *(.data.*)
+
+.bss
+ *(.bss)
+ *(.bss*)
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x58
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x58 build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000      0xae1
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000      0xae1 build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+
+.debug_abbrev   0x00000000      0x214
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x214 build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+
+.debug_line     0x00000000      0x596
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x319 build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+ .debug_line.text.example_view_dispatcher_app_alloc
+                0x00000319       0x59 build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+ .debug_line.text.example_view_dispatcher_app_navigation_callback
+                0x00000372       0x5d build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+ .debug_line.text.example_view_dispatcher_app_custom_event_callback
+                0x000003cf       0x8e build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+ .debug_line.text.example_view_dispatcher_app_submenu_callback
+                0x0000045d       0x61 build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+ .debug_line.text.example_view_dispatcher_app_button_callback
+                0x000004be       0x68 build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+ .debug_line.text.example_view_dispatcher_app_run
+                0x00000526       0x21 build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+ .debug_line.text.example_view_dispatcher_app_free
+                0x00000547       0x26 build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+ .debug_line.text.example_view_dispatcher_app
+                0x0000056d       0x29 build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+ .debug_line_end
+                0x00000596        0x0 build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+
+.debug_frame    0x00000000       0xe4
+ *(.debug_frame)
+ .debug_frame   0x00000000       0xe4 build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+
+.debug_str      0x00000000      0x8d9
+ *(.debug_str)
+ .debug_str     0x00000000      0x8d9 build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+ *(.debug_line_str)
+
+.debug_loclists
+                0x00000000      0x2eb
+ *(.debug_loclists)
+ .debug_loclists
+                0x00000000      0x2eb build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x00000000       0x3e
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x00000000       0x3e build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.ARM.attributes
+                0x00000000       0x34
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x34 build/f7-firmware-D/.extapps/example_view_dispatcher/example_view_dispatcher.o
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+
+/DISCARD/
+ *(.comment)
+ *(.comment.*)
+ *(.llvmbc)
+ *(.llvmcmd)
+OUTPUT(build/f7-firmware-D/.extapps/example_view_dispatcher_d.elf elf32-littlearm)
+LOAD linker stubs

@@ -1,0 +1,2792 @@
+
+build/f7-firmware-D/.extapps/bt_debug_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <__aeabi_drsub>:
+       0:	f081 4100 	eor.w	r1, r1, #2147483648	@ 0x80000000
+       4:	e002      	b.n	c <__adddf3>
+       6:	bf00      	nop
+
+00000008 <__aeabi_dsub>:
+       8:	f083 4300 	eor.w	r3, r3, #2147483648	@ 0x80000000
+
+0000000c <__adddf3>:
+       c:	b530      	push	{r4, r5, lr}
+       e:	ea4f 0441 	mov.w	r4, r1, lsl #1
+      12:	ea4f 0543 	mov.w	r5, r3, lsl #1
+      16:	ea94 0f05 	teq	r4, r5
+      1a:	bf08      	it	eq
+      1c:	ea90 0f02 	teqeq	r0, r2
+      20:	bf1f      	itttt	ne
+      22:	ea54 0c00 	orrsne.w	ip, r4, r0
+      26:	ea55 0c02 	orrsne.w	ip, r5, r2
+      2a:	ea7f 5c64 	mvnsne.w	ip, r4, asr #21
+      2e:	ea7f 5c65 	mvnsne.w	ip, r5, asr #21
+      32:	f000 80e2 	beq.w	1fa <__adddf3+0x1ee>
+      36:	ea4f 5454 	mov.w	r4, r4, lsr #21
+      3a:	ebd4 5555 	rsbs	r5, r4, r5, lsr #21
+      3e:	bfb8      	it	lt
+      40:	426d      	neglt	r5, r5
+      42:	dd0c      	ble.n	5e <__adddf3+0x52>
+      44:	442c      	add	r4, r5
+      46:	ea80 0202 	eor.w	r2, r0, r2
+      4a:	ea81 0303 	eor.w	r3, r1, r3
+      4e:	ea82 0000 	eor.w	r0, r2, r0
+      52:	ea83 0101 	eor.w	r1, r3, r1
+      56:	ea80 0202 	eor.w	r2, r0, r2
+      5a:	ea81 0303 	eor.w	r3, r1, r3
+      5e:	2d36      	cmp	r5, #54	@ 0x36
+      60:	bf88      	it	hi
+      62:	bd30      	pophi	{r4, r5, pc}
+      64:	f011 4f00 	tst.w	r1, #2147483648	@ 0x80000000
+      68:	ea4f 3101 	mov.w	r1, r1, lsl #12
+      6c:	f44f 1c80 	mov.w	ip, #1048576	@ 0x100000
+      70:	ea4c 3111 	orr.w	r1, ip, r1, lsr #12
+      74:	d002      	beq.n	7c <__adddf3+0x70>
+      76:	4240      	negs	r0, r0
+      78:	eb61 0141 	sbc.w	r1, r1, r1, lsl #1
+      7c:	f013 4f00 	tst.w	r3, #2147483648	@ 0x80000000
+      80:	ea4f 3303 	mov.w	r3, r3, lsl #12
+      84:	ea4c 3313 	orr.w	r3, ip, r3, lsr #12
+      88:	d002      	beq.n	90 <__adddf3+0x84>
+      8a:	4252      	negs	r2, r2
+      8c:	eb63 0343 	sbc.w	r3, r3, r3, lsl #1
+      90:	ea94 0f05 	teq	r4, r5
+      94:	f000 80a7 	beq.w	1e6 <__adddf3+0x1da>
+      98:	f1a4 0401 	sub.w	r4, r4, #1
+      9c:	f1d5 0e20 	rsbs	lr, r5, #32
+      a0:	db0d      	blt.n	be <__adddf3+0xb2>
+      a2:	fa02 fc0e 	lsl.w	ip, r2, lr
+      a6:	fa22 f205 	lsr.w	r2, r2, r5
+      aa:	1880      	adds	r0, r0, r2
+      ac:	f141 0100 	adc.w	r1, r1, #0
+      b0:	fa03 f20e 	lsl.w	r2, r3, lr
+      b4:	1880      	adds	r0, r0, r2
+      b6:	fa43 f305 	asr.w	r3, r3, r5
+      ba:	4159      	adcs	r1, r3
+      bc:	e00e      	b.n	dc <__adddf3+0xd0>
+      be:	f1a5 0520 	sub.w	r5, r5, #32
+      c2:	f10e 0e20 	add.w	lr, lr, #32
+      c6:	2a01      	cmp	r2, #1
+      c8:	fa03 fc0e 	lsl.w	ip, r3, lr
+      cc:	bf28      	it	cs
+      ce:	f04c 0c02 	orrcs.w	ip, ip, #2
+      d2:	fa43 f305 	asr.w	r3, r3, r5
+      d6:	18c0      	adds	r0, r0, r3
+      d8:	eb51 71e3 	adcs.w	r1, r1, r3, asr #31
+      dc:	f001 4500 	and.w	r5, r1, #2147483648	@ 0x80000000
+      e0:	d507      	bpl.n	f2 <__adddf3+0xe6>
+      e2:	f04f 0e00 	mov.w	lr, #0
+      e6:	f1dc 0c00 	rsbs	ip, ip, #0
+      ea:	eb7e 0000 	sbcs.w	r0, lr, r0
+      ee:	eb6e 0101 	sbc.w	r1, lr, r1
+      f2:	f5b1 1f80 	cmp.w	r1, #1048576	@ 0x100000
+      f6:	d31b      	bcc.n	130 <__adddf3+0x124>
+      f8:	f5b1 1f00 	cmp.w	r1, #2097152	@ 0x200000
+      fc:	d30c      	bcc.n	118 <__adddf3+0x10c>
+      fe:	0849      	lsrs	r1, r1, #1
+     100:	ea5f 0030 	movs.w	r0, r0, rrx
+     104:	ea4f 0c3c 	mov.w	ip, ip, rrx
+     108:	f104 0401 	add.w	r4, r4, #1
+     10c:	ea4f 5244 	mov.w	r2, r4, lsl #21
+     110:	f512 0f80 	cmn.w	r2, #4194304	@ 0x400000
+     114:	f080 809a 	bcs.w	24c <__adddf3+0x240>
+     118:	f1bc 4f00 	cmp.w	ip, #2147483648	@ 0x80000000
+     11c:	bf08      	it	eq
+     11e:	ea5f 0c50 	movseq.w	ip, r0, lsr #1
+     122:	f150 0000 	adcs.w	r0, r0, #0
+     126:	eb41 5104 	adc.w	r1, r1, r4, lsl #20
+     12a:	ea41 0105 	orr.w	r1, r1, r5
+     12e:	bd30      	pop	{r4, r5, pc}
+     130:	ea5f 0c4c 	movs.w	ip, ip, lsl #1
+     134:	4140      	adcs	r0, r0
+     136:	eb41 0101 	adc.w	r1, r1, r1
+     13a:	3c01      	subs	r4, #1
+     13c:	bf28      	it	cs
+     13e:	f5b1 1f80 	cmpcs.w	r1, #1048576	@ 0x100000
+     142:	d2e9      	bcs.n	118 <__adddf3+0x10c>
+     144:	f091 0f00 	teq	r1, #0
+     148:	bf04      	itt	eq
+     14a:	4601      	moveq	r1, r0
+     14c:	2000      	moveq	r0, #0
+     14e:	fab1 f381 	clz	r3, r1
+     152:	bf08      	it	eq
+     154:	3320      	addeq	r3, #32
+     156:	f1a3 030b 	sub.w	r3, r3, #11
+     15a:	f1b3 0220 	subs.w	r2, r3, #32
+     15e:	da0c      	bge.n	17a <__adddf3+0x16e>
+     160:	320c      	adds	r2, #12
+     162:	dd08      	ble.n	176 <__adddf3+0x16a>
+     164:	f102 0c14 	add.w	ip, r2, #20
+     168:	f1c2 020c 	rsb	r2, r2, #12
+     16c:	fa01 f00c 	lsl.w	r0, r1, ip
+     170:	fa21 f102 	lsr.w	r1, r1, r2
+     174:	e00c      	b.n	190 <__adddf3+0x184>
+     176:	f102 0214 	add.w	r2, r2, #20
+     17a:	bfd8      	it	le
+     17c:	f1c2 0c20 	rsble	ip, r2, #32
+     180:	fa01 f102 	lsl.w	r1, r1, r2
+     184:	fa20 fc0c 	lsr.w	ip, r0, ip
+     188:	bfdc      	itt	le
+     18a:	ea41 010c 	orrle.w	r1, r1, ip
+     18e:	4090      	lslle	r0, r2
+     190:	1ae4      	subs	r4, r4, r3
+     192:	bfa2      	ittt	ge
+     194:	eb01 5104 	addge.w	r1, r1, r4, lsl #20
+     198:	4329      	orrge	r1, r5
+     19a:	bd30      	popge	{r4, r5, pc}
+     19c:	ea6f 0404 	mvn.w	r4, r4
+     1a0:	3c1f      	subs	r4, #31
+     1a2:	da1c      	bge.n	1de <__adddf3+0x1d2>
+     1a4:	340c      	adds	r4, #12
+     1a6:	dc0e      	bgt.n	1c6 <__adddf3+0x1ba>
+     1a8:	f104 0414 	add.w	r4, r4, #20
+     1ac:	f1c4 0220 	rsb	r2, r4, #32
+     1b0:	fa20 f004 	lsr.w	r0, r0, r4
+     1b4:	fa01 f302 	lsl.w	r3, r1, r2
+     1b8:	ea40 0003 	orr.w	r0, r0, r3
+     1bc:	fa21 f304 	lsr.w	r3, r1, r4
+     1c0:	ea45 0103 	orr.w	r1, r5, r3
+     1c4:	bd30      	pop	{r4, r5, pc}
+     1c6:	f1c4 040c 	rsb	r4, r4, #12
+     1ca:	f1c4 0220 	rsb	r2, r4, #32
+     1ce:	fa20 f002 	lsr.w	r0, r0, r2
+     1d2:	fa01 f304 	lsl.w	r3, r1, r4
+     1d6:	ea40 0003 	orr.w	r0, r0, r3
+     1da:	4629      	mov	r1, r5
+     1dc:	bd30      	pop	{r4, r5, pc}
+     1de:	fa21 f004 	lsr.w	r0, r1, r4
+     1e2:	4629      	mov	r1, r5
+     1e4:	bd30      	pop	{r4, r5, pc}
+     1e6:	f094 0f00 	teq	r4, #0
+     1ea:	f483 1380 	eor.w	r3, r3, #1048576	@ 0x100000
+     1ee:	bf06      	itte	eq
+     1f0:	f481 1180 	eoreq.w	r1, r1, #1048576	@ 0x100000
+     1f4:	3401      	addeq	r4, #1
+     1f6:	3d01      	subne	r5, #1
+     1f8:	e74e      	b.n	98 <__adddf3+0x8c>
+     1fa:	ea7f 5c64 	mvns.w	ip, r4, asr #21
+     1fe:	bf18      	it	ne
+     200:	ea7f 5c65 	mvnsne.w	ip, r5, asr #21
+     204:	d029      	beq.n	25a <__adddf3+0x24e>
+     206:	ea94 0f05 	teq	r4, r5
+     20a:	bf08      	it	eq
+     20c:	ea90 0f02 	teqeq	r0, r2
+     210:	d005      	beq.n	21e <__adddf3+0x212>
+     212:	ea54 0c00 	orrs.w	ip, r4, r0
+     216:	bf04      	itt	eq
+     218:	4619      	moveq	r1, r3
+     21a:	4610      	moveq	r0, r2
+     21c:	bd30      	pop	{r4, r5, pc}
+     21e:	ea91 0f03 	teq	r1, r3
+     222:	bf1e      	ittt	ne
+     224:	2100      	movne	r1, #0
+     226:	2000      	movne	r0, #0
+     228:	bd30      	popne	{r4, r5, pc}
+     22a:	ea5f 5c54 	movs.w	ip, r4, lsr #21
+     22e:	d105      	bne.n	23c <__adddf3+0x230>
+     230:	0040      	lsls	r0, r0, #1
+     232:	4149      	adcs	r1, r1
+     234:	bf28      	it	cs
+     236:	f041 4100 	orrcs.w	r1, r1, #2147483648	@ 0x80000000
+     23a:	bd30      	pop	{r4, r5, pc}
+     23c:	f514 0480 	adds.w	r4, r4, #4194304	@ 0x400000
+     240:	bf3c      	itt	cc
+     242:	f501 1180 	addcc.w	r1, r1, #1048576	@ 0x100000
+     246:	bd30      	popcc	{r4, r5, pc}
+     248:	f001 4500 	and.w	r5, r1, #2147483648	@ 0x80000000
+     24c:	f045 41fe 	orr.w	r1, r5, #2130706432	@ 0x7f000000
+     250:	f441 0170 	orr.w	r1, r1, #15728640	@ 0xf00000
+     254:	f04f 0000 	mov.w	r0, #0
+     258:	bd30      	pop	{r4, r5, pc}
+     25a:	ea7f 5c64 	mvns.w	ip, r4, asr #21
+     25e:	bf1a      	itte	ne
+     260:	4619      	movne	r1, r3
+     262:	4610      	movne	r0, r2
+     264:	ea7f 5c65 	mvnseq.w	ip, r5, asr #21
+     268:	bf1c      	itt	ne
+     26a:	460b      	movne	r3, r1
+     26c:	4602      	movne	r2, r0
+     26e:	ea50 3401 	orrs.w	r4, r0, r1, lsl #12
+     272:	bf06      	itte	eq
+     274:	ea52 3503 	orrseq.w	r5, r2, r3, lsl #12
+     278:	ea91 0f03 	teqeq	r1, r3
+     27c:	f441 2100 	orrne.w	r1, r1, #524288	@ 0x80000
+     280:	bd30      	pop	{r4, r5, pc}
+     282:	bf00      	nop
+
+00000284 <__aeabi_ui2d>:
+     284:	f090 0f00 	teq	r0, #0
+     288:	bf04      	itt	eq
+     28a:	2100      	moveq	r1, #0
+     28c:	4770      	bxeq	lr
+     28e:	b530      	push	{r4, r5, lr}
+     290:	f44f 6480 	mov.w	r4, #1024	@ 0x400
+     294:	f104 0432 	add.w	r4, r4, #50	@ 0x32
+     298:	f04f 0500 	mov.w	r5, #0
+     29c:	f04f 0100 	mov.w	r1, #0
+     2a0:	e750      	b.n	144 <__adddf3+0x138>
+     2a2:	bf00      	nop
+
+000002a4 <__aeabi_i2d>:
+     2a4:	f090 0f00 	teq	r0, #0
+     2a8:	bf04      	itt	eq
+     2aa:	2100      	moveq	r1, #0
+     2ac:	4770      	bxeq	lr
+     2ae:	b530      	push	{r4, r5, lr}
+     2b0:	f44f 6480 	mov.w	r4, #1024	@ 0x400
+     2b4:	f104 0432 	add.w	r4, r4, #50	@ 0x32
+     2b8:	f010 4500 	ands.w	r5, r0, #2147483648	@ 0x80000000
+     2bc:	bf48      	it	mi
+     2be:	4240      	negmi	r0, r0
+     2c0:	f04f 0100 	mov.w	r1, #0
+     2c4:	e73e      	b.n	144 <__adddf3+0x138>
+     2c6:	bf00      	nop
+
+000002c8 <__aeabi_f2d>:
+     2c8:	0042      	lsls	r2, r0, #1
+     2ca:	ea4f 01e2 	mov.w	r1, r2, asr #3
+     2ce:	ea4f 0131 	mov.w	r1, r1, rrx
+     2d2:	ea4f 7002 	mov.w	r0, r2, lsl #28
+     2d6:	bf1f      	itttt	ne
+     2d8:	f012 437f 	andsne.w	r3, r2, #4278190080	@ 0xff000000
+     2dc:	f093 4f7f 	teqne	r3, #4278190080	@ 0xff000000
+     2e0:	f081 5160 	eorne.w	r1, r1, #939524096	@ 0x38000000
+     2e4:	4770      	bxne	lr
+     2e6:	f032 427f 	bics.w	r2, r2, #4278190080	@ 0xff000000
+     2ea:	bf08      	it	eq
+     2ec:	4770      	bxeq	lr
+     2ee:	f093 4f7f 	teq	r3, #4278190080	@ 0xff000000
+     2f2:	bf04      	itt	eq
+     2f4:	f441 2100 	orreq.w	r1, r1, #524288	@ 0x80000
+     2f8:	4770      	bxeq	lr
+     2fa:	b530      	push	{r4, r5, lr}
+     2fc:	f44f 7460 	mov.w	r4, #896	@ 0x380
+     300:	f001 4500 	and.w	r5, r1, #2147483648	@ 0x80000000
+     304:	f021 4100 	bic.w	r1, r1, #2147483648	@ 0x80000000
+     308:	e71c      	b.n	144 <__adddf3+0x138>
+     30a:	bf00      	nop
+
+0000030c <__aeabi_ul2d>:
+     30c:	ea50 0201 	orrs.w	r2, r0, r1
+     310:	bf08      	it	eq
+     312:	4770      	bxeq	lr
+     314:	b530      	push	{r4, r5, lr}
+     316:	f04f 0500 	mov.w	r5, #0
+     31a:	e00a      	b.n	332 <__aeabi_l2d+0x16>
+
+0000031c <__aeabi_l2d>:
+     31c:	ea50 0201 	orrs.w	r2, r0, r1
+     320:	bf08      	it	eq
+     322:	4770      	bxeq	lr
+     324:	b530      	push	{r4, r5, lr}
+     326:	f011 4500 	ands.w	r5, r1, #2147483648	@ 0x80000000
+     32a:	d502      	bpl.n	332 <__aeabi_l2d+0x16>
+     32c:	4240      	negs	r0, r0
+     32e:	eb61 0141 	sbc.w	r1, r1, r1, lsl #1
+     332:	f44f 6480 	mov.w	r4, #1024	@ 0x400
+     336:	f104 0432 	add.w	r4, r4, #50	@ 0x32
+     33a:	ea5f 5c91 	movs.w	ip, r1, lsr #22
+     33e:	f43f aed8 	beq.w	f2 <__adddf3+0xe6>
+     342:	f04f 0203 	mov.w	r2, #3
+     346:	ea5f 0cdc 	movs.w	ip, ip, lsr #3
+     34a:	bf18      	it	ne
+     34c:	3203      	addne	r2, #3
+     34e:	ea5f 0cdc 	movs.w	ip, ip, lsr #3
+     352:	bf18      	it	ne
+     354:	3203      	addne	r2, #3
+     356:	eb02 02dc 	add.w	r2, r2, ip, lsr #3
+     35a:	f1c2 0320 	rsb	r3, r2, #32
+     35e:	fa00 fc03 	lsl.w	ip, r0, r3
+     362:	fa20 f002 	lsr.w	r0, r0, r2
+     366:	fa01 fe03 	lsl.w	lr, r1, r3
+     36a:	ea40 000e 	orr.w	r0, r0, lr
+     36e:	fa21 f102 	lsr.w	r1, r1, r2
+     372:	4414      	add	r4, r2
+     374:	e6bd      	b.n	f2 <__adddf3+0xe6>
+     376:	bf00      	nop
+
+00000378 <bt_carrier_test_switch_channel>:
+    } else if(bt_carrier_test->mode == BtTestModeTx) {
+        furi_hal_bt_start_tone_tx(bt_carrier_test->channel, bt_carrier_test->power);
+    }
+}
+
+static void bt_carrier_test_switch_channel(BtCarrierTest* bt_carrier_test) {
+     378:	b538      	push	{r3, r4, r5, lr}
+    furi_assert(bt_carrier_test);
+     37a:	b1b8      	cbz	r0, 3ac <bt_carrier_test_switch_channel+0x34>
+     37c:	4604      	mov	r4, r0
+    furi_hal_bt_stop_tone_tx();
+     37e:	4b14      	ldr	r3, [pc, #80]	@ (3d0 <sukima78+0x20>)
+     380:	4798      	blx	r3
+    uint8_t channel_i = 0;
+    if(bt_carrier_test->channel == BtTestChannel2402) {
+     382:	7a63      	ldrb	r3, [r4, #9]
+     384:	b9b3      	cbnz	r3, 3b4 <sukima78+0x4>
+        bt_carrier_test->channel = BtTestChannel2440;
+     386:	2313      	movs	r3, #19
+     388:	7263      	strb	r3, [r4, #9]
+        channel_i = 1;
+     38a:	2501      	movs	r5, #1
+        channel_i = 2;
+    } else if(bt_carrier_test->channel == BtTestChannel2480) {
+        bt_carrier_test->channel = BtTestChannel2402;
+        channel_i = 0;
+    }
+    furi_hal_bt_start_tone_tx(bt_carrier_test->channel, bt_carrier_test->power);
+     38c:	7aa1      	ldrb	r1, [r4, #10]
+     38e:	7a60      	ldrb	r0, [r4, #9]
+     390:	4b10      	ldr	r3, [pc, #64]	@ (3d4 <sukima78+0x24>)
+     392:	4798      	blx	r3
+    bt_test_set_current_value_index(bt_carrier_test->bt_param_channel, channel_i);
+     394:	4629      	mov	r1, r5
+     396:	6860      	ldr	r0, [r4, #4]
+     398:	4b0f      	ldr	r3, [pc, #60]	@ (3d8 <sukima78+0x28>)
+     39a:	4798      	blx	r3
+    bt_test_set_current_value_text(
+     39c:	490f      	ldr	r1, [pc, #60]	@ (3dc <sukima78+0x2c>)
+     39e:	eb01 01c5 	add.w	r1, r1, r5, lsl #3
+     3a2:	6849      	ldr	r1, [r1, #4]
+     3a4:	6860      	ldr	r0, [r4, #4]
+     3a6:	4b0e      	ldr	r3, [pc, #56]	@ (3e0 <sukima78+0x30>)
+     3a8:	4798      	blx	r3
+        bt_carrier_test->bt_param_channel, bt_param_channel[channel_i].str);
+}
+     3aa:	bd38      	pop	{r3, r4, r5, pc}
+    furi_assert(bt_carrier_test);
+     3ac:	f04f 0c01 	mov.w	ip, #1
+
+000003b0 <sukima78>:
+     3b0:	4b0c      	ldr	r3, [pc, #48]	@ (3e4 <sukima78+0x34>)
+     3b2:	4798      	blx	r3
+    } else if(bt_carrier_test->channel == BtTestChannel2440) {
+     3b4:	2b13      	cmp	r3, #19
+     3b6:	d003      	beq.n	3c0 <sukima78+0x10>
+    } else if(bt_carrier_test->channel == BtTestChannel2480) {
+     3b8:	2b27      	cmp	r3, #39	@ 0x27
+     3ba:	d005      	beq.n	3c8 <sukima78+0x18>
+    uint8_t channel_i = 0;
+     3bc:	2500      	movs	r5, #0
+     3be:	e7e5      	b.n	38c <bt_carrier_test_switch_channel+0x14>
+        bt_carrier_test->channel = BtTestChannel2480;
+     3c0:	2327      	movs	r3, #39	@ 0x27
+     3c2:	7263      	strb	r3, [r4, #9]
+        channel_i = 2;
+     3c4:	2502      	movs	r5, #2
+     3c6:	e7e1      	b.n	38c <bt_carrier_test_switch_channel+0x14>
+        bt_carrier_test->channel = BtTestChannel2402;
+     3c8:	2500      	movs	r5, #0
+     3ca:	7265      	strb	r5, [r4, #9]
+        channel_i = 0;
+     3cc:	e7de      	b.n	38c <bt_carrier_test_switch_channel+0x14>
+     3ce:	bf00      	nop
+	...
+     3dc:	00000020 	.word	0x00000020
+	...
+
+000003e8 <bt_test_carrier_timer_callback>:
+    furi_assert(context);
+    BtCarrierTest* bt_carrier_test = context;
+    bt_carrier_test_stop(bt_carrier_test);
+}
+
+static void bt_test_carrier_timer_callback(void* context) {
+     3e8:	b510      	push	{r4, lr}
+    furi_assert(context);
+     3ea:	b120      	cbz	r0, 3f6 <bt_test_carrier_timer_callback+0xe>
+    BtCarrierTest* bt_carrier_test = context;
+    if(bt_carrier_test->mode == BtTestModeRx) {
+     3ec:	7a03      	ldrb	r3, [r0, #8]
+     3ee:	b133      	cbz	r3, 3fe <sukima175+0x4>
+        bt_test_set_rssi(bt_carrier_test->bt_test, furi_hal_bt_get_rssi());
+    } else if(bt_carrier_test->mode == BtTestModeTxHopping) {
+     3f0:	2b02      	cmp	r3, #2
+     3f2:	d00b      	beq.n	40c <sukima175+0x12>
+        bt_carrier_test_switch_channel(bt_carrier_test);
+    }
+}
+     3f4:	bd10      	pop	{r4, pc}
+    furi_assert(context);
+     3f6:	f04f 0c01 	mov.w	ip, #1
+
+000003fa <sukima175>:
+     3fa:	4b06      	ldr	r3, [pc, #24]	@ (414 <sukima175+0x1a>)
+     3fc:	4798      	blx	r3
+        bt_test_set_rssi(bt_carrier_test->bt_test, furi_hal_bt_get_rssi());
+     3fe:	6804      	ldr	r4, [r0, #0]
+     400:	4b05      	ldr	r3, [pc, #20]	@ (418 <sukima175+0x1e>)
+     402:	4798      	blx	r3
+     404:	4620      	mov	r0, r4
+     406:	4b05      	ldr	r3, [pc, #20]	@ (41c <sukima175+0x22>)
+     408:	4798      	blx	r3
+     40a:	e7f3      	b.n	3f4 <bt_test_carrier_timer_callback+0xc>
+        bt_carrier_test_switch_channel(bt_carrier_test);
+     40c:	4b04      	ldr	r3, [pc, #16]	@ (420 <sukima175+0x26>)
+     40e:	4798      	blx	r3
+}
+     410:	e7f0      	b.n	3f4 <bt_test_carrier_timer_callback+0xc>
+     412:	bf00      	nop
+	...
+
+00000424 <bt_carrier_test_stop>:
+static void bt_carrier_test_stop(BtCarrierTest* bt_carrier_test) {
+     424:	b510      	push	{r4, lr}
+    furi_assert(bt_carrier_test);
+     426:	b138      	cbz	r0, 438 <bt_carrier_test_stop+0x14>
+     428:	4604      	mov	r4, r0
+    if(bt_carrier_test->mode == BtTestModeTxHopping) {
+     42a:	7a03      	ldrb	r3, [r0, #8]
+     42c:	2b02      	cmp	r3, #2
+     42e:	d007      	beq.n	440 <sukima262+0x4>
+    } else if(bt_carrier_test->mode == BtTestModeTx) {
+     430:	2b01      	cmp	r3, #1
+     432:	d00b      	beq.n	44c <sukima262+0x10>
+    } else if(bt_carrier_test->mode == BtTestModeRx) {
+     434:	b16b      	cbz	r3, 452 <sukima262+0x16>
+}
+     436:	bd10      	pop	{r4, pc}
+    furi_assert(bt_carrier_test);
+     438:	f04f 0c01 	mov.w	ip, #1
+
+0000043c <sukima262>:
+     43c:	4b08      	ldr	r3, [pc, #32]	@ (460 <sukima262+0x24>)
+     43e:	4798      	blx	r3
+        furi_hal_bt_stop_tone_tx();
+     440:	4b08      	ldr	r3, [pc, #32]	@ (464 <sukima262+0x28>)
+     442:	4798      	blx	r3
+        furi_timer_stop(bt_carrier_test->timer);
+     444:	68e0      	ldr	r0, [r4, #12]
+     446:	4b08      	ldr	r3, [pc, #32]	@ (468 <sukima262+0x2c>)
+     448:	4798      	blx	r3
+     44a:	e7f4      	b.n	436 <bt_carrier_test_stop+0x12>
+        furi_hal_bt_stop_tone_tx();
+     44c:	4b05      	ldr	r3, [pc, #20]	@ (464 <sukima262+0x28>)
+     44e:	4798      	blx	r3
+     450:	e7f1      	b.n	436 <bt_carrier_test_stop+0x12>
+        furi_hal_bt_stop_packet_test();
+     452:	4b06      	ldr	r3, [pc, #24]	@ (46c <sukima262+0x30>)
+     454:	4798      	blx	r3
+        furi_timer_stop(bt_carrier_test->timer);
+     456:	68e0      	ldr	r0, [r4, #12]
+     458:	4b03      	ldr	r3, [pc, #12]	@ (468 <sukima262+0x2c>)
+     45a:	4798      	blx	r3
+}
+     45c:	e7eb      	b.n	436 <bt_carrier_test_stop+0x12>
+     45e:	bf00      	nop
+	...
+
+00000470 <bt_carrier_test_exit_callback>:
+static void bt_carrier_test_exit_callback(void* context) {
+     470:	b508      	push	{r3, lr}
+    furi_assert(context);
+     472:	b110      	cbz	r0, 47a <bt_carrier_test_exit_callback+0xa>
+    bt_carrier_test_stop(bt_carrier_test);
+     474:	4b03      	ldr	r3, [pc, #12]	@ (484 <sukima351+0x6>)
+     476:	4798      	blx	r3
+}
+     478:	bd08      	pop	{r3, pc}
+    furi_assert(context);
+     47a:	f04f 0c01 	mov.w	ip, #1
+
+0000047e <sukima351>:
+     47e:	4b02      	ldr	r3, [pc, #8]	@ (488 <sukima351+0xa>)
+     480:	4798      	blx	r3
+     482:	bf00      	nop
+	...
+
+0000048c <bt_carrier_test_param_changed>:
+static uint32_t bt_carrier_test_param_changed(BtTestParam* param, BtTestParamValue* param_val) {
+     48c:	b570      	push	{r4, r5, r6, lr}
+    furi_assert(param);
+     48e:	b168      	cbz	r0, 4ac <bt_carrier_test_param_changed+0x20>
+     490:	460c      	mov	r4, r1
+     492:	4606      	mov	r6, r0
+    uint8_t index = bt_test_get_current_value_index(param);
+     494:	4b07      	ldr	r3, [pc, #28]	@ (4b4 <sukima422+0x4>)
+     496:	4798      	blx	r3
+     498:	4605      	mov	r5, r0
+    bt_test_set_current_value_text(param, param_val[index].str);
+     49a:	eb04 03c0 	add.w	r3, r4, r0, lsl #3
+     49e:	6859      	ldr	r1, [r3, #4]
+     4a0:	4630      	mov	r0, r6
+     4a2:	4b05      	ldr	r3, [pc, #20]	@ (4b8 <sukima422+0x8>)
+     4a4:	4798      	blx	r3
+}
+     4a6:	f854 0035 	ldr.w	r0, [r4, r5, lsl #3]
+     4aa:	bd70      	pop	{r4, r5, r6, pc}
+    furi_assert(param);
+     4ac:	f04f 0c01 	mov.w	ip, #1
+
+000004b0 <sukima422>:
+     4b0:	4b02      	ldr	r3, [pc, #8]	@ (4bc <sukima422+0xc>)
+     4b2:	4798      	blx	r3
+	...
+
+000004c0 <bt_carrier_test_param_channel>:
+static void bt_carrier_test_param_channel(BtTestParam* param) {
+     4c0:	b538      	push	{r3, r4, r5, lr}
+     4c2:	4605      	mov	r5, r0
+    BtCarrierTest* bt_carrier_test = bt_test_get_context(param);
+     4c4:	4b05      	ldr	r3, [pc, #20]	@ (4dc <bt_carrier_test_param_channel+0x1c>)
+     4c6:	4798      	blx	r3
+     4c8:	4604      	mov	r4, r0
+    bt_carrier_test_stop(bt_carrier_test);
+     4ca:	4b05      	ldr	r3, [pc, #20]	@ (4e0 <bt_carrier_test_param_channel+0x20>)
+     4cc:	4798      	blx	r3
+    bt_carrier_test->power = bt_carrier_test_param_changed(param, bt_param_power);
+     4ce:	4905      	ldr	r1, [pc, #20]	@ (4e4 <bt_carrier_test_param_channel+0x24>)
+     4d0:	4628      	mov	r0, r5
+     4d2:	4b05      	ldr	r3, [pc, #20]	@ (4e8 <bt_carrier_test_param_channel+0x28>)
+     4d4:	4798      	blx	r3
+     4d6:	72a0      	strb	r0, [r4, #10]
+}
+     4d8:	bd38      	pop	{r3, r4, r5, pc}
+     4da:	bf00      	nop
+	...
+
+000004ec <bt_carrier_test_channel_changed>:
+static void bt_carrier_test_channel_changed(BtTestParam* param) {
+     4ec:	b538      	push	{r3, r4, r5, lr}
+     4ee:	4605      	mov	r5, r0
+    BtCarrierTest* bt_carrier_test = bt_test_get_context(param);
+     4f0:	4b05      	ldr	r3, [pc, #20]	@ (508 <bt_carrier_test_channel_changed+0x1c>)
+     4f2:	4798      	blx	r3
+     4f4:	4604      	mov	r4, r0
+    bt_carrier_test_stop(bt_carrier_test);
+     4f6:	4b05      	ldr	r3, [pc, #20]	@ (50c <bt_carrier_test_channel_changed+0x20>)
+     4f8:	4798      	blx	r3
+    bt_carrier_test->channel = bt_carrier_test_param_changed(param, bt_param_channel);
+     4fa:	4905      	ldr	r1, [pc, #20]	@ (510 <bt_carrier_test_channel_changed+0x24>)
+     4fc:	4628      	mov	r0, r5
+     4fe:	4b05      	ldr	r3, [pc, #20]	@ (514 <bt_carrier_test_channel_changed+0x28>)
+     500:	4798      	blx	r3
+     502:	7260      	strb	r0, [r4, #9]
+}
+     504:	bd38      	pop	{r3, r4, r5, pc}
+     506:	bf00      	nop
+	...
+     510:	00000020 	.word	0x00000020
+     514:	00000000 	.word	0x00000000
+
+00000518 <bt_carrier_test_mode_changed>:
+static void bt_carrier_test_mode_changed(BtTestParam* param) {
+     518:	b538      	push	{r3, r4, r5, lr}
+     51a:	4605      	mov	r5, r0
+    BtCarrierTest* bt_carrier_test = bt_test_get_context(param);
+     51c:	4b05      	ldr	r3, [pc, #20]	@ (534 <bt_carrier_test_mode_changed+0x1c>)
+     51e:	4798      	blx	r3
+     520:	4604      	mov	r4, r0
+    bt_carrier_test_stop(bt_carrier_test);
+     522:	4b05      	ldr	r3, [pc, #20]	@ (538 <bt_carrier_test_mode_changed+0x20>)
+     524:	4798      	blx	r3
+    bt_carrier_test->mode = bt_carrier_test_param_changed(param, bt_param_mode);
+     526:	4905      	ldr	r1, [pc, #20]	@ (53c <bt_carrier_test_mode_changed+0x24>)
+     528:	4628      	mov	r0, r5
+     52a:	4b05      	ldr	r3, [pc, #20]	@ (540 <bt_carrier_test_mode_changed+0x28>)
+     52c:	4798      	blx	r3
+     52e:	7220      	strb	r0, [r4, #8]
+}
+     530:	bd38      	pop	{r3, r4, r5, pc}
+     532:	bf00      	nop
+	...
+     53c:	00000038 	.word	0x00000038
+     540:	00000000 	.word	0x00000000
+
+00000544 <bt_carrier_test_start>:
+static void bt_carrier_test_start(BtCarrierTest* bt_carrier_test) {
+     544:	b510      	push	{r4, lr}
+    furi_assert(bt_carrier_test);
+     546:	b138      	cbz	r0, 558 <bt_carrier_test_start+0x14>
+     548:	4604      	mov	r4, r0
+    if(bt_carrier_test->mode == BtTestModeRx) {
+     54a:	7a03      	ldrb	r3, [r0, #8]
+     54c:	b143      	cbz	r3, 560 <sukima620+0x4>
+    } else if(bt_carrier_test->mode == BtTestModeTxHopping) {
+     54e:	2b02      	cmp	r3, #2
+     550:	d012      	beq.n	578 <sukima620+0x1c>
+    } else if(bt_carrier_test->mode == BtTestModeTx) {
+     552:	2b01      	cmp	r3, #1
+     554:	d01c      	beq.n	590 <sukima620+0x34>
+}
+     556:	bd10      	pop	{r4, pc}
+    furi_assert(bt_carrier_test);
+     558:	f04f 0c01 	mov.w	ip, #1
+
+0000055c <sukima620>:
+     55c:	4b0f      	ldr	r3, [pc, #60]	@ (59c <sukima620+0x40>)
+     55e:	4798      	blx	r3
+        furi_hal_bt_start_packet_rx(bt_carrier_test->channel, 1);
+     560:	2101      	movs	r1, #1
+     562:	7a40      	ldrb	r0, [r0, #9]
+     564:	4b0e      	ldr	r3, [pc, #56]	@ (5a0 <sukima620+0x44>)
+     566:	4798      	blx	r3
+        furi_timer_start(bt_carrier_test->timer, furi_kernel_get_tick_frequency() / 4);
+     568:	68e4      	ldr	r4, [r4, #12]
+     56a:	4b0e      	ldr	r3, [pc, #56]	@ (5a4 <sukima620+0x48>)
+     56c:	4798      	blx	r3
+     56e:	0881      	lsrs	r1, r0, #2
+     570:	4620      	mov	r0, r4
+     572:	4b0d      	ldr	r3, [pc, #52]	@ (5a8 <sukima620+0x4c>)
+     574:	4798      	blx	r3
+     576:	e7ee      	b.n	556 <bt_carrier_test_start+0x12>
+        furi_hal_bt_start_tone_tx(bt_carrier_test->channel, bt_carrier_test->power);
+     578:	7a81      	ldrb	r1, [r0, #10]
+     57a:	7a40      	ldrb	r0, [r0, #9]
+     57c:	4b0b      	ldr	r3, [pc, #44]	@ (5ac <sukima620+0x50>)
+     57e:	4798      	blx	r3
+        furi_timer_start(bt_carrier_test->timer, furi_kernel_get_tick_frequency() * 2);
+     580:	68e4      	ldr	r4, [r4, #12]
+     582:	4b08      	ldr	r3, [pc, #32]	@ (5a4 <sukima620+0x48>)
+     584:	4798      	blx	r3
+     586:	0041      	lsls	r1, r0, #1
+     588:	4620      	mov	r0, r4
+     58a:	4b07      	ldr	r3, [pc, #28]	@ (5a8 <sukima620+0x4c>)
+     58c:	4798      	blx	r3
+     58e:	e7e2      	b.n	556 <bt_carrier_test_start+0x12>
+        furi_hal_bt_start_tone_tx(bt_carrier_test->channel, bt_carrier_test->power);
+     590:	7a81      	ldrb	r1, [r0, #10]
+     592:	7a40      	ldrb	r0, [r0, #9]
+     594:	4b05      	ldr	r3, [pc, #20]	@ (5ac <sukima620+0x50>)
+     596:	4798      	blx	r3
+}
+     598:	e7dd      	b.n	556 <bt_carrier_test_start+0x12>
+     59a:	bf00      	nop
+	...
+
+000005b0 <bt_carrier_test_change_state_callback>:
+static void bt_carrier_test_change_state_callback(BtTestState state, void* context) {
+     5b0:	b538      	push	{r3, r4, r5, lr}
+    furi_assert(context);
+     5b2:	b139      	cbz	r1, 5c4 <bt_carrier_test_change_state_callback+0x14>
+     5b4:	4604      	mov	r4, r0
+     5b6:	460d      	mov	r5, r1
+    furi_hal_bt_stop_tone_tx();
+     5b8:	4b08      	ldr	r3, [pc, #32]	@ (5dc <sukima751+0x14>)
+     5ba:	4798      	blx	r3
+    if(state == BtTestStateStarted) {
+     5bc:	b134      	cbz	r4, 5cc <sukima751+0x4>
+    } else if(state == BtTestStateStopped) {
+     5be:	2c01      	cmp	r4, #1
+     5c0:	d008      	beq.n	5d4 <sukima751+0xc>
+}
+     5c2:	bd38      	pop	{r3, r4, r5, pc}
+    furi_assert(context);
+     5c4:	f04f 0c01 	mov.w	ip, #1
+
+000005c8 <sukima751>:
+     5c8:	4b05      	ldr	r3, [pc, #20]	@ (5e0 <sukima751+0x18>)
+     5ca:	4798      	blx	r3
+        bt_carrier_test_start(bt_carrier_test);
+     5cc:	4628      	mov	r0, r5
+     5ce:	4b05      	ldr	r3, [pc, #20]	@ (5e4 <sukima751+0x1c>)
+     5d0:	4798      	blx	r3
+     5d2:	e7f6      	b.n	5c2 <bt_carrier_test_change_state_callback+0x12>
+        bt_carrier_test_stop(bt_carrier_test);
+     5d4:	4628      	mov	r0, r5
+     5d6:	4b04      	ldr	r3, [pc, #16]	@ (5e8 <sukima751+0x20>)
+     5d8:	4798      	blx	r3
+}
+     5da:	e7f2      	b.n	5c2 <bt_carrier_test_change_state_callback+0x12>
+	...
+
+000005ec <bt_carrier_test_alloc>:
+
+BtCarrierTest* bt_carrier_test_alloc(void) {
+     5ec:	e92d 43f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, lr}
+     5f0:	b083      	sub	sp, #12
+    BtCarrierTest* bt_carrier_test = malloc(sizeof(BtCarrierTest));
+     5f2:	2010      	movs	r0, #16
+     5f4:	4b26      	ldr	r3, [pc, #152]	@ (690 <bt_carrier_test_alloc+0xa4>)
+     5f6:	4798      	blx	r3
+     5f8:	4604      	mov	r4, r0
+    bt_carrier_test->bt_test = bt_test_alloc();
+     5fa:	4b26      	ldr	r3, [pc, #152]	@ (694 <bt_carrier_test_alloc+0xa8>)
+     5fc:	4798      	blx	r3
+     5fe:	6020      	str	r0, [r4, #0]
+    bt_test_set_context(bt_carrier_test->bt_test, bt_carrier_test);
+     600:	4621      	mov	r1, r4
+     602:	4b25      	ldr	r3, [pc, #148]	@ (698 <bt_carrier_test_alloc+0xac>)
+     604:	4798      	blx	r3
+    bt_test_set_change_state_callback(
+     606:	4925      	ldr	r1, [pc, #148]	@ (69c <bt_carrier_test_alloc+0xb0>)
+     608:	6820      	ldr	r0, [r4, #0]
+     60a:	4b25      	ldr	r3, [pc, #148]	@ (6a0 <bt_carrier_test_alloc+0xb4>)
+     60c:	4798      	blx	r3
+        bt_carrier_test->bt_test, bt_carrier_test_change_state_callback);
+    bt_test_set_back_callback(bt_carrier_test->bt_test, bt_carrier_test_exit_callback);
+     60e:	4925      	ldr	r1, [pc, #148]	@ (6a4 <bt_carrier_test_alloc+0xb8>)
+     610:	6820      	ldr	r0, [r4, #0]
+     612:	4b25      	ldr	r3, [pc, #148]	@ (6a8 <bt_carrier_test_alloc+0xbc>)
+     614:	4798      	blx	r3
+
+    BtTestParam* param;
+    param = bt_test_param_add(
+     616:	9400      	str	r4, [sp, #0]
+     618:	4b24      	ldr	r3, [pc, #144]	@ (6ac <bt_carrier_test_alloc+0xc0>)
+     61a:	2203      	movs	r2, #3
+     61c:	4924      	ldr	r1, [pc, #144]	@ (6b0 <bt_carrier_test_alloc+0xc4>)
+     61e:	6820      	ldr	r0, [r4, #0]
+     620:	f8df 90b8 	ldr.w	r9, [pc, #184]	@ 6dc <bt_carrier_test_alloc+0xf0>
+     624:	47c8      	blx	r9
+     626:	4605      	mov	r5, r0
+        bt_carrier_test->bt_test,
+        "Mode",
+        COUNT_OF(bt_param_mode),
+        bt_carrier_test_mode_changed,
+        bt_carrier_test);
+    bt_test_set_current_value_index(param, 0);
+     628:	2100      	movs	r1, #0
+     62a:	f8df 80b4 	ldr.w	r8, [pc, #180]	@ 6e0 <bt_carrier_test_alloc+0xf4>
+     62e:	47c0      	blx	r8
+    bt_test_set_current_value_text(param, bt_param_mode[0].str);
+     630:	4b20      	ldr	r3, [pc, #128]	@ (6b4 <bt_carrier_test_alloc+0xc8>)
+     632:	6859      	ldr	r1, [r3, #4]
+     634:	4628      	mov	r0, r5
+     636:	4f20      	ldr	r7, [pc, #128]	@ (6b8 <bt_carrier_test_alloc+0xcc>)
+     638:	47b8      	blx	r7
+    bt_carrier_test->mode = BtTestModeRx;
+     63a:	2500      	movs	r5, #0
+     63c:	7225      	strb	r5, [r4, #8]
+
+    param = bt_test_param_add(
+     63e:	9400      	str	r4, [sp, #0]
+     640:	4b1e      	ldr	r3, [pc, #120]	@ (6bc <bt_carrier_test_alloc+0xd0>)
+     642:	2203      	movs	r2, #3
+     644:	491e      	ldr	r1, [pc, #120]	@ (6c0 <bt_carrier_test_alloc+0xd4>)
+     646:	6820      	ldr	r0, [r4, #0]
+     648:	47c8      	blx	r9
+     64a:	4606      	mov	r6, r0
+        bt_carrier_test->bt_test,
+        "Channel",
+        COUNT_OF(bt_param_channel),
+        bt_carrier_test_channel_changed,
+        bt_carrier_test);
+    bt_test_set_current_value_index(param, 0);
+     64c:	4629      	mov	r1, r5
+     64e:	47c0      	blx	r8
+    bt_test_set_current_value_text(param, bt_param_channel[0].str);
+     650:	4b1c      	ldr	r3, [pc, #112]	@ (6c4 <bt_carrier_test_alloc+0xd8>)
+     652:	6859      	ldr	r1, [r3, #4]
+     654:	4630      	mov	r0, r6
+     656:	47b8      	blx	r7
+    bt_carrier_test->channel = BtTestChannel2402;
+     658:	7265      	strb	r5, [r4, #9]
+    bt_carrier_test->bt_param_channel = param;
+     65a:	6066      	str	r6, [r4, #4]
+
+    param = bt_test_param_add(
+     65c:	9400      	str	r4, [sp, #0]
+     65e:	4b1a      	ldr	r3, [pc, #104]	@ (6c8 <bt_carrier_test_alloc+0xdc>)
+     660:	2204      	movs	r2, #4
+     662:	491a      	ldr	r1, [pc, #104]	@ (6cc <bt_carrier_test_alloc+0xe0>)
+     664:	6820      	ldr	r0, [r4, #0]
+     666:	47c8      	blx	r9
+     668:	4606      	mov	r6, r0
+        bt_carrier_test->bt_test,
+        "Power",
+        COUNT_OF(bt_param_power),
+        bt_carrier_test_param_channel,
+        bt_carrier_test);
+    bt_test_set_current_value_index(param, 0);
+     66a:	4629      	mov	r1, r5
+     66c:	47c0      	blx	r8
+    bt_test_set_current_value_text(param, bt_param_power[0].str);
+     66e:	4b18      	ldr	r3, [pc, #96]	@ (6d0 <bt_carrier_test_alloc+0xe4>)
+     670:	6859      	ldr	r1, [r3, #4]
+     672:	4630      	mov	r0, r6
+     674:	47b8      	blx	r7
+    bt_carrier_test->power = BtPower0dB;
+     676:	2319      	movs	r3, #25
+     678:	72a3      	strb	r3, [r4, #10]
+
+    bt_carrier_test->timer =
+        furi_timer_alloc(bt_test_carrier_timer_callback, FuriTimerTypePeriodic, bt_carrier_test);
+     67a:	4622      	mov	r2, r4
+     67c:	2101      	movs	r1, #1
+     67e:	4815      	ldr	r0, [pc, #84]	@ (6d4 <bt_carrier_test_alloc+0xe8>)
+     680:	4b15      	ldr	r3, [pc, #84]	@ (6d8 <bt_carrier_test_alloc+0xec>)
+     682:	4798      	blx	r3
+    bt_carrier_test->timer =
+     684:	60e0      	str	r0, [r4, #12]
+
+    return bt_carrier_test;
+}
+     686:	4620      	mov	r0, r4
+     688:	b003      	add	sp, #12
+     68a:	e8bd 83f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, pc}
+     68e:	bf00      	nop
+	...
+     6b4:	00000038 	.word	0x00000038
+	...
+     6c0:	00000008 	.word	0x00000008
+     6c4:	00000020 	.word	0x00000020
+     6c8:	00000000 	.word	0x00000000
+     6cc:	00000010 	.word	0x00000010
+	...
+
+000006e4 <bt_carrier_test_free>:
+
+void bt_carrier_test_free(BtCarrierTest* bt_carrier_test) {
+     6e4:	b510      	push	{r4, lr}
+    furi_assert(bt_carrier_test);
+     6e6:	b150      	cbz	r0, 6fe <bt_carrier_test_free+0x1a>
+     6e8:	4604      	mov	r4, r0
+    bt_test_free(bt_carrier_test->bt_test);
+     6ea:	6800      	ldr	r0, [r0, #0]
+     6ec:	4b06      	ldr	r3, [pc, #24]	@ (708 <sukima1008+0x6>)
+     6ee:	4798      	blx	r3
+    furi_timer_free(bt_carrier_test->timer);
+     6f0:	68e0      	ldr	r0, [r4, #12]
+     6f2:	4b06      	ldr	r3, [pc, #24]	@ (70c <sukima1008+0xa>)
+     6f4:	4798      	blx	r3
+    free(bt_carrier_test);
+     6f6:	4620      	mov	r0, r4
+     6f8:	4b05      	ldr	r3, [pc, #20]	@ (710 <sukima1008+0xe>)
+     6fa:	4798      	blx	r3
+}
+     6fc:	bd10      	pop	{r4, pc}
+    furi_assert(bt_carrier_test);
+     6fe:	f04f 0c01 	mov.w	ip, #1
+
+00000702 <sukima1008>:
+     702:	4b04      	ldr	r3, [pc, #16]	@ (714 <sukima1008+0x12>)
+     704:	4798      	blx	r3
+     706:	bf00      	nop
+	...
+
+00000718 <bt_carrier_test_get_view>:
+
+View* bt_carrier_test_get_view(BtCarrierTest* bt_carrier_test) {
+     718:	b508      	push	{r3, lr}
+    furi_assert(bt_carrier_test);
+     71a:	b118      	cbz	r0, 724 <bt_carrier_test_get_view+0xc>
+    return bt_test_get_view(bt_carrier_test->bt_test);
+     71c:	6800      	ldr	r0, [r0, #0]
+     71e:	4b03      	ldr	r3, [pc, #12]	@ (72c <sukima1059+0x4>)
+     720:	4798      	blx	r3
+}
+     722:	bd08      	pop	{r3, pc}
+    furi_assert(bt_carrier_test);
+     724:	f04f 0c01 	mov.w	ip, #1
+
+00000728 <sukima1059>:
+     728:	4b01      	ldr	r3, [pc, #4]	@ (730 <sukima1059+0x8>)
+     72a:	4798      	blx	r3
+	...
+
+00000734 <bt_test_packet_timer_callback>:
+    furi_assert(context);
+    BtPacketTest* bt_packet_test = context;
+    bt_packet_test_stop(bt_packet_test);
+}
+
+static void bt_test_packet_timer_callback(void* context) {
+     734:	b510      	push	{r4, lr}
+    furi_assert(context);
+     736:	b110      	cbz	r0, 73e <bt_test_packet_timer_callback+0xa>
+    BtPacketTest* bt_packet_test = context;
+    if(bt_packet_test->mode == BtTestModeRx) {
+     738:	7902      	ldrb	r2, [r0, #4]
+     73a:	b122      	cbz	r2, 746 <sukima39+0x4>
+        bt_test_set_rssi(bt_packet_test->bt_test, furi_hal_bt_get_rssi());
+    }
+}
+     73c:	bd10      	pop	{r4, pc}
+    furi_assert(context);
+     73e:	f04f 0c01 	mov.w	ip, #1
+
+00000742 <sukima39>:
+     742:	4b04      	ldr	r3, [pc, #16]	@ (754 <sukima39+0x12>)
+     744:	4798      	blx	r3
+        bt_test_set_rssi(bt_packet_test->bt_test, furi_hal_bt_get_rssi());
+     746:	6804      	ldr	r4, [r0, #0]
+     748:	4b03      	ldr	r3, [pc, #12]	@ (758 <sukima39+0x16>)
+     74a:	4798      	blx	r3
+     74c:	4620      	mov	r0, r4
+     74e:	4b03      	ldr	r3, [pc, #12]	@ (75c <sukima39+0x1a>)
+     750:	4798      	blx	r3
+}
+     752:	e7f3      	b.n	73c <bt_test_packet_timer_callback+0x8>
+	...
+
+00000760 <bt_packet_test_stop>:
+static void bt_packet_test_stop(BtPacketTest* bt_packet_test) {
+     760:	b538      	push	{r3, r4, r5, lr}
+    furi_assert(bt_packet_test);
+     762:	b128      	cbz	r0, 770 <bt_packet_test_stop+0x10>
+     764:	4604      	mov	r4, r0
+    if(bt_packet_test->mode == BtTestModeTx) {
+     766:	7903      	ldrb	r3, [r0, #4]
+     768:	2b01      	cmp	r3, #1
+     76a:	d005      	beq.n	778 <sukima111+0x4>
+    } else if(bt_packet_test->mode == BtTestModeRx) {
+     76c:	b173      	cbz	r3, 78c <sukima111+0x18>
+}
+     76e:	bd38      	pop	{r3, r4, r5, pc}
+    furi_assert(bt_packet_test);
+     770:	f04f 0c01 	mov.w	ip, #1
+
+00000774 <sukima111>:
+     774:	4b0b      	ldr	r3, [pc, #44]	@ (7a4 <sukima111+0x30>)
+     776:	4798      	blx	r3
+        furi_hal_bt_stop_packet_test();
+     778:	4b0b      	ldr	r3, [pc, #44]	@ (7a8 <sukima111+0x34>)
+     77a:	4798      	blx	r3
+        bt_test_set_packets_tx(bt_packet_test->bt_test, furi_hal_bt_get_transmitted_packets());
+     77c:	6824      	ldr	r4, [r4, #0]
+     77e:	4b0b      	ldr	r3, [pc, #44]	@ (7ac <sukima111+0x38>)
+     780:	4798      	blx	r3
+     782:	4601      	mov	r1, r0
+     784:	4620      	mov	r0, r4
+     786:	4b0a      	ldr	r3, [pc, #40]	@ (7b0 <sukima111+0x3c>)
+     788:	4798      	blx	r3
+     78a:	e7f0      	b.n	76e <bt_packet_test_stop+0xe>
+        bt_test_set_packets_rx(bt_packet_test->bt_test, furi_hal_bt_stop_packet_test());
+     78c:	6805      	ldr	r5, [r0, #0]
+     78e:	4b06      	ldr	r3, [pc, #24]	@ (7a8 <sukima111+0x34>)
+     790:	4798      	blx	r3
+     792:	4601      	mov	r1, r0
+     794:	4628      	mov	r0, r5
+     796:	4b07      	ldr	r3, [pc, #28]	@ (7b4 <sukima111+0x40>)
+     798:	4798      	blx	r3
+        furi_timer_stop(bt_packet_test->timer);
+     79a:	68a0      	ldr	r0, [r4, #8]
+     79c:	4b06      	ldr	r3, [pc, #24]	@ (7b8 <sukima111+0x44>)
+     79e:	4798      	blx	r3
+}
+     7a0:	e7e5      	b.n	76e <bt_packet_test_stop+0xe>
+     7a2:	bf00      	nop
+	...
+
+000007bc <bt_packet_test_exit_callback>:
+static void bt_packet_test_exit_callback(void* context) {
+     7bc:	b508      	push	{r3, lr}
+    furi_assert(context);
+     7be:	b110      	cbz	r0, 7c6 <bt_packet_test_exit_callback+0xa>
+    bt_packet_test_stop(bt_packet_test);
+     7c0:	4b03      	ldr	r3, [pc, #12]	@ (7d0 <sukima204+0x6>)
+     7c2:	4798      	blx	r3
+}
+     7c4:	bd08      	pop	{r3, pc}
+    furi_assert(context);
+     7c6:	f04f 0c01 	mov.w	ip, #1
+
+000007ca <sukima204>:
+     7ca:	4b02      	ldr	r3, [pc, #8]	@ (7d4 <sukima204+0xa>)
+     7cc:	4798      	blx	r3
+     7ce:	bf00      	nop
+	...
+
+000007d8 <bt_packet_test_param_changed>:
+static uint32_t bt_packet_test_param_changed(BtTestParam* param, BtTestParamValue* param_val) {
+     7d8:	b570      	push	{r4, r5, r6, lr}
+    furi_assert(param);
+     7da:	b168      	cbz	r0, 7f8 <bt_packet_test_param_changed+0x20>
+     7dc:	460c      	mov	r4, r1
+     7de:	4606      	mov	r6, r0
+    uint8_t index = bt_test_get_current_value_index(param);
+     7e0:	4b07      	ldr	r3, [pc, #28]	@ (800 <sukima275+0x4>)
+     7e2:	4798      	blx	r3
+     7e4:	4605      	mov	r5, r0
+    bt_test_set_current_value_text(param, param_val[index].str);
+     7e6:	eb04 03c0 	add.w	r3, r4, r0, lsl #3
+     7ea:	6859      	ldr	r1, [r3, #4]
+     7ec:	4630      	mov	r0, r6
+     7ee:	4b05      	ldr	r3, [pc, #20]	@ (804 <sukima275+0x8>)
+     7f0:	4798      	blx	r3
+}
+     7f2:	f854 0035 	ldr.w	r0, [r4, r5, lsl #3]
+     7f6:	bd70      	pop	{r4, r5, r6, pc}
+    furi_assert(param);
+     7f8:	f04f 0c01 	mov.w	ip, #1
+
+000007fc <sukima275>:
+     7fc:	4b02      	ldr	r3, [pc, #8]	@ (808 <sukima275+0xc>)
+     7fe:	4798      	blx	r3
+	...
+
+0000080c <bt_packet_test_param_channel>:
+static void bt_packet_test_param_channel(BtTestParam* param) {
+     80c:	b538      	push	{r3, r4, r5, lr}
+     80e:	4605      	mov	r5, r0
+    BtPacketTest* bt_packet_test = bt_test_get_context(param);
+     810:	4b05      	ldr	r3, [pc, #20]	@ (828 <bt_packet_test_param_channel+0x1c>)
+     812:	4798      	blx	r3
+     814:	4604      	mov	r4, r0
+    bt_packet_test_stop(bt_packet_test);
+     816:	4b05      	ldr	r3, [pc, #20]	@ (82c <bt_packet_test_param_channel+0x20>)
+     818:	4798      	blx	r3
+    bt_packet_test->data_rate = bt_packet_test_param_changed(param, bt_param_data_rate);
+     81a:	4905      	ldr	r1, [pc, #20]	@ (830 <bt_packet_test_param_channel+0x24>)
+     81c:	4628      	mov	r0, r5
+     81e:	4b05      	ldr	r3, [pc, #20]	@ (834 <bt_packet_test_param_channel+0x28>)
+     820:	4798      	blx	r3
+     822:	71a0      	strb	r0, [r4, #6]
+}
+     824:	bd38      	pop	{r3, r4, r5, pc}
+     826:	bf00      	nop
+	...
+     830:	00000050 	.word	0x00000050
+     834:	00000000 	.word	0x00000000
+
+00000838 <bt_packet_test_channel_changed>:
+static void bt_packet_test_channel_changed(BtTestParam* param) {
+     838:	b538      	push	{r3, r4, r5, lr}
+     83a:	4605      	mov	r5, r0
+    BtPacketTest* bt_packet_test = bt_test_get_context(param);
+     83c:	4b05      	ldr	r3, [pc, #20]	@ (854 <bt_packet_test_channel_changed+0x1c>)
+     83e:	4798      	blx	r3
+     840:	4604      	mov	r4, r0
+    bt_packet_test_stop(bt_packet_test);
+     842:	4b05      	ldr	r3, [pc, #20]	@ (858 <bt_packet_test_channel_changed+0x20>)
+     844:	4798      	blx	r3
+    bt_packet_test->channel = bt_packet_test_param_changed(param, bt_param_channel);
+     846:	4905      	ldr	r1, [pc, #20]	@ (85c <bt_packet_test_channel_changed+0x24>)
+     848:	4628      	mov	r0, r5
+     84a:	4b05      	ldr	r3, [pc, #20]	@ (860 <bt_packet_test_channel_changed+0x28>)
+     84c:	4798      	blx	r3
+     84e:	7160      	strb	r0, [r4, #5]
+}
+     850:	bd38      	pop	{r3, r4, r5, pc}
+     852:	bf00      	nop
+	...
+     85c:	00000060 	.word	0x00000060
+     860:	00000000 	.word	0x00000000
+
+00000864 <bt_packet_test_mode_changed>:
+static void bt_packet_test_mode_changed(BtTestParam* param) {
+     864:	b538      	push	{r3, r4, r5, lr}
+     866:	4605      	mov	r5, r0
+    BtPacketTest* bt_packet_test = bt_test_get_context(param);
+     868:	4b05      	ldr	r3, [pc, #20]	@ (880 <bt_packet_test_mode_changed+0x1c>)
+     86a:	4798      	blx	r3
+     86c:	4604      	mov	r4, r0
+    bt_packet_test_stop(bt_packet_test);
+     86e:	4b05      	ldr	r3, [pc, #20]	@ (884 <bt_packet_test_mode_changed+0x20>)
+     870:	4798      	blx	r3
+    bt_packet_test->mode = bt_packet_test_param_changed(param, bt_param_mode);
+     872:	4905      	ldr	r1, [pc, #20]	@ (888 <bt_packet_test_mode_changed+0x24>)
+     874:	4628      	mov	r0, r5
+     876:	4b05      	ldr	r3, [pc, #20]	@ (88c <bt_packet_test_mode_changed+0x28>)
+     878:	4798      	blx	r3
+     87a:	7120      	strb	r0, [r4, #4]
+}
+     87c:	bd38      	pop	{r3, r4, r5, pc}
+     87e:	bf00      	nop
+	...
+     888:	00000078 	.word	0x00000078
+     88c:	00000000 	.word	0x00000000
+
+00000890 <bt_packet_test_start>:
+static void bt_packet_test_start(BtPacketTest* bt_packet_test) {
+     890:	b510      	push	{r4, lr}
+    furi_assert(bt_packet_test);
+     892:	b128      	cbz	r0, 8a0 <bt_packet_test_start+0x10>
+     894:	4604      	mov	r4, r0
+    if(bt_packet_test->mode == BtTestModeRx) {
+     896:	7903      	ldrb	r3, [r0, #4]
+     898:	b133      	cbz	r3, 8a8 <sukima469+0x4>
+    } else if(bt_packet_test->mode == BtTestModeTx) {
+     89a:	2b01      	cmp	r3, #1
+     89c:	d010      	beq.n	8c0 <sukima469+0x1c>
+}
+     89e:	bd10      	pop	{r4, pc}
+    furi_assert(bt_packet_test);
+     8a0:	f04f 0c01 	mov.w	ip, #1
+
+000008a4 <sukima469>:
+     8a4:	4b09      	ldr	r3, [pc, #36]	@ (8cc <sukima469+0x28>)
+     8a6:	4798      	blx	r3
+        furi_hal_bt_start_packet_rx(bt_packet_test->channel, bt_packet_test->data_rate);
+     8a8:	7981      	ldrb	r1, [r0, #6]
+     8aa:	7940      	ldrb	r0, [r0, #5]
+     8ac:	4b08      	ldr	r3, [pc, #32]	@ (8d0 <sukima469+0x2c>)
+     8ae:	4798      	blx	r3
+        furi_timer_start(bt_packet_test->timer, furi_kernel_get_tick_frequency() / 4);
+     8b0:	68a4      	ldr	r4, [r4, #8]
+     8b2:	4b08      	ldr	r3, [pc, #32]	@ (8d4 <sukima469+0x30>)
+     8b4:	4798      	blx	r3
+     8b6:	0881      	lsrs	r1, r0, #2
+     8b8:	4620      	mov	r0, r4
+     8ba:	4b07      	ldr	r3, [pc, #28]	@ (8d8 <sukima469+0x34>)
+     8bc:	4798      	blx	r3
+     8be:	e7ee      	b.n	89e <bt_packet_test_start+0xe>
+        furi_hal_bt_start_packet_tx(bt_packet_test->channel, 1, bt_packet_test->data_rate);
+     8c0:	7982      	ldrb	r2, [r0, #6]
+     8c2:	2101      	movs	r1, #1
+     8c4:	7940      	ldrb	r0, [r0, #5]
+     8c6:	4b05      	ldr	r3, [pc, #20]	@ (8dc <sukima469+0x38>)
+     8c8:	4798      	blx	r3
+}
+     8ca:	e7e8      	b.n	89e <bt_packet_test_start+0xe>
+	...
+
+000008e0 <bt_packet_test_change_state_callback>:
+static void bt_packet_test_change_state_callback(BtTestState state, void* context) {
+     8e0:	b508      	push	{r3, lr}
+    furi_assert(context);
+     8e2:	b129      	cbz	r1, 8f0 <bt_packet_test_change_state_callback+0x10>
+     8e4:	4603      	mov	r3, r0
+     8e6:	4608      	mov	r0, r1
+    if(state == BtTestStateStarted) {
+     8e8:	b133      	cbz	r3, 8f8 <sukima571+0x4>
+    } else if(state == BtTestStateStopped) {
+     8ea:	2b01      	cmp	r3, #1
+     8ec:	d007      	beq.n	8fe <sukima571+0xa>
+}
+     8ee:	bd08      	pop	{r3, pc}
+    furi_assert(context);
+     8f0:	f04f 0c01 	mov.w	ip, #1
+
+000008f4 <sukima571>:
+     8f4:	4b03      	ldr	r3, [pc, #12]	@ (904 <sukima571+0x10>)
+     8f6:	4798      	blx	r3
+        bt_packet_test_start(bt_packet_test);
+     8f8:	4b03      	ldr	r3, [pc, #12]	@ (908 <sukima571+0x14>)
+     8fa:	4798      	blx	r3
+     8fc:	e7f7      	b.n	8ee <bt_packet_test_change_state_callback+0xe>
+        bt_packet_test_stop(bt_packet_test);
+     8fe:	4b03      	ldr	r3, [pc, #12]	@ (90c <sukima571+0x18>)
+     900:	4798      	blx	r3
+}
+     902:	e7f4      	b.n	8ee <bt_packet_test_change_state_callback+0xe>
+	...
+
+00000910 <bt_packet_test_alloc>:
+
+BtPacketTest* bt_packet_test_alloc(void) {
+     910:	e92d 43f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, lr}
+     914:	b083      	sub	sp, #12
+    BtPacketTest* bt_packet_test = malloc(sizeof(BtPacketTest));
+     916:	200c      	movs	r0, #12
+     918:	4b24      	ldr	r3, [pc, #144]	@ (9ac <bt_packet_test_alloc+0x9c>)
+     91a:	4798      	blx	r3
+     91c:	4604      	mov	r4, r0
+    bt_packet_test->bt_test = bt_test_alloc();
+     91e:	4b24      	ldr	r3, [pc, #144]	@ (9b0 <bt_packet_test_alloc+0xa0>)
+     920:	4798      	blx	r3
+     922:	6020      	str	r0, [r4, #0]
+    bt_test_set_context(bt_packet_test->bt_test, bt_packet_test);
+     924:	4621      	mov	r1, r4
+     926:	4b23      	ldr	r3, [pc, #140]	@ (9b4 <bt_packet_test_alloc+0xa4>)
+     928:	4798      	blx	r3
+    bt_test_set_change_state_callback(
+     92a:	4923      	ldr	r1, [pc, #140]	@ (9b8 <bt_packet_test_alloc+0xa8>)
+     92c:	6820      	ldr	r0, [r4, #0]
+     92e:	4b23      	ldr	r3, [pc, #140]	@ (9bc <bt_packet_test_alloc+0xac>)
+     930:	4798      	blx	r3
+        bt_packet_test->bt_test, bt_packet_test_change_state_callback);
+    bt_test_set_back_callback(bt_packet_test->bt_test, bt_packet_test_exit_callback);
+     932:	4923      	ldr	r1, [pc, #140]	@ (9c0 <bt_packet_test_alloc+0xb0>)
+     934:	6820      	ldr	r0, [r4, #0]
+     936:	4b23      	ldr	r3, [pc, #140]	@ (9c4 <bt_packet_test_alloc+0xb4>)
+     938:	4798      	blx	r3
+
+    BtTestParam* param;
+    param = bt_test_param_add(
+     93a:	9400      	str	r4, [sp, #0]
+     93c:	4b22      	ldr	r3, [pc, #136]	@ (9c8 <bt_packet_test_alloc+0xb8>)
+     93e:	2202      	movs	r2, #2
+     940:	4922      	ldr	r1, [pc, #136]	@ (9cc <bt_packet_test_alloc+0xbc>)
+     942:	6820      	ldr	r0, [r4, #0]
+     944:	4f22      	ldr	r7, [pc, #136]	@ (9d0 <bt_packet_test_alloc+0xc0>)
+     946:	47b8      	blx	r7
+     948:	4605      	mov	r5, r0
+        bt_packet_test->bt_test,
+        "Mode",
+        COUNT_OF(bt_param_mode),
+        bt_packet_test_mode_changed,
+        bt_packet_test);
+    bt_test_set_current_value_index(param, 0);
+     94a:	2100      	movs	r1, #0
+     94c:	f8df 80ac 	ldr.w	r8, [pc, #172]	@ 9fc <bt_packet_test_alloc+0xec>
+     950:	47c0      	blx	r8
+    bt_test_set_current_value_text(param, bt_param_mode[0].str);
+     952:	4b20      	ldr	r3, [pc, #128]	@ (9d4 <bt_packet_test_alloc+0xc4>)
+     954:	6859      	ldr	r1, [r3, #4]
+     956:	4628      	mov	r0, r5
+     958:	4e1f      	ldr	r6, [pc, #124]	@ (9d8 <bt_packet_test_alloc+0xc8>)
+     95a:	47b0      	blx	r6
+    bt_packet_test->mode = BtTestModeRx;
+     95c:	2500      	movs	r5, #0
+     95e:	7125      	strb	r5, [r4, #4]
+
+    param = bt_test_param_add(
+     960:	9400      	str	r4, [sp, #0]
+     962:	4b1e      	ldr	r3, [pc, #120]	@ (9dc <bt_packet_test_alloc+0xcc>)
+     964:	2203      	movs	r2, #3
+     966:	491e      	ldr	r1, [pc, #120]	@ (9e0 <bt_packet_test_alloc+0xd0>)
+     968:	6820      	ldr	r0, [r4, #0]
+     96a:	47b8      	blx	r7
+     96c:	4681      	mov	r9, r0
+        bt_packet_test->bt_test,
+        "Channel",
+        COUNT_OF(bt_param_channel),
+        bt_packet_test_channel_changed,
+        bt_packet_test);
+    bt_test_set_current_value_index(param, 0);
+     96e:	4629      	mov	r1, r5
+     970:	47c0      	blx	r8
+    bt_test_set_current_value_text(param, bt_param_channel[0].str);
+     972:	4b1c      	ldr	r3, [pc, #112]	@ (9e4 <bt_packet_test_alloc+0xd4>)
+     974:	6859      	ldr	r1, [r3, #4]
+     976:	4648      	mov	r0, r9
+     978:	47b0      	blx	r6
+    bt_packet_test->channel = BtTestChannel2402;
+     97a:	7165      	strb	r5, [r4, #5]
+
+    param = bt_test_param_add(
+     97c:	9400      	str	r4, [sp, #0]
+     97e:	4b1a      	ldr	r3, [pc, #104]	@ (9e8 <bt_packet_test_alloc+0xd8>)
+     980:	2202      	movs	r2, #2
+     982:	491a      	ldr	r1, [pc, #104]	@ (9ec <bt_packet_test_alloc+0xdc>)
+     984:	6820      	ldr	r0, [r4, #0]
+     986:	47b8      	blx	r7
+     988:	4607      	mov	r7, r0
+        bt_packet_test->bt_test,
+        "Data rate",
+        COUNT_OF(bt_param_data_rate),
+        bt_packet_test_param_channel,
+        bt_packet_test);
+    bt_test_set_current_value_index(param, 0);
+     98a:	4629      	mov	r1, r5
+     98c:	47c0      	blx	r8
+    bt_test_set_current_value_text(param, bt_param_data_rate[0].str);
+     98e:	4b18      	ldr	r3, [pc, #96]	@ (9f0 <bt_packet_test_alloc+0xe0>)
+     990:	6859      	ldr	r1, [r3, #4]
+     992:	4638      	mov	r0, r7
+     994:	47b0      	blx	r6
+    bt_packet_test->data_rate = BtDataRate1M;
+     996:	2101      	movs	r1, #1
+     998:	71a1      	strb	r1, [r4, #6]
+
+    bt_packet_test->timer =
+        furi_timer_alloc(bt_test_packet_timer_callback, FuriTimerTypePeriodic, bt_packet_test);
+     99a:	4622      	mov	r2, r4
+     99c:	4815      	ldr	r0, [pc, #84]	@ (9f4 <bt_packet_test_alloc+0xe4>)
+     99e:	4b16      	ldr	r3, [pc, #88]	@ (9f8 <bt_packet_test_alloc+0xe8>)
+     9a0:	4798      	blx	r3
+    bt_packet_test->timer =
+     9a2:	60a0      	str	r0, [r4, #8]
+
+    return bt_packet_test;
+}
+     9a4:	4620      	mov	r0, r4
+     9a6:	b003      	add	sp, #12
+     9a8:	e8bd 83f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, pc}
+	...
+     9cc:	00000070 	.word	0x00000070
+     9d0:	00000000 	.word	0x00000000
+     9d4:	00000078 	.word	0x00000078
+	...
+     9e0:	00000078 	.word	0x00000078
+     9e4:	00000060 	.word	0x00000060
+     9e8:	00000000 	.word	0x00000000
+     9ec:	00000080 	.word	0x00000080
+     9f0:	00000050 	.word	0x00000050
+	...
+
+00000a00 <bt_packet_test_free>:
+
+void bt_packet_test_free(BtPacketTest* bt_packet_test) {
+     a00:	b510      	push	{r4, lr}
+    furi_assert(bt_packet_test);
+     a02:	b150      	cbz	r0, a1a <bt_packet_test_free+0x1a>
+     a04:	4604      	mov	r4, r0
+    bt_test_free(bt_packet_test->bt_test);
+     a06:	6800      	ldr	r0, [r0, #0]
+     a08:	4b06      	ldr	r3, [pc, #24]	@ (a24 <sukima825+0x6>)
+     a0a:	4798      	blx	r3
+    furi_timer_free(bt_packet_test->timer);
+     a0c:	68a0      	ldr	r0, [r4, #8]
+     a0e:	4b06      	ldr	r3, [pc, #24]	@ (a28 <sukima825+0xa>)
+     a10:	4798      	blx	r3
+    free(bt_packet_test);
+     a12:	4620      	mov	r0, r4
+     a14:	4b05      	ldr	r3, [pc, #20]	@ (a2c <sukima825+0xe>)
+     a16:	4798      	blx	r3
+}
+     a18:	bd10      	pop	{r4, pc}
+    furi_assert(bt_packet_test);
+     a1a:	f04f 0c01 	mov.w	ip, #1
+
+00000a1e <sukima825>:
+     a1e:	4b04      	ldr	r3, [pc, #16]	@ (a30 <sukima825+0x12>)
+     a20:	4798      	blx	r3
+     a22:	bf00      	nop
+	...
+
+00000a34 <bt_packet_test_get_view>:
+
+View* bt_packet_test_get_view(BtPacketTest* bt_packet_test) {
+     a34:	b508      	push	{r3, lr}
+    furi_assert(bt_packet_test);
+     a36:	b118      	cbz	r0, a40 <bt_packet_test_get_view+0xc>
+    return bt_test_get_view(bt_packet_test->bt_test);
+     a38:	6800      	ldr	r0, [r0, #0]
+     a3a:	4b03      	ldr	r3, [pc, #12]	@ (a48 <sukima876+0x4>)
+     a3c:	4798      	blx	r3
+}
+     a3e:	bd08      	pop	{r3, pc}
+    furi_assert(bt_packet_test);
+     a40:	f04f 0c01 	mov.w	ip, #1
+
+00000a44 <sukima876>:
+     a44:	4b01      	ldr	r3, [pc, #4]	@ (a4c <sukima876+0x8>)
+     a46:	4798      	blx	r3
+	...
+
+00000a50 <bt_test_process_up>:
+    }
+
+    return consumed;
+}
+
+void bt_test_process_up(BtTest* bt_test) {
+     a50:	b510      	push	{r4, lr}
+     a52:	4604      	mov	r4, r0
+    with_view_model( // -V658
+     a54:	6800      	ldr	r0, [r0, #0]
+     a56:	4b0f      	ldr	r3, [pc, #60]	@ (a94 <bt_test_process_up+0x44>)
+     a58:	4798      	blx	r3
+     a5a:	7c03      	ldrb	r3, [r0, #16]
+     a5c:	b183      	cbz	r3, a80 <bt_test_process_up+0x30>
+     a5e:	3b01      	subs	r3, #1
+     a60:	b2db      	uxtb	r3, r3
+     a62:	7403      	strb	r3, [r0, #16]
+     a64:	7c42      	ldrb	r2, [r0, #17]
+     a66:	1a9b      	subs	r3, r3, r2
+     a68:	2b00      	cmp	r3, #0
+     a6a:	dd04      	ble.n	a76 <bt_test_process_up+0x26>
+     a6c:	2101      	movs	r1, #1
+     a6e:	6820      	ldr	r0, [r4, #0]
+     a70:	4b09      	ldr	r3, [pc, #36]	@ (a98 <bt_test_process_up+0x48>)
+     a72:	4798      	blx	r3
+                    model->window_position = model->position - (params_on_screen - 1);
+                }
+            }
+        },
+        true);
+}
+     a74:	bd10      	pop	{r4, pc}
+    with_view_model( // -V658
+     a76:	2a00      	cmp	r2, #0
+     a78:	d0f8      	beq.n	a6c <bt_test_process_up+0x1c>
+     a7a:	3a01      	subs	r2, #1
+     a7c:	7442      	strb	r2, [r0, #17]
+     a7e:	e7f5      	b.n	a6c <bt_test_process_up+0x1c>
+     a80:	7902      	ldrb	r2, [r0, #4]
+     a82:	1e53      	subs	r3, r2, #1
+     a84:	b2db      	uxtb	r3, r3
+     a86:	7403      	strb	r3, [r0, #16]
+     a88:	2b02      	cmp	r3, #2
+     a8a:	d9ef      	bls.n	a6c <bt_test_process_up+0x1c>
+     a8c:	3a03      	subs	r2, #3
+     a8e:	7442      	strb	r2, [r0, #17]
+     a90:	e7ec      	b.n	a6c <bt_test_process_up+0x1c>
+     a92:	bf00      	nop
+	...
+
+00000a9c <bt_test_process_down>:
+
+void bt_test_process_down(BtTest* bt_test) {
+     a9c:	b510      	push	{r4, lr}
+     a9e:	4604      	mov	r4, r0
+    with_view_model(
+     aa0:	6800      	ldr	r0, [r0, #0]
+     aa2:	4b0e      	ldr	r3, [pc, #56]	@ (adc <bt_test_process_down+0x40>)
+     aa4:	4798      	blx	r3
+     aa6:	7c03      	ldrb	r3, [r0, #16]
+ARRAY_DEF(BtTestParamArray, BtTestParam, M_POD_OPLIST); //-V658
+     aa8:	6842      	ldr	r2, [r0, #4]
+    with_view_model(
+     aaa:	1e51      	subs	r1, r2, #1
+     aac:	428b      	cmp	r3, r1
+     aae:	d20c      	bcs.n	aca <bt_test_process_down+0x2e>
+     ab0:	3301      	adds	r3, #1
+     ab2:	b2db      	uxtb	r3, r3
+     ab4:	7403      	strb	r3, [r0, #16]
+     ab6:	7c41      	ldrb	r1, [r0, #17]
+     ab8:	1a5b      	subs	r3, r3, r1
+     aba:	2b01      	cmp	r3, #1
+     abc:	dd08      	ble.n	ad0 <bt_test_process_down+0x34>
+     abe:	3a03      	subs	r2, #3
+     ac0:	4291      	cmp	r1, r2
+     ac2:	d205      	bcs.n	ad0 <bt_test_process_down+0x34>
+     ac4:	3101      	adds	r1, #1
+     ac6:	7441      	strb	r1, [r0, #17]
+     ac8:	e002      	b.n	ad0 <bt_test_process_down+0x34>
+     aca:	2300      	movs	r3, #0
+     acc:	7403      	strb	r3, [r0, #16]
+     ace:	7443      	strb	r3, [r0, #17]
+     ad0:	2101      	movs	r1, #1
+     ad2:	6820      	ldr	r0, [r4, #0]
+     ad4:	4b02      	ldr	r3, [pc, #8]	@ (ae0 <bt_test_process_down+0x44>)
+     ad6:	4798      	blx	r3
+                model->position = 0;
+                model->window_position = 0;
+            }
+        },
+        true);
+}
+     ad8:	bd10      	pop	{r4, pc}
+     ada:	bf00      	nop
+	...
+
+00000ae4 <bt_test_process_ok>:
+    if(param->change_callback) {
+        param->change_callback(param);
+    }
+}
+
+void bt_test_process_ok(BtTest* bt_test) {
+     ae4:	b538      	push	{r3, r4, r5, lr}
+     ae6:	4604      	mov	r4, r0
+    BtTestState state;
+    with_view_model(
+     ae8:	6800      	ldr	r0, [r0, #0]
+     aea:	4b0f      	ldr	r3, [pc, #60]	@ (b28 <bt_test_process_ok+0x44>)
+     aec:	4798      	blx	r3
+     aee:	7803      	ldrb	r3, [r0, #0]
+     af0:	b99b      	cbnz	r3, b1a <bt_test_process_ok+0x36>
+     af2:	2301      	movs	r3, #1
+     af4:	7003      	strb	r3, [r0, #0]
+     af6:	4b0d      	ldr	r3, [pc, #52]	@ (b2c <bt_test_process_ok+0x48>)
+     af8:	6143      	str	r3, [r0, #20]
+     afa:	2300      	movs	r3, #0
+     afc:	6183      	str	r3, [r0, #24]
+     afe:	2300      	movs	r3, #0
+     b00:	61c3      	str	r3, [r0, #28]
+     b02:	6203      	str	r3, [r0, #32]
+     b04:	7805      	ldrb	r5, [r0, #0]
+     b06:	2101      	movs	r1, #1
+     b08:	6820      	ldr	r0, [r4, #0]
+     b0a:	4b09      	ldr	r3, [pc, #36]	@ (b30 <bt_test_process_ok+0x4c>)
+     b0c:	4798      	blx	r3
+                model->message = BT_TEST_STOP_MESSAGE;
+            }
+            state = model->state;
+        },
+        true);
+    if(bt_test->change_state_callback) {
+     b0e:	6863      	ldr	r3, [r4, #4]
+     b10:	b113      	cbz	r3, b18 <bt_test_process_ok+0x34>
+        bt_test->change_state_callback(state, bt_test->context);
+     b12:	68e1      	ldr	r1, [r4, #12]
+     b14:	4628      	mov	r0, r5
+     b16:	4798      	blx	r3
+    }
+}
+     b18:	bd38      	pop	{r3, r4, r5, pc}
+    with_view_model(
+     b1a:	2b01      	cmp	r3, #1
+     b1c:	d1f2      	bne.n	b04 <bt_test_process_ok+0x20>
+     b1e:	2300      	movs	r3, #0
+     b20:	7003      	strb	r3, [r0, #0]
+     b22:	4b04      	ldr	r3, [pc, #16]	@ (b34 <bt_test_process_ok+0x50>)
+     b24:	6143      	str	r3, [r0, #20]
+     b26:	e7ed      	b.n	b04 <bt_test_process_ok+0x20>
+     b28:	00000000 	.word	0x00000000
+     b2c:	000000c8 	.word	0x000000c8
+     b30:	00000000 	.word	0x00000000
+     b34:	000000d4 	.word	0x000000d4
+
+00000b38 <bt_test_process_back>:
+
+void bt_test_process_back(BtTest* bt_test) {
+     b38:	b510      	push	{r4, lr}
+     b3a:	4604      	mov	r4, r0
+    with_view_model(
+     b3c:	6800      	ldr	r0, [r0, #0]
+     b3e:	4b08      	ldr	r3, [pc, #32]	@ (b60 <bt_test_process_back+0x28>)
+     b40:	4798      	blx	r3
+     b42:	2301      	movs	r3, #1
+     b44:	7003      	strb	r3, [r0, #0]
+     b46:	2300      	movs	r3, #0
+     b48:	6183      	str	r3, [r0, #24]
+     b4a:	2100      	movs	r1, #0
+     b4c:	61c1      	str	r1, [r0, #28]
+     b4e:	6201      	str	r1, [r0, #32]
+     b50:	6820      	ldr	r0, [r4, #0]
+     b52:	4b04      	ldr	r3, [pc, #16]	@ (b64 <bt_test_process_back+0x2c>)
+     b54:	4798      	blx	r3
+            model->rssi = 0.0f;
+            model->packets_num_rx = 0;
+            model->packets_num_tx = 0;
+        },
+        false);
+    if(bt_test->back_callback) {
+     b56:	68a3      	ldr	r3, [r4, #8]
+     b58:	b10b      	cbz	r3, b5e <bt_test_process_back+0x26>
+        bt_test->back_callback(bt_test->context);
+     b5a:	68e0      	ldr	r0, [r4, #12]
+     b5c:	4798      	blx	r3
+    }
+}
+     b5e:	bd10      	pop	{r4, pc}
+	...
+
+00000b68 <bt_test_draw_callback>:
+static void bt_test_draw_callback(Canvas* canvas, void* _model) {
+     b68:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+     b6c:	b08f      	sub	sp, #60	@ 0x3c
+     b6e:	4680      	mov	r8, r0
+     b70:	468b      	mov	fp, r1
+    canvas_clear(canvas);
+     b72:	4b61      	ldr	r3, [pc, #388]	@ (cf8 <bt_test_draw_callback+0x190>)
+     b74:	4798      	blx	r3
+    canvas_set_font(canvas, FontSecondary);
+     b76:	2101      	movs	r1, #1
+     b78:	4640      	mov	r0, r8
+     b7a:	4b60      	ldr	r3, [pc, #384]	@ (cfc <bt_test_draw_callback+0x194>)
+     b7c:	4798      	blx	r3
+    for(BtTestParamArray_it(it, model->params); !BtTestParamArray_end_p(it);
+     b7e:	f10b 0a04 	add.w	sl, fp, #4
+ARRAY_DEF(BtTestParamArray, BtTestParam, M_POD_OPLIST); //-V658
+     b82:	2600      	movs	r6, #0
+     b84:	9604      	str	r6, [sp, #16]
+     b86:	f8cd a014 	str.w	sl, [sp, #20]
+     b8a:	e02c      	b.n	be6 <bt_test_draw_callback+0x7e>
+                canvas_set_color(canvas, ColorBlack);
+     b8c:	2101      	movs	r1, #1
+     b8e:	4640      	mov	r0, r8
+     b90:	4b5b      	ldr	r3, [pc, #364]	@ (d00 <bt_test_draw_callback+0x198>)
+     b92:	4798      	blx	r3
+                elements_slightly_rounded_box(
+     b94:	230e      	movs	r3, #14
+     b96:	9300      	str	r3, [sp, #0]
+     b98:	237b      	movs	r3, #123	@ 0x7b
+     b9a:	1c62      	adds	r2, r4, #1
+     b9c:	2100      	movs	r1, #0
+     b9e:	4640      	mov	r0, r8
+     ba0:	4c58      	ldr	r4, [pc, #352]	@ (d04 <bt_test_draw_callback+0x19c>)
+     ba2:	47a0      	blx	r4
+                canvas_set_color(canvas, ColorWhite);
+     ba4:	2100      	movs	r1, #0
+     ba6:	4640      	mov	r0, r8
+     ba8:	4b55      	ldr	r3, [pc, #340]	@ (d00 <bt_test_draw_callback+0x198>)
+     baa:	4798      	blx	r3
+            canvas_draw_str(canvas, 6, param_text_y, param->label);
+     bac:	9b02      	ldr	r3, [sp, #8]
+     bae:	9a03      	ldr	r2, [sp, #12]
+     bb0:	589b      	ldr	r3, [r3, r2]
+     bb2:	464a      	mov	r2, r9
+     bb4:	2106      	movs	r1, #6
+     bb6:	4640      	mov	r0, r8
+     bb8:	4c53      	ldr	r4, [pc, #332]	@ (d08 <bt_test_draw_callback+0x1a0>)
+     bba:	47a0      	blx	r4
+            if(param->current_value_index > 0) {
+     bbc:	793b      	ldrb	r3, [r7, #4]
+     bbe:	2b00      	cmp	r3, #0
+     bc0:	d134      	bne.n	c2c <bt_test_draw_callback+0xc4>
+            canvas_draw_str(
+     bc2:	68b8      	ldr	r0, [r7, #8]
+     bc4:	4b51      	ldr	r3, [pc, #324]	@ (d0c <bt_test_draw_callback+0x1a4>)
+     bc6:	4798      	blx	r3
+     bc8:	4603      	mov	r3, r0
+     bca:	464a      	mov	r2, r9
+     bcc:	213d      	movs	r1, #61	@ 0x3d
+     bce:	4640      	mov	r0, r8
+     bd0:	4c4d      	ldr	r4, [pc, #308]	@ (d08 <bt_test_draw_callback+0x1a0>)
+     bd2:	47a0      	blx	r4
+            if(param->current_value_index < (param->values_count - 1)) {
+     bd4:	793a      	ldrb	r2, [r7, #4]
+     bd6:	7b3b      	ldrb	r3, [r7, #12]
+     bd8:	3b01      	subs	r3, #1
+     bda:	429a      	cmp	r2, r3
+     bdc:	db2c      	blt.n	c38 <bt_test_draw_callback+0xd0>
+        position++;
+     bde:	3601      	adds	r6, #1
+     be0:	b2f6      	uxtb	r6, r6
+ARRAY_DEF(BtTestParamArray, BtTestParam, M_POD_OPLIST); //-V658
+     be2:	3501      	adds	r5, #1
+     be4:	9504      	str	r5, [sp, #16]
+     be6:	9d04      	ldr	r5, [sp, #16]
+     be8:	f8da 2000 	ldr.w	r2, [sl]
+    for(BtTestParamArray_it(it, model->params); !BtTestParamArray_end_p(it);
+     bec:	4295      	cmp	r5, r2
+     bee:	d229      	bcs.n	c44 <bt_test_draw_callback+0xdc>
+        uint8_t param_position = position - model->window_position;
+     bf0:	f89b 4011 	ldrb.w	r4, [fp, #17]
+     bf4:	1b34      	subs	r4, r6, r4
+     bf6:	b2e4      	uxtb	r4, r4
+        if(param_position < params_on_screen) {
+     bf8:	2c02      	cmp	r4, #2
+     bfa:	d8f0      	bhi.n	bde <bt_test_draw_callback+0x76>
+ARRAY_DEF(BtTestParamArray, BtTestParam, M_POD_OPLIST); //-V658
+     bfc:	f8da 3008 	ldr.w	r3, [sl, #8]
+     c00:	9302      	str	r3, [sp, #8]
+     c02:	eb05 0745 	add.w	r7, r5, r5, lsl #1
+     c06:	00fa      	lsls	r2, r7, #3
+     c08:	9203      	str	r2, [sp, #12]
+     c0a:	eb03 07c7 	add.w	r7, r3, r7, lsl #3
+            uint8_t param_y = y_offset + (param_position * param_height);
+     c0e:	0124      	lsls	r4, r4, #4
+     c10:	b2e4      	uxtb	r4, r4
+            uint8_t param_text_y = param_y + param_height - 4;
+     c12:	f104 090c 	add.w	r9, r4, #12
+     c16:	fa5f f989 	uxtb.w	r9, r9
+            if(position == model->position) {
+     c1a:	f89b 3010 	ldrb.w	r3, [fp, #16]
+     c1e:	42b3      	cmp	r3, r6
+     c20:	d0b4      	beq.n	b8c <bt_test_draw_callback+0x24>
+                canvas_set_color(canvas, ColorBlack);
+     c22:	2101      	movs	r1, #1
+     c24:	4640      	mov	r0, r8
+     c26:	4b36      	ldr	r3, [pc, #216]	@ (d00 <bt_test_draw_callback+0x198>)
+     c28:	4798      	blx	r3
+     c2a:	e7bf      	b.n	bac <bt_test_draw_callback+0x44>
+                canvas_draw_str(canvas, 50, param_text_y, "<");
+     c2c:	4b38      	ldr	r3, [pc, #224]	@ (d10 <bt_test_draw_callback+0x1a8>)
+     c2e:	464a      	mov	r2, r9
+     c30:	2132      	movs	r1, #50	@ 0x32
+     c32:	4640      	mov	r0, r8
+     c34:	47a0      	blx	r4
+     c36:	e7c4      	b.n	bc2 <bt_test_draw_callback+0x5a>
+                canvas_draw_str(canvas, 113, param_text_y, ">");
+     c38:	4b36      	ldr	r3, [pc, #216]	@ (d14 <bt_test_draw_callback+0x1ac>)
+     c3a:	464a      	mov	r2, r9
+     c3c:	2171      	movs	r1, #113	@ 0x71
+     c3e:	4640      	mov	r0, r8
+     c40:	47a0      	blx	r4
+     c42:	e7cc      	b.n	bde <bt_test_draw_callback+0x76>
+    elements_scrollbar(canvas, model->position, BtTestParamArray_size(model->params));
+     c44:	f89b 1010 	ldrb.w	r1, [fp, #16]
+     c48:	4640      	mov	r0, r8
+     c4a:	4b33      	ldr	r3, [pc, #204]	@ (d18 <bt_test_draw_callback+0x1b0>)
+     c4c:	4798      	blx	r3
+    canvas_draw_str(canvas, 6, 60, model->message);
+     c4e:	f8db 3014 	ldr.w	r3, [fp, #20]
+     c52:	223c      	movs	r2, #60	@ 0x3c
+     c54:	2106      	movs	r1, #6
+     c56:	4640      	mov	r0, r8
+     c58:	4c2b      	ldr	r4, [pc, #172]	@ (d08 <bt_test_draw_callback+0x1a0>)
+     c5a:	47a0      	blx	r4
+    if(model->state == BtTestStateStarted) {
+     c5c:	f89b 3000 	ldrb.w	r3, [fp]
+     c60:	b123      	cbz	r3, c6c <bt_test_draw_callback+0x104>
+    } else if(model->state == BtTestStateStopped) {
+     c62:	2b01      	cmp	r3, #1
+     c64:	d020      	beq.n	ca8 <bt_test_draw_callback+0x140>
+}
+     c66:	b00f      	add	sp, #60	@ 0x3c
+     c68:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+        if(!float_is_equal(model->rssi, 0.0f)) {
+     c6c:	eddf 0a2b 	vldr	s1, [pc, #172]	@ d1c <bt_test_draw_callback+0x1b4>
+     c70:	ed9b 0a06 	vldr	s0, [fp, #24]
+     c74:	4b2a      	ldr	r3, [pc, #168]	@ (d20 <bt_test_draw_callback+0x1b8>)
+     c76:	4798      	blx	r3
+     c78:	2800      	cmp	r0, #0
+     c7a:	d1f4      	bne.n	c66 <bt_test_draw_callback+0xfe>
+            snprintf(info_str, sizeof(info_str), "RSSI:%3.1f dB", (double)model->rssi);
+     c7c:	ac06      	add	r4, sp, #24
+     c7e:	f8db 0018 	ldr.w	r0, [fp, #24]
+     c82:	4b28      	ldr	r3, [pc, #160]	@ (d24 <bt_test_draw_callback+0x1bc>)
+     c84:	4798      	blx	r3
+     c86:	e9cd 0100 	strd	r0, r1, [sp]
+     c8a:	4a27      	ldr	r2, [pc, #156]	@ (d28 <bt_test_draw_callback+0x1c0>)
+     c8c:	2120      	movs	r1, #32
+     c8e:	4620      	mov	r0, r4
+     c90:	4b26      	ldr	r3, [pc, #152]	@ (d2c <bt_test_draw_callback+0x1c4>)
+     c92:	4798      	blx	r3
+            canvas_draw_str_aligned(canvas, 124, 60, AlignRight, AlignBottom, info_str);
+     c94:	9401      	str	r4, [sp, #4]
+     c96:	2303      	movs	r3, #3
+     c98:	9300      	str	r3, [sp, #0]
+     c9a:	2301      	movs	r3, #1
+     c9c:	223c      	movs	r2, #60	@ 0x3c
+     c9e:	217c      	movs	r1, #124	@ 0x7c
+     ca0:	4640      	mov	r0, r8
+     ca2:	4c23      	ldr	r4, [pc, #140]	@ (d30 <bt_test_draw_callback+0x1c8>)
+     ca4:	47a0      	blx	r4
+     ca6:	e7de      	b.n	c66 <bt_test_draw_callback+0xfe>
+        if(model->packets_num_rx) {
+     ca8:	f8db 301c 	ldr.w	r3, [fp, #28]
+     cac:	b99b      	cbnz	r3, cd6 <bt_test_draw_callback+0x16e>
+        } else if(model->packets_num_tx) {
+     cae:	f8db 3020 	ldr.w	r3, [fp, #32]
+     cb2:	2b00      	cmp	r3, #0
+     cb4:	d0d7      	beq.n	c66 <bt_test_draw_callback+0xfe>
+            snprintf(info_str, sizeof(info_str), "%" PRIu32 " pack sent", model->packets_num_tx);
+     cb6:	ac06      	add	r4, sp, #24
+     cb8:	4a1e      	ldr	r2, [pc, #120]	@ (d34 <bt_test_draw_callback+0x1cc>)
+     cba:	2120      	movs	r1, #32
+     cbc:	4620      	mov	r0, r4
+     cbe:	4d1b      	ldr	r5, [pc, #108]	@ (d2c <bt_test_draw_callback+0x1c4>)
+     cc0:	47a8      	blx	r5
+            canvas_draw_str_aligned(canvas, 124, 60, AlignRight, AlignBottom, info_str);
+     cc2:	9401      	str	r4, [sp, #4]
+     cc4:	2303      	movs	r3, #3
+     cc6:	9300      	str	r3, [sp, #0]
+     cc8:	2301      	movs	r3, #1
+     cca:	223c      	movs	r2, #60	@ 0x3c
+     ccc:	217c      	movs	r1, #124	@ 0x7c
+     cce:	4640      	mov	r0, r8
+     cd0:	4c17      	ldr	r4, [pc, #92]	@ (d30 <bt_test_draw_callback+0x1c8>)
+     cd2:	47a0      	blx	r4
+}
+     cd4:	e7c7      	b.n	c66 <bt_test_draw_callback+0xfe>
+            snprintf(info_str, sizeof(info_str), "%" PRIu32 " pack rcv", model->packets_num_rx);
+     cd6:	ac06      	add	r4, sp, #24
+     cd8:	4a17      	ldr	r2, [pc, #92]	@ (d38 <bt_test_draw_callback+0x1d0>)
+     cda:	2120      	movs	r1, #32
+     cdc:	4620      	mov	r0, r4
+     cde:	4d13      	ldr	r5, [pc, #76]	@ (d2c <bt_test_draw_callback+0x1c4>)
+     ce0:	47a8      	blx	r5
+            canvas_draw_str_aligned(canvas, 124, 60, AlignRight, AlignBottom, info_str);
+     ce2:	9401      	str	r4, [sp, #4]
+     ce4:	2303      	movs	r3, #3
+     ce6:	9300      	str	r3, [sp, #0]
+     ce8:	2301      	movs	r3, #1
+     cea:	223c      	movs	r2, #60	@ 0x3c
+     cec:	217c      	movs	r1, #124	@ 0x7c
+     cee:	4640      	mov	r0, r8
+     cf0:	4c0f      	ldr	r4, [pc, #60]	@ (d30 <bt_test_draw_callback+0x1c8>)
+     cf2:	47a0      	blx	r4
+     cf4:	e7b7      	b.n	c66 <bt_test_draw_callback+0xfe>
+     cf6:	bf00      	nop
+	...
+     d10:	000000e0 	.word	0x000000e0
+     d14:	000000e4 	.word	0x000000e4
+	...
+     d28:	000000e8 	.word	0x000000e8
+	...
+     d34:	00000108 	.word	0x00000108
+     d38:	000000f8 	.word	0x000000f8
+
+00000d3c <BtTestParamArray_clear>:
+ARRAY_DEF(BtTestParamArray, BtTestParam, M_POD_OPLIST); //-V658
+     d3c:	b538      	push	{r3, r4, r5, lr}
+     d3e:	4604      	mov	r4, r0
+     d40:	2300      	movs	r3, #0
+     d42:	e000      	b.n	d46 <BtTestParamArray_clear+0xa>
+     d44:	3301      	adds	r3, #1
+     d46:	6822      	ldr	r2, [r4, #0]
+     d48:	4293      	cmp	r3, r2
+     d4a:	d3fb      	bcc.n	d44 <BtTestParamArray_clear+0x8>
+     d4c:	2500      	movs	r5, #0
+     d4e:	6025      	str	r5, [r4, #0]
+     d50:	68a0      	ldr	r0, [r4, #8]
+     d52:	4b03      	ldr	r3, [pc, #12]	@ (d60 <BtTestParamArray_clear+0x24>)
+     d54:	4798      	blx	r3
+     d56:	2301      	movs	r3, #1
+     d58:	6063      	str	r3, [r4, #4]
+     d5a:	60a5      	str	r5, [r4, #8]
+     d5c:	bd38      	pop	{r3, r4, r5, pc}
+     d5e:	bf00      	nop
+     d60:	00000000 	.word	0x00000000
+
+00000d64 <BtTestParamArray_push_raw>:
+     d64:	b538      	push	{r3, r4, r5, lr}
+     d66:	4604      	mov	r4, r0
+     d68:	6802      	ldr	r2, [r0, #0]
+     d6a:	6843      	ldr	r3, [r0, #4]
+     d6c:	429a      	cmp	r2, r3
+     d6e:	d208      	bcs.n	d82 <BtTestParamArray_push_raw+0x1e>
+     d70:	68a2      	ldr	r2, [r4, #8]
+     d72:	6823      	ldr	r3, [r4, #0]
+     d74:	eb03 0043 	add.w	r0, r3, r3, lsl #1
+     d78:	3301      	adds	r3, #1
+     d7a:	6023      	str	r3, [r4, #0]
+     d7c:	eb02 00c0 	add.w	r0, r2, r0, lsl #3
+     d80:	bd38      	pop	{r3, r4, r5, pc}
+     d82:	4619      	mov	r1, r3
+     d84:	2b08      	cmp	r3, #8
+     d86:	bf38      	it	cc
+     d88:	2108      	movcc	r1, #8
+     d8a:	004d      	lsls	r5, r1, #1
+     d8c:	ebb3 0f41 	cmp.w	r3, r1, lsl #1
+     d90:	d20c      	bcs.n	dac <BtTestParamArray_push_raw+0x48>
+     d92:	4b09      	ldr	r3, [pc, #36]	@ (db8 <BtTestParamArray_push_raw+0x54>)
+     d94:	429d      	cmp	r5, r3
+     d96:	d80b      	bhi.n	db0 <BtTestParamArray_push_raw+0x4c>
+     d98:	eb01 0141 	add.w	r1, r1, r1, lsl #1
+     d9c:	0109      	lsls	r1, r1, #4
+     d9e:	6880      	ldr	r0, [r0, #8]
+     da0:	4b06      	ldr	r3, [pc, #24]	@ (dbc <BtTestParamArray_push_raw+0x58>)
+     da2:	4798      	blx	r3
+     da4:	b130      	cbz	r0, db4 <BtTestParamArray_push_raw+0x50>
+     da6:	60a0      	str	r0, [r4, #8]
+     da8:	6065      	str	r5, [r4, #4]
+     daa:	e7e1      	b.n	d70 <BtTestParamArray_push_raw+0xc>
+     dac:	4b04      	ldr	r3, [pc, #16]	@ (dc0 <BtTestParamArray_push_raw+0x5c>)
+     dae:	4798      	blx	r3
+     db0:	2000      	movs	r0, #0
+     db2:	e7f7      	b.n	da4 <BtTestParamArray_push_raw+0x40>
+     db4:	4b02      	ldr	r3, [pc, #8]	@ (dc0 <BtTestParamArray_push_raw+0x5c>)
+     db6:	4798      	blx	r3
+     db8:	0aaaaaaa 	.word	0x0aaaaaaa
+	...
+
+00000dc4 <BtTestParamArray_push_new>:
+     dc4:	b508      	push	{r3, lr}
+     dc6:	4b07      	ldr	r3, [pc, #28]	@ (de4 <BtTestParamArray_push_new+0x20>)
+     dc8:	4798      	blx	r3
+     dca:	b148      	cbz	r0, de0 <BtTestParamArray_push_new+0x1c>
+     dcc:	4603      	mov	r3, r0
+     dce:	2200      	movs	r2, #0
+     dd0:	6002      	str	r2, [r0, #0]
+     dd2:	6042      	str	r2, [r0, #4]
+     dd4:	6082      	str	r2, [r0, #8]
+     dd6:	60c2      	str	r2, [r0, #12]
+     dd8:	6102      	str	r2, [r0, #16]
+     dda:	6142      	str	r2, [r0, #20]
+     ddc:	4618      	mov	r0, r3
+     dde:	bd08      	pop	{r3, pc}
+     de0:	2300      	movs	r3, #0
+     de2:	e7fb      	b.n	ddc <BtTestParamArray_push_new+0x18>
+     de4:	00000000 	.word	0x00000000
+
+00000de8 <bt_test_get_selected_param>:
+BtTestParam* bt_test_get_selected_param(BtTestModel* model) {
+     de8:	b510      	push	{r4, lr}
+     dea:	b082      	sub	sp, #8
+    for(BtTestParamArray_it(it, model->params); !BtTestParamArray_end_p(it);
+     dec:	1d04      	adds	r4, r0, #4
+ARRAY_DEF(BtTestParamArray, BtTestParam, M_POD_OPLIST); //-V658
+     dee:	2200      	movs	r2, #0
+     df0:	9200      	str	r2, [sp, #0]
+     df2:	9401      	str	r4, [sp, #4]
+     df4:	e003      	b.n	dfe <bt_test_get_selected_param+0x16>
+        position++;
+     df6:	3201      	adds	r2, #1
+     df8:	b2d2      	uxtb	r2, r2
+ARRAY_DEF(BtTestParamArray, BtTestParam, M_POD_OPLIST); //-V658
+     dfa:	3301      	adds	r3, #1
+     dfc:	9300      	str	r3, [sp, #0]
+     dfe:	9b00      	ldr	r3, [sp, #0]
+     e00:	6821      	ldr	r1, [r4, #0]
+    for(BtTestParamArray_it(it, model->params); !BtTestParamArray_end_p(it);
+     e02:	428b      	cmp	r3, r1
+     e04:	d202      	bcs.n	e0c <bt_test_get_selected_param+0x24>
+        if(position == model->position) {
+     e06:	7c01      	ldrb	r1, [r0, #16]
+     e08:	4291      	cmp	r1, r2
+     e0a:	d1f4      	bne.n	df6 <bt_test_get_selected_param+0xe>
+ARRAY_DEF(BtTestParamArray, BtTestParam, M_POD_OPLIST); //-V658
+     e0c:	68a0      	ldr	r0, [r4, #8]
+     e0e:	eb03 0343 	add.w	r3, r3, r3, lsl #1
+    furi_assert(param);
+     e12:	eb10 00c3 	adds.w	r0, r0, r3, lsl #3
+     e16:	d001      	beq.n	e1c <bt_test_get_selected_param+0x34>
+}
+     e18:	b002      	add	sp, #8
+     e1a:	bd10      	pop	{r4, pc}
+    furi_assert(param);
+     e1c:	f04f 0c01 	mov.w	ip, #1
+
+00000e20 <sukima1280>:
+     e20:	4b00      	ldr	r3, [pc, #0]	@ (e24 <sukima1280+0x4>)
+     e22:	4798      	blx	r3
+     e24:	00000000 	.word	0x00000000
+
+00000e28 <bt_test_process_left>:
+void bt_test_process_left(BtTest* bt_test) {
+     e28:	b570      	push	{r4, r5, r6, lr}
+     e2a:	4605      	mov	r5, r0
+    with_view_model(
+     e2c:	6800      	ldr	r0, [r0, #0]
+     e2e:	4b0f      	ldr	r3, [pc, #60]	@ (e6c <bt_test_process_left+0x44>)
+     e30:	4798      	blx	r3
+     e32:	4606      	mov	r6, r0
+     e34:	4b0e      	ldr	r3, [pc, #56]	@ (e70 <bt_test_process_left+0x48>)
+     e36:	4798      	blx	r3
+     e38:	4604      	mov	r4, r0
+     e3a:	7903      	ldrb	r3, [r0, #4]
+     e3c:	b163      	cbz	r3, e58 <bt_test_process_left+0x30>
+     e3e:	3b01      	subs	r3, #1
+     e40:	7103      	strb	r3, [r0, #4]
+     e42:	6903      	ldr	r3, [r0, #16]
+     e44:	b143      	cbz	r3, e58 <bt_test_process_left+0x30>
+     e46:	2301      	movs	r3, #1
+     e48:	7033      	strb	r3, [r6, #0]
+     e4a:	4b0a      	ldr	r3, [pc, #40]	@ (e74 <bt_test_process_left+0x4c>)
+     e4c:	6173      	str	r3, [r6, #20]
+     e4e:	2300      	movs	r3, #0
+     e50:	61b3      	str	r3, [r6, #24]
+     e52:	2300      	movs	r3, #0
+     e54:	61f3      	str	r3, [r6, #28]
+     e56:	6233      	str	r3, [r6, #32]
+     e58:	2101      	movs	r1, #1
+     e5a:	6828      	ldr	r0, [r5, #0]
+     e5c:	4b06      	ldr	r3, [pc, #24]	@ (e78 <bt_test_process_left+0x50>)
+     e5e:	4798      	blx	r3
+    if(param->change_callback) {
+     e60:	6923      	ldr	r3, [r4, #16]
+     e62:	b10b      	cbz	r3, e68 <bt_test_process_left+0x40>
+        param->change_callback(param);
+     e64:	4620      	mov	r0, r4
+     e66:	4798      	blx	r3
+}
+     e68:	bd70      	pop	{r4, r5, r6, pc}
+     e6a:	bf00      	nop
+	...
+     e74:	000000c8 	.word	0x000000c8
+     e78:	00000000 	.word	0x00000000
+
+00000e7c <bt_test_process_right>:
+void bt_test_process_right(BtTest* bt_test) {
+     e7c:	b570      	push	{r4, r5, r6, lr}
+     e7e:	4605      	mov	r5, r0
+    with_view_model(
+     e80:	6800      	ldr	r0, [r0, #0]
+     e82:	4b10      	ldr	r3, [pc, #64]	@ (ec4 <bt_test_process_right+0x48>)
+     e84:	4798      	blx	r3
+     e86:	4606      	mov	r6, r0
+     e88:	4b0f      	ldr	r3, [pc, #60]	@ (ec8 <bt_test_process_right+0x4c>)
+     e8a:	4798      	blx	r3
+     e8c:	4604      	mov	r4, r0
+     e8e:	7902      	ldrb	r2, [r0, #4]
+     e90:	7b03      	ldrb	r3, [r0, #12]
+     e92:	3b01      	subs	r3, #1
+     e94:	429a      	cmp	r2, r3
+     e96:	da0c      	bge.n	eb2 <bt_test_process_right+0x36>
+     e98:	3201      	adds	r2, #1
+     e9a:	7102      	strb	r2, [r0, #4]
+     e9c:	6903      	ldr	r3, [r0, #16]
+     e9e:	b143      	cbz	r3, eb2 <bt_test_process_right+0x36>
+     ea0:	2301      	movs	r3, #1
+     ea2:	7033      	strb	r3, [r6, #0]
+     ea4:	4b09      	ldr	r3, [pc, #36]	@ (ecc <bt_test_process_right+0x50>)
+     ea6:	6173      	str	r3, [r6, #20]
+     ea8:	2300      	movs	r3, #0
+     eaa:	61b3      	str	r3, [r6, #24]
+     eac:	2300      	movs	r3, #0
+     eae:	61f3      	str	r3, [r6, #28]
+     eb0:	6233      	str	r3, [r6, #32]
+     eb2:	2101      	movs	r1, #1
+     eb4:	6828      	ldr	r0, [r5, #0]
+     eb6:	4b06      	ldr	r3, [pc, #24]	@ (ed0 <bt_test_process_right+0x54>)
+     eb8:	4798      	blx	r3
+    if(param->change_callback) {
+     eba:	6923      	ldr	r3, [r4, #16]
+     ebc:	b10b      	cbz	r3, ec2 <bt_test_process_right+0x46>
+        param->change_callback(param);
+     ebe:	4620      	mov	r0, r4
+     ec0:	4798      	blx	r3
+}
+     ec2:	bd70      	pop	{r4, r5, r6, pc}
+	...
+     ecc:	000000c8 	.word	0x000000c8
+     ed0:	00000000 	.word	0x00000000
+
+00000ed4 <bt_test_input_callback>:
+static bool bt_test_input_callback(InputEvent* event, void* context) {
+     ed4:	b508      	push	{r3, lr}
+    furi_assert(bt_test);
+     ed6:	b131      	cbz	r1, ee6 <bt_test_input_callback+0x12>
+     ed8:	4603      	mov	r3, r0
+     eda:	4608      	mov	r0, r1
+    if(event->type == InputTypeShort) {
+     edc:	795a      	ldrb	r2, [r3, #5]
+     ede:	2a02      	cmp	r2, #2
+     ee0:	d005      	beq.n	eee <sukima1536+0x4>
+    bool consumed = false;
+     ee2:	2000      	movs	r0, #0
+}
+     ee4:	bd08      	pop	{r3, pc}
+    furi_assert(bt_test);
+     ee6:	f04f 0c01 	mov.w	ip, #1
+
+00000eea <sukima1536>:
+     eea:	4b12      	ldr	r3, [pc, #72]	@ (f34 <sukima1536+0x4a>)
+     eec:	4798      	blx	r3
+        switch(event->key) {
+     eee:	791b      	ldrb	r3, [r3, #4]
+     ef0:	2b05      	cmp	r3, #5
+     ef2:	d81c      	bhi.n	f2e <sukima1536+0x44>
+     ef4:	e8df f003 	tbb	[pc, r3]
+     ef8:	0b0f0703 	.word	0x0b0f0703
+     efc:	1713      	.short	0x1713
+            bt_test_process_up(bt_test);
+     efe:	4b0e      	ldr	r3, [pc, #56]	@ (f38 <sukima1536+0x4e>)
+     f00:	4798      	blx	r3
+            consumed = true;
+     f02:	2001      	movs	r0, #1
+            break;
+     f04:	e7ee      	b.n	ee4 <bt_test_input_callback+0x10>
+            bt_test_process_down(bt_test);
+     f06:	4b0d      	ldr	r3, [pc, #52]	@ (f3c <sukima1536+0x52>)
+     f08:	4798      	blx	r3
+            consumed = true;
+     f0a:	2001      	movs	r0, #1
+            break;
+     f0c:	e7ea      	b.n	ee4 <bt_test_input_callback+0x10>
+            bt_test_process_left(bt_test);
+     f0e:	4b0c      	ldr	r3, [pc, #48]	@ (f40 <sukima1536+0x56>)
+     f10:	4798      	blx	r3
+            consumed = true;
+     f12:	2001      	movs	r0, #1
+            break;
+     f14:	e7e6      	b.n	ee4 <bt_test_input_callback+0x10>
+            bt_test_process_right(bt_test);
+     f16:	4b0b      	ldr	r3, [pc, #44]	@ (f44 <sukima1536+0x5a>)
+     f18:	4798      	blx	r3
+            consumed = true;
+     f1a:	2001      	movs	r0, #1
+            break;
+     f1c:	e7e2      	b.n	ee4 <bt_test_input_callback+0x10>
+            bt_test_process_ok(bt_test);
+     f1e:	4b0a      	ldr	r3, [pc, #40]	@ (f48 <sukima1536+0x5e>)
+     f20:	4798      	blx	r3
+            consumed = true;
+     f22:	2001      	movs	r0, #1
+            break;
+     f24:	e7de      	b.n	ee4 <bt_test_input_callback+0x10>
+            bt_test_process_back(bt_test);
+     f26:	4b09      	ldr	r3, [pc, #36]	@ (f4c <sukima1536+0x62>)
+     f28:	4798      	blx	r3
+            consumed = false;
+     f2a:	2000      	movs	r0, #0
+            break;
+     f2c:	e7da      	b.n	ee4 <bt_test_input_callback+0x10>
+        switch(event->key) {
+     f2e:	2000      	movs	r0, #0
+     f30:	e7d8      	b.n	ee4 <bt_test_input_callback+0x10>
+     f32:	bf00      	nop
+	...
+
+00000f50 <bt_test_alloc>:
+
+BtTest* bt_test_alloc(void) {
+     f50:	b510      	push	{r4, lr}
+    BtTest* bt_test = malloc(sizeof(BtTest));
+     f52:	2010      	movs	r0, #16
+     f54:	4b15      	ldr	r3, [pc, #84]	@ (fac <bt_test_alloc+0x5c>)
+     f56:	4798      	blx	r3
+     f58:	4604      	mov	r4, r0
+    bt_test->view = view_alloc();
+     f5a:	4b15      	ldr	r3, [pc, #84]	@ (fb0 <bt_test_alloc+0x60>)
+     f5c:	4798      	blx	r3
+     f5e:	6020      	str	r0, [r4, #0]
+    view_set_context(bt_test->view, bt_test);
+     f60:	4621      	mov	r1, r4
+     f62:	4b14      	ldr	r3, [pc, #80]	@ (fb4 <bt_test_alloc+0x64>)
+     f64:	4798      	blx	r3
+    view_allocate_model(bt_test->view, ViewModelTypeLocking, sizeof(BtTestModel));
+     f66:	2224      	movs	r2, #36	@ 0x24
+     f68:	2102      	movs	r1, #2
+     f6a:	6820      	ldr	r0, [r4, #0]
+     f6c:	4b12      	ldr	r3, [pc, #72]	@ (fb8 <bt_test_alloc+0x68>)
+     f6e:	4798      	blx	r3
+    view_set_draw_callback(bt_test->view, bt_test_draw_callback);
+     f70:	4912      	ldr	r1, [pc, #72]	@ (fbc <bt_test_alloc+0x6c>)
+     f72:	6820      	ldr	r0, [r4, #0]
+     f74:	4b12      	ldr	r3, [pc, #72]	@ (fc0 <bt_test_alloc+0x70>)
+     f76:	4798      	blx	r3
+    view_set_input_callback(bt_test->view, bt_test_input_callback);
+     f78:	4912      	ldr	r1, [pc, #72]	@ (fc4 <bt_test_alloc+0x74>)
+     f7a:	6820      	ldr	r0, [r4, #0]
+     f7c:	4b12      	ldr	r3, [pc, #72]	@ (fc8 <bt_test_alloc+0x78>)
+     f7e:	4798      	blx	r3
+
+    with_view_model(
+     f80:	6820      	ldr	r0, [r4, #0]
+     f82:	4b12      	ldr	r3, [pc, #72]	@ (fcc <bt_test_alloc+0x7c>)
+     f84:	4798      	blx	r3
+     f86:	2101      	movs	r1, #1
+     f88:	7001      	strb	r1, [r0, #0]
+     f8a:	4b11      	ldr	r3, [pc, #68]	@ (fd0 <bt_test_alloc+0x80>)
+     f8c:	6143      	str	r3, [r0, #20]
+ARRAY_DEF(BtTestParamArray, BtTestParam, M_POD_OPLIST); //-V658
+     f8e:	2300      	movs	r3, #0
+     f90:	6043      	str	r3, [r0, #4]
+     f92:	6083      	str	r3, [r0, #8]
+     f94:	60c3      	str	r3, [r0, #12]
+    with_view_model(
+     f96:	7403      	strb	r3, [r0, #16]
+     f98:	7443      	strb	r3, [r0, #17]
+     f9a:	2200      	movs	r2, #0
+     f9c:	6182      	str	r2, [r0, #24]
+     f9e:	6203      	str	r3, [r0, #32]
+     fa0:	61c3      	str	r3, [r0, #28]
+     fa2:	6820      	ldr	r0, [r4, #0]
+     fa4:	4b0b      	ldr	r3, [pc, #44]	@ (fd4 <bt_test_alloc+0x84>)
+     fa6:	4798      	blx	r3
+            model->packets_num_rx = 0;
+        },
+        true);
+
+    return bt_test;
+}
+     fa8:	4620      	mov	r0, r4
+     faa:	bd10      	pop	{r4, pc}
+	...
+     fd0:	000000c8 	.word	0x000000c8
+     fd4:	00000000 	.word	0x00000000
+
+00000fd8 <bt_test_free>:
+
+void bt_test_free(BtTest* bt_test) {
+     fd8:	b570      	push	{r4, r5, r6, lr}
+     fda:	b082      	sub	sp, #8
+    furi_assert(bt_test);
+     fdc:	b140      	cbz	r0, ff0 <bt_test_free+0x18>
+     fde:	4606      	mov	r6, r0
+
+    with_view_model(
+     fe0:	6800      	ldr	r0, [r0, #0]
+     fe2:	4b14      	ldr	r3, [pc, #80]	@ (1034 <sukima1865+0x40>)
+     fe4:	4798      	blx	r3
+     fe6:	1d05      	adds	r5, r0, #4
+ARRAY_DEF(BtTestParamArray, BtTestParam, M_POD_OPLIST); //-V658
+     fe8:	2300      	movs	r3, #0
+     fea:	9300      	str	r3, [sp, #0]
+     fec:	9501      	str	r5, [sp, #4]
+     fee:	e00d      	b.n	100c <sukima1865+0x18>
+    furi_assert(bt_test);
+     ff0:	f04f 0c01 	mov.w	ip, #1
+
+00000ff4 <sukima1865>:
+     ff4:	4b10      	ldr	r3, [pc, #64]	@ (1038 <sukima1865+0x44>)
+     ff6:	4798      	blx	r3
+ARRAY_DEF(BtTestParamArray, BtTestParam, M_POD_OPLIST); //-V658
+     ff8:	68ab      	ldr	r3, [r5, #8]
+     ffa:	eb04 0244 	add.w	r2, r4, r4, lsl #1
+     ffe:	eb03 03c2 	add.w	r3, r3, r2, lsl #3
+    with_view_model(
+    1002:	6898      	ldr	r0, [r3, #8]
+    1004:	4b0d      	ldr	r3, [pc, #52]	@ (103c <sukima1865+0x48>)
+    1006:	4798      	blx	r3
+ARRAY_DEF(BtTestParamArray, BtTestParam, M_POD_OPLIST); //-V658
+    1008:	3401      	adds	r4, #1
+    100a:	9400      	str	r4, [sp, #0]
+    100c:	9c00      	ldr	r4, [sp, #0]
+    100e:	682b      	ldr	r3, [r5, #0]
+    with_view_model(
+    1010:	429c      	cmp	r4, r3
+    1012:	d3f1      	bcc.n	ff8 <sukima1865+0x4>
+    1014:	4628      	mov	r0, r5
+    1016:	4b0a      	ldr	r3, [pc, #40]	@ (1040 <sukima1865+0x4c>)
+    1018:	4798      	blx	r3
+    101a:	2100      	movs	r1, #0
+    101c:	6830      	ldr	r0, [r6, #0]
+    101e:	4b09      	ldr	r3, [pc, #36]	@ (1044 <sukima1865+0x50>)
+    1020:	4798      	blx	r3
+                furi_string_free(BtTestParamArray_ref(it)->current_value_text);
+            }
+            BtTestParamArray_clear(model->params);
+        },
+        false);
+    view_free(bt_test->view);
+    1022:	6830      	ldr	r0, [r6, #0]
+    1024:	4b08      	ldr	r3, [pc, #32]	@ (1048 <sukima1865+0x54>)
+    1026:	4798      	blx	r3
+    free(bt_test);
+    1028:	4630      	mov	r0, r6
+    102a:	4b08      	ldr	r3, [pc, #32]	@ (104c <sukima1865+0x58>)
+    102c:	4798      	blx	r3
+}
+    102e:	b002      	add	sp, #8
+    1030:	bd70      	pop	{r4, r5, r6, pc}
+    1032:	bf00      	nop
+	...
+
+00001050 <bt_test_get_view>:
+
+View* bt_test_get_view(BtTest* bt_test) {
+    1050:	b508      	push	{r3, lr}
+    furi_assert(bt_test);
+    1052:	b108      	cbz	r0, 1058 <bt_test_get_view+0x8>
+    return bt_test->view;
+}
+    1054:	6800      	ldr	r0, [r0, #0]
+    1056:	bd08      	pop	{r3, pc}
+    furi_assert(bt_test);
+    1058:	f04f 0c01 	mov.w	ip, #1
+
+0000105c <sukima2022>:
+    105c:	4b00      	ldr	r3, [pc, #0]	@ (1060 <sukima2022+0x4>)
+    105e:	4798      	blx	r3
+    1060:	00000000 	.word	0x00000000
+
+00001064 <bt_test_param_add>:
+BtTestParam* bt_test_param_add(
+    BtTest* bt_test,
+    const char* label,
+    uint8_t values_count,
+    BtTestParamChangeCallback change_callback,
+    void* context) {
+    1064:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+    BtTestParam* param = NULL;
+    furi_assert(label);
+    1068:	b1e9      	cbz	r1, 10a6 <bt_test_param_add+0x42>
+    106a:	4605      	mov	r5, r0
+    106c:	4617      	mov	r7, r2
+    106e:	461e      	mov	r6, r3
+    1070:	4688      	mov	r8, r1
+    furi_assert(bt_test);
+    1072:	b1e0      	cbz	r0, 10ae <sukima2146+0x4>
+
+    with_view_model(
+    1074:	6800      	ldr	r0, [r0, #0]
+    1076:	4b10      	ldr	r3, [pc, #64]	@ (10b8 <sukima2168+0x6>)
+    1078:	4798      	blx	r3
+    107a:	3004      	adds	r0, #4
+    107c:	4b0f      	ldr	r3, [pc, #60]	@ (10bc <sukima2168+0xa>)
+    107e:	4798      	blx	r3
+    1080:	4604      	mov	r4, r0
+    1082:	f8c0 8000 	str.w	r8, [r0]
+    1086:	7307      	strb	r7, [r0, #12]
+    1088:	6106      	str	r6, [r0, #16]
+    108a:	9b06      	ldr	r3, [sp, #24]
+    108c:	6143      	str	r3, [r0, #20]
+    108e:	2300      	movs	r3, #0
+    1090:	7103      	strb	r3, [r0, #4]
+    1092:	4b0b      	ldr	r3, [pc, #44]	@ (10c0 <sukima2168+0xe>)
+    1094:	4798      	blx	r3
+    1096:	60a0      	str	r0, [r4, #8]
+    1098:	2101      	movs	r1, #1
+    109a:	6828      	ldr	r0, [r5, #0]
+    109c:	4b09      	ldr	r3, [pc, #36]	@ (10c4 <sukima2168+0x12>)
+    109e:	4798      	blx	r3
+            param->current_value_text = furi_string_alloc();
+        },
+        true);
+
+    return param;
+}
+    10a0:	4620      	mov	r0, r4
+    10a2:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+    furi_assert(label);
+    10a6:	f04f 0c01 	mov.w	ip, #1
+
+000010aa <sukima2146>:
+    10aa:	4b07      	ldr	r3, [pc, #28]	@ (10c8 <sukima2168+0x16>)
+    10ac:	4798      	blx	r3
+    furi_assert(bt_test);
+    10ae:	f04f 0c01 	mov.w	ip, #1
+
+000010b2 <sukima2168>:
+    10b2:	4b05      	ldr	r3, [pc, #20]	@ (10c8 <sukima2168+0x16>)
+    10b4:	4798      	blx	r3
+    10b6:	bf00      	nop
+	...
+
+000010cc <bt_test_set_rssi>:
+
+void bt_test_set_rssi(BtTest* bt_test, float rssi) {
+    10cc:	b538      	push	{r3, r4, r5, lr}
+    furi_assert(bt_test);
+    10ce:	b158      	cbz	r0, 10e8 <bt_test_set_rssi+0x1c>
+    10d0:	ee10 4a10 	vmov	r4, s0
+    10d4:	4605      	mov	r5, r0
+    with_view_model(bt_test->view, BtTestModel * model, { model->rssi = rssi; }, true);
+    10d6:	6800      	ldr	r0, [r0, #0]
+    10d8:	4b05      	ldr	r3, [pc, #20]	@ (10f0 <sukima2247+0x4>)
+    10da:	4798      	blx	r3
+    10dc:	6184      	str	r4, [r0, #24]
+    10de:	2101      	movs	r1, #1
+    10e0:	6828      	ldr	r0, [r5, #0]
+    10e2:	4b04      	ldr	r3, [pc, #16]	@ (10f4 <sukima2247+0x8>)
+    10e4:	4798      	blx	r3
+}
+    10e6:	bd38      	pop	{r3, r4, r5, pc}
+    furi_assert(bt_test);
+    10e8:	f04f 0c01 	mov.w	ip, #1
+
+000010ec <sukima2247>:
+    10ec:	4b02      	ldr	r3, [pc, #8]	@ (10f8 <sukima2247+0xc>)
+    10ee:	4798      	blx	r3
+	...
+
+000010fc <bt_test_set_packets_tx>:
+
+void bt_test_set_packets_tx(BtTest* bt_test, uint32_t packets_num) {
+    10fc:	b538      	push	{r3, r4, r5, lr}
+    furi_assert(bt_test);
+    10fe:	b150      	cbz	r0, 1116 <bt_test_set_packets_tx+0x1a>
+    1100:	460c      	mov	r4, r1
+    1102:	4605      	mov	r5, r0
+    with_view_model(
+    1104:	6800      	ldr	r0, [r0, #0]
+    1106:	4b06      	ldr	r3, [pc, #24]	@ (1120 <sukima2322+0x6>)
+    1108:	4798      	blx	r3
+    110a:	6204      	str	r4, [r0, #32]
+    110c:	2101      	movs	r1, #1
+    110e:	6828      	ldr	r0, [r5, #0]
+    1110:	4b04      	ldr	r3, [pc, #16]	@ (1124 <sukima2322+0xa>)
+    1112:	4798      	blx	r3
+        bt_test->view, BtTestModel * model, { model->packets_num_tx = packets_num; }, true);
+}
+    1114:	bd38      	pop	{r3, r4, r5, pc}
+    furi_assert(bt_test);
+    1116:	f04f 0c01 	mov.w	ip, #1
+
+0000111a <sukima2322>:
+    111a:	4b03      	ldr	r3, [pc, #12]	@ (1128 <sukima2322+0xe>)
+    111c:	4798      	blx	r3
+    111e:	bf00      	nop
+	...
+
+0000112c <bt_test_set_packets_rx>:
+
+void bt_test_set_packets_rx(BtTest* bt_test, uint32_t packets_num) {
+    112c:	b538      	push	{r3, r4, r5, lr}
+    furi_assert(bt_test);
+    112e:	b150      	cbz	r0, 1146 <bt_test_set_packets_rx+0x1a>
+    1130:	460c      	mov	r4, r1
+    1132:	4605      	mov	r5, r0
+    with_view_model(
+    1134:	6800      	ldr	r0, [r0, #0]
+    1136:	4b06      	ldr	r3, [pc, #24]	@ (1150 <sukima2397+0x6>)
+    1138:	4798      	blx	r3
+    113a:	61c4      	str	r4, [r0, #28]
+    113c:	2101      	movs	r1, #1
+    113e:	6828      	ldr	r0, [r5, #0]
+    1140:	4b04      	ldr	r3, [pc, #16]	@ (1154 <sukima2397+0xa>)
+    1142:	4798      	blx	r3
+        bt_test->view, BtTestModel * model, { model->packets_num_rx = packets_num; }, true);
+}
+    1144:	bd38      	pop	{r3, r4, r5, pc}
+    furi_assert(bt_test);
+    1146:	f04f 0c01 	mov.w	ip, #1
+
+0000114a <sukima2397>:
+    114a:	4b03      	ldr	r3, [pc, #12]	@ (1158 <sukima2397+0xe>)
+    114c:	4798      	blx	r3
+    114e:	bf00      	nop
+	...
+
+0000115c <bt_test_set_change_state_callback>:
+
+void bt_test_set_change_state_callback(BtTest* bt_test, BtTestChangeStateCallback callback) {
+    115c:	b508      	push	{r3, lr}
+    furi_assert(bt_test);
+    115e:	b110      	cbz	r0, 1166 <bt_test_set_change_state_callback+0xa>
+    furi_assert(callback);
+    1160:	b129      	cbz	r1, 116e <sukima2451+0x4>
+    bt_test->change_state_callback = callback;
+    1162:	6041      	str	r1, [r0, #4]
+}
+    1164:	bd08      	pop	{r3, pc}
+    furi_assert(bt_test);
+    1166:	f04f 0c01 	mov.w	ip, #1
+
+0000116a <sukima2451>:
+    116a:	4b03      	ldr	r3, [pc, #12]	@ (1178 <sukima2468+0x6>)
+    116c:	4798      	blx	r3
+    furi_assert(callback);
+    116e:	f04f 0c01 	mov.w	ip, #1
+
+00001172 <sukima2468>:
+    1172:	4b01      	ldr	r3, [pc, #4]	@ (1178 <sukima2468+0x6>)
+    1174:	4798      	blx	r3
+    1176:	bf00      	nop
+    1178:	00000000 	.word	0x00000000
+
+0000117c <bt_test_set_back_callback>:
+
+void bt_test_set_back_callback(BtTest* bt_test, BtTestBackCallback callback) {
+    117c:	b508      	push	{r3, lr}
+    furi_assert(bt_test);
+    117e:	b110      	cbz	r0, 1186 <bt_test_set_back_callback+0xa>
+    furi_assert(callback);
+    1180:	b129      	cbz	r1, 118e <sukima2520+0x4>
+    bt_test->back_callback = callback;
+    1182:	6081      	str	r1, [r0, #8]
+}
+    1184:	bd08      	pop	{r3, pc}
+    furi_assert(bt_test);
+    1186:	f04f 0c01 	mov.w	ip, #1
+
+0000118a <sukima2520>:
+    118a:	4b03      	ldr	r3, [pc, #12]	@ (1198 <sukima2537+0x6>)
+    118c:	4798      	blx	r3
+    furi_assert(callback);
+    118e:	f04f 0c01 	mov.w	ip, #1
+
+00001192 <sukima2537>:
+    1192:	4b01      	ldr	r3, [pc, #4]	@ (1198 <sukima2537+0x6>)
+    1194:	4798      	blx	r3
+    1196:	bf00      	nop
+    1198:	00000000 	.word	0x00000000
+
+0000119c <bt_test_set_context>:
+
+void bt_test_set_context(BtTest* bt_test, void* context) {
+    119c:	b508      	push	{r3, lr}
+    furi_assert(bt_test);
+    119e:	b108      	cbz	r0, 11a4 <bt_test_set_context+0x8>
+    bt_test->context = context;
+    11a0:	60c1      	str	r1, [r0, #12]
+}
+    11a2:	bd08      	pop	{r3, pc}
+    furi_assert(bt_test);
+    11a4:	f04f 0c01 	mov.w	ip, #1
+
+000011a8 <sukima2582>:
+    11a8:	4b00      	ldr	r3, [pc, #0]	@ (11ac <sukima2582+0x4>)
+    11aa:	4798      	blx	r3
+    11ac:	00000000 	.word	0x00000000
+
+000011b0 <bt_test_set_current_value_index>:
+
+void bt_test_set_current_value_index(BtTestParam* param, uint8_t current_value_index) {
+    param->current_value_index = current_value_index;
+    11b0:	7101      	strb	r1, [r0, #4]
+}
+    11b2:	4770      	bx	lr
+
+000011b4 <bt_test_set_current_value_text>:
+
+void bt_test_set_current_value_text(BtTestParam* param, const char* current_value_text) {
+    11b4:	b508      	push	{r3, lr}
+    furi_string_set(param->current_value_text, current_value_text);
+    11b6:	6880      	ldr	r0, [r0, #8]
+    11b8:	4b01      	ldr	r3, [pc, #4]	@ (11c0 <bt_test_set_current_value_text+0xc>)
+    11ba:	4798      	blx	r3
+}
+    11bc:	bd08      	pop	{r3, pc}
+    11be:	bf00      	nop
+    11c0:	00000000 	.word	0x00000000
+
+000011c4 <bt_test_get_current_value_index>:
+
+uint8_t bt_test_get_current_value_index(BtTestParam* param) {
+    return param->current_value_index;
+}
+    11c4:	7900      	ldrb	r0, [r0, #4]
+    11c6:	4770      	bx	lr
+
+000011c8 <bt_test_get_context>:
+
+void* bt_test_get_context(BtTestParam* param) {
+    return param->context;
+}
+    11c8:	6940      	ldr	r0, [r0, #20]
+    11ca:	4770      	bx	lr
+
+000011cc <bt_debug_exit>:
+}
+
+uint32_t bt_debug_exit(void* context) {
+    UNUSED(context);
+    return VIEW_NONE;
+}
+    11cc:	f04f 30ff 	mov.w	r0, #4294967295	@ 0xffffffff
+    11d0:	4770      	bx	lr
+
+000011d2 <bt_debug_start_view>:
+
+uint32_t bt_debug_start_view(void* context) {
+    UNUSED(context);
+    return BtDebugAppViewSubmenu;
+}
+    11d2:	2000      	movs	r0, #0
+    11d4:	4770      	bx	lr
+	...
+
+000011d8 <bt_debug_submenu_callback>:
+void bt_debug_submenu_callback(void* context, uint32_t index) {
+    11d8:	b508      	push	{r3, lr}
+    furi_assert(context);
+    11da:	b118      	cbz	r0, 11e4 <bt_debug_submenu_callback+0xc>
+    if(index == BtDebugSubmenuIndexCarrierTest) {
+    11dc:	b131      	cbz	r1, 11ec <sukima75+0x4>
+    } else if(index == BtDebugSubmenuIndexPacketTest) {
+    11de:	2901      	cmp	r1, #1
+    11e0:	d009      	beq.n	11f6 <sukima75+0xe>
+}
+    11e2:	bd08      	pop	{r3, pc}
+    furi_assert(context);
+    11e4:	f04f 0c01 	mov.w	ip, #1
+
+000011e8 <sukima75>:
+    11e8:	4b05      	ldr	r3, [pc, #20]	@ (1200 <sukima75+0x18>)
+    11ea:	4798      	blx	r3
+        view_dispatcher_switch_to_view(app->view_dispatcher, BtDebugAppViewCarrierTest);
+    11ec:	2101      	movs	r1, #1
+    11ee:	6840      	ldr	r0, [r0, #4]
+    11f0:	4b04      	ldr	r3, [pc, #16]	@ (1204 <sukima75+0x1c>)
+    11f2:	4798      	blx	r3
+    11f4:	e7f5      	b.n	11e2 <bt_debug_submenu_callback+0xa>
+        view_dispatcher_switch_to_view(app->view_dispatcher, BtDebugAppViewPacketTest);
+    11f6:	2102      	movs	r1, #2
+    11f8:	6840      	ldr	r0, [r0, #4]
+    11fa:	4b02      	ldr	r3, [pc, #8]	@ (1204 <sukima75+0x1c>)
+    11fc:	4798      	blx	r3
+}
+    11fe:	e7f0      	b.n	11e2 <bt_debug_submenu_callback+0xa>
+	...
+
+00001208 <bt_debug_app_alloc>:
+
+BtDebugApp* bt_debug_app_alloc(void) {
+    1208:	e92d 43f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, lr}
+    120c:	b083      	sub	sp, #12
+    BtDebugApp* app = malloc(sizeof(BtDebugApp));
+    120e:	2014      	movs	r0, #20
+    1210:	4b29      	ldr	r3, [pc, #164]	@ (12b8 <bt_debug_app_alloc+0xb0>)
+    1212:	4798      	blx	r3
+    1214:	4604      	mov	r4, r0
+
+    // Gui
+    app->gui = furi_record_open(RECORD_GUI);
+    1216:	4829      	ldr	r0, [pc, #164]	@ (12bc <bt_debug_app_alloc+0xb4>)
+    1218:	4b29      	ldr	r3, [pc, #164]	@ (12c0 <bt_debug_app_alloc+0xb8>)
+    121a:	4798      	blx	r3
+    121c:	6020      	str	r0, [r4, #0]
+
+    // View dispatcher
+    app->view_dispatcher = view_dispatcher_alloc();
+    121e:	4b29      	ldr	r3, [pc, #164]	@ (12c4 <bt_debug_app_alloc+0xbc>)
+    1220:	4798      	blx	r3
+    1222:	6060      	str	r0, [r4, #4]
+    view_dispatcher_attach_to_gui(app->view_dispatcher, app->gui, ViewDispatcherTypeFullscreen);
+    1224:	2202      	movs	r2, #2
+    1226:	6821      	ldr	r1, [r4, #0]
+    1228:	4b27      	ldr	r3, [pc, #156]	@ (12c8 <bt_debug_app_alloc+0xc0>)
+    122a:	4798      	blx	r3
+
+    // Views
+    app->submenu = submenu_alloc();
+    122c:	4b27      	ldr	r3, [pc, #156]	@ (12cc <bt_debug_app_alloc+0xc4>)
+    122e:	4798      	blx	r3
+    1230:	60a0      	str	r0, [r4, #8]
+    submenu_add_item(
+    1232:	4e27      	ldr	r6, [pc, #156]	@ (12d0 <bt_debug_app_alloc+0xc8>)
+    1234:	9400      	str	r4, [sp, #0]
+    1236:	4633      	mov	r3, r6
+    1238:	2200      	movs	r2, #0
+    123a:	4926      	ldr	r1, [pc, #152]	@ (12d4 <bt_debug_app_alloc+0xcc>)
+    123c:	4d26      	ldr	r5, [pc, #152]	@ (12d8 <bt_debug_app_alloc+0xd0>)
+    123e:	47a8      	blx	r5
+        app->submenu,
+        "Carrier test",
+        BtDebugSubmenuIndexCarrierTest,
+        bt_debug_submenu_callback,
+        app);
+    submenu_add_item(
+    1240:	9400      	str	r4, [sp, #0]
+    1242:	4633      	mov	r3, r6
+    1244:	2201      	movs	r2, #1
+    1246:	4925      	ldr	r1, [pc, #148]	@ (12dc <bt_debug_app_alloc+0xd4>)
+    1248:	68a0      	ldr	r0, [r4, #8]
+    124a:	47a8      	blx	r5
+        app->submenu, "Packet test", BtDebugSubmenuIndexPacketTest, bt_debug_submenu_callback, app);
+    view_set_previous_callback(submenu_get_view(app->submenu), bt_debug_exit);
+    124c:	68a0      	ldr	r0, [r4, #8]
+    124e:	4d24      	ldr	r5, [pc, #144]	@ (12e0 <bt_debug_app_alloc+0xd8>)
+    1250:	47a8      	blx	r5
+    1252:	4924      	ldr	r1, [pc, #144]	@ (12e4 <bt_debug_app_alloc+0xdc>)
+    1254:	4e24      	ldr	r6, [pc, #144]	@ (12e8 <bt_debug_app_alloc+0xe0>)
+    1256:	47b0      	blx	r6
+    view_dispatcher_add_view(
+    1258:	6867      	ldr	r7, [r4, #4]
+    125a:	68a0      	ldr	r0, [r4, #8]
+    125c:	47a8      	blx	r5
+    125e:	4602      	mov	r2, r0
+    1260:	2100      	movs	r1, #0
+    1262:	4638      	mov	r0, r7
+    1264:	4d21      	ldr	r5, [pc, #132]	@ (12ec <bt_debug_app_alloc+0xe4>)
+    1266:	47a8      	blx	r5
+        app->view_dispatcher, BtDebugAppViewSubmenu, submenu_get_view(app->submenu));
+    app->bt_carrier_test = bt_carrier_test_alloc();
+    1268:	4b21      	ldr	r3, [pc, #132]	@ (12f0 <bt_debug_app_alloc+0xe8>)
+    126a:	4798      	blx	r3
+    126c:	60e0      	str	r0, [r4, #12]
+    view_set_previous_callback(
+    126e:	4f21      	ldr	r7, [pc, #132]	@ (12f4 <bt_debug_app_alloc+0xec>)
+    1270:	47b8      	blx	r7
+    1272:	f8df 8090 	ldr.w	r8, [pc, #144]	@ 1304 <bt_debug_app_alloc+0xfc>
+    1276:	4641      	mov	r1, r8
+    1278:	47b0      	blx	r6
+        bt_carrier_test_get_view(app->bt_carrier_test), bt_debug_start_view);
+    view_dispatcher_add_view(
+    127a:	f8d4 9004 	ldr.w	r9, [r4, #4]
+    127e:	68e0      	ldr	r0, [r4, #12]
+    1280:	47b8      	blx	r7
+    1282:	4602      	mov	r2, r0
+    1284:	2101      	movs	r1, #1
+    1286:	4648      	mov	r0, r9
+    1288:	47a8      	blx	r5
+        app->view_dispatcher,
+        BtDebugAppViewCarrierTest,
+        bt_carrier_test_get_view(app->bt_carrier_test));
+    app->bt_packet_test = bt_packet_test_alloc();
+    128a:	4b1b      	ldr	r3, [pc, #108]	@ (12f8 <bt_debug_app_alloc+0xf0>)
+    128c:	4798      	blx	r3
+    128e:	6120      	str	r0, [r4, #16]
+    view_set_previous_callback(bt_packet_test_get_view(app->bt_packet_test), bt_debug_start_view);
+    1290:	4f1a      	ldr	r7, [pc, #104]	@ (12fc <bt_debug_app_alloc+0xf4>)
+    1292:	47b8      	blx	r7
+    1294:	4641      	mov	r1, r8
+    1296:	47b0      	blx	r6
+    view_dispatcher_add_view(
+    1298:	6866      	ldr	r6, [r4, #4]
+    129a:	6920      	ldr	r0, [r4, #16]
+    129c:	47b8      	blx	r7
+    129e:	4602      	mov	r2, r0
+    12a0:	2102      	movs	r1, #2
+    12a2:	4630      	mov	r0, r6
+    12a4:	47a8      	blx	r5
+        app->view_dispatcher,
+        BtDebugAppViewPacketTest,
+        bt_packet_test_get_view(app->bt_packet_test));
+
+    // Switch to menu
+    view_dispatcher_switch_to_view(app->view_dispatcher, BtDebugAppViewSubmenu);
+    12a6:	2100      	movs	r1, #0
+    12a8:	6860      	ldr	r0, [r4, #4]
+    12aa:	4b15      	ldr	r3, [pc, #84]	@ (1300 <bt_debug_app_alloc+0xf8>)
+    12ac:	4798      	blx	r3
+
+    return app;
+}
+    12ae:	4620      	mov	r0, r4
+    12b0:	b003      	add	sp, #12
+    12b2:	e8bd 83f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, pc}
+    12b6:	bf00      	nop
+    12b8:	00000000 	.word	0x00000000
+    12bc:	00000118 	.word	0x00000118
+	...
+    12d4:	0000011c 	.word	0x0000011c
+    12d8:	00000000 	.word	0x00000000
+    12dc:	0000012c 	.word	0x0000012c
+	...
+
+00001308 <bt_debug_app_free>:
+
+void bt_debug_app_free(BtDebugApp* app) {
+    1308:	b538      	push	{r3, r4, r5, lr}
+    furi_assert(app);
+    130a:	b1f8      	cbz	r0, 134c <bt_debug_app_free+0x44>
+    130c:	4604      	mov	r4, r0
+
+    // Free views
+    view_dispatcher_remove_view(app->view_dispatcher, BtDebugAppViewSubmenu);
+    130e:	2100      	movs	r1, #0
+    1310:	6840      	ldr	r0, [r0, #4]
+    1312:	4d10      	ldr	r5, [pc, #64]	@ (1354 <sukima370+0x4>)
+    1314:	47a8      	blx	r5
+    submenu_free(app->submenu);
+    1316:	68a0      	ldr	r0, [r4, #8]
+    1318:	4b0f      	ldr	r3, [pc, #60]	@ (1358 <sukima370+0x8>)
+    131a:	4798      	blx	r3
+    view_dispatcher_remove_view(app->view_dispatcher, BtDebugAppViewCarrierTest);
+    131c:	2101      	movs	r1, #1
+    131e:	6860      	ldr	r0, [r4, #4]
+    1320:	47a8      	blx	r5
+    bt_carrier_test_free(app->bt_carrier_test);
+    1322:	68e0      	ldr	r0, [r4, #12]
+    1324:	4b0d      	ldr	r3, [pc, #52]	@ (135c <sukima370+0xc>)
+    1326:	4798      	blx	r3
+    view_dispatcher_remove_view(app->view_dispatcher, BtDebugAppViewPacketTest);
+    1328:	2102      	movs	r1, #2
+    132a:	6860      	ldr	r0, [r4, #4]
+    132c:	47a8      	blx	r5
+    bt_packet_test_free(app->bt_packet_test);
+    132e:	6920      	ldr	r0, [r4, #16]
+    1330:	4b0b      	ldr	r3, [pc, #44]	@ (1360 <sukima370+0x10>)
+    1332:	4798      	blx	r3
+    view_dispatcher_free(app->view_dispatcher);
+    1334:	6860      	ldr	r0, [r4, #4]
+    1336:	4b0b      	ldr	r3, [pc, #44]	@ (1364 <sukima370+0x14>)
+    1338:	4798      	blx	r3
+
+    // Close gui record
+    furi_record_close(RECORD_GUI);
+    133a:	480b      	ldr	r0, [pc, #44]	@ (1368 <sukima370+0x18>)
+    133c:	4b0b      	ldr	r3, [pc, #44]	@ (136c <sukima370+0x1c>)
+    133e:	4798      	blx	r3
+    app->gui = NULL;
+    1340:	2300      	movs	r3, #0
+    1342:	6023      	str	r3, [r4, #0]
+
+    // Free rest
+    free(app);
+    1344:	4620      	mov	r0, r4
+    1346:	4b0a      	ldr	r3, [pc, #40]	@ (1370 <sukima370+0x20>)
+    1348:	4798      	blx	r3
+}
+    134a:	bd38      	pop	{r3, r4, r5, pc}
+    furi_assert(app);
+    134c:	f04f 0c01 	mov.w	ip, #1
+
+00001350 <sukima370>:
+    1350:	4b08      	ldr	r3, [pc, #32]	@ (1374 <sukima370+0x24>)
+    1352:	4798      	blx	r3
+	...
+    1368:	00000118 	.word	0x00000118
+	...
+
+00001378 <bt_debug_app>:
+
+int32_t bt_debug_app(void* p) {
+    1378:	b538      	push	{r3, r4, r5, lr}
+    UNUSED(p);
+    if(!furi_hal_bt_is_testing_supported()) {
+    137a:	4b12      	ldr	r3, [pc, #72]	@ (13c4 <bt_debug_app+0x4c>)
+    137c:	4798      	blx	r3
+    137e:	b180      	cbz	r0, 13a2 <bt_debug_app+0x2a>
+        DialogsApp* dialogs = furi_record_open(RECORD_DIALOGS);
+        dialog_message_show_storage_error(dialogs, "Incorrect\nRadioStack");
+        return 255;
+    }
+
+    BtDebugApp* app = bt_debug_app_alloc();
+    1380:	4b11      	ldr	r3, [pc, #68]	@ (13c8 <bt_debug_app+0x50>)
+    1382:	4798      	blx	r3
+    1384:	4604      	mov	r4, r0
+    // Was bt active?
+    const bool was_active = furi_hal_bt_is_active();
+    1386:	4b11      	ldr	r3, [pc, #68]	@ (13cc <bt_debug_app+0x54>)
+    1388:	4798      	blx	r3
+    138a:	4605      	mov	r5, r0
+    // Stop advertising
+    furi_hal_bt_stop_advertising();
+    138c:	4b10      	ldr	r3, [pc, #64]	@ (13d0 <bt_debug_app+0x58>)
+    138e:	4798      	blx	r3
+
+    view_dispatcher_run(app->view_dispatcher);
+    1390:	6860      	ldr	r0, [r4, #4]
+    1392:	4b10      	ldr	r3, [pc, #64]	@ (13d4 <bt_debug_app+0x5c>)
+    1394:	4798      	blx	r3
+
+    // Restart advertising
+    if(was_active) {
+    1396:	b98d      	cbnz	r5, 13bc <bt_debug_app+0x44>
+        furi_hal_bt_start_advertising();
+    }
+    bt_debug_app_free(app);
+    1398:	4620      	mov	r0, r4
+    139a:	4b0f      	ldr	r3, [pc, #60]	@ (13d8 <bt_debug_app+0x60>)
+    139c:	4798      	blx	r3
+    return 0;
+    139e:	2000      	movs	r0, #0
+}
+    13a0:	bd38      	pop	{r3, r4, r5, pc}
+        FURI_LOG_E(TAG, "Incorrect radio stack: radio testing features are absent.");
+    13a2:	4a0e      	ldr	r2, [pc, #56]	@ (13dc <bt_debug_app+0x64>)
+    13a4:	490e      	ldr	r1, [pc, #56]	@ (13e0 <bt_debug_app+0x68>)
+    13a6:	2002      	movs	r0, #2
+    13a8:	4b0e      	ldr	r3, [pc, #56]	@ (13e4 <bt_debug_app+0x6c>)
+    13aa:	4798      	blx	r3
+        DialogsApp* dialogs = furi_record_open(RECORD_DIALOGS);
+    13ac:	480e      	ldr	r0, [pc, #56]	@ (13e8 <bt_debug_app+0x70>)
+    13ae:	4b0f      	ldr	r3, [pc, #60]	@ (13ec <bt_debug_app+0x74>)
+    13b0:	4798      	blx	r3
+        dialog_message_show_storage_error(dialogs, "Incorrect\nRadioStack");
+    13b2:	490f      	ldr	r1, [pc, #60]	@ (13f0 <bt_debug_app+0x78>)
+    13b4:	4b0f      	ldr	r3, [pc, #60]	@ (13f4 <bt_debug_app+0x7c>)
+    13b6:	4798      	blx	r3
+        return 255;
+    13b8:	20ff      	movs	r0, #255	@ 0xff
+    13ba:	e7f1      	b.n	13a0 <bt_debug_app+0x28>
+        furi_hal_bt_start_advertising();
+    13bc:	4b0e      	ldr	r3, [pc, #56]	@ (13f8 <bt_debug_app+0x80>)
+    13be:	4798      	blx	r3
+    13c0:	e7ea      	b.n	1398 <bt_debug_app+0x20>
+    13c2:	bf00      	nop
+	...
+    13dc:	00000138 	.word	0x00000138
+    13e0:	00000174 	.word	0x00000174
+    13e4:	00000000 	.word	0x00000000
+    13e8:	00000180 	.word	0x00000180
+    13ec:	00000000 	.word	0x00000000
+    13f0:	00000188 	.word	0x00000188
+	...

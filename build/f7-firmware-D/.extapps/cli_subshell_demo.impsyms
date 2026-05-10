@@ -1,0 +1,10 @@
+__wrap_printf U         
+__wrap_puts U         
+cli_registry_add_command U         
+cli_registry_alloc U         
+cli_registry_free U         
+cli_shell_alloc U         
+cli_shell_free U         
+cli_shell_join U         
+cli_shell_set_prompt U         
+cli_shell_start U         

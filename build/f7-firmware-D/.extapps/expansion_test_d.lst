@@ -1,0 +1,1581 @@
+
+build/f7-firmware-D/.extapps/expansion_test_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <expansion_frame_get_encoded_size>:
+ *
+ * @param[in] frame pointer to the frame to be evaluated.
+ * @returns encoded frame size, in bytes.
+ */
+static inline size_t expansion_frame_get_encoded_size(const ExpansionFrame* frame) {
+    switch(frame->header.type) {
+   0:	7803      	ldrb	r3, [r0, #0]
+   2:	3b01      	subs	r3, #1
+   4:	2b04      	cmp	r3, #4
+   6:	d80b      	bhi.n	20 <expansion_frame_get_encoded_size+0x20>
+   8:	e8df f003 	tbb	[pc, r3]
+   c:	0c050c03 	.word	0x0c050c03
+  10:	07          	.byte	0x07
+  11:	00          	.byte	0x00
+  12:	2001      	movs	r0, #1
+  14:	4770      	bx	lr
+    case ExpansionFrameTypeHeartbeat:
+        return sizeof(frame->header);
+    case ExpansionFrameTypeStatus:
+        return sizeof(frame->header) + sizeof(frame->content.status);
+    case ExpansionFrameTypeBaudRate:
+        return sizeof(frame->header) + sizeof(frame->content.baud_rate);
+  16:	2005      	movs	r0, #5
+  18:	4770      	bx	lr
+    case ExpansionFrameTypeControl:
+        return sizeof(frame->header) + sizeof(frame->content.control);
+    case ExpansionFrameTypeData:
+        return sizeof(frame->header) + sizeof(frame->content.data.size) + frame->content.data.size;
+  1a:	7840      	ldrb	r0, [r0, #1]
+  1c:	3002      	adds	r0, #2
+  1e:	4770      	bx	lr
+    default:
+        return 0;
+  20:	2000      	movs	r0, #0
+  22:	4770      	bx	lr
+        return sizeof(frame->header) + sizeof(frame->content.status);
+  24:	2002      	movs	r0, #2
+    }
+}
+  26:	4770      	bx	lr
+
+00000028 <expansion_frame_get_remaining_size>:
+ */
+static inline bool expansion_frame_get_remaining_size(
+    const ExpansionFrame* frame,
+    size_t received_size,
+    size_t* remaining_size) {
+    if(received_size < sizeof(ExpansionFrameHeader)) {
+  28:	b149      	cbz	r1, 3e <expansion_frame_get_remaining_size+0x16>
+        // Frame type is unknown as of now
+        *remaining_size = sizeof(ExpansionFrameHeader);
+        return true;
+    }
+
+    const size_t received_content_size = received_size - sizeof(ExpansionFrameHeader);
+  2a:	3901      	subs	r1, #1
+    size_t content_size;
+
+    switch(frame->header.type) {
+  2c:	7803      	ldrb	r3, [r0, #0]
+  2e:	3b01      	subs	r3, #1
+  30:	2b04      	cmp	r3, #4
+  32:	d81c      	bhi.n	6e <expansion_frame_get_remaining_size+0x46>
+  34:	e8df f003 	tbb	[pc, r3]
+  38:	06130617 	.word	0x06130617
+  3c:	0d          	.byte	0x0d
+  3d:	00          	.byte	0x00
+        *remaining_size = sizeof(ExpansionFrameHeader);
+  3e:	2001      	movs	r0, #1
+  40:	6010      	str	r0, [r2, #0]
+        return true;
+  42:	4770      	bx	lr
+    switch(frame->header.type) {
+  44:	2301      	movs	r3, #1
+        break;
+    default:
+        return false;
+    }
+
+    if(content_size > received_content_size) {
+  46:	428b      	cmp	r3, r1
+  48:	d90d      	bls.n	66 <expansion_frame_get_remaining_size+0x3e>
+        *remaining_size = content_size - received_content_size;
+  4a:	1a5b      	subs	r3, r3, r1
+  4c:	6013      	str	r3, [r2, #0]
+    } else {
+        *remaining_size = 0;
+    }
+
+    return true;
+  4e:	2001      	movs	r0, #1
+  50:	4770      	bx	lr
+        if(received_content_size < sizeof(frame->content.data.size)) {
+  52:	b131      	cbz	r1, 62 <expansion_frame_get_remaining_size+0x3a>
+        } else if(frame->content.data.size > sizeof(frame->content.data.bytes)) {
+  54:	7843      	ldrb	r3, [r0, #1]
+  56:	2b40      	cmp	r3, #64	@ 0x40
+  58:	d80b      	bhi.n	72 <expansion_frame_get_remaining_size+0x4a>
+            content_size = sizeof(frame->content.data.size) + frame->content.data.size;
+  5a:	3301      	adds	r3, #1
+  5c:	e7f3      	b.n	46 <expansion_frame_get_remaining_size+0x1e>
+        content_size = sizeof(frame->content.baud_rate);
+  5e:	2304      	movs	r3, #4
+  60:	e7f1      	b.n	46 <expansion_frame_get_remaining_size+0x1e>
+            content_size = sizeof(frame->content.data.size);
+  62:	2301      	movs	r3, #1
+  64:	e7f1      	b.n	4a <expansion_frame_get_remaining_size+0x22>
+        *remaining_size = 0;
+  66:	2300      	movs	r3, #0
+  68:	6013      	str	r3, [r2, #0]
+    return true;
+  6a:	2001      	movs	r0, #1
+  6c:	4770      	bx	lr
+    switch(frame->header.type) {
+  6e:	2000      	movs	r0, #0
+  70:	4770      	bx	lr
+            return false;
+  72:	2000      	movs	r0, #0
+}
+  74:	4770      	bx	lr
+	...
+
+00000078 <expansion_protocol_decode>:
+ * @returns ExpansionProtocolStatusOk on success, any other error code on failure.
+ */
+static inline ExpansionProtocolStatus expansion_protocol_decode(
+    ExpansionFrame* frame,
+    ExpansionFrameReceiveCallback receive,
+    void* context) {
+  78:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+  7c:	b082      	sub	sp, #8
+  7e:	4606      	mov	r6, r0
+  80:	460f      	mov	r7, r1
+  82:	4690      	mov	r8, r2
+    size_t total_size = 0;
+  84:	2400      	movs	r4, #0
+  86:	e000      	b.n	8a <expansion_protocol_decode+0x12>
+
+        if(received_size == 0) {
+            return ExpansionProtocolStatusErrorCommunication;
+        }
+
+        total_size += received_size;
+  88:	4404      	add	r4, r0
+        if(!expansion_frame_get_remaining_size(frame, total_size, &remaining_size)) {
+  8a:	aa01      	add	r2, sp, #4
+  8c:	4621      	mov	r1, r4
+  8e:	4630      	mov	r0, r6
+  90:	4b14      	ldr	r3, [pc, #80]	@ (e4 <expansion_protocol_decode+0x6c>)
+  92:	4798      	blx	r3
+  94:	b1e8      	cbz	r0, d2 <expansion_protocol_decode+0x5a>
+        } else if(remaining_size == 0) {
+  96:	9d01      	ldr	r5, [sp, #4]
+  98:	b13d      	cbz	r5, aa <expansion_protocol_decode+0x32>
+            receive((uint8_t*)frame + total_size, remaining_size, context);
+  9a:	4642      	mov	r2, r8
+  9c:	4629      	mov	r1, r5
+  9e:	1930      	adds	r0, r6, r4
+  a0:	47b8      	blx	r7
+        if(received_size == 0) {
+  a2:	2800      	cmp	r0, #0
+  a4:	d1f0      	bne.n	88 <expansion_protocol_decode+0x10>
+            return ExpansionProtocolStatusErrorCommunication;
+  a6:	2003      	movs	r0, #3
+  a8:	e014      	b.n	d4 <expansion_protocol_decode+0x5c>
+    }
+
+    ExpansionFrameChecksum checksum;
+    const size_t received_size = receive(&checksum, sizeof(checksum), context);
+  aa:	4642      	mov	r2, r8
+  ac:	2101      	movs	r1, #1
+  ae:	f10d 0003 	add.w	r0, sp, #3
+  b2:	47b8      	blx	r7
+
+    if(received_size != sizeof(checksum)) {
+  b4:	2801      	cmp	r0, #1
+  b6:	d110      	bne.n	da <expansion_protocol_decode+0x62>
+    ExpansionFrameChecksum checksum = 0;
+  b8:	2300      	movs	r3, #0
+  ba:	e002      	b.n	c2 <expansion_protocol_decode+0x4a>
+        checksum ^= data[i];
+  bc:	5d72      	ldrb	r2, [r6, r5]
+  be:	4053      	eors	r3, r2
+    for(size_t i = 0; i < data_size; ++i) {
+  c0:	3501      	adds	r5, #1
+  c2:	42ac      	cmp	r4, r5
+  c4:	d8fa      	bhi.n	bc <expansion_protocol_decode+0x44>
+        return ExpansionProtocolStatusErrorCommunication;
+    } else if(checksum != expansion_protocol_get_checksum((const uint8_t*)frame, total_size)) {
+  c6:	f89d 2003 	ldrb.w	r2, [sp, #3]
+  ca:	429a      	cmp	r2, r3
+  cc:	d007      	beq.n	de <expansion_protocol_decode+0x66>
+        return ExpansionProtocolStatusErrorChecksum;
+  ce:	2002      	movs	r0, #2
+  d0:	e000      	b.n	d4 <expansion_protocol_decode+0x5c>
+            return ExpansionProtocolStatusErrorFormat;
+  d2:	2001      	movs	r0, #1
+    } else {
+        return ExpansionProtocolStatusOk;
+    }
+}
+  d4:	b002      	add	sp, #8
+  d6:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+        return ExpansionProtocolStatusErrorCommunication;
+  da:	2003      	movs	r0, #3
+  dc:	e7fa      	b.n	d4 <expansion_protocol_decode+0x5c>
+        return ExpansionProtocolStatusOk;
+  de:	2000      	movs	r0, #0
+  e0:	e7f8      	b.n	d4 <expansion_protocol_decode+0x5c>
+  e2:	bf00      	nop
+  e4:	00000000 	.word	0x00000000
+
+000000e8 <expansion_protocol_encode>:
+ * @returns ExpansionProtocolStatusOk on success, any other error code on failure.
+ */
+static inline ExpansionProtocolStatus expansion_protocol_encode(
+    const ExpansionFrame* frame,
+    ExpansionFrameSendCallback send,
+    void* context) {
+  e8:	b5f0      	push	{r4, r5, r6, r7, lr}
+  ea:	b083      	sub	sp, #12
+  ec:	4604      	mov	r4, r0
+  ee:	460e      	mov	r6, r1
+  f0:	4617      	mov	r7, r2
+    const size_t encoded_size = expansion_frame_get_encoded_size(frame);
+  f2:	4b12      	ldr	r3, [pc, #72]	@ (13c <expansion_protocol_encode+0x54>)
+  f4:	4798      	blx	r3
+    if(encoded_size == 0) {
+  f6:	b1e0      	cbz	r0, 132 <expansion_protocol_encode+0x4a>
+  f8:	4605      	mov	r5, r0
+    for(size_t i = 0; i < data_size; ++i) {
+  fa:	2300      	movs	r3, #0
+    ExpansionFrameChecksum checksum = 0;
+  fc:	469c      	mov	ip, r3
+  fe:	e004      	b.n	10a <expansion_protocol_encode+0x22>
+        checksum ^= data[i];
+ 100:	f814 e003 	ldrb.w	lr, [r4, r3]
+ 104:	ea8e 0c0c 	eor.w	ip, lr, ip
+    for(size_t i = 0; i < data_size; ++i) {
+ 108:	3301      	adds	r3, #1
+ 10a:	429d      	cmp	r5, r3
+ 10c:	d8f8      	bhi.n	100 <expansion_protocol_encode+0x18>
+        return ExpansionProtocolStatusErrorFormat;
+    }
+
+    const ExpansionFrameChecksum checksum =
+ 10e:	f88d c007 	strb.w	ip, [sp, #7]
+        expansion_protocol_get_checksum((const uint8_t*)frame, encoded_size);
+
+    if((send((const uint8_t*)frame, encoded_size, context) != encoded_size) ||
+ 112:	463a      	mov	r2, r7
+ 114:	4629      	mov	r1, r5
+ 116:	4620      	mov	r0, r4
+ 118:	47b0      	blx	r6
+ 11a:	42a8      	cmp	r0, r5
+ 11c:	d106      	bne.n	12c <expansion_protocol_encode+0x44>
+       (send(&checksum, sizeof(checksum), context) != sizeof(checksum))) {
+ 11e:	463a      	mov	r2, r7
+ 120:	2101      	movs	r1, #1
+ 122:	f10d 0007 	add.w	r0, sp, #7
+ 126:	47b0      	blx	r6
+    if((send((const uint8_t*)frame, encoded_size, context) != encoded_size) ||
+ 128:	2801      	cmp	r0, #1
+ 12a:	d004      	beq.n	136 <expansion_protocol_encode+0x4e>
+        return ExpansionProtocolStatusErrorCommunication;
+ 12c:	2003      	movs	r0, #3
+    } else {
+        return ExpansionProtocolStatusOk;
+    }
+}
+ 12e:	b003      	add	sp, #12
+ 130:	bdf0      	pop	{r4, r5, r6, r7, pc}
+        return ExpansionProtocolStatusErrorFormat;
+ 132:	2001      	movs	r0, #1
+ 134:	e7fb      	b.n	12e <expansion_protocol_encode+0x46>
+        return ExpansionProtocolStatusOk;
+ 136:	2000      	movs	r0, #0
+ 138:	e7f9      	b.n	12e <expansion_protocol_encode+0x46>
+ 13a:	bf00      	nop
+ 13c:	00000000 	.word	0x00000000
+
+00000140 <expansion_test_app_receive_frame>:
+    furi_hal_serial_tx_wait_complete(instance->handle);
+
+    return data_size;
+}
+
+static bool expansion_test_app_receive_frame(ExpansionTestApp* instance, ExpansionFrame* frame) {
+ 140:	b508      	push	{r3, lr}
+ 142:	4602      	mov	r2, r0
+ 144:	4608      	mov	r0, r1
+    return expansion_protocol_decode(frame, expansion_test_app_receive_callback, instance) ==
+ 146:	4903      	ldr	r1, [pc, #12]	@ (154 <expansion_test_app_receive_frame+0x14>)
+ 148:	4b03      	ldr	r3, [pc, #12]	@ (158 <expansion_test_app_receive_frame+0x18>)
+ 14a:	4798      	blx	r3
+           ExpansionProtocolStatusOk;
+}
+ 14c:	fab0 f080 	clz	r0, r0
+ 150:	0940      	lsrs	r0, r0, #5
+ 152:	bd08      	pop	{r3, pc}
+	...
+
+0000015c <expansion_test_app_send_status_response>:
+
+static bool
+    expansion_test_app_send_status_response(ExpansionTestApp* instance, ExpansionFrameError error) {
+ 15c:	b530      	push	{r4, r5, lr}
+ 15e:	b093      	sub	sp, #76	@ 0x4c
+ 160:	4604      	mov	r4, r0
+ 162:	460d      	mov	r5, r1
+    ExpansionFrame frame = {
+ 164:	2242      	movs	r2, #66	@ 0x42
+ 166:	2100      	movs	r1, #0
+ 168:	a801      	add	r0, sp, #4
+ 16a:	4b08      	ldr	r3, [pc, #32]	@ (18c <expansion_test_app_send_status_response+0x30>)
+ 16c:	4798      	blx	r3
+ 16e:	2302      	movs	r3, #2
+ 170:	f88d 3004 	strb.w	r3, [sp, #4]
+ 174:	f88d 5005 	strb.w	r5, [sp, #5]
+        .header.type = ExpansionFrameTypeStatus,
+        .content.status.error = error,
+    };
+    return expansion_protocol_encode(&frame, expansion_test_app_send_callback, instance) ==
+ 178:	4622      	mov	r2, r4
+ 17a:	4905      	ldr	r1, [pc, #20]	@ (190 <expansion_test_app_send_status_response+0x34>)
+ 17c:	a801      	add	r0, sp, #4
+ 17e:	4b05      	ldr	r3, [pc, #20]	@ (194 <expansion_test_app_send_status_response+0x38>)
+ 180:	4798      	blx	r3
+           ExpansionProtocolStatusOk;
+}
+ 182:	fab0 f080 	clz	r0, r0
+ 186:	0940      	lsrs	r0, r0, #5
+ 188:	b013      	add	sp, #76	@ 0x4c
+ 18a:	bd30      	pop	{r4, r5, pc}
+	...
+
+00000198 <expansion_test_app_send_heartbeat>:
+
+static bool expansion_test_app_send_heartbeat(ExpansionTestApp* instance) {
+ 198:	b510      	push	{r4, lr}
+ 19a:	b092      	sub	sp, #72	@ 0x48
+ 19c:	4604      	mov	r4, r0
+    ExpansionFrame frame = {
+ 19e:	2242      	movs	r2, #66	@ 0x42
+ 1a0:	2100      	movs	r1, #0
+ 1a2:	a801      	add	r0, sp, #4
+ 1a4:	4b07      	ldr	r3, [pc, #28]	@ (1c4 <expansion_test_app_send_heartbeat+0x2c>)
+ 1a6:	4798      	blx	r3
+ 1a8:	2301      	movs	r3, #1
+ 1aa:	f88d 3004 	strb.w	r3, [sp, #4]
+        .header.type = ExpansionFrameTypeHeartbeat,
+        .content.heartbeat = {},
+    };
+    return expansion_protocol_encode(&frame, expansion_test_app_send_callback, instance) ==
+ 1ae:	4622      	mov	r2, r4
+ 1b0:	4905      	ldr	r1, [pc, #20]	@ (1c8 <expansion_test_app_send_heartbeat+0x30>)
+ 1b2:	a801      	add	r0, sp, #4
+ 1b4:	4b05      	ldr	r3, [pc, #20]	@ (1cc <expansion_test_app_send_heartbeat+0x34>)
+ 1b6:	4798      	blx	r3
+           ExpansionProtocolStatusOk;
+}
+ 1b8:	fab0 f080 	clz	r0, r0
+ 1bc:	0940      	lsrs	r0, r0, #5
+ 1be:	b012      	add	sp, #72	@ 0x48
+ 1c0:	bd10      	pop	{r4, pc}
+ 1c2:	bf00      	nop
+	...
+
+000001d0 <expansion_test_app_send_baud_rate_request>:
+
+static bool
+    expansion_test_app_send_baud_rate_request(ExpansionTestApp* instance, uint32_t baud_rate) {
+ 1d0:	b530      	push	{r4, r5, lr}
+ 1d2:	b093      	sub	sp, #76	@ 0x4c
+ 1d4:	4604      	mov	r4, r0
+ 1d6:	460d      	mov	r5, r1
+    ExpansionFrame frame = {
+ 1d8:	2242      	movs	r2, #66	@ 0x42
+ 1da:	2100      	movs	r1, #0
+ 1dc:	a801      	add	r0, sp, #4
+ 1de:	4b08      	ldr	r3, [pc, #32]	@ (200 <expansion_test_app_send_baud_rate_request+0x30>)
+ 1e0:	4798      	blx	r3
+ 1e2:	2303      	movs	r3, #3
+ 1e4:	f88d 3004 	strb.w	r3, [sp, #4]
+ 1e8:	f8cd 5005 	str.w	r5, [sp, #5]
+        .header.type = ExpansionFrameTypeBaudRate,
+        .content.baud_rate.baud = baud_rate,
+    };
+    return expansion_protocol_encode(&frame, expansion_test_app_send_callback, instance) ==
+ 1ec:	4622      	mov	r2, r4
+ 1ee:	4905      	ldr	r1, [pc, #20]	@ (204 <expansion_test_app_send_baud_rate_request+0x34>)
+ 1f0:	a801      	add	r0, sp, #4
+ 1f2:	4b05      	ldr	r3, [pc, #20]	@ (208 <expansion_test_app_send_baud_rate_request+0x38>)
+ 1f4:	4798      	blx	r3
+           ExpansionProtocolStatusOk;
+}
+ 1f6:	fab0 f080 	clz	r0, r0
+ 1fa:	0940      	lsrs	r0, r0, #5
+ 1fc:	b013      	add	sp, #76	@ 0x4c
+ 1fe:	bd30      	pop	{r4, r5, pc}
+	...
+
+0000020c <expansion_test_app_send_control_request>:
+
+static bool expansion_test_app_send_control_request(
+    ExpansionTestApp* instance,
+    ExpansionFrameControlCommand command) {
+ 20c:	b530      	push	{r4, r5, lr}
+ 20e:	b093      	sub	sp, #76	@ 0x4c
+ 210:	4604      	mov	r4, r0
+ 212:	460d      	mov	r5, r1
+    ExpansionFrame frame = {
+ 214:	2242      	movs	r2, #66	@ 0x42
+ 216:	2100      	movs	r1, #0
+ 218:	a801      	add	r0, sp, #4
+ 21a:	4b09      	ldr	r3, [pc, #36]	@ (240 <expansion_test_app_send_control_request+0x34>)
+ 21c:	4798      	blx	r3
+ 21e:	2304      	movs	r3, #4
+ 220:	f88d 3004 	strb.w	r3, [sp, #4]
+ 224:	f88d 5005 	strb.w	r5, [sp, #5]
+        .header.type = ExpansionFrameTypeControl,
+        .content.control.command = command,
+    };
+    return expansion_protocol_encode(&frame, expansion_test_app_send_callback, instance) ==
+ 228:	4622      	mov	r2, r4
+ 22a:	4906      	ldr	r1, [pc, #24]	@ (244 <expansion_test_app_send_control_request+0x38>)
+ 22c:	eb0d 0003 	add.w	r0, sp, r3
+ 230:	4b05      	ldr	r3, [pc, #20]	@ (248 <expansion_test_app_send_control_request+0x3c>)
+ 232:	4798      	blx	r3
+           ExpansionProtocolStatusOk;
+}
+ 234:	fab0 f080 	clz	r0, r0
+ 238:	0940      	lsrs	r0, r0, #5
+ 23a:	b013      	add	sp, #76	@ 0x4c
+ 23c:	bd30      	pop	{r4, r5, pc}
+ 23e:	bf00      	nop
+	...
+
+0000024c <expansion_test_app_wait_ready>:
+    furi_hal_serial_tx(instance->handle, &init, sizeof(init));
+    furi_hal_serial_tx_wait_complete(instance->handle);
+    return true;
+}
+
+static bool expansion_test_app_wait_ready(ExpansionTestApp* instance) {
+ 24c:	b510      	push	{r4, lr}
+ 24e:	4604      	mov	r4, r0
+    bool success = false;
+
+    do {
+        if(!expansion_test_app_receive_frame(instance, &instance->frame)) break;
+ 250:	f100 0110 	add.w	r1, r0, #16
+ 254:	4b03      	ldr	r3, [pc, #12]	@ (264 <expansion_test_app_wait_ready+0x18>)
+ 256:	4798      	blx	r3
+ 258:	b118      	cbz	r0, 262 <expansion_test_app_wait_ready+0x16>
+        if(instance->frame.header.type != ExpansionFrameTypeHeartbeat) break;
+ 25a:	7c23      	ldrb	r3, [r4, #16]
+ 25c:	2b01      	cmp	r3, #1
+ 25e:	d000      	beq.n	262 <expansion_test_app_wait_ready+0x16>
+    bool success = false;
+ 260:	2000      	movs	r0, #0
+        success = true;
+    } while(false);
+
+    return success;
+}
+ 262:	bd10      	pop	{r4, pc}
+ 264:	00000000 	.word	0x00000000
+
+00000268 <expansion_test_app_enable_otg>:
+    } while(false);
+
+    return success;
+}
+
+static bool expansion_test_app_enable_otg(ExpansionTestApp* instance, bool enable) {
+ 268:	b510      	push	{r4, lr}
+ 26a:	4604      	mov	r4, r0
+    bool success = false;
+
+    do {
+        const ExpansionFrameControlCommand command = enable ?
+                                                         ExpansionFrameControlCommandEnableOtg :
+ 26c:	b129      	cbz	r1, 27a <expansion_test_app_enable_otg+0x12>
+ 26e:	2102      	movs	r1, #2
+                                                         ExpansionFrameControlCommandDisableOtg;
+        if(!expansion_test_app_send_control_request(instance, command)) break;
+ 270:	4620      	mov	r0, r4
+ 272:	4b0c      	ldr	r3, [pc, #48]	@ (2a4 <expansion_test_app_enable_otg+0x3c>)
+ 274:	4798      	blx	r3
+ 276:	b910      	cbnz	r0, 27e <expansion_test_app_enable_otg+0x16>
+        if(!expansion_test_app_is_success_response(&instance->frame)) break;
+        success = true;
+    } while(false);
+
+    return success;
+}
+ 278:	bd10      	pop	{r4, pc}
+                                                         ExpansionFrameControlCommandEnableOtg :
+ 27a:	2103      	movs	r1, #3
+ 27c:	e7f8      	b.n	270 <expansion_test_app_enable_otg+0x8>
+        if(!expansion_test_app_receive_frame(instance, &instance->frame)) break;
+ 27e:	f104 0110 	add.w	r1, r4, #16
+ 282:	4620      	mov	r0, r4
+ 284:	4b08      	ldr	r3, [pc, #32]	@ (2a8 <expansion_test_app_enable_otg+0x40>)
+ 286:	4798      	blx	r3
+ 288:	2800      	cmp	r0, #0
+ 28a:	d0f5      	beq.n	278 <expansion_test_app_enable_otg+0x10>
+    return response->header.type == ExpansionFrameTypeStatus &&
+ 28c:	7c23      	ldrb	r3, [r4, #16]
+ 28e:	2b02      	cmp	r3, #2
+ 290:	d001      	beq.n	296 <expansion_test_app_enable_otg+0x2e>
+ 292:	2000      	movs	r0, #0
+ 294:	e7f0      	b.n	278 <expansion_test_app_enable_otg+0x10>
+           response->content.status.error == ExpansionFrameErrorNone;
+ 296:	7c63      	ldrb	r3, [r4, #17]
+    return response->header.type == ExpansionFrameTypeStatus &&
+ 298:	b10b      	cbz	r3, 29e <expansion_test_app_enable_otg+0x36>
+ 29a:	2000      	movs	r0, #0
+ 29c:	e7ec      	b.n	278 <expansion_test_app_enable_otg+0x10>
+ 29e:	2001      	movs	r0, #1
+ 2a0:	e7ea      	b.n	278 <expansion_test_app_enable_otg+0x10>
+ 2a2:	bf00      	nop
+	...
+
+000002ac <expansion_test_app_start_rpc>:
+
+static bool expansion_test_app_start_rpc(ExpansionTestApp* instance) {
+ 2ac:	b510      	push	{r4, lr}
+ 2ae:	4604      	mov	r4, r0
+    bool success = false;
+
+    do {
+        if(!expansion_test_app_send_control_request(instance, ExpansionFrameControlCommandStartRpc))
+ 2b0:	2100      	movs	r1, #0
+ 2b2:	4b0b      	ldr	r3, [pc, #44]	@ (2e0 <expansion_test_app_start_rpc+0x34>)
+ 2b4:	4798      	blx	r3
+ 2b6:	b900      	cbnz	r0, 2ba <expansion_test_app_start_rpc+0xe>
+        if(!expansion_test_app_is_success_response(&instance->frame)) break;
+        success = true;
+    } while(false);
+
+    return success;
+}
+ 2b8:	bd10      	pop	{r4, pc}
+        if(!expansion_test_app_receive_frame(instance, &instance->frame)) break;
+ 2ba:	f104 0110 	add.w	r1, r4, #16
+ 2be:	4620      	mov	r0, r4
+ 2c0:	4b08      	ldr	r3, [pc, #32]	@ (2e4 <expansion_test_app_start_rpc+0x38>)
+ 2c2:	4798      	blx	r3
+ 2c4:	2800      	cmp	r0, #0
+ 2c6:	d0f7      	beq.n	2b8 <expansion_test_app_start_rpc+0xc>
+    return response->header.type == ExpansionFrameTypeStatus &&
+ 2c8:	7c23      	ldrb	r3, [r4, #16]
+ 2ca:	2b02      	cmp	r3, #2
+ 2cc:	d001      	beq.n	2d2 <expansion_test_app_start_rpc+0x26>
+ 2ce:	2000      	movs	r0, #0
+ 2d0:	e7f2      	b.n	2b8 <expansion_test_app_start_rpc+0xc>
+           response->content.status.error == ExpansionFrameErrorNone;
+ 2d2:	7c63      	ldrb	r3, [r4, #17]
+    return response->header.type == ExpansionFrameTypeStatus &&
+ 2d4:	b10b      	cbz	r3, 2da <expansion_test_app_start_rpc+0x2e>
+ 2d6:	2000      	movs	r0, #0
+ 2d8:	e7ee      	b.n	2b8 <expansion_test_app_start_rpc+0xc>
+ 2da:	2001      	movs	r0, #1
+ 2dc:	e7ec      	b.n	2b8 <expansion_test_app_start_rpc+0xc>
+ 2de:	bf00      	nop
+	...
+
+000002e8 <expansion_test_app_stop_rpc>:
+    }
+
+    return num_cycles_done == num_cycles;
+}
+
+static bool expansion_test_app_stop_rpc(ExpansionTestApp* instance) {
+ 2e8:	b510      	push	{r4, lr}
+ 2ea:	4604      	mov	r4, r0
+    bool success = false;
+
+    do {
+        if(!expansion_test_app_send_control_request(instance, ExpansionFrameControlCommandStopRpc))
+ 2ec:	2101      	movs	r1, #1
+ 2ee:	4b0b      	ldr	r3, [pc, #44]	@ (31c <expansion_test_app_stop_rpc+0x34>)
+ 2f0:	4798      	blx	r3
+ 2f2:	b900      	cbnz	r0, 2f6 <expansion_test_app_stop_rpc+0xe>
+        if(!expansion_test_app_is_success_response(&instance->frame)) break;
+        success = true;
+    } while(false);
+
+    return success;
+}
+ 2f4:	bd10      	pop	{r4, pc}
+        if(!expansion_test_app_receive_frame(instance, &instance->frame)) break;
+ 2f6:	f104 0110 	add.w	r1, r4, #16
+ 2fa:	4620      	mov	r0, r4
+ 2fc:	4b08      	ldr	r3, [pc, #32]	@ (320 <expansion_test_app_stop_rpc+0x38>)
+ 2fe:	4798      	blx	r3
+ 300:	2800      	cmp	r0, #0
+ 302:	d0f7      	beq.n	2f4 <expansion_test_app_stop_rpc+0xc>
+    return response->header.type == ExpansionFrameTypeStatus &&
+ 304:	7c23      	ldrb	r3, [r4, #16]
+ 306:	2b02      	cmp	r3, #2
+ 308:	d001      	beq.n	30e <expansion_test_app_stop_rpc+0x26>
+ 30a:	2000      	movs	r0, #0
+ 30c:	e7f2      	b.n	2f4 <expansion_test_app_stop_rpc+0xc>
+           response->content.status.error == ExpansionFrameErrorNone;
+ 30e:	7c63      	ldrb	r3, [r4, #17]
+    return response->header.type == ExpansionFrameTypeStatus &&
+ 310:	b10b      	cbz	r3, 316 <expansion_test_app_stop_rpc+0x2e>
+ 312:	2000      	movs	r0, #0
+ 314:	e7ee      	b.n	2f4 <expansion_test_app_stop_rpc+0xc>
+ 316:	2001      	movs	r0, #1
+ 318:	e7ec      	b.n	2f4 <expansion_test_app_stop_rpc+0xc>
+ 31a:	bf00      	nop
+	...
+
+00000324 <expansion_test_app_alloc>:
+static ExpansionTestApp* expansion_test_app_alloc(void) {
+ 324:	b510      	push	{r4, lr}
+    ExpansionTestApp* instance = malloc(sizeof(ExpansionTestApp));
+ 326:	f44f 7020 	mov.w	r0, #640	@ 0x280
+ 32a:	4b05      	ldr	r3, [pc, #20]	@ (340 <expansion_test_app_alloc+0x1c>)
+ 32c:	4798      	blx	r3
+ 32e:	4604      	mov	r4, r0
+    instance->buf = furi_stream_buffer_alloc(RECEIVE_BUFFER_SIZE, 1);
+ 330:	2101      	movs	r1, #1
+ 332:	2043      	movs	r0, #67	@ 0x43
+ 334:	4b03      	ldr	r3, [pc, #12]	@ (344 <expansion_test_app_alloc+0x20>)
+ 336:	4798      	blx	r3
+ 338:	60e0      	str	r0, [r4, #12]
+}
+ 33a:	4620      	mov	r0, r4
+ 33c:	bd10      	pop	{r4, pc}
+ 33e:	bf00      	nop
+	...
+
+00000348 <expansion_test_app_start>:
+static void expansion_test_app_start(ExpansionTestApp* instance) {
+ 348:	b510      	push	{r4, lr}
+ 34a:	4604      	mov	r4, r0
+    instance->thread_id = furi_thread_get_current_id();
+ 34c:	4b0f      	ldr	r3, [pc, #60]	@ (38c <sukima1208+0x6>)
+ 34e:	4798      	blx	r3
+ 350:	6020      	str	r0, [r4, #0]
+    instance->expansion = furi_record_open(RECORD_EXPANSION);
+ 352:	480f      	ldr	r0, [pc, #60]	@ (390 <sukima1208+0xa>)
+ 354:	4b0f      	ldr	r3, [pc, #60]	@ (394 <sukima1208+0xe>)
+ 356:	4798      	blx	r3
+ 358:	6060      	str	r0, [r4, #4]
+    instance->handle = furi_hal_serial_control_acquire(MODULE_SERIAL_ID);
+ 35a:	2000      	movs	r0, #0
+ 35c:	4b0e      	ldr	r3, [pc, #56]	@ (398 <sukima1208+0x12>)
+ 35e:	4798      	blx	r3
+ 360:	60a0      	str	r0, [r4, #8]
+    furi_check(instance->handle);
+ 362:	b170      	cbz	r0, 382 <expansion_test_app_start+0x3a>
+    furi_hal_serial_init(instance->handle, EXPANSION_PROTOCOL_DEFAULT_BAUD_RATE);
+ 364:	f44f 5116 	mov.w	r1, #9600	@ 0x2580
+ 368:	4b0c      	ldr	r3, [pc, #48]	@ (39c <sukima1208+0x16>)
+ 36a:	4798      	blx	r3
+    expansion_set_listen_serial(instance->expansion, HOST_SERIAL_ID);
+ 36c:	2101      	movs	r1, #1
+ 36e:	6860      	ldr	r0, [r4, #4]
+ 370:	4b0b      	ldr	r3, [pc, #44]	@ (3a0 <sukima1208+0x1a>)
+ 372:	4798      	blx	r3
+    furi_hal_serial_async_rx_start(
+ 374:	2300      	movs	r3, #0
+ 376:	4622      	mov	r2, r4
+ 378:	490a      	ldr	r1, [pc, #40]	@ (3a4 <sukima1208+0x1e>)
+ 37a:	68a0      	ldr	r0, [r4, #8]
+ 37c:	4c0a      	ldr	r4, [pc, #40]	@ (3a8 <sukima1208+0x22>)
+ 37e:	47a0      	blx	r4
+}
+ 380:	bd10      	pop	{r4, pc}
+    furi_check(instance->handle);
+ 382:	f04f 0c02 	mov.w	ip, #2
+
+00000386 <sukima1208>:
+ 386:	4b09      	ldr	r3, [pc, #36]	@ (3ac <sukima1208+0x26>)
+ 388:	4798      	blx	r3
+ 38a:	bf00      	nop
+	...
+
+000003b0 <expansion_test_app_serial_rx_callback>:
+    void* context) {
+ 3b0:	b530      	push	{r4, r5, lr}
+ 3b2:	b083      	sub	sp, #12
+    furi_assert(handle);
+ 3b4:	b128      	cbz	r0, 3c2 <expansion_test_app_serial_rx_callback+0x12>
+ 3b6:	4614      	mov	r4, r2
+    furi_assert(context);
+ 3b8:	b13a      	cbz	r2, 3ca <sukima1291+0x4>
+    if(event == FuriHalSerialRxEventData) {
+ 3ba:	2901      	cmp	r1, #1
+ 3bc:	d009      	beq.n	3d2 <sukima1310+0x4>
+}
+ 3be:	b003      	add	sp, #12
+ 3c0:	bd30      	pop	{r4, r5, pc}
+    furi_assert(handle);
+ 3c2:	f04f 0c01 	mov.w	ip, #1
+
+000003c6 <sukima1291>:
+ 3c6:	4b0b      	ldr	r3, [pc, #44]	@ (3f4 <sukima1310+0x26>)
+ 3c8:	4798      	blx	r3
+    furi_assert(context);
+ 3ca:	f04f 0c01 	mov.w	ip, #1
+
+000003ce <sukima1310>:
+ 3ce:	4b09      	ldr	r3, [pc, #36]	@ (3f4 <sukima1310+0x26>)
+ 3d0:	4798      	blx	r3
+        const uint8_t data = furi_hal_serial_async_rx(handle);
+ 3d2:	4b09      	ldr	r3, [pc, #36]	@ (3f8 <sukima1310+0x2a>)
+ 3d4:	4798      	blx	r3
+ 3d6:	f88d 0007 	strb.w	r0, [sp, #7]
+        furi_stream_buffer_send(app->buf, &data, sizeof(data), 0);
+ 3da:	2300      	movs	r3, #0
+ 3dc:	2201      	movs	r2, #1
+ 3de:	f10d 0107 	add.w	r1, sp, #7
+ 3e2:	68e0      	ldr	r0, [r4, #12]
+ 3e4:	4d05      	ldr	r5, [pc, #20]	@ (3fc <sukima1310+0x2e>)
+ 3e6:	47a8      	blx	r5
+        furi_thread_flags_set(app->thread_id, ExpansionTestAppFlagData);
+ 3e8:	2101      	movs	r1, #1
+ 3ea:	6820      	ldr	r0, [r4, #0]
+ 3ec:	4b04      	ldr	r3, [pc, #16]	@ (400 <sukima1310+0x32>)
+ 3ee:	4798      	blx	r3
+}
+ 3f0:	e7e5      	b.n	3be <expansion_test_app_serial_rx_callback+0xe>
+ 3f2:	bf00      	nop
+	...
+
+00000404 <expansion_test_app_send_presence>:
+static bool expansion_test_app_send_presence(ExpansionTestApp* instance) {
+ 404:	b510      	push	{r4, lr}
+ 406:	b082      	sub	sp, #8
+ 408:	4604      	mov	r4, r0
+    const uint8_t init = 0xAA;
+ 40a:	23aa      	movs	r3, #170	@ 0xaa
+ 40c:	f88d 3007 	strb.w	r3, [sp, #7]
+    furi_hal_serial_tx(instance->handle, &init, sizeof(init));
+ 410:	2201      	movs	r2, #1
+ 412:	f10d 0107 	add.w	r1, sp, #7
+ 416:	6880      	ldr	r0, [r0, #8]
+ 418:	4b03      	ldr	r3, [pc, #12]	@ (428 <expansion_test_app_send_presence+0x24>)
+ 41a:	4798      	blx	r3
+    furi_hal_serial_tx_wait_complete(instance->handle);
+ 41c:	68a0      	ldr	r0, [r4, #8]
+ 41e:	4b03      	ldr	r3, [pc, #12]	@ (42c <expansion_test_app_send_presence+0x28>)
+ 420:	4798      	blx	r3
+}
+ 422:	2001      	movs	r0, #1
+ 424:	b002      	add	sp, #8
+ 426:	bd10      	pop	{r4, pc}
+	...
+
+00000430 <expansion_test_app_send_callback>:
+    expansion_test_app_send_callback(const uint8_t* data, size_t data_size, void* context) {
+ 430:	b538      	push	{r3, r4, r5, lr}
+ 432:	460c      	mov	r4, r1
+ 434:	4615      	mov	r5, r2
+    furi_hal_serial_tx(instance->handle, data, data_size);
+ 436:	460a      	mov	r2, r1
+ 438:	4601      	mov	r1, r0
+ 43a:	68a8      	ldr	r0, [r5, #8]
+ 43c:	4b03      	ldr	r3, [pc, #12]	@ (44c <expansion_test_app_send_callback+0x1c>)
+ 43e:	4798      	blx	r3
+    furi_hal_serial_tx_wait_complete(instance->handle);
+ 440:	68a8      	ldr	r0, [r5, #8]
+ 442:	4b03      	ldr	r3, [pc, #12]	@ (450 <expansion_test_app_send_callback+0x20>)
+ 444:	4798      	blx	r3
+}
+ 446:	4620      	mov	r0, r4
+ 448:	bd38      	pop	{r3, r4, r5, pc}
+ 44a:	bf00      	nop
+	...
+
+00000454 <expansion_test_app_receive_callback>:
+static size_t expansion_test_app_receive_callback(uint8_t* data, size_t data_size, void* context) {
+ 454:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+ 458:	4680      	mov	r8, r0
+ 45a:	460d      	mov	r5, r1
+ 45c:	4617      	mov	r7, r2
+    size_t received_size = 0;
+ 45e:	2400      	movs	r4, #0
+        received_size += furi_stream_buffer_receive(
+ 460:	2300      	movs	r3, #0
+ 462:	1b2a      	subs	r2, r5, r4
+ 464:	eb08 0104 	add.w	r1, r8, r4
+ 468:	68f8      	ldr	r0, [r7, #12]
+ 46a:	4e07      	ldr	r6, [pc, #28]	@ (488 <expansion_test_app_receive_callback+0x34>)
+ 46c:	47b0      	blx	r6
+ 46e:	4404      	add	r4, r0
+        if(received_size == data_size) break;
+ 470:	42a5      	cmp	r5, r4
+ 472:	d006      	beq.n	482 <expansion_test_app_receive_callback+0x2e>
+        const uint32_t flags = furi_thread_flags_wait(
+ 474:	22fa      	movs	r2, #250	@ 0xfa
+ 476:	2100      	movs	r1, #0
+ 478:	2003      	movs	r0, #3
+ 47a:	4b04      	ldr	r3, [pc, #16]	@ (48c <expansion_test_app_receive_callback+0x38>)
+ 47c:	4798      	blx	r3
+        if(flags & FuriFlagError) break;
+ 47e:	2800      	cmp	r0, #0
+ 480:	daee      	bge.n	460 <expansion_test_app_receive_callback+0xc>
+}
+ 482:	4620      	mov	r0, r4
+ 484:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+	...
+
+00000490 <expansion_test_app_handshake>:
+static bool expansion_test_app_handshake(ExpansionTestApp* instance) {
+ 490:	b538      	push	{r3, r4, r5, lr}
+ 492:	4605      	mov	r5, r0
+        if(!expansion_test_app_send_baud_rate_request(instance, 230400)) break;
+ 494:	f44f 3161 	mov.w	r1, #230400	@ 0x38400
+ 498:	4b11      	ldr	r3, [pc, #68]	@ (4e0 <expansion_test_app_handshake+0x50>)
+ 49a:	4798      	blx	r3
+ 49c:	4604      	mov	r4, r0
+ 49e:	b908      	cbnz	r0, 4a4 <expansion_test_app_handshake+0x14>
+}
+ 4a0:	4620      	mov	r0, r4
+ 4a2:	bd38      	pop	{r3, r4, r5, pc}
+        if(!expansion_test_app_receive_frame(instance, &instance->frame)) break;
+ 4a4:	f105 0110 	add.w	r1, r5, #16
+ 4a8:	4628      	mov	r0, r5
+ 4aa:	4b0e      	ldr	r3, [pc, #56]	@ (4e4 <expansion_test_app_handshake+0x54>)
+ 4ac:	4798      	blx	r3
+ 4ae:	4604      	mov	r4, r0
+ 4b0:	2800      	cmp	r0, #0
+ 4b2:	d0f5      	beq.n	4a0 <expansion_test_app_handshake+0x10>
+    return response->header.type == ExpansionFrameTypeStatus &&
+ 4b4:	7c2b      	ldrb	r3, [r5, #16]
+ 4b6:	2b02      	cmp	r3, #2
+ 4b8:	d00c      	beq.n	4d4 <expansion_test_app_handshake+0x44>
+ 4ba:	2300      	movs	r3, #0
+        if(!expansion_test_app_is_success_response(&instance->frame)) break;
+ 4bc:	461c      	mov	r4, r3
+ 4be:	2b00      	cmp	r3, #0
+ 4c0:	d0ee      	beq.n	4a0 <expansion_test_app_handshake+0x10>
+        furi_hal_serial_set_br(instance->handle, 230400);
+ 4c2:	f44f 3161 	mov.w	r1, #230400	@ 0x38400
+ 4c6:	68a8      	ldr	r0, [r5, #8]
+ 4c8:	4b07      	ldr	r3, [pc, #28]	@ (4e8 <expansion_test_app_handshake+0x58>)
+ 4ca:	4798      	blx	r3
+        furi_delay_ms(EXPANSION_PROTOCOL_BAUD_CHANGE_DT_MS);
+ 4cc:	2019      	movs	r0, #25
+ 4ce:	4b07      	ldr	r3, [pc, #28]	@ (4ec <expansion_test_app_handshake+0x5c>)
+ 4d0:	4798      	blx	r3
+        success = true;
+ 4d2:	e7e5      	b.n	4a0 <expansion_test_app_handshake+0x10>
+           response->content.status.error == ExpansionFrameErrorNone;
+ 4d4:	7c6b      	ldrb	r3, [r5, #17]
+    return response->header.type == ExpansionFrameTypeStatus &&
+ 4d6:	b10b      	cbz	r3, 4dc <expansion_test_app_handshake+0x4c>
+ 4d8:	2300      	movs	r3, #0
+ 4da:	e7ef      	b.n	4bc <expansion_test_app_handshake+0x2c>
+ 4dc:	2301      	movs	r3, #1
+ 4de:	e7ed      	b.n	4bc <expansion_test_app_handshake+0x2c>
+	...
+
+000004f0 <expansion_test_app_idle>:
+static bool expansion_test_app_idle(ExpansionTestApp* instance, uint32_t num_cycles) {
+ 4f0:	b570      	push	{r4, r5, r6, lr}
+ 4f2:	4604      	mov	r4, r0
+ 4f4:	460e      	mov	r6, r1
+    for(num_cycles_done = 0; num_cycles_done < num_cycles; ++num_cycles_done) {
+ 4f6:	2500      	movs	r5, #0
+ 4f8:	42b5      	cmp	r5, r6
+ 4fa:	d211      	bcs.n	520 <expansion_test_app_idle+0x30>
+        if(!expansion_test_app_send_heartbeat(instance)) break;
+ 4fc:	4620      	mov	r0, r4
+ 4fe:	4b0b      	ldr	r3, [pc, #44]	@ (52c <expansion_test_app_idle+0x3c>)
+ 500:	4798      	blx	r3
+ 502:	b168      	cbz	r0, 520 <expansion_test_app_idle+0x30>
+        if(!expansion_test_app_receive_frame(instance, &instance->frame)) break;
+ 504:	f104 0110 	add.w	r1, r4, #16
+ 508:	4620      	mov	r0, r4
+ 50a:	4b09      	ldr	r3, [pc, #36]	@ (530 <expansion_test_app_idle+0x40>)
+ 50c:	4798      	blx	r3
+ 50e:	b138      	cbz	r0, 520 <expansion_test_app_idle+0x30>
+        if(instance->frame.header.type != ExpansionFrameTypeHeartbeat) break;
+ 510:	7c23      	ldrb	r3, [r4, #16]
+ 512:	2b01      	cmp	r3, #1
+ 514:	d104      	bne.n	520 <expansion_test_app_idle+0x30>
+        furi_delay_ms(EXPANSION_PROTOCOL_TIMEOUT_MS - 50);
+ 516:	20c8      	movs	r0, #200	@ 0xc8
+ 518:	4b06      	ldr	r3, [pc, #24]	@ (534 <expansion_test_app_idle+0x44>)
+ 51a:	4798      	blx	r3
+    for(num_cycles_done = 0; num_cycles_done < num_cycles; ++num_cycles_done) {
+ 51c:	3501      	adds	r5, #1
+ 51e:	e7eb      	b.n	4f8 <expansion_test_app_idle+0x8>
+}
+ 520:	42b5      	cmp	r5, r6
+ 522:	bf14      	ite	ne
+ 524:	2000      	movne	r0, #0
+ 526:	2001      	moveq	r0, #1
+ 528:	bd70      	pop	{r4, r5, r6, pc}
+ 52a:	bf00      	nop
+	...
+
+00000538 <expansion_test_app_send_rpc_request>:
+static bool expansion_test_app_send_rpc_request(ExpansionTestApp* instance, PB_Main* message) {
+ 538:	b570      	push	{r4, r5, r6, lr}
+ 53a:	b086      	sub	sp, #24
+ 53c:	460c      	mov	r4, r1
+    pb_ostream_t stream = {
+ 53e:	4b0c      	ldr	r3, [pc, #48]	@ (570 <expansion_test_app_send_rpc_request+0x38>)
+ 540:	9301      	str	r3, [sp, #4]
+ 542:	9002      	str	r0, [sp, #8]
+ 544:	f04f 33ff 	mov.w	r3, #4294967295	@ 0xffffffff
+ 548:	9303      	str	r3, [sp, #12]
+ 54a:	2300      	movs	r3, #0
+ 54c:	9304      	str	r3, [sp, #16]
+ 54e:	9305      	str	r3, [sp, #20]
+    const bool success = pb_encode_ex(&stream, &PB_Main_msg, message, PB_ENCODE_DELIMITED);
+ 550:	4e08      	ldr	r6, [pc, #32]	@ (574 <expansion_test_app_send_rpc_request+0x3c>)
+ 552:	2302      	movs	r3, #2
+ 554:	460a      	mov	r2, r1
+ 556:	4631      	mov	r1, r6
+ 558:	a801      	add	r0, sp, #4
+ 55a:	4d07      	ldr	r5, [pc, #28]	@ (578 <expansion_test_app_send_rpc_request+0x40>)
+ 55c:	47a8      	blx	r5
+ 55e:	4605      	mov	r5, r0
+    pb_release(&PB_Main_msg, message);
+ 560:	4621      	mov	r1, r4
+ 562:	4630      	mov	r0, r6
+ 564:	4b05      	ldr	r3, [pc, #20]	@ (57c <expansion_test_app_send_rpc_request+0x44>)
+ 566:	4798      	blx	r3
+}
+ 568:	4628      	mov	r0, r5
+ 56a:	b006      	add	sp, #24
+ 56c:	bd70      	pop	{r4, r5, r6, pc}
+ 56e:	bf00      	nop
+	...
+
+00000580 <expansion_test_app_send_data_request>:
+    size_t data_size) {
+ 580:	b570      	push	{r4, r5, r6, lr}
+ 582:	b092      	sub	sp, #72	@ 0x48
+    furi_assert(data_size <= EXPANSION_PROTOCOL_MAX_DATA_SIZE);
+ 584:	2a40      	cmp	r2, #64	@ 0x40
+ 586:	d81c      	bhi.n	5c2 <expansion_test_app_send_data_request+0x42>
+ 588:	4605      	mov	r5, r0
+ 58a:	460e      	mov	r6, r1
+ 58c:	4614      	mov	r4, r2
+    ExpansionFrame frame = {
+ 58e:	2242      	movs	r2, #66	@ 0x42
+ 590:	2100      	movs	r1, #0
+ 592:	a801      	add	r0, sp, #4
+ 594:	4b0d      	ldr	r3, [pc, #52]	@ (5cc <sukima1902+0x6>)
+ 596:	4798      	blx	r3
+ 598:	2305      	movs	r3, #5
+ 59a:	f88d 3004 	strb.w	r3, [sp, #4]
+ 59e:	f88d 4005 	strb.w	r4, [sp, #5]
+    memcpy(frame.content.data.bytes, data, data_size);
+ 5a2:	4622      	mov	r2, r4
+ 5a4:	4631      	mov	r1, r6
+ 5a6:	f10d 0006 	add.w	r0, sp, #6
+ 5aa:	4b09      	ldr	r3, [pc, #36]	@ (5d0 <sukima1902+0xa>)
+ 5ac:	4798      	blx	r3
+    return expansion_protocol_encode(&frame, expansion_test_app_send_callback, instance) ==
+ 5ae:	462a      	mov	r2, r5
+ 5b0:	4908      	ldr	r1, [pc, #32]	@ (5d4 <sukima1902+0xe>)
+ 5b2:	a801      	add	r0, sp, #4
+ 5b4:	4b08      	ldr	r3, [pc, #32]	@ (5d8 <sukima1902+0x12>)
+ 5b6:	4798      	blx	r3
+}
+ 5b8:	fab0 f080 	clz	r0, r0
+ 5bc:	0940      	lsrs	r0, r0, #5
+ 5be:	b012      	add	sp, #72	@ 0x48
+ 5c0:	bd70      	pop	{r4, r5, r6, pc}
+    furi_assert(data_size <= EXPANSION_PROTOCOL_MAX_DATA_SIZE);
+ 5c2:	f04f 0c01 	mov.w	ip, #1
+
+000005c6 <sukima1902>:
+ 5c6:	4b05      	ldr	r3, [pc, #20]	@ (5dc <sukima1902+0x16>)
+ 5c8:	4798      	blx	r3
+ 5ca:	bf00      	nop
+	...
+
+000005e0 <expansion_test_app_rpc_encode_callback>:
+    size_t data_size) {
+ 5e0:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+ 5e4:	4688      	mov	r8, r1
+ 5e6:	4617      	mov	r7, r2
+    ExpansionTestApp* instance = stream->state;
+ 5e8:	6846      	ldr	r6, [r0, #4]
+    size_t size_sent = 0;
+ 5ea:	2400      	movs	r4, #0
+    while(size_sent < data_size) {
+ 5ec:	e004      	b.n	5f8 <expansion_test_app_rpc_encode_callback+0x18>
+           response->content.status.error == ExpansionFrameErrorNone;
+ 5ee:	7c73      	ldrb	r3, [r6, #17]
+    return response->header.type == ExpansionFrameTypeStatus &&
+ 5f0:	b1d3      	cbz	r3, 628 <expansion_test_app_rpc_encode_callback+0x48>
+ 5f2:	2300      	movs	r3, #0
+        if(!expansion_test_app_is_success_response(&instance->frame)) break;
+ 5f4:	b1d3      	cbz	r3, 62c <expansion_test_app_rpc_encode_callback+0x4c>
+        size_sent += current_size;
+ 5f6:	442c      	add	r4, r5
+    while(size_sent < data_size) {
+ 5f8:	42bc      	cmp	r4, r7
+ 5fa:	d217      	bcs.n	62c <expansion_test_app_rpc_encode_callback+0x4c>
+        const size_t current_size = MIN(data_size - size_sent, EXPANSION_PROTOCOL_MAX_DATA_SIZE);
+ 5fc:	1b3d      	subs	r5, r7, r4
+ 5fe:	2d40      	cmp	r5, #64	@ 0x40
+ 600:	bf28      	it	cs
+ 602:	2540      	movcs	r5, #64	@ 0x40
+        if(!expansion_test_app_send_data_request(instance, data + size_sent, current_size)) break;
+ 604:	462a      	mov	r2, r5
+ 606:	eb08 0104 	add.w	r1, r8, r4
+ 60a:	4630      	mov	r0, r6
+ 60c:	4b0a      	ldr	r3, [pc, #40]	@ (638 <expansion_test_app_rpc_encode_callback+0x58>)
+ 60e:	4798      	blx	r3
+ 610:	b160      	cbz	r0, 62c <expansion_test_app_rpc_encode_callback+0x4c>
+        if(!expansion_test_app_receive_frame(instance, &instance->frame)) break;
+ 612:	f106 0110 	add.w	r1, r6, #16
+ 616:	4630      	mov	r0, r6
+ 618:	4b08      	ldr	r3, [pc, #32]	@ (63c <expansion_test_app_rpc_encode_callback+0x5c>)
+ 61a:	4798      	blx	r3
+ 61c:	b130      	cbz	r0, 62c <expansion_test_app_rpc_encode_callback+0x4c>
+    return response->header.type == ExpansionFrameTypeStatus &&
+ 61e:	7c33      	ldrb	r3, [r6, #16]
+ 620:	2b02      	cmp	r3, #2
+ 622:	d0e4      	beq.n	5ee <expansion_test_app_rpc_encode_callback+0xe>
+ 624:	2300      	movs	r3, #0
+ 626:	e7e5      	b.n	5f4 <expansion_test_app_rpc_encode_callback+0x14>
+ 628:	2301      	movs	r3, #1
+ 62a:	e7e3      	b.n	5f4 <expansion_test_app_rpc_encode_callback+0x14>
+}
+ 62c:	42bc      	cmp	r4, r7
+ 62e:	bf14      	ite	ne
+ 630:	2000      	movne	r0, #0
+ 632:	2001      	moveq	r0, #1
+ 634:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+	...
+
+00000640 <expansion_test_app_receive_rpc_request>:
+static bool expansion_test_app_receive_rpc_request(ExpansionTestApp* instance, PB_Main* message) {
+ 640:	b530      	push	{r4, r5, lr}
+ 642:	b085      	sub	sp, #20
+ 644:	4604      	mov	r4, r0
+ 646:	460d      	mov	r5, r1
+        if(!expansion_test_app_receive_frame(instance, &instance->frame)) break;
+ 648:	f100 0110 	add.w	r1, r0, #16
+ 64c:	4b0e      	ldr	r3, [pc, #56]	@ (688 <expansion_test_app_receive_rpc_request+0x48>)
+ 64e:	4798      	blx	r3
+ 650:	b910      	cbnz	r0, 658 <expansion_test_app_receive_rpc_request+0x18>
+    bool success = false;
+ 652:	2000      	movs	r0, #0
+}
+ 654:	b005      	add	sp, #20
+ 656:	bd30      	pop	{r4, r5, pc}
+        if(!expansion_test_app_send_status_response(instance, ExpansionFrameErrorNone)) break;
+ 658:	2100      	movs	r1, #0
+ 65a:	4620      	mov	r0, r4
+ 65c:	4b0b      	ldr	r3, [pc, #44]	@ (68c <expansion_test_app_receive_rpc_request+0x4c>)
+ 65e:	4798      	blx	r3
+ 660:	2800      	cmp	r0, #0
+ 662:	d0f6      	beq.n	652 <expansion_test_app_receive_rpc_request+0x12>
+        if(instance->frame.header.type != ExpansionFrameTypeData) break;
+ 664:	7c23      	ldrb	r3, [r4, #16]
+ 666:	2b05      	cmp	r3, #5
+ 668:	d1f3      	bne.n	652 <expansion_test_app_receive_rpc_request+0x12>
+        pb_istream_t stream = pb_istream_from_buffer(
+ 66a:	7c62      	ldrb	r2, [r4, #17]
+ 66c:	f104 0112 	add.w	r1, r4, #18
+ 670:	4668      	mov	r0, sp
+ 672:	4b07      	ldr	r3, [pc, #28]	@ (690 <expansion_test_app_receive_rpc_request+0x50>)
+ 674:	4798      	blx	r3
+        if(!pb_decode_ex(&stream, &PB_Main_msg, message, PB_DECODE_DELIMITED)) break;
+ 676:	2302      	movs	r3, #2
+ 678:	462a      	mov	r2, r5
+ 67a:	4906      	ldr	r1, [pc, #24]	@ (694 <expansion_test_app_receive_rpc_request+0x54>)
+ 67c:	4668      	mov	r0, sp
+ 67e:	4c06      	ldr	r4, [pc, #24]	@ (698 <expansion_test_app_receive_rpc_request+0x58>)
+ 680:	47a0      	blx	r4
+ 682:	2800      	cmp	r0, #0
+ 684:	d1e6      	bne.n	654 <expansion_test_app_receive_rpc_request+0x14>
+ 686:	e7e4      	b.n	652 <expansion_test_app_receive_rpc_request+0x12>
+	...
+
+0000069c <expansion_test_app_rpc_mkdir>:
+static bool expansion_test_app_rpc_mkdir(ExpansionTestApp* instance) {
+ 69c:	b538      	push	{r3, r4, r5, lr}
+ 69e:	4604      	mov	r4, r0
+    instance->msg.command_id++;
+ 6a0:	6d83      	ldr	r3, [r0, #88]	@ 0x58
+ 6a2:	3301      	adds	r3, #1
+ 6a4:	6583      	str	r3, [r0, #88]	@ 0x58
+    instance->msg.command_status = PB_CommandStatus_OK;
+ 6a6:	2300      	movs	r3, #0
+ 6a8:	f880 305c 	strb.w	r3, [r0, #92]	@ 0x5c
+    instance->msg.which_content = PB_Main_storage_mkdir_request_tag;
+ 6ac:	220d      	movs	r2, #13
+ 6ae:	f8a0 2068 	strh.w	r2, [r0, #104]	@ 0x68
+    instance->msg.has_next = false;
+ 6b2:	f880 305d 	strb.w	r3, [r0, #93]	@ 0x5d
+    instance->msg.content.storage_mkdir_request.path = TEST_DIR_PATH;
+ 6b6:	4b0f      	ldr	r3, [pc, #60]	@ (6f4 <expansion_test_app_rpc_mkdir+0x58>)
+ 6b8:	6703      	str	r3, [r0, #112]	@ 0x70
+        if(!expansion_test_app_send_rpc_request(instance, &instance->msg)) break;
+ 6ba:	f100 0558 	add.w	r5, r0, #88	@ 0x58
+ 6be:	4629      	mov	r1, r5
+ 6c0:	4b0d      	ldr	r3, [pc, #52]	@ (6f8 <expansion_test_app_rpc_mkdir+0x5c>)
+ 6c2:	4798      	blx	r3
+ 6c4:	b900      	cbnz	r0, 6c8 <expansion_test_app_rpc_mkdir+0x2c>
+}
+ 6c6:	bd38      	pop	{r3, r4, r5, pc}
+        if(!expansion_test_app_receive_rpc_request(instance, &instance->msg)) break;
+ 6c8:	4629      	mov	r1, r5
+ 6ca:	4620      	mov	r0, r4
+ 6cc:	4b0b      	ldr	r3, [pc, #44]	@ (6fc <expansion_test_app_rpc_mkdir+0x60>)
+ 6ce:	4798      	blx	r3
+ 6d0:	2800      	cmp	r0, #0
+ 6d2:	d0f8      	beq.n	6c6 <expansion_test_app_rpc_mkdir+0x2a>
+    return (message->command_status == PB_CommandStatus_OK ||
+ 6d4:	f894 305c 	ldrb.w	r3, [r4, #92]	@ 0x5c
+            message->command_status == PB_CommandStatus_ERROR_STORAGE_EXIST) &&
+ 6d8:	b11b      	cbz	r3, 6e2 <expansion_test_app_rpc_mkdir+0x46>
+    return (message->command_status == PB_CommandStatus_OK ||
+ 6da:	2b06      	cmp	r3, #6
+ 6dc:	d001      	beq.n	6e2 <expansion_test_app_rpc_mkdir+0x46>
+            message->command_status == PB_CommandStatus_ERROR_STORAGE_EXIST) &&
+ 6de:	2000      	movs	r0, #0
+ 6e0:	e7f1      	b.n	6c6 <expansion_test_app_rpc_mkdir+0x2a>
+           (message->which_content == PB_Main_empty_tag);
+ 6e2:	f8b4 3068 	ldrh.w	r3, [r4, #104]	@ 0x68
+            message->command_status == PB_CommandStatus_ERROR_STORAGE_EXIST) &&
+ 6e6:	2b04      	cmp	r3, #4
+ 6e8:	d001      	beq.n	6ee <expansion_test_app_rpc_mkdir+0x52>
+ 6ea:	2000      	movs	r0, #0
+ 6ec:	e7eb      	b.n	6c6 <expansion_test_app_rpc_mkdir+0x2a>
+ 6ee:	2001      	movs	r0, #1
+ 6f0:	e7e9      	b.n	6c6 <expansion_test_app_rpc_mkdir+0x2a>
+ 6f2:	bf00      	nop
+ 6f4:	0000000c 	.word	0x0000000c
+	...
+
+00000700 <expansion_test_app_rpc_alert>:
+static bool expansion_test_app_rpc_alert(ExpansionTestApp* instance) {
+ 700:	b538      	push	{r3, r4, r5, lr}
+ 702:	4604      	mov	r4, r0
+    instance->msg.command_id++;
+ 704:	6d83      	ldr	r3, [r0, #88]	@ 0x58
+ 706:	3301      	adds	r3, #1
+ 708:	6583      	str	r3, [r0, #88]	@ 0x58
+    instance->msg.command_status = PB_CommandStatus_OK;
+ 70a:	2300      	movs	r3, #0
+ 70c:	f880 305c 	strb.w	r3, [r0, #92]	@ 0x5c
+    instance->msg.which_content = PB_Main_system_play_audiovisual_alert_request_tag;
+ 710:	2226      	movs	r2, #38	@ 0x26
+ 712:	f8a0 2068 	strh.w	r2, [r0, #104]	@ 0x68
+    instance->msg.has_next = false;
+ 716:	f880 305d 	strb.w	r3, [r0, #93]	@ 0x5d
+        if(!expansion_test_app_send_rpc_request(instance, &instance->msg)) break;
+ 71a:	f100 0558 	add.w	r5, r0, #88	@ 0x58
+ 71e:	4629      	mov	r1, r5
+ 720:	4b0a      	ldr	r3, [pc, #40]	@ (74c <expansion_test_app_rpc_alert+0x4c>)
+ 722:	4798      	blx	r3
+ 724:	b900      	cbnz	r0, 728 <expansion_test_app_rpc_alert+0x28>
+}
+ 726:	bd38      	pop	{r3, r4, r5, pc}
+        if(!expansion_test_app_receive_rpc_request(instance, &instance->msg)) break;
+ 728:	4629      	mov	r1, r5
+ 72a:	4620      	mov	r0, r4
+ 72c:	4b08      	ldr	r3, [pc, #32]	@ (750 <expansion_test_app_rpc_alert+0x50>)
+ 72e:	4798      	blx	r3
+ 730:	2800      	cmp	r0, #0
+ 732:	d0f8      	beq.n	726 <expansion_test_app_rpc_alert+0x26>
+        if(instance->msg.which_content != PB_Main_empty_tag) break;
+ 734:	f8b4 3068 	ldrh.w	r3, [r4, #104]	@ 0x68
+ 738:	2b04      	cmp	r3, #4
+ 73a:	d001      	beq.n	740 <expansion_test_app_rpc_alert+0x40>
+    bool success = false;
+ 73c:	2000      	movs	r0, #0
+ 73e:	e7f2      	b.n	726 <expansion_test_app_rpc_alert+0x26>
+        if(instance->msg.command_status != PB_CommandStatus_OK) break;
+ 740:	f894 305c 	ldrb.w	r3, [r4, #92]	@ 0x5c
+ 744:	2b00      	cmp	r3, #0
+ 746:	d0ee      	beq.n	726 <expansion_test_app_rpc_alert+0x26>
+    bool success = false;
+ 748:	2000      	movs	r0, #0
+ 74a:	e7ec      	b.n	726 <expansion_test_app_rpc_alert+0x26>
+	...
+
+00000754 <expansion_test_app_rpc_enable_otg>:
+static bool expansion_test_app_rpc_enable_otg(ExpansionTestApp* instance, bool enable) {
+ 754:	b538      	push	{r3, r4, r5, lr}
+ 756:	4604      	mov	r4, r0
+    instance->msg.command_id++;
+ 758:	6d83      	ldr	r3, [r0, #88]	@ 0x58
+ 75a:	3301      	adds	r3, #1
+ 75c:	6583      	str	r3, [r0, #88]	@ 0x58
+    instance->msg.command_status = PB_CommandStatus_OK;
+ 75e:	2300      	movs	r3, #0
+ 760:	f880 305c 	strb.w	r3, [r0, #92]	@ 0x5c
+    instance->msg.which_content = PB_Main_gpio_set_otg_mode_tag;
+ 764:	224a      	movs	r2, #74	@ 0x4a
+ 766:	f8a0 2068 	strh.w	r2, [r0, #104]	@ 0x68
+    instance->msg.content.gpio_set_otg_mode.mode = enable ? PB_Gpio_GpioOtgMode_ON :
+ 76a:	f880 1070 	strb.w	r1, [r0, #112]	@ 0x70
+    instance->msg.has_next = false;
+ 76e:	f880 305d 	strb.w	r3, [r0, #93]	@ 0x5d
+        if(!expansion_test_app_send_rpc_request(instance, &instance->msg)) break;
+ 772:	f100 0558 	add.w	r5, r0, #88	@ 0x58
+ 776:	4629      	mov	r1, r5
+ 778:	4b0a      	ldr	r3, [pc, #40]	@ (7a4 <expansion_test_app_rpc_enable_otg+0x50>)
+ 77a:	4798      	blx	r3
+ 77c:	b900      	cbnz	r0, 780 <expansion_test_app_rpc_enable_otg+0x2c>
+}
+ 77e:	bd38      	pop	{r3, r4, r5, pc}
+        if(!expansion_test_app_receive_rpc_request(instance, &instance->msg)) break;
+ 780:	4629      	mov	r1, r5
+ 782:	4620      	mov	r0, r4
+ 784:	4b08      	ldr	r3, [pc, #32]	@ (7a8 <expansion_test_app_rpc_enable_otg+0x54>)
+ 786:	4798      	blx	r3
+ 788:	2800      	cmp	r0, #0
+ 78a:	d0f8      	beq.n	77e <expansion_test_app_rpc_enable_otg+0x2a>
+        if(instance->msg.which_content != PB_Main_empty_tag) break;
+ 78c:	f8b4 3068 	ldrh.w	r3, [r4, #104]	@ 0x68
+ 790:	2b04      	cmp	r3, #4
+ 792:	d001      	beq.n	798 <expansion_test_app_rpc_enable_otg+0x44>
+    bool success = false;
+ 794:	2000      	movs	r0, #0
+ 796:	e7f2      	b.n	77e <expansion_test_app_rpc_enable_otg+0x2a>
+        if(instance->msg.command_status != PB_CommandStatus_OK) break;
+ 798:	f894 305c 	ldrb.w	r3, [r4, #92]	@ 0x5c
+ 79c:	2b00      	cmp	r3, #0
+ 79e:	d0ee      	beq.n	77e <expansion_test_app_rpc_enable_otg+0x2a>
+    bool success = false;
+ 7a0:	2000      	movs	r0, #0
+ 7a2:	e7ec      	b.n	77e <expansion_test_app_rpc_enable_otg+0x2a>
+	...
+
+000007ac <expansion_test_app_rpc_write>:
+static bool expansion_test_app_rpc_write(ExpansionTestApp* instance) {
+ 7ac:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+ 7b0:	4604      	mov	r4, r0
+    Storage* storage = furi_record_open(RECORD_STORAGE);
+ 7b2:	4831      	ldr	r0, [pc, #196]	@ (878 <expansion_test_app_rpc_write+0xcc>)
+ 7b4:	4b31      	ldr	r3, [pc, #196]	@ (87c <expansion_test_app_rpc_write+0xd0>)
+ 7b6:	4798      	blx	r3
+    File* file = storage_file_alloc(storage);
+ 7b8:	4b31      	ldr	r3, [pc, #196]	@ (880 <expansion_test_app_rpc_write+0xd4>)
+ 7ba:	4798      	blx	r3
+ 7bc:	4605      	mov	r5, r0
+        if(!storage_file_open(file, APP_ASSETS_PATH(TEST_FILE_NAME), FSAM_READ, FSOM_OPEN_EXISTING))
+ 7be:	2301      	movs	r3, #1
+ 7c0:	461a      	mov	r2, r3
+ 7c2:	4930      	ldr	r1, [pc, #192]	@ (884 <expansion_test_app_rpc_write+0xd8>)
+ 7c4:	4e30      	ldr	r6, [pc, #192]	@ (888 <expansion_test_app_rpc_write+0xdc>)
+ 7c6:	47b0      	blx	r6
+ 7c8:	4606      	mov	r6, r0
+ 7ca:	b940      	cbnz	r0, 7de <expansion_test_app_rpc_write+0x32>
+    storage_file_free(file);
+ 7cc:	4628      	mov	r0, r5
+ 7ce:	4b2f      	ldr	r3, [pc, #188]	@ (88c <expansion_test_app_rpc_write+0xe0>)
+ 7d0:	4798      	blx	r3
+    furi_record_close(RECORD_STORAGE);
+ 7d2:	4829      	ldr	r0, [pc, #164]	@ (878 <expansion_test_app_rpc_write+0xcc>)
+ 7d4:	4b2e      	ldr	r3, [pc, #184]	@ (890 <expansion_test_app_rpc_write+0xe4>)
+ 7d6:	4798      	blx	r3
+}
+ 7d8:	4630      	mov	r0, r6
+ 7da:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+        const uint64_t file_size = storage_file_size(file);
+ 7de:	4628      	mov	r0, r5
+ 7e0:	4b2c      	ldr	r3, [pc, #176]	@ (894 <expansion_test_app_rpc_write+0xe8>)
+ 7e2:	4798      	blx	r3
+ 7e4:	4606      	mov	r6, r0
+ 7e6:	460f      	mov	r7, r1
+        instance->msg.command_id++;
+ 7e8:	6da3      	ldr	r3, [r4, #88]	@ 0x58
+ 7ea:	3301      	adds	r3, #1
+ 7ec:	65a3      	str	r3, [r4, #88]	@ 0x58
+        instance->msg.command_status = PB_CommandStatus_OK;
+ 7ee:	f04f 0800 	mov.w	r8, #0
+ 7f2:	f884 805c 	strb.w	r8, [r4, #92]	@ 0x5c
+        instance->msg.which_content = PB_Main_storage_write_request_tag;
+ 7f6:	230b      	movs	r3, #11
+ 7f8:	f8a4 3068 	strh.w	r3, [r4, #104]	@ 0x68
+        instance->msg.has_next = false;
+ 7fc:	f884 805d 	strb.w	r8, [r4, #93]	@ 0x5d
+        instance->msg.content.storage_write_request.path = TEST_FILE_PATH;
+ 800:	4b25      	ldr	r3, [pc, #148]	@ (898 <expansion_test_app_rpc_write+0xec>)
+ 802:	6723      	str	r3, [r4, #112]	@ 0x70
+        instance->msg.content.storage_write_request.has_file = true;
+ 804:	2301      	movs	r3, #1
+ 806:	f884 3074 	strb.w	r3, [r4, #116]	@ 0x74
+            malloc(PB_BYTES_ARRAY_T_ALLOCSIZE(file_size));
+ 80a:	3002      	adds	r0, #2
+ 80c:	4b23      	ldr	r3, [pc, #140]	@ (89c <expansion_test_app_rpc_write+0xf0>)
+ 80e:	4798      	blx	r3
+ 810:	4601      	mov	r1, r0
+        instance->msg.content.storage_write_request.file.data =
+ 812:	f8c4 0084 	str.w	r0, [r4, #132]	@ 0x84
+        instance->msg.content.storage_write_request.file.data->size = file_size;
+ 816:	f821 6b02 	strh.w	r6, [r1], #2
+        const size_t bytes_read = storage_file_read(
+ 81a:	4632      	mov	r2, r6
+ 81c:	4628      	mov	r0, r5
+ 81e:	4b20      	ldr	r3, [pc, #128]	@ (8a0 <expansion_test_app_rpc_write+0xf4>)
+ 820:	4798      	blx	r3
+        if(bytes_read != file_size) {
+ 822:	45b8      	cmp	r8, r7
+ 824:	bf08      	it	eq
+ 826:	42b0      	cmpeq	r0, r6
+ 828:	d006      	beq.n	838 <expansion_test_app_rpc_write+0x8c>
+            pb_release(&PB_Main_msg, &instance->msg);
+ 82a:	f104 0158 	add.w	r1, r4, #88	@ 0x58
+ 82e:	481d      	ldr	r0, [pc, #116]	@ (8a4 <expansion_test_app_rpc_write+0xf8>)
+ 830:	4b1d      	ldr	r3, [pc, #116]	@ (8a8 <expansion_test_app_rpc_write+0xfc>)
+ 832:	4798      	blx	r3
+    bool success = false;
+ 834:	4646      	mov	r6, r8
+            break;
+ 836:	e7c9      	b.n	7cc <expansion_test_app_rpc_write+0x20>
+        if(!expansion_test_app_send_rpc_request(instance, &instance->msg)) break;
+ 838:	f104 0758 	add.w	r7, r4, #88	@ 0x58
+ 83c:	4639      	mov	r1, r7
+ 83e:	4620      	mov	r0, r4
+ 840:	4b1a      	ldr	r3, [pc, #104]	@ (8ac <expansion_test_app_rpc_write+0x100>)
+ 842:	4798      	blx	r3
+ 844:	4606      	mov	r6, r0
+ 846:	2800      	cmp	r0, #0
+ 848:	d0c0      	beq.n	7cc <expansion_test_app_rpc_write+0x20>
+        if(!expansion_test_app_receive_rpc_request(instance, &instance->msg)) break;
+ 84a:	4639      	mov	r1, r7
+ 84c:	4620      	mov	r0, r4
+ 84e:	4b18      	ldr	r3, [pc, #96]	@ (8b0 <expansion_test_app_rpc_write+0x104>)
+ 850:	4798      	blx	r3
+ 852:	4606      	mov	r6, r0
+ 854:	2800      	cmp	r0, #0
+ 856:	d0b9      	beq.n	7cc <expansion_test_app_rpc_write+0x20>
+    return (message->command_status == PB_CommandStatus_OK ||
+ 858:	f894 305c 	ldrb.w	r3, [r4, #92]	@ 0x5c
+            message->command_status == PB_CommandStatus_ERROR_STORAGE_EXIST) &&
+ 85c:	b11b      	cbz	r3, 866 <expansion_test_app_rpc_write+0xba>
+    return (message->command_status == PB_CommandStatus_OK ||
+ 85e:	2b06      	cmp	r3, #6
+ 860:	d001      	beq.n	866 <expansion_test_app_rpc_write+0xba>
+            message->command_status == PB_CommandStatus_ERROR_STORAGE_EXIST) &&
+ 862:	2600      	movs	r6, #0
+ 864:	e7b2      	b.n	7cc <expansion_test_app_rpc_write+0x20>
+           (message->which_content == PB_Main_empty_tag);
+ 866:	f8b4 3068 	ldrh.w	r3, [r4, #104]	@ 0x68
+            message->command_status == PB_CommandStatus_ERROR_STORAGE_EXIST) &&
+ 86a:	2b04      	cmp	r3, #4
+ 86c:	d001      	beq.n	872 <expansion_test_app_rpc_write+0xc6>
+ 86e:	2600      	movs	r6, #0
+ 870:	e7ac      	b.n	7cc <expansion_test_app_rpc_write+0x20>
+ 872:	2601      	movs	r6, #1
+ 874:	e7aa      	b.n	7cc <expansion_test_app_rpc_write+0x20>
+ 876:	bf00      	nop
+ 878:	00000020 	.word	0x00000020
+	...
+ 884:	00000028 	.word	0x00000028
+	...
+ 898:	0000003c 	.word	0x0000003c
+	...
+
+000008b4 <expansion_test_app_stop>:
+static void expansion_test_app_stop(ExpansionTestApp* instance) {
+ 8b4:	b510      	push	{r4, lr}
+ 8b6:	4604      	mov	r4, r0
+    expansion_disable(instance->expansion);
+ 8b8:	6840      	ldr	r0, [r0, #4]
+ 8ba:	4b06      	ldr	r3, [pc, #24]	@ (8d4 <expansion_test_app_stop+0x20>)
+ 8bc:	4798      	blx	r3
+    furi_hal_serial_control_release(instance->handle);
+ 8be:	68a0      	ldr	r0, [r4, #8]
+ 8c0:	4b05      	ldr	r3, [pc, #20]	@ (8d8 <expansion_test_app_stop+0x24>)
+ 8c2:	4798      	blx	r3
+    expansion_enable(instance->expansion);
+ 8c4:	6860      	ldr	r0, [r4, #4]
+ 8c6:	4b05      	ldr	r3, [pc, #20]	@ (8dc <expansion_test_app_stop+0x28>)
+ 8c8:	4798      	blx	r3
+    furi_record_close(RECORD_EXPANSION);
+ 8ca:	4805      	ldr	r0, [pc, #20]	@ (8e0 <expansion_test_app_stop+0x2c>)
+ 8cc:	4b05      	ldr	r3, [pc, #20]	@ (8e4 <expansion_test_app_stop+0x30>)
+ 8ce:	4798      	blx	r3
+}
+ 8d0:	bd10      	pop	{r4, pc}
+ 8d2:	bf00      	nop
+	...
+
+000008e8 <expansion_test_app_free>:
+static void expansion_test_app_free(ExpansionTestApp* instance) {
+ 8e8:	b510      	push	{r4, lr}
+ 8ea:	4604      	mov	r4, r0
+    furi_stream_buffer_free(instance->buf);
+ 8ec:	68c0      	ldr	r0, [r0, #12]
+ 8ee:	4b03      	ldr	r3, [pc, #12]	@ (8fc <expansion_test_app_free+0x14>)
+ 8f0:	4798      	blx	r3
+    free(instance);
+ 8f2:	4620      	mov	r0, r4
+ 8f4:	4b02      	ldr	r3, [pc, #8]	@ (900 <expansion_test_app_free+0x18>)
+ 8f6:	4798      	blx	r3
+}
+ 8f8:	bd10      	pop	{r4, pc}
+ 8fa:	bf00      	nop
+	...
+
+00000904 <expansion_test_app>:
+
+int32_t expansion_test_app(void* p) {
+ 904:	b538      	push	{r3, r4, r5, lr}
+    UNUSED(p);
+
+    ExpansionTestApp* instance = expansion_test_app_alloc();
+ 906:	4b3c      	ldr	r3, [pc, #240]	@ (9f8 <expansion_test_app+0xf4>)
+ 908:	4798      	blx	r3
+ 90a:	4604      	mov	r4, r0
+    expansion_test_app_start(instance);
+ 90c:	4b3b      	ldr	r3, [pc, #236]	@ (9fc <expansion_test_app+0xf8>)
+ 90e:	4798      	blx	r3
+
+    bool success = false;
+
+    do {
+        if(!expansion_test_app_send_presence(instance)) break;
+ 910:	4620      	mov	r0, r4
+ 912:	4b3b      	ldr	r3, [pc, #236]	@ (a00 <expansion_test_app+0xfc>)
+ 914:	4798      	blx	r3
+ 916:	4605      	mov	r5, r0
+ 918:	b948      	cbnz	r0, 92e <expansion_test_app+0x2a>
+        if(!expansion_test_app_stop_rpc(instance)) break;
+        if(!expansion_test_app_enable_otg(instance, false)) break;
+        success = true;
+    } while(false);
+
+    expansion_test_app_stop(instance);
+ 91a:	4620      	mov	r0, r4
+ 91c:	4b39      	ldr	r3, [pc, #228]	@ (a04 <expansion_test_app+0x100>)
+ 91e:	4798      	blx	r3
+    expansion_test_app_free(instance);
+ 920:	4620      	mov	r0, r4
+ 922:	4b39      	ldr	r3, [pc, #228]	@ (a08 <expansion_test_app+0x104>)
+ 924:	4798      	blx	r3
+
+    if(!success) {
+ 926:	2d00      	cmp	r5, #0
+ 928:	d05b      	beq.n	9e2 <expansion_test_app+0xde>
+        notification_message(notification, &sequence_error);
+        furi_record_close(RECORD_NOTIFICATION);
+    }
+
+    return 0;
+}
+ 92a:	2000      	movs	r0, #0
+ 92c:	bd38      	pop	{r3, r4, r5, pc}
+        if(!expansion_test_app_wait_ready(instance)) break;
+ 92e:	4620      	mov	r0, r4
+ 930:	4b36      	ldr	r3, [pc, #216]	@ (a0c <expansion_test_app+0x108>)
+ 932:	4798      	blx	r3
+ 934:	4605      	mov	r5, r0
+ 936:	2800      	cmp	r0, #0
+ 938:	d0ef      	beq.n	91a <expansion_test_app+0x16>
+        if(!expansion_test_app_handshake(instance)) break;
+ 93a:	4620      	mov	r0, r4
+ 93c:	4b34      	ldr	r3, [pc, #208]	@ (a10 <expansion_test_app+0x10c>)
+ 93e:	4798      	blx	r3
+ 940:	4605      	mov	r5, r0
+ 942:	2800      	cmp	r0, #0
+ 944:	d0e9      	beq.n	91a <expansion_test_app+0x16>
+        if(!expansion_test_app_enable_otg(instance, true)) break;
+ 946:	2101      	movs	r1, #1
+ 948:	4620      	mov	r0, r4
+ 94a:	4b32      	ldr	r3, [pc, #200]	@ (a14 <expansion_test_app+0x110>)
+ 94c:	4798      	blx	r3
+ 94e:	4605      	mov	r5, r0
+ 950:	2800      	cmp	r0, #0
+ 952:	d0e2      	beq.n	91a <expansion_test_app+0x16>
+        if(!expansion_test_app_idle(instance, 5)) break;
+ 954:	2105      	movs	r1, #5
+ 956:	4620      	mov	r0, r4
+ 958:	4b2f      	ldr	r3, [pc, #188]	@ (a18 <expansion_test_app+0x114>)
+ 95a:	4798      	blx	r3
+ 95c:	4605      	mov	r5, r0
+ 95e:	2800      	cmp	r0, #0
+ 960:	d0db      	beq.n	91a <expansion_test_app+0x16>
+        if(!expansion_test_app_start_rpc(instance)) break;
+ 962:	4620      	mov	r0, r4
+ 964:	4b2d      	ldr	r3, [pc, #180]	@ (a1c <expansion_test_app+0x118>)
+ 966:	4798      	blx	r3
+ 968:	4605      	mov	r5, r0
+ 96a:	2800      	cmp	r0, #0
+ 96c:	d0d5      	beq.n	91a <expansion_test_app+0x16>
+        if(!expansion_test_app_rpc_enable_otg(instance, false)) break;
+ 96e:	2100      	movs	r1, #0
+ 970:	4620      	mov	r0, r4
+ 972:	4b2b      	ldr	r3, [pc, #172]	@ (a20 <expansion_test_app+0x11c>)
+ 974:	4798      	blx	r3
+ 976:	4605      	mov	r5, r0
+ 978:	2800      	cmp	r0, #0
+ 97a:	d0ce      	beq.n	91a <expansion_test_app+0x16>
+        if(!expansion_test_app_idle(instance, 5)) break;
+ 97c:	2105      	movs	r1, #5
+ 97e:	4620      	mov	r0, r4
+ 980:	4b25      	ldr	r3, [pc, #148]	@ (a18 <expansion_test_app+0x114>)
+ 982:	4798      	blx	r3
+ 984:	4605      	mov	r5, r0
+ 986:	2800      	cmp	r0, #0
+ 988:	d0c7      	beq.n	91a <expansion_test_app+0x16>
+        if(!expansion_test_app_rpc_mkdir(instance)) break;
+ 98a:	4620      	mov	r0, r4
+ 98c:	4b25      	ldr	r3, [pc, #148]	@ (a24 <expansion_test_app+0x120>)
+ 98e:	4798      	blx	r3
+ 990:	4605      	mov	r5, r0
+ 992:	2800      	cmp	r0, #0
+ 994:	d0c1      	beq.n	91a <expansion_test_app+0x16>
+        if(!expansion_test_app_rpc_write(instance)) break;
+ 996:	4620      	mov	r0, r4
+ 998:	4b23      	ldr	r3, [pc, #140]	@ (a28 <expansion_test_app+0x124>)
+ 99a:	4798      	blx	r3
+ 99c:	4605      	mov	r5, r0
+ 99e:	2800      	cmp	r0, #0
+ 9a0:	d0bb      	beq.n	91a <expansion_test_app+0x16>
+        if(!expansion_test_app_rpc_alert(instance)) break;
+ 9a2:	4620      	mov	r0, r4
+ 9a4:	4b21      	ldr	r3, [pc, #132]	@ (a2c <expansion_test_app+0x128>)
+ 9a6:	4798      	blx	r3
+ 9a8:	4605      	mov	r5, r0
+ 9aa:	2800      	cmp	r0, #0
+ 9ac:	d0b5      	beq.n	91a <expansion_test_app+0x16>
+        if(!expansion_test_app_rpc_enable_otg(instance, true)) break;
+ 9ae:	2101      	movs	r1, #1
+ 9b0:	4620      	mov	r0, r4
+ 9b2:	4b1b      	ldr	r3, [pc, #108]	@ (a20 <expansion_test_app+0x11c>)
+ 9b4:	4798      	blx	r3
+ 9b6:	4605      	mov	r5, r0
+ 9b8:	2800      	cmp	r0, #0
+ 9ba:	d0ae      	beq.n	91a <expansion_test_app+0x16>
+        if(!expansion_test_app_idle(instance, 5)) break;
+ 9bc:	2105      	movs	r1, #5
+ 9be:	4620      	mov	r0, r4
+ 9c0:	4b15      	ldr	r3, [pc, #84]	@ (a18 <expansion_test_app+0x114>)
+ 9c2:	4798      	blx	r3
+ 9c4:	4605      	mov	r5, r0
+ 9c6:	2800      	cmp	r0, #0
+ 9c8:	d0a7      	beq.n	91a <expansion_test_app+0x16>
+        if(!expansion_test_app_stop_rpc(instance)) break;
+ 9ca:	4620      	mov	r0, r4
+ 9cc:	4b18      	ldr	r3, [pc, #96]	@ (a30 <expansion_test_app+0x12c>)
+ 9ce:	4798      	blx	r3
+ 9d0:	4605      	mov	r5, r0
+ 9d2:	2800      	cmp	r0, #0
+ 9d4:	d0a1      	beq.n	91a <expansion_test_app+0x16>
+        if(!expansion_test_app_enable_otg(instance, false)) break;
+ 9d6:	2100      	movs	r1, #0
+ 9d8:	4620      	mov	r0, r4
+ 9da:	4b0e      	ldr	r3, [pc, #56]	@ (a14 <expansion_test_app+0x110>)
+ 9dc:	4798      	blx	r3
+ 9de:	4605      	mov	r5, r0
+ 9e0:	e79b      	b.n	91a <expansion_test_app+0x16>
+        NotificationApp* notification = furi_record_open(RECORD_NOTIFICATION);
+ 9e2:	4c14      	ldr	r4, [pc, #80]	@ (a34 <expansion_test_app+0x130>)
+ 9e4:	4620      	mov	r0, r4
+ 9e6:	4b14      	ldr	r3, [pc, #80]	@ (a38 <expansion_test_app+0x134>)
+ 9e8:	4798      	blx	r3
+        notification_message(notification, &sequence_error);
+ 9ea:	4914      	ldr	r1, [pc, #80]	@ (a3c <expansion_test_app+0x138>)
+ 9ec:	4b14      	ldr	r3, [pc, #80]	@ (a40 <expansion_test_app+0x13c>)
+ 9ee:	4798      	blx	r3
+        furi_record_close(RECORD_NOTIFICATION);
+ 9f0:	4620      	mov	r0, r4
+ 9f2:	4b14      	ldr	r3, [pc, #80]	@ (a44 <expansion_test_app+0x140>)
+ 9f4:	4798      	blx	r3
+ 9f6:	e798      	b.n	92a <expansion_test_app+0x26>
+	...
+ a34:	00000058 	.word	0x00000058
+	...

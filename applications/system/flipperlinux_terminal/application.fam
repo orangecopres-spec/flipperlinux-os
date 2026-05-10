@@ -1,0 +1,18 @@
+App(
+    appid="flipperlinux_terminal",
+    name="FlipperLinux Terminal",
+    apptype=FlipperAppType.EXTERNAL,
+    entry_point="flipperlinux_terminal_app",
+    requires=["gui", "storage"],
+    stack_size=4 * 1024,
+    sources=[
+        "terminal.c",
+        "terminal_app.c",
+        "terminal_view.c",
+    ],
+    fap_version="1.0.0",
+    fap_description="FlipperLinux Terminal with Cinnamon & KDE Themes",
+    fap_author="FlipperLinux Team",
+    fap_icon="terminal.png",
+    fap_category="System",
+)

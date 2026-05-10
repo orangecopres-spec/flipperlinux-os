@@ -1,0 +1,709 @@
+
+build/f7-firmware-D/.extapps/cli_ikey_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <ibutton_cli_print_usage>:
+
+#include <ibutton/ibutton_key.h>
+#include <ibutton/ibutton_worker.h>
+#include <ibutton/ibutton_protocols.h>
+
+static void ibutton_cli_print_usage(void) {
+   0:	b510      	push	{r4, lr}
+    printf("Usage:\r\n");
+   2:	480a      	ldr	r0, [pc, #40]	@ (2c <ibutton_cli_print_usage+0x2c>)
+   4:	4c0a      	ldr	r4, [pc, #40]	@ (30 <ibutton_cli_print_usage+0x30>)
+   6:	47a0      	blx	r4
+    printf("ikey read\r\n");
+   8:	480a      	ldr	r0, [pc, #40]	@ (34 <ibutton_cli_print_usage+0x34>)
+   a:	47a0      	blx	r4
+    printf("ikey emulate <key_type> <key_data>\r\n");
+   c:	480a      	ldr	r0, [pc, #40]	@ (38 <ibutton_cli_print_usage+0x38>)
+   e:	47a0      	blx	r4
+    printf("ikey write Dallas <key_data>\r\n");
+  10:	480a      	ldr	r0, [pc, #40]	@ (3c <ibutton_cli_print_usage+0x3c>)
+  12:	47a0      	blx	r4
+    printf("\t<key_type> choose from:\r\n");
+  14:	480a      	ldr	r0, [pc, #40]	@ (40 <ibutton_cli_print_usage+0x40>)
+  16:	47a0      	blx	r4
+    printf("\tDallas (8 bytes key_data)\r\n");
+  18:	480a      	ldr	r0, [pc, #40]	@ (44 <ibutton_cli_print_usage+0x44>)
+  1a:	47a0      	blx	r4
+    printf("\tCyfral (2 bytes key_data)\r\n");
+  1c:	480a      	ldr	r0, [pc, #40]	@ (48 <ibutton_cli_print_usage+0x48>)
+  1e:	47a0      	blx	r4
+    printf("\tMetakom (4 bytes key_data), must contain correct parity\r\n");
+  20:	480a      	ldr	r0, [pc, #40]	@ (4c <ibutton_cli_print_usage+0x4c>)
+  22:	47a0      	blx	r4
+    printf("\t<key_data> are hex-formatted\r\n");
+  24:	480a      	ldr	r0, [pc, #40]	@ (50 <ibutton_cli_print_usage+0x50>)
+  26:	47a0      	blx	r4
+}
+  28:	bd10      	pop	{r4, pc}
+  2a:	bf00      	nop
+	...
+  34:	00000008 	.word	0x00000008
+  38:	00000014 	.word	0x00000014
+  3c:	00000038 	.word	0x00000038
+  40:	00000058 	.word	0x00000058
+  44:	00000074 	.word	0x00000074
+  48:	00000090 	.word	0x00000090
+  4c:	000000ac 	.word	0x000000ac
+  50:	000000e8 	.word	0x000000e8
+
+00000054 <ibutton_cli_worker_write_cb>:
+typedef struct {
+    FuriEventFlag* event;
+    iButtonWorkerWriteResult result;
+} iButtonWriteContext;
+
+static void ibutton_cli_worker_write_cb(void* context, iButtonWorkerWriteResult result) {
+  54:	b508      	push	{r3, lr}
+    furi_assert(context);
+  56:	b128      	cbz	r0, 64 <ibutton_cli_worker_write_cb+0x10>
+    iButtonWriteContext* write_context = (iButtonWriteContext*)context;
+    write_context->result = result;
+  58:	7101      	strb	r1, [r0, #4]
+    furi_event_flag_set(write_context->event, EVENT_FLAG_IBUTTON_COMPLETE);
+  5a:	2101      	movs	r1, #1
+  5c:	6800      	ldr	r0, [r0, #0]
+  5e:	4b03      	ldr	r3, [pc, #12]	@ (6c <sukima110+0x4>)
+  60:	4798      	blx	r3
+}
+  62:	bd08      	pop	{r3, pc}
+    furi_assert(context);
+  64:	f04f 0c01 	mov.w	ip, #1
+
+00000068 <sukima110>:
+  68:	4b01      	ldr	r3, [pc, #4]	@ (70 <sukima110+0x8>)
+  6a:	4798      	blx	r3
+	...
+
+00000074 <ibutton_cli_worker_read_cb>:
+static void ibutton_cli_worker_read_cb(void* context) {
+  74:	b508      	push	{r3, lr}
+    furi_assert(context);
+  76:	b118      	cbz	r0, 80 <ibutton_cli_worker_read_cb+0xc>
+    furi_event_flag_set(event, EVENT_FLAG_IBUTTON_COMPLETE);
+  78:	2101      	movs	r1, #1
+  7a:	4b03      	ldr	r3, [pc, #12]	@ (88 <sukima162+0x4>)
+  7c:	4798      	blx	r3
+}
+  7e:	bd08      	pop	{r3, pc}
+    furi_assert(context);
+  80:	f04f 0c01 	mov.w	ip, #1
+
+00000084 <sukima162>:
+  84:	4b01      	ldr	r3, [pc, #4]	@ (8c <sukima162+0x8>)
+  86:	4798      	blx	r3
+	...
+
+00000090 <ibutton_cli_parse_key>:
+static bool ibutton_cli_parse_key(iButtonProtocols* protocols, iButtonKey* key, FuriString* args) {
+  90:	b5f0      	push	{r4, r5, r6, r7, lr}
+  92:	b083      	sub	sp, #12
+  94:	4606      	mov	r6, r0
+  96:	460f      	mov	r7, r1
+  98:	4615      	mov	r5, r2
+    FuriString* name = furi_string_alloc();
+  9a:	4b1f      	ldr	r3, [pc, #124]	@ (118 <ibutton_cli_parse_key+0x88>)
+  9c:	4798      	blx	r3
+  9e:	4604      	mov	r4, r0
+        if(!args_read_string_and_trim(args, name)) break;
+  a0:	4601      	mov	r1, r0
+  a2:	4628      	mov	r0, r5
+  a4:	4b1d      	ldr	r3, [pc, #116]	@ (11c <ibutton_cli_parse_key+0x8c>)
+  a6:	4798      	blx	r3
+  a8:	b930      	cbnz	r0, b8 <ibutton_cli_parse_key+0x28>
+    bool result = false;
+  aa:	2500      	movs	r5, #0
+    furi_string_free(name);
+  ac:	4620      	mov	r0, r4
+  ae:	4b1c      	ldr	r3, [pc, #112]	@ (120 <ibutton_cli_parse_key+0x90>)
+  b0:	4798      	blx	r3
+}
+  b2:	4628      	mov	r0, r5
+  b4:	b003      	add	sp, #12
+  b6:	bdf0      	pop	{r4, r5, r6, r7, pc}
+        const char first = furi_string_get_char(name, 0);
+  b8:	2100      	movs	r1, #0
+  ba:	4620      	mov	r0, r4
+  bc:	4b19      	ldr	r3, [pc, #100]	@ (124 <ibutton_cli_parse_key+0x94>)
+  be:	4798      	blx	r3
+        furi_string_set_char(name, 0, toupper((int)first));
+  c0:	4602      	mov	r2, r0
+  c2:	4b19      	ldr	r3, [pc, #100]	@ (128 <ibutton_cli_parse_key+0x98>)
+  c4:	5c1b      	ldrb	r3, [r3, r0]
+  c6:	f003 0303 	and.w	r3, r3, #3
+  ca:	2b02      	cmp	r3, #2
+  cc:	d020      	beq.n	110 <ibutton_cli_parse_key+0x80>
+  ce:	b2d2      	uxtb	r2, r2
+  d0:	2100      	movs	r1, #0
+  d2:	4620      	mov	r0, r4
+  d4:	4b15      	ldr	r3, [pc, #84]	@ (12c <ibutton_cli_parse_key+0x9c>)
+  d6:	4798      	blx	r3
+            ibutton_protocols_get_id_by_name(protocols, furi_string_get_cstr(name));
+  d8:	4620      	mov	r0, r4
+  da:	4b15      	ldr	r3, [pc, #84]	@ (130 <ibutton_cli_parse_key+0xa0>)
+  dc:	4798      	blx	r3
+  de:	4601      	mov	r1, r0
+  e0:	4630      	mov	r0, r6
+  e2:	4b14      	ldr	r3, [pc, #80]	@ (134 <ibutton_cli_parse_key+0xa4>)
+  e4:	4798      	blx	r3
+        if(id == iButtonProtocolIdInvalid) break;
+  e6:	f1b0 3fff 	cmp.w	r0, #4294967295	@ 0xffffffff
+  ea:	d0de      	beq.n	aa <ibutton_cli_parse_key+0x1a>
+        ibutton_key_set_protocol_id(key, id);
+  ec:	4601      	mov	r1, r0
+  ee:	4638      	mov	r0, r7
+  f0:	4b11      	ldr	r3, [pc, #68]	@ (138 <ibutton_cli_parse_key+0xa8>)
+  f2:	4798      	blx	r3
+        ibutton_protocols_get_editable_data(protocols, key, &data);
+  f4:	466a      	mov	r2, sp
+  f6:	4639      	mov	r1, r7
+  f8:	4630      	mov	r0, r6
+  fa:	4b10      	ldr	r3, [pc, #64]	@ (13c <ibutton_cli_parse_key+0xac>)
+  fc:	4798      	blx	r3
+        if(!args_read_hex_bytes(args, data.ptr, data.size)) break;
+  fe:	9a01      	ldr	r2, [sp, #4]
+ 100:	9900      	ldr	r1, [sp, #0]
+ 102:	4628      	mov	r0, r5
+ 104:	4b0e      	ldr	r3, [pc, #56]	@ (140 <ibutton_cli_parse_key+0xb0>)
+ 106:	4798      	blx	r3
+ 108:	4605      	mov	r5, r0
+ 10a:	2800      	cmp	r0, #0
+ 10c:	d1ce      	bne.n	ac <ibutton_cli_parse_key+0x1c>
+ 10e:	e7cc      	b.n	aa <ibutton_cli_parse_key+0x1a>
+        furi_string_set_char(name, 0, toupper((int)first));
+ 110:	f1a0 0220 	sub.w	r2, r0, #32
+ 114:	e7db      	b.n	ce <ibutton_cli_parse_key+0x3e>
+ 116:	bf00      	nop
+	...
+ 128:	00000001 	.word	0x00000001
+	...
+
+00000144 <ibutton_cli_print_key>:
+static void ibutton_cli_print_key(iButtonProtocols* protocols, iButtonKey* key) {
+ 144:	b570      	push	{r4, r5, r6, lr}
+ 146:	b082      	sub	sp, #8
+ 148:	4604      	mov	r4, r0
+ 14a:	460d      	mov	r5, r1
+    const char* name = ibutton_protocols_get_name(protocols, ibutton_key_get_protocol_id(key));
+ 14c:	4608      	mov	r0, r1
+ 14e:	4b13      	ldr	r3, [pc, #76]	@ (19c <ibutton_cli_print_key+0x58>)
+ 150:	4798      	blx	r3
+ 152:	4601      	mov	r1, r0
+ 154:	4620      	mov	r0, r4
+ 156:	4b12      	ldr	r3, [pc, #72]	@ (1a0 <ibutton_cli_print_key+0x5c>)
+ 158:	4798      	blx	r3
+ 15a:	4606      	mov	r6, r0
+    if(strncmp(name, "DS", 2) == 0) {
+ 15c:	2202      	movs	r2, #2
+ 15e:	4911      	ldr	r1, [pc, #68]	@ (1a4 <ibutton_cli_print_key+0x60>)
+ 160:	4b11      	ldr	r3, [pc, #68]	@ (1a8 <ibutton_cli_print_key+0x64>)
+ 162:	4798      	blx	r3
+ 164:	b900      	cbnz	r0, 168 <ibutton_cli_print_key+0x24>
+        name = "Dallas";
+ 166:	4e11      	ldr	r6, [pc, #68]	@ (1ac <ibutton_cli_print_key+0x68>)
+    printf("%s ", name);
+ 168:	4631      	mov	r1, r6
+ 16a:	4811      	ldr	r0, [pc, #68]	@ (1b0 <ibutton_cli_print_key+0x6c>)
+ 16c:	4b11      	ldr	r3, [pc, #68]	@ (1b4 <ibutton_cli_print_key+0x70>)
+ 16e:	4798      	blx	r3
+    ibutton_protocols_get_editable_data(protocols, key, &data);
+ 170:	466a      	mov	r2, sp
+ 172:	4629      	mov	r1, r5
+ 174:	4620      	mov	r0, r4
+ 176:	4b10      	ldr	r3, [pc, #64]	@ (1b8 <ibutton_cli_print_key+0x74>)
+ 178:	4798      	blx	r3
+    for(size_t i = 0; i < data.size; i++) {
+ 17a:	2400      	movs	r4, #0
+ 17c:	e005      	b.n	18a <ibutton_cli_print_key+0x46>
+        printf("%02X", data.ptr[i]);
+ 17e:	9b00      	ldr	r3, [sp, #0]
+ 180:	5d19      	ldrb	r1, [r3, r4]
+ 182:	480e      	ldr	r0, [pc, #56]	@ (1bc <ibutton_cli_print_key+0x78>)
+ 184:	4b0b      	ldr	r3, [pc, #44]	@ (1b4 <ibutton_cli_print_key+0x70>)
+ 186:	4798      	blx	r3
+    for(size_t i = 0; i < data.size; i++) {
+ 188:	3401      	adds	r4, #1
+ 18a:	9b01      	ldr	r3, [sp, #4]
+ 18c:	42a3      	cmp	r3, r4
+ 18e:	d8f6      	bhi.n	17e <ibutton_cli_print_key+0x3a>
+    printf("\r\n");
+ 190:	480b      	ldr	r0, [pc, #44]	@ (1c0 <ibutton_cli_print_key+0x7c>)
+ 192:	4b0c      	ldr	r3, [pc, #48]	@ (1c4 <ibutton_cli_print_key+0x80>)
+ 194:	4798      	blx	r3
+}
+ 196:	b002      	add	sp, #8
+ 198:	bd70      	pop	{r4, r5, r6, pc}
+ 19a:	bf00      	nop
+	...
+ 1a4:	00000110 	.word	0x00000110
+ 1a8:	00000000 	.word	0x00000000
+ 1ac:	00000108 	.word	0x00000108
+ 1b0:	00000114 	.word	0x00000114
+	...
+ 1bc:	00000118 	.word	0x00000118
+ 1c0:	00000120 	.word	0x00000120
+ 1c4:	00000000 	.word	0x00000000
+
+000001c8 <ibutton_cli_read>:
+static void ibutton_cli_read(PipeSide* pipe) {
+ 1c8:	e92d 43f8 	stmdb	sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
+ 1cc:	4606      	mov	r6, r0
+    iButtonProtocols* protocols = ibutton_protocols_alloc();
+ 1ce:	4b22      	ldr	r3, [pc, #136]	@ (258 <ibutton_cli_read+0x90>)
+ 1d0:	4798      	blx	r3
+ 1d2:	4680      	mov	r8, r0
+    iButtonWorker* worker = ibutton_worker_alloc(protocols);
+ 1d4:	4b21      	ldr	r3, [pc, #132]	@ (25c <ibutton_cli_read+0x94>)
+ 1d6:	4798      	blx	r3
+ 1d8:	4607      	mov	r7, r0
+    iButtonKey* key = ibutton_key_alloc(ibutton_protocols_get_max_data_size(protocols));
+ 1da:	4640      	mov	r0, r8
+ 1dc:	4b20      	ldr	r3, [pc, #128]	@ (260 <ibutton_cli_read+0x98>)
+ 1de:	4798      	blx	r3
+ 1e0:	4b20      	ldr	r3, [pc, #128]	@ (264 <ibutton_cli_read+0x9c>)
+ 1e2:	4798      	blx	r3
+ 1e4:	4681      	mov	r9, r0
+    FuriEventFlag* event = furi_event_flag_alloc();
+ 1e6:	4b20      	ldr	r3, [pc, #128]	@ (268 <ibutton_cli_read+0xa0>)
+ 1e8:	4798      	blx	r3
+ 1ea:	4605      	mov	r5, r0
+    ibutton_worker_start_thread(worker);
+ 1ec:	4638      	mov	r0, r7
+ 1ee:	4b1f      	ldr	r3, [pc, #124]	@ (26c <ibutton_cli_read+0xa4>)
+ 1f0:	4798      	blx	r3
+    ibutton_worker_read_set_callback(worker, ibutton_cli_worker_read_cb, event);
+ 1f2:	462a      	mov	r2, r5
+ 1f4:	491e      	ldr	r1, [pc, #120]	@ (270 <ibutton_cli_read+0xa8>)
+ 1f6:	4638      	mov	r0, r7
+ 1f8:	4b1e      	ldr	r3, [pc, #120]	@ (274 <ibutton_cli_read+0xac>)
+ 1fa:	4798      	blx	r3
+    printf("Reading iButton...\r\nPress Ctrl+C to abort\r\n");
+ 1fc:	481e      	ldr	r0, [pc, #120]	@ (278 <ibutton_cli_read+0xb0>)
+ 1fe:	4b1f      	ldr	r3, [pc, #124]	@ (27c <ibutton_cli_read+0xb4>)
+ 200:	4798      	blx	r3
+    ibutton_worker_read_start(worker, key);
+ 202:	4649      	mov	r1, r9
+ 204:	4638      	mov	r0, r7
+ 206:	4b1e      	ldr	r3, [pc, #120]	@ (280 <ibutton_cli_read+0xb8>)
+ 208:	4798      	blx	r3
+            furi_event_flag_wait(event, EVENT_FLAG_IBUTTON_COMPLETE, FuriFlagWaitAny, 100);
+ 20a:	2364      	movs	r3, #100	@ 0x64
+ 20c:	2200      	movs	r2, #0
+ 20e:	2101      	movs	r1, #1
+ 210:	4628      	mov	r0, r5
+ 212:	4c1c      	ldr	r4, [pc, #112]	@ (284 <ibutton_cli_read+0xbc>)
+ 214:	47a0      	blx	r4
+        if(flags & EVENT_FLAG_IBUTTON_COMPLETE) {
+ 216:	f010 0f01 	tst.w	r0, #1
+ 21a:	d105      	bne.n	228 <ibutton_cli_read+0x60>
+        if(cli_is_pipe_broken_or_is_etx_next_char(pipe)) break;
+ 21c:	4630      	mov	r0, r6
+ 21e:	4b1a      	ldr	r3, [pc, #104]	@ (288 <ibutton_cli_read+0xc0>)
+ 220:	4798      	blx	r3
+ 222:	2800      	cmp	r0, #0
+ 224:	d0f1      	beq.n	20a <ibutton_cli_read+0x42>
+ 226:	e003      	b.n	230 <ibutton_cli_read+0x68>
+            ibutton_cli_print_key(protocols, key);
+ 228:	4649      	mov	r1, r9
+ 22a:	4640      	mov	r0, r8
+ 22c:	4b17      	ldr	r3, [pc, #92]	@ (28c <ibutton_cli_read+0xc4>)
+ 22e:	4798      	blx	r3
+    ibutton_worker_stop(worker);
+ 230:	4638      	mov	r0, r7
+ 232:	4b17      	ldr	r3, [pc, #92]	@ (290 <ibutton_cli_read+0xc8>)
+ 234:	4798      	blx	r3
+    ibutton_worker_stop_thread(worker);
+ 236:	4638      	mov	r0, r7
+ 238:	4b16      	ldr	r3, [pc, #88]	@ (294 <ibutton_cli_read+0xcc>)
+ 23a:	4798      	blx	r3
+    ibutton_key_free(key);
+ 23c:	4648      	mov	r0, r9
+ 23e:	4b16      	ldr	r3, [pc, #88]	@ (298 <ibutton_cli_read+0xd0>)
+ 240:	4798      	blx	r3
+    ibutton_worker_free(worker);
+ 242:	4638      	mov	r0, r7
+ 244:	4b15      	ldr	r3, [pc, #84]	@ (29c <ibutton_cli_read+0xd4>)
+ 246:	4798      	blx	r3
+    ibutton_protocols_free(protocols);
+ 248:	4640      	mov	r0, r8
+ 24a:	4b15      	ldr	r3, [pc, #84]	@ (2a0 <ibutton_cli_read+0xd8>)
+ 24c:	4798      	blx	r3
+    furi_event_flag_free(event);
+ 24e:	4628      	mov	r0, r5
+ 250:	4b14      	ldr	r3, [pc, #80]	@ (2a4 <ibutton_cli_read+0xdc>)
+ 252:	4798      	blx	r3
+}
+ 254:	e8bd 83f8 	ldmia.w	sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
+	...
+ 278:	00000124 	.word	0x00000124
+	...
+
+000002a8 <ibutton_cli_write>:
+
+void ibutton_cli_write(PipeSide* pipe, FuriString* args) {
+ 2a8:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+ 2ac:	b082      	sub	sp, #8
+ 2ae:	4680      	mov	r8, r0
+ 2b0:	460e      	mov	r6, r1
+    iButtonProtocols* protocols = ibutton_protocols_alloc();
+ 2b2:	4b36      	ldr	r3, [pc, #216]	@ (38c <ibutton_cli_write+0xe4>)
+ 2b4:	4798      	blx	r3
+ 2b6:	4605      	mov	r5, r0
+    iButtonWorker* worker = ibutton_worker_alloc(protocols);
+ 2b8:	4b35      	ldr	r3, [pc, #212]	@ (390 <ibutton_cli_write+0xe8>)
+ 2ba:	4798      	blx	r3
+ 2bc:	4604      	mov	r4, r0
+    iButtonKey* key = ibutton_key_alloc(ibutton_protocols_get_max_data_size(protocols));
+ 2be:	4628      	mov	r0, r5
+ 2c0:	4b34      	ldr	r3, [pc, #208]	@ (394 <ibutton_cli_write+0xec>)
+ 2c2:	4798      	blx	r3
+ 2c4:	4b34      	ldr	r3, [pc, #208]	@ (398 <ibutton_cli_write+0xf0>)
+ 2c6:	4798      	blx	r3
+ 2c8:	4607      	mov	r7, r0
+
+    iButtonWriteContext write_context;
+    write_context.event = furi_event_flag_alloc();
+ 2ca:	4b34      	ldr	r3, [pc, #208]	@ (39c <ibutton_cli_write+0xf4>)
+ 2cc:	4798      	blx	r3
+ 2ce:	9000      	str	r0, [sp, #0]
+
+    ibutton_worker_start_thread(worker);
+ 2d0:	4620      	mov	r0, r4
+ 2d2:	4b33      	ldr	r3, [pc, #204]	@ (3a0 <ibutton_cli_write+0xf8>)
+ 2d4:	4798      	blx	r3
+    ibutton_worker_write_set_callback(worker, ibutton_cli_worker_write_cb, &write_context);
+ 2d6:	466a      	mov	r2, sp
+ 2d8:	4932      	ldr	r1, [pc, #200]	@ (3a4 <ibutton_cli_write+0xfc>)
+ 2da:	4620      	mov	r0, r4
+ 2dc:	4b32      	ldr	r3, [pc, #200]	@ (3a8 <ibutton_cli_write+0x100>)
+ 2de:	4798      	blx	r3
+
+    do {
+        if(!ibutton_cli_parse_key(protocols, key, args)) {
+ 2e0:	4632      	mov	r2, r6
+ 2e2:	4639      	mov	r1, r7
+ 2e4:	4628      	mov	r0, r5
+ 2e6:	4b31      	ldr	r3, [pc, #196]	@ (3ac <ibutton_cli_write+0x104>)
+ 2e8:	4798      	blx	r3
+ 2ea:	b9b0      	cbnz	r0, 31a <ibutton_cli_write+0x72>
+            ibutton_cli_print_usage();
+ 2ec:	4b30      	ldr	r3, [pc, #192]	@ (3b0 <ibutton_cli_write+0x108>)
+ 2ee:	4798      	blx	r3
+
+            if(cli_is_pipe_broken_or_is_etx_next_char(pipe)) break;
+        }
+    } while(false);
+
+    ibutton_worker_stop(worker);
+ 2f0:	4620      	mov	r0, r4
+ 2f2:	4b30      	ldr	r3, [pc, #192]	@ (3b4 <ibutton_cli_write+0x10c>)
+ 2f4:	4798      	blx	r3
+    ibutton_worker_stop_thread(worker);
+ 2f6:	4620      	mov	r0, r4
+ 2f8:	4b2f      	ldr	r3, [pc, #188]	@ (3b8 <ibutton_cli_write+0x110>)
+ 2fa:	4798      	blx	r3
+
+    ibutton_key_free(key);
+ 2fc:	4638      	mov	r0, r7
+ 2fe:	4b2f      	ldr	r3, [pc, #188]	@ (3bc <ibutton_cli_write+0x114>)
+ 300:	4798      	blx	r3
+    ibutton_worker_free(worker);
+ 302:	4620      	mov	r0, r4
+ 304:	4b2e      	ldr	r3, [pc, #184]	@ (3c0 <ibutton_cli_write+0x118>)
+ 306:	4798      	blx	r3
+    ibutton_protocols_free(protocols);
+ 308:	4628      	mov	r0, r5
+ 30a:	4b2e      	ldr	r3, [pc, #184]	@ (3c4 <ibutton_cli_write+0x11c>)
+ 30c:	4798      	blx	r3
+
+    furi_event_flag_free(write_context.event);
+ 30e:	9800      	ldr	r0, [sp, #0]
+ 310:	4b2d      	ldr	r3, [pc, #180]	@ (3c8 <ibutton_cli_write+0x120>)
+ 312:	4798      	blx	r3
+}
+ 314:	b002      	add	sp, #8
+ 316:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+        if(!(ibutton_protocols_get_features(protocols, ibutton_key_get_protocol_id(key)) &
+ 31a:	4638      	mov	r0, r7
+ 31c:	4b2b      	ldr	r3, [pc, #172]	@ (3cc <ibutton_cli_write+0x124>)
+ 31e:	4798      	blx	r3
+ 320:	4601      	mov	r1, r0
+ 322:	4628      	mov	r0, r5
+ 324:	4b2a      	ldr	r3, [pc, #168]	@ (3d0 <ibutton_cli_write+0x128>)
+ 326:	4798      	blx	r3
+ 328:	f010 0f02 	tst.w	r0, #2
+ 32c:	d102      	bne.n	334 <ibutton_cli_write+0x8c>
+            ibutton_cli_print_usage();
+ 32e:	4b20      	ldr	r3, [pc, #128]	@ (3b0 <ibutton_cli_write+0x108>)
+ 330:	4798      	blx	r3
+            break;
+ 332:	e7dd      	b.n	2f0 <ibutton_cli_write+0x48>
+        printf("Writing key ");
+ 334:	4827      	ldr	r0, [pc, #156]	@ (3d4 <ibutton_cli_write+0x12c>)
+ 336:	4b28      	ldr	r3, [pc, #160]	@ (3d8 <ibutton_cli_write+0x130>)
+ 338:	4798      	blx	r3
+        ibutton_cli_print_key(protocols, key);
+ 33a:	4639      	mov	r1, r7
+ 33c:	4628      	mov	r0, r5
+ 33e:	4b27      	ldr	r3, [pc, #156]	@ (3dc <ibutton_cli_write+0x134>)
+ 340:	4798      	blx	r3
+        printf("Press Ctrl+C to abort\r\n");
+ 342:	4827      	ldr	r0, [pc, #156]	@ (3e0 <ibutton_cli_write+0x138>)
+ 344:	4b27      	ldr	r3, [pc, #156]	@ (3e4 <ibutton_cli_write+0x13c>)
+ 346:	4798      	blx	r3
+        ibutton_worker_write_id_start(worker, key);
+ 348:	4639      	mov	r1, r7
+ 34a:	4620      	mov	r0, r4
+ 34c:	4b26      	ldr	r3, [pc, #152]	@ (3e8 <ibutton_cli_write+0x140>)
+ 34e:	4798      	blx	r3
+ 350:	e008      	b.n	364 <ibutton_cli_write+0xbc>
+                    printf("Write success\r\n");
+ 352:	4826      	ldr	r0, [pc, #152]	@ (3ec <ibutton_cli_write+0x144>)
+ 354:	4b23      	ldr	r3, [pc, #140]	@ (3e4 <ibutton_cli_write+0x13c>)
+ 356:	4798      	blx	r3
+                    break;
+ 358:	e7ca      	b.n	2f0 <ibutton_cli_write+0x48>
+            if(cli_is_pipe_broken_or_is_etx_next_char(pipe)) break;
+ 35a:	4640      	mov	r0, r8
+ 35c:	4b24      	ldr	r3, [pc, #144]	@ (3f0 <ibutton_cli_write+0x148>)
+ 35e:	4798      	blx	r3
+ 360:	2800      	cmp	r0, #0
+ 362:	d1c5      	bne.n	2f0 <ibutton_cli_write+0x48>
+            uint32_t flags = furi_event_flag_wait(
+ 364:	2364      	movs	r3, #100	@ 0x64
+ 366:	2200      	movs	r2, #0
+ 368:	2101      	movs	r1, #1
+ 36a:	9800      	ldr	r0, [sp, #0]
+ 36c:	4e21      	ldr	r6, [pc, #132]	@ (3f4 <ibutton_cli_write+0x14c>)
+ 36e:	47b0      	blx	r6
+            if(flags & EVENT_FLAG_IBUTTON_COMPLETE) {
+ 370:	f010 0f01 	tst.w	r0, #1
+ 374:	d0f1      	beq.n	35a <ibutton_cli_write+0xb2>
+                if(write_context.result == iButtonWorkerWriteSameKey ||
+ 376:	f89d 3004 	ldrb.w	r3, [sp, #4]
+ 37a:	2b01      	cmp	r3, #1
+ 37c:	d9e9      	bls.n	352 <ibutton_cli_write+0xaa>
+                } else if(write_context.result == iButtonWorkerWriteCannotWrite) {
+ 37e:	2b03      	cmp	r3, #3
+ 380:	d1eb      	bne.n	35a <ibutton_cli_write+0xb2>
+                    printf("Write fail\r\n");
+ 382:	481d      	ldr	r0, [pc, #116]	@ (3f8 <ibutton_cli_write+0x150>)
+ 384:	4b17      	ldr	r3, [pc, #92]	@ (3e4 <ibutton_cli_write+0x13c>)
+ 386:	4798      	blx	r3
+                    break;
+ 388:	e7b2      	b.n	2f0 <ibutton_cli_write+0x48>
+ 38a:	bf00      	nop
+	...
+ 3d4:	00000150 	.word	0x00000150
+	...
+ 3e0:	00000160 	.word	0x00000160
+	...
+ 3ec:	00000178 	.word	0x00000178
+	...
+ 3f8:	00000188 	.word	0x00000188
+
+000003fc <ibutton_cli_emulate>:
+
+void ibutton_cli_emulate(PipeSide* pipe, FuriString* args) {
+ 3fc:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+ 400:	4604      	mov	r4, r0
+ 402:	4688      	mov	r8, r1
+    iButtonProtocols* protocols = ibutton_protocols_alloc();
+ 404:	4b1f      	ldr	r3, [pc, #124]	@ (484 <ibutton_cli_emulate+0x88>)
+ 406:	4798      	blx	r3
+ 408:	4606      	mov	r6, r0
+    iButtonWorker* worker = ibutton_worker_alloc(protocols);
+ 40a:	4b1f      	ldr	r3, [pc, #124]	@ (488 <ibutton_cli_emulate+0x8c>)
+ 40c:	4798      	blx	r3
+ 40e:	4605      	mov	r5, r0
+    iButtonKey* key = ibutton_key_alloc(ibutton_protocols_get_max_data_size(protocols));
+ 410:	4630      	mov	r0, r6
+ 412:	4b1e      	ldr	r3, [pc, #120]	@ (48c <ibutton_cli_emulate+0x90>)
+ 414:	4798      	blx	r3
+ 416:	4b1e      	ldr	r3, [pc, #120]	@ (490 <ibutton_cli_emulate+0x94>)
+ 418:	4798      	blx	r3
+ 41a:	4607      	mov	r7, r0
+
+    ibutton_worker_start_thread(worker);
+ 41c:	4628      	mov	r0, r5
+ 41e:	4b1d      	ldr	r3, [pc, #116]	@ (494 <ibutton_cli_emulate+0x98>)
+ 420:	4798      	blx	r3
+
+    do {
+        if(!ibutton_cli_parse_key(protocols, key, args)) {
+ 422:	4642      	mov	r2, r8
+ 424:	4639      	mov	r1, r7
+ 426:	4630      	mov	r0, r6
+ 428:	4b1b      	ldr	r3, [pc, #108]	@ (498 <ibutton_cli_emulate+0x9c>)
+ 42a:	4798      	blx	r3
+ 42c:	b990      	cbnz	r0, 454 <ibutton_cli_emulate+0x58>
+            ibutton_cli_print_usage();
+ 42e:	4b1b      	ldr	r3, [pc, #108]	@ (49c <ibutton_cli_emulate+0xa0>)
+ 430:	4798      	blx	r3
+            furi_delay_ms(100);
+        };
+
+    } while(false);
+
+    ibutton_worker_stop(worker);
+ 432:	4628      	mov	r0, r5
+ 434:	4b1a      	ldr	r3, [pc, #104]	@ (4a0 <ibutton_cli_emulate+0xa4>)
+ 436:	4798      	blx	r3
+    ibutton_worker_stop_thread(worker);
+ 438:	4628      	mov	r0, r5
+ 43a:	4b1a      	ldr	r3, [pc, #104]	@ (4a4 <ibutton_cli_emulate+0xa8>)
+ 43c:	4798      	blx	r3
+
+    ibutton_key_free(key);
+ 43e:	4638      	mov	r0, r7
+ 440:	4b19      	ldr	r3, [pc, #100]	@ (4a8 <ibutton_cli_emulate+0xac>)
+ 442:	4798      	blx	r3
+    ibutton_worker_free(worker);
+ 444:	4628      	mov	r0, r5
+ 446:	4b19      	ldr	r3, [pc, #100]	@ (4ac <ibutton_cli_emulate+0xb0>)
+ 448:	4798      	blx	r3
+    ibutton_protocols_free(protocols);
+ 44a:	4630      	mov	r0, r6
+ 44c:	4b18      	ldr	r3, [pc, #96]	@ (4b0 <ibutton_cli_emulate+0xb4>)
+ 44e:	4798      	blx	r3
+}
+ 450:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+        printf("Emulating key ");
+ 454:	4817      	ldr	r0, [pc, #92]	@ (4b4 <ibutton_cli_emulate+0xb8>)
+ 456:	4b18      	ldr	r3, [pc, #96]	@ (4b8 <ibutton_cli_emulate+0xbc>)
+ 458:	4798      	blx	r3
+        ibutton_cli_print_key(protocols, key);
+ 45a:	4639      	mov	r1, r7
+ 45c:	4630      	mov	r0, r6
+ 45e:	4b17      	ldr	r3, [pc, #92]	@ (4bc <ibutton_cli_emulate+0xc0>)
+ 460:	4798      	blx	r3
+        printf("Press Ctrl+C to abort\r\n");
+ 462:	4817      	ldr	r0, [pc, #92]	@ (4c0 <ibutton_cli_emulate+0xc4>)
+ 464:	4b17      	ldr	r3, [pc, #92]	@ (4c4 <ibutton_cli_emulate+0xc8>)
+ 466:	4798      	blx	r3
+        ibutton_worker_emulate_start(worker, key);
+ 468:	4639      	mov	r1, r7
+ 46a:	4628      	mov	r0, r5
+ 46c:	4b16      	ldr	r3, [pc, #88]	@ (4c8 <ibutton_cli_emulate+0xcc>)
+ 46e:	4798      	blx	r3
+        while(!cli_is_pipe_broken_or_is_etx_next_char(pipe)) {
+ 470:	e002      	b.n	478 <ibutton_cli_emulate+0x7c>
+            furi_delay_ms(100);
+ 472:	2064      	movs	r0, #100	@ 0x64
+ 474:	4b15      	ldr	r3, [pc, #84]	@ (4cc <ibutton_cli_emulate+0xd0>)
+ 476:	4798      	blx	r3
+        while(!cli_is_pipe_broken_or_is_etx_next_char(pipe)) {
+ 478:	4620      	mov	r0, r4
+ 47a:	4b15      	ldr	r3, [pc, #84]	@ (4d0 <ibutton_cli_emulate+0xd4>)
+ 47c:	4798      	blx	r3
+ 47e:	2800      	cmp	r0, #0
+ 480:	d0f7      	beq.n	472 <ibutton_cli_emulate+0x76>
+ 482:	e7d6      	b.n	432 <ibutton_cli_emulate+0x36>
+	...
+ 4b4:	00000194 	.word	0x00000194
+	...
+ 4c0:	00000160 	.word	0x00000160
+	...
+
+000004d4 <execute>:
+
+static void execute(PipeSide* pipe, FuriString* args, void* context) {
+ 4d4:	b570      	push	{r4, r5, r6, lr}
+ 4d6:	4606      	mov	r6, r0
+ 4d8:	460d      	mov	r5, r1
+    UNUSED(context);
+    FuriString* cmd;
+    cmd = furi_string_alloc();
+ 4da:	4b18      	ldr	r3, [pc, #96]	@ (53c <execute+0x68>)
+ 4dc:	4798      	blx	r3
+ 4de:	4604      	mov	r4, r0
+
+    if(!args_read_string_and_trim(args, cmd)) {
+ 4e0:	4601      	mov	r1, r0
+ 4e2:	4628      	mov	r0, r5
+ 4e4:	4b16      	ldr	r3, [pc, #88]	@ (540 <execute+0x6c>)
+ 4e6:	4798      	blx	r3
+ 4e8:	b158      	cbz	r0, 502 <execute+0x2e>
+        furi_string_free(cmd);
+        ibutton_cli_print_usage();
+        return;
+    }
+
+    if(furi_string_cmp_str(cmd, "read") == 0) {
+ 4ea:	4916      	ldr	r1, [pc, #88]	@ (544 <execute+0x70>)
+ 4ec:	4620      	mov	r0, r4
+ 4ee:	4b16      	ldr	r3, [pc, #88]	@ (548 <execute+0x74>)
+ 4f0:	4798      	blx	r3
+ 4f2:	b960      	cbnz	r0, 50e <execute+0x3a>
+        ibutton_cli_read(pipe);
+ 4f4:	4630      	mov	r0, r6
+ 4f6:	4b15      	ldr	r3, [pc, #84]	@ (54c <execute+0x78>)
+ 4f8:	4798      	blx	r3
+        ibutton_cli_emulate(pipe, args);
+    } else {
+        ibutton_cli_print_usage();
+    }
+
+    furi_string_free(cmd);
+ 4fa:	4620      	mov	r0, r4
+ 4fc:	4b14      	ldr	r3, [pc, #80]	@ (550 <execute+0x7c>)
+ 4fe:	4798      	blx	r3
+}
+ 500:	bd70      	pop	{r4, r5, r6, pc}
+        furi_string_free(cmd);
+ 502:	4620      	mov	r0, r4
+ 504:	4b12      	ldr	r3, [pc, #72]	@ (550 <execute+0x7c>)
+ 506:	4798      	blx	r3
+        ibutton_cli_print_usage();
+ 508:	4b12      	ldr	r3, [pc, #72]	@ (554 <execute+0x80>)
+ 50a:	4798      	blx	r3
+        return;
+ 50c:	e7f8      	b.n	500 <execute+0x2c>
+    } else if(furi_string_cmp_str(cmd, "write") == 0) {
+ 50e:	4912      	ldr	r1, [pc, #72]	@ (558 <execute+0x84>)
+ 510:	4620      	mov	r0, r4
+ 512:	4b0d      	ldr	r3, [pc, #52]	@ (548 <execute+0x74>)
+ 514:	4798      	blx	r3
+ 516:	b920      	cbnz	r0, 522 <execute+0x4e>
+        ibutton_cli_write(pipe, args);
+ 518:	4629      	mov	r1, r5
+ 51a:	4630      	mov	r0, r6
+ 51c:	4b0f      	ldr	r3, [pc, #60]	@ (55c <execute+0x88>)
+ 51e:	4798      	blx	r3
+ 520:	e7eb      	b.n	4fa <execute+0x26>
+    } else if(furi_string_cmp_str(cmd, "emulate") == 0) {
+ 522:	490f      	ldr	r1, [pc, #60]	@ (560 <execute+0x8c>)
+ 524:	4620      	mov	r0, r4
+ 526:	4b08      	ldr	r3, [pc, #32]	@ (548 <execute+0x74>)
+ 528:	4798      	blx	r3
+ 52a:	b920      	cbnz	r0, 536 <execute+0x62>
+        ibutton_cli_emulate(pipe, args);
+ 52c:	4629      	mov	r1, r5
+ 52e:	4630      	mov	r0, r6
+ 530:	4b0c      	ldr	r3, [pc, #48]	@ (564 <execute+0x90>)
+ 532:	4798      	blx	r3
+ 534:	e7e1      	b.n	4fa <execute+0x26>
+        ibutton_cli_print_usage();
+ 536:	4b07      	ldr	r3, [pc, #28]	@ (554 <execute+0x80>)
+ 538:	4798      	blx	r3
+ 53a:	e7de      	b.n	4fa <execute+0x26>
+	...
+ 544:	000001a4 	.word	0x000001a4
+	...
+ 558:	000001ac 	.word	0x000001ac
+ 55c:	00000000 	.word	0x00000000
+ 560:	000001b4 	.word	0x000001b4
+ 564:	00000000 	.word	0x00000000
+
+00000568 <cli_ikey_ep>:
+
+CLI_COMMAND_INTERFACE(ikey, execute, CliCommandFlagDefault, 1024, CLI_APPID);
+ 568:	4800      	ldr	r0, [pc, #0]	@ (56c <cli_ikey_ep+0x4>)
+ 56a:	4770      	bx	lr
+ 56c:	000001c8 	.word	0x000001c8

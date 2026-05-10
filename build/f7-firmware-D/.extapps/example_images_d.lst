@@ -1,0 +1,202 @@
+
+build/f7-firmware-D/.extapps/example_images_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <app_input_callback>:
+
+    canvas_clear(canvas);
+    canvas_draw_icon(canvas, image_position.x, image_position.y, &I_dolphin_71x25);
+}
+
+static void app_input_callback(InputEvent* input_event, void* ctx) {
+   0:	b508      	push	{r3, lr}
+    furi_assert(ctx);
+   2:	b139      	cbz	r1, 14 <app_input_callback+0x14>
+   4:	4603      	mov	r3, r0
+   6:	4608      	mov	r0, r1
+
+    FuriMessageQueue* event_queue = ctx;
+    furi_message_queue_put(event_queue, input_event, FuriWaitForever);
+   8:	f04f 32ff 	mov.w	r2, #4294967295	@ 0xffffffff
+   c:	4619      	mov	r1, r3
+   e:	4b03      	ldr	r3, [pc, #12]	@ (1c <sukima47+0x4>)
+  10:	4798      	blx	r3
+}
+  12:	bd08      	pop	{r3, pc}
+    furi_assert(ctx);
+  14:	f04f 0c01 	mov.w	ip, #1
+
+00000018 <sukima47>:
+  18:	4b01      	ldr	r3, [pc, #4]	@ (20 <sukima47+0x8>)
+  1a:	4798      	blx	r3
+	...
+
+00000024 <app_draw_callback>:
+static void app_draw_callback(Canvas* canvas, void* ctx) {
+  24:	b510      	push	{r4, lr}
+  26:	4604      	mov	r4, r0
+    canvas_clear(canvas);
+  28:	4b04      	ldr	r3, [pc, #16]	@ (3c <app_draw_callback+0x18>)
+  2a:	4798      	blx	r3
+    canvas_draw_icon(canvas, image_position.x, image_position.y, &I_dolphin_71x25);
+  2c:	4904      	ldr	r1, [pc, #16]	@ (40 <app_draw_callback+0x1c>)
+  2e:	4b05      	ldr	r3, [pc, #20]	@ (44 <app_draw_callback+0x20>)
+  30:	684a      	ldr	r2, [r1, #4]
+  32:	6809      	ldr	r1, [r1, #0]
+  34:	4620      	mov	r0, r4
+  36:	4c04      	ldr	r4, [pc, #16]	@ (48 <app_draw_callback+0x24>)
+  38:	47a0      	blx	r4
+}
+  3a:	bd10      	pop	{r4, pc}
+	...
+
+0000004c <example_images_main>:
+
+int32_t example_images_main(void* p) {
+  4c:	b5f0      	push	{r4, r5, r6, r7, lr}
+  4e:	b083      	sub	sp, #12
+    UNUSED(p);
+    FuriMessageQueue* event_queue = furi_message_queue_alloc(8, sizeof(InputEvent));
+  50:	2108      	movs	r1, #8
+  52:	4608      	mov	r0, r1
+  54:	4b30      	ldr	r3, [pc, #192]	@ (118 <example_images_main+0xcc>)
+  56:	4798      	blx	r3
+  58:	4605      	mov	r5, r0
+
+    // Configure view port
+    ViewPort* view_port = view_port_alloc();
+  5a:	4b30      	ldr	r3, [pc, #192]	@ (11c <example_images_main+0xd0>)
+  5c:	4798      	blx	r3
+  5e:	4604      	mov	r4, r0
+    view_port_draw_callback_set(view_port, app_draw_callback, NULL);
+  60:	2200      	movs	r2, #0
+  62:	492f      	ldr	r1, [pc, #188]	@ (120 <example_images_main+0xd4>)
+  64:	4b2f      	ldr	r3, [pc, #188]	@ (124 <example_images_main+0xd8>)
+  66:	4798      	blx	r3
+    view_port_input_callback_set(view_port, app_input_callback, event_queue);
+  68:	462a      	mov	r2, r5
+  6a:	492f      	ldr	r1, [pc, #188]	@ (128 <example_images_main+0xdc>)
+  6c:	4620      	mov	r0, r4
+  6e:	4b2f      	ldr	r3, [pc, #188]	@ (12c <example_images_main+0xe0>)
+  70:	4798      	blx	r3
+
+    // Register view port in GUI
+    Gui* gui = furi_record_open(RECORD_GUI);
+  72:	482f      	ldr	r0, [pc, #188]	@ (130 <example_images_main+0xe4>)
+  74:	4b2f      	ldr	r3, [pc, #188]	@ (134 <example_images_main+0xe8>)
+  76:	4798      	blx	r3
+  78:	4607      	mov	r7, r0
+    gui_add_view_port(gui, view_port, GuiLayerFullscreen);
+  7a:	2204      	movs	r2, #4
+  7c:	4621      	mov	r1, r4
+  7e:	4b2e      	ldr	r3, [pc, #184]	@ (138 <example_images_main+0xec>)
+  80:	4798      	blx	r3
+
+    InputEvent event;
+
+    bool running = true;
+  82:	2601      	movs	r6, #1
+    while(running) {
+  84:	e006      	b.n	94 <example_images_main+0x48>
+        if(furi_message_queue_get(event_queue, &event, 100) == FuriStatusOk) {
+            if((event.type == InputTypePress) || (event.type == InputTypeRepeat)) {
+                switch(event.key) {
+                case InputKeyLeft:
+                    image_position.x -= 2;
+  86:	4a2d      	ldr	r2, [pc, #180]	@ (13c <example_images_main+0xf0>)
+  88:	6813      	ldr	r3, [r2, #0]
+  8a:	3b02      	subs	r3, #2
+  8c:	6013      	str	r3, [r2, #0]
+                    running = false;
+                    break;
+                }
+            }
+        }
+        view_port_update(view_port);
+  8e:	4620      	mov	r0, r4
+  90:	4b2b      	ldr	r3, [pc, #172]	@ (140 <example_images_main+0xf4>)
+  92:	4798      	blx	r3
+    while(running) {
+  94:	b35e      	cbz	r6, ee <example_images_main+0xa2>
+        if(furi_message_queue_get(event_queue, &event, 100) == FuriStatusOk) {
+  96:	2264      	movs	r2, #100	@ 0x64
+  98:	4669      	mov	r1, sp
+  9a:	4628      	mov	r0, r5
+  9c:	4b29      	ldr	r3, [pc, #164]	@ (144 <example_images_main+0xf8>)
+  9e:	4798      	blx	r3
+  a0:	2800      	cmp	r0, #0
+  a2:	d1f4      	bne.n	8e <example_images_main+0x42>
+            if((event.type == InputTypePress) || (event.type == InputTypeRepeat)) {
+  a4:	f89d 3005 	ldrb.w	r3, [sp, #5]
+  a8:	b10b      	cbz	r3, ae <example_images_main+0x62>
+  aa:	2b04      	cmp	r3, #4
+  ac:	d1ef      	bne.n	8e <example_images_main+0x42>
+                switch(event.key) {
+  ae:	f89d 3004 	ldrb.w	r3, [sp, #4]
+  b2:	2b03      	cmp	r3, #3
+  b4:	d819      	bhi.n	ea <example_images_main+0x9e>
+  b6:	a201      	add	r2, pc, #4	@ (adr r2, bc <example_images_main+0x70>)
+  b8:	f852 f023 	ldr.w	pc, [r2, r3, lsl #2]
+  bc:	000000d7 	.word	0x000000d7
+  c0:	000000e1 	.word	0x000000e1
+  c4:	000000cd 	.word	0x000000cd
+  c8:	00000087 	.word	0x00000087
+                    image_position.x += 2;
+  cc:	4a1b      	ldr	r2, [pc, #108]	@ (13c <example_images_main+0xf0>)
+  ce:	6813      	ldr	r3, [r2, #0]
+  d0:	3302      	adds	r3, #2
+  d2:	6013      	str	r3, [r2, #0]
+                    break;
+  d4:	e7db      	b.n	8e <example_images_main+0x42>
+                    image_position.y -= 2;
+  d6:	4a19      	ldr	r2, [pc, #100]	@ (13c <example_images_main+0xf0>)
+  d8:	6853      	ldr	r3, [r2, #4]
+  da:	3b02      	subs	r3, #2
+  dc:	6053      	str	r3, [r2, #4]
+                    break;
+  de:	e7d6      	b.n	8e <example_images_main+0x42>
+                    image_position.y += 2;
+  e0:	4a16      	ldr	r2, [pc, #88]	@ (13c <example_images_main+0xf0>)
+  e2:	6853      	ldr	r3, [r2, #4]
+  e4:	3302      	adds	r3, #2
+  e6:	6053      	str	r3, [r2, #4]
+                    break;
+  e8:	e7d1      	b.n	8e <example_images_main+0x42>
+                switch(event.key) {
+  ea:	2600      	movs	r6, #0
+  ec:	e7cf      	b.n	8e <example_images_main+0x42>
+    }
+
+    view_port_enabled_set(view_port, false);
+  ee:	2100      	movs	r1, #0
+  f0:	4620      	mov	r0, r4
+  f2:	4b15      	ldr	r3, [pc, #84]	@ (148 <example_images_main+0xfc>)
+  f4:	4798      	blx	r3
+    gui_remove_view_port(gui, view_port);
+  f6:	4621      	mov	r1, r4
+  f8:	4638      	mov	r0, r7
+  fa:	4b14      	ldr	r3, [pc, #80]	@ (14c <example_images_main+0x100>)
+  fc:	4798      	blx	r3
+    view_port_free(view_port);
+  fe:	4620      	mov	r0, r4
+ 100:	4b13      	ldr	r3, [pc, #76]	@ (150 <example_images_main+0x104>)
+ 102:	4798      	blx	r3
+    furi_message_queue_free(event_queue);
+ 104:	4628      	mov	r0, r5
+ 106:	4b13      	ldr	r3, [pc, #76]	@ (154 <example_images_main+0x108>)
+ 108:	4798      	blx	r3
+
+    furi_record_close(RECORD_GUI);
+ 10a:	4809      	ldr	r0, [pc, #36]	@ (130 <example_images_main+0xe4>)
+ 10c:	4b12      	ldr	r3, [pc, #72]	@ (158 <example_images_main+0x10c>)
+ 10e:	4798      	blx	r3
+
+    return 0;
+}
+ 110:	2000      	movs	r0, #0
+ 112:	b003      	add	sp, #12
+ 114:	bdf0      	pop	{r4, r5, r6, r7, pc}
+ 116:	bf00      	nop
+	...

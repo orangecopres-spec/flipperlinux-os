@@ -1,0 +1,314 @@
+Archive member included to satisfy reference by file (symbol)
+
+build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+                              build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o (mbedtls_sha1)
+build/f7-firmware-D/lib/libmbedtls.a(platform_util.o)
+                              build/f7-firmware-D/lib/libmbedtls.a(sha1.o) (mbedtls_platform_zeroize)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ .text          0x00000000        0x0 build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+ .data          0x00000000        0x0 build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+ .bss           0x00000000        0x0 build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+ .text.mbedtls_sha1_clone
+                0x00000000       0x10 build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+ .comment       0x00000000       0x1c build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+ .debug_line.text.mbedtls_sha1_clone
+                0x00000000       0x1e build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+ .text          0x00000000        0x0 build/f7-firmware-D/lib/libmbedtls.a(platform_util.o)
+ .data          0x00000000        0x0 build/f7-firmware-D/lib/libmbedtls.a(platform_util.o)
+ .bss           0x00000000        0x0 build/f7-firmware-D/lib/libmbedtls.a(platform_util.o)
+ .text.mbedtls_zeroize_and_free
+                0x00000000       0x1c build/f7-firmware-D/lib/libmbedtls.a(platform_util.o)
+ .comment       0x00000000       0x1c build/f7-firmware-D/lib/libmbedtls.a(platform_util.o)
+ .debug_line.text.mbedtls_zeroize_and_free
+                0x00000000       0x2b build/f7-firmware-D/lib/libmbedtls.a(platform_util.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libstdc++_nano.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libsupc++_nano.a
+LOAD build/f7-firmware-D/lib/libmbedtls.a
+LOAD build/f7-firmware-D/lib/libmbedtls.a
+
+.text           0x00000000     0x12bc
+ *(.text)
+ *(.stub)
+ *(.text*)
+ .text.di_key   0x00000000       0x54 build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+                0x00000000                di_key
+ .text.disney_infinity_parse
+                0x00000054       0x98 build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ .text.disney_infinity_read
+                0x000000ec      0x140 build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ .text.disney_infinity_plugin_ep
+                0x0000022c        0x8 build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+                0x0000022c                disney_infinity_plugin_ep
+ .text.mbedtls_sha1_init
+                0x00000234        0xc build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+                0x00000234                mbedtls_sha1_init
+ .text.mbedtls_sha1_free
+                0x00000240       0x10 build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+                0x00000240                mbedtls_sha1_free
+ .text.mbedtls_sha1_starts
+                0x00000250       0x34 build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+                0x00000250                mbedtls_sha1_starts
+ .text.mbedtls_internal_sha1_process
+                0x00000284      0xeac build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+                0x00000284                mbedtls_internal_sha1_process
+ .text.mbedtls_sha1_update
+                0x00001130       0x7c build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+                0x00001130                mbedtls_sha1_update
+ .text.mbedtls_sha1_finish
+                0x000011ac       0xa4 build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+                0x000011ac                mbedtls_sha1_finish
+ .text.mbedtls_sha1
+                0x00001250       0x54 build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+                0x00001250                mbedtls_sha1
+ .text.mbedtls_platform_zeroize
+                0x000012a4       0x18 build/f7-firmware-D/lib/libmbedtls.a(platform_util.o)
+                0x000012a4                mbedtls_platform_zeroize
+ *(.text.*)
+ *(.text._*)
+ *(.init)
+ *(.fini)
+
+.rodata         0x000012bc       0x70
+ *(.rodata)
+ *(.rodata1)
+ *(.rodata.*)
+ .rodata.disney_infinity_parse.str1.4
+                0x000012bc       0x13 build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ *fill*         0x000012cf        0x1 
+ .rodata.disney_infinity_read.str1.4
+                0x000012d0       0x27 build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ *fill*         0x000012f7        0x1 
+ .rodata.str1.4
+                0x000012f8       0x17 build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ *fill*         0x0000130f        0x1 
+ .rodata.disney_infinity_plugin_descriptor
+                0x00001310        0xc build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ .rodata.disney_infinity_plugin
+                0x0000131c       0x10 build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+
+.data           0x0000132c       0x2c
+ *(.data)
+ *(.data1)
+ *(.data.*)
+ .data.seed     0x0000132c       0x26 build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ *fill*         0x00001352        0x2 
+ .data.memset_func
+                0x00001354        0x4 build/f7-firmware-D/lib/libmbedtls.a(platform_util.o)
+
+.bss
+ *(.bss)
+ *(.bss*)
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0xb8
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x38 build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ .debug_aranges
+                0x00000038       0x58 build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+ .debug_aranges
+                0x00000090       0x28 build/f7-firmware-D/lib/libmbedtls.a(platform_util.o)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x1a04
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000      0xd1d build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ .debug_info    0x00000d1d      0xae3 build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+ .debug_info    0x00001800      0x204 build/f7-firmware-D/lib/libmbedtls.a(platform_util.o)
+
+.debug_abbrev   0x00000000      0x78e
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x2b6 build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ .debug_abbrev  0x000002b6      0x372 build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+ .debug_abbrev  0x00000628      0x166 build/f7-firmware-D/lib/libmbedtls.a(platform_util.o)
+
+.debug_line     0x00000000     0x13c8
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x37a build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ .debug_line.text.di_key
+                0x0000037a       0x63 build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ .debug_line.text.disney_infinity_parse
+                0x000003dd       0xfb build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ .debug_line.text.disney_infinity_read
+                0x000004d8      0x193 build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ .debug_line.text.disney_infinity_plugin_ep
+                0x0000066b       0x19 build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ .debug_line_end
+                0x00000684        0x0 build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ .debug_line    0x00000684      0x21d build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+ .debug_line.text.mbedtls_sha1_init
+                0x000008a1       0x16 build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+ .debug_line.text.mbedtls_sha1_free
+                0x000008b7       0x24 build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+ .debug_line.text.mbedtls_sha1_starts
+                0x000008db       0x33 build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+ .debug_line.text.mbedtls_internal_sha1_process
+                0x0000090e      0x651 build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+ .debug_line.text.mbedtls_sha1_update
+                0x00000f5f       0xc6 build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+ .debug_line.text.mbedtls_sha1_finish
+                0x00001025      0x1e0 build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+ .debug_line.text.mbedtls_sha1
+                0x00001205       0x68 build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+ .debug_line_end
+                0x0000126d        0x0 build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+ .debug_line    0x0000126d      0x121 build/f7-firmware-D/lib/libmbedtls.a(platform_util.o)
+ .debug_line.text.mbedtls_platform_zeroize
+                0x0000138e       0x3a build/f7-firmware-D/lib/libmbedtls.a(platform_util.o)
+ .debug_line_end
+                0x000013c8        0x0 build/f7-firmware-D/lib/libmbedtls.a(platform_util.o)
+
+.debug_frame    0x00000000      0x1d0
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x98 build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ .debug_frame   0x00000098       0xf4 build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+ .debug_frame   0x0000018c       0x44 build/f7-firmware-D/lib/libmbedtls.a(platform_util.o)
+
+.debug_str      0x00000000      0xeb8
+ *(.debug_str)
+ .debug_str     0x00000000      0x93e build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ .debug_str     0x0000093e      0x358 build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+ .debug_str     0x00000c96      0x222 build/f7-firmware-D/lib/libmbedtls.a(platform_util.o)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+ *(.debug_line_str)
+
+.debug_loclists
+                0x00000000      0x71b
+ *(.debug_loclists)
+ .debug_loclists
+                0x00000000      0x2bd build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ .debug_loclists
+                0x000002bd      0x3a8 build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+ .debug_loclists
+                0x00000665       0xb6 build/f7-firmware-D/lib/libmbedtls.a(platform_util.o)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x00000000      0x18d
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x00000000       0x51 build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ .debug_rnglists
+                0x00000051      0x123 build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+ .debug_rnglists
+                0x00000174       0x19 build/f7-firmware-D/lib/libmbedtls.a(platform_util.o)
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.ARM.attributes
+                0x00000000       0x34
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x34 build/f7-firmware-D/.extapps/disney_infinity_parser/plugins/supported_cards/disney_infinity.o
+ .ARM.attributes
+                0x00000034       0x34 build/f7-firmware-D/lib/libmbedtls.a(sha1.o)
+ .ARM.attributes
+                0x00000068       0x34 build/f7-firmware-D/lib/libmbedtls.a(platform_util.o)
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+
+/DISCARD/
+ *(.comment)
+ *(.comment.*)
+ *(.llvmbc)
+ *(.llvmcmd)
+OUTPUT(build/f7-firmware-D/.extapps/disney_infinity_parser_d.elf elf32-littlearm)
+LOAD linker stubs

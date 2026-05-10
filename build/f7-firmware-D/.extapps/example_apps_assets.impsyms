@@ -1,0 +1,12 @@
+file_stream_alloc U         
+file_stream_close U         
+file_stream_open U         
+furi_log_print_format U         
+furi_record_close U         
+furi_record_open U         
+furi_string_alloc U         
+furi_string_free U         
+furi_string_get_cstr U         
+furi_string_replace_all_str U         
+stream_free U         
+stream_read_line U         

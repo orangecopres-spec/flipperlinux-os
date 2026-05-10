@@ -1,0 +1,271 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libstdc++_nano.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libsupc++_nano.a
+
+.text           0x00000000      0xe7c
+ *(.text)
+ *(.stub)
+ *(.text*)
+ .text.view_mod_ctor
+                0x00000000       0x1c build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .text.js_widget_reset_children
+                0x0000001c        0xc build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .text.element_get_font
+                0x00000028       0x9c build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .text.element_get_size
+                0x000000c4       0x84 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .text.element_get_position
+                0x00000148       0x84 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .text.js_widget_button_callback
+                0x000001cc       0x30 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .text.element_get_alignment
+                0x000001fc       0xa0 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .text.element_get_text
+                0x0000029c       0x38 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .text.js_widget_add_child
+                0x000002d4      0x9b0 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .text.furi_event_loop_maybe_unsubscribe
+                0x00000c84       0x20 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .text.js_widget_custom_destroy
+                0x00000ca4       0x28 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .text.js_widget_custom_make
+                0x00000ccc       0x84 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .text.js_widget_button_event_transformer
+                0x00000d50      0x124 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .text.js_view_widget_ep
+                0x00000e74        0x8 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+                0x00000e74                js_view_widget_ep
+ *(.text.*)
+ *(.text._*)
+ *(.init)
+ *(.fini)
+
+.rodata         0x00000e7c      0x358
+ *(.rodata)
+ *(.rodata1)
+ *(.rodata.*)
+ .rodata.element_get_font.str1.4
+                0x00000e7c       0x34 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .rodata.element_get_size.str1.4
+                0x00000eb0        0x6 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ *fill*         0x00000eb6        0x2 
+ .rodata.element_get_position.str1.4
+                0x00000eb8        0x6 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ *fill*         0x00000ebe        0x2 
+ .rodata.element_get_alignment.str1.4
+                0x00000ec0        0x6 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ *fill*         0x00000ec6        0x2 
+ .rodata.element_get_text.str1.4
+                0x00000ec8        0x5 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ *fill*         0x00000ecd        0x3 
+ .rodata.js_widget_add_child.str1.4
+                0x00000ed0      0x282 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ *fill*         0x00001152        0x2 
+ .rodata.js_widget_button_event_transformer.str1.4
+                0x00001154       0x31 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ *fill*         0x00001185        0x3 
+ .rodata.str1.4
+                0x00001188       0x10 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .rodata.plugin_descriptor
+                0x00001198        0xc build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .rodata.js_mod_desc
+                0x000011a4       0x10 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .rodata.view_descriptor
+                0x000011b4       0x20 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+
+.data
+ *(.data)
+ *(.data1)
+ *(.data.*)
+
+.bss
+ *(.bss)
+ *(.bss*)
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x88
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x88 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x2b52
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000     0x2b52 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+
+.debug_abbrev   0x00000000      0x3c7
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x3c7 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+
+.debug_line     0x00000000      0xf61
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x492 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .debug_line.text.view_mod_ctor
+                0x00000492       0x1e build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .debug_line.text.js_widget_reset_children
+                0x000004b0       0x1d build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .debug_line.text.element_get_font
+                0x000004cd       0x94 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .debug_line.text.element_get_size
+                0x00000561       0x73 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .debug_line.text.element_get_position
+                0x000005d4       0x73 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .debug_line.text.js_widget_button_callback
+                0x00000647       0x41 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .debug_line.text.element_get_alignment
+                0x00000688       0xc3 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .debug_line.text.element_get_text
+                0x0000074b       0x2c build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .debug_line.text.js_widget_add_child
+                0x00000777      0x665 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .debug_line.text.furi_event_loop_maybe_unsubscribe
+                0x00000ddc       0x2c build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .debug_line.text.js_widget_custom_destroy
+                0x00000e08       0x24 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .debug_line.text.js_widget_custom_make
+                0x00000e2c       0x3f build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .debug_line.text.js_widget_button_event_transformer
+                0x00000e6b       0xe3 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .debug_line.text.js_view_widget_ep
+                0x00000f4e       0x13 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ .debug_line_end
+                0x00000f61        0x0 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+
+.debug_frame    0x00000000      0x1e4
+ *(.debug_frame)
+ .debug_frame   0x00000000      0x1e4 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+
+.debug_str      0x00000000     0x10cb
+ *(.debug_str)
+ .debug_str     0x00000000     0x10cb build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+ *(.debug_line_str)
+
+.debug_loclists
+                0x00000000      0xb30
+ *(.debug_loclists)
+ .debug_loclists
+                0x00000000      0xb30 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x00000000       0xd8
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x00000000       0xd8 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.ARM.attributes
+                0x00000000       0x34
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x34 build/f7-firmware-D/.extapps/js_gui__widget/modules/js_gui/widget.o
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+
+/DISCARD/
+ *(.comment)
+ *(.comment.*)
+ *(.llvmbc)
+ *(.llvmcmd)
+OUTPUT(build/f7-firmware-D/.extapps/js_gui__widget_d.elf elf32-littlearm)
+LOAD linker stubs

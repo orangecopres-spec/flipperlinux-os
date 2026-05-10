@@ -1,0 +1,219 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/blink_test/blink_test.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/blink_test/blink_test.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/blink_test/blink_test.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/blink_test/blink_test.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/f7-firmware-D/.extapps/blink_test/blink_test.o
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libstdc++_nano.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libsupc++_nano.a
+
+.text           0x00000000      0x1c4
+ *(.text)
+ *(.stub)
+ *(.text*)
+ .text.blink_test_update
+                0x00000000       0x2c build/f7-firmware-D/.extapps/blink_test/blink_test.o
+ .text.blink_test_input_callback
+                0x0000002c       0x38 build/f7-firmware-D/.extapps/blink_test/blink_test.o
+ .text.blink_test_draw_callback
+                0x00000064       0x30 build/f7-firmware-D/.extapps/blink_test/blink_test.o
+ .text.blink_test_app
+                0x00000094      0x130 build/f7-firmware-D/.extapps/blink_test/blink_test.o
+                0x00000094                blink_test_app
+ *(.text.*)
+ *(.text._*)
+ *(.init)
+ *(.fini)
+
+.rodata         0x000001c4       0x7c
+ *(.rodata)
+ *(.rodata1)
+ *(.rodata.*)
+ .rodata.blink_test_draw_callback.str1.4
+                0x000001c4       0x12 build/f7-firmware-D/.extapps/blink_test/blink_test.o
+ *fill*         0x000001d6        0x2 
+ .rodata.blink_test_app.str1.4
+                0x000001d8       0x11 build/f7-firmware-D/.extapps/blink_test/blink_test.o
+ *fill*         0x000001e9        0x3 
+ .rodata.blink_test_colors
+                0x000001ec       0x2c build/f7-firmware-D/.extapps/blink_test/blink_test.o
+ .rodata.blink_test_sequence_hw_blink_stop
+                0x00000218        0x8 build/f7-firmware-D/.extapps/blink_test/blink_test.o
+ .rodata.blink_test_sequence_hw_blink_blue
+                0x00000220        0x8 build/f7-firmware-D/.extapps/blink_test/blink_test.o
+ .rodata.blink_test_sequence_hw_blink_green
+                0x00000228        0x8 build/f7-firmware-D/.extapps/blink_test/blink_test.o
+ .rodata.blink_test_sequence_hw_blink_start_red
+                0x00000230       0x10 build/f7-firmware-D/.extapps/blink_test/blink_test.o
+
+.data
+ *(.data)
+ *(.data1)
+ *(.data.*)
+
+.bss
+ *(.bss)
+ *(.bss*)
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x38
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x38 build/f7-firmware-D/.extapps/blink_test/blink_test.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000      0xf99
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000      0xf99 build/f7-firmware-D/.extapps/blink_test/blink_test.o
+
+.debug_abbrev   0x00000000      0x2d7
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x2d7 build/f7-firmware-D/.extapps/blink_test/blink_test.o
+
+.debug_line     0x00000000      0x461
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x2b3 build/f7-firmware-D/.extapps/blink_test/blink_test.o
+ .debug_line.text.blink_test_update
+                0x000002b3       0x61 build/f7-firmware-D/.extapps/blink_test/blink_test.o
+ .debug_line.text.blink_test_input_callback
+                0x00000314       0x6c build/f7-firmware-D/.extapps/blink_test/blink_test.o
+ .debug_line.text.blink_test_draw_callback
+                0x00000380       0x1f build/f7-firmware-D/.extapps/blink_test/blink_test.o
+ .debug_line.text.blink_test_app
+                0x0000039f       0xc2 build/f7-firmware-D/.extapps/blink_test/blink_test.o
+ .debug_line_end
+                0x00000461        0x0 build/f7-firmware-D/.extapps/blink_test/blink_test.o
+
+.debug_frame    0x00000000       0x90
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x90 build/f7-firmware-D/.extapps/blink_test/blink_test.o
+
+.debug_str      0x00000000      0xec8
+ *(.debug_str)
+ .debug_str     0x00000000      0xec8 build/f7-firmware-D/.extapps/blink_test/blink_test.o
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+ *(.debug_line_str)
+
+.debug_loclists
+                0x00000000      0x1a6
+ *(.debug_loclists)
+ .debug_loclists
+                0x00000000      0x1a6 build/f7-firmware-D/.extapps/blink_test/blink_test.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x00000000       0x26
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x00000000       0x26 build/f7-firmware-D/.extapps/blink_test/blink_test.o
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.ARM.attributes
+                0x00000000       0x34
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x34 build/f7-firmware-D/.extapps/blink_test/blink_test.o
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+
+/DISCARD/
+ *(.comment)
+ *(.comment.*)
+ *(.llvmbc)
+ *(.llvmcmd)
+OUTPUT(build/f7-firmware-D/.extapps/blink_test_d.elf elf32-littlearm)
+LOAD linker stubs

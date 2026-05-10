@@ -1,0 +1,2542 @@
+
+build/f7-firmware-D/.extapps/disney_infinity_parser_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <di_key>:
+static uint8_t seed[38] = {0x0A, 0x14, 0xFD, 0x05, 0x07, 0xFF, 0x4B, 0xCD, 0x02, 0x6B,
+                           0xA8, 0x3F, 0x0A, 0x3B, 0x89, 0xA9, 0x00, 0x00, 0x00, 0x00,
+                           0x00, 0x00, 0x00, 0x28, 0x63, 0x29, 0x20, 0x44, 0x69, 0x73,
+                           0x6E, 0x65, 0x79, 0x20, 0x32, 0x30, 0x31, 0x33};
+
+void di_key(const uint8_t* uid, MfClassicKey* key) {
+       0:	b530      	push	{r4, r5, lr}
+       2:	b087      	sub	sp, #28
+       4:	4603      	mov	r3, r0
+       6:	460c      	mov	r4, r1
+    uint8_t hash[20];
+    memcpy(seed + 16, uid, UID_LEN);
+       8:	4d10      	ldr	r5, [pc, #64]	@ (4c <di_key+0x4c>)
+       a:	6800      	ldr	r0, [r0, #0]
+       c:	6028      	str	r0, [r5, #0]
+       e:	889a      	ldrh	r2, [r3, #4]
+      10:	799b      	ldrb	r3, [r3, #6]
+      12:	80aa      	strh	r2, [r5, #4]
+      14:	71ab      	strb	r3, [r5, #6]
+    mbedtls_sha1(seed, sizeof(seed), hash);
+      16:	aa01      	add	r2, sp, #4
+      18:	2126      	movs	r1, #38	@ 0x26
+      1a:	f1a5 0010 	sub.w	r0, r5, #16
+      1e:	4b0c      	ldr	r3, [pc, #48]	@ (50 <di_key+0x50>)
+      20:	4798      	blx	r3
+    key->data[0] = hash[3];
+      22:	f89d 3007 	ldrb.w	r3, [sp, #7]
+      26:	7023      	strb	r3, [r4, #0]
+    key->data[1] = hash[2];
+      28:	f89d 3006 	ldrb.w	r3, [sp, #6]
+      2c:	7063      	strb	r3, [r4, #1]
+    key->data[2] = hash[1];
+      2e:	f89d 3005 	ldrb.w	r3, [sp, #5]
+      32:	70a3      	strb	r3, [r4, #2]
+    key->data[3] = hash[0];
+      34:	f89d 3004 	ldrb.w	r3, [sp, #4]
+      38:	70e3      	strb	r3, [r4, #3]
+    key->data[4] = hash[7];
+      3a:	f89d 300b 	ldrb.w	r3, [sp, #11]
+      3e:	7123      	strb	r3, [r4, #4]
+    key->data[5] = hash[6];
+      40:	f89d 300a 	ldrb.w	r3, [sp, #10]
+      44:	7163      	strb	r3, [r4, #5]
+}
+      46:	b007      	add	sp, #28
+      48:	bd30      	pop	{r4, r5, pc}
+      4a:	bf00      	nop
+      4c:	00000010 	.word	0x00000010
+      50:	00000000 	.word	0x00000000
+
+00000054 <disney_infinity_parse>:
+    mf_classic_free(data);
+
+    return is_read;
+}
+
+static bool disney_infinity_parse(const NfcDevice* device, FuriString* parsed_data) {
+      54:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+      58:	b082      	sub	sp, #8
+    furi_assert(device);
+      5a:	b340      	cbz	r0, ae <disney_infinity_parse+0x5a>
+      5c:	4688      	mov	r8, r1
+      5e:	4606      	mov	r6, r0
+    size_t* uid_len = 0;
+    bool parsed = false;
+    FuriString* name = furi_string_alloc();
+      60:	4b18      	ldr	r3, [pc, #96]	@ (c4 <sukima200+0x12>)
+      62:	4798      	blx	r3
+      64:	4605      	mov	r5, r0
+    const uint8_t verify_sector = 0;
+    MfClassicKey key = {};
+      66:	2400      	movs	r4, #0
+      68:	9400      	str	r4, [sp, #0]
+      6a:	f8ad 4004 	strh.w	r4, [sp, #4]
+
+    const MfClassicData* data = nfc_device_get_data(device, NfcProtocolMfClassic);
+      6e:	2107      	movs	r1, #7
+      70:	4630      	mov	r0, r6
+      72:	4b15      	ldr	r3, [pc, #84]	@ (c8 <sukima200+0x16>)
+      74:	4798      	blx	r3
+      76:	4607      	mov	r7, r0
+    const uint8_t* uid_bytes = mf_classic_get_uid(data, uid_len);
+      78:	4621      	mov	r1, r4
+      7a:	4b14      	ldr	r3, [pc, #80]	@ (cc <sukima200+0x1a>)
+      7c:	4798      	blx	r3
+      7e:	4606      	mov	r6, r0
+
+    do {
+        // verify key
+        MfClassicSectorTrailer* sec_tr =
+            mf_classic_get_sector_trailer_by_sector(data, verify_sector);
+      80:	4621      	mov	r1, r4
+      82:	4638      	mov	r0, r7
+      84:	4b12      	ldr	r3, [pc, #72]	@ (d0 <sukima200+0x1e>)
+      86:	4798      	blx	r3
+      88:	4604      	mov	r4, r0
+
+        di_key(uid_bytes, &key);
+      8a:	4669      	mov	r1, sp
+      8c:	4630      	mov	r0, r6
+      8e:	4b11      	ldr	r3, [pc, #68]	@ (d4 <sukima200+0x22>)
+      90:	4798      	blx	r3
+        if(memcmp(key.data, sec_tr->key_a.data, 6) != 0) break;
+      92:	2206      	movs	r2, #6
+      94:	4621      	mov	r1, r4
+      96:	4668      	mov	r0, sp
+      98:	4b0f      	ldr	r3, [pc, #60]	@ (d8 <sukima200+0x26>)
+      9a:	4798      	blx	r3
+      9c:	b158      	cbz	r0, b6 <sukima200+0x4>
+    bool parsed = false;
+      9e:	2400      	movs	r4, #0
+
+        parsed = true;
+
+    } while(false);
+
+    furi_string_free(name);
+      a0:	4628      	mov	r0, r5
+      a2:	4b0e      	ldr	r3, [pc, #56]	@ (dc <sukima200+0x2a>)
+      a4:	4798      	blx	r3
+
+    return parsed;
+}
+      a6:	4620      	mov	r0, r4
+      a8:	b002      	add	sp, #8
+      aa:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+    furi_assert(device);
+      ae:	f04f 0c01 	mov.w	ip, #1
+
+000000b2 <sukima200>:
+      b2:	4b0b      	ldr	r3, [pc, #44]	@ (e0 <sukima200+0x2e>)
+      b4:	4798      	blx	r3
+        furi_string_printf(parsed_data, "\e#Disney Infinity\n");
+      b6:	490b      	ldr	r1, [pc, #44]	@ (e4 <sukima200+0x32>)
+      b8:	4640      	mov	r0, r8
+      ba:	4b0b      	ldr	r3, [pc, #44]	@ (e8 <sukima200+0x36>)
+      bc:	4798      	blx	r3
+        parsed = true;
+      be:	2401      	movs	r4, #1
+      c0:	e7ee      	b.n	a0 <disney_infinity_parse+0x4c>
+      c2:	bf00      	nop
+	...
+
+000000ec <disney_infinity_read>:
+static bool disney_infinity_read(Nfc* nfc, NfcDevice* device) {
+      ec:	e92d 47f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, lr}
+      f0:	b0fe      	sub	sp, #504	@ 0x1f8
+    furi_assert(nfc);
+      f2:	b320      	cbz	r0, 13e <disney_infinity_read+0x52>
+      f4:	460f      	mov	r7, r1
+      f6:	4680      	mov	r8, r0
+    furi_assert(device);
+      f8:	b329      	cbz	r1, 146 <sukima362+0x4>
+    MfClassicData* data = mf_classic_alloc();
+      fa:	4b3d      	ldr	r3, [pc, #244]	@ (1f0 <sukima379+0xa6>)
+      fc:	4798      	blx	r3
+      fe:	4605      	mov	r5, r0
+    nfc_device_copy_data(device, NfcProtocolMfClassic, data);
+     100:	4602      	mov	r2, r0
+     102:	2107      	movs	r1, #7
+     104:	4638      	mov	r0, r7
+     106:	4b3b      	ldr	r3, [pc, #236]	@ (1f4 <sukima379+0xaa>)
+     108:	4798      	blx	r3
+    const uint8_t* uid_bytes = mf_classic_get_uid(data, uid_len);
+     10a:	2100      	movs	r1, #0
+     10c:	4628      	mov	r0, r5
+     10e:	4b3a      	ldr	r3, [pc, #232]	@ (1f8 <sukima379+0xae>)
+     110:	4798      	blx	r3
+     112:	4606      	mov	r6, r0
+    MfClassicDeviceKeys keys = {};
+     114:	f44f 72f8 	mov.w	r2, #496	@ 0x1f0
+     118:	2100      	movs	r1, #0
+     11a:	a802      	add	r0, sp, #8
+     11c:	4b37      	ldr	r3, [pc, #220]	@ (1fc <sukima379+0xb2>)
+     11e:	4798      	blx	r3
+        MfClassicType type = MfClassicTypeMini;
+     120:	2300      	movs	r3, #0
+     122:	f88d 3007 	strb.w	r3, [sp, #7]
+        MfClassicError error = mf_classic_poller_sync_detect_type(nfc, &type);
+     126:	f10d 0107 	add.w	r1, sp, #7
+     12a:	4640      	mov	r0, r8
+     12c:	4b34      	ldr	r3, [pc, #208]	@ (200 <sukima379+0xb6>)
+     12e:	4798      	blx	r3
+        if(error != MfClassicErrorNone) break;
+     130:	2800      	cmp	r0, #0
+     132:	d14b      	bne.n	1cc <sukima379+0x82>
+        data->type = type;
+     134:	f89d 3007 	ldrb.w	r3, [sp, #7]
+     138:	712b      	strb	r3, [r5, #4]
+        for(size_t i = 0; i < mf_classic_get_total_sectors_num(data->type); i++) {
+     13a:	2400      	movs	r4, #0
+     13c:	e035      	b.n	1aa <sukima379+0x60>
+    furi_assert(nfc);
+     13e:	f04f 0c01 	mov.w	ip, #1
+
+00000142 <sukima362>:
+     142:	4b30      	ldr	r3, [pc, #192]	@ (204 <sukima379+0xba>)
+     144:	4798      	blx	r3
+    furi_assert(device);
+     146:	f04f 0c01 	mov.w	ip, #1
+
+0000014a <sukima379>:
+     14a:	4b2e      	ldr	r3, [pc, #184]	@ (204 <sukima379+0xba>)
+     14c:	4798      	blx	r3
+            di_key(uid_bytes, &keys.key_a[i]);
+     14e:	ea4f 0944 	mov.w	r9, r4, lsl #1
+     152:	eb04 0144 	add.w	r1, r4, r4, lsl #1
+     156:	0049      	lsls	r1, r1, #1
+     158:	3108      	adds	r1, #8
+     15a:	ab02      	add	r3, sp, #8
+     15c:	4419      	add	r1, r3
+     15e:	4630      	mov	r0, r6
+     160:	f8df a0c4 	ldr.w	sl, [pc, #196]	@ 228 <sukima379+0xde>
+     164:	47d0      	blx	sl
+            di_key(uid_bytes, &keys.key_b[i]);
+     166:	eb09 0104 	add.w	r1, r9, r4
+     16a:	0049      	lsls	r1, r1, #1
+     16c:	f501 7180 	add.w	r1, r1, #256	@ 0x100
+     170:	ab02      	add	r3, sp, #8
+     172:	4419      	add	r1, r3
+     174:	4630      	mov	r0, r6
+     176:	47d0      	blx	sl
+            FURI_BIT_SET(keys.key_a_mask, i);
+     178:	9802      	ldr	r0, [sp, #8]
+     17a:	9903      	ldr	r1, [sp, #12]
+     17c:	2301      	movs	r3, #1
+     17e:	f1a4 0220 	sub.w	r2, r4, #32
+     182:	f1c4 0c20 	rsb	ip, r4, #32
+     186:	fa03 f202 	lsl.w	r2, r3, r2
+     18a:	fa23 fc0c 	lsr.w	ip, r3, ip
+     18e:	ea42 020c 	orr.w	r2, r2, ip
+     192:	40a3      	lsls	r3, r4
+     194:	4318      	orrs	r0, r3
+     196:	4311      	orrs	r1, r2
+     198:	9002      	str	r0, [sp, #8]
+     19a:	9103      	str	r1, [sp, #12]
+            FURI_BIT_SET(keys.key_b_mask, i);
+     19c:	9840      	ldr	r0, [sp, #256]	@ 0x100
+     19e:	9941      	ldr	r1, [sp, #260]	@ 0x104
+     1a0:	4303      	orrs	r3, r0
+     1a2:	430a      	orrs	r2, r1
+     1a4:	9340      	str	r3, [sp, #256]	@ 0x100
+     1a6:	9241      	str	r2, [sp, #260]	@ 0x104
+        for(size_t i = 0; i < mf_classic_get_total_sectors_num(data->type); i++) {
+     1a8:	3401      	adds	r4, #1
+     1aa:	7928      	ldrb	r0, [r5, #4]
+     1ac:	4b16      	ldr	r3, [pc, #88]	@ (208 <sukima379+0xbe>)
+     1ae:	4798      	blx	r3
+     1b0:	42a0      	cmp	r0, r4
+     1b2:	d8cc      	bhi.n	14e <sukima379+0x4>
+        error = mf_classic_poller_sync_read(nfc, &keys, data);
+     1b4:	462a      	mov	r2, r5
+     1b6:	a902      	add	r1, sp, #8
+     1b8:	4640      	mov	r0, r8
+     1ba:	4b14      	ldr	r3, [pc, #80]	@ (20c <sukima379+0xc2>)
+     1bc:	4798      	blx	r3
+        if(error != MfClassicErrorNone) {
+     1be:	4603      	mov	r3, r0
+     1c0:	b160      	cbz	r0, 1dc <sukima379+0x92>
+            FURI_LOG_W(TAG, "Failed to read data: %d", error);
+     1c2:	4a13      	ldr	r2, [pc, #76]	@ (210 <sukima379+0xc6>)
+     1c4:	4913      	ldr	r1, [pc, #76]	@ (214 <sukima379+0xca>)
+     1c6:	2003      	movs	r0, #3
+     1c8:	4c13      	ldr	r4, [pc, #76]	@ (218 <sukima379+0xce>)
+     1ca:	47a0      	blx	r4
+    bool is_read = false;
+     1cc:	2400      	movs	r4, #0
+    mf_classic_free(data);
+     1ce:	4628      	mov	r0, r5
+     1d0:	4b12      	ldr	r3, [pc, #72]	@ (21c <sukima379+0xd2>)
+     1d2:	4798      	blx	r3
+}
+     1d4:	4620      	mov	r0, r4
+     1d6:	b07e      	add	sp, #504	@ 0x1f8
+     1d8:	e8bd 87f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, pc}
+        nfc_device_set_data(device, NfcProtocolMfClassic, data);
+     1dc:	462a      	mov	r2, r5
+     1de:	2107      	movs	r1, #7
+     1e0:	4638      	mov	r0, r7
+     1e2:	4b0f      	ldr	r3, [pc, #60]	@ (220 <sukima379+0xd6>)
+     1e4:	4798      	blx	r3
+        is_read = mf_classic_is_card_read(data);
+     1e6:	4628      	mov	r0, r5
+     1e8:	4b0e      	ldr	r3, [pc, #56]	@ (224 <sukima379+0xda>)
+     1ea:	4798      	blx	r3
+     1ec:	4604      	mov	r4, r0
+     1ee:	e7ee      	b.n	1ce <sukima379+0x84>
+	...
+     210:	00000014 	.word	0x00000014
+     214:	0000002c 	.word	0x0000002c
+	...
+
+0000022c <disney_infinity_plugin_ep>:
+};
+
+/* Plugin entry point - must return a pointer to const descriptor  */
+const FlipperAppPluginDescriptor* disney_infinity_plugin_ep(void) {
+    return &disney_infinity_plugin_descriptor;
+}
+     22c:	4800      	ldr	r0, [pc, #0]	@ (230 <disney_infinity_plugin_ep+0x4>)
+     22e:	4770      	bx	lr
+     230:	00000054 	.word	0x00000054
+
+00000234 <mbedtls_sha1_init>:
+
+#if !defined(MBEDTLS_SHA1_ALT)
+
+void mbedtls_sha1_init(mbedtls_sha1_context *ctx)
+{
+    memset(ctx, 0, sizeof(mbedtls_sha1_context));
+     234:	4b01      	ldr	r3, [pc, #4]	@ (23c <mbedtls_sha1_init+0x8>)
+     236:	225c      	movs	r2, #92	@ 0x5c
+     238:	2100      	movs	r1, #0
+     23a:	4718      	bx	r3
+     23c:	00000000 	.word	0x00000000
+
+00000240 <mbedtls_sha1_free>:
+}
+
+void mbedtls_sha1_free(mbedtls_sha1_context *ctx)
+{
+    if (ctx == NULL) {
+     240:	b110      	cbz	r0, 248 <mbedtls_sha1_free+0x8>
+        return;
+    }
+
+    mbedtls_platform_zeroize(ctx, sizeof(mbedtls_sha1_context));
+     242:	4b02      	ldr	r3, [pc, #8]	@ (24c <mbedtls_sha1_free+0xc>)
+     244:	215c      	movs	r1, #92	@ 0x5c
+     246:	4718      	bx	r3
+}
+     248:	4770      	bx	lr
+     24a:	bf00      	nop
+     24c:	00000000 	.word	0x00000000
+
+00000250 <mbedtls_sha1_starts>:
+
+/*
+ * SHA-1 context setup
+ */
+int mbedtls_sha1_starts(mbedtls_sha1_context *ctx)
+{
+     250:	4603      	mov	r3, r0
+    ctx->total[0] = 0;
+    ctx->total[1] = 0;
+
+    ctx->state[0] = 0x67452301;
+     252:	4a0a      	ldr	r2, [pc, #40]	@ (27c <mbedtls_sha1_starts+0x2c>)
+     254:	609a      	str	r2, [r3, #8]
+    ctx->state[1] = 0xEFCDAB89;
+     256:	f102 3288 	add.w	r2, r2, #2290649224	@ 0x88888888
+     25a:	60da      	str	r2, [r3, #12]
+    ctx->state[2] = 0x98BADCFE;
+     25c:	f102 4229 	add.w	r2, r2, #2835349504	@ 0xa9000000
+     260:	f5a2 1296 	sub.w	r2, r2, #1228800	@ 0x12c000
+     264:	f6a2 628b 	subw	r2, r2, #3723	@ 0xe8b
+     268:	611a      	str	r2, [r3, #16]
+    ctx->state[3] = 0x10325476;
+     26a:	f1a2 3288 	sub.w	r2, r2, #2290649224	@ 0x88888888
+    ctx->total[0] = 0;
+     26e:	2000      	movs	r0, #0
+    ctx->state[3] = 0x10325476;
+     270:	615a      	str	r2, [r3, #20]
+    ctx->state[4] = 0xC3D2E1F0;
+     272:	4a03      	ldr	r2, [pc, #12]	@ (280 <mbedtls_sha1_starts+0x30>)
+     274:	619a      	str	r2, [r3, #24]
+    ctx->total[1] = 0;
+     276:	e9c3 0000 	strd	r0, r0, [r3]
+
+    return 0;
+}
+     27a:	4770      	bx	lr
+     27c:	67452301 	.word	0x67452301
+     280:	c3d2e1f0 	.word	0xc3d2e1f0
+
+00000284 <mbedtls_internal_sha1_process>:
+
+#if !defined(MBEDTLS_SHA1_PROCESS_ALT)
+int mbedtls_internal_sha1_process(mbedtls_sha1_context *ctx,
+                                  const unsigned char data[64])
+{
+     284:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+    r = *p32;
+#elif defined(UINT_UNALIGNED_STRUCT)
+    mbedtls_uint32_unaligned_t *p32 = (mbedtls_uint32_unaligned_t *) p;
+    r = p32->x;
+#else
+    memcpy(&r, p, sizeof(r));
+     288:	684b      	ldr	r3, [r1, #4]
+     28a:	68cd      	ldr	r5, [r1, #12]
+     28c:	f8d1 e000 	ldr.w	lr, [r1]
+     290:	688e      	ldr	r6, [r1, #8]
+     292:	b0af      	sub	sp, #188	@ 0xbc
+    struct {
+        uint32_t temp, W[16], A, B, C, D, E;
+    } local;
+
+    local.W[0] = MBEDTLS_GET_UINT32_BE(data,  0);
+    local.W[1] = MBEDTLS_GET_UINT32_BE(data,  4);
+     294:	ba1b      	rev	r3, r3
+     296:	9307      	str	r3, [sp, #28]
+    local.W[2] = MBEDTLS_GET_UINT32_BE(data,  8);
+    local.W[3] = MBEDTLS_GET_UINT32_BE(data, 12);
+     298:	ba2b      	rev	r3, r5
+     29a:	9308      	str	r3, [sp, #32]
+     29c:	690b      	ldr	r3, [r1, #16]
+{
+     29e:	9000      	str	r0, [sp, #0]
+    local.W[4] = MBEDTLS_GET_UINT32_BE(data, 16);
+     2a0:	fa93 f883 	rev.w	r8, r3
+     2a4:	694b      	ldr	r3, [r1, #20]
+    local.W[5] = MBEDTLS_GET_UINT32_BE(data, 20);
+     2a6:	fa93 fa83 	rev.w	sl, r3
+     2aa:	698b      	ldr	r3, [r1, #24]
+    local.W[6] = MBEDTLS_GET_UINT32_BE(data, 24);
+     2ac:	ba1b      	rev	r3, r3
+     2ae:	9309      	str	r3, [sp, #36]	@ 0x24
+     2b0:	69cb      	ldr	r3, [r1, #28]
+    local.W[7] = MBEDTLS_GET_UINT32_BE(data, 28);
+     2b2:	ba1b      	rev	r3, r3
+     2b4:	9311      	str	r3, [sp, #68]	@ 0x44
+     2b6:	6a0b      	ldr	r3, [r1, #32]
+    local.W[8] = MBEDTLS_GET_UINT32_BE(data, 32);
+     2b8:	fa93 fb83 	rev.w	fp, r3
+     2bc:	6a4b      	ldr	r3, [r1, #36]	@ 0x24
+    local.W[9] = MBEDTLS_GET_UINT32_BE(data, 36);
+     2be:	ba1b      	rev	r3, r3
+     2c0:	930a      	str	r3, [sp, #40]	@ 0x28
+     2c2:	6a8b      	ldr	r3, [r1, #40]	@ 0x28
+    local.W[10] = MBEDTLS_GET_UINT32_BE(data, 40);
+     2c4:	ba1b      	rev	r3, r3
+     2c6:	930b      	str	r3, [sp, #44]	@ 0x2c
+     2c8:	6acb      	ldr	r3, [r1, #44]	@ 0x2c
+    local.W[11] = MBEDTLS_GET_UINT32_BE(data, 44);
+     2ca:	ba1b      	rev	r3, r3
+     2cc:	930c      	str	r3, [sp, #48]	@ 0x30
+     2ce:	6b0b      	ldr	r3, [r1, #48]	@ 0x30
+    local.W[12] = MBEDTLS_GET_UINT32_BE(data, 48);
+     2d0:	ba1b      	rev	r3, r3
+     2d2:	930d      	str	r3, [sp, #52]	@ 0x34
+     2d4:	6b4b      	ldr	r3, [r1, #52]	@ 0x34
+    local.W[13] = MBEDTLS_GET_UINT32_BE(data, 52);
+     2d6:	ba1b      	rev	r3, r3
+     2d8:	9302      	str	r3, [sp, #8]
+     2da:	6b8b      	ldr	r3, [r1, #56]	@ 0x38
+    local.W[14] = MBEDTLS_GET_UINT32_BE(data, 56);
+     2dc:	ba1b      	rev	r3, r3
+     2de:	9303      	str	r3, [sp, #12]
+     2e0:	6bcb      	ldr	r3, [r1, #60]	@ 0x3c
+    local.W[15] = MBEDTLS_GET_UINT32_BE(data, 60);
+     2e2:	ba1b      	rev	r3, r3
+     2e4:	9304      	str	r3, [sp, #16]
+    {                                                           \
+        (e) += S((a), 5) + F((b), (c), (d)) + K + (x);             \
+        (b) = S((b), 30);                                        \
+    } while (0)
+
+    local.A = ctx->state[0];
+     2e6:	6883      	ldr	r3, [r0, #8]
+     2e8:	930e      	str	r3, [sp, #56]	@ 0x38
+    local.B = ctx->state[1];
+     2ea:	68c3      	ldr	r3, [r0, #12]
+     2ec:	9301      	str	r3, [sp, #4]
+    local.C = ctx->state[2];
+     2ee:	6903      	ldr	r3, [r0, #16]
+     2f0:	9305      	str	r3, [sp, #20]
+    local.D = ctx->state[3];
+     2f2:	6943      	ldr	r3, [r0, #20]
+     2f4:	930f      	str	r3, [sp, #60]	@ 0x3c
+    local.E = ctx->state[4];
+     2f6:	6983      	ldr	r3, [r0, #24]
+
+#define F(x, y, z) ((z) ^ ((x) & ((y) ^ (z))))
+#define K 0x5A827999
+
+    P(local.A, local.B, local.C, local.D, local.E, local.W[0]);
+     2f8:	9a0f      	ldr	r2, [sp, #60]	@ 0x3c
+    local.E = ctx->state[4];
+     2fa:	9312      	str	r3, [sp, #72]	@ 0x48
+    P(local.A, local.B, local.C, local.D, local.E, local.W[0]);
+     2fc:	9b05      	ldr	r3, [sp, #20]
+     2fe:	990e      	ldr	r1, [sp, #56]	@ 0x38
+    P(local.E, local.A, local.B, local.C, local.D, local.W[1]);
+    P(local.D, local.E, local.A, local.B, local.C, local.W[2]);
+    P(local.C, local.D, local.E, local.A, local.B, local.W[3]);
+     300:	9f01      	ldr	r7, [sp, #4]
+     302:	9d08      	ldr	r5, [sp, #32]
+    P(local.A, local.B, local.C, local.D, local.E, local.W[0]);
+     304:	ea83 0002 	eor.w	r0, r3, r2
+     308:	9b01      	ldr	r3, [sp, #4]
+     30a:	4018      	ands	r0, r3
+     30c:	4050      	eors	r0, r2
+     30e:	4bde      	ldr	r3, [pc, #888]	@ (688 <mbedtls_internal_sha1_process+0x404>)
+     310:	9a12      	ldr	r2, [sp, #72]	@ 0x48
+     312:	441a      	add	r2, r3
+     314:	eb02 62f1 	add.w	r2, r2, r1, ror #27
+     318:	4410      	add	r0, r2
+    P(local.E, local.A, local.B, local.C, local.D, local.W[1]);
+     31a:	9901      	ldr	r1, [sp, #4]
+     31c:	9a05      	ldr	r2, [sp, #20]
+     31e:	ea82 02b1 	eor.w	r2, r2, r1, ror #2
+     322:	990e      	ldr	r1, [sp, #56]	@ 0x38
+     324:	400a      	ands	r2, r1
+     326:	9905      	ldr	r1, [sp, #20]
+     328:	404a      	eors	r2, r1
+     32a:	990f      	ldr	r1, [sp, #60]	@ 0x3c
+     32c:	4419      	add	r1, r3
+     32e:	440a      	add	r2, r1
+     330:	9907      	ldr	r1, [sp, #28]
+     332:	440a      	add	r2, r1
+     334:	990e      	ldr	r1, [sp, #56]	@ 0x38
+     336:	ea4f 0cb1 	mov.w	ip, r1, ror #2
+    P(local.D, local.E, local.A, local.B, local.C, local.W[2]);
+     33a:	9901      	ldr	r1, [sp, #4]
+    local.W[0] = MBEDTLS_GET_UINT32_BE(data,  0);
+     33c:	fa9e fe8e 	rev.w	lr, lr
+    P(local.A, local.B, local.C, local.D, local.E, local.W[0]);
+     340:	4470      	add	r0, lr
+    P(local.D, local.E, local.A, local.B, local.C, local.W[2]);
+     342:	ea8c 04b1 	eor.w	r4, ip, r1, ror #2
+     346:	4004      	ands	r4, r0
+     348:	ea84 04b1 	eor.w	r4, r4, r1, ror #2
+     34c:	9905      	ldr	r1, [sp, #20]
+    local.W[2] = MBEDTLS_GET_UINT32_BE(data,  8);
+     34e:	ba36      	rev	r6, r6
+    P(local.D, local.E, local.A, local.B, local.C, local.W[2]);
+     350:	4419      	add	r1, r3
+     352:	4431      	add	r1, r6
+    P(local.E, local.A, local.B, local.C, local.D, local.W[1]);
+     354:	eb02 62f0 	add.w	r2, r2, r0, ror #27
+    P(local.D, local.E, local.A, local.B, local.C, local.W[2]);
+     358:	440c      	add	r4, r1
+    P(local.C, local.D, local.E, local.A, local.B, local.W[3]);
+     35a:	ea8c 01b0 	eor.w	r1, ip, r0, ror #2
+     35e:	4011      	ands	r1, r2
+     360:	eb03 07b7 	add.w	r7, r3, r7, ror #2
+    P(local.D, local.E, local.A, local.B, local.C, local.W[2]);
+     364:	eb04 64f2 	add.w	r4, r4, r2, ror #27
+    P(local.C, local.D, local.E, local.A, local.B, local.W[3]);
+     368:	442f      	add	r7, r5
+     36a:	ea4f 02b2 	mov.w	r2, r2, ror #2
+     36e:	ea81 010c 	eor.w	r1, r1, ip
+     372:	4439      	add	r1, r7
+    P(local.B, local.C, local.D, local.E, local.A, local.W[4]);
+     374:	ea82 07b0 	eor.w	r7, r2, r0, ror #2
+     378:	4027      	ands	r7, r4
+     37a:	449c      	add	ip, r3
+    P(local.C, local.D, local.E, local.A, local.B, local.W[3]);
+     37c:	eb01 61f4 	add.w	r1, r1, r4, ror #27
+    P(local.B, local.C, local.D, local.E, local.A, local.W[4]);
+     380:	44c4      	add	ip, r8
+    P(local.A, local.B, local.C, local.D, local.E, local.W[5]);
+     382:	ea82 09b4 	eor.w	r9, r2, r4, ror #2
+    P(local.B, local.C, local.D, local.E, local.A, local.W[4]);
+     386:	ea87 07b0 	eor.w	r7, r7, r0, ror #2
+     38a:	4467      	add	r7, ip
+    P(local.A, local.B, local.C, local.D, local.E, local.W[5]);
+     38c:	ea09 0901 	and.w	r9, r9, r1
+     390:	eb0a 0c03 	add.w	ip, sl, r3
+    P(local.B, local.C, local.D, local.E, local.A, local.W[4]);
+     394:	eb07 67f1 	add.w	r7, r7, r1, ror #27
+    P(local.A, local.B, local.C, local.D, local.E, local.W[5]);
+     398:	eb0c 0cb0 	add.w	ip, ip, r0, ror #2
+     39c:	ea4f 01b1 	mov.w	r1, r1, ror #2
+    P(local.E, local.A, local.B, local.C, local.D, local.W[6]);
+     3a0:	9809      	ldr	r0, [sp, #36]	@ 0x24
+    P(local.D, local.E, local.A, local.B, local.C, local.W[7]);
+    P(local.C, local.D, local.E, local.A, local.B, local.W[8]);
+    P(local.B, local.C, local.D, local.E, local.A, local.W[9]);
+     3a2:	9d0a      	ldr	r5, [sp, #40]	@ 0x28
+    P(local.A, local.B, local.C, local.D, local.E, local.W[5]);
+     3a4:	ea89 0902 	eor.w	r9, r9, r2
+     3a8:	44e1      	add	r9, ip
+    P(local.E, local.A, local.B, local.C, local.D, local.W[6]);
+     3aa:	ea81 0cb4 	eor.w	ip, r1, r4, ror #2
+     3ae:	ea0c 0c07 	and.w	ip, ip, r7
+     3b2:	4418      	add	r0, r3
+     3b4:	4410      	add	r0, r2
+     3b6:	ea8c 0cb4 	eor.w	ip, ip, r4, ror #2
+    P(local.D, local.E, local.A, local.B, local.C, local.W[7]);
+     3ba:	9a11      	ldr	r2, [sp, #68]	@ 0x44
+    P(local.A, local.B, local.C, local.D, local.E, local.W[5]);
+     3bc:	eb09 69f7 	add.w	r9, r9, r7, ror #27
+    P(local.E, local.A, local.B, local.C, local.D, local.W[6]);
+     3c0:	4484      	add	ip, r0
+    P(local.D, local.E, local.A, local.B, local.C, local.W[7]);
+     3c2:	ea81 00b7 	eor.w	r0, r1, r7, ror #2
+     3c6:	ea00 0009 	and.w	r0, r0, r9
+     3ca:	441a      	add	r2, r3
+     3cc:	eb02 02b4 	add.w	r2, r2, r4, ror #2
+     3d0:	4048      	eors	r0, r1
+     3d2:	4410      	add	r0, r2
+     3d4:	ea4f 02b9 	mov.w	r2, r9, ror #2
+    P(local.E, local.A, local.B, local.C, local.D, local.W[6]);
+     3d8:	eb0c 6cf9 	add.w	ip, ip, r9, ror #27
+    P(local.C, local.D, local.E, local.A, local.B, local.W[8]);
+     3dc:	ea82 04b7 	eor.w	r4, r2, r7, ror #2
+     3e0:	eb0b 0903 	add.w	r9, fp, r3
+     3e4:	ea04 040c 	and.w	r4, r4, ip
+     3e8:	ea84 04b7 	eor.w	r4, r4, r7, ror #2
+     3ec:	4489      	add	r9, r1
+    P(local.D, local.E, local.A, local.B, local.C, local.W[7]);
+     3ee:	eb00 60fc 	add.w	r0, r0, ip, ror #27
+    P(local.C, local.D, local.E, local.A, local.B, local.W[8]);
+     3f2:	eb04 0109 	add.w	r1, r4, r9
+    P(local.B, local.C, local.D, local.E, local.A, local.W[9]);
+     3f6:	ea82 04bc 	eor.w	r4, r2, ip, ror #2
+     3fa:	eb05 0903 	add.w	r9, r5, r3
+     3fe:	4004      	ands	r4, r0
+    P(local.C, local.D, local.E, local.A, local.B, local.W[8]);
+     400:	eb01 61f0 	add.w	r1, r1, r0, ror #27
+    P(local.A, local.B, local.C, local.D, local.E, local.W[10]);
+     404:	9d0b      	ldr	r5, [sp, #44]	@ 0x2c
+    P(local.B, local.C, local.D, local.E, local.A, local.W[9]);
+     406:	ea4f 00b0 	mov.w	r0, r0, ror #2
+     40a:	eb09 09b7 	add.w	r9, r9, r7, ror #2
+     40e:	4054      	eors	r4, r2
+     410:	444c      	add	r4, r9
+    P(local.A, local.B, local.C, local.D, local.E, local.W[10]);
+     412:	ea80 09bc 	eor.w	r9, r0, ip, ror #2
+     416:	18ef      	adds	r7, r5, r3
+     418:	ea09 0901 	and.w	r9, r9, r1
+     41c:	4417      	add	r7, r2
+     41e:	ea89 09bc 	eor.w	r9, r9, ip, ror #2
+    P(local.E, local.A, local.B, local.C, local.D, local.W[11]);
+     422:	9a0c      	ldr	r2, [sp, #48]	@ 0x30
+    P(local.D, local.E, local.A, local.B, local.C, local.W[12]);
+     424:	9d0d      	ldr	r5, [sp, #52]	@ 0x34
+    P(local.B, local.C, local.D, local.E, local.A, local.W[9]);
+     426:	eb04 64f1 	add.w	r4, r4, r1, ror #27
+    P(local.A, local.B, local.C, local.D, local.E, local.W[10]);
+     42a:	44b9      	add	r9, r7
+    P(local.E, local.A, local.B, local.C, local.D, local.W[11]);
+     42c:	ea80 07b1 	eor.w	r7, r0, r1, ror #2
+     430:	4027      	ands	r7, r4
+     432:	441a      	add	r2, r3
+    P(local.A, local.B, local.C, local.D, local.E, local.W[10]);
+     434:	eb09 69f4 	add.w	r9, r9, r4, ror #27
+    P(local.E, local.A, local.B, local.C, local.D, local.W[11]);
+     438:	eb02 02bc 	add.w	r2, r2, ip, ror #2
+     43c:	ea4f 04b4 	mov.w	r4, r4, ror #2
+     440:	4047      	eors	r7, r0
+     442:	4417      	add	r7, r2
+    P(local.D, local.E, local.A, local.B, local.C, local.W[12]);
+     444:	ea84 02b1 	eor.w	r2, r4, r1, ror #2
+     448:	eb05 0c03 	add.w	ip, r5, r3
+     44c:	ea02 0209 	and.w	r2, r2, r9
+    P(local.C, local.D, local.E, local.A, local.B, local.W[13]);
+     450:	9d02      	ldr	r5, [sp, #8]
+    P(local.E, local.A, local.B, local.C, local.D, local.W[11]);
+     452:	eb07 67f9 	add.w	r7, r7, r9, ror #27
+    P(local.D, local.E, local.A, local.B, local.C, local.W[12]);
+     456:	4484      	add	ip, r0
+     458:	ea82 02b1 	eor.w	r2, r2, r1, ror #2
+    P(local.C, local.D, local.E, local.A, local.B, local.W[13]);
+     45c:	ea84 00b9 	eor.w	r0, r4, r9, ror #2
+    P(local.D, local.E, local.A, local.B, local.C, local.W[12]);
+     460:	4462      	add	r2, ip
+    P(local.C, local.D, local.E, local.A, local.B, local.W[13]);
+     462:	4038      	ands	r0, r7
+     464:	eb05 0c03 	add.w	ip, r5, r3
+    P(local.D, local.E, local.A, local.B, local.C, local.W[12]);
+     468:	eb02 62f7 	add.w	r2, r2, r7, ror #27
+    P(local.C, local.D, local.E, local.A, local.B, local.W[13]);
+     46c:	eb0c 0cb1 	add.w	ip, ip, r1, ror #2
+     470:	ea4f 07b7 	mov.w	r7, r7, ror #2
+    P(local.B, local.C, local.D, local.E, local.A, local.W[14]);
+     474:	9903      	ldr	r1, [sp, #12]
+    P(local.C, local.D, local.E, local.A, local.B, local.W[13]);
+     476:	4060      	eors	r0, r4
+     478:	4460      	add	r0, ip
+    P(local.B, local.C, local.D, local.E, local.A, local.W[14]);
+     47a:	ea87 0cb9 	eor.w	ip, r7, r9, ror #2
+     47e:	ea0c 0c02 	and.w	ip, ip, r2
+     482:	4419      	add	r1, r3
+     484:	4421      	add	r1, r4
+     486:	ea8c 0cb9 	eor.w	ip, ip, r9, ror #2
+    P(local.A, local.B, local.C, local.D, local.E, local.W[15]);
+     48a:	9c04      	ldr	r4, [sp, #16]
+    P(local.C, local.D, local.E, local.A, local.B, local.W[13]);
+     48c:	eb00 60f2 	add.w	r0, r0, r2, ror #27
+    P(local.B, local.C, local.D, local.E, local.A, local.W[14]);
+     490:	448c      	add	ip, r1
+    P(local.A, local.B, local.C, local.D, local.E, local.W[15]);
+     492:	ea87 01b2 	eor.w	r1, r7, r2, ror #2
+     496:	4001      	ands	r1, r0
+     498:	441c      	add	r4, r3
+    P(local.E, local.A, local.B, local.C, local.D, R(16));
+     49a:	ea8e 0e06 	eor.w	lr, lr, r6
+    P(local.A, local.B, local.C, local.D, local.E, local.W[15]);
+     49e:	eb04 04b9 	add.w	r4, r4, r9, ror #2
+    P(local.E, local.A, local.B, local.C, local.D, R(16));
+     4a2:	ea8e 0e0b 	eor.w	lr, lr, fp
+    P(local.A, local.B, local.C, local.D, local.E, local.W[15]);
+     4a6:	4079      	eors	r1, r7
+     4a8:	4421      	add	r1, r4
+    P(local.E, local.A, local.B, local.C, local.D, R(16));
+     4aa:	ea8e 0405 	eor.w	r4, lr, r5
+     4ae:	9406      	str	r4, [sp, #24]
+     4b0:	9d06      	ldr	r5, [sp, #24]
+     4b2:	eb03 7ef5 	add.w	lr, r3, r5, ror #31
+     4b6:	44be      	add	lr, r7
+    P(local.D, local.E, local.A, local.B, local.C, R(17));
+     4b8:	e9dd 5707 	ldrd	r5, r7, [sp, #28]
+     4bc:	406f      	eors	r7, r5
+     4be:	9d0a      	ldr	r5, [sp, #40]	@ 0x28
+    P(local.B, local.C, local.D, local.E, local.A, local.W[14]);
+     4c0:	eb0c 6cf0 	add.w	ip, ip, r0, ror #27
+    P(local.A, local.B, local.C, local.D, local.E, local.W[15]);
+     4c4:	ea4f 00b0 	mov.w	r0, r0, ror #2
+    P(local.E, local.A, local.B, local.C, local.D, R(16));
+     4c8:	ea80 04b2 	eor.w	r4, r0, r2, ror #2
+    P(local.D, local.E, local.A, local.B, local.C, R(17));
+     4cc:	406f      	eors	r7, r5
+     4ce:	9d03      	ldr	r5, [sp, #12]
+    P(local.E, local.A, local.B, local.C, local.D, R(16));
+     4d0:	ea04 040c 	and.w	r4, r4, ip
+    P(local.D, local.E, local.A, local.B, local.C, R(17));
+     4d4:	407d      	eors	r5, r7
+    P(local.E, local.A, local.B, local.C, local.D, R(16));
+     4d6:	ea84 04b2 	eor.w	r4, r4, r2, ror #2
+     4da:	4474      	add	r4, lr
+    P(local.D, local.E, local.A, local.B, local.C, R(17));
+     4dc:	eb03 7ef5 	add.w	lr, r3, r5, ror #31
+     4e0:	eb0e 0eb2 	add.w	lr, lr, r2, ror #2
+    P(local.C, local.D, local.E, local.A, local.B, R(18));
+     4e4:	9a0b      	ldr	r2, [sp, #44]	@ 0x2c
+    P(local.D, local.E, local.A, local.B, local.C, R(17));
+     4e6:	9507      	str	r5, [sp, #28]
+    P(local.C, local.D, local.E, local.A, local.B, R(18));
+     4e8:	ea86 0608 	eor.w	r6, r6, r8
+    P(local.A, local.B, local.C, local.D, local.E, local.W[15]);
+     4ec:	eb01 61fc 	add.w	r1, r1, ip, ror #27
+    P(local.D, local.E, local.A, local.B, local.C, R(17));
+     4f0:	ea80 07bc 	eor.w	r7, r0, ip, ror #2
+    P(local.C, local.D, local.E, local.A, local.B, R(18));
+     4f4:	4056      	eors	r6, r2
+     4f6:	9a04      	ldr	r2, [sp, #16]
+    P(local.D, local.E, local.A, local.B, local.C, R(17));
+     4f8:	400f      	ands	r7, r1
+    P(local.C, local.D, local.E, local.A, local.B, R(18));
+     4fa:	4056      	eors	r6, r2
+    P(local.D, local.E, local.A, local.B, local.C, R(17));
+     4fc:	4047      	eors	r7, r0
+     4fe:	4477      	add	r7, lr
+    P(local.C, local.D, local.E, local.A, local.B, R(18));
+     500:	eb03 7ef6 	add.w	lr, r3, r6, ror #31
+     504:	4486      	add	lr, r0
+    P(local.B, local.C, local.D, local.E, local.A, R(19));
+     506:	9808      	ldr	r0, [sp, #32]
+     508:	ea80 050a 	eor.w	r5, r0, sl
+     50c:	980c      	ldr	r0, [sp, #48]	@ 0x30
+     50e:	4045      	eors	r5, r0
+     510:	9806      	ldr	r0, [sp, #24]
+     512:	ea85 70f0 	eor.w	r0, r5, r0, ror #31
+     516:	9010      	str	r0, [sp, #64]	@ 0x40
+    P(local.E, local.A, local.B, local.C, local.D, R(16));
+     518:	eb04 64f1 	add.w	r4, r4, r1, ror #27
+    P(local.B, local.C, local.D, local.E, local.A, R(19));
+     51c:	9d10      	ldr	r5, [sp, #64]	@ 0x40
+    P(local.D, local.E, local.A, local.B, local.C, R(17));
+     51e:	ea4f 01b1 	mov.w	r1, r1, ror #2
+    P(local.B, local.C, local.D, local.E, local.A, R(19));
+     522:	ea4f 70f0 	mov.w	r0, r0, ror #31
+    P(local.D, local.E, local.A, local.B, local.C, R(17));
+     526:	eb07 67f4 	add.w	r7, r7, r4, ror #27
+    P(local.B, local.C, local.D, local.E, local.A, R(19));
+     52a:	9014      	str	r0, [sp, #80]	@ 0x50
+     52c:	ea81 00b4 	eor.w	r0, r1, r4, ror #2
+     530:	4038      	ands	r0, r7
+     532:	eb03 73f5 	add.w	r3, r3, r5, ror #31
+     536:	eb03 03bc 	add.w	r3, r3, ip, ror #2
+     53a:	4048      	eors	r0, r1
+     53c:	4418      	add	r0, r3
+#undef F
+
+#define F(x, y, z) ((x) ^ (y) ^ (z))
+#define K 0x6ED9EBA1
+
+    P(local.A, local.B, local.C, local.D, local.E, R(20));
+     53e:	9b09      	ldr	r3, [sp, #36]	@ 0x24
+     540:	ea88 0803 	eor.w	r8, r8, r3
+     544:	9b0d      	ldr	r3, [sp, #52]	@ 0x34
+     546:	ea88 0803 	eor.w	r8, r8, r3
+     54a:	9b07      	ldr	r3, [sp, #28]
+     54c:	ea88 73f3 	eor.w	r3, r8, r3, ror #31
+     550:	9308      	str	r3, [sp, #32]
+    P(local.C, local.D, local.E, local.A, local.B, R(18));
+     552:	ea4f 72f6 	mov.w	r2, r6, ror #31
+    P(local.A, local.B, local.C, local.D, local.E, R(20));
+     556:	4b4d      	ldr	r3, [pc, #308]	@ (68c <mbedtls_internal_sha1_process+0x408>)
+     558:	9d08      	ldr	r5, [sp, #32]
+    P(local.C, local.D, local.E, local.A, local.B, R(18));
+     55a:	9213      	str	r2, [sp, #76]	@ 0x4c
+     55c:	ea81 02bc 	eor.w	r2, r1, ip, ror #2
+     560:	4022      	ands	r2, r4
+     562:	ea82 02bc 	eor.w	r2, r2, ip, ror #2
+    P(local.A, local.B, local.C, local.D, local.E, R(20));
+     566:	eb03 7cf5 	add.w	ip, r3, r5, ror #31
+     56a:	448c      	add	ip, r1
+    P(local.E, local.A, local.B, local.C, local.D, R(21));
+     56c:	9911      	ldr	r1, [sp, #68]	@ 0x44
+     56e:	9d02      	ldr	r5, [sp, #8]
+    P(local.C, local.D, local.E, local.A, local.B, R(18));
+     570:	4472      	add	r2, lr
+     572:	eb02 62f7 	add.w	r2, r2, r7, ror #27
+    P(local.E, local.A, local.B, local.C, local.D, R(21));
+     576:	ea8a 0101 	eor.w	r1, sl, r1
+    P(local.B, local.C, local.D, local.E, local.A, R(19));
+     57a:	ea4f 07b7 	mov.w	r7, r7, ror #2
+    P(local.A, local.B, local.C, local.D, local.E, R(20));
+     57e:	ea87 09b4 	eor.w	r9, r7, r4, ror #2
+    P(local.E, local.A, local.B, local.C, local.D, R(21));
+     582:	4069      	eors	r1, r5
+     584:	ea81 71f6 	eor.w	r1, r1, r6, ror #31
+    P(local.A, local.B, local.C, local.D, local.E, R(20));
+     588:	ea89 0902 	eor.w	r9, r9, r2
+     58c:	44e1      	add	r9, ip
+    P(local.E, local.A, local.B, local.C, local.D, R(21));
+     58e:	eb03 7cf1 	add.w	ip, r3, r1, ror #31
+     592:	eb0c 0cb4 	add.w	ip, ip, r4, ror #2
+    P(local.D, local.E, local.A, local.B, local.C, R(22));
+     596:	9c09      	ldr	r4, [sp, #36]	@ 0x24
+    P(local.C, local.D, local.E, local.A, local.B, R(23));
+     598:	9d11      	ldr	r5, [sp, #68]	@ 0x44
+    P(local.D, local.E, local.A, local.B, local.C, R(22));
+     59a:	ea84 080b 	eor.w	r8, r4, fp
+     59e:	9c03      	ldr	r4, [sp, #12]
+     5a0:	ea88 0804 	eor.w	r8, r8, r4
+     5a4:	9c10      	ldr	r4, [sp, #64]	@ 0x40
+    P(local.B, local.C, local.D, local.E, local.A, R(19));
+     5a6:	eb00 60f2 	add.w	r0, r0, r2, ror #27
+    P(local.E, local.A, local.B, local.C, local.D, R(21));
+     5aa:	ea87 0ab2 	eor.w	sl, r7, r2, ror #2
+    P(local.D, local.E, local.A, local.B, local.C, R(22));
+     5ae:	ea88 78f4 	eor.w	r8, r8, r4, ror #31
+    P(local.E, local.A, local.B, local.C, local.D, R(21));
+     5b2:	ea8a 0a00 	eor.w	sl, sl, r0
+     5b6:	44e2      	add	sl, ip
+    P(local.D, local.E, local.A, local.B, local.C, R(22));
+     5b8:	eb03 7cf8 	add.w	ip, r3, r8, ror #31
+     5bc:	44bc      	add	ip, r7
+    P(local.C, local.D, local.E, local.A, local.B, R(23));
+     5be:	9f0a      	ldr	r7, [sp, #40]	@ 0x28
+     5c0:	ea85 0e07 	eor.w	lr, r5, r7
+     5c4:	9d04      	ldr	r5, [sp, #16]
+     5c6:	ea8e 0e05 	eor.w	lr, lr, r5
+     5ca:	9d08      	ldr	r5, [sp, #32]
+     5cc:	ea8e 7ef5 	eor.w	lr, lr, r5, ror #31
+    P(local.A, local.B, local.C, local.D, local.E, R(20));
+     5d0:	eb09 69f0 	add.w	r9, r9, r0, ror #27
+    P(local.D, local.E, local.A, local.B, local.C, R(22));
+     5d4:	ea4f 74f8 	mov.w	r4, r8, ror #31
+    P(local.E, local.A, local.B, local.C, local.D, R(21));
+     5d8:	ea4f 00b0 	mov.w	r0, r0, ror #2
+    P(local.C, local.D, local.E, local.A, local.B, R(23));
+     5dc:	eb03 77fe 	add.w	r7, r3, lr, ror #31
+    P(local.D, local.E, local.A, local.B, local.C, R(22));
+     5e0:	9415      	str	r4, [sp, #84]	@ 0x54
+    P(local.C, local.D, local.E, local.A, local.B, R(23));
+     5e2:	ea4f 75fe 	mov.w	r5, lr, ror #31
+    P(local.D, local.E, local.A, local.B, local.C, R(22));
+     5e6:	ea80 04b2 	eor.w	r4, r0, r2, ror #2
+    P(local.C, local.D, local.E, local.A, local.B, R(23));
+     5ea:	eb07 07b2 	add.w	r7, r7, r2, ror #2
+    P(local.B, local.C, local.D, local.E, local.A, R(24));
+     5ee:	9a0b      	ldr	r2, [sp, #44]	@ 0x2c
+    P(local.C, local.D, local.E, local.A, local.B, R(23));
+     5f0:	9511      	str	r5, [sp, #68]	@ 0x44
+    P(local.B, local.C, local.D, local.E, local.A, R(24));
+     5f2:	9d06      	ldr	r5, [sp, #24]
+    P(local.D, local.E, local.A, local.B, local.C, R(22));
+     5f4:	ea84 0409 	eor.w	r4, r4, r9
+    P(local.B, local.C, local.D, local.E, local.A, R(24));
+     5f8:	ea8b 0202 	eor.w	r2, fp, r2
+    P(local.E, local.A, local.B, local.C, local.D, R(21));
+     5fc:	eb0a 6af9 	add.w	sl, sl, r9, ror #27
+    P(local.D, local.E, local.A, local.B, local.C, R(22));
+     600:	4464      	add	r4, ip
+    P(local.B, local.C, local.D, local.E, local.A, R(24));
+     602:	ea82 72f5 	eor.w	r2, r2, r5, ror #31
+    P(local.C, local.D, local.E, local.A, local.B, R(23));
+     606:	ea80 0cb9 	eor.w	ip, r0, r9, ror #2
+    P(local.D, local.E, local.A, local.B, local.C, R(22));
+     60a:	eb04 64fa 	add.w	r4, r4, sl, ror #27
+    P(local.B, local.C, local.D, local.E, local.A, R(24));
+     60e:	ea82 72f1 	eor.w	r2, r2, r1, ror #31
+    P(local.C, local.D, local.E, local.A, local.B, R(23));
+     612:	ea8c 0c0a 	eor.w	ip, ip, sl
+     616:	ea4f 0aba 	mov.w	sl, sl, ror #2
+    P(local.B, local.C, local.D, local.E, local.A, R(24));
+     61a:	eb03 7bf2 	add.w	fp, r3, r2, ror #31
+    P(local.C, local.D, local.E, local.A, local.B, R(23));
+     61e:	44bc      	add	ip, r7
+    P(local.B, local.C, local.D, local.E, local.A, R(24));
+     620:	ea8a 07b9 	eor.w	r7, sl, r9, ror #2
+     624:	4067      	eors	r7, r4
+     626:	4483      	add	fp, r0
+    P(local.A, local.B, local.C, local.D, local.E, R(25));
+     628:	9d0a      	ldr	r5, [sp, #40]	@ 0x28
+    P(local.B, local.C, local.D, local.E, local.A, R(24));
+     62a:	9209      	str	r2, [sp, #36]	@ 0x24
+     62c:	eb07 000b 	add.w	r0, r7, fp
+    P(local.A, local.B, local.C, local.D, local.E, R(25));
+     630:	9f0c      	ldr	r7, [sp, #48]	@ 0x30
+    P(local.E, local.A, local.B, local.C, local.D, R(26));
+     632:	9a0d      	ldr	r2, [sp, #52]	@ 0x34
+    P(local.A, local.B, local.C, local.D, local.E, R(25));
+     634:	406f      	eors	r7, r5
+     636:	9d07      	ldr	r5, [sp, #28]
+     638:	ea87 77f5 	eor.w	r7, r7, r5, ror #31
+     63c:	ea87 75f8 	eor.w	r5, r7, r8, ror #31
+     640:	950a      	str	r5, [sp, #40]	@ 0x28
+     642:	eb03 7bf5 	add.w	fp, r3, r5, ror #31
+    P(local.E, local.A, local.B, local.C, local.D, R(26));
+     646:	9d0b      	ldr	r5, [sp, #44]	@ 0x2c
+    P(local.A, local.B, local.C, local.D, local.E, R(25));
+     648:	eb0b 0bb9 	add.w	fp, fp, r9, ror #2
+    P(local.E, local.A, local.B, local.C, local.D, R(26));
+     64c:	ea85 0902 	eor.w	r9, r5, r2
+     650:	ea89 76f6 	eor.w	r6, r9, r6, ror #31
+     654:	ea86 76fe 	eor.w	r6, r6, lr, ror #31
+    P(local.C, local.D, local.E, local.A, local.B, R(23));
+     658:	eb0c 6cf4 	add.w	ip, ip, r4, ror #27
+    P(local.A, local.B, local.C, local.D, local.E, R(25));
+     65c:	ea8a 07b4 	eor.w	r7, sl, r4, ror #2
+    P(local.E, local.A, local.B, local.C, local.D, R(26));
+     660:	ea4f 72f6 	mov.w	r2, r6, ror #31
+    P(local.D, local.E, local.A, local.B, local.C, R(27));
+     664:	9d02      	ldr	r5, [sp, #8]
+    P(local.E, local.A, local.B, local.C, local.D, R(26));
+     666:	9216      	str	r2, [sp, #88]	@ 0x58
+    P(local.A, local.B, local.C, local.D, local.E, R(25));
+     668:	ea87 070c 	eor.w	r7, r7, ip
+    P(local.D, local.E, local.A, local.B, local.C, R(27));
+     66c:	9a0c      	ldr	r2, [sp, #48]	@ 0x30
+    P(local.A, local.B, local.C, local.D, local.E, R(25));
+     66e:	445f      	add	r7, fp
+    P(local.E, local.A, local.B, local.C, local.D, R(26));
+     670:	eb03 7bf6 	add.w	fp, r3, r6, ror #31
+     674:	44d3      	add	fp, sl
+    P(local.D, local.E, local.A, local.B, local.C, R(27));
+     676:	ea82 0a05 	eor.w	sl, r2, r5
+     67a:	9a10      	ldr	r2, [sp, #64]	@ 0x40
+    P(local.B, local.C, local.D, local.E, local.A, R(24));
+     67c:	eb00 60fc 	add.w	r0, r0, ip, ror #27
+    P(local.D, local.E, local.A, local.B, local.C, R(27));
+     680:	ea8a 75f2 	eor.w	r5, sl, r2, ror #31
+     684:	e004      	b.n	690 <mbedtls_internal_sha1_process+0x40c>
+     686:	bf00      	nop
+     688:	5a827999 	.word	0x5a827999
+     68c:	6ed9eba1 	.word	0x6ed9eba1
+    P(local.A, local.B, local.C, local.D, local.E, R(25));
+     690:	ea4f 0cbc 	mov.w	ip, ip, ror #2
+    P(local.D, local.E, local.A, local.B, local.C, R(27));
+     694:	9a09      	ldr	r2, [sp, #36]	@ 0x24
+    P(local.E, local.A, local.B, local.C, local.D, R(26));
+     696:	ea8c 09b4 	eor.w	r9, ip, r4, ror #2
+    P(local.D, local.E, local.A, local.B, local.C, R(27));
+     69a:	ea85 75f2 	eor.w	r5, r5, r2, ror #31
+    P(local.E, local.A, local.B, local.C, local.D, R(26));
+     69e:	ea89 0900 	eor.w	r9, r9, r0
+    P(local.A, local.B, local.C, local.D, local.E, R(25));
+     6a2:	eb07 67f0 	add.w	r7, r7, r0, ror #27
+    P(local.D, local.E, local.A, local.B, local.C, R(27));
+     6a6:	ea8c 0ab0 	eor.w	sl, ip, r0, ror #2
+    P(local.E, local.A, local.B, local.C, local.D, R(26));
+     6aa:	44d9      	add	r9, fp
+    P(local.D, local.E, local.A, local.B, local.C, R(27));
+     6ac:	eb03 7bf5 	add.w	fp, r3, r5, ror #31
+     6b0:	ea8a 0a07 	eor.w	sl, sl, r7
+     6b4:	eb0b 0bb4 	add.w	fp, fp, r4, ror #2
+    P(local.E, local.A, local.B, local.C, local.D, R(26));
+     6b8:	eb09 69f7 	add.w	r9, r9, r7, ror #27
+    P(local.D, local.E, local.A, local.B, local.C, R(27));
+     6bc:	eb0a 040b 	add.w	r4, sl, fp
+     6c0:	ea4f 72f5 	mov.w	r2, r5, ror #31
+     6c4:	9210      	str	r2, [sp, #64]	@ 0x40
+     6c6:	eb04 62f9 	add.w	r2, r4, r9, ror #27
+     6ca:	920c      	str	r2, [sp, #48]	@ 0x30
+    P(local.C, local.D, local.E, local.A, local.B, R(28));
+     6cc:	9c03      	ldr	r4, [sp, #12]
+     6ce:	9a0d      	ldr	r2, [sp, #52]	@ 0x34
+     6d0:	ea82 0a04 	eor.w	sl, r2, r4
+     6d4:	9a08      	ldr	r2, [sp, #32]
+    P(local.B, local.C, local.D, local.E, local.A, R(29));
+     6d6:	9c04      	ldr	r4, [sp, #16]
+    P(local.C, local.D, local.E, local.A, local.B, R(28));
+     6d8:	ea8a 7af2 	eor.w	sl, sl, r2, ror #31
+     6dc:	9a0a      	ldr	r2, [sp, #40]	@ 0x28
+    P(local.D, local.E, local.A, local.B, local.C, R(27));
+     6de:	ea4f 07b7 	mov.w	r7, r7, ror #2
+    P(local.C, local.D, local.E, local.A, local.B, R(28));
+     6e2:	ea8a 72f2 	eor.w	r2, sl, r2, ror #31
+     6e6:	eb03 7bf2 	add.w	fp, r3, r2, ror #31
+     6ea:	ea87 0ab0 	eor.w	sl, r7, r0, ror #2
+     6ee:	920b      	str	r2, [sp, #44]	@ 0x2c
+     6f0:	ea8a 0a09 	eor.w	sl, sl, r9
+     6f4:	9a0c      	ldr	r2, [sp, #48]	@ 0x30
+     6f6:	44e3      	add	fp, ip
+     6f8:	eb0a 0c0b 	add.w	ip, sl, fp
+     6fc:	eb0c 6cf2 	add.w	ip, ip, r2, ror #27
+    P(local.B, local.C, local.D, local.E, local.A, R(29));
+     700:	9a02      	ldr	r2, [sp, #8]
+     702:	ea82 0a04 	eor.w	sl, r2, r4
+     706:	ea8a 7af1 	eor.w	sl, sl, r1, ror #31
+     70a:	ea8a 72f6 	eor.w	r2, sl, r6, ror #31
+     70e:	9202      	str	r2, [sp, #8]
+     710:	9a0c      	ldr	r2, [sp, #48]	@ 0x30
+     712:	ea87 0ab9 	eor.w	sl, r7, r9, ror #2
+     716:	ea8a 0a02 	eor.w	sl, sl, r2
+     71a:	9a02      	ldr	r2, [sp, #8]
+     71c:	eb03 7bf2 	add.w	fp, r3, r2, ror #31
+     720:	9a0c      	ldr	r2, [sp, #48]	@ 0x30
+     722:	eb0b 0bb0 	add.w	fp, fp, r0, ror #2
+     726:	44da      	add	sl, fp
+    P(local.A, local.B, local.C, local.D, local.E, R(30));
+     728:	9806      	ldr	r0, [sp, #24]
+    P(local.B, local.C, local.D, local.E, local.A, R(29));
+     72a:	ea4f 0bb2 	mov.w	fp, r2, ror #2
+    P(local.A, local.B, local.C, local.D, local.E, R(30));
+     72e:	9a03      	ldr	r2, [sp, #12]
+     730:	ea82 74f0 	eor.w	r4, r2, r0, ror #31
+     734:	ea84 74f8 	eor.w	r4, r4, r8, ror #31
+     738:	ea84 74f5 	eor.w	r4, r4, r5, ror #31
+     73c:	ea8b 00b9 	eor.w	r0, fp, r9, ror #2
+     740:	eb03 78f4 	add.w	r8, r3, r4, ror #31
+     744:	ea4f 72f4 	mov.w	r2, r4, ror #31
+     748:	ea80 000c 	eor.w	r0, r0, ip
+     74c:	44b8      	add	r8, r7
+     74e:	920d      	str	r2, [sp, #52]	@ 0x34
+     750:	eb00 0708 	add.w	r7, r0, r8
+    P(local.E, local.A, local.B, local.C, local.D, R(31));
+     754:	9a04      	ldr	r2, [sp, #16]
+     756:	9807      	ldr	r0, [sp, #28]
+     758:	ea82 70f0 	eor.w	r0, r2, r0, ror #31
+     75c:	9a0b      	ldr	r2, [sp, #44]	@ 0x2c
+     75e:	ea80 70fe 	eor.w	r0, r0, lr, ror #31
+     762:	ea80 72f2 	eor.w	r2, r0, r2, ror #31
+     766:	920c      	str	r2, [sp, #48]	@ 0x30
+     768:	ea4f 72f2 	mov.w	r2, r2, ror #31
+     76c:	9217      	str	r2, [sp, #92]	@ 0x5c
+     76e:	9a0c      	ldr	r2, [sp, #48]	@ 0x30
+    P(local.D, local.E, local.A, local.B, local.C, R(32));
+     770:	9806      	ldr	r0, [sp, #24]
+    P(local.B, local.C, local.D, local.E, local.A, R(29));
+     772:	eb0a 6afc 	add.w	sl, sl, ip, ror #27
+    P(local.E, local.A, local.B, local.C, local.D, R(31));
+     776:	ea8b 0ebc 	eor.w	lr, fp, ip, ror #2
+     77a:	eb03 78f2 	add.w	r8, r3, r2, ror #31
+    P(local.D, local.E, local.A, local.B, local.C, R(32));
+     77e:	9a13      	ldr	r2, [sp, #76]	@ 0x4c
+    P(local.E, local.A, local.B, local.C, local.D, R(31));
+     780:	eb08 08b9 	add.w	r8, r8, r9, ror #2
+     784:	ea8e 0e0a 	eor.w	lr, lr, sl
+     788:	44c6      	add	lr, r8
+    P(local.D, local.E, local.A, local.B, local.C, R(32));
+     78a:	ea82 78f0 	eor.w	r8, r2, r0, ror #31
+     78e:	9a09      	ldr	r2, [sp, #36]	@ 0x24
+    P(local.C, local.D, local.E, local.A, local.B, R(33));
+     790:	9807      	ldr	r0, [sp, #28]
+    P(local.D, local.E, local.A, local.B, local.C, R(32));
+     792:	ea88 78f2 	eor.w	r8, r8, r2, ror #31
+     796:	9a02      	ldr	r2, [sp, #8]
+    P(local.A, local.B, local.C, local.D, local.E, R(30));
+     798:	eb07 67fa 	add.w	r7, r7, sl, ror #27
+    P(local.D, local.E, local.A, local.B, local.C, R(32));
+     79c:	ea88 72f2 	eor.w	r2, r8, r2, ror #31
+    P(local.E, local.A, local.B, local.C, local.D, R(31));
+     7a0:	ea4f 0aba 	mov.w	sl, sl, ror #2
+    P(local.D, local.E, local.A, local.B, local.C, R(32));
+     7a4:	9203      	str	r2, [sp, #12]
+     7a6:	ea8a 08bc 	eor.w	r8, sl, ip, ror #2
+     7aa:	eb03 79f2 	add.w	r9, r3, r2, ror #31
+    P(local.C, local.D, local.E, local.A, local.B, R(33));
+     7ae:	9a14      	ldr	r2, [sp, #80]	@ 0x50
+    P(local.D, local.E, local.A, local.B, local.C, R(32));
+     7b0:	44d9      	add	r9, fp
+     7b2:	ea88 0807 	eor.w	r8, r8, r7
+     7b6:	44c8      	add	r8, r9
+    P(local.C, local.D, local.E, local.A, local.B, R(33));
+     7b8:	ea82 79f0 	eor.w	r9, r2, r0, ror #31
+     7bc:	9a0a      	ldr	r2, [sp, #40]	@ 0x28
+    P(local.B, local.C, local.D, local.E, local.A, R(34));
+     7be:	9808      	ldr	r0, [sp, #32]
+    P(local.C, local.D, local.E, local.A, local.B, R(33));
+     7c0:	ea89 79f2 	eor.w	r9, r9, r2, ror #31
+     7c4:	ea89 72f4 	eor.w	r2, r9, r4, ror #31
+    P(local.E, local.A, local.B, local.C, local.D, R(31));
+     7c8:	eb0e 6ef7 	add.w	lr, lr, r7, ror #27
+    P(local.C, local.D, local.E, local.A, local.B, R(33));
+     7cc:	9204      	str	r2, [sp, #16]
+     7ce:	ea8a 09b7 	eor.w	r9, sl, r7, ror #2
+     7d2:	eb03 7bf2 	add.w	fp, r3, r2, ror #31
+    P(local.B, local.C, local.D, local.E, local.A, R(34));
+     7d6:	9a13      	ldr	r2, [sp, #76]	@ 0x4c
+    P(local.C, local.D, local.E, local.A, local.B, R(33));
+     7d8:	ea89 090e 	eor.w	r9, r9, lr
+     7dc:	eb0b 0bbc 	add.w	fp, fp, ip, ror #2
+     7e0:	eb09 0c0b 	add.w	ip, r9, fp
+    P(local.B, local.C, local.D, local.E, local.A, R(34));
+     7e4:	ea82 79f0 	eor.w	r9, r2, r0, ror #31
+     7e8:	9a0c      	ldr	r2, [sp, #48]	@ 0x30
+     7ea:	ea89 79f6 	eor.w	r9, r9, r6, ror #31
+     7ee:	ea89 79f2 	eor.w	r9, r9, r2, ror #31
+    P(local.D, local.E, local.A, local.B, local.C, R(32));
+     7f2:	eb08 68fe 	add.w	r8, r8, lr, ror #27
+    P(local.B, local.C, local.D, local.E, local.A, R(34));
+     7f6:	ea4f 72f9 	mov.w	r2, r9, ror #31
+    P(local.C, local.D, local.E, local.A, local.B, R(33));
+     7fa:	ea4f 0ebe 	mov.w	lr, lr, ror #2
+    P(local.B, local.C, local.D, local.E, local.A, R(34));
+     7fe:	9213      	str	r2, [sp, #76]	@ 0x4c
+     800:	ea8e 06b7 	eor.w	r6, lr, r7, ror #2
+    P(local.A, local.B, local.C, local.D, local.E, R(35));
+     804:	9a14      	ldr	r2, [sp, #80]	@ 0x50
+    P(local.B, local.C, local.D, local.E, local.A, R(34));
+     806:	eb03 7bf9 	add.w	fp, r3, r9, ror #31
+     80a:	ea86 0608 	eor.w	r6, r6, r8
+     80e:	44d3      	add	fp, sl
+     810:	eb06 0a0b 	add.w	sl, r6, fp
+    P(local.A, local.B, local.C, local.D, local.E, R(35));
+     814:	ea82 76f1 	eor.w	r6, r2, r1, ror #31
+     818:	9a03      	ldr	r2, [sp, #12]
+     81a:	ea86 76f5 	eor.w	r6, r6, r5, ror #31
+     81e:	ea86 76f2 	eor.w	r6, r6, r2, ror #31
+     822:	ea4f 72f6 	mov.w	r2, r6, ror #31
+     826:	9214      	str	r2, [sp, #80]	@ 0x50
+    P(local.E, local.A, local.B, local.C, local.D, R(36));
+     828:	9a15      	ldr	r2, [sp, #84]	@ 0x54
+    P(local.A, local.B, local.C, local.D, local.E, R(35));
+     82a:	eb03 7bf6 	add.w	fp, r3, r6, ror #31
+     82e:	eb0b 0bb7 	add.w	fp, fp, r7, ror #2
+    P(local.E, local.A, local.B, local.C, local.D, R(36));
+     832:	ea82 77f0 	eor.w	r7, r2, r0, ror #31
+     836:	9a0b      	ldr	r2, [sp, #44]	@ 0x2c
+    P(local.D, local.E, local.A, local.B, local.C, R(37));
+    P(local.C, local.D, local.E, local.A, local.B, R(38));
+    P(local.B, local.C, local.D, local.E, local.A, R(39));
+     838:	980a      	ldr	r0, [sp, #40]	@ 0x28
+    P(local.E, local.A, local.B, local.C, local.D, R(36));
+     83a:	ea87 77f2 	eor.w	r7, r7, r2, ror #31
+     83e:	9a04      	ldr	r2, [sp, #16]
+    P(local.C, local.D, local.E, local.A, local.B, R(33));
+     840:	eb0c 6cf8 	add.w	ip, ip, r8, ror #27
+    P(local.A, local.B, local.C, local.D, local.E, R(35));
+     844:	ea8e 05b8 	eor.w	r5, lr, r8, ror #2
+    P(local.E, local.A, local.B, local.C, local.D, R(36));
+     848:	ea87 72f2 	eor.w	r2, r7, r2, ror #31
+    P(local.A, local.B, local.C, local.D, local.E, R(35));
+     84c:	ea85 050c 	eor.w	r5, r5, ip
+    P(local.E, local.A, local.B, local.C, local.D, R(36));
+     850:	9206      	str	r2, [sp, #24]
+    P(local.A, local.B, local.C, local.D, local.E, R(35));
+     852:	445d      	add	r5, fp
+    P(local.E, local.A, local.B, local.C, local.D, R(36));
+     854:	eb03 7bf2 	add.w	fp, r3, r2, ror #31
+    P(local.D, local.E, local.A, local.B, local.C, R(37));
+     858:	9a11      	ldr	r2, [sp, #68]	@ 0x44
+    P(local.B, local.C, local.D, local.E, local.A, R(34));
+     85a:	eb0a 6afc 	add.w	sl, sl, ip, ror #27
+    P(local.D, local.E, local.A, local.B, local.C, R(37));
+     85e:	ea82 71f1 	eor.w	r1, r2, r1, ror #31
+    P(local.A, local.B, local.C, local.D, local.E, R(35));
+     862:	ea4f 0cbc 	mov.w	ip, ip, ror #2
+    P(local.D, local.E, local.A, local.B, local.C, R(37));
+     866:	9a02      	ldr	r2, [sp, #8]
+    P(local.E, local.A, local.B, local.C, local.D, R(36));
+     868:	ea8c 07b8 	eor.w	r7, ip, r8, ror #2
+     86c:	44f3      	add	fp, lr
+    P(local.D, local.E, local.A, local.B, local.C, R(37));
+     86e:	ea81 71f2 	eor.w	r1, r1, r2, ror #31
+    P(local.E, local.A, local.B, local.C, local.D, R(36));
+     872:	ea87 070a 	eor.w	r7, r7, sl
+     876:	445f      	add	r7, fp
+    P(local.D, local.E, local.A, local.B, local.C, R(37));
+     878:	ea81 7bf9 	eor.w	fp, r1, r9, ror #31
+    P(local.A, local.B, local.C, local.D, local.E, R(35));
+     87c:	eb05 65fa 	add.w	r5, r5, sl, ror #27
+    P(local.D, local.E, local.A, local.B, local.C, R(37));
+     880:	ea8c 0eba 	eor.w	lr, ip, sl, ror #2
+     884:	eb03 71fb 	add.w	r1, r3, fp, ror #31
+     888:	eb01 01b8 	add.w	r1, r1, r8, ror #2
+     88c:	ea8e 0e05 	eor.w	lr, lr, r5
+    P(local.C, local.D, local.E, local.A, local.B, R(38));
+     890:	9a15      	ldr	r2, [sp, #84]	@ 0x54
+    P(local.D, local.E, local.A, local.B, local.C, R(37));
+     892:	448e      	add	lr, r1
+    P(local.C, local.D, local.E, local.A, local.B, R(38));
+     894:	9909      	ldr	r1, [sp, #36]	@ 0x24
+     896:	ea82 71f1 	eor.w	r1, r2, r1, ror #31
+     89a:	ea81 74f4 	eor.w	r4, r1, r4, ror #31
+     89e:	ea84 74f6 	eor.w	r4, r4, r6, ror #31
+     8a2:	ea4f 72f4 	mov.w	r2, r4, ror #31
+     8a6:	9215      	str	r2, [sp, #84]	@ 0x54
+    P(local.B, local.C, local.D, local.E, local.A, R(39));
+     8a8:	9a11      	ldr	r2, [sp, #68]	@ 0x44
+    P(local.C, local.D, local.E, local.A, local.B, R(38));
+     8aa:	eb03 78f4 	add.w	r8, r3, r4, ror #31
+     8ae:	44e0      	add	r8, ip
+    P(local.B, local.C, local.D, local.E, local.A, R(39));
+     8b0:	ea82 7cf0 	eor.w	ip, r2, r0, ror #31
+     8b4:	9a0c      	ldr	r2, [sp, #48]	@ 0x30
+     8b6:	ea8c 70f2 	eor.w	r0, ip, r2, ror #31
+     8ba:	9a06      	ldr	r2, [sp, #24]
+     8bc:	ea80 72f2 	eor.w	r2, r0, r2, ror #31
+     8c0:	920c      	str	r2, [sp, #48]	@ 0x30
+     8c2:	ea4f 72f2 	mov.w	r2, r2, ror #31
+     8c6:	9211      	str	r2, [sp, #68]	@ 0x44
+     8c8:	9a0c      	ldr	r2, [sp, #48]	@ 0x30
+#undef F
+
+#define F(x, y, z) (((x) & (y)) | ((z) & ((x) | (y))))
+#define K 0x8F1BBCDC
+
+    P(local.A, local.B, local.C, local.D, local.E, R(40));
+     8ca:	48db      	ldr	r0, [pc, #876]	@ (c38 <mbedtls_internal_sha1_process+0x9b4>)
+    P(local.E, local.A, local.B, local.C, local.D, R(36));
+     8cc:	eb07 67f5 	add.w	r7, r7, r5, ror #27
+    P(local.D, local.E, local.A, local.B, local.C, R(37));
+     8d0:	ea4f 05b5 	mov.w	r5, r5, ror #2
+     8d4:	eb0e 6ef7 	add.w	lr, lr, r7, ror #27
+    P(local.B, local.C, local.D, local.E, local.A, R(39));
+     8d8:	ea85 0cb7 	eor.w	ip, r5, r7, ror #2
+     8dc:	eb03 73f2 	add.w	r3, r3, r2, ror #31
+     8e0:	eb03 03ba 	add.w	r3, r3, sl, ror #2
+     8e4:	ea8c 0c0e 	eor.w	ip, ip, lr
+    P(local.A, local.B, local.C, local.D, local.E, R(40));
+     8e8:	9a09      	ldr	r2, [sp, #36]	@ 0x24
+    P(local.B, local.C, local.D, local.E, local.A, R(39));
+     8ea:	449c      	add	ip, r3
+    P(local.A, local.B, local.C, local.D, local.E, R(40));
+     8ec:	9b16      	ldr	r3, [sp, #88]	@ 0x58
+     8ee:	ea83 72f2 	eor.w	r2, r3, r2, ror #31
+     8f2:	9b03      	ldr	r3, [sp, #12]
+    P(local.C, local.D, local.E, local.A, local.B, R(38));
+     8f4:	ea85 01ba 	eor.w	r1, r5, sl, ror #2
+     8f8:	4079      	eors	r1, r7
+    P(local.A, local.B, local.C, local.D, local.E, R(40));
+     8fa:	ea82 72f3 	eor.w	r2, r2, r3, ror #31
+     8fe:	ea82 73fb 	eor.w	r3, r2, fp, ror #31
+    P(local.C, local.D, local.E, local.A, local.B, R(38));
+     902:	4441      	add	r1, r8
+     904:	eb01 61fe 	add.w	r1, r1, lr, ror #27
+    P(local.A, local.B, local.C, local.D, local.E, R(40));
+     908:	eb00 72f3 	add.w	r2, r0, r3, ror #31
+     90c:	4415      	add	r5, r2
+     90e:	ea41 02be 	orr.w	r2, r1, lr, ror #2
+    P(local.B, local.C, local.D, local.E, local.A, R(39));
+     912:	eb0c 6cf1 	add.w	ip, ip, r1, ror #27
+    P(local.A, local.B, local.C, local.D, local.E, R(40));
+     916:	ea01 08be 	and.w	r8, r1, lr, ror #2
+     91a:	ea02 02b7 	and.w	r2, r2, r7, ror #2
+     91e:	eb05 65fc 	add.w	r5, r5, ip, ror #27
+     922:	ea42 0208 	orr.w	r2, r2, r8
+     926:	442a      	add	r2, r5
+     928:	9307      	str	r3, [sp, #28]
+    P(local.E, local.A, local.B, local.C, local.D, R(41));
+     92a:	9d10      	ldr	r5, [sp, #64]	@ 0x40
+     92c:	9b0a      	ldr	r3, [sp, #40]	@ 0x28
+     92e:	ea85 75f3 	eor.w	r5, r5, r3, ror #31
+     932:	9b04      	ldr	r3, [sp, #16]
+     934:	ea4c 08b1 	orr.w	r8, ip, r1, ror #2
+     938:	ea85 75f3 	eor.w	r5, r5, r3, ror #31
+     93c:	ea85 73f4 	eor.w	r3, r5, r4, ror #31
+     940:	ea08 08be 	and.w	r8, r8, lr, ror #2
+     944:	ea0c 05b1 	and.w	r5, ip, r1, ror #2
+     948:	ea48 0505 	orr.w	r5, r8, r5
+     94c:	eb00 78f3 	add.w	r8, r0, r3, ror #31
+     950:	eb08 08b7 	add.w	r8, r8, r7, ror #2
+     954:	9308      	str	r3, [sp, #32]
+     956:	eb05 0708 	add.w	r7, r5, r8
+    P(local.D, local.E, local.A, local.B, local.C, R(42));
+     95a:	9b16      	ldr	r3, [sp, #88]	@ 0x58
+     95c:	9d0b      	ldr	r5, [sp, #44]	@ 0x2c
+     95e:	ea83 78f5 	eor.w	r8, r3, r5, ror #31
+     962:	9b0c      	ldr	r3, [sp, #48]	@ 0x30
+     964:	ea88 78f9 	eor.w	r8, r8, r9, ror #31
+     968:	ea88 78f3 	eor.w	r8, r8, r3, ror #31
+     96c:	eb00 75f8 	add.w	r5, r0, r8, ror #31
+     970:	eb05 0ebe 	add.w	lr, r5, lr, ror #2
+     974:	ea42 05bc 	orr.w	r5, r2, ip, ror #2
+    P(local.E, local.A, local.B, local.C, local.D, R(41));
+     978:	eb07 67f2 	add.w	r7, r7, r2, ror #27
+    P(local.D, local.E, local.A, local.B, local.C, R(42));
+     97c:	ea02 09bc 	and.w	r9, r2, ip, ror #2
+     980:	ea05 05b1 	and.w	r5, r5, r1, ror #2
+     984:	ea4f 73f8 	mov.w	r3, r8, ror #31
+     988:	ea45 0509 	orr.w	r5, r5, r9
+     98c:	eb0e 6ef7 	add.w	lr, lr, r7, ror #27
+     990:	44ae      	add	lr, r5
+     992:	9316      	str	r3, [sp, #88]	@ 0x58
+    P(local.C, local.D, local.E, local.A, local.B, R(43));
+     994:	9d02      	ldr	r5, [sp, #8]
+     996:	9b10      	ldr	r3, [sp, #64]	@ 0x40
+     998:	ea83 75f5 	eor.w	r5, r3, r5, ror #31
+     99c:	9b07      	ldr	r3, [sp, #28]
+     99e:	ea47 09b2 	orr.w	r9, r7, r2, ror #2
+     9a2:	ea85 76f6 	eor.w	r6, r5, r6, ror #31
+     9a6:	ea86 76f3 	eor.w	r6, r6, r3, ror #31
+     9aa:	ea09 09bc 	and.w	r9, r9, ip, ror #2
+     9ae:	ea07 05b2 	and.w	r5, r7, r2, ror #2
+     9b2:	ea4f 73f6 	mov.w	r3, r6, ror #31
+     9b6:	ea49 0505 	orr.w	r5, r9, r5
+     9ba:	eb00 79f6 	add.w	r9, r0, r6, ror #31
+     9be:	9310      	str	r3, [sp, #64]	@ 0x40
+     9c0:	eb09 09b1 	add.w	r9, r9, r1, ror #2
+    P(local.B, local.C, local.D, local.E, local.A, R(44));
+     9c4:	9b0d      	ldr	r3, [sp, #52]	@ 0x34
+     9c6:	990b      	ldr	r1, [sp, #44]	@ 0x2c
+     9c8:	ea83 71f1 	eor.w	r1, r3, r1, ror #31
+     9cc:	9b06      	ldr	r3, [sp, #24]
+     9ce:	ea81 71f3 	eor.w	r1, r1, r3, ror #31
+     9d2:	9b08      	ldr	r3, [sp, #32]
+     9d4:	ea81 73f3 	eor.w	r3, r1, r3, ror #31
+     9d8:	eb00 71f3 	add.w	r1, r0, r3, ror #31
+    P(local.C, local.D, local.E, local.A, local.B, R(43));
+     9dc:	444d      	add	r5, r9
+    P(local.B, local.C, local.D, local.E, local.A, R(44));
+     9de:	eb01 0cbc 	add.w	ip, r1, ip, ror #2
+     9e2:	ea4e 01b7 	orr.w	r1, lr, r7, ror #2
+    P(local.C, local.D, local.E, local.A, local.B, R(43));
+     9e6:	eb05 65fe 	add.w	r5, r5, lr, ror #27
+    P(local.A, local.B, local.C, local.D, local.E, R(45));
+     9ea:	9802      	ldr	r0, [sp, #8]
+    P(local.B, local.C, local.D, local.E, local.A, R(44));
+     9ec:	9309      	str	r3, [sp, #36]	@ 0x24
+     9ee:	ea0e 09b7 	and.w	r9, lr, r7, ror #2
+    P(local.A, local.B, local.C, local.D, local.E, R(45));
+     9f2:	9b17      	ldr	r3, [sp, #92]	@ 0x5c
+    P(local.B, local.C, local.D, local.E, local.A, R(44));
+     9f4:	ea01 01b2 	and.w	r1, r1, r2, ror #2
+     9f8:	eb0c 6cf5 	add.w	ip, ip, r5, ror #27
+     9fc:	ea41 0109 	orr.w	r1, r1, r9
+     a00:	4461      	add	r1, ip
+    P(local.A, local.B, local.C, local.D, local.E, R(45));
+     a02:	ea83 7cf0 	eor.w	ip, r3, r0, ror #31
+     a06:	ea8c 7cfb 	eor.w	ip, ip, fp, ror #31
+     a0a:	488b      	ldr	r0, [pc, #556]	@ (c38 <mbedtls_internal_sha1_process+0x9b4>)
+     a0c:	ea45 09be 	orr.w	r9, r5, lr, ror #2
+     a10:	ea8c 73f8 	eor.w	r3, ip, r8, ror #31
+     a14:	ea09 09b7 	and.w	r9, r9, r7, ror #2
+     a18:	ea05 0cbe 	and.w	ip, r5, lr, ror #2
+     a1c:	ea49 0c0c 	orr.w	ip, r9, ip
+     a20:	eb00 79f3 	add.w	r9, r0, r3, ror #31
+     a24:	9302      	str	r3, [sp, #8]
+     a26:	eb09 09b2 	add.w	r9, r9, r2, ror #2
+    P(local.E, local.A, local.B, local.C, local.D, R(46));
+     a2a:	9b0d      	ldr	r3, [sp, #52]	@ 0x34
+     a2c:	9a03      	ldr	r2, [sp, #12]
+     a2e:	ea83 72f2 	eor.w	r2, r3, r2, ror #31
+     a32:	ea82 74f4 	eor.w	r4, r2, r4, ror #31
+     a36:	ea84 74f6 	eor.w	r4, r4, r6, ror #31
+     a3a:	eb00 72f4 	add.w	r2, r0, r4, ror #31
+    P(local.A, local.B, local.C, local.D, local.E, R(45));
+     a3e:	44cc      	add	ip, r9
+    P(local.E, local.A, local.B, local.C, local.D, R(46));
+     a40:	eb02 07b7 	add.w	r7, r2, r7, ror #2
+     a44:	ea41 02b5 	orr.w	r2, r1, r5, ror #2
+    P(local.A, local.B, local.C, local.D, local.E, R(45));
+     a48:	eb0c 6cf1 	add.w	ip, ip, r1, ror #27
+    P(local.E, local.A, local.B, local.C, local.D, R(46));
+     a4c:	ea01 09b5 	and.w	r9, r1, r5, ror #2
+     a50:	ea02 02be 	and.w	r2, r2, lr, ror #2
+     a54:	ea4f 73f4 	mov.w	r3, r4, ror #31
+     a58:	ea42 0209 	orr.w	r2, r2, r9
+     a5c:	eb07 67fc 	add.w	r7, r7, ip, ror #27
+     a60:	4417      	add	r7, r2
+     a62:	930d      	str	r3, [sp, #52]	@ 0x34
+    P(local.D, local.E, local.A, local.B, local.C, R(47));
+     a64:	9b17      	ldr	r3, [sp, #92]	@ 0x5c
+     a66:	9a04      	ldr	r2, [sp, #16]
+     a68:	ea83 72f2 	eor.w	r2, r3, r2, ror #31
+     a6c:	9b0c      	ldr	r3, [sp, #48]	@ 0x30
+     a6e:	ea82 70f3 	eor.w	r0, r2, r3, ror #31
+     a72:	9b09      	ldr	r3, [sp, #36]	@ 0x24
+     a74:	ea80 73f3 	eor.w	r3, r0, r3, ror #31
+     a78:	930a      	str	r3, [sp, #40]	@ 0x28
+     a7a:	ea4f 73f3 	mov.w	r3, r3, ror #31
+     a7e:	930c      	str	r3, [sp, #48]	@ 0x30
+     a80:	ea4c 09b1 	orr.w	r9, ip, r1, ror #2
+     a84:	9b0a      	ldr	r3, [sp, #40]	@ 0x28
+     a86:	486c      	ldr	r0, [pc, #432]	@ (c38 <mbedtls_internal_sha1_process+0x9b4>)
+     a88:	ea09 09b5 	and.w	r9, r9, r5, ror #2
+     a8c:	ea0c 02b1 	and.w	r2, ip, r1, ror #2
+     a90:	ea49 0202 	orr.w	r2, r9, r2
+     a94:	eb00 79f3 	add.w	r9, r0, r3, ror #31
+    P(local.C, local.D, local.E, local.A, local.B, R(48));
+     a98:	9b13      	ldr	r3, [sp, #76]	@ 0x4c
+     a9a:	9803      	ldr	r0, [sp, #12]
+    P(local.D, local.E, local.A, local.B, local.C, R(47));
+     a9c:	eb09 09be 	add.w	r9, r9, lr, ror #2
+    P(local.C, local.D, local.E, local.A, local.B, R(48));
+     aa0:	ea83 7ef0 	eor.w	lr, r3, r0, ror #31
+     aa4:	9b07      	ldr	r3, [sp, #28]
+     aa6:	4864      	ldr	r0, [pc, #400]	@ (c38 <mbedtls_internal_sha1_process+0x9b4>)
+     aa8:	ea8e 7ef3 	eor.w	lr, lr, r3, ror #31
+     aac:	9b02      	ldr	r3, [sp, #8]
+     aae:	ea8e 73f3 	eor.w	r3, lr, r3, ror #31
+    P(local.D, local.E, local.A, local.B, local.C, R(47));
+     ab2:	444a      	add	r2, r9
+    P(local.C, local.D, local.E, local.A, local.B, R(48));
+     ab4:	eb00 79f3 	add.w	r9, r0, r3, ror #31
+     ab8:	eb09 09b5 	add.w	r9, r9, r5, ror #2
+     abc:	ea47 05bc 	orr.w	r5, r7, ip, ror #2
+    P(local.D, local.E, local.A, local.B, local.C, R(47));
+     ac0:	eb02 62f7 	add.w	r2, r2, r7, ror #27
+    P(local.B, local.C, local.D, local.E, local.A, R(49));
+     ac4:	9804      	ldr	r0, [sp, #16]
+    P(local.C, local.D, local.E, local.A, local.B, R(48));
+     ac6:	9303      	str	r3, [sp, #12]
+     ac8:	ea07 0ebc 	and.w	lr, r7, ip, ror #2
+    P(local.B, local.C, local.D, local.E, local.A, R(49));
+     acc:	9b14      	ldr	r3, [sp, #80]	@ 0x50
+    P(local.C, local.D, local.E, local.A, local.B, R(48));
+     ace:	ea05 05b1 	and.w	r5, r5, r1, ror #2
+     ad2:	ea45 050e 	orr.w	r5, r5, lr
+     ad6:	eb09 69f2 	add.w	r9, r9, r2, ror #27
+     ada:	44a9      	add	r9, r5
+    P(local.B, local.C, local.D, local.E, local.A, R(49));
+     adc:	ea83 75f0 	eor.w	r5, r3, r0, ror #31
+     ae0:	9b08      	ldr	r3, [sp, #32]
+     ae2:	4855      	ldr	r0, [pc, #340]	@ (c38 <mbedtls_internal_sha1_process+0x9b4>)
+     ae4:	ea85 75f3 	eor.w	r5, r5, r3, ror #31
+     ae8:	ea85 73f4 	eor.w	r3, r5, r4, ror #31
+     aec:	ea42 05b7 	orr.w	r5, r2, r7, ror #2
+     af0:	ea05 05bc 	and.w	r5, r5, ip, ror #2
+     af4:	ea02 0eb7 	and.w	lr, r2, r7, ror #2
+     af8:	ea45 0e0e 	orr.w	lr, r5, lr
+     afc:	eb00 75f3 	add.w	r5, r0, r3, ror #31
+     b00:	9304      	str	r3, [sp, #16]
+     b02:	eb05 05b1 	add.w	r5, r5, r1, ror #2
+    P(local.A, local.B, local.C, local.D, local.E, R(50));
+     b06:	9b13      	ldr	r3, [sp, #76]	@ 0x4c
+     b08:	9906      	ldr	r1, [sp, #24]
+     b0a:	ea83 71f1 	eor.w	r1, r3, r1, ror #31
+     b0e:	9b0a      	ldr	r3, [sp, #40]	@ 0x28
+     b10:	ea81 78f8 	eor.w	r8, r1, r8, ror #31
+     b14:	ea88 78f3 	eor.w	r8, r8, r3, ror #31
+     b18:	eb00 71f8 	add.w	r1, r0, r8, ror #31
+     b1c:	ea4f 73f8 	mov.w	r3, r8, ror #31
+     b20:	9313      	str	r3, [sp, #76]	@ 0x4c
+    P(local.B, local.C, local.D, local.E, local.A, R(49));
+     b22:	44ae      	add	lr, r5
+    P(local.E, local.A, local.B, local.C, local.D, R(51));
+     b24:	9b14      	ldr	r3, [sp, #80]	@ 0x50
+    P(local.A, local.B, local.C, local.D, local.E, R(50));
+     b26:	eb01 0cbc 	add.w	ip, r1, ip, ror #2
+     b2a:	ea49 01b2 	orr.w	r1, r9, r2, ror #2
+    P(local.B, local.C, local.D, local.E, local.A, R(49));
+     b2e:	eb0e 6ef9 	add.w	lr, lr, r9, ror #27
+    P(local.A, local.B, local.C, local.D, local.E, R(50));
+     b32:	ea09 05b2 	and.w	r5, r9, r2, ror #2
+     b36:	ea01 01b7 	and.w	r1, r1, r7, ror #2
+     b3a:	4329      	orrs	r1, r5
+    P(local.E, local.A, local.B, local.C, local.D, R(51));
+     b3c:	ea83 7afb 	eor.w	sl, r3, fp, ror #31
+    P(local.A, local.B, local.C, local.D, local.E, R(50));
+     b40:	eb0c 6cfe 	add.w	ip, ip, lr, ror #27
+    P(local.E, local.A, local.B, local.C, local.D, R(51));
+     b44:	9b03      	ldr	r3, [sp, #12]
+    P(local.A, local.B, local.C, local.D, local.E, R(50));
+     b46:	448c      	add	ip, r1
+    P(local.E, local.A, local.B, local.C, local.D, R(51));
+     b48:	ea8a 7af6 	eor.w	sl, sl, r6, ror #31
+     b4c:	ea4e 01b9 	orr.w	r1, lr, r9, ror #2
+     b50:	ea8a 7af3 	eor.w	sl, sl, r3, ror #31
+     b54:	ea01 01b2 	and.w	r1, r1, r2, ror #2
+     b58:	ea0e 05b9 	and.w	r5, lr, r9, ror #2
+     b5c:	430d      	orrs	r5, r1
+     b5e:	eb00 71fa 	add.w	r1, r0, sl, ror #31
+     b62:	ea4f 73fa 	mov.w	r3, sl, ror #31
+     b66:	eb01 01b7 	add.w	r1, r1, r7, ror #2
+     b6a:	9314      	str	r3, [sp, #80]	@ 0x50
+     b6c:	440d      	add	r5, r1
+    P(local.D, local.E, local.A, local.B, local.C, R(52));
+     b6e:	9b15      	ldr	r3, [sp, #84]	@ 0x54
+     b70:	9906      	ldr	r1, [sp, #24]
+     b72:	ea83 71f1 	eor.w	r1, r3, r1, ror #31
+     b76:	9b09      	ldr	r3, [sp, #36]	@ 0x24
+     b78:	ea81 71f3 	eor.w	r1, r1, r3, ror #31
+     b7c:	9b04      	ldr	r3, [sp, #16]
+     b7e:	ea81 73f3 	eor.w	r3, r1, r3, ror #31
+     b82:	9306      	str	r3, [sp, #24]
+     b84:	eb00 77f3 	add.w	r7, r0, r3, ror #31
+    P(local.C, local.D, local.E, local.A, local.B, R(53));
+     b88:	9b11      	ldr	r3, [sp, #68]	@ 0x44
+    P(local.D, local.E, local.A, local.B, local.C, R(52));
+     b8a:	eb07 07b2 	add.w	r7, r7, r2, ror #2
+     b8e:	ea4c 02be 	orr.w	r2, ip, lr, ror #2
+    P(local.E, local.A, local.B, local.C, local.D, R(51));
+     b92:	eb05 65fc 	add.w	r5, r5, ip, ror #27
+    P(local.D, local.E, local.A, local.B, local.C, R(52));
+     b96:	ea0c 01be 	and.w	r1, ip, lr, ror #2
+     b9a:	ea02 02b9 	and.w	r2, r2, r9, ror #2
+    P(local.C, local.D, local.E, local.A, local.B, R(53));
+     b9e:	ea83 7bfb 	eor.w	fp, r3, fp, ror #31
+     ba2:	9b02      	ldr	r3, [sp, #8]
+    P(local.D, local.E, local.A, local.B, local.C, R(52));
+     ba4:	430a      	orrs	r2, r1
+     ba6:	eb07 67f5 	add.w	r7, r7, r5, ror #27
+     baa:	4417      	add	r7, r2
+    P(local.C, local.D, local.E, local.A, local.B, R(53));
+     bac:	ea8b 7bf3 	eor.w	fp, fp, r3, ror #31
+     bb0:	ea45 02bc 	orr.w	r2, r5, ip, ror #2
+     bb4:	ea8b 7bf8 	eor.w	fp, fp, r8, ror #31
+     bb8:	ea02 02be 	and.w	r2, r2, lr, ror #2
+     bbc:	ea05 01bc 	and.w	r1, r5, ip, ror #2
+     bc0:	4311      	orrs	r1, r2
+     bc2:	eb00 72fb 	add.w	r2, r0, fp, ror #31
+     bc6:	eb02 02b9 	add.w	r2, r2, r9, ror #2
+    P(local.B, local.C, local.D, local.E, local.A, R(54));
+     bca:	9b15      	ldr	r3, [sp, #84]	@ 0x54
+    P(local.C, local.D, local.E, local.A, local.B, R(53));
+     bcc:	4411      	add	r1, r2
+    P(local.B, local.C, local.D, local.E, local.A, R(54));
+     bce:	9a07      	ldr	r2, [sp, #28]
+     bd0:	ea83 76f2 	eor.w	r6, r3, r2, ror #31
+     bd4:	ea86 76f4 	eor.w	r6, r6, r4, ror #31
+     bd8:	ea86 76fa 	eor.w	r6, r6, sl, ror #31
+     bdc:	eb00 74f6 	add.w	r4, r0, r6, ror #31
+     be0:	ea47 02b5 	orr.w	r2, r7, r5, ror #2
+    P(local.C, local.D, local.E, local.A, local.B, R(53));
+     be4:	eb01 61f7 	add.w	r1, r1, r7, ror #27
+    P(local.B, local.C, local.D, local.E, local.A, R(54));
+     be8:	eb04 04be 	add.w	r4, r4, lr, ror #2
+     bec:	ea02 02bc 	and.w	r2, r2, ip, ror #2
+     bf0:	ea07 0eb5 	and.w	lr, r7, r5, ror #2
+     bf4:	ea4f 73f6 	mov.w	r3, r6, ror #31
+     bf8:	ea42 020e 	orr.w	r2, r2, lr
+     bfc:	eb04 64f1 	add.w	r4, r4, r1, ror #27
+     c00:	4414      	add	r4, r2
+     c02:	9315      	str	r3, [sp, #84]	@ 0x54
+    P(local.A, local.B, local.C, local.D, local.E, R(55));
+     c04:	9b11      	ldr	r3, [sp, #68]	@ 0x44
+     c06:	9a08      	ldr	r2, [sp, #32]
+     c08:	ea83 72f2 	eor.w	r2, r3, r2, ror #31
+     c0c:	9b0a      	ldr	r3, [sp, #40]	@ 0x28
+     c0e:	ea82 70f3 	eor.w	r0, r2, r3, ror #31
+     c12:	9b06      	ldr	r3, [sp, #24]
+     c14:	ea80 70f3 	eor.w	r0, r0, r3, ror #31
+     c18:	ea4f 73f0 	mov.w	r3, r0, ror #31
+     c1c:	9311      	str	r3, [sp, #68]	@ 0x44
+     c1e:	ea41 0eb7 	orr.w	lr, r1, r7, ror #2
+     c22:	4b05      	ldr	r3, [pc, #20]	@ (c38 <mbedtls_internal_sha1_process+0x9b4>)
+     c24:	ea0e 0eb5 	and.w	lr, lr, r5, ror #2
+     c28:	ea01 02b7 	and.w	r2, r1, r7, ror #2
+     c2c:	ea4e 0202 	orr.w	r2, lr, r2
+     c30:	eb03 7ef0 	add.w	lr, r3, r0, ror #31
+     c34:	e002      	b.n	c3c <mbedtls_internal_sha1_process+0x9b8>
+     c36:	bf00      	nop
+     c38:	8f1bbcdc 	.word	0x8f1bbcdc
+     c3c:	eb0e 0ebc 	add.w	lr, lr, ip, ror #2
+    P(local.E, local.A, local.B, local.C, local.D, R(56));
+     c40:	9b16      	ldr	r3, [sp, #88]	@ 0x58
+    P(local.A, local.B, local.C, local.D, local.E, R(55));
+     c42:	eb02 0c0e 	add.w	ip, r2, lr
+    P(local.E, local.A, local.B, local.C, local.D, R(56));
+     c46:	9a07      	ldr	r2, [sp, #28]
+     c48:	ea83 72f2 	eor.w	r2, r3, r2, ror #31
+     c4c:	9b03      	ldr	r3, [sp, #12]
+     c4e:	ea82 72f3 	eor.w	r2, r2, r3, ror #31
+     c52:	ea82 73fb 	eor.w	r3, r2, fp, ror #31
+     c56:	4ad1      	ldr	r2, [pc, #836]	@ (f9c <mbedtls_internal_sha1_process+0xd18>)
+     c58:	9307      	str	r3, [sp, #28]
+     c5a:	eb02 72f3 	add.w	r2, r2, r3, ror #31
+     c5e:	eb02 02b5 	add.w	r2, r2, r5, ror #2
+     c62:	ea44 05b1 	orr.w	r5, r4, r1, ror #2
+    P(local.A, local.B, local.C, local.D, local.E, R(55));
+     c66:	eb0c 6cf4 	add.w	ip, ip, r4, ror #27
+    P(local.E, local.A, local.B, local.C, local.D, R(56));
+     c6a:	ea04 0eb1 	and.w	lr, r4, r1, ror #2
+     c6e:	ea05 05b7 	and.w	r5, r5, r7, ror #2
+     c72:	ea45 050e 	orr.w	r5, r5, lr
+     c76:	eb02 62fc 	add.w	r2, r2, ip, ror #27
+     c7a:	442a      	add	r2, r5
+    P(local.D, local.E, local.A, local.B, local.C, R(57));
+     c7c:	9b10      	ldr	r3, [sp, #64]	@ 0x40
+     c7e:	9d08      	ldr	r5, [sp, #32]
+     c80:	ea83 75f5 	eor.w	r5, r3, r5, ror #31
+     c84:	9b04      	ldr	r3, [sp, #16]
+     c86:	ea85 75f3 	eor.w	r5, r5, r3, ror #31
+     c8a:	ea85 73f6 	eor.w	r3, r5, r6, ror #31
+     c8e:	ea4c 05b4 	orr.w	r5, ip, r4, ror #2
+     c92:	ea05 05b1 	and.w	r5, r5, r1, ror #2
+     c96:	ea0c 0eb4 	and.w	lr, ip, r4, ror #2
+     c9a:	ea45 0e0e 	orr.w	lr, r5, lr
+     c9e:	4dbf      	ldr	r5, [pc, #764]	@ (f9c <mbedtls_internal_sha1_process+0xd18>)
+     ca0:	9308      	str	r3, [sp, #32]
+     ca2:	eb05 75f3 	add.w	r5, r5, r3, ror #31
+     ca6:	eb05 05b7 	add.w	r5, r5, r7, ror #2
+    P(local.C, local.D, local.E, local.A, local.B, R(58));
+     caa:	9b16      	ldr	r3, [sp, #88]	@ 0x58
+    P(local.D, local.E, local.A, local.B, local.C, R(57));
+     cac:	44ae      	add	lr, r5
+    P(local.C, local.D, local.E, local.A, local.B, R(58));
+     cae:	9d09      	ldr	r5, [sp, #36]	@ 0x24
+     cb0:	ea83 75f5 	eor.w	r5, r3, r5, ror #31
+     cb4:	ea85 75f8 	eor.w	r5, r5, r8, ror #31
+     cb8:	ea85 75f0 	eor.w	r5, r5, r0, ror #31
+     cbc:	ea4f 73f5 	mov.w	r3, r5, ror #31
+     cc0:	9316      	str	r3, [sp, #88]	@ 0x58
+     cc2:	4bb6      	ldr	r3, [pc, #728]	@ (f9c <mbedtls_internal_sha1_process+0xd18>)
+     cc4:	eb03 77f5 	add.w	r7, r3, r5, ror #31
+     cc8:	eb07 07b1 	add.w	r7, r7, r1, ror #2
+     ccc:	ea42 01bc 	orr.w	r1, r2, ip, ror #2
+    P(local.D, local.E, local.A, local.B, local.C, R(57));
+     cd0:	eb0e 6ef2 	add.w	lr, lr, r2, ror #27
+    P(local.C, local.D, local.E, local.A, local.B, R(58));
+     cd4:	ea02 08bc 	and.w	r8, r2, ip, ror #2
+     cd8:	ea01 01b4 	and.w	r1, r1, r4, ror #2
+     cdc:	ea41 0108 	orr.w	r1, r1, r8
+     ce0:	eb07 67fe 	add.w	r7, r7, lr, ror #27
+     ce4:	440f      	add	r7, r1
+    P(local.B, local.C, local.D, local.E, local.A, R(59));
+     ce6:	9b10      	ldr	r3, [sp, #64]	@ 0x40
+     ce8:	9902      	ldr	r1, [sp, #8]
+     cea:	ea83 71f1 	eor.w	r1, r3, r1, ror #31
+     cee:	9b07      	ldr	r3, [sp, #28]
+     cf0:	ea81 71fa 	eor.w	r1, r1, sl, ror #31
+     cf4:	ea81 71f3 	eor.w	r1, r1, r3, ror #31
+     cf8:	ea4f 73f1 	mov.w	r3, r1, ror #31
+     cfc:	9310      	str	r3, [sp, #64]	@ 0x40
+     cfe:	4ba7      	ldr	r3, [pc, #668]	@ (f9c <mbedtls_internal_sha1_process+0xd18>)
+     d00:	910b      	str	r1, [sp, #44]	@ 0x2c
+     d02:	ea4e 09b2 	orr.w	r9, lr, r2, ror #2
+     d06:	ea09 09bc 	and.w	r9, r9, ip, ror #2
+     d0a:	ea0e 08b2 	and.w	r8, lr, r2, ror #2
+     d0e:	eb03 73f1 	add.w	r3, r3, r1, ror #31
+     d12:	ea49 0808 	orr.w	r8, r9, r8
+     d16:	eb03 03b4 	add.w	r3, r3, r4, ror #2
+#undef F
+
+#define F(x, y, z) ((x) ^ (y) ^ (z))
+#define K 0xCA62C1D6
+
+    P(local.A, local.B, local.C, local.D, local.E, R(60));
+     d1a:	9909      	ldr	r1, [sp, #36]	@ 0x24
+    P(local.B, local.C, local.D, local.E, local.A, R(59));
+     d1c:	eb08 0403 	add.w	r4, r8, r3
+    P(local.A, local.B, local.C, local.D, local.E, R(60));
+     d20:	9b0d      	ldr	r3, [sp, #52]	@ 0x34
+     d22:	ea83 73f1 	eor.w	r3, r3, r1, ror #31
+     d26:	9906      	ldr	r1, [sp, #24]
+     d28:	ea83 73f1 	eor.w	r3, r3, r1, ror #31
+     d2c:	9908      	ldr	r1, [sp, #32]
+     d2e:	ea83 73f1 	eor.w	r3, r3, r1, ror #31
+     d32:	9309      	str	r3, [sp, #36]	@ 0x24
+     d34:	4619      	mov	r1, r3
+     d36:	4b9a      	ldr	r3, [pc, #616]	@ (fa0 <mbedtls_internal_sha1_process+0xd1c>)
+     d38:	eb03 78f1 	add.w	r8, r3, r1, ror #31
+    P(local.E, local.A, local.B, local.C, local.D, R(61));
+     d3c:	990c      	ldr	r1, [sp, #48]	@ 0x30
+     d3e:	9b02      	ldr	r3, [sp, #8]
+    P(local.A, local.B, local.C, local.D, local.E, R(60));
+     d40:	eb08 08bc 	add.w	r8, r8, ip, ror #2
+    P(local.E, local.A, local.B, local.C, local.D, R(61));
+     d44:	ea81 7cf3 	eor.w	ip, r1, r3, ror #31
+     d48:	ea8c 7cfb 	eor.w	ip, ip, fp, ror #31
+     d4c:	4994      	ldr	r1, [pc, #592]	@ (fa0 <mbedtls_internal_sha1_process+0xd1c>)
+     d4e:	ea8c 73f5 	eor.w	r3, ip, r5, ror #31
+    P(local.B, local.C, local.D, local.E, local.A, R(59));
+     d52:	ea4f 0abe 	mov.w	sl, lr, ror #2
+    P(local.E, local.A, local.B, local.C, local.D, R(61));
+     d56:	eb01 7cf3 	add.w	ip, r1, r3, ror #31
+    P(local.A, local.B, local.C, local.D, local.E, R(60));
+     d5a:	ea8a 0eb2 	eor.w	lr, sl, r2, ror #2
+    P(local.E, local.A, local.B, local.C, local.D, R(61));
+     d5e:	930a      	str	r3, [sp, #40]	@ 0x28
+     d60:	eb0c 0cb2 	add.w	ip, ip, r2, ror #2
+    P(local.D, local.E, local.A, local.B, local.C, R(62));
+     d64:	9b0d      	ldr	r3, [sp, #52]	@ 0x34
+     d66:	9a03      	ldr	r2, [sp, #12]
+    P(local.A, local.B, local.C, local.D, local.E, R(60));
+     d68:	ea8e 0e07 	eor.w	lr, lr, r7
+    P(local.D, local.E, local.A, local.B, local.C, R(62));
+     d6c:	ea83 79f2 	eor.w	r9, r3, r2, ror #31
+     d70:	9b0b      	ldr	r3, [sp, #44]	@ 0x2c
+    P(local.B, local.C, local.D, local.E, local.A, R(59));
+     d72:	eb04 64f7 	add.w	r4, r4, r7, ror #27
+    P(local.A, local.B, local.C, local.D, local.E, R(60));
+     d76:	44c6      	add	lr, r8
+    P(local.D, local.E, local.A, local.B, local.C, R(62));
+     d78:	ea89 79f6 	eor.w	r9, r9, r6, ror #31
+    P(local.E, local.A, local.B, local.C, local.D, R(61));
+     d7c:	ea8a 08b7 	eor.w	r8, sl, r7, ror #2
+    P(local.A, local.B, local.C, local.D, local.E, R(60));
+     d80:	eb0e 6ef4 	add.w	lr, lr, r4, ror #27
+    P(local.D, local.E, local.A, local.B, local.C, R(62));
+     d84:	ea89 79f3 	eor.w	r9, r9, r3, ror #31
+    P(local.E, local.A, local.B, local.C, local.D, R(61));
+     d88:	ea88 0804 	eor.w	r8, r8, r4
+     d8c:	ea4f 04b4 	mov.w	r4, r4, ror #2
+    P(local.D, local.E, local.A, local.B, local.C, R(62));
+     d90:	eb01 72f9 	add.w	r2, r1, r9, ror #31
+    P(local.E, local.A, local.B, local.C, local.D, R(61));
+     d94:	44e0      	add	r8, ip
+    P(local.D, local.E, local.A, local.B, local.C, R(62));
+     d96:	ea84 0cb7 	eor.w	ip, r4, r7, ror #2
+     d9a:	ea4f 73f9 	mov.w	r3, r9, ror #31
+     d9e:	4452      	add	r2, sl
+     da0:	ea8c 0c0e 	eor.w	ip, ip, lr
+     da4:	930d      	str	r3, [sp, #52]	@ 0x34
+     da6:	4494      	add	ip, r2
+    P(local.C, local.D, local.E, local.A, local.B, R(63));
+     da8:	9b0c      	ldr	r3, [sp, #48]	@ 0x30
+     daa:	9a04      	ldr	r2, [sp, #16]
+     dac:	ea83 76f2 	eor.w	r6, r3, r2, ror #31
+     db0:	9b09      	ldr	r3, [sp, #36]	@ 0x24
+     db2:	ea86 76f0 	eor.w	r6, r6, r0, ror #31
+     db6:	ea86 76f3 	eor.w	r6, r6, r3, ror #31
+     dba:	ea4f 73f6 	mov.w	r3, r6, ror #31
+     dbe:	930c      	str	r3, [sp, #48]	@ 0x30
+     dc0:	eb01 70f6 	add.w	r0, r1, r6, ror #31
+    P(local.B, local.C, local.D, local.E, local.A, R(64));
+     dc4:	9b13      	ldr	r3, [sp, #76]	@ 0x4c
+     dc6:	9903      	ldr	r1, [sp, #12]
+    P(local.C, local.D, local.E, local.A, local.B, R(63));
+     dc8:	eb00 00b7 	add.w	r0, r0, r7, ror #2
+    P(local.B, local.C, local.D, local.E, local.A, R(64));
+     dcc:	ea83 77f1 	eor.w	r7, r3, r1, ror #31
+     dd0:	9b07      	ldr	r3, [sp, #28]
+    P(local.A, local.B, local.C, local.D, local.E, R(65));
+     dd2:	9904      	ldr	r1, [sp, #16]
+    P(local.B, local.C, local.D, local.E, local.A, R(64));
+     dd4:	ea87 77f3 	eor.w	r7, r7, r3, ror #31
+     dd8:	9b0a      	ldr	r3, [sp, #40]	@ 0x28
+     dda:	ea87 77f3 	eor.w	r7, r7, r3, ror #31
+     dde:	ea4f 73f7 	mov.w	r3, r7, ror #31
+     de2:	4f6f      	ldr	r7, [pc, #444]	@ (fa0 <mbedtls_internal_sha1_process+0xd1c>)
+     de4:	9302      	str	r3, [sp, #8]
+    P(local.E, local.A, local.B, local.C, local.D, R(61));
+     de6:	eb08 68fe 	add.w	r8, r8, lr, ror #27
+    P(local.C, local.D, local.E, local.A, local.B, R(63));
+     dea:	ea84 02be 	eor.w	r2, r4, lr, ror #2
+    P(local.B, local.C, local.D, local.E, local.A, R(64));
+     dee:	9319      	str	r3, [sp, #100]	@ 0x64
+     df0:	19df      	adds	r7, r3, r7
+    P(local.A, local.B, local.C, local.D, local.E, R(65));
+     df2:	9b14      	ldr	r3, [sp, #80]	@ 0x50
+    P(local.C, local.D, local.E, local.A, local.B, R(63));
+     df4:	ea82 0208 	eor.w	r2, r2, r8
+    P(local.B, local.C, local.D, local.E, local.A, R(64));
+     df8:	4427      	add	r7, r4
+    P(local.C, local.D, local.E, local.A, local.B, R(63));
+     dfa:	4402      	add	r2, r0
+    P(local.A, local.B, local.C, local.D, local.E, R(65));
+     dfc:	ea83 74f1 	eor.w	r4, r3, r1, ror #31
+    P(local.C, local.D, local.E, local.A, local.B, R(63));
+     e00:	ea4f 00b8 	mov.w	r0, r8, ror #2
+    P(local.A, local.B, local.C, local.D, local.E, R(65));
+     e04:	9b08      	ldr	r3, [sp, #32]
+    P(local.E, local.A, local.B, local.C, local.D, R(66));
+     e06:	9906      	ldr	r1, [sp, #24]
+    P(local.D, local.E, local.A, local.B, local.C, R(62));
+     e08:	eb0c 6cf8 	add.w	ip, ip, r8, ror #27
+    P(local.B, local.C, local.D, local.E, local.A, R(64));
+     e0c:	ea80 0abe 	eor.w	sl, r0, lr, ror #2
+     e10:	ea8a 0a0c 	eor.w	sl, sl, ip
+    P(local.A, local.B, local.C, local.D, local.E, R(65));
+     e14:	ea84 74f3 	eor.w	r4, r4, r3, ror #31
+     e18:	ea84 74f9 	eor.w	r4, r4, r9, ror #31
+    P(local.B, local.C, local.D, local.E, local.A, R(64));
+     e1c:	44ba      	add	sl, r7
+    P(local.A, local.B, local.C, local.D, local.E, R(65));
+     e1e:	4f60      	ldr	r7, [pc, #384]	@ (fa0 <mbedtls_internal_sha1_process+0xd1c>)
+     e20:	ea4f 73f4 	mov.w	r3, r4, ror #31
+     e24:	9303      	str	r3, [sp, #12]
+     e26:	931a      	str	r3, [sp, #104]	@ 0x68
+     e28:	19df      	adds	r7, r3, r7
+    P(local.E, local.A, local.B, local.C, local.D, R(66));
+     e2a:	9b13      	ldr	r3, [sp, #76]	@ 0x4c
+    P(local.C, local.D, local.E, local.A, local.B, R(63));
+     e2c:	eb02 62fc 	add.w	r2, r2, ip, ror #27
+    P(local.A, local.B, local.C, local.D, local.E, R(65));
+     e30:	ea80 04bc 	eor.w	r4, r0, ip, ror #2
+    P(local.E, local.A, local.B, local.C, local.D, R(66));
+     e34:	ea83 78f1 	eor.w	r8, r3, r1, ror #31
+    P(local.A, local.B, local.C, local.D, local.E, R(65));
+     e38:	eb07 07be 	add.w	r7, r7, lr, ror #2
+     e3c:	4054      	eors	r4, r2
+    P(local.E, local.A, local.B, local.C, local.D, R(66));
+     e3e:	ea88 78f5 	eor.w	r8, r8, r5, ror #31
+    P(local.A, local.B, local.C, local.D, local.E, R(65));
+     e42:	443c      	add	r4, r7
+    P(local.E, local.A, local.B, local.C, local.D, R(66));
+     e44:	ea88 78f6 	eor.w	r8, r8, r6, ror #31
+     e48:	4f55      	ldr	r7, [pc, #340]	@ (fa0 <mbedtls_internal_sha1_process+0xd1c>)
+    P(local.D, local.E, local.A, local.B, local.C, R(67));
+     e4a:	9b14      	ldr	r3, [sp, #80]	@ 0x50
+     e4c:	4954      	ldr	r1, [pc, #336]	@ (fa0 <mbedtls_internal_sha1_process+0xd1c>)
+    P(local.B, local.C, local.D, local.E, local.A, R(64));
+     e4e:	eb0a 6af2 	add.w	sl, sl, r2, ror #27
+    P(local.E, local.A, local.B, local.C, local.D, R(66));
+     e52:	ea4f 78f8 	mov.w	r8, r8, ror #31
+    P(local.A, local.B, local.C, local.D, local.E, R(65));
+     e56:	ea4f 02b2 	mov.w	r2, r2, ror #2
+    P(local.E, local.A, local.B, local.C, local.D, R(66));
+     e5a:	ea82 05bc 	eor.w	r5, r2, ip, ror #2
+     e5e:	4447      	add	r7, r8
+     e60:	4407      	add	r7, r0
+     e62:	ea85 050a 	eor.w	r5, r5, sl
+     e66:	443d      	add	r5, r7
+    P(local.D, local.E, local.A, local.B, local.C, R(67));
+     e68:	ea83 77fb 	eor.w	r7, r3, fp, ror #31
+     e6c:	9b0b      	ldr	r3, [sp, #44]	@ 0x2c
+    P(local.E, local.A, local.B, local.C, local.D, R(66));
+     e6e:	f8cd 806c 	str.w	r8, [sp, #108]	@ 0x6c
+    P(local.D, local.E, local.A, local.B, local.C, R(67));
+     e72:	ea87 77f3 	eor.w	r7, r7, r3, ror #31
+     e76:	9b02      	ldr	r3, [sp, #8]
+     e78:	405f      	eors	r7, r3
+     e7a:	ea4f 77f7 	mov.w	r7, r7, ror #31
+    P(local.A, local.B, local.C, local.D, local.E, R(65));
+     e7e:	eb04 64fa 	add.w	r4, r4, sl, ror #27
+    P(local.D, local.E, local.A, local.B, local.C, R(67));
+     e82:	ea82 00ba 	eor.w	r0, r2, sl, ror #2
+     e86:	1879      	adds	r1, r7, r1
+     e88:	eb01 01bc 	add.w	r1, r1, ip, ror #2
+     e8c:	4060      	eors	r0, r4
+    P(local.C, local.D, local.E, local.A, local.B, R(68));
+     e8e:	9b15      	ldr	r3, [sp, #84]	@ 0x54
+     e90:	f8df c10c 	ldr.w	ip, [pc, #268]	@ fa0 <mbedtls_internal_sha1_process+0xd1c>
+    P(local.D, local.E, local.A, local.B, local.C, R(67));
+     e94:	971c      	str	r7, [sp, #112]	@ 0x70
+     e96:	4408      	add	r0, r1
+    P(local.C, local.D, local.E, local.A, local.B, R(68));
+     e98:	9906      	ldr	r1, [sp, #24]
+     e9a:	ea83 71f1 	eor.w	r1, r3, r1, ror #31
+     e9e:	9b09      	ldr	r3, [sp, #36]	@ 0x24
+     ea0:	ea81 71f3 	eor.w	r1, r1, r3, ror #31
+     ea4:	9b03      	ldr	r3, [sp, #12]
+     ea6:	4059      	eors	r1, r3
+     ea8:	ea4f 71f1 	mov.w	r1, r1, ror #31
+    P(local.B, local.C, local.D, local.E, local.A, R(69));
+     eac:	9b11      	ldr	r3, [sp, #68]	@ 0x44
+    P(local.C, local.D, local.E, local.A, local.B, R(68));
+     eae:	911d      	str	r1, [sp, #116]	@ 0x74
+     eb0:	448c      	add	ip, r1
+     eb2:	4494      	add	ip, r2
+    P(local.B, local.C, local.D, local.E, local.A, R(69));
+     eb4:	ea83 72fb 	eor.w	r2, r3, fp, ror #31
+     eb8:	9b0a      	ldr	r3, [sp, #40]	@ 0x28
+     eba:	f8df b0e4 	ldr.w	fp, [pc, #228]	@ fa0 <mbedtls_internal_sha1_process+0xd1c>
+    P(local.E, local.A, local.B, local.C, local.D, R(66));
+     ebe:	eb05 65f4 	add.w	r5, r5, r4, ror #27
+    P(local.B, local.C, local.D, local.E, local.A, R(69));
+     ec2:	ea82 72f3 	eor.w	r2, r2, r3, ror #31
+    P(local.D, local.E, local.A, local.B, local.C, R(67));
+     ec6:	ea4f 04b4 	mov.w	r4, r4, ror #2
+    P(local.C, local.D, local.E, local.A, local.B, R(68));
+     eca:	ea84 0eba 	eor.w	lr, r4, sl, ror #2
+    P(local.B, local.C, local.D, local.E, local.A, R(69));
+     ece:	ea82 0208 	eor.w	r2, r2, r8
+     ed2:	ea4f 72f2 	mov.w	r2, r2, ror #31
+    P(local.C, local.D, local.E, local.A, local.B, R(68));
+     ed6:	ea8e 0e05 	eor.w	lr, lr, r5
+    P(local.D, local.E, local.A, local.B, local.C, R(67));
+     eda:	eb00 60f5 	add.w	r0, r0, r5, ror #27
+    P(local.C, local.D, local.E, local.A, local.B, R(68));
+     ede:	44e6      	add	lr, ip
+    P(local.B, local.C, local.D, local.E, local.A, R(69));
+     ee0:	4493      	add	fp, r2
+     ee2:	ea84 0cb5 	eor.w	ip, r4, r5, ror #2
+     ee6:	eb0b 0bba 	add.w	fp, fp, sl, ror #2
+     eea:	ea8c 0c00 	eor.w	ip, ip, r0
+    P(local.C, local.D, local.E, local.A, local.B, R(68));
+     eee:	eb0e 6ef0 	add.w	lr, lr, r0, ror #27
+    P(local.A, local.B, local.C, local.D, local.E, R(70));
+     ef2:	9b15      	ldr	r3, [sp, #84]	@ 0x54
+    P(local.B, local.C, local.D, local.E, local.A, R(69));
+     ef4:	921e      	str	r2, [sp, #120]	@ 0x78
+     ef6:	44dc      	add	ip, fp
+     ef8:	ea4f 0bb0 	mov.w	fp, r0, ror #2
+    P(local.A, local.B, local.C, local.D, local.E, R(70));
+     efc:	9807      	ldr	r0, [sp, #28]
+     efe:	ea83 7af0 	eor.w	sl, r3, r0, ror #31
+     f02:	ea8a 7af9 	eor.w	sl, sl, r9, ror #31
+     f06:	ea8a 0a07 	eor.w	sl, sl, r7
+     f0a:	f8df 9094 	ldr.w	r9, [pc, #148]	@ fa0 <mbedtls_internal_sha1_process+0xd1c>
+     f0e:	ea4f 73fa 	mov.w	r3, sl, ror #31
+     f12:	9304      	str	r3, [sp, #16]
+     f14:	4499      	add	r9, r3
+    P(local.E, local.A, local.B, local.C, local.D, R(71));
+     f16:	9808      	ldr	r0, [sp, #32]
+    P(local.A, local.B, local.C, local.D, local.E, R(70));
+     f18:	931f      	str	r3, [sp, #124]	@ 0x7c
+    P(local.E, local.A, local.B, local.C, local.D, R(71));
+     f1a:	9b11      	ldr	r3, [sp, #68]	@ 0x44
+    P(local.A, local.B, local.C, local.D, local.E, R(70));
+     f1c:	44a1      	add	r9, r4
+    P(local.E, local.A, local.B, local.C, local.D, R(71));
+     f1e:	ea83 74f0 	eor.w	r4, r3, r0, ror #31
+     f22:	ea84 74f6 	eor.w	r4, r4, r6, ror #31
+     f26:	404c      	eors	r4, r1
+     f28:	ea4f 73f4 	mov.w	r3, r4, ror #31
+     f2c:	4c1c      	ldr	r4, [pc, #112]	@ (fa0 <mbedtls_internal_sha1_process+0xd1c>)
+    P(local.D, local.E, local.A, local.B, local.C, R(72));
+     f2e:	9807      	ldr	r0, [sp, #28]
+    P(local.E, local.A, local.B, local.C, local.D, R(71));
+     f30:	9306      	str	r3, [sp, #24]
+    P(local.B, local.C, local.D, local.E, local.A, R(69));
+     f32:	eb0c 6cfe 	add.w	ip, ip, lr, ror #27
+    P(local.E, local.A, local.B, local.C, local.D, R(71));
+     f36:	9320      	str	r3, [sp, #128]	@ 0x80
+     f38:	ea8b 06be 	eor.w	r6, fp, lr, ror #2
+     f3c:	191c      	adds	r4, r3, r4
+    P(local.D, local.E, local.A, local.B, local.C, R(72));
+     f3e:	9b16      	ldr	r3, [sp, #88]	@ 0x58
+    P(local.E, local.A, local.B, local.C, local.D, R(71));
+     f40:	eb04 04b5 	add.w	r4, r4, r5, ror #2
+     f44:	ea86 060c 	eor.w	r6, r6, ip
+     f48:	4426      	add	r6, r4
+    P(local.D, local.E, local.A, local.B, local.C, R(72));
+     f4a:	ea83 74f0 	eor.w	r4, r3, r0, ror #31
+     f4e:	9b02      	ldr	r3, [sp, #8]
+    P(local.C, local.D, local.E, local.A, local.B, R(73));
+     f50:	9808      	ldr	r0, [sp, #32]
+    P(local.D, local.E, local.A, local.B, local.C, R(72));
+     f52:	405c      	eors	r4, r3
+    P(local.C, local.D, local.E, local.A, local.B, R(73));
+     f54:	9b10      	ldr	r3, [sp, #64]	@ 0x40
+     f56:	ea83 70f0 	eor.w	r0, r3, r0, ror #31
+     f5a:	9b03      	ldr	r3, [sp, #12]
+    P(local.A, local.B, local.C, local.D, local.E, R(70));
+     f5c:	ea8b 0ab5 	eor.w	sl, fp, r5, ror #2
+    P(local.D, local.E, local.A, local.B, local.C, R(72));
+     f60:	4054      	eors	r4, r2
+     f62:	4d0f      	ldr	r5, [pc, #60]	@ (fa0 <mbedtls_internal_sha1_process+0xd1c>)
+     f64:	ea4f 74f4 	mov.w	r4, r4, ror #31
+    P(local.C, local.D, local.E, local.A, local.B, R(73));
+     f68:	4058      	eors	r0, r3
+     f6a:	9b04      	ldr	r3, [sp, #16]
+    P(local.D, local.E, local.A, local.B, local.C, R(72));
+     f6c:	9421      	str	r4, [sp, #132]	@ 0x84
+    P(local.A, local.B, local.C, local.D, local.E, R(70));
+     f6e:	ea8a 0a0e 	eor.w	sl, sl, lr
+    P(local.D, local.E, local.A, local.B, local.C, R(72));
+     f72:	1965      	adds	r5, r4, r5
+     f74:	445d      	add	r5, fp
+    P(local.A, local.B, local.C, local.D, local.E, R(70));
+     f76:	44ca      	add	sl, r9
+    P(local.C, local.D, local.E, local.A, local.B, R(73));
+     f78:	4058      	eors	r0, r3
+     f7a:	f8df b024 	ldr.w	fp, [pc, #36]	@ fa0 <mbedtls_internal_sha1_process+0xd1c>
+    P(local.A, local.B, local.C, local.D, local.E, R(70));
+     f7e:	eb0a 6afc 	add.w	sl, sl, ip, ror #27
+    P(local.C, local.D, local.E, local.A, local.B, R(73));
+     f82:	ea4f 73f0 	mov.w	r3, r0, ror #31
+    P(local.E, local.A, local.B, local.C, local.D, R(71));
+     f86:	ea4f 0cbc 	mov.w	ip, ip, ror #2
+    P(local.B, local.C, local.D, local.E, local.A, R(74));
+     f8a:	9809      	ldr	r0, [sp, #36]	@ 0x24
+    P(local.C, local.D, local.E, local.A, local.B, R(73));
+     f8c:	9307      	str	r3, [sp, #28]
+    P(local.D, local.E, local.A, local.B, local.C, R(72));
+     f8e:	ea8c 09be 	eor.w	r9, ip, lr, ror #2
+    P(local.C, local.D, local.E, local.A, local.B, R(73));
+     f92:	9322      	str	r3, [sp, #136]	@ 0x88
+     f94:	449b      	add	fp, r3
+    P(local.B, local.C, local.D, local.E, local.A, R(74));
+     f96:	9b16      	ldr	r3, [sp, #88]	@ 0x58
+     f98:	e004      	b.n	fa4 <mbedtls_internal_sha1_process+0xd20>
+     f9a:	bf00      	nop
+     f9c:	8f1bbcdc 	.word	0x8f1bbcdc
+     fa0:	ca62c1d6 	.word	0xca62c1d6
+    P(local.D, local.E, local.A, local.B, local.C, R(72));
+     fa4:	ea89 090a 	eor.w	r9, r9, sl
+    P(local.E, local.A, local.B, local.C, local.D, R(71));
+     fa8:	eb06 66fa 	add.w	r6, r6, sl, ror #27
+    P(local.C, local.D, local.E, local.A, local.B, R(73));
+     fac:	eb0b 0bbe 	add.w	fp, fp, lr, ror #2
+    P(local.D, local.E, local.A, local.B, local.C, R(72));
+     fb0:	44a9      	add	r9, r5
+    P(local.B, local.C, local.D, local.E, local.A, R(74));
+     fb2:	ea83 7ef0 	eor.w	lr, r3, r0, ror #31
+    P(local.C, local.D, local.E, local.A, local.B, R(73));
+     fb6:	ea8c 05ba 	eor.w	r5, ip, sl, ror #2
+    P(local.B, local.C, local.D, local.E, local.A, R(74));
+     fba:	9b06      	ldr	r3, [sp, #24]
+    P(local.A, local.B, local.C, local.D, local.E, R(75));
+     fbc:	980a      	ldr	r0, [sp, #40]	@ 0x28
+    P(local.C, local.D, local.E, local.A, local.B, R(73));
+     fbe:	4075      	eors	r5, r6
+    P(local.B, local.C, local.D, local.E, local.A, R(74));
+     fc0:	ea8e 0e08 	eor.w	lr, lr, r8
+    P(local.C, local.D, local.E, local.A, local.B, R(73));
+     fc4:	445d      	add	r5, fp
+    P(local.B, local.C, local.D, local.E, local.A, R(74));
+     fc6:	ea8e 0e03 	eor.w	lr, lr, r3
+     fca:	f8df b160 	ldr.w	fp, [pc, #352]	@ 112c <mbedtls_internal_sha1_process+0xea8>
+    P(local.A, local.B, local.C, local.D, local.E, R(75));
+     fce:	9b10      	ldr	r3, [sp, #64]	@ 0x40
+    P(local.B, local.C, local.D, local.E, local.A, R(74));
+     fd0:	ea4f 7efe 	mov.w	lr, lr, ror #31
+     fd4:	44f3      	add	fp, lr
+     fd6:	44e3      	add	fp, ip
+    P(local.A, local.B, local.C, local.D, local.E, R(75));
+     fd8:	ea83 7cf0 	eor.w	ip, r3, r0, ror #31
+     fdc:	ea8c 0c07 	eor.w	ip, ip, r7
+     fe0:	ea8c 0c04 	eor.w	ip, ip, r4
+     fe4:	ea4f 77fc 	mov.w	r7, ip, ror #31
+     fe8:	f8df c140 	ldr.w	ip, [pc, #320]	@ 112c <mbedtls_internal_sha1_process+0xea8>
+    P(local.E, local.A, local.B, local.C, local.D, R(76));
+     fec:	9b0d      	ldr	r3, [sp, #52]	@ 0x34
+     fee:	9809      	ldr	r0, [sp, #36]	@ 0x24
+    P(local.B, local.C, local.D, local.E, local.A, R(74));
+     ff0:	f8cd e08c 	str.w	lr, [sp, #140]	@ 0x8c
+    P(local.D, local.E, local.A, local.B, local.C, R(72));
+     ff4:	eb09 69f6 	add.w	r9, r9, r6, ror #27
+    P(local.C, local.D, local.E, local.A, local.B, R(73));
+     ff8:	ea4f 06b6 	mov.w	r6, r6, ror #2
+     ffc:	eb05 65f9 	add.w	r5, r5, r9, ror #27
+    P(local.A, local.B, local.C, local.D, local.E, R(75));
+    1000:	ea86 04b9 	eor.w	r4, r6, r9, ror #2
+    1004:	44bc      	add	ip, r7
+    1006:	eb0c 0cba 	add.w	ip, ip, sl, ror #2
+    100a:	406c      	eors	r4, r5
+    100c:	4464      	add	r4, ip
+    P(local.E, local.A, local.B, local.C, local.D, R(76));
+    100e:	ea83 7cf0 	eor.w	ip, r3, r0, ror #31
+    1012:	9b07      	ldr	r3, [sp, #28]
+    P(local.A, local.B, local.C, local.D, local.E, R(75));
+    1014:	9724      	str	r7, [sp, #144]	@ 0x90
+    P(local.E, local.A, local.B, local.C, local.D, R(76));
+    1016:	ea8c 0c01 	eor.w	ip, ip, r1
+    101a:	ea8c 0c03 	eor.w	ip, ip, r3
+    101e:	ea4f 71fc 	mov.w	r1, ip, ror #31
+    1022:	f8df c108 	ldr.w	ip, [pc, #264]	@ 112c <mbedtls_internal_sha1_process+0xea8>
+    P(local.D, local.E, local.A, local.B, local.C, R(77));
+    1026:	9b0c      	ldr	r3, [sp, #48]	@ 0x30
+    P(local.E, local.A, local.B, local.C, local.D, R(76));
+    1028:	9125      	str	r1, [sp, #148]	@ 0x94
+    102a:	448c      	add	ip, r1
+    102c:	44b4      	add	ip, r6
+    P(local.B, local.C, local.D, local.E, local.A, R(74));
+    102e:	ea86 08ba 	eor.w	r8, r6, sl, ror #2
+    P(local.D, local.E, local.A, local.B, local.C, R(77));
+    1032:	9e0a      	ldr	r6, [sp, #40]	@ 0x28
+    1034:	ea83 76f6 	eor.w	r6, r3, r6, ror #31
+    1038:	4056      	eors	r6, r2
+    103a:	ea86 060e 	eor.w	r6, r6, lr
+    103e:	ea4f 76f6 	mov.w	r6, r6, ror #31
+    1042:	9626      	str	r6, [sp, #152]	@ 0x98
+    P(local.B, local.C, local.D, local.E, local.A, R(74));
+    1044:	ea88 0809 	eor.w	r8, r8, r9
+    P(local.D, local.E, local.A, local.B, local.C, R(77));
+    1048:	f106 464a 	add.w	r6, r6, #3388997632	@ 0xca000000
+    P(local.B, local.C, local.D, local.E, local.A, R(74));
+    104c:	44d8      	add	r8, fp
+    P(local.D, local.E, local.A, local.B, local.C, R(77));
+    104e:	f506 06c5 	add.w	r6, r6, #6455296	@ 0x628000
+    P(local.B, local.C, local.D, local.E, local.A, R(74));
+    1052:	eb08 68f5 	add.w	r8, r8, r5, ror #27
+    P(local.D, local.E, local.A, local.B, local.C, R(77));
+    1056:	f506 4683 	add.w	r6, r6, #16768	@ 0x4180
+    P(local.A, local.B, local.C, local.D, local.E, R(75));
+    105a:	ea4f 05b5 	mov.w	r5, r5, ror #2
+    105e:	eb04 64f8 	add.w	r4, r4, r8, ror #27
+    P(local.E, local.A, local.B, local.C, local.D, R(76));
+    1062:	ea85 00b9 	eor.w	r0, r5, r9, ror #2
+    P(local.D, local.E, local.A, local.B, local.C, R(77));
+    1066:	ea85 02b8 	eor.w	r2, r5, r8, ror #2
+    106a:	3656      	adds	r6, #86	@ 0x56
+    106c:	eb06 06b9 	add.w	r6, r6, r9, ror #2
+    P(local.E, local.A, local.B, local.C, local.D, R(76));
+    1070:	ea80 0008 	eor.w	r0, r0, r8
+    P(local.D, local.E, local.A, local.B, local.C, R(77));
+    1074:	4062      	eors	r2, r4
+    P(local.C, local.D, local.E, local.A, local.B, R(78));
+    1076:	9b0d      	ldr	r3, [sp, #52]	@ 0x34
+    P(local.E, local.A, local.B, local.C, local.D, R(76));
+    1078:	4460      	add	r0, ip
+    P(local.D, local.E, local.A, local.B, local.C, R(77));
+    107a:	4432      	add	r2, r6
+    P(local.C, local.D, local.E, local.A, local.B, R(78));
+    107c:	9e02      	ldr	r6, [sp, #8]
+    P(local.E, local.A, local.B, local.C, local.D, R(76));
+    107e:	eb00 60f4 	add.w	r0, r0, r4, ror #27
+    P(local.D, local.E, local.A, local.B, local.C, R(77));
+    1082:	ea4f 04b4 	mov.w	r4, r4, ror #2
+    1086:	942d      	str	r4, [sp, #180]	@ 0xb4
+    P(local.C, local.D, local.E, local.A, local.B, R(78));
+    1088:	405e      	eors	r6, r3
+    108a:	9b04      	ldr	r3, [sp, #16]
+    108c:	405e      	eors	r6, r3
+    108e:	407e      	eors	r6, r7
+    1090:	ea4f 76f6 	mov.w	r6, r6, ror #31
+    1094:	9627      	str	r6, [sp, #156]	@ 0x9c
+    1096:	f106 464a 	add.w	r6, r6, #3388997632	@ 0xca000000
+    109a:	f506 06c5 	add.w	r6, r6, #6455296	@ 0x628000
+    109e:	f506 4683 	add.w	r6, r6, #16768	@ 0x4180
+    10a2:	3656      	adds	r6, #86	@ 0x56
+    P(local.B, local.C, local.D, local.E, local.A, R(79));
+    10a4:	9b0c      	ldr	r3, [sp, #48]	@ 0x30
+    P(local.C, local.D, local.E, local.A, local.B, R(78));
+    10a6:	442e      	add	r6, r5
+    P(local.B, local.C, local.D, local.E, local.A, R(79));
+    10a8:	9d03      	ldr	r5, [sp, #12]
+    10aa:	405d      	eors	r5, r3
+    10ac:	9b06      	ldr	r3, [sp, #24]
+    10ae:	405d      	eors	r5, r3
+    10b0:	404d      	eors	r5, r1
+    10b2:	9518      	str	r5, [sp, #96]	@ 0x60
+    10b4:	ea4f 75f5 	mov.w	r5, r5, ror #31
+    10b8:	9528      	str	r5, [sp, #160]	@ 0xa0
+    10ba:	f105 454a 	add.w	r5, r5, #3388997632	@ 0xca000000
+    P(local.C, local.D, local.E, local.A, local.B, R(78));
+    10be:	ea84 07b8 	eor.w	r7, r4, r8, ror #2
+    P(local.B, local.C, local.D, local.E, local.A, R(79));
+    10c2:	f505 05c5 	add.w	r5, r5, #6455296	@ 0x628000
+    P(local.D, local.E, local.A, local.B, local.C, R(77));
+    10c6:	eb02 62f0 	add.w	r2, r2, r0, ror #27
+    P(local.C, local.D, local.E, local.A, local.B, R(78));
+    10ca:	4047      	eors	r7, r0
+    P(local.B, local.C, local.D, local.E, local.A, R(79));
+    10cc:	f505 4583 	add.w	r5, r5, #16768	@ 0x4180
+    P(local.C, local.D, local.E, local.A, local.B, R(78));
+    10d0:	ea4f 00b0 	mov.w	r0, r0, ror #2
+    P(local.B, local.C, local.D, local.E, local.A, R(79));
+    10d4:	ea84 0100 	eor.w	r1, r4, r0
+    10d8:	3556      	adds	r5, #86	@ 0x56
+    10da:	4051      	eors	r1, r2
+    P(local.C, local.D, local.E, local.A, local.B, R(78));
+    10dc:	4437      	add	r7, r6
+    P(local.B, local.C, local.D, local.E, local.A, R(79));
+    10de:	eb05 05b8 	add.w	r5, r5, r8, ror #2
+    P(local.C, local.D, local.E, local.A, local.B, R(78));
+    10e2:	eb07 67f2 	add.w	r7, r7, r2, ror #27
+    P(local.B, local.C, local.D, local.E, local.A, R(79));
+    10e6:	194b      	adds	r3, r1, r5
+
+#undef K
+#undef F
+
+    ctx->state[0] += local.A;
+    10e8:	990e      	ldr	r1, [sp, #56]	@ 0x38
+    P(local.C, local.D, local.E, local.A, local.B, R(78));
+    10ea:	972a      	str	r7, [sp, #168]	@ 0xa8
+    P(local.B, local.C, local.D, local.E, local.A, R(79));
+    10ec:	eb03 63f7 	add.w	r3, r3, r7, ror #27
+    10f0:	9329      	str	r3, [sp, #164]	@ 0xa4
+    ctx->state[0] += local.A;
+    10f2:	440b      	add	r3, r1
+    10f4:	9900      	ldr	r1, [sp, #0]
+    P(local.C, local.D, local.E, local.A, local.B, R(78));
+    10f6:	902c      	str	r0, [sp, #176]	@ 0xb0
+    ctx->state[0] += local.A;
+    10f8:	608b      	str	r3, [r1, #8]
+    ctx->state[1] += local.B;
+    10fa:	9b01      	ldr	r3, [sp, #4]
+    10fc:	441f      	add	r7, r3
+    ctx->state[2] += local.C;
+    10fe:	9b05      	ldr	r3, [sp, #20]
+    ctx->state[1] += local.B;
+    1100:	60cf      	str	r7, [r1, #12]
+    P(local.B, local.C, local.D, local.E, local.A, R(79));
+    1102:	ea4f 02b2 	mov.w	r2, r2, ror #2
+    1106:	922b      	str	r2, [sp, #172]	@ 0xac
+    ctx->state[2] += local.C;
+    1108:	441a      	add	r2, r3
+    ctx->state[3] += local.D;
+    110a:	9b0f      	ldr	r3, [sp, #60]	@ 0x3c
+    ctx->state[2] += local.C;
+    110c:	610a      	str	r2, [r1, #16]
+    ctx->state[3] += local.D;
+    110e:	4418      	add	r0, r3
+    ctx->state[4] += local.E;
+    1110:	9b12      	ldr	r3, [sp, #72]	@ 0x48
+    ctx->state[3] += local.D;
+    1112:	6148      	str	r0, [r1, #20]
+    ctx->state[4] += local.E;
+    1114:	441c      	add	r4, r3
+    1116:	618c      	str	r4, [r1, #24]
+
+    /* Zeroise buffers and variables to clear sensitive data from memory. */
+    mbedtls_platform_zeroize(&local, sizeof(local));
+    1118:	a818      	add	r0, sp, #96	@ 0x60
+    111a:	4b03      	ldr	r3, [pc, #12]	@ (1128 <mbedtls_internal_sha1_process+0xea4>)
+    111c:	2158      	movs	r1, #88	@ 0x58
+    111e:	4798      	blx	r3
+
+    return 0;
+}
+    1120:	2000      	movs	r0, #0
+    1122:	b02f      	add	sp, #188	@ 0xbc
+    1124:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+    1128:	00000000 	.word	0x00000000
+    112c:	ca62c1d6 	.word	0xca62c1d6
+
+00001130 <mbedtls_sha1_update>:
+ * SHA-1 process buffer
+ */
+int mbedtls_sha1_update(mbedtls_sha1_context *ctx,
+                        const unsigned char *input,
+                        size_t ilen)
+{
+    1130:	e92d 43f8 	stmdb	sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
+    1134:	4605      	mov	r5, r0
+    1136:	460e      	mov	r6, r1
+    int ret = MBEDTLS_ERR_ERROR_CORRUPTION_DETECTED;
+    size_t fill;
+    uint32_t left;
+
+    if (ilen == 0) {
+    1138:	4614      	mov	r4, r2
+    113a:	b382      	cbz	r2, 119e <mbedtls_sha1_update+0x6e>
+        return 0;
+    }
+
+    left = ctx->total[0] & 0x3F;
+    113c:	6803      	ldr	r3, [r0, #0]
+    113e:	f003 073f 	and.w	r7, r3, #63	@ 0x3f
+    fill = 64 - left;
+
+    ctx->total[0] += (uint32_t) ilen;
+    1142:	189b      	adds	r3, r3, r2
+    1144:	6003      	str	r3, [r0, #0]
+    ctx->total[0] &= 0xFFFFFFFF;
+
+    if (ctx->total[0] < (uint32_t) ilen) {
+        ctx->total[1]++;
+    1146:	bf22      	ittt	cs
+    1148:	6843      	ldrcs	r3, [r0, #4]
+    114a:	3301      	addcs	r3, #1
+    114c:	6043      	strcs	r3, [r0, #4]
+    }
+
+    if (left && ilen >= fill) {
+    114e:	b19f      	cbz	r7, 1178 <mbedtls_sha1_update+0x48>
+    fill = 64 - left;
+    1150:	f1c7 0940 	rsb	r9, r7, #64	@ 0x40
+    if (left && ilen >= fill) {
+    1154:	454a      	cmp	r2, r9
+    1156:	d30f      	bcc.n	1178 <mbedtls_sha1_update+0x48>
+        memcpy((void *) (ctx->buffer + left), input, fill);
+    1158:	f100 081c 	add.w	r8, r0, #28
+    115c:	4b11      	ldr	r3, [pc, #68]	@ (11a4 <mbedtls_sha1_update+0x74>)
+    115e:	464a      	mov	r2, r9
+    1160:	eb08 0007 	add.w	r0, r8, r7
+    1164:	4798      	blx	r3
+
+        if ((ret = mbedtls_internal_sha1_process(ctx, ctx->buffer)) != 0) {
+    1166:	4b10      	ldr	r3, [pc, #64]	@ (11a8 <mbedtls_sha1_update+0x78>)
+    1168:	4641      	mov	r1, r8
+    116a:	4628      	mov	r0, r5
+    116c:	4798      	blx	r3
+    116e:	b9b8      	cbnz	r0, 11a0 <mbedtls_sha1_update+0x70>
+            return ret;
+        }
+
+        input += fill;
+    1170:	443c      	add	r4, r7
+    1172:	444e      	add	r6, r9
+        ilen  -= fill;
+    1174:	3c40      	subs	r4, #64	@ 0x40
+        left = 0;
+    1176:	4607      	mov	r7, r0
+    }
+
+    while (ilen >= 64) {
+        if ((ret = mbedtls_internal_sha1_process(ctx, input)) != 0) {
+    1178:	f8df 802c 	ldr.w	r8, [pc, #44]	@ 11a8 <mbedtls_sha1_update+0x78>
+    117c:	4426      	add	r6, r4
+    117e:	e003      	b.n	1188 <mbedtls_sha1_update+0x58>
+    1180:	4628      	mov	r0, r5
+    1182:	47c0      	blx	r8
+    1184:	b960      	cbnz	r0, 11a0 <mbedtls_sha1_update+0x70>
+            return ret;
+        }
+
+        input += 64;
+        ilen  -= 64;
+    1186:	3c40      	subs	r4, #64	@ 0x40
+    while (ilen >= 64) {
+    1188:	2c3f      	cmp	r4, #63	@ 0x3f
+    118a:	eba6 0104 	sub.w	r1, r6, r4
+    118e:	d8f7      	bhi.n	1180 <mbedtls_sha1_update+0x50>
+    }
+
+    if (ilen > 0) {
+    1190:	b12c      	cbz	r4, 119e <mbedtls_sha1_update+0x6e>
+        memcpy((void *) (ctx->buffer + left), input, ilen);
+    1192:	f105 001c 	add.w	r0, r5, #28
+    1196:	4b03      	ldr	r3, [pc, #12]	@ (11a4 <mbedtls_sha1_update+0x74>)
+    1198:	4622      	mov	r2, r4
+    119a:	4438      	add	r0, r7
+    119c:	4798      	blx	r3
+        return 0;
+    119e:	2000      	movs	r0, #0
+    }
+
+    return 0;
+}
+    11a0:	e8bd 83f8 	ldmia.w	sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
+	...
+
+000011ac <mbedtls_sha1_finish>:
+/*
+ * SHA-1 final digest
+ */
+int mbedtls_sha1_finish(mbedtls_sha1_context *ctx,
+                        unsigned char output[20])
+{
+    11ac:	e92d 43f8 	stmdb	sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
+    uint32_t high, low;
+
+    /*
+     * Add padding: 0x80 then 0x00 until 8 bytes remain for the length
+     */
+    used = ctx->total[0] & 0x3F;
+    11b0:	6803      	ldr	r3, [r0, #0]
+    11b2:	f8df 9094 	ldr.w	r9, [pc, #148]	@ 1248 <mbedtls_sha1_finish+0x9c>
+    11b6:	f8df 8094 	ldr.w	r8, [pc, #148]	@ 124c <mbedtls_sha1_finish+0xa0>
+    11ba:	f003 033f 	and.w	r3, r3, #63	@ 0x3f
+
+    ctx->buffer[used++] = 0x80;
+    11be:	1c5a      	adds	r2, r3, #1
+    11c0:	4403      	add	r3, r0
+{
+    11c2:	460e      	mov	r6, r1
+
+    if (used <= 56) {
+        /* Enough room for padding + length in current block */
+        memset(ctx->buffer + used, 0, 56 - used);
+    11c4:	f100 071c 	add.w	r7, r0, #28
+    ctx->buffer[used++] = 0x80;
+    11c8:	2180      	movs	r1, #128	@ 0x80
+    if (used <= 56) {
+    11ca:	2a38      	cmp	r2, #56	@ 0x38
+{
+    11cc:	4604      	mov	r4, r0
+    ctx->buffer[used++] = 0x80;
+    11ce:	7719      	strb	r1, [r3, #28]
+        memset(ctx->buffer + used, 0, 56 - used);
+    11d0:	eb07 0002 	add.w	r0, r7, r2
+    if (used <= 56) {
+    11d4:	d827      	bhi.n	1226 <mbedtls_sha1_finish+0x7a>
+        memset(ctx->buffer + used, 0, 56 - used);
+    11d6:	f1c2 0238 	rsb	r2, r2, #56	@ 0x38
+    11da:	2100      	movs	r1, #0
+
+        if ((ret = mbedtls_internal_sha1_process(ctx, ctx->buffer)) != 0) {
+            goto exit;
+        }
+
+        memset(ctx->buffer, 0, 56);
+    11dc:	47c8      	blx	r9
+
+    /*
+     * Add message length
+     */
+    high = (ctx->total[0] >> 29)
+           | (ctx->total[1] <<  3);
+    11de:	e9d4 3100 	ldrd	r3, r1, [r4]
+    high = (ctx->total[0] >> 29)
+    11e2:	0f5a      	lsrs	r2, r3, #29
+    11e4:	ea42 02c1 	orr.w	r2, r2, r1, lsl #3
+    low  = (ctx->total[0] <<  3);
+    11e8:	00db      	lsls	r3, r3, #3
+
+    MBEDTLS_PUT_UINT32_BE(high, ctx->buffer, 56);
+    11ea:	ba12      	rev	r2, r2
+    MBEDTLS_PUT_UINT32_BE(low,  ctx->buffer, 60);
+    11ec:	ba1b      	rev	r3, r3
+    *p32 = x;
+#elif defined(UINT_UNALIGNED_STRUCT)
+    mbedtls_uint32_unaligned_t *p32 = (mbedtls_uint32_unaligned_t *) p;
+    p32->x = x;
+#else
+    memcpy(p, &x, sizeof(x));
+    11ee:	6562      	str	r2, [r4, #84]	@ 0x54
+    11f0:	65a3      	str	r3, [r4, #88]	@ 0x58
+
+    if ((ret = mbedtls_internal_sha1_process(ctx, ctx->buffer)) != 0) {
+    11f2:	4639      	mov	r1, r7
+    11f4:	4620      	mov	r0, r4
+    11f6:	47c0      	blx	r8
+    11f8:	4605      	mov	r5, r0
+    11fa:	b970      	cbnz	r0, 121a <mbedtls_sha1_finish+0x6e>
+    }
+
+    /*
+     * Output final state
+     */
+    MBEDTLS_PUT_UINT32_BE(ctx->state[0], output,  0);
+    11fc:	68a3      	ldr	r3, [r4, #8]
+    11fe:	ba1b      	rev	r3, r3
+    1200:	6033      	str	r3, [r6, #0]
+    MBEDTLS_PUT_UINT32_BE(ctx->state[1], output,  4);
+    1202:	68e3      	ldr	r3, [r4, #12]
+    1204:	ba1b      	rev	r3, r3
+    1206:	6073      	str	r3, [r6, #4]
+    MBEDTLS_PUT_UINT32_BE(ctx->state[2], output,  8);
+    1208:	6923      	ldr	r3, [r4, #16]
+    120a:	ba1b      	rev	r3, r3
+    120c:	60b3      	str	r3, [r6, #8]
+    MBEDTLS_PUT_UINT32_BE(ctx->state[3], output, 12);
+    120e:	6963      	ldr	r3, [r4, #20]
+    1210:	ba1b      	rev	r3, r3
+    1212:	60f3      	str	r3, [r6, #12]
+    MBEDTLS_PUT_UINT32_BE(ctx->state[4], output, 16);
+    1214:	69a3      	ldr	r3, [r4, #24]
+    1216:	ba1b      	rev	r3, r3
+    1218:	6133      	str	r3, [r6, #16]
+
+    ret = 0;
+
+exit:
+    mbedtls_sha1_free(ctx);
+    121a:	4620      	mov	r0, r4
+    121c:	4b09      	ldr	r3, [pc, #36]	@ (1244 <mbedtls_sha1_finish+0x98>)
+    121e:	4798      	blx	r3
+    return ret;
+}
+    1220:	4628      	mov	r0, r5
+    1222:	e8bd 83f8 	ldmia.w	sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
+        memset(ctx->buffer + used, 0, 64 - used);
+    1226:	f1c2 0240 	rsb	r2, r2, #64	@ 0x40
+    122a:	2100      	movs	r1, #0
+    122c:	47c8      	blx	r9
+        if ((ret = mbedtls_internal_sha1_process(ctx, ctx->buffer)) != 0) {
+    122e:	4639      	mov	r1, r7
+    1230:	4620      	mov	r0, r4
+    1232:	47c0      	blx	r8
+    1234:	4605      	mov	r5, r0
+    1236:	2800      	cmp	r0, #0
+    1238:	d1ef      	bne.n	121a <mbedtls_sha1_finish+0x6e>
+        memset(ctx->buffer, 0, 56);
+    123a:	4601      	mov	r1, r0
+    123c:	2238      	movs	r2, #56	@ 0x38
+    123e:	4638      	mov	r0, r7
+    1240:	e7cc      	b.n	11dc <mbedtls_sha1_finish+0x30>
+    1242:	bf00      	nop
+	...
+
+00001250 <mbedtls_sha1>:
+ * output = SHA-1( input buffer )
+ */
+int mbedtls_sha1(const unsigned char *input,
+                 size_t ilen,
+                 unsigned char output[20])
+{
+    1250:	b5f0      	push	{r4, r5, r6, r7, lr}
+    1252:	b099      	sub	sp, #100	@ 0x64
+    int ret = MBEDTLS_ERR_ERROR_CORRUPTION_DETECTED;
+    mbedtls_sha1_context ctx;
+
+    mbedtls_sha1_init(&ctx);
+    1254:	4b0e      	ldr	r3, [pc, #56]	@ (1290 <mbedtls_sha1+0x40>)
+{
+    1256:	4606      	mov	r6, r0
+    mbedtls_sha1_init(&ctx);
+    1258:	a801      	add	r0, sp, #4
+{
+    125a:	4615      	mov	r5, r2
+    125c:	460f      	mov	r7, r1
+    mbedtls_sha1_init(&ctx);
+    125e:	4798      	blx	r3
+
+    if ((ret = mbedtls_sha1_starts(&ctx)) != 0) {
+    1260:	4b0c      	ldr	r3, [pc, #48]	@ (1294 <mbedtls_sha1+0x44>)
+    1262:	a801      	add	r0, sp, #4
+    1264:	4798      	blx	r3
+    1266:	4604      	mov	r4, r0
+    1268:	b958      	cbnz	r0, 1282 <mbedtls_sha1+0x32>
+        goto exit;
+    }
+
+    if ((ret = mbedtls_sha1_update(&ctx, input, ilen)) != 0) {
+    126a:	4b0b      	ldr	r3, [pc, #44]	@ (1298 <mbedtls_sha1+0x48>)
+    126c:	463a      	mov	r2, r7
+    126e:	4631      	mov	r1, r6
+    1270:	a801      	add	r0, sp, #4
+    1272:	4798      	blx	r3
+    1274:	4604      	mov	r4, r0
+    1276:	b920      	cbnz	r0, 1282 <mbedtls_sha1+0x32>
+        goto exit;
+    }
+
+    if ((ret = mbedtls_sha1_finish(&ctx, output)) != 0) {
+    1278:	4b08      	ldr	r3, [pc, #32]	@ (129c <mbedtls_sha1+0x4c>)
+    127a:	4629      	mov	r1, r5
+    127c:	a801      	add	r0, sp, #4
+    127e:	4798      	blx	r3
+    1280:	4604      	mov	r4, r0
+    mbedtls_platform_zeroize(ctx, sizeof(mbedtls_sha1_context));
+    1282:	a801      	add	r0, sp, #4
+    1284:	4b06      	ldr	r3, [pc, #24]	@ (12a0 <mbedtls_sha1+0x50>)
+    1286:	215c      	movs	r1, #92	@ 0x5c
+    1288:	4798      	blx	r3
+    }
+
+exit:
+    mbedtls_sha1_free(&ctx);
+    return ret;
+}
+    128a:	4620      	mov	r0, r4
+    128c:	b019      	add	sp, #100	@ 0x64
+    128e:	bdf0      	pop	{r4, r5, r6, r7, pc}
+	...
+
+000012a4 <mbedtls_platform_zeroize>:
+    && !defined(_WIN32)
+static void *(*const volatile memset_func)(void *, int, size_t) = memset;
+#endif
+
+void mbedtls_platform_zeroize(void *buf, size_t len)
+{
+    12a4:	b510      	push	{r4, lr}
+    if (len > 0) {
+    12a6:	460a      	mov	r2, r1
+{
+    12a8:	4604      	mov	r4, r0
+    if (len > 0) {
+    12aa:	b119      	cbz	r1, 12b4 <mbedtls_platform_zeroize+0x10>
+#elif defined(__STDC_LIB_EXT1__) && !defined(__IAR_SYSTEMS_ICC__)
+        memset_s(buf, len, 0, len);
+#elif defined(_WIN32)
+        SecureZeroMemory(buf, len);
+#else
+        memset_func(buf, 0, len);
+    12ac:	4b02      	ldr	r3, [pc, #8]	@ (12b8 <mbedtls_platform_zeroize+0x14>)
+    12ae:	2100      	movs	r1, #0
+    12b0:	681b      	ldr	r3, [r3, #0]
+    12b2:	4798      	blx	r3
+#pragma GCC diagnostic pop
+#endif
+#endif
+#endif
+    }
+}
+    12b4:	bd10      	pop	{r4, pc}
+    12b6:	bf00      	nop
+    12b8:	00000028 	.word	0x00000028

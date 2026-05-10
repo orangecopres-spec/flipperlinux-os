@@ -1,0 +1,1050 @@
+
+build/f7-firmware-D/.extapps/ccid_test_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <iso7816_icc_power_on_callback>:
+static Iso7816Handler* iso7816_handler;
+static CcidCallbacks* ccid_callbacks;
+static uint8_t* command_apdu_buffer;
+static uint8_t* response_apdu_buffer;
+
+void iso7816_icc_power_on_callback(uint8_t* atr_data, uint32_t* atr_data_len, void* context) {
+   0:	b530      	push	{r4, r5, lr}
+   2:	b083      	sub	sp, #12
+    furi_check(context);
+   4:	b1a2      	cbz	r2, 30 <iso7816_icc_power_on_callback+0x30>
+   6:	4605      	mov	r5, r0
+   8:	460c      	mov	r4, r1
+
+    Iso7816Handler* handler = (Iso7816Handler*)context;
+
+    Iso7816Atr iso7816_atr;
+    handler->iso7816_answer_to_reset(&iso7816_atr);
+   a:	6813      	ldr	r3, [r2, #0]
+   c:	a801      	add	r0, sp, #4
+   e:	4798      	blx	r3
+
+    furi_assert(iso7816_atr.T0 == 0x00);
+  10:	f89d 3005 	ldrb.w	r3, [sp, #5]
+  14:	b983      	cbnz	r3, 38 <sukima76+0x4>
+
+    uint8_t atr_buffer[2] = {iso7816_atr.TS, iso7816_atr.T0};
+  16:	f89d 2004 	ldrb.w	r2, [sp, #4]
+  1a:	f88d 2000 	strb.w	r2, [sp]
+  1e:	f88d 3001 	strb.w	r3, [sp, #1]
+
+    *atr_data_len = 2;
+  22:	2302      	movs	r3, #2
+  24:	6023      	str	r3, [r4, #0]
+
+    memcpy(atr_data, atr_buffer, sizeof(uint8_t) * (*atr_data_len));
+  26:	f8bd 3000 	ldrh.w	r3, [sp]
+  2a:	802b      	strh	r3, [r5, #0]
+}
+  2c:	b003      	add	sp, #12
+  2e:	bd30      	pop	{r4, r5, pc}
+    furi_check(context);
+  30:	f04f 0c02 	mov.w	ip, #2
+
+00000034 <sukima76>:
+  34:	4b02      	ldr	r3, [pc, #8]	@ (40 <sukima95+0x4>)
+  36:	4798      	blx	r3
+    furi_assert(iso7816_atr.T0 == 0x00);
+  38:	f04f 0c01 	mov.w	ip, #1
+
+0000003c <sukima95>:
+  3c:	4b00      	ldr	r3, [pc, #0]	@ (40 <sukima95+0x4>)
+  3e:	4798      	blx	r3
+  40:	00000000 	.word	0x00000000
+
+00000044 <iso7816_xfr_datablock_callback>:
+void iso7816_xfr_datablock_callback(
+    const uint8_t* pc_to_reader_datablock,
+    uint32_t pc_to_reader_datablock_len,
+    uint8_t* reader_to_pc_datablock,
+    uint32_t* reader_to_pc_datablock_len,
+    void* context) {
+  44:	e92d 43f8 	stmdb	sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
+  48:	9f08      	ldr	r7, [sp, #32]
+    furi_check(context);
+  4a:	b1e7      	cbz	r7, 86 <iso7816_xfr_datablock_callback+0x42>
+  4c:	4615      	mov	r5, r2
+  4e:	461c      	mov	r4, r3
+
+    Iso7816Handler* handler = (Iso7816Handler*)context;
+
+    ISO7816_Response_APDU* response_apdu = (ISO7816_Response_APDU*)response_apdu_buffer;
+  50:	4b19      	ldr	r3, [pc, #100]	@ (b8 <sukima235+0x26>)
+  52:	681e      	ldr	r6, [r3, #0]
+    ISO7816_Command_APDU* command_apdu = (ISO7816_Command_APDU*)command_apdu_buffer;
+  54:	4b19      	ldr	r3, [pc, #100]	@ (bc <sukima235+0x2a>)
+  56:	f8d3 8000 	ldr.w	r8, [r3]
+
+    uint8_t result = iso7816_read_command_apdu(
+  5a:	23ff      	movs	r3, #255	@ 0xff
+  5c:	460a      	mov	r2, r1
+  5e:	4601      	mov	r1, r0
+  60:	4640      	mov	r0, r8
+  62:	f8df 9068 	ldr.w	r9, [pc, #104]	@ cc <sukima235+0x3a>
+  66:	47c8      	blx	r9
+        command_apdu, pc_to_reader_datablock, pc_to_reader_datablock_len, CCID_SHORT_APDU_SIZE);
+
+    if(result == ISO7816_READ_COMMAND_APDU_OK) {
+  68:	b9a8      	cbnz	r0, 96 <sukima235+0x4>
+        handler->iso7816_process_command(command_apdu, response_apdu);
+  6a:	687b      	ldr	r3, [r7, #4]
+  6c:	4631      	mov	r1, r6
+  6e:	4640      	mov	r0, r8
+  70:	4798      	blx	r3
+
+        furi_assert(response_apdu->DataLen < CCID_SHORT_APDU_SIZE);
+  72:	8873      	ldrh	r3, [r6, #2]
+  74:	2bfe      	cmp	r3, #254	@ 0xfe
+  76:	d80a      	bhi.n	8e <sukima212+0x4>
+        iso7816_set_response(response_apdu, ISO7816_RESPONSE_WRONG_LE);
+    } else if(result == ISO7816_READ_COMMAND_APDU_ERROR_WRONG_LENGTH) {
+        iso7816_set_response(response_apdu, ISO7816_RESPONSE_WRONG_LENGTH);
+    }
+
+    iso7816_write_response_apdu(response_apdu, reader_to_pc_datablock, reader_to_pc_datablock_len);
+  78:	4622      	mov	r2, r4
+  7a:	4629      	mov	r1, r5
+  7c:	4630      	mov	r0, r6
+  7e:	4b10      	ldr	r3, [pc, #64]	@ (c0 <sukima235+0x2e>)
+  80:	4798      	blx	r3
+}
+  82:	e8bd 83f8 	ldmia.w	sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
+    furi_check(context);
+  86:	f04f 0c02 	mov.w	ip, #2
+
+0000008a <sukima212>:
+  8a:	4b0e      	ldr	r3, [pc, #56]	@ (c4 <sukima235+0x32>)
+  8c:	4798      	blx	r3
+        furi_assert(response_apdu->DataLen < CCID_SHORT_APDU_SIZE);
+  8e:	f04f 0c01 	mov.w	ip, #1
+
+00000092 <sukima235>:
+  92:	4b0c      	ldr	r3, [pc, #48]	@ (c4 <sukima235+0x32>)
+  94:	4798      	blx	r3
+    } else if(result == ISO7816_READ_COMMAND_APDU_ERROR_WRONG_LE) {
+  96:	2801      	cmp	r0, #1
+  98:	d007      	beq.n	aa <sukima235+0x18>
+    } else if(result == ISO7816_READ_COMMAND_APDU_ERROR_WRONG_LENGTH) {
+  9a:	2802      	cmp	r0, #2
+  9c:	d1ec      	bne.n	78 <iso7816_xfr_datablock_callback+0x34>
+        iso7816_set_response(response_apdu, ISO7816_RESPONSE_WRONG_LENGTH);
+  9e:	f44f 41ce 	mov.w	r1, #26368	@ 0x6700
+  a2:	4630      	mov	r0, r6
+  a4:	4b08      	ldr	r3, [pc, #32]	@ (c8 <sukima235+0x36>)
+  a6:	4798      	blx	r3
+  a8:	e7e6      	b.n	78 <iso7816_xfr_datablock_callback+0x34>
+        iso7816_set_response(response_apdu, ISO7816_RESPONSE_WRONG_LE);
+  aa:	f44f 41d8 	mov.w	r1, #27648	@ 0x6c00
+  ae:	4630      	mov	r0, r6
+  b0:	4b05      	ldr	r3, [pc, #20]	@ (c8 <sukima235+0x36>)
+  b2:	4798      	blx	r3
+  b4:	e7e0      	b.n	78 <iso7816_xfr_datablock_callback+0x34>
+  b6:	bf00      	nop
+  b8:	00000000 	.word	0x00000000
+  bc:	00000004 	.word	0x00000004
+	...
+
+000000d0 <iso7816_handler_alloc>:
+
+Iso7816Handler* iso7816_handler_alloc() {
+  d0:	b538      	push	{r3, r4, r5, lr}
+    iso7816_handler = malloc(sizeof(Iso7816Handler));
+  d2:	2008      	movs	r0, #8
+  d4:	4d0c      	ldr	r5, [pc, #48]	@ (108 <iso7816_handler_alloc+0x38>)
+  d6:	47a8      	blx	r5
+  d8:	4604      	mov	r4, r0
+  da:	4b0c      	ldr	r3, [pc, #48]	@ (10c <iso7816_handler_alloc+0x3c>)
+  dc:	6018      	str	r0, [r3, #0]
+
+    command_apdu_buffer = malloc(sizeof(ISO7816_Command_APDU) + CCID_SHORT_APDU_SIZE);
+  de:	f44f 7084 	mov.w	r0, #264	@ 0x108
+  e2:	47a8      	blx	r5
+  e4:	4b0a      	ldr	r3, [pc, #40]	@ (110 <iso7816_handler_alloc+0x40>)
+  e6:	6018      	str	r0, [r3, #0]
+    response_apdu_buffer = malloc(sizeof(ISO7816_Response_APDU) + CCID_SHORT_APDU_SIZE);
+  e8:	f240 1003 	movw	r0, #259	@ 0x103
+  ec:	47a8      	blx	r5
+  ee:	4b09      	ldr	r3, [pc, #36]	@ (114 <iso7816_handler_alloc+0x44>)
+  f0:	6018      	str	r0, [r3, #0]
+
+    ccid_callbacks = malloc(sizeof(CcidCallbacks));
+  f2:	2008      	movs	r0, #8
+  f4:	47a8      	blx	r5
+  f6:	4b08      	ldr	r3, [pc, #32]	@ (118 <iso7816_handler_alloc+0x48>)
+  f8:	6018      	str	r0, [r3, #0]
+    ccid_callbacks->icc_power_on_callback = iso7816_icc_power_on_callback;
+  fa:	4b08      	ldr	r3, [pc, #32]	@ (11c <iso7816_handler_alloc+0x4c>)
+  fc:	6003      	str	r3, [r0, #0]
+    ccid_callbacks->xfr_datablock_callback = iso7816_xfr_datablock_callback;
+  fe:	4b08      	ldr	r3, [pc, #32]	@ (120 <iso7816_handler_alloc+0x50>)
+ 100:	6043      	str	r3, [r0, #4]
+
+    return iso7816_handler;
+}
+ 102:	4620      	mov	r0, r4
+ 104:	bd38      	pop	{r3, r4, r5, pc}
+ 106:	bf00      	nop
+ 108:	00000000 	.word	0x00000000
+ 10c:	0000000c 	.word	0x0000000c
+ 110:	00000004 	.word	0x00000004
+ 114:	00000000 	.word	0x00000000
+ 118:	00000008 	.word	0x00000008
+	...
+
+00000124 <iso7816_handler_set_usb_ccid_callbacks>:
+
+void iso7816_handler_set_usb_ccid_callbacks() {
+ 124:	b508      	push	{r3, lr}
+    furi_hal_usb_ccid_set_callbacks(ccid_callbacks, iso7816_handler);
+ 126:	4b03      	ldr	r3, [pc, #12]	@ (134 <iso7816_handler_set_usb_ccid_callbacks+0x10>)
+ 128:	6819      	ldr	r1, [r3, #0]
+ 12a:	4b03      	ldr	r3, [pc, #12]	@ (138 <iso7816_handler_set_usb_ccid_callbacks+0x14>)
+ 12c:	6818      	ldr	r0, [r3, #0]
+ 12e:	4b03      	ldr	r3, [pc, #12]	@ (13c <iso7816_handler_set_usb_ccid_callbacks+0x18>)
+ 130:	4798      	blx	r3
+}
+ 132:	bd08      	pop	{r3, pc}
+ 134:	0000000c 	.word	0x0000000c
+ 138:	00000008 	.word	0x00000008
+ 13c:	00000000 	.word	0x00000000
+
+00000140 <iso7816_handler_reset_usb_ccid_callbacks>:
+
+void iso7816_handler_reset_usb_ccid_callbacks() {
+ 140:	b508      	push	{r3, lr}
+    furi_hal_usb_ccid_set_callbacks(NULL, NULL);
+ 142:	2100      	movs	r1, #0
+ 144:	4608      	mov	r0, r1
+ 146:	4b01      	ldr	r3, [pc, #4]	@ (14c <iso7816_handler_reset_usb_ccid_callbacks+0xc>)
+ 148:	4798      	blx	r3
+}
+ 14a:	bd08      	pop	{r3, pc}
+ 14c:	00000000 	.word	0x00000000
+
+00000150 <iso7816_handler_free>:
+
+void iso7816_handler_free(Iso7816Handler* handler) {
+ 150:	b538      	push	{r3, r4, r5, lr}
+ 152:	4605      	mov	r5, r0
+    free(ccid_callbacks);
+ 154:	4b06      	ldr	r3, [pc, #24]	@ (170 <iso7816_handler_free+0x20>)
+ 156:	6818      	ldr	r0, [r3, #0]
+ 158:	4c06      	ldr	r4, [pc, #24]	@ (174 <iso7816_handler_free+0x24>)
+ 15a:	47a0      	blx	r4
+
+    free(command_apdu_buffer);
+ 15c:	4b06      	ldr	r3, [pc, #24]	@ (178 <iso7816_handler_free+0x28>)
+ 15e:	6818      	ldr	r0, [r3, #0]
+ 160:	47a0      	blx	r4
+    free(response_apdu_buffer);
+ 162:	4b06      	ldr	r3, [pc, #24]	@ (17c <iso7816_handler_free+0x2c>)
+ 164:	6818      	ldr	r0, [r3, #0]
+ 166:	47a0      	blx	r4
+
+    free(handler);
+ 168:	4628      	mov	r0, r5
+ 16a:	47a0      	blx	r4
+}
+ 16c:	bd38      	pop	{r3, r4, r5, pc}
+ 16e:	bf00      	nop
+ 170:	00000008 	.word	0x00000008
+ 174:	00000000 	.word	0x00000000
+ 178:	00000004 	.word	0x00000004
+ 17c:	00000000 	.word	0x00000000
+
+00000180 <iso7816_set_response>:
+#include <stdint.h>
+#include "iso7816_t0_apdu.h"
+#include "iso7816_response.h"
+
+void iso7816_set_response(ISO7816_Response_APDU* responseAPDU, uint16_t responseCode) {
+    responseAPDU->SW1 = (responseCode >> (8 * 1)) & 0xff;
+ 180:	0a0b      	lsrs	r3, r1, #8
+ 182:	7003      	strb	r3, [r0, #0]
+    responseAPDU->SW2 = (responseCode >> (8 * 0)) & 0xff;
+ 184:	7041      	strb	r1, [r0, #1]
+}
+ 186:	4770      	bx	lr
+
+00000188 <iso7816_read_command_apdu>:
+//extra data will be pointed to commandDataBuffer
+uint8_t iso7816_read_command_apdu(
+    ISO7816_Command_APDU* command,
+    const uint8_t* pc_to_reader_datablock,
+    uint32_t pc_to_reader_datablock_len,
+    uint32_t max_apdu_size) {
+ 188:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 18a:	4604      	mov	r4, r0
+ 18c:	4616      	mov	r6, r2
+    command->CLA = pc_to_reader_datablock[0];
+ 18e:	780a      	ldrb	r2, [r1, #0]
+ 190:	7002      	strb	r2, [r0, #0]
+    command->INS = pc_to_reader_datablock[1];
+ 192:	784a      	ldrb	r2, [r1, #1]
+ 194:	7042      	strb	r2, [r0, #1]
+    command->P1 = pc_to_reader_datablock[2];
+ 196:	788a      	ldrb	r2, [r1, #2]
+ 198:	7082      	strb	r2, [r0, #2]
+    command->P2 = pc_to_reader_datablock[3];
+ 19a:	78ca      	ldrb	r2, [r1, #3]
+ 19c:	70c2      	strb	r2, [r0, #3]
+
+    if(pc_to_reader_datablock_len == 4) {
+ 19e:	2e04      	cmp	r6, #4
+ 1a0:	d017      	beq.n	1d2 <iso7816_read_command_apdu+0x4a>
+ 1a2:	460d      	mov	r5, r1
+        command->Lc = 0;
+        command->Le = 0;
+        command->LePresent = false;
+
+        return ISO7816_READ_COMMAND_APDU_OK;
+    } else if(pc_to_reader_datablock_len == 5) {
+ 1a4:	2e05      	cmp	r6, #5
+ 1a6:	d01b      	beq.n	1e0 <iso7816_read_command_apdu+0x58>
+        command->Lc = 0;
+        command->Le = pc_to_reader_datablock[4];
+        command->LePresent = true;
+
+        return ISO7816_READ_COMMAND_APDU_OK;
+    } else if(pc_to_reader_datablock_len > 5 && pc_to_reader_datablock[4] != 0x00) {
+ 1a8:	2e05      	cmp	r6, #5
+ 1aa:	d92e      	bls.n	20a <iso7816_read_command_apdu+0x82>
+ 1ac:	790f      	ldrb	r7, [r1, #4]
+ 1ae:	b377      	cbz	r7, 20e <iso7816_read_command_apdu+0x86>
+        //short lc
+
+        command->Lc = pc_to_reader_datablock[4];
+ 1b0:	8087      	strh	r7, [r0, #4]
+        if(command->Lc > 0 && command->Lc < max_apdu_size) { //-V560
+ 1b2:	b377      	cbz	r7, 212 <iso7816_read_command_apdu+0x8a>
+ 1b4:	429f      	cmp	r7, r3
+ 1b6:	d22e      	bcs.n	216 <iso7816_read_command_apdu+0x8e>
+            memcpy(command->Data, &pc_to_reader_datablock[5], command->Lc);
+ 1b8:	463a      	mov	r2, r7
+ 1ba:	3105      	adds	r1, #5
+ 1bc:	3009      	adds	r0, #9
+ 1be:	4b17      	ldr	r3, [pc, #92]	@ (21c <iso7816_read_command_apdu+0x94>)
+ 1c0:	4798      	blx	r3
+
+            //does it have a short le too?
+            if(pc_to_reader_datablock_len == (uint32_t)(command->Lc + 5)) {
+ 1c2:	1d7b      	adds	r3, r7, #5
+ 1c4:	42b3      	cmp	r3, r6
+ 1c6:	d013      	beq.n	1f0 <iso7816_read_command_apdu+0x68>
+                command->Le = 0;
+                command->LePresent = false;
+                return ISO7816_READ_COMMAND_APDU_OK;
+            } else if(pc_to_reader_datablock_len == (uint32_t)(command->Lc + 6)) {
+ 1c8:	3706      	adds	r7, #6
+ 1ca:	42be      	cmp	r6, r7
+ 1cc:	d015      	beq.n	1fa <iso7816_read_command_apdu+0x72>
+                command->Le = pc_to_reader_datablock[pc_to_reader_datablock_len - 1];
+                command->LePresent = true;
+
+                return ISO7816_READ_COMMAND_APDU_OK;
+            } else {
+                return ISO7816_READ_COMMAND_APDU_ERROR_WRONG_LENGTH;
+ 1ce:	2002      	movs	r0, #2
+ 1d0:	e005      	b.n	1de <iso7816_read_command_apdu+0x56>
+        command->Lc = 0;
+ 1d2:	2000      	movs	r0, #0
+ 1d4:	7120      	strb	r0, [r4, #4]
+ 1d6:	7160      	strb	r0, [r4, #5]
+        command->Le = 0;
+ 1d8:	71a0      	strb	r0, [r4, #6]
+ 1da:	71e0      	strb	r0, [r4, #7]
+        command->LePresent = false;
+ 1dc:	7220      	strb	r0, [r4, #8]
+            return ISO7816_READ_COMMAND_APDU_ERROR_WRONG_LENGTH;
+        }
+    } else {
+        return ISO7816_READ_COMMAND_APDU_ERROR_WRONG_LENGTH;
+    }
+}
+ 1de:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
+        command->Lc = 0;
+ 1e0:	2000      	movs	r0, #0
+ 1e2:	7120      	strb	r0, [r4, #4]
+ 1e4:	7160      	strb	r0, [r4, #5]
+        command->Le = pc_to_reader_datablock[4];
+ 1e6:	790b      	ldrb	r3, [r1, #4]
+ 1e8:	80e3      	strh	r3, [r4, #6]
+        command->LePresent = true;
+ 1ea:	2301      	movs	r3, #1
+ 1ec:	7223      	strb	r3, [r4, #8]
+        return ISO7816_READ_COMMAND_APDU_OK;
+ 1ee:	e7f6      	b.n	1de <iso7816_read_command_apdu+0x56>
+                command->Le = 0;
+ 1f0:	2000      	movs	r0, #0
+ 1f2:	71a0      	strb	r0, [r4, #6]
+ 1f4:	71e0      	strb	r0, [r4, #7]
+                command->LePresent = false;
+ 1f6:	7220      	strb	r0, [r4, #8]
+                return ISO7816_READ_COMMAND_APDU_OK;
+ 1f8:	e7f1      	b.n	1de <iso7816_read_command_apdu+0x56>
+                command->Le = pc_to_reader_datablock[pc_to_reader_datablock_len - 1];
+ 1fa:	19aa      	adds	r2, r5, r6
+ 1fc:	f812 3c01 	ldrb.w	r3, [r2, #-1]
+ 200:	80e3      	strh	r3, [r4, #6]
+                command->LePresent = true;
+ 202:	2301      	movs	r3, #1
+ 204:	7223      	strb	r3, [r4, #8]
+                return ISO7816_READ_COMMAND_APDU_OK;
+ 206:	2000      	movs	r0, #0
+ 208:	e7e9      	b.n	1de <iso7816_read_command_apdu+0x56>
+        return ISO7816_READ_COMMAND_APDU_ERROR_WRONG_LENGTH;
+ 20a:	2002      	movs	r0, #2
+ 20c:	e7e7      	b.n	1de <iso7816_read_command_apdu+0x56>
+ 20e:	2002      	movs	r0, #2
+ 210:	e7e5      	b.n	1de <iso7816_read_command_apdu+0x56>
+            return ISO7816_READ_COMMAND_APDU_ERROR_WRONG_LENGTH;
+ 212:	2002      	movs	r0, #2
+ 214:	e7e3      	b.n	1de <iso7816_read_command_apdu+0x56>
+ 216:	2002      	movs	r0, #2
+ 218:	e7e1      	b.n	1de <iso7816_read_command_apdu+0x56>
+ 21a:	bf00      	nop
+ 21c:	00000000 	.word	0x00000000
+
+00000220 <iso7816_write_response_apdu>:
+    uint8_t* reader_to_pc_datablock,
+    uint32_t* reader_to_pc_datablock_len) {
+    uint32_t responseDataBufferIndex = 0;
+
+    //response body
+    if(response->DataLen > 0) {
+ 220:	8843      	ldrh	r3, [r0, #2]
+ 222:	b9bb      	cbnz	r3, 254 <iso7816_write_response_apdu+0x34>
+            responseDataBufferIndex++;
+        }
+    }
+
+    //trailer
+    reader_to_pc_datablock[responseDataBufferIndex] = response->SW1;
+ 224:	f890 c000 	ldrb.w	ip, [r0]
+ 228:	f801 c003 	strb.w	ip, [r1, r3]
+    responseDataBufferIndex++;
+ 22c:	f103 0c01 	add.w	ip, r3, #1
+
+    reader_to_pc_datablock[responseDataBufferIndex] = response->SW2;
+ 230:	7840      	ldrb	r0, [r0, #1]
+ 232:	f801 000c 	strb.w	r0, [r1, ip]
+    responseDataBufferIndex++;
+ 236:	3302      	adds	r3, #2
+
+    *reader_to_pc_datablock_len = responseDataBufferIndex;
+ 238:	6013      	str	r3, [r2, #0]
+}
+ 23a:	4770      	bx	lr
+                response->Data[responseDataBufferIndex];
+ 23c:	eb00 0c03 	add.w	ip, r0, r3
+ 240:	f89c c004 	ldrb.w	ip, [ip, #4]
+            reader_to_pc_datablock[responseDataBufferIndex] =
+ 244:	f801 c003 	strb.w	ip, [r1, r3]
+            responseDataBufferIndex++;
+ 248:	3301      	adds	r3, #1
+        while(responseDataBufferIndex < response->DataLen) {
+ 24a:	f8b0 c002 	ldrh.w	ip, [r0, #2]
+ 24e:	459c      	cmp	ip, r3
+ 250:	d8f4      	bhi.n	23c <iso7816_write_response_apdu+0x1c>
+ 252:	e7e7      	b.n	224 <iso7816_write_response_apdu+0x4>
+    uint32_t responseDataBufferIndex = 0;
+ 254:	2300      	movs	r3, #0
+ 256:	e7f8      	b.n	24a <iso7816_write_response_apdu+0x2a>
+
+00000258 <ccid_test_app_input_callback>:
+
+    canvas_set_font(canvas, FontSecondary);
+    canvas_draw_str(canvas, 0, 63, "Hold [back] to exit");
+}
+
+static void ccid_test_app_input_callback(InputEvent* input_event, void* ctx) {
+ 258:	b500      	push	{lr}
+ 25a:	b085      	sub	sp, #20
+ 25c:	468c      	mov	ip, r1
+    FuriMessageQueue* event_queue = ctx;
+
+    CcidTestAppEvent event;
+    event.type = EventTypeInput;
+ 25e:	2300      	movs	r3, #0
+ 260:	f88d 300c 	strb.w	r3, [sp, #12]
+    event.input = *input_event;
+ 264:	ab01      	add	r3, sp, #4
+ 266:	c803      	ldmia	r0, {r0, r1}
+ 268:	e883 0003 	stmia.w	r3, {r0, r1}
+    furi_message_queue_put(event_queue, &event, FuriWaitForever);
+ 26c:	f04f 32ff 	mov.w	r2, #4294967295	@ 0xffffffff
+ 270:	4619      	mov	r1, r3
+ 272:	4660      	mov	r0, ip
+ 274:	4b02      	ldr	r3, [pc, #8]	@ (280 <ccid_test_app_input_callback+0x28>)
+ 276:	4798      	blx	r3
+}
+ 278:	b005      	add	sp, #20
+ 27a:	f85d fb04 	ldr.w	pc, [sp], #4
+ 27e:	bf00      	nop
+ 280:	00000000 	.word	0x00000000
+
+00000284 <ccid_test_app_render_callback>:
+static void ccid_test_app_render_callback(Canvas* canvas, void* ctx) {
+ 284:	b570      	push	{r4, r5, r6, lr}
+ 286:	4604      	mov	r4, r0
+    canvas_clear(canvas);
+ 288:	4b0a      	ldr	r3, [pc, #40]	@ (2b4 <ccid_test_app_render_callback+0x30>)
+ 28a:	4798      	blx	r3
+    canvas_set_font(canvas, FontPrimary);
+ 28c:	2100      	movs	r1, #0
+ 28e:	4620      	mov	r0, r4
+ 290:	4e09      	ldr	r6, [pc, #36]	@ (2b8 <ccid_test_app_render_callback+0x34>)
+ 292:	47b0      	blx	r6
+    canvas_draw_str(canvas, 0, 10, "CCID Test App");
+ 294:	4b09      	ldr	r3, [pc, #36]	@ (2bc <ccid_test_app_render_callback+0x38>)
+ 296:	220a      	movs	r2, #10
+ 298:	2100      	movs	r1, #0
+ 29a:	4620      	mov	r0, r4
+ 29c:	4d08      	ldr	r5, [pc, #32]	@ (2c0 <ccid_test_app_render_callback+0x3c>)
+ 29e:	47a8      	blx	r5
+    canvas_set_font(canvas, FontSecondary);
+ 2a0:	2101      	movs	r1, #1
+ 2a2:	4620      	mov	r0, r4
+ 2a4:	47b0      	blx	r6
+    canvas_draw_str(canvas, 0, 63, "Hold [back] to exit");
+ 2a6:	4b07      	ldr	r3, [pc, #28]	@ (2c4 <ccid_test_app_render_callback+0x40>)
+ 2a8:	223f      	movs	r2, #63	@ 0x3f
+ 2aa:	2100      	movs	r1, #0
+ 2ac:	4620      	mov	r0, r4
+ 2ae:	47a8      	blx	r5
+}
+ 2b0:	bd70      	pop	{r4, r5, r6, pc}
+ 2b2:	bf00      	nop
+	...
+ 2c4:	00000010 	.word	0x00000010
+
+000002c8 <ccid_test_app_alloc>:
+uint32_t ccid_test_exit(void* context) {
+    UNUSED(context);
+    return VIEW_NONE;
+}
+
+CcidTestApp* ccid_test_app_alloc(void) {
+ 2c8:	b510      	push	{r4, lr}
+    CcidTestApp* app = malloc(sizeof(CcidTestApp));
+ 2ca:	2054      	movs	r0, #84	@ 0x54
+ 2cc:	4b16      	ldr	r3, [pc, #88]	@ (328 <ccid_test_app_alloc+0x60>)
+ 2ce:	4798      	blx	r3
+ 2d0:	4604      	mov	r4, r0
+
+    //setup CCID USB
+    // On linux: set VID PID using: /usr/lib/pcsc/drivers/ifd-ccid.bundle/Contents/Info.plist
+    app->ccid_cfg.vid = 0x076B;
+ 2d2:	f240 736b 	movw	r3, #1899	@ 0x76b
+ 2d6:	8183      	strh	r3, [r0, #12]
+    app->ccid_cfg.pid = 0x3A21;
+ 2d8:	f643 2321 	movw	r3, #14881	@ 0x3a21
+ 2dc:	81c3      	strh	r3, [r0, #14]
+
+    app->iso7816_handler = iso7816_handler_alloc();
+ 2de:	4b13      	ldr	r3, [pc, #76]	@ (32c <ccid_test_app_alloc+0x64>)
+ 2e0:	4798      	blx	r3
+ 2e2:	6520      	str	r0, [r4, #80]	@ 0x50
+    app->iso7816_handler->iso7816_answer_to_reset = iso7816_answer_to_reset;
+ 2e4:	4b12      	ldr	r3, [pc, #72]	@ (330 <ccid_test_app_alloc+0x68>)
+ 2e6:	6003      	str	r3, [r0, #0]
+    app->iso7816_handler->iso7816_process_command = iso7816_process_command;
+ 2e8:	6d23      	ldr	r3, [r4, #80]	@ 0x50
+ 2ea:	4a12      	ldr	r2, [pc, #72]	@ (334 <ccid_test_app_alloc+0x6c>)
+ 2ec:	605a      	str	r2, [r3, #4]
+
+    // Gui
+    app->gui = furi_record_open(RECORD_GUI);
+ 2ee:	4812      	ldr	r0, [pc, #72]	@ (338 <ccid_test_app_alloc+0x70>)
+ 2f0:	4b12      	ldr	r3, [pc, #72]	@ (33c <ccid_test_app_alloc+0x74>)
+ 2f2:	4798      	blx	r3
+ 2f4:	6020      	str	r0, [r4, #0]
+
+    //viewport
+    app->view_port = view_port_alloc();
+ 2f6:	4b12      	ldr	r3, [pc, #72]	@ (340 <ccid_test_app_alloc+0x78>)
+ 2f8:	4798      	blx	r3
+ 2fa:	4601      	mov	r1, r0
+ 2fc:	6060      	str	r0, [r4, #4]
+    gui_add_view_port(app->gui, app->view_port, GuiLayerFullscreen);
+ 2fe:	2204      	movs	r2, #4
+ 300:	6820      	ldr	r0, [r4, #0]
+ 302:	4b10      	ldr	r3, [pc, #64]	@ (344 <ccid_test_app_alloc+0x7c>)
+ 304:	4798      	blx	r3
+    view_port_draw_callback_set(app->view_port, ccid_test_app_render_callback, NULL);
+ 306:	2200      	movs	r2, #0
+ 308:	490f      	ldr	r1, [pc, #60]	@ (348 <ccid_test_app_alloc+0x80>)
+ 30a:	6860      	ldr	r0, [r4, #4]
+ 30c:	4b0f      	ldr	r3, [pc, #60]	@ (34c <ccid_test_app_alloc+0x84>)
+ 30e:	4798      	blx	r3
+
+    //message queue
+    app->event_queue = furi_message_queue_alloc(8, sizeof(CcidTestAppEvent));
+ 310:	210c      	movs	r1, #12
+ 312:	2008      	movs	r0, #8
+ 314:	4b0e      	ldr	r3, [pc, #56]	@ (350 <ccid_test_app_alloc+0x88>)
+ 316:	4798      	blx	r3
+ 318:	4602      	mov	r2, r0
+ 31a:	60a0      	str	r0, [r4, #8]
+    view_port_input_callback_set(app->view_port, ccid_test_app_input_callback, app->event_queue);
+ 31c:	490d      	ldr	r1, [pc, #52]	@ (354 <ccid_test_app_alloc+0x8c>)
+ 31e:	6860      	ldr	r0, [r4, #4]
+ 320:	4b0d      	ldr	r3, [pc, #52]	@ (358 <ccid_test_app_alloc+0x90>)
+ 322:	4798      	blx	r3
+
+    return app;
+}
+ 324:	4620      	mov	r0, r4
+ 326:	bd10      	pop	{r4, pc}
+	...
+ 338:	00000024 	.word	0x00000024
+	...
+
+0000035c <ccid_test_app_free>:
+
+void ccid_test_app_free(CcidTestApp* app) {
+ 35c:	b510      	push	{r4, lr}
+    furi_assert(app);
+ 35e:	b1b0      	cbz	r0, 38e <ccid_test_app_free+0x32>
+ 360:	4604      	mov	r4, r0
+
+    //message queue
+    furi_message_queue_free(app->event_queue);
+ 362:	6880      	ldr	r0, [r0, #8]
+ 364:	4b0c      	ldr	r3, [pc, #48]	@ (398 <sukima285+0x6>)
+ 366:	4798      	blx	r3
+
+    //view port
+    gui_remove_view_port(app->gui, app->view_port);
+ 368:	6861      	ldr	r1, [r4, #4]
+ 36a:	6820      	ldr	r0, [r4, #0]
+ 36c:	4b0b      	ldr	r3, [pc, #44]	@ (39c <sukima285+0xa>)
+ 36e:	4798      	blx	r3
+    view_port_free(app->view_port);
+ 370:	6860      	ldr	r0, [r4, #4]
+ 372:	4b0b      	ldr	r3, [pc, #44]	@ (3a0 <sukima285+0xe>)
+ 374:	4798      	blx	r3
+
+    // Close gui record
+    furi_record_close(RECORD_GUI);
+ 376:	480b      	ldr	r0, [pc, #44]	@ (3a4 <sukima285+0x12>)
+ 378:	4b0b      	ldr	r3, [pc, #44]	@ (3a8 <sukima285+0x16>)
+ 37a:	4798      	blx	r3
+    app->gui = NULL;
+ 37c:	2300      	movs	r3, #0
+ 37e:	6023      	str	r3, [r4, #0]
+
+    iso7816_handler_free(app->iso7816_handler);
+ 380:	6d20      	ldr	r0, [r4, #80]	@ 0x50
+ 382:	4b0a      	ldr	r3, [pc, #40]	@ (3ac <sukima285+0x1a>)
+ 384:	4798      	blx	r3
+
+    // Free rest
+    free(app);
+ 386:	4620      	mov	r0, r4
+ 388:	4b09      	ldr	r3, [pc, #36]	@ (3b0 <sukima285+0x1e>)
+ 38a:	4798      	blx	r3
+}
+ 38c:	bd10      	pop	{r4, pc}
+    furi_assert(app);
+ 38e:	f04f 0c01 	mov.w	ip, #1
+
+00000392 <sukima285>:
+ 392:	4b08      	ldr	r3, [pc, #32]	@ (3b4 <sukima285+0x22>)
+ 394:	4798      	blx	r3
+ 396:	bf00      	nop
+	...
+ 3a4:	00000024 	.word	0x00000024
+	...
+
+000003b8 <ccid_test_app>:
+
+int32_t ccid_test_app(void* p) {
+ 3b8:	b530      	push	{r4, r5, lr}
+ 3ba:	b085      	sub	sp, #20
+    UNUSED(p);
+
+    //setup view
+    CcidTestApp* app = ccid_test_app_alloc();
+ 3bc:	4b1b      	ldr	r3, [pc, #108]	@ (42c <sukima364+0x46>)
+ 3be:	4798      	blx	r3
+ 3c0:	4604      	mov	r4, r0
+
+    FuriHalUsbInterface* usb_mode_prev = furi_hal_usb_get_config();
+ 3c2:	4b1b      	ldr	r3, [pc, #108]	@ (430 <sukima364+0x4a>)
+ 3c4:	4798      	blx	r3
+ 3c6:	4605      	mov	r5, r0
+    furi_hal_usb_unlock();
+ 3c8:	4b1a      	ldr	r3, [pc, #104]	@ (434 <sukima364+0x4e>)
+ 3ca:	4798      	blx	r3
+
+    furi_check(furi_hal_usb_set_config(&usb_ccid, &app->ccid_cfg) == true);
+ 3cc:	f104 010c 	add.w	r1, r4, #12
+ 3d0:	4819      	ldr	r0, [pc, #100]	@ (438 <sukima364+0x52>)
+ 3d2:	4b1a      	ldr	r3, [pc, #104]	@ (43c <sukima364+0x56>)
+ 3d4:	4798      	blx	r3
+ 3d6:	b120      	cbz	r0, 3e2 <ccid_test_app+0x2a>
+    iso7816_handler_set_usb_ccid_callbacks();
+ 3d8:	4b19      	ldr	r3, [pc, #100]	@ (440 <sukima364+0x5a>)
+ 3da:	4798      	blx	r3
+    furi_hal_usb_ccid_insert_smartcard();
+ 3dc:	4b19      	ldr	r3, [pc, #100]	@ (444 <sukima364+0x5e>)
+ 3de:	4798      	blx	r3
+ 3e0:	e006      	b.n	3f0 <sukima364+0xa>
+    furi_check(furi_hal_usb_set_config(&usb_ccid, &app->ccid_cfg) == true);
+ 3e2:	f04f 0c02 	mov.w	ip, #2
+
+000003e6 <sukima364>:
+ 3e6:	4b18      	ldr	r3, [pc, #96]	@ (448 <sukima364+0x62>)
+ 3e8:	4798      	blx	r3
+                if(event.input.type == InputTypeLong && event.input.key == InputKeyBack) {
+                    break;
+                }
+            }
+        }
+        view_port_update(app->view_port);
+ 3ea:	6860      	ldr	r0, [r4, #4]
+ 3ec:	4b17      	ldr	r3, [pc, #92]	@ (44c <sukima364+0x66>)
+ 3ee:	4798      	blx	r3
+            furi_message_queue_get(app->event_queue, &event, FuriWaitForever);
+ 3f0:	f04f 32ff 	mov.w	r2, #4294967295	@ 0xffffffff
+ 3f4:	a901      	add	r1, sp, #4
+ 3f6:	68a0      	ldr	r0, [r4, #8]
+ 3f8:	4b15      	ldr	r3, [pc, #84]	@ (450 <sukima364+0x6a>)
+ 3fa:	4798      	blx	r3
+        if(event_status == FuriStatusOk) {
+ 3fc:	2800      	cmp	r0, #0
+ 3fe:	d1f4      	bne.n	3ea <sukima364+0x4>
+            if(event.type == EventTypeInput) {
+ 400:	f89d 300c 	ldrb.w	r3, [sp, #12]
+ 404:	2b00      	cmp	r3, #0
+ 406:	d1f0      	bne.n	3ea <sukima364+0x4>
+                if(event.input.type == InputTypeLong && event.input.key == InputKeyBack) {
+ 408:	f8bd 2008 	ldrh.w	r2, [sp, #8]
+ 40c:	f240 3305 	movw	r3, #773	@ 0x305
+ 410:	429a      	cmp	r2, r3
+ 412:	d1ea      	bne.n	3ea <sukima364+0x4>
+    }
+
+    //tear down USB
+    iso7816_handler_reset_usb_ccid_callbacks();
+ 414:	4b0f      	ldr	r3, [pc, #60]	@ (454 <sukima364+0x6e>)
+ 416:	4798      	blx	r3
+    furi_hal_usb_set_config(usb_mode_prev, NULL);
+ 418:	2100      	movs	r1, #0
+ 41a:	4628      	mov	r0, r5
+ 41c:	4b07      	ldr	r3, [pc, #28]	@ (43c <sukima364+0x56>)
+ 41e:	4798      	blx	r3
+
+    //teardown view
+    ccid_test_app_free(app);
+ 420:	4620      	mov	r0, r4
+ 422:	4b0d      	ldr	r3, [pc, #52]	@ (458 <sukima364+0x72>)
+ 424:	4798      	blx	r3
+    return 0;
+}
+ 426:	2000      	movs	r0, #0
+ 428:	b005      	add	sp, #20
+ 42a:	bd30      	pop	{r4, r5, pc}
+	...
+
+0000045c <handle_instruction_01>:
+#include "iso7816/iso7816_response.h"
+
+//Instruction 1: returns an OK response unconditionally
+//APDU example: 0x01:0x01:0x00:0x00
+//response: SW1=0x90, SW2=0x00
+void handle_instruction_01(ISO7816_Response_APDU* response_apdu) {
+ 45c:	b508      	push	{r3, lr}
+    response_apdu->DataLen = 0;
+ 45e:	2200      	movs	r2, #0
+ 460:	7082      	strb	r2, [r0, #2]
+ 462:	70c2      	strb	r2, [r0, #3]
+    iso7816_set_response(response_apdu, ISO7816_RESPONSE_OK);
+ 464:	f44f 4110 	mov.w	r1, #36864	@ 0x9000
+ 468:	4b01      	ldr	r3, [pc, #4]	@ (470 <handle_instruction_01+0x14>)
+ 46a:	4798      	blx	r3
+}
+ 46c:	bd08      	pop	{r3, pc}
+ 46e:	bf00      	nop
+ 470:	00000000 	.word	0x00000000
+
+00000474 <handle_instruction_02>:
+void handle_instruction_02(
+    uint8_t p1,
+    uint8_t p2,
+    uint16_t lc,
+    uint16_t le,
+    ISO7816_Response_APDU* response_apdu) {
+ 474:	b510      	push	{r4, lr}
+ 476:	4604      	mov	r4, r0
+ 478:	9802      	ldr	r0, [sp, #8]
+    if(p1 == 0 && p2 == 0 && lc == 0 && le >= 2) {
+ 47a:	b924      	cbnz	r4, 486 <handle_instruction_02+0x12>
+ 47c:	b911      	cbnz	r1, 484 <handle_instruction_02+0x10>
+ 47e:	b90a      	cbnz	r2, 484 <handle_instruction_02+0x10>
+ 480:	2b01      	cmp	r3, #1
+ 482:	d805      	bhi.n	490 <handle_instruction_02+0x1c>
+        response_apdu->Data[1] = 0x63;
+
+        response_apdu->DataLen = 2;
+
+        iso7816_set_response(response_apdu, ISO7816_RESPONSE_OK);
+    } else if(p1 != 0 || p2 != 0) {
+ 484:	b189      	cbz	r1, 4aa <handle_instruction_02+0x36>
+        iso7816_set_response(response_apdu, ISO7816_RESPONSE_WRONG_PARAMETERS_P1_P2);
+ 486:	f44f 41d4 	mov.w	r1, #27136	@ 0x6a00
+ 48a:	4b0a      	ldr	r3, [pc, #40]	@ (4b4 <handle_instruction_02+0x40>)
+ 48c:	4798      	blx	r3
+    } else {
+        iso7816_set_response(response_apdu, ISO7816_RESPONSE_WRONG_LENGTH);
+    }
+}
+ 48e:	bd10      	pop	{r4, pc}
+        response_apdu->Data[0] = 0x62;
+ 490:	2362      	movs	r3, #98	@ 0x62
+ 492:	7103      	strb	r3, [r0, #4]
+        response_apdu->Data[1] = 0x63;
+ 494:	2363      	movs	r3, #99	@ 0x63
+ 496:	7143      	strb	r3, [r0, #5]
+        response_apdu->DataLen = 2;
+ 498:	2302      	movs	r3, #2
+ 49a:	7083      	strb	r3, [r0, #2]
+ 49c:	2300      	movs	r3, #0
+ 49e:	70c3      	strb	r3, [r0, #3]
+        iso7816_set_response(response_apdu, ISO7816_RESPONSE_OK);
+ 4a0:	f44f 4110 	mov.w	r1, #36864	@ 0x9000
+ 4a4:	4b03      	ldr	r3, [pc, #12]	@ (4b4 <handle_instruction_02+0x40>)
+ 4a6:	4798      	blx	r3
+ 4a8:	e7f1      	b.n	48e <handle_instruction_02+0x1a>
+        iso7816_set_response(response_apdu, ISO7816_RESPONSE_WRONG_LENGTH);
+ 4aa:	f44f 41ce 	mov.w	r1, #26368	@ 0x6700
+ 4ae:	4b01      	ldr	r3, [pc, #4]	@ (4b4 <handle_instruction_02+0x40>)
+ 4b0:	4798      	blx	r3
+}
+ 4b2:	e7ec      	b.n	48e <handle_instruction_02+0x1a>
+ 4b4:	00000000 	.word	0x00000000
+
+000004b8 <handle_instruction_03>:
+//response SW1=0x90, SW2=0x00
+void handle_instruction_03(
+    uint8_t p1,
+    uint8_t p2,
+    uint16_t lc,
+    ISO7816_Response_APDU* response_apdu) {
+ 4b8:	b508      	push	{r3, lr}
+    if(p1 == 0 && p2 == 0 && lc == 2) {
+ 4ba:	b918      	cbnz	r0, 4c4 <handle_instruction_03+0xc>
+ 4bc:	b909      	cbnz	r1, 4c2 <handle_instruction_03+0xa>
+ 4be:	2a02      	cmp	r2, #2
+ 4c0:	d006      	beq.n	4d0 <handle_instruction_03+0x18>
+        response_apdu->DataLen = 0;
+        iso7816_set_response(response_apdu, ISO7816_RESPONSE_OK);
+    } else if(p1 != 0 || p2 != 0) {
+ 4c2:	b171      	cbz	r1, 4e2 <handle_instruction_03+0x2a>
+        iso7816_set_response(response_apdu, ISO7816_RESPONSE_WRONG_PARAMETERS_P1_P2);
+ 4c4:	f44f 41d4 	mov.w	r1, #27136	@ 0x6a00
+ 4c8:	4618      	mov	r0, r3
+ 4ca:	4b09      	ldr	r3, [pc, #36]	@ (4f0 <handle_instruction_03+0x38>)
+ 4cc:	4798      	blx	r3
+    } else {
+        iso7816_set_response(response_apdu, ISO7816_RESPONSE_WRONG_LENGTH);
+    }
+}
+ 4ce:	bd08      	pop	{r3, pc}
+        response_apdu->DataLen = 0;
+ 4d0:	2200      	movs	r2, #0
+ 4d2:	709a      	strb	r2, [r3, #2]
+ 4d4:	70da      	strb	r2, [r3, #3]
+        iso7816_set_response(response_apdu, ISO7816_RESPONSE_OK);
+ 4d6:	f44f 4110 	mov.w	r1, #36864	@ 0x9000
+ 4da:	4618      	mov	r0, r3
+ 4dc:	4b04      	ldr	r3, [pc, #16]	@ (4f0 <handle_instruction_03+0x38>)
+ 4de:	4798      	blx	r3
+ 4e0:	e7f5      	b.n	4ce <handle_instruction_03+0x16>
+        iso7816_set_response(response_apdu, ISO7816_RESPONSE_WRONG_LENGTH);
+ 4e2:	f44f 41ce 	mov.w	r1, #26368	@ 0x6700
+ 4e6:	4618      	mov	r0, r3
+ 4e8:	4b01      	ldr	r3, [pc, #4]	@ (4f0 <handle_instruction_03+0x38>)
+ 4ea:	4798      	blx	r3
+}
+ 4ec:	e7ef      	b.n	4ce <handle_instruction_03+0x16>
+ 4ee:	bf00      	nop
+ 4f0:	00000000 	.word	0x00000000
+
+000004f4 <handle_instruction_04>:
+    uint8_t p1,
+    uint8_t p2,
+    uint16_t lc,
+    uint16_t le,
+    const uint8_t* command_apdu_data_buffer,
+    ISO7816_Response_APDU* response_apdu) {
+ 4f4:	b510      	push	{r4, lr}
+ 4f6:	4604      	mov	r4, r0
+ 4f8:	9803      	ldr	r0, [sp, #12]
+    if(p1 == 0 && p2 == 0 && lc > 0 && le > 0 && le >= lc) {
+ 4fa:	b92c      	cbnz	r4, 508 <handle_instruction_04+0x14>
+ 4fc:	b919      	cbnz	r1, 506 <handle_instruction_04+0x12>
+ 4fe:	b112      	cbz	r2, 506 <handle_instruction_04+0x12>
+ 500:	b10b      	cbz	r3, 506 <handle_instruction_04+0x12>
+ 502:	429a      	cmp	r2, r3
+ 504:	d913      	bls.n	52e <handle_instruction_04+0x3a>
+        }
+
+        response_apdu->DataLen = lc;
+
+        iso7816_set_response(response_apdu, ISO7816_RESPONSE_OK);
+    } else if(p1 != 0 || p2 != 0) {
+ 506:	b1a1      	cbz	r1, 532 <handle_instruction_04+0x3e>
+        iso7816_set_response(response_apdu, ISO7816_RESPONSE_WRONG_PARAMETERS_P1_P2);
+ 508:	f44f 41d4 	mov.w	r1, #27136	@ 0x6a00
+ 50c:	4b0b      	ldr	r3, [pc, #44]	@ (53c <handle_instruction_04+0x48>)
+ 50e:	4798      	blx	r3
+    } else {
+        iso7816_set_response(response_apdu, ISO7816_RESPONSE_WRONG_LENGTH);
+    }
+}
+ 510:	bd10      	pop	{r4, pc}
+            response_apdu->Data[i] = command_apdu_data_buffer[i];
+ 512:	9902      	ldr	r1, [sp, #8]
+ 514:	5ccc      	ldrb	r4, [r1, r3]
+ 516:	18c1      	adds	r1, r0, r3
+ 518:	710c      	strb	r4, [r1, #4]
+        for(uint16_t i = 0; i < lc; i++) {
+ 51a:	3301      	adds	r3, #1
+ 51c:	b29b      	uxth	r3, r3
+ 51e:	4293      	cmp	r3, r2
+ 520:	d3f7      	bcc.n	512 <handle_instruction_04+0x1e>
+        response_apdu->DataLen = lc;
+ 522:	8042      	strh	r2, [r0, #2]
+        iso7816_set_response(response_apdu, ISO7816_RESPONSE_OK);
+ 524:	f44f 4110 	mov.w	r1, #36864	@ 0x9000
+ 528:	4b04      	ldr	r3, [pc, #16]	@ (53c <handle_instruction_04+0x48>)
+ 52a:	4798      	blx	r3
+ 52c:	e7f0      	b.n	510 <handle_instruction_04+0x1c>
+        for(uint16_t i = 0; i < lc; i++) {
+ 52e:	2300      	movs	r3, #0
+ 530:	e7f5      	b.n	51e <handle_instruction_04+0x2a>
+        iso7816_set_response(response_apdu, ISO7816_RESPONSE_WRONG_LENGTH);
+ 532:	f44f 41ce 	mov.w	r1, #26368	@ 0x6700
+ 536:	4b01      	ldr	r3, [pc, #4]	@ (53c <handle_instruction_04+0x48>)
+ 538:	4798      	blx	r3
+}
+ 53a:	e7e9      	b.n	510 <handle_instruction_04+0x1c>
+ 53c:	00000000 	.word	0x00000000
+
+00000540 <iso7816_answer_to_reset>:
+
+void iso7816_answer_to_reset(Iso7816Atr* atr) {
+    //minimum valid ATR: https://smartcard-atr.apdu.fr/parse?ATR=3B+00
+    atr->TS = 0x3B;
+ 540:	233b      	movs	r3, #59	@ 0x3b
+ 542:	7003      	strb	r3, [r0, #0]
+    atr->T0 = 0x00;
+ 544:	2300      	movs	r3, #0
+ 546:	7043      	strb	r3, [r0, #1]
+}
+ 548:	4770      	bx	lr
+	...
+
+0000054c <iso7816_process_command>:
+
+void iso7816_process_command(
+    const ISO7816_Command_APDU* command_apdu,
+    ISO7816_Response_APDU* response_apdu) {
+ 54c:	b510      	push	{r4, lr}
+ 54e:	b082      	sub	sp, #8
+ 550:	4684      	mov	ip, r0
+ 552:	4608      	mov	r0, r1
+    //example 1: sends a command with no body, receives a response with no body
+    //sends APDU 0x01:0x01:0x00:0x00
+    //receives SW1=0x90, SW2=0x00
+
+    if(command_apdu->CLA == 0x01) {
+ 554:	f89c 3000 	ldrb.w	r3, [ip]
+ 558:	2b01      	cmp	r3, #1
+ 55a:	d135      	bne.n	5c8 <iso7816_process_command+0x7c>
+        switch(command_apdu->INS) {
+ 55c:	f89c 3001 	ldrb.w	r3, [ip, #1]
+ 560:	3b01      	subs	r3, #1
+ 562:	2b03      	cmp	r3, #3
+ 564:	d82b      	bhi.n	5be <iso7816_process_command+0x72>
+ 566:	e8df f003 	tbb	[pc, r3]
+ 56a:	0502      	.short	0x0502
+ 56c:	1b11      	.short	0x1b11
+        case 0x01:
+            handle_instruction_01(response_apdu);
+ 56e:	4b19      	ldr	r3, [pc, #100]	@ (5d4 <iso7816_process_command+0x88>)
+ 570:	4798      	blx	r3
+            break;
+ 572:	e02d      	b.n	5d0 <iso7816_process_command+0x84>
+        case 0x02:
+            handle_instruction_02(
+ 574:	9100      	str	r1, [sp, #0]
+ 576:	f8bc 3006 	ldrh.w	r3, [ip, #6]
+ 57a:	f8bc 2004 	ldrh.w	r2, [ip, #4]
+ 57e:	f89c 1003 	ldrb.w	r1, [ip, #3]
+ 582:	f89c 0002 	ldrb.w	r0, [ip, #2]
+ 586:	4c14      	ldr	r4, [pc, #80]	@ (5d8 <iso7816_process_command+0x8c>)
+ 588:	47a0      	blx	r4
+                command_apdu->P1,
+                command_apdu->P2,
+                command_apdu->Lc,
+                command_apdu->Le,
+                response_apdu);
+            break;
+ 58a:	e021      	b.n	5d0 <iso7816_process_command+0x84>
+        case 0x03:
+            handle_instruction_03(
+ 58c:	460b      	mov	r3, r1
+ 58e:	f8bc 2004 	ldrh.w	r2, [ip, #4]
+ 592:	f89c 1003 	ldrb.w	r1, [ip, #3]
+ 596:	f89c 0002 	ldrb.w	r0, [ip, #2]
+ 59a:	4c10      	ldr	r4, [pc, #64]	@ (5dc <iso7816_process_command+0x90>)
+ 59c:	47a0      	blx	r4
+                command_apdu->P1, command_apdu->P2, command_apdu->Lc, response_apdu);
+            break;
+ 59e:	e017      	b.n	5d0 <iso7816_process_command+0x84>
+            handle_instruction_04(
+                command_apdu->P1,
+                command_apdu->P2,
+                command_apdu->Lc,
+                command_apdu->Le,
+                command_apdu->Data,
+ 5a0:	f10c 0309 	add.w	r3, ip, #9
+            handle_instruction_04(
+ 5a4:	9101      	str	r1, [sp, #4]
+ 5a6:	9300      	str	r3, [sp, #0]
+ 5a8:	f8bc 3006 	ldrh.w	r3, [ip, #6]
+ 5ac:	f8bc 2004 	ldrh.w	r2, [ip, #4]
+ 5b0:	f89c 1003 	ldrb.w	r1, [ip, #3]
+ 5b4:	f89c 0002 	ldrb.w	r0, [ip, #2]
+ 5b8:	4c09      	ldr	r4, [pc, #36]	@ (5e0 <iso7816_process_command+0x94>)
+ 5ba:	47a0      	blx	r4
+                response_apdu);
+            break;
+ 5bc:	e008      	b.n	5d0 <iso7816_process_command+0x84>
+        default:
+            iso7816_set_response(response_apdu, ISO7816_RESPONSE_INSTRUCTION_NOT_SUPPORTED);
+ 5be:	f44f 41da 	mov.w	r1, #27904	@ 0x6d00
+ 5c2:	4b08      	ldr	r3, [pc, #32]	@ (5e4 <iso7816_process_command+0x98>)
+ 5c4:	4798      	blx	r3
+ 5c6:	e003      	b.n	5d0 <iso7816_process_command+0x84>
+        }
+    } else {
+        iso7816_set_response(response_apdu, ISO7816_RESPONSE_CLASS_NOT_SUPPORTED);
+ 5c8:	f44f 41dc 	mov.w	r1, #28160	@ 0x6e00
+ 5cc:	4b05      	ldr	r3, [pc, #20]	@ (5e4 <iso7816_process_command+0x98>)
+ 5ce:	4798      	blx	r3
+    }
+}
+ 5d0:	b002      	add	sp, #8
+ 5d2:	bd10      	pop	{r4, pc}
+	...

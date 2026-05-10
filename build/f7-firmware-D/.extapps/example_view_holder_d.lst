@@ -1,0 +1,134 @@
+
+build/f7-firmware-D/.extapps/example_view_holder_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <example_view_holder_back_callback>:
+#include <gui/modules/text_box.h>
+
+#include <api_lock.h>
+
+// This function will be called when the user presses the Back button.
+static void example_view_holder_back_callback(void* context) {
+   0:	b508      	push	{r3, lr}
+    FuriApiLock exit_lock = context;
+    // Unlock the exit lock, thus enabling the app to exit.
+    api_lock_unlock(exit_lock);
+   2:	2101      	movs	r1, #1
+   4:	4b01      	ldr	r3, [pc, #4]	@ (c <example_view_holder_back_callback+0xc>)
+   6:	4798      	blx	r3
+}
+   8:	bd08      	pop	{r3, pc}
+   a:	bf00      	nop
+   c:	00000000 	.word	0x00000000
+
+00000010 <example_view_holder_app>:
+
+int32_t example_view_holder_app(void* arg) {
+  10:	e92d 43f8 	stmdb	sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
+    UNUSED(arg);
+
+    // Access the GUI API instance.
+    Gui* gui = furi_record_open(RECORD_GUI);
+  14:	4f1d      	ldr	r7, [pc, #116]	@ (8c <example_view_holder_app+0x7c>)
+  16:	4638      	mov	r0, r7
+  18:	4b1d      	ldr	r3, [pc, #116]	@ (90 <example_view_holder_app+0x80>)
+  1a:	4798      	blx	r3
+  1c:	4605      	mov	r5, r0
+    // Create a TextBox view. The Gui object only accepts
+    // ViewPort instances, so we will need to address that later.
+    TextBox* text_box = text_box_alloc();
+  1e:	4b1d      	ldr	r3, [pc, #116]	@ (94 <example_view_holder_app+0x84>)
+  20:	4798      	blx	r3
+  22:	4606      	mov	r6, r0
+    // Set some text so that the text box is not empty.
+    text_box_set_text(
+  24:	491c      	ldr	r1, [pc, #112]	@ (98 <example_view_holder_app+0x88>)
+  26:	4b1d      	ldr	r3, [pc, #116]	@ (9c <example_view_holder_app+0x8c>)
+  28:	4798      	blx	r3
+        "Press \"Back\" to exit.");
+
+    // Create a ViewHolder instance. It will serve as an adapter to convert
+    // between the View type provided by the TextBox view and the ViewPort type
+    // that the GUI can actually display.
+    ViewHolder* view_holder = view_holder_alloc();
+  2a:	4b1d      	ldr	r3, [pc, #116]	@ (a0 <example_view_holder_app+0x90>)
+  2c:	4798      	blx	r3
+  2e:	4604      	mov	r4, r0
+    // Let the GUI know about this ViewHolder instance.
+    view_holder_attach_to_gui(view_holder, gui);
+  30:	4629      	mov	r1, r5
+  32:	4b1c      	ldr	r3, [pc, #112]	@ (a4 <example_view_holder_app+0x94>)
+  34:	4798      	blx	r3
+    // Set the view that we want to display.
+    view_holder_set_view(view_holder, text_box_get_view(text_box));
+  36:	4630      	mov	r0, r6
+  38:	4b1b      	ldr	r3, [pc, #108]	@ (a8 <example_view_holder_app+0x98>)
+  3a:	4798      	blx	r3
+  3c:	4601      	mov	r1, r0
+  3e:	4620      	mov	r0, r4
+  40:	f8df 8084 	ldr.w	r8, [pc, #132]	@ c8 <example_view_holder_app+0xb8>
+  44:	47c0      	blx	r8
+    // In this example, a simple FuriApiLock instance is used. A real-world application is likely to have some
+    // kind of event handling loop here instead. (see the ViewDispatcher example or one of FuriEventLoop
+    // examples for that).
+
+    // Create a pre-locked FuriApiLock instance.
+    FuriApiLock exit_lock = api_lock_alloc_locked();
+  46:	4b19      	ldr	r3, [pc, #100]	@ (ac <example_view_holder_app+0x9c>)
+  48:	4798      	blx	r3
+  4a:	4605      	mov	r5, r0
+    // Set a Back event callback for the ViewHolder instance. It will be called when the user
+    // presses the Back button. We pass the exit lock instance as the context to be able to access
+    // it inside the callback function.
+    view_holder_set_back_callback(view_holder, example_view_holder_back_callback, exit_lock);
+  4c:	4602      	mov	r2, r0
+  4e:	4918      	ldr	r1, [pc, #96]	@ (b0 <example_view_holder_app+0xa0>)
+  50:	4620      	mov	r0, r4
+  52:	4b18      	ldr	r3, [pc, #96]	@ (b4 <example_view_holder_app+0xa4>)
+  54:	4798      	blx	r3
+
+    // This call will block the application thread from running until the exit lock gets unlocked somehow
+    // (the only way it can happen in this example is via the back callback).
+    api_lock_wait_unlock_and_free(exit_lock);
+  56:	f04f 33ff 	mov.w	r3, #4294967295	@ 0xffffffff
+  5a:	2200      	movs	r2, #0
+  5c:	2101      	movs	r1, #1
+  5e:	4628      	mov	r0, r5
+  60:	f8df 9068 	ldr.w	r9, [pc, #104]	@ cc <example_view_holder_app+0xbc>
+  64:	47c8      	blx	r9
+  66:	4628      	mov	r0, r5
+  68:	4b13      	ldr	r3, [pc, #76]	@ (b8 <example_view_holder_app+0xa8>)
+  6a:	4798      	blx	r3
+
+    // The back key has been pressed, which unlocked the exit lock. The application is about to exit.
+
+    // The view must be removed from a ViewHolder instance before deleting it.
+    view_holder_set_view(view_holder, NULL);
+  6c:	2100      	movs	r1, #0
+  6e:	4620      	mov	r0, r4
+  70:	47c0      	blx	r8
+    // Delete everything to prevent memory leaks.
+    view_holder_free(view_holder);
+  72:	4620      	mov	r0, r4
+  74:	4b11      	ldr	r3, [pc, #68]	@ (bc <example_view_holder_app+0xac>)
+  76:	4798      	blx	r3
+    text_box_free(text_box);
+  78:	4630      	mov	r0, r6
+  7a:	4b11      	ldr	r3, [pc, #68]	@ (c0 <example_view_holder_app+0xb0>)
+  7c:	4798      	blx	r3
+    // End access to the GUI API.
+    furi_record_close(RECORD_GUI);
+  7e:	4638      	mov	r0, r7
+  80:	4b10      	ldr	r3, [pc, #64]	@ (c4 <example_view_holder_app+0xb4>)
+  82:	4798      	blx	r3
+
+    return 0;
+}
+  84:	2000      	movs	r0, #0
+  86:	e8bd 83f8 	ldmia.w	sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
+  8a:	bf00      	nop
+	...
+  98:	00000004 	.word	0x00000004
+	...

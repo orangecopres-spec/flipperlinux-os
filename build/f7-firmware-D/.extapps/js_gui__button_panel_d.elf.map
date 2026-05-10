@@ -1,0 +1,305 @@
+Archive member included to satisfy reference by file (symbol)
+
+/home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a(_arm_addsubdf3.o)
+                              build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o (__aeabi_i2d)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .data          0x00000000        0x0 /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a(_arm_addsubdf3.o)
+ .bss           0x00000000        0x0 /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a(_arm_addsubdf3.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libstdc++_nano.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libsupc++_nano.a
+
+.text           0x00000000      0x85c
+ *(.text)
+ .text          0x00000000      0x378 /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a(_arm_addsubdf3.o)
+                0x00000000                __aeabi_drsub
+                0x00000008                __aeabi_dsub
+                0x00000008                __subdf3
+                0x0000000c                __adddf3
+                0x0000000c                __aeabi_dadd
+                0x00000284                __aeabi_ui2d
+                0x00000284                __floatunsidf
+                0x000002a4                __floatsidf
+                0x000002a4                __aeabi_i2d
+                0x000002c8                __extendsfdf2
+                0x000002c8                __aeabi_f2d
+                0x0000030c                __aeabi_ul2d
+                0x0000030c                __floatundidf
+                0x0000031c                __floatdidf
+                0x0000031c                __aeabi_l2d
+ *(.stub)
+ *(.text*)
+ .text.view_mod_ctor
+                0x00000378       0x1c build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .text.matrix_size_y_assign
+                0x00000394       0x18 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .text.matrix_size_x_assign
+                0x000003ac       0x18 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .text.js_button_panel_reset_children
+                0x000003c4       0x30 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .text.js_button_panel_add_child
+                0x000003f4      0x250 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .text.input_callback
+                0x00000644       0x2c build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .text.js_input_type_to_str
+                0x00000670       0x44 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .text.furi_event_loop_maybe_unsubscribe
+                0x000006b4       0x20 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .text.ctx_destroy
+                0x000006d4       0x34 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .text.ctx_make
+                0x00000708       0x8c build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .text.input_transformer
+                0x00000794       0xc0 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .text.js_view_button_panel_ep
+                0x00000854        0x8 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+                0x00000854                js_view_button_panel_ep
+ *(.text.*)
+ *(.text._*)
+ *(.init)
+ *(.fini)
+
+.rodata         0x00000860      0x23c
+ *(.rodata)
+ *(.rodata1)
+ *(.rodata.*)
+ .rodata.js_input_type_to_str.str1.4
+                0x00000860       0x27 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ *fill*         0x00000887        0x1 
+ .rodata.ctx_make.str1.4
+                0x00000888        0x6 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ *fill*         0x0000088e        0x2 
+ .rodata.input_transformer.str1.4
+                0x00000890        0xd build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ *fill*         0x0000089d        0x3 
+ .rodata.str1.4
+                0x000008a0       0x80 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .rodata.js_button_panel_child_type_variants.0
+                0x00000920       0x18 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .rodata.js_button_panel_child_type.1
+                0x00000938       0x18 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .rodata.js_button_panel_number.2
+                0x00000950       0x18 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .rodata.js_button_panel_common_fields.3
+                0x00000968       0x18 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .rodata.js_button_panel_pointer.4
+                0x00000980       0x18 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .rodata.js_button_panel_button_fields.5
+                0x00000998       0x20 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .rodata.js_button_panel_string.6
+                0x000009b8       0x18 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .rodata.js_button_panel_label_fields.7
+                0x000009d0       0x10 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .rodata.js_button_panel_icon_fields.8
+                0x000009e0        0x8 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .rodata.js_button_panel_icon.9
+                0x000009e8       0x18 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .rodata.js_button_panel_label.10
+                0x00000a00       0x18 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .rodata.js_button_panel_button.11
+                0x00000a18       0x18 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .rodata.js_button_panel_common.12
+                0x00000a30       0x18 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .rodata.plugin_descriptor
+                0x00000a48        0xc build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .rodata.js_mod_desc
+                0x00000a54       0x10 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .rodata.view_descriptor
+                0x00000a64       0x38 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+
+.data
+ *(.data)
+ *(.data1)
+ *(.data.*)
+
+.bss
+ *(.bss)
+ *(.bss*)
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x78
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x78 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x1be8
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000     0x1be8 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+
+.debug_abbrev   0x00000000      0x3c1
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x3c1 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+
+.debug_line     0x00000000      0x80c
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x476 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .debug_line.text.view_mod_ctor
+                0x00000476       0x1e build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .debug_line.text.matrix_size_y_assign
+                0x00000494       0x2b build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .debug_line.text.matrix_size_x_assign
+                0x000004bf       0x2c build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .debug_line.text.js_button_panel_reset_children
+                0x000004eb       0x27 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .debug_line.text.js_button_panel_add_child
+                0x00000512      0x145 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .debug_line.text.input_callback
+                0x00000657       0x40 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .debug_line.text.js_input_type_to_str
+                0x00000697       0x4d build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .debug_line.text.furi_event_loop_maybe_unsubscribe
+                0x000006e4       0x2c build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .debug_line.text.ctx_destroy
+                0x00000710       0x25 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .debug_line.text.ctx_make
+                0x00000735       0x3f build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .debug_line.text.input_transformer
+                0x00000774       0x85 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .debug_line.text.js_view_button_panel_ep
+                0x000007f9       0x13 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .debug_line_end
+                0x0000080c        0x0 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+
+.debug_frame    0x00000000      0x17c
+ *(.debug_frame)
+ .debug_frame   0x00000000      0x17c build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+
+.debug_str      0x00000000     0x13fb
+ *(.debug_str)
+ .debug_str     0x00000000     0x13fb build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+                0x00000000       0xa8
+ *(.debug_line_str)
+ .debug_line_str
+                0x00000000       0xa8 /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a(_arm_addsubdf3.o)
+
+.debug_loclists
+                0x00000000      0x65a
+ *(.debug_loclists)
+ .debug_loclists
+                0x00000000      0x65a build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x00000000       0x64
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x00000000       0x64 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.ARM.attributes
+                0x00000000       0x34
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x34 build/f7-firmware-D/.extapps/js_gui__button_panel/modules/js_gui/button_panel.o
+ .ARM.attributes
+                0x00000034       0x22 /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a(_arm_addsubdf3.o)
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+
+/DISCARD/
+ *(.comment)
+ *(.comment.*)
+ *(.llvmbc)
+ *(.llvmcmd)
+OUTPUT(build/f7-firmware-D/.extapps/js_gui__button_panel_d.elf elf32-littlearm)
+LOAD linker stubs

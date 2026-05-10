@@ -1,0 +1,218 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libstdc++_nano.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libsupc++_nano.a
+
+.text           0x00000000      0x2b0
+ *(.text)
+ *(.stub)
+ *(.text*)
+ .text.event_loop_event_flags_app_alloc
+                0x00000000       0x78 build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+ .text.event_loop_event_flags_app_event_flags_callback
+                0x00000078       0xf0 build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+ .text.event_loop_event_flags_app_input_callback
+                0x00000168       0x84 build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+ .text.event_loop_event_flags_app_run
+                0x000001ec       0x40 build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+ .text.event_loop_event_flags_app_free
+                0x0000022c       0x60 build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+ .text.example_event_loop_event_flags_app
+                0x0000028c       0x24 build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+                0x0000028c                example_event_loop_event_flags_app
+ *(.text.*)
+ *(.text._*)
+ *(.init)
+ *(.fini)
+
+.rodata         0x000002b0       0xff
+ *(.rodata)
+ *(.rodata1)
+ *(.rodata.*)
+ .rodata.event_loop_event_flags_app_alloc.str1.4
+                0x000002b0        0x4 build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+ .rodata.event_loop_event_flags_app_event_flags_callback.str1.4
+                0x000002b4       0x7d build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+ *fill*         0x00000331        0x3 
+ .rodata.event_loop_event_flags_app_run.str1.4
+                0x00000334       0x7b build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+
+.data
+ *(.data)
+ *(.data1)
+ *(.data.*)
+
+.bss
+ *(.bss)
+ *(.bss*)
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x48
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x48 build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000      0xb36
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000      0xb36 build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+
+.debug_abbrev   0x00000000      0x29e
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x29e build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+
+.debug_line     0x00000000      0x58a
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x2dd build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+ .debug_line.text.event_loop_event_flags_app_alloc
+                0x000002dd       0x51 build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+ .debug_line.text.event_loop_event_flags_app_event_flags_callback
+                0x0000032e      0x11d build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+ .debug_line.text.event_loop_event_flags_app_input_callback
+                0x0000044b       0xae build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+ .debug_line.text.event_loop_event_flags_app_run
+                0x000004f9       0x23 build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+ .debug_line.text.event_loop_event_flags_app_free
+                0x0000051c       0x45 build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+ .debug_line.text.example_event_loop_event_flags_app
+                0x00000561       0x29 build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+ .debug_line_end
+                0x0000058a        0x0 build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+
+.debug_frame    0x00000000       0xb4
+ *(.debug_frame)
+ .debug_frame   0x00000000       0xb4 build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+
+.debug_str      0x00000000      0x9c9
+ *(.debug_str)
+ .debug_str     0x00000000      0x9c9 build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+ *(.debug_line_str)
+
+.debug_loclists
+                0x00000000      0x339
+ *(.debug_loclists)
+ .debug_loclists
+                0x00000000      0x339 build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x00000000       0x33
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x00000000       0x33 build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.ARM.attributes
+                0x00000000       0x34
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x34 build/f7-firmware-D/.extapps/example_event_loop_event_flags/example_event_loop_event_flags.o
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+
+/DISCARD/
+ *(.comment)
+ *(.comment.*)
+ *(.llvmbc)
+ *(.llvmcmd)
+OUTPUT(build/f7-firmware-D/.extapps/example_event_loop_event_flags_d.elf elf32-littlearm)
+LOAD linker stubs

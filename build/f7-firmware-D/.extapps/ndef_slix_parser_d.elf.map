@@ -1,0 +1,289 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libstdc++_nano.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libsupc++_nano.a
+
+.text           0x00000000      0xebc
+ *(.text)
+ *(.stub)
+ *(.text*)
+ .text.is_text  0x00000000       0x4e build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .text.hex_to_int
+                0x0000004e       0x2e build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .text.url_decode_char
+                0x0000007c       0x1c build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .text.ndef_get
+                0x00000098       0x28 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .text.ndef_parse_uri
+                0x000000c0      0x210 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .text.ndef_print
+                0x000002d0       0x70 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .text.ndef_dump
+                0x00000340      0x10c build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .text.ndef_parse_text
+                0x0000044c       0x30 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .text.ndef_parse_bt
+                0x0000047c       0x3c build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .text.ndef_parse_vcard
+                0x000004b8      0x120 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .text.ndef_parse_wifi
+                0x000005d8      0x238 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .text.ndef_parse_message
+                0x00000810      0x2cc build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+                0x00000810                ndef_parse_message
+ .text.ndef_parse_record
+                0x00000adc      0x1e4 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+                0x00000adc                ndef_parse_record
+ .text.ndef_parse_tlv
+                0x00000cc0      0x100 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+                0x00000cc0                ndef_parse_tlv
+ .text.ndef_slix_parse
+                0x00000dc0       0xf4 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .text.ndef_plugin_ep
+                0x00000eb4        0x8 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+                0x00000eb4                ndef_plugin_ep
+ *(.text.*)
+ *(.text._*)
+ *(.init)
+ *(.fini)
+
+.rodata         0x00000ebc      0x5d0
+ *(.rodata)
+ *(.rodata1)
+ *(.rodata.*)
+ .rodata.ndef_parse_uri.str1.4
+                0x00000ebc       0x38 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .rodata.ndef_print.str1.4
+                0x00000ef4       0x16 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ *fill*         0x00000f0a        0x2 
+ .rodata.ndef_parse_text.str1.4
+                0x00000f0c        0x6 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ *fill*         0x00000f12        0x2 
+ .rodata.ndef_parse_bt.str1.4
+                0x00000f14        0x8 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .rodata.ndef_parse_vcard.str1.4
+                0x00000f1c       0x2d build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ *fill*         0x00000f49        0x3 
+ .rodata.ndef_parse_wifi.str1.4
+                0x00000f4c       0xcc build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .rodata.ndef_parse_message.str1.4
+                0x00001018      0x10a build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ *fill*         0x00001122        0x2 
+ .rodata.ndef_parse_record.str1.4
+                0x00001124      0x105 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ *fill*         0x00001229        0x3 
+ .rodata.ndef_parse_tlv.str1.4
+                0x0000122c        0xa build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ *fill*         0x00001236        0x2 
+ .rodata.ndef_slix_parse.str1.4
+                0x00001238       0x22 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ *fill*         0x0000125a        0x2 
+ .rodata.str1.4
+                0x0000125c      0x181 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ *fill*         0x000013dd        0x3 
+ .rodata.ndef_plugin_descriptor
+                0x000013e0        0xc build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .rodata.ndef_plugin
+                0x000013ec       0x10 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .rodata.ndef_uri_prepends
+                0x000013fc       0x90 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+
+.data
+ *(.data)
+ *(.data1)
+ *(.data.*)
+
+.bss
+ *(.bss)
+ *(.bss*)
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x98
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x98 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x252d
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000     0x252d build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+
+.debug_abbrev   0x00000000      0x40d
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x40d build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+
+.debug_line     0x00000000     0x10b1
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x37e build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .debug_line.text.is_text
+                0x0000037e       0x7e build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .debug_line.text.hex_to_int
+                0x000003fc       0x5c build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .debug_line.text.url_decode_char
+                0x00000458       0x2a build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .debug_line.text.ndef_get
+                0x00000482       0x42 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .debug_line.text.ndef_parse_uri
+                0x000004c4      0x231 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .debug_line.text.ndef_print
+                0x000006f5       0x5f build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .debug_line.text.ndef_dump
+                0x00000754      0x11a build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .debug_line.text.ndef_parse_text
+                0x0000086e       0x26 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .debug_line.text.ndef_parse_bt
+                0x00000894       0x31 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .debug_line.text.ndef_parse_vcard
+                0x000008c5      0x149 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .debug_line.text.ndef_parse_wifi
+                0x00000a0e      0x18b build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .debug_line.text.ndef_parse_message
+                0x00000b99      0x1fb build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .debug_line.text.ndef_parse_record
+                0x00000d94       0xd1 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .debug_line.text.ndef_parse_tlv
+                0x00000e65       0xde build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .debug_line.text.ndef_slix_parse
+                0x00000f43      0x155 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .debug_line.text.ndef_plugin_ep
+                0x00001098       0x19 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ .debug_line_end
+                0x000010b1        0x0 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+
+.debug_frame    0x00000000      0x258
+ *(.debug_frame)
+ .debug_frame   0x00000000      0x258 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+
+.debug_str      0x00000000      0xd27
+ *(.debug_str)
+ .debug_str     0x00000000      0xd27 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+ *(.debug_line_str)
+
+.debug_loclists
+                0x00000000      0xe65
+ *(.debug_loclists)
+ .debug_loclists
+                0x00000000      0xe65 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x00000000      0x13b
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x00000000      0x13b build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.ARM.attributes
+                0x00000000       0x34
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x34 build/f7-firmware-D/.extapps/ndef_slix_parser/plugins/supported_cards/ndef.o
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+
+/DISCARD/
+ *(.comment)
+ *(.comment.*)
+ *(.llvmbc)
+ *(.llvmcmd)
+OUTPUT(build/f7-firmware-D/.extapps/ndef_slix_parser_d.elf elf32-littlearm)
+LOAD linker stubs

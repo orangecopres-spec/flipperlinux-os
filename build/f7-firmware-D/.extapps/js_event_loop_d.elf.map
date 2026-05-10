@@ -1,0 +1,326 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop_api_table.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop_api_table.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop_api_table.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop_api_table.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop_api_table.o
+LOAD build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libstdc++_nano.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libsupc++_nano.a
+
+.text           0x00000000      0xc5c
+ *(.text)
+ *(.stub)
+ *(.text*)
+ .text.SubscriptionArray_clear
+                0x00000000       0x28 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .text.ContractArray_clear
+                0x00000028       0x28 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .text.js_event_loop_destroy
+                0x00000050      0x104 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .text.js_event_loop_create
+                0x00000154      0x148 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .text.js_event_loop_stop
+                0x0000029c       0x48 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .text.js_event_loop_queue_send
+                0x000002e4       0xe4 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .text.js_event_loop_queue_transformer
+                0x000003c8       0x44 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .text.ContractArray_push_raw
+                0x0000040c       0x54 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .text.js_event_loop_queue
+                0x00000460      0x180 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .text.SubscriptionArray_push_raw
+                0x000005e0       0x54 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .text.js_event_loop_timer
+                0x00000634      0x114 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .text.js_event_loop_run
+                0x00000748       0x48 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .text.js_event_loop_subscribe
+                0x00000790      0x290 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .text.js_event_loop_callback_generic
+                0x00000a20       0xcc build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .text.js_event_loop_callback
+                0x00000aec       0x6c build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .text.SubscriptionArray_pop_at
+                0x00000b58       0x3c build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .text.js_event_loop_subscription_cancel
+                0x00000b94       0xac build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .text.js_event_loop_ep
+                0x00000c40        0x8 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+                0x00000c40                js_event_loop_ep
+ .text.js_event_loop_get_loop
+                0x00000c48       0x14 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+                0x00000c48                js_event_loop_get_loop
+ *(.text.*)
+ *(.text._*)
+ *(.init)
+ *(.fini)
+
+.rodata         0x00000c60      0x19c
+ *(.rodata)
+ .rodata        0x00000c60       0x20 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ *(.rodata1)
+ *(.rodata.*)
+ .rodata.js_event_loop_hashtable_api_interface
+                0x00000c80       0x10 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop_api_table.o
+                0x00000c80                js_event_loop_hashtable_api_interface
+ .rodata._ZL23js_event_loop_api_table
+                0x00000c90        0x8 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop_api_table.o
+ .rodata.js_event_loop_destroy.str1.4
+                0x00000c98        0xe build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ *fill*         0x00000ca6        0x2 
+ .rodata.js_event_loop_create.str1.4
+                0x00000ca8       0x2a build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ *fill*         0x00000cd2        0x2 
+ .rodata.js_event_loop_queue.str1.4
+                0x00000cd4        0xd build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ *fill*         0x00000ce1        0x3 
+ .rodata.js_event_loop_subscribe.str1.4
+                0x00000ce4        0x7 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ *fill*         0x00000ceb        0x1 
+ .rodata.js_event_loop_callback_generic.str1.4
+                0x00000cec        0x9 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ *fill*         0x00000cf5        0x3 
+ .rodata.js_loop_subscribe_arg_list.4
+                0x00000cf8       0x30 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .rodata.js_loop_subscribe_args.3
+                0x00000d28        0x8 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .rodata.str1.4
+                0x00000d30       0x23 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ *fill*         0x00000d53        0x1 
+ .rodata.js_loop_timer_mode_variants.5
+                0x00000d54       0x10 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ *fill*         0x00000d64        0x4 
+ .rodata.js_loop_timer_arg_list.6
+                0x00000d68       0x30 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .rodata.js_loop_timer_args.2
+                0x00000d98        0x8 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .rodata.js_loop_q_send_arg_list.7
+                0x00000da0       0x18 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .rodata.js_loop_q_send_args.1
+                0x00000db8        0x8 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .rodata.js_loop_q_arg_list.8
+                0x00000dc0       0x18 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .rodata.js_loop_q_args.0
+                0x00000dd8        0x8 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .rodata.plugin_descriptor
+                0x00000de0        0xc build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .rodata.js_event_loop_desc
+                0x00000dec       0x10 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+
+.data
+ *(.data)
+ *(.data1)
+ *(.data.*)
+
+.bss
+ *(.bss)
+ *(.bss*)
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0xc8
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x18 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop_api_table.o
+ .debug_aranges
+                0x00000018       0xb0 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x6ace
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000     0x3dd0 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop_api_table.o
+ .debug_info    0x00003dd0     0x2cfe build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+
+.debug_abbrev   0x00000000      0xa1a
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x4b5 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop_api_table.o
+ .debug_abbrev  0x000004b5      0x565 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+
+.debug_line     0x00000000     0x168a
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x65a build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop_api_table.o
+ .debug_line_end
+                0x0000065a        0x0 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop_api_table.o
+ .debug_line    0x0000065a      0x3d9 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .debug_line.text.SubscriptionArray_clear
+                0x00000a33       0x3b build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .debug_line.text.ContractArray_clear
+                0x00000a6e       0x3b build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .debug_line.text.js_event_loop_destroy
+                0x00000aa9      0x14a build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .debug_line.text.js_event_loop_create
+                0x00000bf3       0xa8 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .debug_line.text.js_event_loop_stop
+                0x00000c9b       0x27 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .debug_line.text.js_event_loop_queue_send
+                0x00000cc2       0x9b build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .debug_line.text.js_event_loop_queue_transformer
+                0x00000d5d       0x6f build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .debug_line.text.ContractArray_push_raw
+                0x00000dcc       0xa1 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .debug_line.text.js_event_loop_queue
+                0x00000e6d       0xc8 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .debug_line.text.SubscriptionArray_push_raw
+                0x00000f35       0xa1 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .debug_line.text.js_event_loop_timer
+                0x00000fd6       0xc4 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .debug_line.text.js_event_loop_run
+                0x0000109a       0x27 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .debug_line.text.js_event_loop_subscribe
+                0x000010c1      0x2ba build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .debug_line.text.js_event_loop_callback_generic
+                0x0000137b       0xda build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .debug_line.text.js_event_loop_callback
+                0x00001455       0x8b build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .debug_line.text.SubscriptionArray_pop_at
+                0x000014e0       0x7d build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .debug_line.text.js_event_loop_subscription_cancel
+                0x0000155d       0xc2 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .debug_line.text.js_event_loop_ep
+                0x0000161f       0x19 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .debug_line.text.js_event_loop_get_loop
+                0x00001638       0x52 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ .debug_line_end
+                0x0000168a        0x0 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+
+.debug_frame    0x00000000      0x2bc
+ *(.debug_frame)
+ .debug_frame   0x00000000      0x2bc build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+
+.debug_str      0x00000000     0x37f6
+ *(.debug_str)
+ .debug_str     0x00000000     0x2263 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop_api_table.o
+ .debug_str     0x00002263     0x1593 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+ *(.debug_line_str)
+
+.debug_loclists
+                0x00000000      0xa50
+ *(.debug_loclists)
+ .debug_loclists
+                0x00000000      0xa50 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x00000000       0x93
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x00000000       0x93 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.ARM.attributes
+                0x00000000       0x34
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x34 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop_api_table.o
+ .ARM.attributes
+                0x00000034       0x34 build/f7-firmware-D/.extapps/js_event_loop/modules/js_event_loop/js_event_loop.o
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+
+/DISCARD/
+ *(.comment)
+ *(.comment.*)
+ *(.llvmbc)
+ *(.llvmcmd)
+OUTPUT(build/f7-firmware-D/.extapps/js_event_loop_d.elf elf32-littlearm)
+LOAD linker stubs

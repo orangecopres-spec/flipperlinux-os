@@ -1,0 +1,179 @@
+
+build/f7-firmware-D/.extapps/example_custom_font_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <app_input_callback>:
+    canvas_draw_str(canvas, 0, 6, "This is a tiny custom font");
+    canvas_draw_str(canvas, 0, 12, "012345.?! ,:;\"\'@#$%");
+    canvas_draw_str(canvas, 0, 18, "И немного юникода");
+}
+
+static void app_input_callback(InputEvent* input_event, void* ctx) {
+   0:	b508      	push	{r3, lr}
+    furi_assert(ctx);
+   2:	b139      	cbz	r1, 14 <app_input_callback+0x14>
+   4:	4603      	mov	r3, r0
+   6:	4608      	mov	r0, r1
+
+    FuriMessageQueue* event_queue = ctx;
+    furi_message_queue_put(event_queue, input_event, FuriWaitForever);
+   8:	f04f 32ff 	mov.w	r2, #4294967295	@ 0xffffffff
+   c:	4619      	mov	r1, r3
+   e:	4b03      	ldr	r3, [pc, #12]	@ (1c <sukima47+0x4>)
+  10:	4798      	blx	r3
+}
+  12:	bd08      	pop	{r3, pc}
+    furi_assert(ctx);
+  14:	f04f 0c01 	mov.w	ip, #1
+
+00000018 <sukima47>:
+  18:	4b01      	ldr	r3, [pc, #4]	@ (20 <sukima47+0x8>)
+  1a:	4798      	blx	r3
+	...
+
+00000024 <app_draw_callback>:
+static void app_draw_callback(Canvas* canvas, void* ctx) {
+  24:	b538      	push	{r3, r4, r5, lr}
+  26:	4604      	mov	r4, r0
+    canvas_clear(canvas);
+  28:	4b0b      	ldr	r3, [pc, #44]	@ (58 <app_draw_callback+0x34>)
+  2a:	4798      	blx	r3
+    canvas_set_custom_u8g2_font(canvas, u8g2_font_4x6_t_cyrillic);
+  2c:	490b      	ldr	r1, [pc, #44]	@ (5c <app_draw_callback+0x38>)
+  2e:	4620      	mov	r0, r4
+  30:	4b0b      	ldr	r3, [pc, #44]	@ (60 <app_draw_callback+0x3c>)
+  32:	4798      	blx	r3
+    canvas_draw_str(canvas, 0, 6, "This is a tiny custom font");
+  34:	4b0b      	ldr	r3, [pc, #44]	@ (64 <app_draw_callback+0x40>)
+  36:	2206      	movs	r2, #6
+  38:	2100      	movs	r1, #0
+  3a:	4620      	mov	r0, r4
+  3c:	4d0a      	ldr	r5, [pc, #40]	@ (68 <app_draw_callback+0x44>)
+  3e:	47a8      	blx	r5
+    canvas_draw_str(canvas, 0, 12, "012345.?! ,:;\"\'@#$%");
+  40:	4b0a      	ldr	r3, [pc, #40]	@ (6c <app_draw_callback+0x48>)
+  42:	220c      	movs	r2, #12
+  44:	2100      	movs	r1, #0
+  46:	4620      	mov	r0, r4
+  48:	47a8      	blx	r5
+    canvas_draw_str(canvas, 0, 18, "И немного юникода");
+  4a:	4b09      	ldr	r3, [pc, #36]	@ (70 <app_draw_callback+0x4c>)
+  4c:	2212      	movs	r2, #18
+  4e:	2100      	movs	r1, #0
+  50:	4620      	mov	r0, r4
+  52:	47a8      	blx	r5
+}
+  54:	bd38      	pop	{r3, r4, r5, pc}
+  56:	bf00      	nop
+	...
+  6c:	0000001c 	.word	0x0000001c
+  70:	00000030 	.word	0x00000030
+
+00000074 <example_custom_font_main>:
+
+int32_t example_custom_font_main(void* p) {
+  74:	b570      	push	{r4, r5, r6, lr}
+  76:	b082      	sub	sp, #8
+    UNUSED(p);
+    FuriMessageQueue* event_queue = furi_message_queue_alloc(8, sizeof(InputEvent));
+  78:	2108      	movs	r1, #8
+  7a:	4608      	mov	r0, r1
+  7c:	4b1e      	ldr	r3, [pc, #120]	@ (f8 <example_custom_font_main+0x84>)
+  7e:	4798      	blx	r3
+  80:	4604      	mov	r4, r0
+
+    // Configure view port
+    ViewPort* view_port = view_port_alloc();
+  82:	4b1e      	ldr	r3, [pc, #120]	@ (fc <example_custom_font_main+0x88>)
+  84:	4798      	blx	r3
+  86:	4605      	mov	r5, r0
+    view_port_draw_callback_set(view_port, app_draw_callback, NULL);
+  88:	2200      	movs	r2, #0
+  8a:	491d      	ldr	r1, [pc, #116]	@ (100 <example_custom_font_main+0x8c>)
+  8c:	4b1d      	ldr	r3, [pc, #116]	@ (104 <example_custom_font_main+0x90>)
+  8e:	4798      	blx	r3
+    view_port_input_callback_set(view_port, app_input_callback, event_queue);
+  90:	4622      	mov	r2, r4
+  92:	491d      	ldr	r1, [pc, #116]	@ (108 <example_custom_font_main+0x94>)
+  94:	4628      	mov	r0, r5
+  96:	4b1d      	ldr	r3, [pc, #116]	@ (10c <example_custom_font_main+0x98>)
+  98:	4798      	blx	r3
+
+    // Register view port in GUI
+    Gui* gui = furi_record_open(RECORD_GUI);
+  9a:	481d      	ldr	r0, [pc, #116]	@ (110 <example_custom_font_main+0x9c>)
+  9c:	4b1d      	ldr	r3, [pc, #116]	@ (114 <example_custom_font_main+0xa0>)
+  9e:	4798      	blx	r3
+  a0:	4606      	mov	r6, r0
+    gui_add_view_port(gui, view_port, GuiLayerFullscreen);
+  a2:	2204      	movs	r2, #4
+  a4:	4629      	mov	r1, r5
+  a6:	4b1c      	ldr	r3, [pc, #112]	@ (118 <example_custom_font_main+0xa4>)
+  a8:	4798      	blx	r3
+
+    InputEvent event;
+
+    bool running = true;
+
+    while(running) {
+  aa:	e003      	b.n	b4 <example_custom_font_main+0x40>
+        if(furi_message_queue_get(event_queue, &event, 100) == FuriStatusOk) {
+            if((event.type == InputTypePress) || (event.type == InputTypeRepeat)) {
+                switch(event.key) {
+  ac:	f89d 3004 	ldrb.w	r3, [sp, #4]
+  b0:	2b05      	cmp	r3, #5
+  b2:	d00d      	beq.n	d0 <example_custom_font_main+0x5c>
+        if(furi_message_queue_get(event_queue, &event, 100) == FuriStatusOk) {
+  b4:	2264      	movs	r2, #100	@ 0x64
+  b6:	4669      	mov	r1, sp
+  b8:	4620      	mov	r0, r4
+  ba:	4b18      	ldr	r3, [pc, #96]	@ (11c <example_custom_font_main+0xa8>)
+  bc:	4798      	blx	r3
+  be:	2800      	cmp	r0, #0
+  c0:	d1f8      	bne.n	b4 <example_custom_font_main+0x40>
+            if((event.type == InputTypePress) || (event.type == InputTypeRepeat)) {
+  c2:	f89d 3005 	ldrb.w	r3, [sp, #5]
+  c6:	2b00      	cmp	r3, #0
+  c8:	d0f0      	beq.n	ac <example_custom_font_main+0x38>
+  ca:	2b04      	cmp	r3, #4
+  cc:	d1f2      	bne.n	b4 <example_custom_font_main+0x40>
+  ce:	e7ed      	b.n	ac <example_custom_font_main+0x38>
+                }
+            }
+        }
+    }
+
+    view_port_enabled_set(view_port, false);
+  d0:	2100      	movs	r1, #0
+  d2:	4628      	mov	r0, r5
+  d4:	4b12      	ldr	r3, [pc, #72]	@ (120 <example_custom_font_main+0xac>)
+  d6:	4798      	blx	r3
+    gui_remove_view_port(gui, view_port);
+  d8:	4629      	mov	r1, r5
+  da:	4630      	mov	r0, r6
+  dc:	4b11      	ldr	r3, [pc, #68]	@ (124 <example_custom_font_main+0xb0>)
+  de:	4798      	blx	r3
+    view_port_free(view_port);
+  e0:	4628      	mov	r0, r5
+  e2:	4b11      	ldr	r3, [pc, #68]	@ (128 <example_custom_font_main+0xb4>)
+  e4:	4798      	blx	r3
+    furi_message_queue_free(event_queue);
+  e6:	4620      	mov	r0, r4
+  e8:	4b10      	ldr	r3, [pc, #64]	@ (12c <example_custom_font_main+0xb8>)
+  ea:	4798      	blx	r3
+
+    furi_record_close(RECORD_GUI);
+  ec:	4808      	ldr	r0, [pc, #32]	@ (110 <example_custom_font_main+0x9c>)
+  ee:	4b10      	ldr	r3, [pc, #64]	@ (130 <example_custom_font_main+0xbc>)
+  f0:	4798      	blx	r3
+
+    return 0;
+}
+  f2:	2000      	movs	r0, #0
+  f4:	b002      	add	sp, #8
+  f6:	bd70      	pop	{r4, r5, r6, pc}
+	...
+ 110:	00000054 	.word	0x00000054
+	...

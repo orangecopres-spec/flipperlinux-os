@@ -1,0 +1,255 @@
+Archive member included to satisfy reference by file (symbol)
+
+/home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a(_arm_addsubdf3.o)
+                              build/f7-firmware-D/.extapps/example_thermo/example_thermo.o (__aeabi_f2d)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+ .data          0x00000000        0x0 /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a(_arm_addsubdf3.o)
+ .bss           0x00000000        0x0 /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a(_arm_addsubdf3.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libstdc++_nano.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libsupc++_nano.a
+
+.text           0x00000000      0x7d8
+ *(.text)
+ .text          0x00000000      0x378 /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a(_arm_addsubdf3.o)
+                0x00000000                __aeabi_drsub
+                0x00000008                __aeabi_dsub
+                0x00000008                __subdf3
+                0x0000000c                __adddf3
+                0x0000000c                __aeabi_dadd
+                0x00000284                __aeabi_ui2d
+                0x00000284                __floatunsidf
+                0x000002a4                __floatsidf
+                0x000002a4                __aeabi_i2d
+                0x000002c8                __extendsfdf2
+                0x000002c8                __aeabi_f2d
+                0x0000030c                __aeabi_ul2d
+                0x0000030c                __floatundidf
+                0x0000031c                __floatdidf
+                0x0000031c                __aeabi_l2d
+ *(.stub)
+ *(.text*)
+ .text.example_thermo_context_alloc
+                0x00000378       0xb4 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+ .text.example_thermo_request_temperature
+                0x0000042c       0x48 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+ .text.example_thermo_read_temperature
+                0x00000474       0xe0 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+ .text.example_thermo_reader_thread_callback
+                0x00000554       0x34 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+ .text.example_thermo_input_callback
+                0x00000588       0x18 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+ .text.example_thermo_draw_callback
+                0x000005a0      0x138 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+ .text.example_thermo_run
+                0x000006d8       0x80 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+ .text.example_thermo_context_free
+                0x00000758       0x5c build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+ .text.example_thermo_main
+                0x000007b4       0x24 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+                0x000007b4                example_thermo_main
+ *(.text.*)
+ *(.text._*)
+ *(.init)
+ *(.fini)
+
+.rodata         0x000007d8       0x86
+ *(.rodata)
+ *(.rodata1)
+ *(.rodata.*)
+ .rodata.example_thermo_context_alloc.str1.4
+                0x000007d8        0xa build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+ *fill*         0x000007e2        0x2 
+ .rodata.example_thermo_draw_callback.str1.4
+                0x000007e4       0x7a build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+
+.data
+ *(.data)
+ *(.data1)
+ *(.data.*)
+
+.bss
+ *(.bss)
+ *(.bss*)
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x60
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x60 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x1654
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000     0x1654 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+
+.debug_abbrev   0x00000000      0x406
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x406 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+
+.debug_line     0x00000000      0x7b8
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x42a build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+ .debug_line.text.example_thermo_context_alloc
+                0x0000042a       0x6a build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+ .debug_line.text.example_thermo_request_temperature
+                0x00000494       0x56 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+ .debug_line.text.example_thermo_read_temperature
+                0x000004ea      0x116 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+ .debug_line.text.example_thermo_reader_thread_callback
+                0x00000600       0x43 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+ .debug_line.text.example_thermo_input_callback
+                0x00000643       0x20 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+ .debug_line.text.example_thermo_draw_callback
+                0x00000663       0x83 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+ .debug_line.text.example_thermo_run
+                0x000006e6       0x80 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+ .debug_line.text.example_thermo_context_free
+                0x00000766       0x29 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+ .debug_line.text.example_thermo_main
+                0x0000078f       0x29 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+ .debug_line_end
+                0x000007b8        0x0 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+
+.debug_frame    0x00000000      0x128
+ *(.debug_frame)
+ .debug_frame   0x00000000      0x128 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+
+.debug_str      0x00000000      0xdb2
+ *(.debug_str)
+ .debug_str     0x00000000      0xdb2 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+                0x00000000       0xa8
+ *(.debug_line_str)
+ .debug_line_str
+                0x00000000       0xa8 /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a(_arm_addsubdf3.o)
+
+.debug_loclists
+                0x00000000      0x365
+ *(.debug_loclists)
+ .debug_loclists
+                0x00000000      0x365 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x00000000       0x5f
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x00000000       0x5f build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.ARM.attributes
+                0x00000000       0x34
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x34 build/f7-firmware-D/.extapps/example_thermo/example_thermo.o
+ .ARM.attributes
+                0x00000034       0x22 /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a(_arm_addsubdf3.o)
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+
+/DISCARD/
+ *(.comment)
+ *(.comment.*)
+ *(.llvmbc)
+ *(.llvmcmd)
+OUTPUT(build/f7-firmware-D/.extapps/example_thermo_d.elf elf32-littlearm)
+LOAD linker stubs

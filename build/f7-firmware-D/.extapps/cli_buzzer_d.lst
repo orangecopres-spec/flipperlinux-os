@@ -1,0 +1,382 @@
+
+build/f7-firmware-D/.extapps/cli_buzzer_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <cli_command_buzzer_print_usage>:
+#include <notification/notification_app.h>
+#include <math.h>
+#include <toolbox/args.h>
+#include <toolbox/cli/cli_command.h>
+
+void cli_command_buzzer_print_usage(bool is_freq_subcommand, FuriString* args) {
+   0:	b508      	push	{r3, lr}
+    if(is_freq_subcommand) {
+   2:	b140      	cbz	r0, 16 <cli_command_buzzer_print_usage+0x16>
+        cli_print_usage(
+   4:	4608      	mov	r0, r1
+   6:	4b08      	ldr	r3, [pc, #32]	@ (28 <cli_command_buzzer_print_usage+0x28>)
+   8:	4798      	blx	r3
+   a:	4602      	mov	r2, r0
+   c:	4907      	ldr	r1, [pc, #28]	@ (2c <cli_command_buzzer_print_usage+0x2c>)
+   e:	4808      	ldr	r0, [pc, #32]	@ (30 <cli_command_buzzer_print_usage+0x30>)
+  10:	4b08      	ldr	r3, [pc, #32]	@ (34 <cli_command_buzzer_print_usage+0x34>)
+  12:	4798      	blx	r3
+            "buzzer freq", "<freq_hz> [<0-...>[<ms|s|m|h>]]", furi_string_get_cstr(args));
+
+    } else {
+        cli_print_usage("buzzer note", "<note> [<0-...>[<ms|s|m|h>]]", furi_string_get_cstr(args));
+    }
+}
+  14:	bd08      	pop	{r3, pc}
+        cli_print_usage("buzzer note", "<note> [<0-...>[<ms|s|m|h>]]", furi_string_get_cstr(args));
+  16:	4608      	mov	r0, r1
+  18:	4b03      	ldr	r3, [pc, #12]	@ (28 <cli_command_buzzer_print_usage+0x28>)
+  1a:	4798      	blx	r3
+  1c:	4602      	mov	r2, r0
+  1e:	4906      	ldr	r1, [pc, #24]	@ (38 <cli_command_buzzer_print_usage+0x38>)
+  20:	4806      	ldr	r0, [pc, #24]	@ (3c <cli_command_buzzer_print_usage+0x3c>)
+  22:	4b04      	ldr	r3, [pc, #16]	@ (34 <cli_command_buzzer_print_usage+0x34>)
+  24:	4798      	blx	r3
+}
+  26:	e7f5      	b.n	14 <cli_command_buzzer_print_usage+0x14>
+	...
+  30:	00000020 	.word	0x00000020
+  34:	00000000 	.word	0x00000000
+  38:	0000002c 	.word	0x0000002c
+  3c:	0000004c 	.word	0x0000004c
+
+00000040 <cli_command_buzzer_read_frequency>:
+
+// Consider volume effectively zero if below this threshold
+#define BUZZER_VOLUME_EPSILON (1e-3f)
+
+float cli_command_buzzer_read_frequency(bool is_freq_subcommand, FuriString* args) {
+  40:	b530      	push	{r4, r5, lr}
+  42:	b083      	sub	sp, #12
+  44:	460c      	mov	r4, r1
+    float frequency = 0.0f;
+  46:	2300      	movs	r3, #0
+  48:	9301      	str	r3, [sp, #4]
+
+    if(is_freq_subcommand) {
+  4a:	b970      	cbnz	r0, 6a <cli_command_buzzer_read_frequency+0x2a>
+    }
+
+    // Extract note frequency from name
+
+    FuriString* note_name_string;
+    note_name_string = furi_string_alloc();
+  4c:	4b0e      	ldr	r3, [pc, #56]	@ (88 <cli_command_buzzer_read_frequency+0x48>)
+  4e:	4798      	blx	r3
+  50:	4605      	mov	r5, r0
+
+    do {
+        if(!args_read_string_and_trim(args, note_name_string)) {
+  52:	4601      	mov	r1, r0
+  54:	4620      	mov	r0, r4
+  56:	4b0d      	ldr	r3, [pc, #52]	@ (8c <cli_command_buzzer_read_frequency+0x4c>)
+  58:	4798      	blx	r3
+  5a:	b968      	cbnz	r0, 78 <cli_command_buzzer_read_frequency+0x38>
+        }
+        const char* note_name = furi_string_get_cstr(note_name_string);
+        frequency = notification_messages_notes_frequency_from_name(note_name);
+    } while(false);
+
+    furi_string_free(note_name_string);
+  5c:	4628      	mov	r0, r5
+  5e:	4b0c      	ldr	r3, [pc, #48]	@ (90 <cli_command_buzzer_read_frequency+0x50>)
+  60:	4798      	blx	r3
+
+    return frequency;
+  62:	ed9d 0a01 	vldr	s0, [sp, #4]
+}
+  66:	b003      	add	sp, #12
+  68:	bd30      	pop	{r4, r5, pc}
+        args_read_float_and_trim(args, &frequency);
+  6a:	a901      	add	r1, sp, #4
+  6c:	4620      	mov	r0, r4
+  6e:	4b09      	ldr	r3, [pc, #36]	@ (94 <cli_command_buzzer_read_frequency+0x54>)
+  70:	4798      	blx	r3
+        return frequency;
+  72:	ed9d 0a01 	vldr	s0, [sp, #4]
+  76:	e7f6      	b.n	66 <cli_command_buzzer_read_frequency+0x26>
+        const char* note_name = furi_string_get_cstr(note_name_string);
+  78:	4628      	mov	r0, r5
+  7a:	4b07      	ldr	r3, [pc, #28]	@ (98 <cli_command_buzzer_read_frequency+0x58>)
+  7c:	4798      	blx	r3
+        frequency = notification_messages_notes_frequency_from_name(note_name);
+  7e:	4b07      	ldr	r3, [pc, #28]	@ (9c <cli_command_buzzer_read_frequency+0x5c>)
+  80:	4798      	blx	r3
+  82:	ed8d 0a01 	vstr	s0, [sp, #4]
+  86:	e7e9      	b.n	5c <cli_command_buzzer_read_frequency+0x1c>
+	...
+
+000000a0 <cli_command_buzzer_play>:
+
+void cli_command_buzzer_play(
+    PipeSide* pipe,
+    NotificationApp* notification,
+    bool is_freq_subcommand,
+    FuriString* args) {
+  a0:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+  a4:	b08a      	sub	sp, #40	@ 0x28
+  a6:	4680      	mov	r8, r0
+  a8:	460f      	mov	r7, r1
+  aa:	4616      	mov	r6, r2
+  ac:	461c      	mov	r4, r3
+    FuriString* duration_string;
+    duration_string = furi_string_alloc();
+  ae:	4b25      	ldr	r3, [pc, #148]	@ (144 <cli_command_buzzer_play+0xa4>)
+  b0:	4798      	blx	r3
+  b2:	4605      	mov	r5, r0
+
+    do {
+        float frequency = cli_command_buzzer_read_frequency(is_freq_subcommand, args);
+  b4:	4621      	mov	r1, r4
+  b6:	4630      	mov	r0, r6
+  b8:	4b23      	ldr	r3, [pc, #140]	@ (148 <cli_command_buzzer_play+0xa8>)
+  ba:	4798      	blx	r3
+        if(frequency <= 0.0f) {
+  bc:	eeb5 0ac0 	vcmpe.f32	s0, #0.0
+  c0:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
+  c4:	d933      	bls.n	12e <cli_command_buzzer_play+0x8e>
+            cli_command_buzzer_print_usage(is_freq_subcommand, args);
+            break;
+        }
+
+        const NotificationMessage notification_buzzer_message = {
+  c6:	2300      	movs	r3, #0
+  c8:	9306      	str	r3, [sp, #24]
+  ca:	9307      	str	r3, [sp, #28]
+  cc:	9308      	str	r3, [sp, #32]
+  ce:	9309      	str	r3, [sp, #36]	@ 0x24
+  d0:	2301      	movs	r3, #1
+  d2:	f88d 3018 	strb.w	r3, [sp, #24]
+  d6:	ed8d 0a07 	vstr	s0, [sp, #28]
+  da:	f04f 537e 	mov.w	r3, #1065353216	@ 0x3f800000
+  de:	9308      	str	r3, [sp, #32]
+            .data.sound.frequency = frequency,
+            .data.sound.volume = 1.0,
+        };
+
+        // Optional duration
+        uint32_t duration_ms = 100;
+  e0:	2364      	movs	r3, #100	@ 0x64
+  e2:	9300      	str	r3, [sp, #0]
+        if(args_read_string_and_trim(args, duration_string)) {
+  e4:	4629      	mov	r1, r5
+  e6:	4620      	mov	r0, r4
+  e8:	4b18      	ldr	r3, [pc, #96]	@ (14c <cli_command_buzzer_play+0xac>)
+  ea:	4798      	blx	r3
+  ec:	b128      	cbz	r0, fa <cli_command_buzzer_play+0x5a>
+            if(!args_read_duration(duration_string, &duration_ms, NULL)) {
+  ee:	2200      	movs	r2, #0
+  f0:	4669      	mov	r1, sp
+  f2:	4628      	mov	r0, r5
+  f4:	4b16      	ldr	r3, [pc, #88]	@ (150 <cli_command_buzzer_play+0xb0>)
+  f6:	4798      	blx	r3
+  f8:	b1f0      	cbz	r0, 138 <cli_command_buzzer_play+0x98>
+                cli_command_buzzer_print_usage(is_freq_subcommand, args);
+                break;
+            }
+        }
+
+        const NotificationSequence sound_on_sequence = {
+  fa:	ab06      	add	r3, sp, #24
+  fc:	9303      	str	r3, [sp, #12]
+  fe:	4b15      	ldr	r3, [pc, #84]	@ (154 <cli_command_buzzer_play+0xb4>)
+ 100:	9304      	str	r3, [sp, #16]
+ 102:	2600      	movs	r6, #0
+ 104:	9605      	str	r6, [sp, #20]
+            &message_do_not_reset,
+            NULL,
+        };
+
+        // Play sound
+        notification_message_block(notification, &sound_on_sequence);
+ 106:	a903      	add	r1, sp, #12
+ 108:	4638      	mov	r0, r7
+ 10a:	4c13      	ldr	r4, [pc, #76]	@ (158 <cli_command_buzzer_play+0xb8>)
+ 10c:	47a0      	blx	r4
+
+        cli_sleep(pipe, duration_ms);
+ 10e:	9900      	ldr	r1, [sp, #0]
+ 110:	4640      	mov	r0, r8
+ 112:	4b12      	ldr	r3, [pc, #72]	@ (15c <cli_command_buzzer_play+0xbc>)
+ 114:	4798      	blx	r3
+
+        // Stop sound
+        const NotificationSequence sound_off_sequence = {
+ 116:	4b12      	ldr	r3, [pc, #72]	@ (160 <cli_command_buzzer_play+0xc0>)
+ 118:	9301      	str	r3, [sp, #4]
+ 11a:	9602      	str	r6, [sp, #8]
+            &message_sound_off,
+            NULL,
+        };
+        notification_message_block(notification, &sound_off_sequence);
+ 11c:	a901      	add	r1, sp, #4
+ 11e:	4638      	mov	r0, r7
+ 120:	47a0      	blx	r4
+
+    } while(false);
+
+    furi_string_free(duration_string);
+ 122:	4628      	mov	r0, r5
+ 124:	4b0f      	ldr	r3, [pc, #60]	@ (164 <cli_command_buzzer_play+0xc4>)
+ 126:	4798      	blx	r3
+}
+ 128:	b00a      	add	sp, #40	@ 0x28
+ 12a:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+            cli_command_buzzer_print_usage(is_freq_subcommand, args);
+ 12e:	4621      	mov	r1, r4
+ 130:	4630      	mov	r0, r6
+ 132:	4b0d      	ldr	r3, [pc, #52]	@ (168 <cli_command_buzzer_play+0xc8>)
+ 134:	4798      	blx	r3
+            break;
+ 136:	e7f4      	b.n	122 <cli_command_buzzer_play+0x82>
+                cli_command_buzzer_print_usage(is_freq_subcommand, args);
+ 138:	4621      	mov	r1, r4
+ 13a:	4630      	mov	r0, r6
+ 13c:	4b0a      	ldr	r3, [pc, #40]	@ (168 <cli_command_buzzer_play+0xc8>)
+ 13e:	4798      	blx	r3
+                break;
+ 140:	e7ef      	b.n	122 <cli_command_buzzer_play+0x82>
+ 142:	bf00      	nop
+	...
+
+0000016c <execute>:
+
+void execute(PipeSide* pipe, FuriString* args, void* context) {
+ 16c:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 16e:	4606      	mov	r6, r0
+ 170:	460d      	mov	r5, r1
+    UNUSED(context);
+
+    NotificationApp* notification = furi_record_open(RECORD_NOTIFICATION);
+ 172:	4829      	ldr	r0, [pc, #164]	@ (218 <execute+0xac>)
+ 174:	4b29      	ldr	r3, [pc, #164]	@ (21c <execute+0xb0>)
+ 176:	4798      	blx	r3
+ 178:	4607      	mov	r7, r0
+
+    FuriString* command_string;
+    command_string = furi_string_alloc();
+ 17a:	4b29      	ldr	r3, [pc, #164]	@ (220 <execute+0xb4>)
+ 17c:	4798      	blx	r3
+ 17e:	4604      	mov	r4, r0
+
+    do {
+        if(!args_read_string_and_trim(args, command_string)) {
+ 180:	4601      	mov	r1, r0
+ 182:	4628      	mov	r0, r5
+ 184:	4a27      	ldr	r2, [pc, #156]	@ (224 <execute+0xb8>)
+ 186:	4790      	blx	r2
+ 188:	b970      	cbnz	r0, 1a8 <execute+0x3c>
+            cli_print_usage("buzzer", "<freq|note>", furi_string_get_cstr(args));
+ 18a:	4628      	mov	r0, r5
+ 18c:	4b26      	ldr	r3, [pc, #152]	@ (228 <execute+0xbc>)
+ 18e:	4798      	blx	r3
+ 190:	4602      	mov	r2, r0
+ 192:	4926      	ldr	r1, [pc, #152]	@ (22c <execute+0xc0>)
+ 194:	4826      	ldr	r0, [pc, #152]	@ (230 <execute+0xc4>)
+ 196:	4b27      	ldr	r3, [pc, #156]	@ (234 <execute+0xc8>)
+ 198:	4798      	blx	r3
+
+        cli_print_usage("buzzer", "<freq|note>", furi_string_get_cstr(args));
+
+    } while(false);
+
+    furi_string_free(command_string);
+ 19a:	4620      	mov	r0, r4
+ 19c:	4b26      	ldr	r3, [pc, #152]	@ (238 <execute+0xcc>)
+ 19e:	4798      	blx	r3
+    furi_record_close(RECORD_NOTIFICATION);
+ 1a0:	481d      	ldr	r0, [pc, #116]	@ (218 <execute+0xac>)
+ 1a2:	4b26      	ldr	r3, [pc, #152]	@ (23c <execute+0xd0>)
+ 1a4:	4798      	blx	r3
+}
+ 1a6:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
+        if(furi_hal_rtc_is_flag_set(FuriHalRtcFlagStealthMode)) {
+ 1a8:	2040      	movs	r0, #64	@ 0x40
+ 1aa:	4b25      	ldr	r3, [pc, #148]	@ (240 <execute+0xd4>)
+ 1ac:	4798      	blx	r3
+ 1ae:	b970      	cbnz	r0, 1ce <execute+0x62>
+        if(fabsf(notification->settings.speaker_volume) < BUZZER_VOLUME_EPSILON) {
+ 1b0:	edd7 7a0d 	vldr	s15, [r7, #52]	@ 0x34
+ 1b4:	eef0 7ae7 	vabs.f32	s15, s15
+ 1b8:	ed9f 7a22 	vldr	s14, [pc, #136]	@ 244 <execute+0xd8>
+ 1bc:	eef4 7ac7 	vcmpe.f32	s15, s14
+ 1c0:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
+ 1c4:	d507      	bpl.n	1d6 <execute+0x6a>
+            printf("Sound is disabled in settings. Increase volume to control buzzer.");
+ 1c6:	4820      	ldr	r0, [pc, #128]	@ (248 <execute+0xdc>)
+ 1c8:	4b20      	ldr	r3, [pc, #128]	@ (24c <execute+0xe0>)
+ 1ca:	4798      	blx	r3
+            break;
+ 1cc:	e7e5      	b.n	19a <execute+0x2e>
+            printf("Flipper is in stealth mode. Unmute the device to control buzzer.");
+ 1ce:	4820      	ldr	r0, [pc, #128]	@ (250 <execute+0xe4>)
+ 1d0:	4b1e      	ldr	r3, [pc, #120]	@ (24c <execute+0xe0>)
+ 1d2:	4798      	blx	r3
+            break;
+ 1d4:	e7e1      	b.n	19a <execute+0x2e>
+        if(furi_string_cmp(command_string, "freq") == 0) {
+ 1d6:	491f      	ldr	r1, [pc, #124]	@ (254 <execute+0xe8>)
+ 1d8:	4620      	mov	r0, r4
+ 1da:	4b1f      	ldr	r3, [pc, #124]	@ (258 <execute+0xec>)
+ 1dc:	4798      	blx	r3
+ 1de:	b930      	cbnz	r0, 1ee <execute+0x82>
+            cli_command_buzzer_play(pipe, notification, true, args);
+ 1e0:	462b      	mov	r3, r5
+ 1e2:	2201      	movs	r2, #1
+ 1e4:	4639      	mov	r1, r7
+ 1e6:	4630      	mov	r0, r6
+ 1e8:	4d1c      	ldr	r5, [pc, #112]	@ (25c <execute+0xf0>)
+ 1ea:	47a8      	blx	r5
+            break;
+ 1ec:	e7d5      	b.n	19a <execute+0x2e>
+        } else if(furi_string_cmp(command_string, "note") == 0) {
+ 1ee:	491c      	ldr	r1, [pc, #112]	@ (260 <execute+0xf4>)
+ 1f0:	4620      	mov	r0, r4
+ 1f2:	4b19      	ldr	r3, [pc, #100]	@ (258 <execute+0xec>)
+ 1f4:	4798      	blx	r3
+ 1f6:	b930      	cbnz	r0, 206 <execute+0x9a>
+            cli_command_buzzer_play(pipe, notification, false, args);
+ 1f8:	462b      	mov	r3, r5
+ 1fa:	2200      	movs	r2, #0
+ 1fc:	4639      	mov	r1, r7
+ 1fe:	4630      	mov	r0, r6
+ 200:	4d16      	ldr	r5, [pc, #88]	@ (25c <execute+0xf0>)
+ 202:	47a8      	blx	r5
+            break;
+ 204:	e7c9      	b.n	19a <execute+0x2e>
+        cli_print_usage("buzzer", "<freq|note>", furi_string_get_cstr(args));
+ 206:	4628      	mov	r0, r5
+ 208:	4b07      	ldr	r3, [pc, #28]	@ (228 <execute+0xbc>)
+ 20a:	4798      	blx	r3
+ 20c:	4602      	mov	r2, r0
+ 20e:	4907      	ldr	r1, [pc, #28]	@ (22c <execute+0xc0>)
+ 210:	4807      	ldr	r0, [pc, #28]	@ (230 <execute+0xc4>)
+ 212:	4b08      	ldr	r3, [pc, #32]	@ (234 <execute+0xc8>)
+ 214:	4798      	blx	r3
+ 216:	e7c0      	b.n	19a <execute+0x2e>
+ 218:	00000058 	.word	0x00000058
+	...
+ 22c:	00000068 	.word	0x00000068
+ 230:	00000074 	.word	0x00000074
+	...
+ 244:	3a83126f 	.word	0x3a83126f
+ 248:	000000c0 	.word	0x000000c0
+ 24c:	00000000 	.word	0x00000000
+ 250:	0000007c 	.word	0x0000007c
+ 254:	00000104 	.word	0x00000104
+	...
+ 260:	0000010c 	.word	0x0000010c
+
+00000264 <cli_buzzer_ep>:
+
+CLI_COMMAND_INTERFACE(buzzer, execute, CliCommandFlagDefault, 2048, CLI_APPID);
+ 264:	4800      	ldr	r0, [pc, #0]	@ (268 <cli_buzzer_ep+0x4>)
+ 266:	4770      	bx	lr
+ 268:	00000118 	.word	0x00000118

@@ -1,0 +1,862 @@
+
+build/f7-firmware-D/.extapps/clipper_parser_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <get_map_item>:
+
+    return true;
+}
+
+static bool get_map_item(uint16_t id, const IdMapping* map, size_t sz, const char** out) {
+    for(size_t i = 0; i < sz; i++) {
+   0:	f04f 0c00 	mov.w	ip, #0
+   4:	4594      	cmp	ip, r2
+   6:	d210      	bcs.n	2a <get_map_item+0x2a>
+static bool get_map_item(uint16_t id, const IdMapping* map, size_t sz, const char** out) {
+   8:	b510      	push	{r4, lr}
+        if(map[i].id == id) {
+   a:	eb01 04cc 	add.w	r4, r1, ip, lsl #3
+   e:	f831 e03c 	ldrh.w	lr, [r1, ip, lsl #3]
+  12:	4586      	cmp	lr, r0
+  14:	d005      	beq.n	22 <get_map_item+0x22>
+    for(size_t i = 0; i < sz; i++) {
+  16:	f10c 0c01 	add.w	ip, ip, #1
+  1a:	4594      	cmp	ip, r2
+  1c:	d3f5      	bcc.n	a <get_map_item+0xa>
+            *out = map[i].name;
+            return true;
+        }
+    }
+
+    return false;
+  1e:	2000      	movs	r0, #0
+  20:	e002      	b.n	28 <get_map_item+0x28>
+            *out = map[i].name;
+  22:	6862      	ldr	r2, [r4, #4]
+  24:	601a      	str	r2, [r3, #0]
+            return true;
+  26:	2001      	movs	r0, #1
+}
+  28:	bd10      	pop	{r4, pc}
+    return false;
+  2a:	2000      	movs	r0, #0
+}
+  2c:	4770      	bx	lr
+	...
+
+00000030 <get_agency_zone_name>:
+
+static bool get_agency_zone_name(uint16_t agency_id, uint16_t zone_id, const char** out) {
+  30:	b538      	push	{r3, r4, r5, lr}
+  32:	460d      	mov	r5, r1
+    for(size_t i = 0; i < kNumAgencyZoneMaps; i++) {
+  34:	f04f 0c00 	mov.w	ip, #0
+  38:	f1bc 0f03 	cmp.w	ip, #3
+  3c:	d814      	bhi.n	68 <get_agency_zone_name+0x38>
+        if(agency_zone_map[i].agency_id == agency_id) {
+  3e:	eb0c 0e4c 	add.w	lr, ip, ip, lsl #1
+  42:	4c0a      	ldr	r4, [pc, #40]	@ (6c <get_agency_zone_name+0x3c>)
+  44:	f834 e02e 	ldrh.w	lr, [r4, lr, lsl #2]
+  48:	4586      	cmp	lr, r0
+  4a:	d002      	beq.n	52 <get_agency_zone_name+0x22>
+    for(size_t i = 0; i < kNumAgencyZoneMaps; i++) {
+  4c:	f10c 0c01 	add.w	ip, ip, #1
+  50:	e7f2      	b.n	38 <get_agency_zone_name+0x8>
+            return get_map_item(
+                zone_id, agency_zone_map[i].zone_map, agency_zone_map[i].zone_count, out);
+  52:	eb0c 004c 	add.w	r0, ip, ip, lsl #1
+  56:	eb04 0080 	add.w	r0, r4, r0, lsl #2
+            return get_map_item(
+  5a:	4613      	mov	r3, r2
+  5c:	6882      	ldr	r2, [r0, #8]
+  5e:	6841      	ldr	r1, [r0, #4]
+  60:	4628      	mov	r0, r5
+  62:	4c03      	ldr	r4, [pc, #12]	@ (70 <get_agency_zone_name+0x40>)
+  64:	47a0      	blx	r4
+  66:	e000      	b.n	6a <get_agency_zone_name+0x3a>
+        }
+    }
+
+    return false;
+  68:	2000      	movs	r0, #0
+}
+  6a:	bd38      	pop	{r3, r4, r5, pc}
+  6c:	000005a0 	.word	0x000005a0
+  70:	00000000 	.word	0x00000000
+
+00000074 <decode_usd>:
+
+// Split a balance/fare amount from raw cents to dollars and cents portion,
+// automatically adjusting the cents portion so that it is always positive,
+// for easier display.
+static void
+    decode_usd(int16_t amount_cents, bool* out_is_negative, int16_t* out_usd, uint16_t* out_cents) {
+  74:	b510      	push	{r4, lr}
+    *out_usd = amount_cents / 100;
+  76:	4c10      	ldr	r4, [pc, #64]	@ (b8 <decode_usd+0x44>)
+  78:	fb84 4e00 	smull	r4, lr, r4, r0
+  7c:	ea4f 7ce0 	mov.w	ip, r0, asr #31
+  80:	ebcc 1c6e 	rsb	ip, ip, lr, asr #5
+  84:	f8a2 c000 	strh.w	ip, [r2]
+
+    if(amount_cents >= 0) {
+  88:	2800      	cmp	r0, #0
+  8a:	db06      	blt.n	9a <decode_usd+0x26>
+        *out_is_negative = false;
+  8c:	2200      	movs	r2, #0
+  8e:	700a      	strb	r2, [r1, #0]
+        *out_cents = amount_cents % 100;
+  90:	2164      	movs	r1, #100	@ 0x64
+  92:	fb01 021c 	mls	r2, r1, ip, r0
+  96:	801a      	strh	r2, [r3, #0]
+    } else {
+        *out_is_negative = true;
+        *out_cents = (amount_cents * -1) % 100;
+    }
+}
+  98:	bd10      	pop	{r4, pc}
+        *out_is_negative = true;
+  9a:	2201      	movs	r2, #1
+  9c:	700a      	strb	r2, [r1, #0]
+        *out_cents = (amount_cents * -1) % 100;
+  9e:	4240      	negs	r0, r0
+  a0:	4905      	ldr	r1, [pc, #20]	@ (b8 <decode_usd+0x44>)
+  a2:	fb81 2100 	smull	r2, r1, r1, r0
+  a6:	17c2      	asrs	r2, r0, #31
+  a8:	ebc2 1261 	rsb	r2, r2, r1, asr #5
+  ac:	2164      	movs	r1, #100	@ 0x64
+  ae:	fb01 0212 	mls	r2, r1, r2, r0
+  b2:	801a      	strh	r2, [r3, #0]
+}
+  b4:	e7f0      	b.n	98 <decode_usd+0x24>
+  b6:	bf00      	nop
+  b8:	51eb851f 	.word	0x51eb851f
+
+000000bc <decode_id_file>:
+static bool decode_id_file(const uint8_t* ef8_data, ClipperCardInfo* info) {
+  bc:	b510      	push	{r4, lr}
+  be:	460c      	mov	r4, r1
+    info->serial_number = bit_lib_bytes_to_num_be(&ef8_data[1], 4);
+  c0:	2104      	movs	r1, #4
+  c2:	3001      	adds	r0, #1
+  c4:	4b02      	ldr	r3, [pc, #8]	@ (d0 <decode_id_file+0x14>)
+  c6:	4798      	blx	r3
+  c8:	6020      	str	r0, [r4, #0]
+}
+  ca:	2001      	movs	r0, #1
+  cc:	bd10      	pop	{r4, pc}
+  ce:	bf00      	nop
+  d0:	00000000 	.word	0x00000000
+
+000000d4 <get_u16be>:
+static uint16_t get_u16be(const uint8_t* field) {
+  d4:	b508      	push	{r3, lr}
+    return bit_lib_bytes_to_num_be(field, 2);
+  d6:	2102      	movs	r1, #2
+  d8:	4b01      	ldr	r3, [pc, #4]	@ (e0 <get_u16be+0xc>)
+  da:	4798      	blx	r3
+}
+  dc:	b280      	uxth	r0, r0
+  de:	bd08      	pop	{r3, pc}
+  e0:	00000000 	.word	0x00000000
+
+000000e4 <get_i16be>:
+static int16_t get_i16be(const uint8_t* field) {
+  e4:	b508      	push	{r3, lr}
+    uint16_t raw = get_u16be(field);
+  e6:	4b02      	ldr	r3, [pc, #8]	@ (f0 <get_i16be+0xc>)
+  e8:	4798      	blx	r3
+}
+  ea:	b200      	sxth	r0, r0
+  ec:	bd08      	pop	{r3, pc}
+  ee:	bf00      	nop
+  f0:	00000000 	.word	0x00000000
+
+000000f4 <decode_cash_file>:
+static bool decode_cash_file(const uint8_t* ef2_data, ClipperCardInfo* info) {
+  f4:	b570      	push	{r4, r5, r6, lr}
+  f6:	4605      	mov	r5, r0
+  f8:	460c      	mov	r4, r1
+    info->counter = get_u16be(&ef2_data[2]);
+  fa:	3002      	adds	r0, #2
+  fc:	4e0b      	ldr	r6, [pc, #44]	@ (12c <decode_cash_file+0x38>)
+  fe:	47b0      	blx	r6
+ 100:	80a0      	strh	r0, [r4, #4]
+    return bit_lib_bytes_to_num_be(field, 4);
+ 102:	2104      	movs	r1, #4
+ 104:	1868      	adds	r0, r5, r1
+ 106:	4b0a      	ldr	r3, [pc, #40]	@ (130 <decode_cash_file+0x3c>)
+ 108:	4798      	blx	r3
+    info->last_updated_tm_1900 = get_u32be(&ef2_data[4]);
+ 10a:	60a0      	str	r0, [r4, #8]
+    info->last_terminal_id = get_u16be(&ef2_data[8]);
+ 10c:	f105 0008 	add.w	r0, r5, #8
+ 110:	47b0      	blx	r6
+ 112:	81a0      	strh	r0, [r4, #12]
+    info->last_txn_id = get_u16be(&ef2_data[0x10]);
+ 114:	f105 0010 	add.w	r0, r5, #16
+ 118:	47b0      	blx	r6
+ 11a:	80e0      	strh	r0, [r4, #6]
+    info->balance_cents = get_i16be(&ef2_data[0x12]);
+ 11c:	f105 0012 	add.w	r0, r5, #18
+ 120:	4b04      	ldr	r3, [pc, #16]	@ (134 <decode_cash_file+0x40>)
+ 122:	4798      	blx	r3
+ 124:	81e0      	strh	r0, [r4, #14]
+}
+ 126:	2001      	movs	r0, #1
+ 128:	bd70      	pop	{r4, r5, r6, pc}
+ 12a:	bf00      	nop
+	...
+
+00000138 <epoch_1900_datetime_to_furi>:
+    furi_string_free(date_str);
+    furi_string_free(time_str);
+}
+
+// Convert a "1900"-based timestamp to Furi time, assuming a UTC/GMT timezone.
+static void epoch_1900_datetime_to_furi(uint32_t seconds, DateTime* out) {
+ 138:	e92d 4ff8 	stmdb	sp!, {r3, r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 13c:	4689      	mov	r9, r1
+    uint16_t year, month, day, hour, minute, second;
+
+    // Calculate absolute number of days elapsed since the 1900 epoch
+    // and save the residual for the time within the day.
+    uint32_t absolute_days = seconds / 86400;
+ 13e:	4c2b      	ldr	r4, [pc, #172]	@ (1ec <epoch_1900_datetime_to_furi+0xb4>)
+ 140:	fba4 3400 	umull	r3, r4, r4, r0
+ 144:	0c24      	lsrs	r4, r4, #16
+    uint32_t seconds_within_day = seconds % 86400;
+ 146:	4b2a      	ldr	r3, [pc, #168]	@ (1f0 <epoch_1900_datetime_to_furi+0xb8>)
+ 148:	fb03 0814 	mls	r8, r3, r4, r0
+
+    // Calculate day of the week.
+    // January 1, 1900 was a Monday ("day of week" = 1)
+    uint8_t dow = (absolute_days + 1) % 7;
+ 14c:	1c63      	adds	r3, r4, #1
+ 14e:	4f29      	ldr	r7, [pc, #164]	@ (1f4 <epoch_1900_datetime_to_furi+0xbc>)
+ 150:	fba7 2703 	umull	r2, r7, r7, r3
+ 154:	1bda      	subs	r2, r3, r7
+ 156:	eb07 0752 	add.w	r7, r7, r2, lsr #1
+ 15a:	08bf      	lsrs	r7, r7, #2
+ 15c:	ebc7 07c7 	rsb	r7, r7, r7, lsl #3
+ 160:	1bdf      	subs	r7, r3, r7
+ 162:	b2ff      	uxtb	r7, r7
+    //
+    // Compute the date by simply marching through time in as large chunks
+    // as possible.
+    //
+
+    for(year = 1900;; year++) {
+ 164:	f240 756c 	movw	r5, #1900	@ 0x76c
+ 168:	e002      	b.n	170 <epoch_1900_datetime_to_furi+0x38>
+        uint16_t year_days = datetime_get_days_per_year(year);
+        if(absolute_days >= year_days)
+            absolute_days -= year_days;
+ 16a:	1a24      	subs	r4, r4, r0
+    for(year = 1900;; year++) {
+ 16c:	3501      	adds	r5, #1
+ 16e:	b2ad      	uxth	r5, r5
+        uint16_t year_days = datetime_get_days_per_year(year);
+ 170:	4628      	mov	r0, r5
+ 172:	4b21      	ldr	r3, [pc, #132]	@ (1f8 <epoch_1900_datetime_to_furi+0xc0>)
+ 174:	4798      	blx	r3
+        if(absolute_days >= year_days)
+ 176:	42a0      	cmp	r0, r4
+ 178:	d9f7      	bls.n	16a <epoch_1900_datetime_to_furi+0x32>
+        else
+            break;
+    }
+
+    bool is_leap = datetime_is_leap_year(year);
+ 17a:	4628      	mov	r0, r5
+ 17c:	4b1f      	ldr	r3, [pc, #124]	@ (1fc <epoch_1900_datetime_to_furi+0xc4>)
+ 17e:	4798      	blx	r3
+ 180:	4683      	mov	fp, r0
+
+    for(month = 1;; month++) {
+ 182:	f04f 0a01 	mov.w	sl, #1
+ 186:	e004      	b.n	192 <epoch_1900_datetime_to_furi+0x5a>
+        uint8_t days_in_month = datetime_get_days_per_month(is_leap, month);
+        if(absolute_days >= days_in_month)
+            absolute_days -= days_in_month;
+ 188:	1a24      	subs	r4, r4, r0
+    for(month = 1;; month++) {
+ 18a:	f10a 0a01 	add.w	sl, sl, #1
+ 18e:	fa1f fa8a 	uxth.w	sl, sl
+        uint8_t days_in_month = datetime_get_days_per_month(is_leap, month);
+ 192:	fa5f f68a 	uxtb.w	r6, sl
+ 196:	4631      	mov	r1, r6
+ 198:	4658      	mov	r0, fp
+ 19a:	4b19      	ldr	r3, [pc, #100]	@ (200 <epoch_1900_datetime_to_furi+0xc8>)
+ 19c:	4798      	blx	r3
+        if(absolute_days >= days_in_month)
+ 19e:	42a0      	cmp	r0, r4
+ 1a0:	d9f2      	bls.n	188 <epoch_1900_datetime_to_furi+0x50>
+        else
+            break;
+    }
+
+    day = absolute_days + 1;
+ 1a2:	b2a4      	uxth	r4, r4
+ 1a4:	3401      	adds	r4, #1
+    hour = seconds_within_day / 3600;
+ 1a6:	4a17      	ldr	r2, [pc, #92]	@ (204 <epoch_1900_datetime_to_furi+0xcc>)
+ 1a8:	fba2 3208 	umull	r3, r2, r2, r8
+ 1ac:	0ad2      	lsrs	r2, r2, #11
+    uint16_t sub_hour = seconds_within_day % 3600;
+ 1ae:	f44f 6361 	mov.w	r3, #3600	@ 0xe10
+ 1b2:	fb03 8812 	mls	r8, r3, r2, r8
+ 1b6:	fa1f f888 	uxth.w	r8, r8
+    minute = sub_hour / 60;
+ 1ba:	4b13      	ldr	r3, [pc, #76]	@ (208 <epoch_1900_datetime_to_furi+0xd0>)
+ 1bc:	fba3 1308 	umull	r1, r3, r3, r8
+ 1c0:	0959      	lsrs	r1, r3, #5
+ 1c2:	460b      	mov	r3, r1
+    second = sub_hour % 60;
+ 1c4:	ebc1 1101 	rsb	r1, r1, r1, lsl #4
+ 1c8:	eba8 0881 	sub.w	r8, r8, r1, lsl #2
+
+    out->year = year;
+ 1cc:	f8a9 5006 	strh.w	r5, [r9, #6]
+    out->month = month;
+ 1d0:	f889 6004 	strb.w	r6, [r9, #4]
+    out->day = day;
+ 1d4:	f889 4003 	strb.w	r4, [r9, #3]
+    out->hour = hour;
+ 1d8:	f889 2000 	strb.w	r2, [r9]
+    out->minute = minute;
+ 1dc:	f889 3001 	strb.w	r3, [r9, #1]
+    out->second = second;
+ 1e0:	f889 8002 	strb.w	r8, [r9, #2]
+    out->weekday = dow;
+ 1e4:	f889 7008 	strb.w	r7, [r9, #8]
+}
+ 1e8:	e8bd 8ff8 	ldmia.w	sp!, {r3, r4, r5, r6, r7, r8, r9, sl, fp, pc}
+ 1ec:	c22e4507 	.word	0xc22e4507
+ 1f0:	00015180 	.word	0x00015180
+ 1f4:	24924925 	.word	0x24924925
+	...
+ 204:	91a2b3c5 	.word	0x91a2b3c5
+ 208:	88888889 	.word	0x88888889
+
+0000020c <furi_string_cat_timestamp>:
+    uint32_t tmst_1900) {
+ 20c:	e92d 47f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, lr}
+ 210:	b086      	sub	sp, #24
+ 212:	4606      	mov	r6, r0
+ 214:	460f      	mov	r7, r1
+ 216:	4691      	mov	r9, r2
+    epoch_1900_datetime_to_furi(tmst_1900, &tm);
+ 218:	a903      	add	r1, sp, #12
+ 21a:	4618      	mov	r0, r3
+ 21c:	4b18      	ldr	r3, [pc, #96]	@ (280 <furi_string_cat_timestamp+0x74>)
+ 21e:	4798      	blx	r3
+    FuriString* date_str = furi_string_alloc();
+ 220:	4c18      	ldr	r4, [pc, #96]	@ (284 <furi_string_cat_timestamp+0x78>)
+ 222:	47a0      	blx	r4
+ 224:	4605      	mov	r5, r0
+    locale_format_date(date_str, &tm, locale_get_date_format(), "-");
+ 226:	4b18      	ldr	r3, [pc, #96]	@ (288 <furi_string_cat_timestamp+0x7c>)
+ 228:	4798      	blx	r3
+ 22a:	4602      	mov	r2, r0
+ 22c:	4b17      	ldr	r3, [pc, #92]	@ (28c <furi_string_cat_timestamp+0x80>)
+ 22e:	a903      	add	r1, sp, #12
+ 230:	4628      	mov	r0, r5
+ 232:	f8df 806c 	ldr.w	r8, [pc, #108]	@ 2a0 <furi_string_cat_timestamp+0x94>
+ 236:	47c0      	blx	r8
+    FuriString* time_str = furi_string_alloc();
+ 238:	47a0      	blx	r4
+ 23a:	4604      	mov	r4, r0
+    locale_format_time(time_str, &tm, locale_get_time_format(), true);
+ 23c:	4b14      	ldr	r3, [pc, #80]	@ (290 <furi_string_cat_timestamp+0x84>)
+ 23e:	4798      	blx	r3
+ 240:	4602      	mov	r2, r0
+ 242:	2301      	movs	r3, #1
+ 244:	a903      	add	r1, sp, #12
+ 246:	4620      	mov	r0, r4
+ 248:	f8df 8058 	ldr.w	r8, [pc, #88]	@ 2a4 <furi_string_cat_timestamp+0x98>
+ 24c:	47c0      	blx	r8
+    furi_string_cat_printf(
+ 24e:	4628      	mov	r0, r5
+ 250:	f8df a054 	ldr.w	sl, [pc, #84]	@ 2a8 <furi_string_cat_timestamp+0x9c>
+ 254:	47d0      	blx	sl
+ 256:	4680      	mov	r8, r0
+ 258:	4620      	mov	r0, r4
+ 25a:	47d0      	blx	sl
+ 25c:	9001      	str	r0, [sp, #4]
+ 25e:	f8cd 9000 	str.w	r9, [sp]
+ 262:	4643      	mov	r3, r8
+ 264:	463a      	mov	r2, r7
+ 266:	490b      	ldr	r1, [pc, #44]	@ (294 <furi_string_cat_timestamp+0x88>)
+ 268:	4630      	mov	r0, r6
+ 26a:	4e0b      	ldr	r6, [pc, #44]	@ (298 <furi_string_cat_timestamp+0x8c>)
+ 26c:	47b0      	blx	r6
+    furi_string_free(date_str);
+ 26e:	4628      	mov	r0, r5
+ 270:	4d0a      	ldr	r5, [pc, #40]	@ (29c <furi_string_cat_timestamp+0x90>)
+ 272:	47a8      	blx	r5
+    furi_string_free(time_str);
+ 274:	4620      	mov	r0, r4
+ 276:	47a8      	blx	r5
+}
+ 278:	b006      	add	sp, #24
+ 27a:	e8bd 87f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, pc}
+ 27e:	bf00      	nop
+	...
+ 294:	00000004 	.word	0x00000004
+	...
+
+000002ac <dump_ride_event>:
+    if(record[0] != 0x10) return false;
+ 2ac:	7803      	ldrb	r3, [r0, #0]
+ 2ae:	2b10      	cmp	r3, #16
+ 2b0:	d001      	beq.n	2b6 <dump_ride_event+0xa>
+ 2b2:	2000      	movs	r0, #0
+}
+ 2b4:	4770      	bx	lr
+static bool dump_ride_event(const uint8_t* record, FuriString* parsed_data) {
+ 2b6:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 2ba:	b08b      	sub	sp, #44	@ 0x2c
+ 2bc:	4604      	mov	r4, r0
+ 2be:	460d      	mov	r5, r1
+    uint16_t agency_id = get_u16be(&record[2]);
+ 2c0:	3002      	adds	r0, #2
+ 2c2:	4b3d      	ldr	r3, [pc, #244]	@ (3b8 <dump_ride_event+0x10c>)
+ 2c4:	4798      	blx	r3
+    if(agency_id == 0)
+ 2c6:	4606      	mov	r6, r0
+ 2c8:	b918      	cbnz	r0, 2d2 <dump_ride_event+0x26>
+        return false;
+ 2ca:	2000      	movs	r0, #0
+}
+ 2cc:	b00b      	add	sp, #44	@ 0x2c
+ 2ce:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+    bool ok = get_map_item(agency_id, agency_names, kNumAgencies, &agency_name);
+ 2d2:	ab09      	add	r3, sp, #36	@ 0x24
+ 2d4:	220a      	movs	r2, #10
+ 2d6:	4939      	ldr	r1, [pc, #228]	@ (3bc <dump_ride_event+0x110>)
+ 2d8:	4f39      	ldr	r7, [pc, #228]	@ (3c0 <dump_ride_event+0x114>)
+ 2da:	47b8      	blx	r7
+    if(!ok) agency_name = "Unknown";
+ 2dc:	b908      	cbnz	r0, 2e2 <dump_ride_event+0x36>
+ 2de:	4b39      	ldr	r3, [pc, #228]	@ (3c4 <dump_ride_event+0x118>)
+ 2e0:	9309      	str	r3, [sp, #36]	@ 0x24
+    uint16_t vehicle_id = get_u16be(&record[0x0a]);
+ 2e2:	f104 000a 	add.w	r0, r4, #10
+ 2e6:	f8df b0d0 	ldr.w	fp, [pc, #208]	@ 3b8 <dump_ride_event+0x10c>
+ 2ea:	47d8      	blx	fp
+ 2ec:	4681      	mov	r9, r0
+    int16_t fare_raw_cents = get_i16be(&record[6]);
+ 2ee:	1da0      	adds	r0, r4, #6
+ 2f0:	4b35      	ldr	r3, [pc, #212]	@ (3c8 <dump_ride_event+0x11c>)
+ 2f2:	4798      	blx	r3
+    decode_usd(fare_raw_cents, &_fare_is_negative, &fare_usd, &fare_cents);
+ 2f4:	f10d 031e 	add.w	r3, sp, #30
+ 2f8:	aa08      	add	r2, sp, #32
+ 2fa:	f10d 0123 	add.w	r1, sp, #35	@ 0x23
+ 2fe:	4f33      	ldr	r7, [pc, #204]	@ (3cc <dump_ride_event+0x120>)
+ 300:	47b8      	blx	r7
+    return bit_lib_bytes_to_num_be(field, 4);
+ 302:	2104      	movs	r1, #4
+ 304:	f104 000c 	add.w	r0, r4, #12
+ 308:	4f31      	ldr	r7, [pc, #196]	@ (3d0 <dump_ride_event+0x124>)
+ 30a:	47b8      	blx	r7
+ 30c:	4682      	mov	sl, r0
+ 30e:	2104      	movs	r1, #4
+ 310:	f104 0010 	add.w	r0, r4, #16
+ 314:	47b8      	blx	r7
+ 316:	4680      	mov	r8, r0
+    uint16_t zone_id_on = get_u16be(&record[0x14]);
+ 318:	f104 0014 	add.w	r0, r4, #20
+ 31c:	47d8      	blx	fp
+ 31e:	4607      	mov	r7, r0
+    uint16_t zone_id_off = get_u16be(&record[0x16]);
+ 320:	f104 0016 	add.w	r0, r4, #22
+ 324:	47d8      	blx	fp
+ 326:	4604      	mov	r4, r0
+    if(!get_agency_zone_name(agency_id, zone_id_on, &zone_on)) {
+ 328:	aa06      	add	r2, sp, #24
+ 32a:	4639      	mov	r1, r7
+ 32c:	4630      	mov	r0, r6
+ 32e:	4b29      	ldr	r3, [pc, #164]	@ (3d4 <dump_ride_event+0x128>)
+ 330:	4798      	blx	r3
+ 332:	b908      	cbnz	r0, 338 <dump_ride_event+0x8c>
+        zone_on = "Unknown";
+ 334:	4b23      	ldr	r3, [pc, #140]	@ (3c4 <dump_ride_event+0x118>)
+ 336:	9306      	str	r3, [sp, #24]
+    if(!get_agency_zone_name(agency_id, zone_id_off, &zone_off)) {
+ 338:	aa05      	add	r2, sp, #20
+ 33a:	4621      	mov	r1, r4
+ 33c:	4630      	mov	r0, r6
+ 33e:	4b25      	ldr	r3, [pc, #148]	@ (3d4 <dump_ride_event+0x128>)
+ 340:	4798      	blx	r3
+ 342:	b908      	cbnz	r0, 348 <dump_ride_event+0x9c>
+        zone_off = "Unknown";
+ 344:	4b1f      	ldr	r3, [pc, #124]	@ (3c4 <dump_ride_event+0x118>)
+ 346:	9305      	str	r3, [sp, #20]
+    furi_string_cat_str(parsed_data, "\e#Ride Record\n");
+ 348:	4923      	ldr	r1, [pc, #140]	@ (3d8 <dump_ride_event+0x12c>)
+ 34a:	4628      	mov	r0, r5
+ 34c:	4b23      	ldr	r3, [pc, #140]	@ (3dc <dump_ride_event+0x130>)
+ 34e:	4798      	blx	r3
+    furi_string_cat_timestamp(parsed_data, "Date: ", "\nTime: ", time_on_raw);
+ 350:	4653      	mov	r3, sl
+ 352:	4a23      	ldr	r2, [pc, #140]	@ (3e0 <dump_ride_event+0x134>)
+ 354:	4923      	ldr	r1, [pc, #140]	@ (3e4 <dump_ride_event+0x138>)
+ 356:	4628      	mov	r0, r5
+ 358:	f8df a0a4 	ldr.w	sl, [pc, #164]	@ 400 <dump_ride_event+0x154>
+ 35c:	47d0      	blx	sl
+    furi_string_cat_printf(
+ 35e:	9703      	str	r7, [sp, #12]
+ 360:	9b06      	ldr	r3, [sp, #24]
+ 362:	9302      	str	r3, [sp, #8]
+ 364:	9601      	str	r6, [sp, #4]
+ 366:	9b09      	ldr	r3, [sp, #36]	@ 0x24
+ 368:	9300      	str	r3, [sp, #0]
+ 36a:	f8bd 301e 	ldrh.w	r3, [sp, #30]
+ 36e:	f9bd 2020 	ldrsh.w	r2, [sp, #32]
+ 372:	491d      	ldr	r1, [pc, #116]	@ (3e8 <dump_ride_event+0x13c>)
+ 374:	4628      	mov	r0, r5
+ 376:	4e1d      	ldr	r6, [pc, #116]	@ (3ec <dump_ride_event+0x140>)
+ 378:	47b0      	blx	r6
+    if(vehicle_id != 0) {
+ 37a:	f1b9 0f00 	cmp.w	r9, #0
+ 37e:	d104      	bne.n	38a <dump_ride_event+0xde>
+    if(time_off_raw != 0) {
+ 380:	f1b8 0f00 	cmp.w	r8, #0
+ 384:	d106      	bne.n	394 <dump_ride_event+0xe8>
+    return true;
+ 386:	2001      	movs	r0, #1
+ 388:	e7a0      	b.n	2cc <dump_ride_event+0x20>
+        furi_string_cat_printf(parsed_data, "Vehicle id: %d\n", vehicle_id);
+ 38a:	464a      	mov	r2, r9
+ 38c:	4918      	ldr	r1, [pc, #96]	@ (3f0 <dump_ride_event+0x144>)
+ 38e:	4628      	mov	r0, r5
+ 390:	47b0      	blx	r6
+ 392:	e7f5      	b.n	380 <dump_ride_event+0xd4>
+        furi_string_cat_printf(parsed_data, "Off: %s (%04x)\n", zone_off, zone_id_off);
+ 394:	4623      	mov	r3, r4
+ 396:	9a05      	ldr	r2, [sp, #20]
+ 398:	4916      	ldr	r1, [pc, #88]	@ (3f4 <dump_ride_event+0x148>)
+ 39a:	4628      	mov	r0, r5
+ 39c:	4c13      	ldr	r4, [pc, #76]	@ (3ec <dump_ride_event+0x140>)
+ 39e:	47a0      	blx	r4
+        furi_string_cat_timestamp(parsed_data, "Date Off: ", "\nTime Off: ", time_off_raw);
+ 3a0:	4643      	mov	r3, r8
+ 3a2:	4a15      	ldr	r2, [pc, #84]	@ (3f8 <dump_ride_event+0x14c>)
+ 3a4:	4915      	ldr	r1, [pc, #84]	@ (3fc <dump_ride_event+0x150>)
+ 3a6:	4628      	mov	r0, r5
+ 3a8:	4c15      	ldr	r4, [pc, #84]	@ (400 <dump_ride_event+0x154>)
+ 3aa:	47a0      	blx	r4
+        furi_string_cat_str(parsed_data, "\n");
+ 3ac:	4915      	ldr	r1, [pc, #84]	@ (404 <dump_ride_event+0x158>)
+ 3ae:	4628      	mov	r0, r5
+ 3b0:	4b0a      	ldr	r3, [pc, #40]	@ (3dc <dump_ride_event+0x130>)
+ 3b2:	4798      	blx	r3
+    return true;
+ 3b4:	2001      	movs	r0, #1
+ 3b6:	e789      	b.n	2cc <dump_ride_event+0x20>
+ 3b8:	00000000 	.word	0x00000000
+ 3bc:	000007f0 	.word	0x000007f0
+ 3c0:	00000000 	.word	0x00000000
+ 3c4:	00000014 	.word	0x00000014
+	...
+ 3d8:	0000001c 	.word	0x0000001c
+ 3dc:	00000000 	.word	0x00000000
+ 3e0:	0000002c 	.word	0x0000002c
+ 3e4:	00000034 	.word	0x00000034
+ 3e8:	0000003c 	.word	0x0000003c
+ 3ec:	00000000 	.word	0x00000000
+ 3f0:	00000070 	.word	0x00000070
+ 3f4:	00000080 	.word	0x00000080
+ 3f8:	00000090 	.word	0x00000090
+ 3fc:	0000009c 	.word	0x0000009c
+ 400:	00000000 	.word	0x00000000
+ 404:	000000a8 	.word	0x000000a8
+
+00000408 <dump_ride_history>:
+    FuriString* parsed_data) {
+ 408:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+ 40c:	4605      	mov	r5, r0
+ 40e:	4688      	mov	r8, r1
+ 410:	4616      	mov	r6, r2
+ 412:	461f      	mov	r7, r3
+    for(size_t i = 0; i < 16; i++) {
+ 414:	2400      	movs	r4, #0
+ 416:	2c0f      	cmp	r4, #15
+ 418:	d812      	bhi.n	440 <dump_ride_history+0x38>
+        uint8_t record_num = index_file[i];
+ 41a:	f815 c004 	ldrb.w	ip, [r5, r4]
+        if(record_num == 0xff) break;
+ 41e:	f1bc 0fff 	cmp.w	ip, #255	@ 0xff
+ 422:	d00d      	beq.n	440 <dump_ride_history+0x38>
+        size_t record_offset = record_num * kRideRecordSize;
+ 424:	ea4f 1c4c 	mov.w	ip, ip, lsl #5
+        if(record_offset + kRideRecordSize > len) break;
+ 428:	f10c 0e20 	add.w	lr, ip, #32
+ 42c:	45b6      	cmp	lr, r6
+ 42e:	d807      	bhi.n	440 <dump_ride_history+0x38>
+        if(!dump_ride_event(record, parsed_data)) break;
+ 430:	4639      	mov	r1, r7
+ 432:	eb08 000c 	add.w	r0, r8, ip
+ 436:	4b04      	ldr	r3, [pc, #16]	@ (448 <dump_ride_history+0x40>)
+ 438:	4798      	blx	r3
+ 43a:	b108      	cbz	r0, 440 <dump_ride_history+0x38>
+    for(size_t i = 0; i < 16; i++) {
+ 43c:	3401      	adds	r4, #1
+ 43e:	e7ea      	b.n	416 <dump_ride_history+0xe>
+}
+ 440:	2001      	movs	r0, #1
+ 442:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+ 446:	bf00      	nop
+ 448:	00000000 	.word	0x00000000
+
+0000044c <get_file_contents>:
+    const uint8_t** out) {
+ 44c:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+ 450:	4607      	mov	r7, r0
+ 452:	4688      	mov	r8, r1
+ 454:	4616      	mov	r6, r2
+ 456:	461d      	mov	r5, r3
+    const MfDesfireFileSettings* settings = mf_desfire_get_file_settings(app, id);
+ 458:	4c10      	ldr	r4, [pc, #64]	@ (49c <get_file_contents+0x50>)
+ 45a:	47a0      	blx	r4
+    if(settings == NULL) return false;
+ 45c:	b1c8      	cbz	r0, 492 <get_file_contents+0x46>
+    if(settings->type != type) return false;
+ 45e:	7803      	ldrb	r3, [r0, #0]
+ 460:	42b3      	cmp	r3, r6
+ 462:	d002      	beq.n	46a <get_file_contents+0x1e>
+ 464:	2000      	movs	r0, #0
+}
+ 466:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+    const MfDesfireFileData* file_data = mf_desfire_get_file_data(app, id);
+ 46a:	4641      	mov	r1, r8
+ 46c:	4638      	mov	r0, r7
+ 46e:	4b0c      	ldr	r3, [pc, #48]	@ (4a0 <get_file_contents+0x54>)
+ 470:	4798      	blx	r3
+    if(file_data == NULL) return false;
+ 472:	4604      	mov	r4, r0
+ 474:	b178      	cbz	r0, 496 <get_file_contents+0x4a>
+    if(simple_array_get_count(file_data->data) < min_size) return false;
+ 476:	6800      	ldr	r0, [r0, #0]
+ 478:	4b0a      	ldr	r3, [pc, #40]	@ (4a4 <get_file_contents+0x58>)
+ 47a:	4798      	blx	r3
+ 47c:	42a8      	cmp	r0, r5
+ 47e:	d201      	bcs.n	484 <get_file_contents+0x38>
+ 480:	2000      	movs	r0, #0
+ 482:	e7f0      	b.n	466 <get_file_contents+0x1a>
+    *out = simple_array_cget_data(file_data->data);
+ 484:	6820      	ldr	r0, [r4, #0]
+ 486:	4b08      	ldr	r3, [pc, #32]	@ (4a8 <get_file_contents+0x5c>)
+ 488:	4798      	blx	r3
+ 48a:	9b06      	ldr	r3, [sp, #24]
+ 48c:	6018      	str	r0, [r3, #0]
+    return true;
+ 48e:	2001      	movs	r0, #1
+ 490:	e7e9      	b.n	466 <get_file_contents+0x1a>
+    if(settings == NULL) return false;
+ 492:	2000      	movs	r0, #0
+ 494:	e7e7      	b.n	466 <get_file_contents+0x1a>
+    if(file_data == NULL) return false;
+ 496:	2000      	movs	r0, #0
+ 498:	e7e5      	b.n	466 <get_file_contents+0x1a>
+ 49a:	bf00      	nop
+	...
+
+000004ac <clipper_parse>:
+static bool clipper_parse(const NfcDevice* device, FuriString* parsed_data) {
+ 4ac:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+ 4b0:	b08c      	sub	sp, #48	@ 0x30
+    furi_assert(device);
+ 4b2:	b1b8      	cbz	r0, 4e4 <clipper_parse+0x38>
+ 4b4:	460f      	mov	r7, r1
+    furi_assert(parsed_data);
+ 4b6:	b1c9      	cbz	r1, 4ec <sukima1413+0x4>
+        const MfDesfireData* data = nfc_device_get_data(device, NfcProtocolMfDesfire);
+ 4b8:	2109      	movs	r1, #9
+ 4ba:	4b45      	ldr	r3, [pc, #276]	@ (5d0 <sukima1430+0xe0>)
+ 4bc:	4798      	blx	r3
+ 4be:	4606      	mov	r6, r0
+        for(size_t i = 0; i < kNumCardTypes; i++) {
+ 4c0:	2400      	movs	r4, #0
+        const char* device_description = NULL;
+ 4c2:	46a0      	mov	r8, r4
+        const MfDesfireApplication* app = NULL;
+ 4c4:	4625      	mov	r5, r4
+        for(size_t i = 0; i < kNumCardTypes; i++) {
+ 4c6:	2c01      	cmp	r4, #1
+ 4c8:	d814      	bhi.n	4f4 <sukima1430+0x4>
+            app = mf_desfire_get_application(data, &clipper_types[i].app);
+ 4ca:	4d42      	ldr	r5, [pc, #264]	@ (5d4 <sukima1430+0xe4>)
+ 4cc:	eb05 05c4 	add.w	r5, r5, r4, lsl #3
+ 4d0:	4629      	mov	r1, r5
+ 4d2:	4630      	mov	r0, r6
+ 4d4:	4b40      	ldr	r3, [pc, #256]	@ (5d8 <sukima1430+0xe8>)
+ 4d6:	4798      	blx	r3
+            device_description = clipper_types[i].type;
+ 4d8:	f8d5 8004 	ldr.w	r8, [r5, #4]
+            if(app != NULL) break;
+ 4dc:	4605      	mov	r5, r0
+ 4de:	b948      	cbnz	r0, 4f4 <sukima1430+0x4>
+        for(size_t i = 0; i < kNumCardTypes; i++) {
+ 4e0:	3401      	adds	r4, #1
+ 4e2:	e7f0      	b.n	4c6 <clipper_parse+0x1a>
+    furi_assert(device);
+ 4e4:	f04f 0c01 	mov.w	ip, #1
+
+000004e8 <sukima1413>:
+ 4e8:	4b3c      	ldr	r3, [pc, #240]	@ (5dc <sukima1430+0xec>)
+ 4ea:	4798      	blx	r3
+    furi_assert(parsed_data);
+ 4ec:	f04f 0c01 	mov.w	ip, #1
+
+000004f0 <sukima1430>:
+ 4f0:	4b3a      	ldr	r3, [pc, #232]	@ (5dc <sukima1430+0xec>)
+ 4f2:	4798      	blx	r3
+        if(app == NULL) break;
+ 4f4:	b145      	cbz	r5, 508 <sukima1430+0x18>
+        if(!get_file_contents(
+ 4f6:	ab04      	add	r3, sp, #16
+ 4f8:	9300      	str	r3, [sp, #0]
+ 4fa:	2305      	movs	r3, #5
+ 4fc:	2200      	movs	r2, #0
+ 4fe:	4938      	ldr	r1, [pc, #224]	@ (5e0 <sukima1430+0xf0>)
+ 500:	4628      	mov	r0, r5
+ 502:	4c38      	ldr	r4, [pc, #224]	@ (5e4 <sukima1430+0xf4>)
+ 504:	47a0      	blx	r4
+ 506:	b918      	cbnz	r0, 510 <sukima1430+0x20>
+    bool parsed = false;
+ 508:	2000      	movs	r0, #0
+}
+ 50a:	b00c      	add	sp, #48	@ 0x30
+ 50c:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+        if(!decode_id_file(id_data, &info)) break;
+ 510:	a908      	add	r1, sp, #32
+ 512:	9804      	ldr	r0, [sp, #16]
+ 514:	4b34      	ldr	r3, [pc, #208]	@ (5e8 <sukima1430+0xf8>)
+ 516:	4798      	blx	r3
+ 518:	2800      	cmp	r0, #0
+ 51a:	d0f5      	beq.n	508 <sukima1430+0x18>
+        if(!get_file_contents(app, &clipper_ecash_file_id, MfDesfireFileTypeBackup, 32, &cash_data))
+ 51c:	ab05      	add	r3, sp, #20
+ 51e:	9300      	str	r3, [sp, #0]
+ 520:	2320      	movs	r3, #32
+ 522:	2201      	movs	r2, #1
+ 524:	4931      	ldr	r1, [pc, #196]	@ (5ec <sukima1430+0xfc>)
+ 526:	4628      	mov	r0, r5
+ 528:	47a0      	blx	r4
+ 52a:	2800      	cmp	r0, #0
+ 52c:	d0ec      	beq.n	508 <sukima1430+0x18>
+        if(!decode_cash_file(cash_data, &info)) break;
+ 52e:	a908      	add	r1, sp, #32
+ 530:	9805      	ldr	r0, [sp, #20]
+ 532:	4b2f      	ldr	r3, [pc, #188]	@ (5f0 <sukima1430+0x100>)
+ 534:	4798      	blx	r3
+ 536:	2800      	cmp	r0, #0
+ 538:	d0e6      	beq.n	508 <sukima1430+0x18>
+        decode_usd(info.balance_cents, &_balance_is_negative, &balance_usd, &balance_cents);
+ 53a:	f10d 030e 	add.w	r3, sp, #14
+ 53e:	aa03      	add	r2, sp, #12
+ 540:	f10d 010b 	add.w	r1, sp, #11
+ 544:	f9bd 002e 	ldrsh.w	r0, [sp, #46]	@ 0x2e
+ 548:	4c2a      	ldr	r4, [pc, #168]	@ (5f4 <sukima1430+0x104>)
+ 54a:	47a0      	blx	r4
+        furi_string_cat_printf(
+ 54c:	f8cd 8004 	str.w	r8, [sp, #4]
+ 550:	f8bd 300e 	ldrh.w	r3, [sp, #14]
+ 554:	9300      	str	r3, [sp, #0]
+ 556:	f9bd 300c 	ldrsh.w	r3, [sp, #12]
+ 55a:	9a08      	ldr	r2, [sp, #32]
+ 55c:	4926      	ldr	r1, [pc, #152]	@ (5f8 <sukima1430+0x108>)
+ 55e:	4638      	mov	r0, r7
+ 560:	4c26      	ldr	r4, [pc, #152]	@ (5fc <sukima1430+0x10c>)
+ 562:	47a0      	blx	r4
+        if(info.last_updated_tm_1900 != 0)
+ 564:	9b0a      	ldr	r3, [sp, #40]	@ 0x28
+ 566:	2b00      	cmp	r3, #0
+ 568:	d02d      	beq.n	5c6 <sukima1430+0xd6>
+            furi_string_cat_timestamp(
+ 56a:	4a25      	ldr	r2, [pc, #148]	@ (600 <sukima1430+0x110>)
+ 56c:	4925      	ldr	r1, [pc, #148]	@ (604 <sukima1430+0x114>)
+ 56e:	4638      	mov	r0, r7
+ 570:	4c25      	ldr	r4, [pc, #148]	@ (608 <sukima1430+0x118>)
+ 572:	47a0      	blx	r4
+            info.counter);
+ 574:	f8bd 3024 	ldrh.w	r3, [sp, #36]	@ 0x24
+        furi_string_cat_printf(
+ 578:	9300      	str	r3, [sp, #0]
+ 57a:	f8bd 3026 	ldrh.w	r3, [sp, #38]	@ 0x26
+ 57e:	f8bd 202c 	ldrh.w	r2, [sp, #44]	@ 0x2c
+ 582:	4922      	ldr	r1, [pc, #136]	@ (60c <sukima1430+0x11c>)
+ 584:	4638      	mov	r0, r7
+ 586:	4c1d      	ldr	r4, [pc, #116]	@ (5fc <sukima1430+0x10c>)
+ 588:	47a0      	blx	r4
+        if(!get_file_contents(
+ 58a:	ab06      	add	r3, sp, #24
+ 58c:	9300      	str	r3, [sp, #0]
+ 58e:	2310      	movs	r3, #16
+ 590:	2201      	movs	r2, #1
+ 592:	491f      	ldr	r1, [pc, #124]	@ (610 <sukima1430+0x120>)
+ 594:	4628      	mov	r0, r5
+ 596:	4c13      	ldr	r4, [pc, #76]	@ (5e4 <sukima1430+0xf4>)
+ 598:	47a0      	blx	r4
+ 59a:	2800      	cmp	r0, #0
+ 59c:	d0b4      	beq.n	508 <sukima1430+0x18>
+        if(!get_file_contents(
+ 59e:	ab07      	add	r3, sp, #28
+ 5a0:	9300      	str	r3, [sp, #0]
+ 5a2:	f44f 7300 	mov.w	r3, #512	@ 0x200
+ 5a6:	2200      	movs	r2, #0
+ 5a8:	491a      	ldr	r1, [pc, #104]	@ (614 <sukima1430+0x124>)
+ 5aa:	4628      	mov	r0, r5
+ 5ac:	47a0      	blx	r4
+ 5ae:	2800      	cmp	r0, #0
+ 5b0:	d0aa      	beq.n	508 <sukima1430+0x18>
+        if(!dump_ride_history(history_index, history, 512, parsed_data)) break;
+ 5b2:	463b      	mov	r3, r7
+ 5b4:	f44f 7200 	mov.w	r2, #512	@ 0x200
+ 5b8:	9907      	ldr	r1, [sp, #28]
+ 5ba:	9806      	ldr	r0, [sp, #24]
+ 5bc:	4c16      	ldr	r4, [pc, #88]	@ (618 <sukima1430+0x128>)
+ 5be:	47a0      	blx	r4
+ 5c0:	2800      	cmp	r0, #0
+ 5c2:	d1a2      	bne.n	50a <sukima1430+0x1a>
+ 5c4:	e7a0      	b.n	508 <sukima1430+0x18>
+            furi_string_cat_str(parsed_data, "Never");
+ 5c6:	4915      	ldr	r1, [pc, #84]	@ (61c <sukima1430+0x12c>)
+ 5c8:	4638      	mov	r0, r7
+ 5ca:	4b15      	ldr	r3, [pc, #84]	@ (620 <sukima1430+0x130>)
+ 5cc:	4798      	blx	r3
+ 5ce:	e7d1      	b.n	574 <sukima1430+0x84>
+ 5d0:	00000000 	.word	0x00000000
+ 5d4:	00000840 	.word	0x00000840
+	...
+ 5e0:	0000059d 	.word	0x0000059d
+	...
+ 5ec:	0000059f 	.word	0x0000059f
+	...
+ 5f8:	000000ac 	.word	0x000000ac
+ 5fc:	00000000 	.word	0x00000000
+ 600:	0000002c 	.word	0x0000002c
+ 604:	00000034 	.word	0x00000034
+ 608:	00000000 	.word	0x00000000
+ 60c:	000000f4 	.word	0x000000f4
+ 610:	0000059e 	.word	0x0000059e
+ 614:	0000059c 	.word	0x0000059c
+ 618:	00000000 	.word	0x00000000
+ 61c:	000000ec 	.word	0x000000ec
+ 620:	00000000 	.word	0x00000000
+
+00000624 <clipper_plugin_ep>:
+};
+
+/* Plugin entry point - must return a pointer to const descriptor  */
+const FlipperAppPluginDescriptor* clipper_plugin_ep(void) {
+    return &clipper_plugin_descriptor;
+}
+ 624:	4800      	ldr	r0, [pc, #0]	@ (628 <clipper_plugin_ep+0x4>)
+ 626:	4770      	bx	lr
+ 628:	00000580 	.word	0x00000580

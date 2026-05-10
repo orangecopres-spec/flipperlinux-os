@@ -1,0 +1,700 @@
+
+build/f7-firmware-D/.extapps/example_adc_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <__aeabi_drsub>:
+   0:	f081 4100 	eor.w	r1, r1, #2147483648	@ 0x80000000
+   4:	e002      	b.n	c <__adddf3>
+   6:	bf00      	nop
+
+00000008 <__aeabi_dsub>:
+   8:	f083 4300 	eor.w	r3, r3, #2147483648	@ 0x80000000
+
+0000000c <__adddf3>:
+   c:	b530      	push	{r4, r5, lr}
+   e:	ea4f 0441 	mov.w	r4, r1, lsl #1
+  12:	ea4f 0543 	mov.w	r5, r3, lsl #1
+  16:	ea94 0f05 	teq	r4, r5
+  1a:	bf08      	it	eq
+  1c:	ea90 0f02 	teqeq	r0, r2
+  20:	bf1f      	itttt	ne
+  22:	ea54 0c00 	orrsne.w	ip, r4, r0
+  26:	ea55 0c02 	orrsne.w	ip, r5, r2
+  2a:	ea7f 5c64 	mvnsne.w	ip, r4, asr #21
+  2e:	ea7f 5c65 	mvnsne.w	ip, r5, asr #21
+  32:	f000 80e2 	beq.w	1fa <__adddf3+0x1ee>
+  36:	ea4f 5454 	mov.w	r4, r4, lsr #21
+  3a:	ebd4 5555 	rsbs	r5, r4, r5, lsr #21
+  3e:	bfb8      	it	lt
+  40:	426d      	neglt	r5, r5
+  42:	dd0c      	ble.n	5e <__adddf3+0x52>
+  44:	442c      	add	r4, r5
+  46:	ea80 0202 	eor.w	r2, r0, r2
+  4a:	ea81 0303 	eor.w	r3, r1, r3
+  4e:	ea82 0000 	eor.w	r0, r2, r0
+  52:	ea83 0101 	eor.w	r1, r3, r1
+  56:	ea80 0202 	eor.w	r2, r0, r2
+  5a:	ea81 0303 	eor.w	r3, r1, r3
+  5e:	2d36      	cmp	r5, #54	@ 0x36
+  60:	bf88      	it	hi
+  62:	bd30      	pophi	{r4, r5, pc}
+  64:	f011 4f00 	tst.w	r1, #2147483648	@ 0x80000000
+  68:	ea4f 3101 	mov.w	r1, r1, lsl #12
+  6c:	f44f 1c80 	mov.w	ip, #1048576	@ 0x100000
+  70:	ea4c 3111 	orr.w	r1, ip, r1, lsr #12
+  74:	d002      	beq.n	7c <__adddf3+0x70>
+  76:	4240      	negs	r0, r0
+  78:	eb61 0141 	sbc.w	r1, r1, r1, lsl #1
+  7c:	f013 4f00 	tst.w	r3, #2147483648	@ 0x80000000
+  80:	ea4f 3303 	mov.w	r3, r3, lsl #12
+  84:	ea4c 3313 	orr.w	r3, ip, r3, lsr #12
+  88:	d002      	beq.n	90 <__adddf3+0x84>
+  8a:	4252      	negs	r2, r2
+  8c:	eb63 0343 	sbc.w	r3, r3, r3, lsl #1
+  90:	ea94 0f05 	teq	r4, r5
+  94:	f000 80a7 	beq.w	1e6 <__adddf3+0x1da>
+  98:	f1a4 0401 	sub.w	r4, r4, #1
+  9c:	f1d5 0e20 	rsbs	lr, r5, #32
+  a0:	db0d      	blt.n	be <__adddf3+0xb2>
+  a2:	fa02 fc0e 	lsl.w	ip, r2, lr
+  a6:	fa22 f205 	lsr.w	r2, r2, r5
+  aa:	1880      	adds	r0, r0, r2
+  ac:	f141 0100 	adc.w	r1, r1, #0
+  b0:	fa03 f20e 	lsl.w	r2, r3, lr
+  b4:	1880      	adds	r0, r0, r2
+  b6:	fa43 f305 	asr.w	r3, r3, r5
+  ba:	4159      	adcs	r1, r3
+  bc:	e00e      	b.n	dc <__adddf3+0xd0>
+  be:	f1a5 0520 	sub.w	r5, r5, #32
+  c2:	f10e 0e20 	add.w	lr, lr, #32
+  c6:	2a01      	cmp	r2, #1
+  c8:	fa03 fc0e 	lsl.w	ip, r3, lr
+  cc:	bf28      	it	cs
+  ce:	f04c 0c02 	orrcs.w	ip, ip, #2
+  d2:	fa43 f305 	asr.w	r3, r3, r5
+  d6:	18c0      	adds	r0, r0, r3
+  d8:	eb51 71e3 	adcs.w	r1, r1, r3, asr #31
+  dc:	f001 4500 	and.w	r5, r1, #2147483648	@ 0x80000000
+  e0:	d507      	bpl.n	f2 <__adddf3+0xe6>
+  e2:	f04f 0e00 	mov.w	lr, #0
+  e6:	f1dc 0c00 	rsbs	ip, ip, #0
+  ea:	eb7e 0000 	sbcs.w	r0, lr, r0
+  ee:	eb6e 0101 	sbc.w	r1, lr, r1
+  f2:	f5b1 1f80 	cmp.w	r1, #1048576	@ 0x100000
+  f6:	d31b      	bcc.n	130 <__adddf3+0x124>
+  f8:	f5b1 1f00 	cmp.w	r1, #2097152	@ 0x200000
+  fc:	d30c      	bcc.n	118 <__adddf3+0x10c>
+  fe:	0849      	lsrs	r1, r1, #1
+ 100:	ea5f 0030 	movs.w	r0, r0, rrx
+ 104:	ea4f 0c3c 	mov.w	ip, ip, rrx
+ 108:	f104 0401 	add.w	r4, r4, #1
+ 10c:	ea4f 5244 	mov.w	r2, r4, lsl #21
+ 110:	f512 0f80 	cmn.w	r2, #4194304	@ 0x400000
+ 114:	f080 809a 	bcs.w	24c <__adddf3+0x240>
+ 118:	f1bc 4f00 	cmp.w	ip, #2147483648	@ 0x80000000
+ 11c:	bf08      	it	eq
+ 11e:	ea5f 0c50 	movseq.w	ip, r0, lsr #1
+ 122:	f150 0000 	adcs.w	r0, r0, #0
+ 126:	eb41 5104 	adc.w	r1, r1, r4, lsl #20
+ 12a:	ea41 0105 	orr.w	r1, r1, r5
+ 12e:	bd30      	pop	{r4, r5, pc}
+ 130:	ea5f 0c4c 	movs.w	ip, ip, lsl #1
+ 134:	4140      	adcs	r0, r0
+ 136:	eb41 0101 	adc.w	r1, r1, r1
+ 13a:	3c01      	subs	r4, #1
+ 13c:	bf28      	it	cs
+ 13e:	f5b1 1f80 	cmpcs.w	r1, #1048576	@ 0x100000
+ 142:	d2e9      	bcs.n	118 <__adddf3+0x10c>
+ 144:	f091 0f00 	teq	r1, #0
+ 148:	bf04      	itt	eq
+ 14a:	4601      	moveq	r1, r0
+ 14c:	2000      	moveq	r0, #0
+ 14e:	fab1 f381 	clz	r3, r1
+ 152:	bf08      	it	eq
+ 154:	3320      	addeq	r3, #32
+ 156:	f1a3 030b 	sub.w	r3, r3, #11
+ 15a:	f1b3 0220 	subs.w	r2, r3, #32
+ 15e:	da0c      	bge.n	17a <__adddf3+0x16e>
+ 160:	320c      	adds	r2, #12
+ 162:	dd08      	ble.n	176 <__adddf3+0x16a>
+ 164:	f102 0c14 	add.w	ip, r2, #20
+ 168:	f1c2 020c 	rsb	r2, r2, #12
+ 16c:	fa01 f00c 	lsl.w	r0, r1, ip
+ 170:	fa21 f102 	lsr.w	r1, r1, r2
+ 174:	e00c      	b.n	190 <__adddf3+0x184>
+ 176:	f102 0214 	add.w	r2, r2, #20
+ 17a:	bfd8      	it	le
+ 17c:	f1c2 0c20 	rsble	ip, r2, #32
+ 180:	fa01 f102 	lsl.w	r1, r1, r2
+ 184:	fa20 fc0c 	lsr.w	ip, r0, ip
+ 188:	bfdc      	itt	le
+ 18a:	ea41 010c 	orrle.w	r1, r1, ip
+ 18e:	4090      	lslle	r0, r2
+ 190:	1ae4      	subs	r4, r4, r3
+ 192:	bfa2      	ittt	ge
+ 194:	eb01 5104 	addge.w	r1, r1, r4, lsl #20
+ 198:	4329      	orrge	r1, r5
+ 19a:	bd30      	popge	{r4, r5, pc}
+ 19c:	ea6f 0404 	mvn.w	r4, r4
+ 1a0:	3c1f      	subs	r4, #31
+ 1a2:	da1c      	bge.n	1de <__adddf3+0x1d2>
+ 1a4:	340c      	adds	r4, #12
+ 1a6:	dc0e      	bgt.n	1c6 <__adddf3+0x1ba>
+ 1a8:	f104 0414 	add.w	r4, r4, #20
+ 1ac:	f1c4 0220 	rsb	r2, r4, #32
+ 1b0:	fa20 f004 	lsr.w	r0, r0, r4
+ 1b4:	fa01 f302 	lsl.w	r3, r1, r2
+ 1b8:	ea40 0003 	orr.w	r0, r0, r3
+ 1bc:	fa21 f304 	lsr.w	r3, r1, r4
+ 1c0:	ea45 0103 	orr.w	r1, r5, r3
+ 1c4:	bd30      	pop	{r4, r5, pc}
+ 1c6:	f1c4 040c 	rsb	r4, r4, #12
+ 1ca:	f1c4 0220 	rsb	r2, r4, #32
+ 1ce:	fa20 f002 	lsr.w	r0, r0, r2
+ 1d2:	fa01 f304 	lsl.w	r3, r1, r4
+ 1d6:	ea40 0003 	orr.w	r0, r0, r3
+ 1da:	4629      	mov	r1, r5
+ 1dc:	bd30      	pop	{r4, r5, pc}
+ 1de:	fa21 f004 	lsr.w	r0, r1, r4
+ 1e2:	4629      	mov	r1, r5
+ 1e4:	bd30      	pop	{r4, r5, pc}
+ 1e6:	f094 0f00 	teq	r4, #0
+ 1ea:	f483 1380 	eor.w	r3, r3, #1048576	@ 0x100000
+ 1ee:	bf06      	itte	eq
+ 1f0:	f481 1180 	eoreq.w	r1, r1, #1048576	@ 0x100000
+ 1f4:	3401      	addeq	r4, #1
+ 1f6:	3d01      	subne	r5, #1
+ 1f8:	e74e      	b.n	98 <__adddf3+0x8c>
+ 1fa:	ea7f 5c64 	mvns.w	ip, r4, asr #21
+ 1fe:	bf18      	it	ne
+ 200:	ea7f 5c65 	mvnsne.w	ip, r5, asr #21
+ 204:	d029      	beq.n	25a <__adddf3+0x24e>
+ 206:	ea94 0f05 	teq	r4, r5
+ 20a:	bf08      	it	eq
+ 20c:	ea90 0f02 	teqeq	r0, r2
+ 210:	d005      	beq.n	21e <__adddf3+0x212>
+ 212:	ea54 0c00 	orrs.w	ip, r4, r0
+ 216:	bf04      	itt	eq
+ 218:	4619      	moveq	r1, r3
+ 21a:	4610      	moveq	r0, r2
+ 21c:	bd30      	pop	{r4, r5, pc}
+ 21e:	ea91 0f03 	teq	r1, r3
+ 222:	bf1e      	ittt	ne
+ 224:	2100      	movne	r1, #0
+ 226:	2000      	movne	r0, #0
+ 228:	bd30      	popne	{r4, r5, pc}
+ 22a:	ea5f 5c54 	movs.w	ip, r4, lsr #21
+ 22e:	d105      	bne.n	23c <__adddf3+0x230>
+ 230:	0040      	lsls	r0, r0, #1
+ 232:	4149      	adcs	r1, r1
+ 234:	bf28      	it	cs
+ 236:	f041 4100 	orrcs.w	r1, r1, #2147483648	@ 0x80000000
+ 23a:	bd30      	pop	{r4, r5, pc}
+ 23c:	f514 0480 	adds.w	r4, r4, #4194304	@ 0x400000
+ 240:	bf3c      	itt	cc
+ 242:	f501 1180 	addcc.w	r1, r1, #1048576	@ 0x100000
+ 246:	bd30      	popcc	{r4, r5, pc}
+ 248:	f001 4500 	and.w	r5, r1, #2147483648	@ 0x80000000
+ 24c:	f045 41fe 	orr.w	r1, r5, #2130706432	@ 0x7f000000
+ 250:	f441 0170 	orr.w	r1, r1, #15728640	@ 0xf00000
+ 254:	f04f 0000 	mov.w	r0, #0
+ 258:	bd30      	pop	{r4, r5, pc}
+ 25a:	ea7f 5c64 	mvns.w	ip, r4, asr #21
+ 25e:	bf1a      	itte	ne
+ 260:	4619      	movne	r1, r3
+ 262:	4610      	movne	r0, r2
+ 264:	ea7f 5c65 	mvnseq.w	ip, r5, asr #21
+ 268:	bf1c      	itt	ne
+ 26a:	460b      	movne	r3, r1
+ 26c:	4602      	movne	r2, r0
+ 26e:	ea50 3401 	orrs.w	r4, r0, r1, lsl #12
+ 272:	bf06      	itte	eq
+ 274:	ea52 3503 	orrseq.w	r5, r2, r3, lsl #12
+ 278:	ea91 0f03 	teqeq	r1, r3
+ 27c:	f441 2100 	orrne.w	r1, r1, #524288	@ 0x80000
+ 280:	bd30      	pop	{r4, r5, pc}
+ 282:	bf00      	nop
+
+00000284 <__aeabi_ui2d>:
+ 284:	f090 0f00 	teq	r0, #0
+ 288:	bf04      	itt	eq
+ 28a:	2100      	moveq	r1, #0
+ 28c:	4770      	bxeq	lr
+ 28e:	b530      	push	{r4, r5, lr}
+ 290:	f44f 6480 	mov.w	r4, #1024	@ 0x400
+ 294:	f104 0432 	add.w	r4, r4, #50	@ 0x32
+ 298:	f04f 0500 	mov.w	r5, #0
+ 29c:	f04f 0100 	mov.w	r1, #0
+ 2a0:	e750      	b.n	144 <__adddf3+0x138>
+ 2a2:	bf00      	nop
+
+000002a4 <__aeabi_i2d>:
+ 2a4:	f090 0f00 	teq	r0, #0
+ 2a8:	bf04      	itt	eq
+ 2aa:	2100      	moveq	r1, #0
+ 2ac:	4770      	bxeq	lr
+ 2ae:	b530      	push	{r4, r5, lr}
+ 2b0:	f44f 6480 	mov.w	r4, #1024	@ 0x400
+ 2b4:	f104 0432 	add.w	r4, r4, #50	@ 0x32
+ 2b8:	f010 4500 	ands.w	r5, r0, #2147483648	@ 0x80000000
+ 2bc:	bf48      	it	mi
+ 2be:	4240      	negmi	r0, r0
+ 2c0:	f04f 0100 	mov.w	r1, #0
+ 2c4:	e73e      	b.n	144 <__adddf3+0x138>
+ 2c6:	bf00      	nop
+
+000002c8 <__aeabi_f2d>:
+ 2c8:	0042      	lsls	r2, r0, #1
+ 2ca:	ea4f 01e2 	mov.w	r1, r2, asr #3
+ 2ce:	ea4f 0131 	mov.w	r1, r1, rrx
+ 2d2:	ea4f 7002 	mov.w	r0, r2, lsl #28
+ 2d6:	bf1f      	itttt	ne
+ 2d8:	f012 437f 	andsne.w	r3, r2, #4278190080	@ 0xff000000
+ 2dc:	f093 4f7f 	teqne	r3, #4278190080	@ 0xff000000
+ 2e0:	f081 5160 	eorne.w	r1, r1, #939524096	@ 0x38000000
+ 2e4:	4770      	bxne	lr
+ 2e6:	f032 427f 	bics.w	r2, r2, #4278190080	@ 0xff000000
+ 2ea:	bf08      	it	eq
+ 2ec:	4770      	bxeq	lr
+ 2ee:	f093 4f7f 	teq	r3, #4278190080	@ 0xff000000
+ 2f2:	bf04      	itt	eq
+ 2f4:	f441 2100 	orreq.w	r1, r1, #524288	@ 0x80000
+ 2f8:	4770      	bxeq	lr
+ 2fa:	b530      	push	{r4, r5, lr}
+ 2fc:	f44f 7460 	mov.w	r4, #896	@ 0x380
+ 300:	f001 4500 	and.w	r5, r1, #2147483648	@ 0x80000000
+ 304:	f021 4100 	bic.w	r1, r1, #2147483648	@ 0x80000000
+ 308:	e71c      	b.n	144 <__adddf3+0x138>
+ 30a:	bf00      	nop
+
+0000030c <__aeabi_ul2d>:
+ 30c:	ea50 0201 	orrs.w	r2, r0, r1
+ 310:	bf08      	it	eq
+ 312:	4770      	bxeq	lr
+ 314:	b530      	push	{r4, r5, lr}
+ 316:	f04f 0500 	mov.w	r5, #0
+ 31a:	e00a      	b.n	332 <__aeabi_l2d+0x16>
+
+0000031c <__aeabi_l2d>:
+ 31c:	ea50 0201 	orrs.w	r2, r0, r1
+ 320:	bf08      	it	eq
+ 322:	4770      	bxeq	lr
+ 324:	b530      	push	{r4, r5, lr}
+ 326:	f011 4500 	ands.w	r5, r1, #2147483648	@ 0x80000000
+ 32a:	d502      	bpl.n	332 <__aeabi_l2d+0x16>
+ 32c:	4240      	negs	r0, r0
+ 32e:	eb61 0141 	sbc.w	r1, r1, r1, lsl #1
+ 332:	f44f 6480 	mov.w	r4, #1024	@ 0x400
+ 336:	f104 0432 	add.w	r4, r4, #50	@ 0x32
+ 33a:	ea5f 5c91 	movs.w	ip, r1, lsr #22
+ 33e:	f43f aed8 	beq.w	f2 <__adddf3+0xe6>
+ 342:	f04f 0203 	mov.w	r2, #3
+ 346:	ea5f 0cdc 	movs.w	ip, ip, lsr #3
+ 34a:	bf18      	it	ne
+ 34c:	3203      	addne	r2, #3
+ 34e:	ea5f 0cdc 	movs.w	ip, ip, lsr #3
+ 352:	bf18      	it	ne
+ 354:	3203      	addne	r2, #3
+ 356:	eb02 02dc 	add.w	r2, r2, ip, lsr #3
+ 35a:	f1c2 0320 	rsb	r3, r2, #32
+ 35e:	fa00 fc03 	lsl.w	ip, r0, r3
+ 362:	fa20 f002 	lsr.w	r0, r0, r2
+ 366:	fa01 fe03 	lsl.w	lr, r1, r3
+ 36a:	ea40 000e 	orr.w	r0, r0, lr
+ 36e:	fa21 f102 	lsr.w	r1, r1, r2
+ 372:	4414      	add	r4, r2
+ 374:	e6bd      	b.n	f2 <__adddf3+0xe6>
+ 376:	bf00      	nop
+
+00000378 <app_input_callback>:
+        canvas_draw_str(canvas, x, y, buffer);
+        y += FONT_HEIGHT;
+    }
+}
+
+static void app_input_callback(InputEvent* input_event, void* ctx) {
+ 378:	b508      	push	{r3, lr}
+    furi_assert(ctx);
+ 37a:	b139      	cbz	r1, 38c <app_input_callback+0x14>
+ 37c:	4603      	mov	r3, r0
+ 37e:	4608      	mov	r0, r1
+    FuriMessageQueue* event_queue = ctx;
+    furi_message_queue_put(event_queue, input_event, FuriWaitForever);
+ 380:	f04f 32ff 	mov.w	r2, #4294967295	@ 0xffffffff
+ 384:	4619      	mov	r1, r3
+ 386:	4b03      	ldr	r3, [pc, #12]	@ (394 <sukima47+0x4>)
+ 388:	4798      	blx	r3
+}
+ 38a:	bd08      	pop	{r3, pc}
+    furi_assert(ctx);
+ 38c:	f04f 0c01 	mov.w	ip, #1
+
+00000390 <sukima47>:
+ 390:	4b01      	ldr	r3, [pc, #4]	@ (398 <sukima47+0x8>)
+ 392:	4798      	blx	r3
+	...
+
+0000039c <app_draw_callback>:
+static void app_draw_callback(Canvas* canvas, void* ctx) {
+ 39c:	e92d 43f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, lr}
+ 3a0:	b095      	sub	sp, #84	@ 0x54
+    furi_assert(ctx);
+ 3a2:	b141      	cbz	r1, 3b6 <app_draw_callback+0x1a>
+ 3a4:	4606      	mov	r6, r0
+ 3a6:	460f      	mov	r7, r1
+    canvas_set_custom_u8g2_font(canvas, font);
+ 3a8:	491c      	ldr	r1, [pc, #112]	@ (41c <sukima128+0x62>)
+ 3aa:	4b1d      	ldr	r3, [pc, #116]	@ (420 <sukima128+0x66>)
+ 3ac:	4798      	blx	r3
+    for(size_t i = 0; i < data->count; i++) {
+ 3ae:	2400      	movs	r4, #0
+    int32_t x = 0, y = FONT_HEIGHT;
+ 3b0:	2508      	movs	r5, #8
+ 3b2:	46a0      	mov	r8, r4
+    for(size_t i = 0; i < data->count; i++) {
+ 3b4:	e021      	b.n	3fa <sukima128+0x40>
+    furi_assert(ctx);
+ 3b6:	f04f 0c01 	mov.w	ip, #1
+
+000003ba <sukima128>:
+ 3ba:	4b1a      	ldr	r3, [pc, #104]	@ (424 <sukima128+0x6a>)
+ 3bc:	4798      	blx	r3
+            data->items[i].pin->name,
+ 3be:	687a      	ldr	r2, [r7, #4]
+ 3c0:	0121      	lsls	r1, r4, #4
+ 3c2:	eb02 1304 	add.w	r3, r2, r4, lsl #4
+ 3c6:	5852      	ldr	r2, [r2, r1]
+ 3c8:	f8d2 9004 	ldr.w	r9, [r2, #4]
+            (double)data->items[i].value,
+ 3cc:	6858      	ldr	r0, [r3, #4]
+        snprintf(
+ 3ce:	68db      	ldr	r3, [r3, #12]
+ 3d0:	9302      	str	r3, [sp, #8]
+ 3d2:	4b15      	ldr	r3, [pc, #84]	@ (428 <sukima128+0x6e>)
+ 3d4:	4798      	blx	r3
+ 3d6:	e9cd 0100 	strd	r0, r1, [sp]
+ 3da:	464b      	mov	r3, r9
+ 3dc:	4a13      	ldr	r2, [pc, #76]	@ (42c <sukima128+0x72>)
+ 3de:	2140      	movs	r1, #64	@ 0x40
+ 3e0:	a804      	add	r0, sp, #16
+ 3e2:	f8df 9050 	ldr.w	r9, [pc, #80]	@ 434 <sukima128+0x7a>
+ 3e6:	47c8      	blx	r9
+        canvas_draw_str(canvas, x, y, buffer);
+ 3e8:	ab04      	add	r3, sp, #16
+ 3ea:	462a      	mov	r2, r5
+ 3ec:	4641      	mov	r1, r8
+ 3ee:	4630      	mov	r0, r6
+ 3f0:	f8df 9044 	ldr.w	r9, [pc, #68]	@ 438 <sukima128+0x7e>
+ 3f4:	47c8      	blx	r9
+        y += FONT_HEIGHT;
+ 3f6:	3508      	adds	r5, #8
+    for(size_t i = 0; i < data->count; i++) {
+ 3f8:	3401      	adds	r4, #1
+ 3fa:	683b      	ldr	r3, [r7, #0]
+ 3fc:	42a3      	cmp	r3, r4
+ 3fe:	d909      	bls.n	414 <sukima128+0x5a>
+        if(i == canvas_height(canvas) / FONT_HEIGHT) {
+ 400:	4630      	mov	r0, r6
+ 402:	4b0b      	ldr	r3, [pc, #44]	@ (430 <sukima128+0x76>)
+ 404:	4798      	blx	r3
+ 406:	ebb4 0fd0 	cmp.w	r4, r0, lsr #3
+ 40a:	d1d8      	bne.n	3be <sukima128+0x4>
+            y = FONT_HEIGHT;
+ 40c:	2508      	movs	r5, #8
+            x = 64;
+ 40e:	f04f 0840 	mov.w	r8, #64	@ 0x40
+ 412:	e7d4      	b.n	3be <sukima128+0x4>
+}
+ 414:	b015      	add	sp, #84	@ 0x54
+ 416:	e8bd 83f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, pc}
+ 41a:	bf00      	nop
+	...
+
+0000043c <example_adc_main>:
+
+int32_t example_adc_main(void* p) {
+ 43c:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 440:	b085      	sub	sp, #20
+    UNUSED(p);
+
+    // Data
+    Data data = {};
+ 442:	2300      	movs	r3, #0
+ 444:	9302      	str	r3, [sp, #8]
+ 446:	9303      	str	r3, [sp, #12]
+    for(size_t i = 0; i < gpio_pins_count; i++) {
+ 448:	e000      	b.n	44c <example_adc_main+0x10>
+ 44a:	3301      	adds	r3, #1
+ 44c:	4a60      	ldr	r2, [pc, #384]	@ (5d0 <sukima530+0x88>)
+ 44e:	6815      	ldr	r5, [r2, #0]
+ 450:	429d      	cmp	r5, r3
+ 452:	d90b      	bls.n	46c <example_adc_main+0x30>
+        if(gpio_pins[i].channel != FuriHalAdcChannelNone) {
+ 454:	eb03 0143 	add.w	r1, r3, r3, lsl #1
+ 458:	4a5e      	ldr	r2, [pc, #376]	@ (5d4 <sukima530+0x8c>)
+ 45a:	eb02 0281 	add.w	r2, r2, r1, lsl #2
+ 45e:	7a12      	ldrb	r2, [r2, #8]
+ 460:	2a16      	cmp	r2, #22
+ 462:	d0f2      	beq.n	44a <example_adc_main+0xe>
+            data.count++;
+ 464:	9a02      	ldr	r2, [sp, #8]
+ 466:	3201      	adds	r2, #1
+ 468:	9202      	str	r2, [sp, #8]
+ 46a:	e7ee      	b.n	44a <example_adc_main+0xe>
+        }
+    }
+    data.count += 3; // Special channels
+ 46c:	9802      	ldr	r0, [sp, #8]
+ 46e:	3003      	adds	r0, #3
+ 470:	9002      	str	r0, [sp, #8]
+    data.items = malloc(data.count * sizeof(DataItem));
+ 472:	0100      	lsls	r0, r0, #4
+ 474:	4b58      	ldr	r3, [pc, #352]	@ (5d8 <sukima530+0x90>)
+ 476:	4798      	blx	r3
+ 478:	9003      	str	r0, [sp, #12]
+    size_t item_pos = 0;
+    for(size_t i = 0; i < gpio_pins_count; i++) {
+ 47a:	2400      	movs	r4, #0
+    size_t item_pos = 0;
+ 47c:	4626      	mov	r6, r4
+    for(size_t i = 0; i < gpio_pins_count; i++) {
+ 47e:	e016      	b.n	4ae <example_adc_main+0x72>
+        if(gpio_pins[i].channel != FuriHalAdcChannelNone) {
+            furi_hal_gpio_init(gpio_pins[i].pin, GpioModeAnalog, GpioPullNo, GpioSpeedLow);
+ 480:	4854      	ldr	r0, [pc, #336]	@ (5d4 <sukima530+0x8c>)
+ 482:	4617      	mov	r7, r2
+ 484:	eb00 0882 	add.w	r8, r0, r2, lsl #2
+ 488:	2300      	movs	r3, #0
+ 48a:	461a      	mov	r2, r3
+ 48c:	2105      	movs	r1, #5
+ 48e:	f850 0027 	ldr.w	r0, [r0, r7, lsl #2]
+ 492:	4f52      	ldr	r7, [pc, #328]	@ (5dc <sukima530+0x94>)
+ 494:	47b8      	blx	r7
+            data.items[item_pos].pin = &gpio_pins[i];
+ 496:	0132      	lsls	r2, r6, #4
+ 498:	9b03      	ldr	r3, [sp, #12]
+ 49a:	f843 8002 	str.w	r8, [r3, r2]
+            data.items[item_pos].converter = furi_hal_adc_convert_to_voltage;
+ 49e:	9b03      	ldr	r3, [sp, #12]
+ 4a0:	4413      	add	r3, r2
+ 4a2:	4a4f      	ldr	r2, [pc, #316]	@ (5e0 <sukima530+0x98>)
+ 4a4:	609a      	str	r2, [r3, #8]
+            data.items[item_pos].suffix = "mV";
+ 4a6:	4a4f      	ldr	r2, [pc, #316]	@ (5e4 <sukima530+0x9c>)
+ 4a8:	60da      	str	r2, [r3, #12]
+            item_pos++;
+ 4aa:	3601      	adds	r6, #1
+    for(size_t i = 0; i < gpio_pins_count; i++) {
+ 4ac:	3401      	adds	r4, #1
+ 4ae:	42a5      	cmp	r5, r4
+ 4b0:	d908      	bls.n	4c4 <example_adc_main+0x88>
+        if(gpio_pins[i].channel != FuriHalAdcChannelNone) {
+ 4b2:	eb04 0244 	add.w	r2, r4, r4, lsl #1
+ 4b6:	4b47      	ldr	r3, [pc, #284]	@ (5d4 <sukima530+0x8c>)
+ 4b8:	eb03 0382 	add.w	r3, r3, r2, lsl #2
+ 4bc:	7a1b      	ldrb	r3, [r3, #8]
+ 4be:	2b16      	cmp	r3, #22
+ 4c0:	d0f4      	beq.n	4ac <example_adc_main+0x70>
+ 4c2:	e7dd      	b.n	480 <example_adc_main+0x44>
+        }
+    }
+    data.items[item_pos].pin = &item_vref;
+ 4c4:	0133      	lsls	r3, r6, #4
+ 4c6:	9a03      	ldr	r2, [sp, #12]
+ 4c8:	4947      	ldr	r1, [pc, #284]	@ (5e8 <sukima530+0xa0>)
+ 4ca:	50d1      	str	r1, [r2, r3]
+    data.items[item_pos].converter = furi_hal_adc_convert_vref;
+ 4cc:	9a03      	ldr	r2, [sp, #12]
+ 4ce:	4413      	add	r3, r2
+ 4d0:	4946      	ldr	r1, [pc, #280]	@ (5ec <sukima530+0xa4>)
+ 4d2:	6099      	str	r1, [r3, #8]
+    data.items[item_pos].suffix = "mV";
+ 4d4:	4943      	ldr	r1, [pc, #268]	@ (5e4 <sukima530+0x9c>)
+ 4d6:	60d9      	str	r1, [r3, #12]
+    item_pos++;
+ 4d8:	1c73      	adds	r3, r6, #1
+    data.items[item_pos].pin = &item_temp;
+ 4da:	011b      	lsls	r3, r3, #4
+ 4dc:	4844      	ldr	r0, [pc, #272]	@ (5f0 <sukima530+0xa8>)
+ 4de:	50d0      	str	r0, [r2, r3]
+    data.items[item_pos].converter = furi_hal_adc_convert_temp;
+ 4e0:	9803      	ldr	r0, [sp, #12]
+ 4e2:	4403      	add	r3, r0
+ 4e4:	4a43      	ldr	r2, [pc, #268]	@ (5f4 <sukima530+0xac>)
+ 4e6:	609a      	str	r2, [r3, #8]
+    data.items[item_pos].suffix = "C";
+ 4e8:	4a43      	ldr	r2, [pc, #268]	@ (5f8 <sukima530+0xb0>)
+ 4ea:	60da      	str	r2, [r3, #12]
+    item_pos++;
+ 4ec:	1cb2      	adds	r2, r6, #2
+    data.items[item_pos].pin = &item_vbat;
+ 4ee:	0112      	lsls	r2, r2, #4
+ 4f0:	4b42      	ldr	r3, [pc, #264]	@ (5fc <sukima530+0xb4>)
+ 4f2:	5083      	str	r3, [r0, r2]
+    data.items[item_pos].converter = furi_hal_adc_convert_vbat;
+ 4f4:	9b03      	ldr	r3, [sp, #12]
+ 4f6:	4413      	add	r3, r2
+ 4f8:	4a41      	ldr	r2, [pc, #260]	@ (600 <sukima530+0xb8>)
+ 4fa:	609a      	str	r2, [r3, #8]
+    data.items[item_pos].suffix = "mV";
+ 4fc:	60d9      	str	r1, [r3, #12]
+    item_pos++;
+ 4fe:	3603      	adds	r6, #3
+    furi_assert(item_pos == data.count);
+ 500:	9b02      	ldr	r3, [sp, #8]
+ 502:	42b3      	cmp	r3, r6
+ 504:	d11e      	bne.n	544 <example_adc_main+0x108>
+
+    // Alloc message queue
+    FuriMessageQueue* event_queue = furi_message_queue_alloc(8, sizeof(InputEvent));
+ 506:	2108      	movs	r1, #8
+ 508:	4608      	mov	r0, r1
+ 50a:	4b3e      	ldr	r3, [pc, #248]	@ (604 <sukima530+0xbc>)
+ 50c:	4798      	blx	r3
+ 50e:	4680      	mov	r8, r0
+
+    // Configure view port
+    ViewPort* view_port = view_port_alloc();
+ 510:	4b3d      	ldr	r3, [pc, #244]	@ (608 <sukima530+0xc0>)
+ 512:	4798      	blx	r3
+ 514:	4681      	mov	r9, r0
+    view_port_draw_callback_set(view_port, app_draw_callback, &data);
+ 516:	aa02      	add	r2, sp, #8
+ 518:	493c      	ldr	r1, [pc, #240]	@ (60c <sukima530+0xc4>)
+ 51a:	4b3d      	ldr	r3, [pc, #244]	@ (610 <sukima530+0xc8>)
+ 51c:	4798      	blx	r3
+    view_port_input_callback_set(view_port, app_input_callback, event_queue);
+ 51e:	4642      	mov	r2, r8
+ 520:	493c      	ldr	r1, [pc, #240]	@ (614 <sukima530+0xcc>)
+ 522:	4648      	mov	r0, r9
+ 524:	4b3c      	ldr	r3, [pc, #240]	@ (618 <sukima530+0xd0>)
+ 526:	4798      	blx	r3
+
+    // Register view port in GUI
+    Gui* gui = furi_record_open(RECORD_GUI);
+ 528:	483c      	ldr	r0, [pc, #240]	@ (61c <sukima530+0xd4>)
+ 52a:	4b3d      	ldr	r3, [pc, #244]	@ (620 <sukima530+0xd8>)
+ 52c:	4798      	blx	r3
+ 52e:	4682      	mov	sl, r0
+    gui_add_view_port(gui, view_port, GuiLayerFullscreen);
+ 530:	2204      	movs	r2, #4
+ 532:	4649      	mov	r1, r9
+ 534:	4b3b      	ldr	r3, [pc, #236]	@ (624 <sukima530+0xdc>)
+ 536:	4798      	blx	r3
+
+    // Initialize ADC
+    FuriHalAdcHandle* adc_handle = furi_hal_adc_acquire();
+ 538:	4b3b      	ldr	r3, [pc, #236]	@ (628 <sukima530+0xe0>)
+ 53a:	4798      	blx	r3
+ 53c:	4606      	mov	r6, r0
+    furi_hal_adc_configure(adc_handle);
+ 53e:	4b3b      	ldr	r3, [pc, #236]	@ (62c <sukima530+0xe4>)
+ 540:	4798      	blx	r3
+
+    // Process events
+    InputEvent event;
+    bool running = true;
+    while(running) {
+ 542:	e01d      	b.n	580 <sukima530+0x38>
+    furi_assert(item_pos == data.count);
+ 544:	f04f 0c01 	mov.w	ip, #1
+
+00000548 <sukima530>:
+ 548:	4b39      	ldr	r3, [pc, #228]	@ (630 <sukima530+0xe8>)
+ 54a:	4798      	blx	r3
+            if(event.type == InputTypePress && event.key == InputKeyBack) {
+                running = false;
+            }
+        } else {
+            for(size_t i = 0; i < data.count; i++) {
+                data.items[i].value = data.items[i].converter(
+ 54c:	9b03      	ldr	r3, [sp, #12]
+ 54e:	ea4f 1b04 	mov.w	fp, r4, lsl #4
+ 552:	eb03 1204 	add.w	r2, r3, r4, lsl #4
+ 556:	6897      	ldr	r7, [r2, #8]
+                    adc_handle, furi_hal_adc_read(adc_handle, data.items[i].pin->channel));
+ 558:	f853 300b 	ldr.w	r3, [r3, fp]
+                data.items[i].value = data.items[i].converter(
+ 55c:	7a19      	ldrb	r1, [r3, #8]
+ 55e:	4630      	mov	r0, r6
+ 560:	4b34      	ldr	r3, [pc, #208]	@ (634 <sukima530+0xec>)
+ 562:	4798      	blx	r3
+ 564:	4601      	mov	r1, r0
+ 566:	9d03      	ldr	r5, [sp, #12]
+ 568:	445d      	add	r5, fp
+ 56a:	4630      	mov	r0, r6
+ 56c:	47b8      	blx	r7
+ 56e:	ed85 0a01 	vstr	s0, [r5, #4]
+            for(size_t i = 0; i < data.count; i++) {
+ 572:	3401      	adds	r4, #1
+ 574:	9b02      	ldr	r3, [sp, #8]
+ 576:	42a3      	cmp	r3, r4
+ 578:	d8e8      	bhi.n	54c <sukima530+0x4>
+            }
+            view_port_update(view_port);
+ 57a:	4648      	mov	r0, r9
+ 57c:	4b2e      	ldr	r3, [pc, #184]	@ (638 <sukima530+0xf0>)
+ 57e:	4798      	blx	r3
+        if(furi_message_queue_get(event_queue, &event, 100) == FuriStatusOk) {
+ 580:	2264      	movs	r2, #100	@ 0x64
+ 582:	4669      	mov	r1, sp
+ 584:	4640      	mov	r0, r8
+ 586:	4b2d      	ldr	r3, [pc, #180]	@ (63c <sukima530+0xf4>)
+ 588:	4798      	blx	r3
+ 58a:	b9f0      	cbnz	r0, 5ca <sukima530+0x82>
+            if(event.type == InputTypePress && event.key == InputKeyBack) {
+ 58c:	f8bd 3004 	ldrh.w	r3, [sp, #4]
+ 590:	2b05      	cmp	r3, #5
+ 592:	d1f5      	bne.n	580 <sukima530+0x38>
+        }
+    }
+
+    furi_hal_adc_release(adc_handle);
+ 594:	4630      	mov	r0, r6
+ 596:	4b2a      	ldr	r3, [pc, #168]	@ (640 <sukima530+0xf8>)
+ 598:	4798      	blx	r3
+    view_port_enabled_set(view_port, false);
+ 59a:	2100      	movs	r1, #0
+ 59c:	4648      	mov	r0, r9
+ 59e:	4b29      	ldr	r3, [pc, #164]	@ (644 <sukima530+0xfc>)
+ 5a0:	4798      	blx	r3
+    gui_remove_view_port(gui, view_port);
+ 5a2:	4649      	mov	r1, r9
+ 5a4:	4650      	mov	r0, sl
+ 5a6:	4b28      	ldr	r3, [pc, #160]	@ (648 <sukima530+0x100>)
+ 5a8:	4798      	blx	r3
+    view_port_free(view_port);
+ 5aa:	4648      	mov	r0, r9
+ 5ac:	4b27      	ldr	r3, [pc, #156]	@ (64c <sukima530+0x104>)
+ 5ae:	4798      	blx	r3
+    furi_message_queue_free(event_queue);
+ 5b0:	4640      	mov	r0, r8
+ 5b2:	4b27      	ldr	r3, [pc, #156]	@ (650 <sukima530+0x108>)
+ 5b4:	4798      	blx	r3
+    furi_record_close(RECORD_GUI);
+ 5b6:	4819      	ldr	r0, [pc, #100]	@ (61c <sukima530+0xd4>)
+ 5b8:	4b26      	ldr	r3, [pc, #152]	@ (654 <sukima530+0x10c>)
+ 5ba:	4798      	blx	r3
+    free(data.items);
+ 5bc:	9803      	ldr	r0, [sp, #12]
+ 5be:	4b26      	ldr	r3, [pc, #152]	@ (658 <sukima530+0x110>)
+ 5c0:	4798      	blx	r3
+
+    return 0;
+}
+ 5c2:	2000      	movs	r0, #0
+ 5c4:	b005      	add	sp, #20
+ 5c6:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+            for(size_t i = 0; i < data.count; i++) {
+ 5ca:	2400      	movs	r4, #0
+ 5cc:	e7d2      	b.n	574 <sukima530+0x2c>
+ 5ce:	bf00      	nop
+	...
+ 5e4:	00000010 	.word	0x00000010
+	...
+ 5f8:	00000014 	.word	0x00000014
+	...
+ 61c:	00000018 	.word	0x00000018
+	...

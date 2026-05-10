@@ -1,0 +1,1171 @@
+
+build/f7-firmware-D/.extapps/display_test_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <display_test_previous_callback>:
+}
+
+static uint32_t display_test_previous_callback(void* context) {
+    UNUSED(context);
+    return DisplayTestViewSubmenu;
+}
+   0:	2000      	movs	r0, #0
+   2:	4770      	bx	lr
+
+00000004 <display_test_exit_callback>:
+
+static uint32_t display_test_exit_callback(void* context) {
+    UNUSED(context);
+    return VIEW_NONE;
+}
+   4:	f04f 30ff 	mov.w	r0, #4294967295	@ 0xffffffff
+   8:	4770      	bx	lr
+	...
+
+0000000c <display_test_submenu_callback>:
+static void display_test_submenu_callback(void* context, uint32_t index) {
+   c:	b508      	push	{r3, lr}
+    view_dispatcher_switch_to_view(instance->view_dispatcher, index);
+   e:	6840      	ldr	r0, [r0, #4]
+  10:	4b01      	ldr	r3, [pc, #4]	@ (18 <display_test_submenu_callback+0xc>)
+  12:	4798      	blx	r3
+}
+  14:	bd08      	pop	{r3, pc}
+  16:	bf00      	nop
+  18:	00000000 	.word	0x00000000
+
+0000001c <display_test_reload_config>:
+
+static void display_test_reload_config(DisplayTest* instance) {
+  1c:	b530      	push	{r4, r5, lr}
+  1e:	b083      	sub	sp, #12
+  20:	4604      	mov	r4, r0
+    FURI_LOG_I(
+  22:	7d83      	ldrb	r3, [r0, #22]
+  24:	7d02      	ldrb	r2, [r0, #20]
+  26:	9201      	str	r2, [sp, #4]
+  28:	9300      	str	r3, [sp, #0]
+  2a:	7d43      	ldrb	r3, [r0, #21]
+  2c:	4a06      	ldr	r2, [pc, #24]	@ (48 <display_test_reload_config+0x2c>)
+  2e:	4907      	ldr	r1, [pc, #28]	@ (4c <display_test_reload_config+0x30>)
+  30:	2004      	movs	r0, #4
+  32:	4d07      	ldr	r5, [pc, #28]	@ (50 <display_test_reload_config+0x34>)
+  34:	47a8      	blx	r5
+        "contrast: %d, regulation_ratio: %d, bias: %d",
+        instance->config_contrast,
+        instance->config_regulation_ratio,
+        instance->config_bias);
+    u8x8_d_st756x_init(
+        &instance->gui->canvas->fb.u8x8,
+  36:	6820      	ldr	r0, [r4, #0]
+    u8x8_d_st756x_init(
+  38:	7d23      	ldrb	r3, [r4, #20]
+  3a:	7da2      	ldrb	r2, [r4, #22]
+  3c:	7d61      	ldrb	r1, [r4, #21]
+  3e:	6c80      	ldr	r0, [r0, #72]	@ 0x48
+  40:	4c04      	ldr	r4, [pc, #16]	@ (54 <display_test_reload_config+0x38>)
+  42:	47a0      	blx	r4
+        instance->config_contrast,
+        instance->config_regulation_ratio,
+        instance->config_bias);
+}
+  44:	b003      	add	sp, #12
+  46:	bd30      	pop	{r4, r5, pc}
+  48:	00000000 	.word	0x00000000
+  4c:	00000030 	.word	0x00000030
+	...
+
+00000058 <display_config_set_contrast>:
+    variable_item_set_current_value_text(item, config_regulation_ratio_text[index]);
+    instance->config_regulation_ratio = config_regulation_ratio_value[index];
+    display_test_reload_config(instance);
+}
+
+static void display_config_set_contrast(VariableItem* item) {
+  58:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+  5a:	4607      	mov	r7, r0
+    DisplayTest* instance = variable_item_get_context(item);
+  5c:	4b0e      	ldr	r3, [pc, #56]	@ (98 <display_config_set_contrast+0x40>)
+  5e:	4798      	blx	r3
+  60:	4604      	mov	r4, r0
+    uint8_t index = variable_item_get_current_value_index(item);
+  62:	4638      	mov	r0, r7
+  64:	4b0d      	ldr	r3, [pc, #52]	@ (9c <display_config_set_contrast+0x44>)
+  66:	4798      	blx	r3
+  68:	4605      	mov	r5, r0
+    FuriString* temp;
+    temp = furi_string_alloc();
+  6a:	4b0d      	ldr	r3, [pc, #52]	@ (a0 <display_config_set_contrast+0x48>)
+  6c:	4798      	blx	r3
+  6e:	4606      	mov	r6, r0
+    furi_string_cat_printf(temp, "%d", index);
+  70:	462a      	mov	r2, r5
+  72:	490c      	ldr	r1, [pc, #48]	@ (a4 <display_config_set_contrast+0x4c>)
+  74:	4b0c      	ldr	r3, [pc, #48]	@ (a8 <display_config_set_contrast+0x50>)
+  76:	4798      	blx	r3
+    variable_item_set_current_value_text(item, furi_string_get_cstr(temp));
+  78:	4630      	mov	r0, r6
+  7a:	4b0c      	ldr	r3, [pc, #48]	@ (ac <display_config_set_contrast+0x54>)
+  7c:	4798      	blx	r3
+  7e:	4601      	mov	r1, r0
+  80:	4638      	mov	r0, r7
+  82:	4b0b      	ldr	r3, [pc, #44]	@ (b0 <display_config_set_contrast+0x58>)
+  84:	4798      	blx	r3
+    furi_string_free(temp);
+  86:	4630      	mov	r0, r6
+  88:	4b0a      	ldr	r3, [pc, #40]	@ (b4 <display_config_set_contrast+0x5c>)
+  8a:	4798      	blx	r3
+    instance->config_contrast = index;
+  8c:	7565      	strb	r5, [r4, #21]
+    display_test_reload_config(instance);
+  8e:	4620      	mov	r0, r4
+  90:	4b09      	ldr	r3, [pc, #36]	@ (b8 <display_config_set_contrast+0x60>)
+  92:	4798      	blx	r3
+}
+  94:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
+  96:	bf00      	nop
+	...
+  a4:	0000003c 	.word	0x0000003c
+	...
+
+000000bc <display_config_set_regulation_ratio>:
+static void display_config_set_regulation_ratio(VariableItem* item) {
+  bc:	b570      	push	{r4, r5, r6, lr}
+  be:	4606      	mov	r6, r0
+    DisplayTest* instance = variable_item_get_context(item);
+  c0:	4b09      	ldr	r3, [pc, #36]	@ (e8 <display_config_set_regulation_ratio+0x2c>)
+  c2:	4798      	blx	r3
+  c4:	4604      	mov	r4, r0
+    uint8_t index = variable_item_get_current_value_index(item);
+  c6:	4630      	mov	r0, r6
+  c8:	4b08      	ldr	r3, [pc, #32]	@ (ec <display_config_set_regulation_ratio+0x30>)
+  ca:	4798      	blx	r3
+  cc:	4605      	mov	r5, r0
+    variable_item_set_current_value_text(item, config_regulation_ratio_text[index]);
+  ce:	4b08      	ldr	r3, [pc, #32]	@ (f0 <display_config_set_regulation_ratio+0x34>)
+  d0:	f853 1020 	ldr.w	r1, [r3, r0, lsl #2]
+  d4:	4630      	mov	r0, r6
+  d6:	4b07      	ldr	r3, [pc, #28]	@ (f4 <display_config_set_regulation_ratio+0x38>)
+  d8:	4798      	blx	r3
+    instance->config_regulation_ratio = config_regulation_ratio_value[index];
+  da:	4b07      	ldr	r3, [pc, #28]	@ (f8 <display_config_set_regulation_ratio+0x3c>)
+  dc:	5d5b      	ldrb	r3, [r3, r5]
+  de:	75a3      	strb	r3, [r4, #22]
+    display_test_reload_config(instance);
+  e0:	4620      	mov	r0, r4
+  e2:	4b06      	ldr	r3, [pc, #24]	@ (fc <display_config_set_regulation_ratio+0x40>)
+  e4:	4798      	blx	r3
+}
+  e6:	bd70      	pop	{r4, r5, r6, pc}
+	...
+
+00000100 <display_config_set_bias>:
+static void display_config_set_bias(VariableItem* item) {
+ 100:	b570      	push	{r4, r5, r6, lr}
+ 102:	4606      	mov	r6, r0
+    DisplayTest* instance = variable_item_get_context(item);
+ 104:	4b09      	ldr	r3, [pc, #36]	@ (12c <display_config_set_bias+0x2c>)
+ 106:	4798      	blx	r3
+ 108:	4604      	mov	r4, r0
+    uint8_t index = variable_item_get_current_value_index(item);
+ 10a:	4630      	mov	r0, r6
+ 10c:	4b08      	ldr	r3, [pc, #32]	@ (130 <display_config_set_bias+0x30>)
+ 10e:	4798      	blx	r3
+ 110:	4605      	mov	r5, r0
+    variable_item_set_current_value_text(item, config_bias_text[index]);
+ 112:	4b08      	ldr	r3, [pc, #32]	@ (134 <display_config_set_bias+0x34>)
+ 114:	f853 1020 	ldr.w	r1, [r3, r0, lsl #2]
+ 118:	4630      	mov	r0, r6
+ 11a:	4b07      	ldr	r3, [pc, #28]	@ (138 <display_config_set_bias+0x38>)
+ 11c:	4798      	blx	r3
+    instance->config_bias = config_bias_value[index];
+ 11e:	4b07      	ldr	r3, [pc, #28]	@ (13c <display_config_set_bias+0x3c>)
+ 120:	5d5b      	ldrb	r3, [r3, r5]
+ 122:	7523      	strb	r3, [r4, #20]
+    display_test_reload_config(instance);
+ 124:	4620      	mov	r0, r4
+ 126:	4b06      	ldr	r3, [pc, #24]	@ (140 <display_config_set_bias+0x40>)
+ 128:	4798      	blx	r3
+}
+ 12a:	bd70      	pop	{r4, r5, r6, pc}
+	...
+
+00000144 <display_test_alloc>:
+
+DisplayTest* display_test_alloc(void) {
+ 144:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 148:	b085      	sub	sp, #20
+    DisplayTest* instance = malloc(sizeof(DisplayTest));
+ 14a:	2018      	movs	r0, #24
+ 14c:	4b3d      	ldr	r3, [pc, #244]	@ (244 <display_test_alloc+0x100>)
+ 14e:	4798      	blx	r3
+ 150:	4604      	mov	r4, r0
+
+    View* view = NULL;
+
+    instance->gui = furi_record_open(RECORD_GUI);
+ 152:	483d      	ldr	r0, [pc, #244]	@ (248 <display_test_alloc+0x104>)
+ 154:	4b3d      	ldr	r3, [pc, #244]	@ (24c <display_test_alloc+0x108>)
+ 156:	4798      	blx	r3
+ 158:	6020      	str	r0, [r4, #0]
+    instance->view_dispatcher = view_dispatcher_alloc();
+ 15a:	4b3d      	ldr	r3, [pc, #244]	@ (250 <display_test_alloc+0x10c>)
+ 15c:	4798      	blx	r3
+ 15e:	6060      	str	r0, [r4, #4]
+    view_dispatcher_attach_to_gui(
+ 160:	2202      	movs	r2, #2
+ 162:	6821      	ldr	r1, [r4, #0]
+ 164:	4b3b      	ldr	r3, [pc, #236]	@ (254 <display_test_alloc+0x110>)
+ 166:	4798      	blx	r3
+        instance->view_dispatcher, instance->gui, ViewDispatcherTypeFullscreen);
+
+    // Test
+    instance->view_display_test = view_display_test_alloc();
+ 168:	4b3b      	ldr	r3, [pc, #236]	@ (258 <display_test_alloc+0x114>)
+ 16a:	4798      	blx	r3
+ 16c:	60a0      	str	r0, [r4, #8]
+    view = view_display_test_get_view(instance->view_display_test);
+ 16e:	4b3b      	ldr	r3, [pc, #236]	@ (25c <display_test_alloc+0x118>)
+ 170:	4798      	blx	r3
+ 172:	4605      	mov	r5, r0
+    view_set_previous_callback(view, display_test_previous_callback);
+ 174:	f8df 813c 	ldr.w	r8, [pc, #316]	@ 2b4 <display_test_alloc+0x170>
+ 178:	4641      	mov	r1, r8
+ 17a:	4e39      	ldr	r6, [pc, #228]	@ (260 <display_test_alloc+0x11c>)
+ 17c:	47b0      	blx	r6
+    view_dispatcher_add_view(instance->view_dispatcher, DisplayTestViewDisplayTest, view);
+ 17e:	462a      	mov	r2, r5
+ 180:	2102      	movs	r1, #2
+ 182:	6860      	ldr	r0, [r4, #4]
+ 184:	4d37      	ldr	r5, [pc, #220]	@ (264 <display_test_alloc+0x120>)
+ 186:	47a8      	blx	r5
+
+    // Configure
+    instance->variable_item_list = variable_item_list_alloc();
+ 188:	4b37      	ldr	r3, [pc, #220]	@ (268 <display_test_alloc+0x124>)
+ 18a:	4798      	blx	r3
+ 18c:	60e0      	str	r0, [r4, #12]
+    view = variable_item_list_get_view(instance->variable_item_list);
+ 18e:	4b37      	ldr	r3, [pc, #220]	@ (26c <display_test_alloc+0x128>)
+ 190:	4798      	blx	r3
+ 192:	4607      	mov	r7, r0
+    view_set_previous_callback(view, display_test_previous_callback);
+ 194:	4641      	mov	r1, r8
+ 196:	47b0      	blx	r6
+    view_dispatcher_add_view(instance->view_dispatcher, DisplayTestViewConfigure, view);
+ 198:	463a      	mov	r2, r7
+ 19a:	2101      	movs	r1, #1
+ 19c:	6860      	ldr	r0, [r4, #4]
+ 19e:	47a8      	blx	r5
+
+    // Configuration items
+    VariableItem* item;
+    instance->config_bias = false;
+ 1a0:	f04f 0300 	mov.w	r3, #0
+ 1a4:	7523      	strb	r3, [r4, #20]
+    instance->config_contrast = 32;
+ 1a6:	f04f 0a20 	mov.w	sl, #32
+ 1aa:	f884 a015 	strb.w	sl, [r4, #21]
+    instance->config_regulation_ratio = 0b101;
+ 1ae:	f04f 0b05 	mov.w	fp, #5
+ 1b2:	f884 b016 	strb.w	fp, [r4, #22]
+    // Bias
+    item = variable_item_list_add(
+ 1b6:	9400      	str	r4, [sp, #0]
+ 1b8:	4b2d      	ldr	r3, [pc, #180]	@ (270 <display_test_alloc+0x12c>)
+ 1ba:	2202      	movs	r2, #2
+ 1bc:	492d      	ldr	r1, [pc, #180]	@ (274 <display_test_alloc+0x130>)
+ 1be:	68e0      	ldr	r0, [r4, #12]
+ 1c0:	f8df 90f4 	ldr.w	r9, [pc, #244]	@ 2b8 <display_test_alloc+0x174>
+ 1c4:	47c8      	blx	r9
+ 1c6:	4607      	mov	r7, r0
+        instance->variable_item_list,
+        "Bias:",
+        COUNT_OF(config_bias_value),
+        display_config_set_bias,
+        instance);
+    variable_item_set_current_value_index(item, 1);
+ 1c8:	2101      	movs	r1, #1
+ 1ca:	f8df 80f0 	ldr.w	r8, [pc, #240]	@ 2bc <display_test_alloc+0x178>
+ 1ce:	47c0      	blx	r8
+    variable_item_set_current_value_text(item, config_bias_text[1]);
+ 1d0:	4929      	ldr	r1, [pc, #164]	@ (278 <display_test_alloc+0x134>)
+ 1d2:	4638      	mov	r0, r7
+ 1d4:	4f29      	ldr	r7, [pc, #164]	@ (27c <display_test_alloc+0x138>)
+ 1d6:	47b8      	blx	r7
+    // Regulation Ratio
+    item = variable_item_list_add(
+ 1d8:	9400      	str	r4, [sp, #0]
+ 1da:	4b29      	ldr	r3, [pc, #164]	@ (280 <display_test_alloc+0x13c>)
+ 1dc:	2208      	movs	r2, #8
+ 1de:	4929      	ldr	r1, [pc, #164]	@ (284 <display_test_alloc+0x140>)
+ 1e0:	68e0      	ldr	r0, [r4, #12]
+ 1e2:	47c8      	blx	r9
+ 1e4:	9003      	str	r0, [sp, #12]
+        instance->variable_item_list,
+        "Reg Ratio:",
+        COUNT_OF(config_regulation_ratio_value),
+        display_config_set_regulation_ratio,
+        instance);
+    variable_item_set_current_value_index(item, 5);
+ 1e6:	4659      	mov	r1, fp
+ 1e8:	47c0      	blx	r8
+    variable_item_set_current_value_text(item, config_regulation_ratio_text[5]);
+ 1ea:	4927      	ldr	r1, [pc, #156]	@ (288 <display_test_alloc+0x144>)
+ 1ec:	9803      	ldr	r0, [sp, #12]
+ 1ee:	47b8      	blx	r7
+    // Contrast
+    item = variable_item_list_add(
+ 1f0:	9400      	str	r4, [sp, #0]
+ 1f2:	4b26      	ldr	r3, [pc, #152]	@ (28c <display_test_alloc+0x148>)
+ 1f4:	2240      	movs	r2, #64	@ 0x40
+ 1f6:	4926      	ldr	r1, [pc, #152]	@ (290 <display_test_alloc+0x14c>)
+ 1f8:	68e0      	ldr	r0, [r4, #12]
+ 1fa:	47c8      	blx	r9
+ 1fc:	4681      	mov	r9, r0
+        instance->variable_item_list, "Contrast:", 64, display_config_set_contrast, instance);
+    variable_item_set_current_value_index(item, 32);
+ 1fe:	4651      	mov	r1, sl
+ 200:	47c0      	blx	r8
+    variable_item_set_current_value_text(item, "32");
+ 202:	4924      	ldr	r1, [pc, #144]	@ (294 <display_test_alloc+0x150>)
+ 204:	4648      	mov	r0, r9
+ 206:	47b8      	blx	r7
+
+    // Menu
+    instance->submenu = submenu_alloc();
+ 208:	4b23      	ldr	r3, [pc, #140]	@ (298 <display_test_alloc+0x154>)
+ 20a:	4798      	blx	r3
+ 20c:	6120      	str	r0, [r4, #16]
+    view = submenu_get_view(instance->submenu);
+ 20e:	4b23      	ldr	r3, [pc, #140]	@ (29c <display_test_alloc+0x158>)
+ 210:	4798      	blx	r3
+ 212:	4607      	mov	r7, r0
+    view_set_previous_callback(view, display_test_exit_callback);
+ 214:	4922      	ldr	r1, [pc, #136]	@ (2a0 <display_test_alloc+0x15c>)
+ 216:	47b0      	blx	r6
+    view_dispatcher_add_view(instance->view_dispatcher, DisplayTestViewSubmenu, view);
+ 218:	463a      	mov	r2, r7
+ 21a:	2100      	movs	r1, #0
+ 21c:	6860      	ldr	r0, [r4, #4]
+ 21e:	47a8      	blx	r5
+    submenu_add_item(
+ 220:	4e20      	ldr	r6, [pc, #128]	@ (2a4 <display_test_alloc+0x160>)
+ 222:	9400      	str	r4, [sp, #0]
+ 224:	4633      	mov	r3, r6
+ 226:	2202      	movs	r2, #2
+ 228:	491f      	ldr	r1, [pc, #124]	@ (2a8 <display_test_alloc+0x164>)
+ 22a:	6920      	ldr	r0, [r4, #16]
+ 22c:	4d1f      	ldr	r5, [pc, #124]	@ (2ac <display_test_alloc+0x168>)
+ 22e:	47a8      	blx	r5
+        instance->submenu,
+        "Test",
+        DisplayTestViewDisplayTest,
+        display_test_submenu_callback,
+        instance);
+    submenu_add_item(
+ 230:	9400      	str	r4, [sp, #0]
+ 232:	4633      	mov	r3, r6
+ 234:	2201      	movs	r2, #1
+ 236:	491e      	ldr	r1, [pc, #120]	@ (2b0 <display_test_alloc+0x16c>)
+ 238:	6920      	ldr	r0, [r4, #16]
+ 23a:	47a8      	blx	r5
+        DisplayTestViewConfigure,
+        display_test_submenu_callback,
+        instance);
+
+    return instance;
+}
+ 23c:	4620      	mov	r0, r4
+ 23e:	b005      	add	sp, #20
+ 240:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+ 244:	00000000 	.word	0x00000000
+ 248:	00000040 	.word	0x00000040
+	...
+ 274:	00000044 	.word	0x00000044
+ 278:	0000004c 	.word	0x0000004c
+	...
+ 284:	00000050 	.word	0x00000050
+ 288:	0000005c 	.word	0x0000005c
+ 28c:	00000000 	.word	0x00000000
+ 290:	00000060 	.word	0x00000060
+ 294:	0000006c 	.word	0x0000006c
+	...
+ 2a8:	00000070 	.word	0x00000070
+ 2ac:	00000000 	.word	0x00000000
+ 2b0:	00000078 	.word	0x00000078
+	...
+
+000002c0 <display_test_free>:
+
+void display_test_free(DisplayTest* instance) {
+ 2c0:	b538      	push	{r3, r4, r5, lr}
+ 2c2:	4604      	mov	r4, r0
+    view_dispatcher_remove_view(instance->view_dispatcher, DisplayTestViewSubmenu);
+ 2c4:	2100      	movs	r1, #0
+ 2c6:	6840      	ldr	r0, [r0, #4]
+ 2c8:	4d0d      	ldr	r5, [pc, #52]	@ (300 <display_test_free+0x40>)
+ 2ca:	47a8      	blx	r5
+    submenu_free(instance->submenu);
+ 2cc:	6920      	ldr	r0, [r4, #16]
+ 2ce:	4b0d      	ldr	r3, [pc, #52]	@ (304 <display_test_free+0x44>)
+ 2d0:	4798      	blx	r3
+
+    view_dispatcher_remove_view(instance->view_dispatcher, DisplayTestViewConfigure);
+ 2d2:	2101      	movs	r1, #1
+ 2d4:	6860      	ldr	r0, [r4, #4]
+ 2d6:	47a8      	blx	r5
+    variable_item_list_free(instance->variable_item_list);
+ 2d8:	68e0      	ldr	r0, [r4, #12]
+ 2da:	4b0b      	ldr	r3, [pc, #44]	@ (308 <display_test_free+0x48>)
+ 2dc:	4798      	blx	r3
+
+    view_dispatcher_remove_view(instance->view_dispatcher, DisplayTestViewDisplayTest);
+ 2de:	2102      	movs	r1, #2
+ 2e0:	6860      	ldr	r0, [r4, #4]
+ 2e2:	47a8      	blx	r5
+    view_display_test_free(instance->view_display_test);
+ 2e4:	68a0      	ldr	r0, [r4, #8]
+ 2e6:	4b09      	ldr	r3, [pc, #36]	@ (30c <display_test_free+0x4c>)
+ 2e8:	4798      	blx	r3
+
+    view_dispatcher_free(instance->view_dispatcher);
+ 2ea:	6860      	ldr	r0, [r4, #4]
+ 2ec:	4b08      	ldr	r3, [pc, #32]	@ (310 <display_test_free+0x50>)
+ 2ee:	4798      	blx	r3
+    furi_record_close(RECORD_GUI);
+ 2f0:	4808      	ldr	r0, [pc, #32]	@ (314 <display_test_free+0x54>)
+ 2f2:	4b09      	ldr	r3, [pc, #36]	@ (318 <display_test_free+0x58>)
+ 2f4:	4798      	blx	r3
+
+    free(instance);
+ 2f6:	4620      	mov	r0, r4
+ 2f8:	4b08      	ldr	r3, [pc, #32]	@ (31c <display_test_free+0x5c>)
+ 2fa:	4798      	blx	r3
+}
+ 2fc:	bd38      	pop	{r3, r4, r5, pc}
+ 2fe:	bf00      	nop
+	...
+ 314:	00000040 	.word	0x00000040
+	...
+
+00000320 <display_test_run>:
+
+int32_t display_test_run(DisplayTest* instance) {
+ 320:	b510      	push	{r4, lr}
+ 322:	4604      	mov	r4, r0
+    UNUSED(instance);
+    view_dispatcher_switch_to_view(instance->view_dispatcher, DisplayTestViewSubmenu);
+ 324:	2100      	movs	r1, #0
+ 326:	6840      	ldr	r0, [r0, #4]
+ 328:	4b03      	ldr	r3, [pc, #12]	@ (338 <display_test_run+0x18>)
+ 32a:	4798      	blx	r3
+    view_dispatcher_run(instance->view_dispatcher);
+ 32c:	6860      	ldr	r0, [r4, #4]
+ 32e:	4b03      	ldr	r3, [pc, #12]	@ (33c <display_test_run+0x1c>)
+ 330:	4798      	blx	r3
+
+    return 0;
+}
+ 332:	2000      	movs	r0, #0
+ 334:	bd10      	pop	{r4, pc}
+ 336:	bf00      	nop
+	...
+
+00000340 <display_test_app>:
+
+int32_t display_test_app(void* p) {
+ 340:	b538      	push	{r3, r4, r5, lr}
+    UNUSED(p);
+
+    DisplayTest* instance = display_test_alloc();
+ 342:	4b05      	ldr	r3, [pc, #20]	@ (358 <display_test_app+0x18>)
+ 344:	4798      	blx	r3
+ 346:	4605      	mov	r5, r0
+
+    int32_t ret = display_test_run(instance);
+ 348:	4b04      	ldr	r3, [pc, #16]	@ (35c <display_test_app+0x1c>)
+ 34a:	4798      	blx	r3
+ 34c:	4604      	mov	r4, r0
+
+    display_test_free(instance);
+ 34e:	4628      	mov	r0, r5
+ 350:	4b03      	ldr	r3, [pc, #12]	@ (360 <display_test_app+0x20>)
+ 352:	4798      	blx	r3
+
+    return ret;
+}
+ 354:	4620      	mov	r0, r4
+ 356:	bd38      	pop	{r3, r4, r5, pc}
+	...
+
+00000364 <view_display_test_draw_callback>:
+    view_display_test_draw_callback_vstripe,
+    view_display_test_draw_callback_check,
+    view_display_test_draw_callback_move,
+};
+
+static void view_display_test_draw_callback(Canvas* canvas, void* _model) {
+ 364:	b508      	push	{r3, lr}
+    ViewDisplayTestModel* model = _model;
+    view_display_test_tests[model->test](canvas, _model);
+ 366:	680a      	ldr	r2, [r1, #0]
+ 368:	4b02      	ldr	r3, [pc, #8]	@ (374 <view_display_test_draw_callback+0x10>)
+ 36a:	f853 3022 	ldr.w	r3, [r3, r2, lsl #2]
+ 36e:	4798      	blx	r3
+}
+ 370:	bd08      	pop	{r3, pc}
+ 372:	bf00      	nop
+ 374:	00000000 	.word	0x00000000
+
+00000378 <view_display_test_draw_callback_move>:
+static void view_display_test_draw_callback_move(Canvas* canvas, void* _model) {
+ 378:	b5f0      	push	{r4, r5, r6, r7, lr}
+ 37a:	b083      	sub	sp, #12
+ 37c:	4605      	mov	r5, r0
+ 37e:	460f      	mov	r7, r1
+    uint8_t block = 1 + model->size;
+ 380:	790c      	ldrb	r4, [r1, #4]
+ 382:	3401      	adds	r4, #1
+ 384:	b2e4      	uxtb	r4, r4
+    uint8_t width = canvas_width(canvas) - block;
+ 386:	4b15      	ldr	r3, [pc, #84]	@ (3dc <view_display_test_draw_callback_move+0x64>)
+ 388:	4798      	blx	r3
+ 38a:	b2c6      	uxtb	r6, r0
+ 38c:	1b36      	subs	r6, r6, r4
+ 38e:	b2f6      	uxtb	r6, r6
+    uint8_t height = canvas_height(canvas) - block;
+ 390:	4628      	mov	r0, r5
+ 392:	4b13      	ldr	r3, [pc, #76]	@ (3e0 <view_display_test_draw_callback_move+0x68>)
+ 394:	4798      	blx	r3
+ 396:	fa5f fc80 	uxtb.w	ip, r0
+ 39a:	ebac 0c04 	sub.w	ip, ip, r4
+ 39e:	fa5f fc8c 	uxtb.w	ip, ip
+    uint8_t x = model->counter % width;
+ 3a2:	68ba      	ldr	r2, [r7, #8]
+ 3a4:	fbb2 f3f6 	udiv	r3, r2, r6
+ 3a8:	fb06 2113 	mls	r1, r6, r3, r2
+ 3ac:	b2c9      	uxtb	r1, r1
+    if((model->counter / width) % 2) {
+ 3ae:	f013 0f01 	tst.w	r3, #1
+ 3b2:	d001      	beq.n	3b8 <view_display_test_draw_callback_move+0x40>
+        x = width - x;
+ 3b4:	1a71      	subs	r1, r6, r1
+ 3b6:	b2c9      	uxtb	r1, r1
+    uint8_t y = model->counter % height;
+ 3b8:	fbb2 f3fc 	udiv	r3, r2, ip
+ 3bc:	fb0c 2213 	mls	r2, ip, r3, r2
+ 3c0:	b2d2      	uxtb	r2, r2
+    if((model->counter / height) % 2) {
+ 3c2:	f013 0f01 	tst.w	r3, #1
+ 3c6:	d002      	beq.n	3ce <view_display_test_draw_callback_move+0x56>
+        y = height - y;
+ 3c8:	ebac 0202 	sub.w	r2, ip, r2
+ 3cc:	b2d2      	uxtb	r2, r2
+    canvas_draw_box(canvas, x, y, block, block);
+ 3ce:	9400      	str	r4, [sp, #0]
+ 3d0:	4623      	mov	r3, r4
+ 3d2:	4628      	mov	r0, r5
+ 3d4:	4c03      	ldr	r4, [pc, #12]	@ (3e4 <view_display_test_draw_callback_move+0x6c>)
+ 3d6:	47a0      	blx	r4
+}
+ 3d8:	b003      	add	sp, #12
+ 3da:	bdf0      	pop	{r4, r5, r6, r7, pc}
+	...
+
+000003e8 <view_display_test_draw_callback_check>:
+static void view_display_test_draw_callback_check(Canvas* canvas, void* _model) {
+ 3e8:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 3ec:	b085      	sub	sp, #20
+ 3ee:	4680      	mov	r8, r0
+ 3f0:	460c      	mov	r4, r1
+    uint8_t block = 1 + model->size;
+ 3f2:	790e      	ldrb	r6, [r1, #4]
+ 3f4:	3601      	adds	r6, #1
+ 3f6:	b2f6      	uxtb	r6, r6
+    uint8_t width = canvas_width(canvas);
+ 3f8:	4b1b      	ldr	r3, [pc, #108]	@ (468 <view_display_test_draw_callback_check+0x80>)
+ 3fa:	4798      	blx	r3
+ 3fc:	fa5f f980 	uxtb.w	r9, r0
+    uint8_t height = canvas_height(canvas);
+ 400:	4640      	mov	r0, r8
+ 402:	4b1a      	ldr	r3, [pc, #104]	@ (46c <view_display_test_draw_callback_check+0x84>)
+ 404:	4798      	blx	r3
+ 406:	b2c7      	uxtb	r7, r0
+    bool flip_flop = model->flip_flop;
+ 408:	f894 b00c 	ldrb.w	fp, [r4, #12]
+    for(uint8_t x = 0; x < width; x += block) {
+ 40c:	f04f 0a00 	mov.w	sl, #0
+ 410:	f8cd b00c 	str.w	fp, [sp, #12]
+ 414:	464b      	mov	r3, r9
+ 416:	46d1      	mov	r9, sl
+ 418:	469a      	mov	sl, r3
+ 41a:	e019      	b.n	450 <view_display_test_draw_callback_check+0x68>
+            flip_flop = !flip_flop;
+ 41c:	f085 0501 	eor.w	r5, r5, #1
+ 420:	b2ed      	uxtb	r5, r5
+        for(uint8_t y = 0; y < height; y += block) {
+ 422:	4434      	add	r4, r6
+ 424:	b2e4      	uxtb	r4, r4
+ 426:	42bc      	cmp	r4, r7
+ 428:	d20a      	bcs.n	440 <view_display_test_draw_callback_check+0x58>
+            if(flip_flop) {
+ 42a:	2d00      	cmp	r5, #0
+ 42c:	d0f6      	beq.n	41c <view_display_test_draw_callback_check+0x34>
+                canvas_draw_box(canvas, x, y, block, block);
+ 42e:	9600      	str	r6, [sp, #0]
+ 430:	4633      	mov	r3, r6
+ 432:	4622      	mov	r2, r4
+ 434:	4649      	mov	r1, r9
+ 436:	4640      	mov	r0, r8
+ 438:	f8df b034 	ldr.w	fp, [pc, #52]	@ 470 <view_display_test_draw_callback_check+0x88>
+ 43c:	47d8      	blx	fp
+ 43e:	e7ed      	b.n	41c <view_display_test_draw_callback_check+0x34>
+        if(last_flip_flop == flip_flop) {
+ 440:	9b03      	ldr	r3, [sp, #12]
+ 442:	429d      	cmp	r5, r3
+ 444:	d009      	beq.n	45a <view_display_test_draw_callback_check+0x72>
+    for(uint8_t x = 0; x < width; x += block) {
+ 446:	eb09 0306 	add.w	r3, r9, r6
+ 44a:	fa5f f983 	uxtb.w	r9, r3
+ 44e:	9503      	str	r5, [sp, #12]
+ 450:	45d1      	cmp	r9, sl
+ 452:	d206      	bcs.n	462 <view_display_test_draw_callback_check+0x7a>
+ 454:	9d03      	ldr	r5, [sp, #12]
+        for(uint8_t y = 0; y < height; y += block) {
+ 456:	2400      	movs	r4, #0
+ 458:	e7e5      	b.n	426 <view_display_test_draw_callback_check+0x3e>
+            flip_flop = !flip_flop;
+ 45a:	f085 0501 	eor.w	r5, r5, #1
+ 45e:	b2ed      	uxtb	r5, r5
+ 460:	e7f1      	b.n	446 <view_display_test_draw_callback_check+0x5e>
+}
+ 462:	b005      	add	sp, #20
+ 464:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+	...
+
+00000474 <view_display_test_draw_callback_vstripe>:
+static void view_display_test_draw_callback_vstripe(Canvas* canvas, void* _model) {
+ 474:	e92d 43f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, lr}
+ 478:	b083      	sub	sp, #12
+ 47a:	4606      	mov	r6, r0
+ 47c:	460c      	mov	r4, r1
+    uint8_t block = 1 + model->size;
+ 47e:	790d      	ldrb	r5, [r1, #4]
+ 480:	3501      	adds	r5, #1
+ 482:	b2ed      	uxtb	r5, r5
+    uint8_t width = canvas_width(canvas);
+ 484:	4b0e      	ldr	r3, [pc, #56]	@ (4c0 <view_display_test_draw_callback_vstripe+0x4c>)
+ 486:	4798      	blx	r3
+ 488:	b2c7      	uxtb	r7, r0
+    uint8_t height = canvas_height(canvas);
+ 48a:	4630      	mov	r0, r6
+ 48c:	4b0d      	ldr	r3, [pc, #52]	@ (4c4 <view_display_test_draw_callback_vstripe+0x50>)
+ 48e:	4798      	blx	r3
+ 490:	4680      	mov	r8, r0
+    for(uint8_t x = model->flip_flop * block; x < width; x += 2 * block) {
+ 492:	7b24      	ldrb	r4, [r4, #12]
+ 494:	fb14 f405 	smulbb	r4, r4, r5
+ 498:	b2e4      	uxtb	r4, r4
+ 49a:	e00c      	b.n	4b6 <view_display_test_draw_callback_vstripe+0x42>
+        canvas_draw_box(canvas, x, 0, block, height);
+ 49c:	fa5f f388 	uxtb.w	r3, r8
+ 4a0:	9300      	str	r3, [sp, #0]
+ 4a2:	462b      	mov	r3, r5
+ 4a4:	2200      	movs	r2, #0
+ 4a6:	4621      	mov	r1, r4
+ 4a8:	4630      	mov	r0, r6
+ 4aa:	f8df 901c 	ldr.w	r9, [pc, #28]	@ 4c8 <view_display_test_draw_callback_vstripe+0x54>
+ 4ae:	47c8      	blx	r9
+    for(uint8_t x = model->flip_flop * block; x < width; x += 2 * block) {
+ 4b0:	eb04 0445 	add.w	r4, r4, r5, lsl #1
+ 4b4:	b2e4      	uxtb	r4, r4
+ 4b6:	42bc      	cmp	r4, r7
+ 4b8:	d3f0      	bcc.n	49c <view_display_test_draw_callback_vstripe+0x28>
+}
+ 4ba:	b003      	add	sp, #12
+ 4bc:	e8bd 83f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, pc}
+	...
+
+000004cc <view_display_test_draw_callback_hstripe>:
+static void view_display_test_draw_callback_hstripe(Canvas* canvas, void* _model) {
+ 4cc:	e92d 43f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, lr}
+ 4d0:	b083      	sub	sp, #12
+ 4d2:	4607      	mov	r7, r0
+ 4d4:	460c      	mov	r4, r1
+    uint8_t block = 1 + model->size;
+ 4d6:	790d      	ldrb	r5, [r1, #4]
+ 4d8:	3501      	adds	r5, #1
+ 4da:	b2ed      	uxtb	r5, r5
+    uint8_t width = canvas_width(canvas);
+ 4dc:	4b0e      	ldr	r3, [pc, #56]	@ (518 <view_display_test_draw_callback_hstripe+0x4c>)
+ 4de:	4798      	blx	r3
+ 4e0:	4680      	mov	r8, r0
+    uint8_t height = canvas_height(canvas);
+ 4e2:	4638      	mov	r0, r7
+ 4e4:	4b0d      	ldr	r3, [pc, #52]	@ (51c <view_display_test_draw_callback_hstripe+0x50>)
+ 4e6:	4798      	blx	r3
+ 4e8:	b2c6      	uxtb	r6, r0
+    for(uint8_t y = model->flip_flop * block; y < height; y += 2 * block) {
+ 4ea:	7b24      	ldrb	r4, [r4, #12]
+ 4ec:	fb14 f405 	smulbb	r4, r4, r5
+ 4f0:	b2e4      	uxtb	r4, r4
+ 4f2:	e00b      	b.n	50c <view_display_test_draw_callback_hstripe+0x40>
+        canvas_draw_box(canvas, 0, y, width, block);
+ 4f4:	9500      	str	r5, [sp, #0]
+ 4f6:	fa5f f388 	uxtb.w	r3, r8
+ 4fa:	4622      	mov	r2, r4
+ 4fc:	2100      	movs	r1, #0
+ 4fe:	4638      	mov	r0, r7
+ 500:	f8df 901c 	ldr.w	r9, [pc, #28]	@ 520 <view_display_test_draw_callback_hstripe+0x54>
+ 504:	47c8      	blx	r9
+    for(uint8_t y = model->flip_flop * block; y < height; y += 2 * block) {
+ 506:	eb04 0445 	add.w	r4, r4, r5, lsl #1
+ 50a:	b2e4      	uxtb	r4, r4
+ 50c:	42b4      	cmp	r4, r6
+ 50e:	d3f1      	bcc.n	4f4 <view_display_test_draw_callback_hstripe+0x28>
+}
+ 510:	b003      	add	sp, #12
+ 512:	e8bd 83f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, pc}
+ 516:	bf00      	nop
+	...
+
+00000524 <view_display_test_draw_callback_fill>:
+    if(model->flip_flop) {
+ 524:	7b0b      	ldrb	r3, [r1, #12]
+ 526:	b903      	cbnz	r3, 52a <view_display_test_draw_callback_fill+0x6>
+ 528:	4770      	bx	lr
+static void view_display_test_draw_callback_fill(Canvas* canvas, void* _model) {
+ 52a:	b530      	push	{r4, r5, lr}
+ 52c:	b083      	sub	sp, #12
+ 52e:	4604      	mov	r4, r0
+        uint8_t width = canvas_width(canvas);
+ 530:	4b07      	ldr	r3, [pc, #28]	@ (550 <view_display_test_draw_callback_fill+0x2c>)
+ 532:	4798      	blx	r3
+ 534:	4605      	mov	r5, r0
+        uint8_t height = canvas_height(canvas);
+ 536:	4620      	mov	r0, r4
+ 538:	4b06      	ldr	r3, [pc, #24]	@ (554 <view_display_test_draw_callback_fill+0x30>)
+ 53a:	4798      	blx	r3
+        canvas_draw_box(canvas, 0, 0, width, height);
+ 53c:	b2c0      	uxtb	r0, r0
+ 53e:	9000      	str	r0, [sp, #0]
+ 540:	b2eb      	uxtb	r3, r5
+ 542:	2200      	movs	r2, #0
+ 544:	4611      	mov	r1, r2
+ 546:	4620      	mov	r0, r4
+ 548:	4c03      	ldr	r4, [pc, #12]	@ (558 <view_display_test_draw_callback_fill+0x34>)
+ 54a:	47a0      	blx	r4
+}
+ 54c:	b003      	add	sp, #12
+ 54e:	bd30      	pop	{r4, r5, pc}
+	...
+
+0000055c <view_display_test_draw_callback_intro>:
+static void view_display_test_draw_callback_intro(Canvas* canvas, void* _model) {
+ 55c:	b538      	push	{r3, r4, r5, lr}
+ 55e:	4604      	mov	r4, r0
+    canvas_draw_str(canvas, 12, 24, "Use < and > to switch tests");
+ 560:	4b07      	ldr	r3, [pc, #28]	@ (580 <view_display_test_draw_callback_intro+0x24>)
+ 562:	2218      	movs	r2, #24
+ 564:	210c      	movs	r1, #12
+ 566:	4d07      	ldr	r5, [pc, #28]	@ (584 <view_display_test_draw_callback_intro+0x28>)
+ 568:	47a8      	blx	r5
+    canvas_draw_str(canvas, 12, 36, "Use ^ and v to switch size");
+ 56a:	4b07      	ldr	r3, [pc, #28]	@ (588 <view_display_test_draw_callback_intro+0x2c>)
+ 56c:	2224      	movs	r2, #36	@ 0x24
+ 56e:	210c      	movs	r1, #12
+ 570:	4620      	mov	r0, r4
+ 572:	47a8      	blx	r5
+    canvas_draw_str(canvas, 32, 48, "Use (o) to flip");
+ 574:	4b05      	ldr	r3, [pc, #20]	@ (58c <view_display_test_draw_callback_intro+0x30>)
+ 576:	2230      	movs	r2, #48	@ 0x30
+ 578:	2120      	movs	r1, #32
+ 57a:	4620      	mov	r0, r4
+ 57c:	47a8      	blx	r5
+}
+ 57e:	bd38      	pop	{r3, r4, r5, pc}
+ 580:	000000d8 	.word	0x000000d8
+ 584:	00000000 	.word	0x00000000
+ 588:	000000f4 	.word	0x000000f4
+ 58c:	00000110 	.word	0x00000110
+
+00000590 <view_display_test_timer_callback>:
+static void view_display_test_exit(void* context) {
+    ViewDisplayTest* instance = context;
+    furi_timer_stop(instance->timer);
+}
+
+static void view_display_test_timer_callback(void* context) {
+ 590:	b510      	push	{r4, lr}
+ 592:	4604      	mov	r4, r0
+    ViewDisplayTest* instance = context;
+    with_view_model(instance->view, ViewDisplayTestModel * model, { model->counter++; }, true);
+ 594:	6800      	ldr	r0, [r0, #0]
+ 596:	4b05      	ldr	r3, [pc, #20]	@ (5ac <view_display_test_timer_callback+0x1c>)
+ 598:	4798      	blx	r3
+ 59a:	6883      	ldr	r3, [r0, #8]
+ 59c:	3301      	adds	r3, #1
+ 59e:	6083      	str	r3, [r0, #8]
+ 5a0:	2101      	movs	r1, #1
+ 5a2:	6820      	ldr	r0, [r4, #0]
+ 5a4:	4b02      	ldr	r3, [pc, #8]	@ (5b0 <view_display_test_timer_callback+0x20>)
+ 5a6:	4798      	blx	r3
+}
+ 5a8:	bd10      	pop	{r4, pc}
+ 5aa:	bf00      	nop
+	...
+
+000005b4 <view_display_test_input_callback>:
+static bool view_display_test_input_callback(InputEvent* event, void* context) {
+ 5b4:	b538      	push	{r3, r4, r5, lr}
+ 5b6:	4604      	mov	r4, r0
+ 5b8:	460d      	mov	r5, r1
+    if(event->type == InputTypeShort || event->type == InputTypeRepeat) {
+ 5ba:	7943      	ldrb	r3, [r0, #5]
+ 5bc:	2b02      	cmp	r3, #2
+ 5be:	d004      	beq.n	5ca <view_display_test_input_callback+0x16>
+ 5c0:	2b04      	cmp	r3, #4
+ 5c2:	d002      	beq.n	5ca <view_display_test_input_callback+0x16>
+    bool consumed = false;
+ 5c4:	2400      	movs	r4, #0
+}
+ 5c6:	4620      	mov	r0, r4
+ 5c8:	bd38      	pop	{r3, r4, r5, pc}
+        with_view_model(
+ 5ca:	6828      	ldr	r0, [r5, #0]
+ 5cc:	4b19      	ldr	r3, [pc, #100]	@ (634 <view_display_test_input_callback+0x80>)
+ 5ce:	4798      	blx	r3
+ 5d0:	7923      	ldrb	r3, [r4, #4]
+ 5d2:	2b03      	cmp	r3, #3
+ 5d4:	d00b      	beq.n	5ee <view_display_test_input_callback+0x3a>
+ 5d6:	2b02      	cmp	r3, #2
+ 5d8:	d010      	beq.n	5fc <view_display_test_input_callback+0x48>
+ 5da:	2b01      	cmp	r3, #1
+ 5dc:	d015      	beq.n	60a <view_display_test_input_callback+0x56>
+ 5de:	b9db      	cbnz	r3, 618 <view_display_test_input_callback+0x64>
+ 5e0:	6842      	ldr	r2, [r0, #4]
+ 5e2:	2a17      	cmp	r2, #23
+ 5e4:	d818      	bhi.n	618 <view_display_test_input_callback+0x64>
+ 5e6:	3201      	adds	r2, #1
+ 5e8:	6042      	str	r2, [r0, #4]
+ 5ea:	2401      	movs	r4, #1
+ 5ec:	e017      	b.n	61e <view_display_test_input_callback+0x6a>
+ 5ee:	6802      	ldr	r2, [r0, #0]
+ 5f0:	2a00      	cmp	r2, #0
+ 5f2:	d0f0      	beq.n	5d6 <view_display_test_input_callback+0x22>
+ 5f4:	3a01      	subs	r2, #1
+ 5f6:	6002      	str	r2, [r0, #0]
+ 5f8:	2401      	movs	r4, #1
+ 5fa:	e010      	b.n	61e <view_display_test_input_callback+0x6a>
+ 5fc:	6802      	ldr	r2, [r0, #0]
+ 5fe:	2a04      	cmp	r2, #4
+ 600:	d8eb      	bhi.n	5da <view_display_test_input_callback+0x26>
+ 602:	3201      	adds	r2, #1
+ 604:	6002      	str	r2, [r0, #0]
+ 606:	2401      	movs	r4, #1
+ 608:	e009      	b.n	61e <view_display_test_input_callback+0x6a>
+ 60a:	6842      	ldr	r2, [r0, #4]
+ 60c:	2a00      	cmp	r2, #0
+ 60e:	d0e6      	beq.n	5de <view_display_test_input_callback+0x2a>
+ 610:	3a01      	subs	r2, #1
+ 612:	6042      	str	r2, [r0, #4]
+ 614:	2401      	movs	r4, #1
+ 616:	e002      	b.n	61e <view_display_test_input_callback+0x6a>
+ 618:	2b04      	cmp	r3, #4
+ 61a:	d005      	beq.n	628 <view_display_test_input_callback+0x74>
+    bool consumed = false;
+ 61c:	2400      	movs	r4, #0
+        with_view_model(
+ 61e:	4621      	mov	r1, r4
+ 620:	6828      	ldr	r0, [r5, #0]
+ 622:	4b05      	ldr	r3, [pc, #20]	@ (638 <view_display_test_input_callback+0x84>)
+ 624:	4798      	blx	r3
+ 626:	e7ce      	b.n	5c6 <view_display_test_input_callback+0x12>
+ 628:	7b03      	ldrb	r3, [r0, #12]
+ 62a:	f083 0301 	eor.w	r3, r3, #1
+ 62e:	7303      	strb	r3, [r0, #12]
+ 630:	2401      	movs	r4, #1
+ 632:	e7f4      	b.n	61e <view_display_test_input_callback+0x6a>
+	...
+
+0000063c <view_display_test_exit>:
+static void view_display_test_exit(void* context) {
+ 63c:	b508      	push	{r3, lr}
+    furi_timer_stop(instance->timer);
+ 63e:	6840      	ldr	r0, [r0, #4]
+ 640:	4b01      	ldr	r3, [pc, #4]	@ (648 <view_display_test_exit+0xc>)
+ 642:	4798      	blx	r3
+}
+ 644:	bd08      	pop	{r3, pc}
+ 646:	bf00      	nop
+ 648:	00000000 	.word	0x00000000
+
+0000064c <view_display_test_enter>:
+static void view_display_test_enter(void* context) {
+ 64c:	b510      	push	{r4, lr}
+    furi_timer_start(instance->timer, furi_kernel_get_tick_frequency() / 32);
+ 64e:	6844      	ldr	r4, [r0, #4]
+ 650:	4b03      	ldr	r3, [pc, #12]	@ (660 <view_display_test_enter+0x14>)
+ 652:	4798      	blx	r3
+ 654:	0941      	lsrs	r1, r0, #5
+ 656:	4620      	mov	r0, r4
+ 658:	4b02      	ldr	r3, [pc, #8]	@ (664 <view_display_test_enter+0x18>)
+ 65a:	4798      	blx	r3
+}
+ 65c:	bd10      	pop	{r4, pc}
+ 65e:	bf00      	nop
+	...
+
+00000668 <view_display_test_alloc>:
+
+ViewDisplayTest* view_display_test_alloc(void) {
+ 668:	b510      	push	{r4, lr}
+    ViewDisplayTest* instance = malloc(sizeof(ViewDisplayTest));
+ 66a:	2008      	movs	r0, #8
+ 66c:	4b12      	ldr	r3, [pc, #72]	@ (6b8 <view_display_test_alloc+0x50>)
+ 66e:	4798      	blx	r3
+ 670:	4604      	mov	r4, r0
+
+    instance->view = view_alloc();
+ 672:	4b12      	ldr	r3, [pc, #72]	@ (6bc <view_display_test_alloc+0x54>)
+ 674:	4798      	blx	r3
+ 676:	6020      	str	r0, [r4, #0]
+    view_set_context(instance->view, instance);
+ 678:	4621      	mov	r1, r4
+ 67a:	4b11      	ldr	r3, [pc, #68]	@ (6c0 <view_display_test_alloc+0x58>)
+ 67c:	4798      	blx	r3
+    view_allocate_model(instance->view, ViewModelTypeLockFree, sizeof(ViewDisplayTestModel));
+ 67e:	2210      	movs	r2, #16
+ 680:	2101      	movs	r1, #1
+ 682:	6820      	ldr	r0, [r4, #0]
+ 684:	4b0f      	ldr	r3, [pc, #60]	@ (6c4 <view_display_test_alloc+0x5c>)
+ 686:	4798      	blx	r3
+    view_set_draw_callback(instance->view, view_display_test_draw_callback);
+ 688:	490f      	ldr	r1, [pc, #60]	@ (6c8 <view_display_test_alloc+0x60>)
+ 68a:	6820      	ldr	r0, [r4, #0]
+ 68c:	4b0f      	ldr	r3, [pc, #60]	@ (6cc <view_display_test_alloc+0x64>)
+ 68e:	4798      	blx	r3
+    view_set_input_callback(instance->view, view_display_test_input_callback);
+ 690:	490f      	ldr	r1, [pc, #60]	@ (6d0 <view_display_test_alloc+0x68>)
+ 692:	6820      	ldr	r0, [r4, #0]
+ 694:	4b0f      	ldr	r3, [pc, #60]	@ (6d4 <view_display_test_alloc+0x6c>)
+ 696:	4798      	blx	r3
+    view_set_enter_callback(instance->view, view_display_test_enter);
+ 698:	490f      	ldr	r1, [pc, #60]	@ (6d8 <view_display_test_alloc+0x70>)
+ 69a:	6820      	ldr	r0, [r4, #0]
+ 69c:	4b0f      	ldr	r3, [pc, #60]	@ (6dc <view_display_test_alloc+0x74>)
+ 69e:	4798      	blx	r3
+    view_set_exit_callback(instance->view, view_display_test_exit);
+ 6a0:	490f      	ldr	r1, [pc, #60]	@ (6e0 <view_display_test_alloc+0x78>)
+ 6a2:	6820      	ldr	r0, [r4, #0]
+ 6a4:	4b0f      	ldr	r3, [pc, #60]	@ (6e4 <view_display_test_alloc+0x7c>)
+ 6a6:	4798      	blx	r3
+
+    instance->timer =
+        furi_timer_alloc(view_display_test_timer_callback, FuriTimerTypePeriodic, instance);
+ 6a8:	4622      	mov	r2, r4
+ 6aa:	2101      	movs	r1, #1
+ 6ac:	480e      	ldr	r0, [pc, #56]	@ (6e8 <view_display_test_alloc+0x80>)
+ 6ae:	4b0f      	ldr	r3, [pc, #60]	@ (6ec <view_display_test_alloc+0x84>)
+ 6b0:	4798      	blx	r3
+    instance->timer =
+ 6b2:	6060      	str	r0, [r4, #4]
+
+    return instance;
+}
+ 6b4:	4620      	mov	r0, r4
+ 6b6:	bd10      	pop	{r4, pc}
+	...
+
+000006f0 <view_display_test_free>:
+
+void view_display_test_free(ViewDisplayTest* instance) {
+ 6f0:	b510      	push	{r4, lr}
+    furi_assert(instance);
+ 6f2:	b150      	cbz	r0, 70a <view_display_test_free+0x1a>
+ 6f4:	4604      	mov	r4, r0
+
+    furi_timer_free(instance->timer);
+ 6f6:	6840      	ldr	r0, [r0, #4]
+ 6f8:	4b06      	ldr	r3, [pc, #24]	@ (714 <sukima1117+0x6>)
+ 6fa:	4798      	blx	r3
+    view_free(instance->view);
+ 6fc:	6820      	ldr	r0, [r4, #0]
+ 6fe:	4b06      	ldr	r3, [pc, #24]	@ (718 <sukima1117+0xa>)
+ 700:	4798      	blx	r3
+    free(instance);
+ 702:	4620      	mov	r0, r4
+ 704:	4b05      	ldr	r3, [pc, #20]	@ (71c <sukima1117+0xe>)
+ 706:	4798      	blx	r3
+}
+ 708:	bd10      	pop	{r4, pc}
+    furi_assert(instance);
+ 70a:	f04f 0c01 	mov.w	ip, #1
+
+0000070e <sukima1117>:
+ 70e:	4b04      	ldr	r3, [pc, #16]	@ (720 <sukima1117+0x12>)
+ 710:	4798      	blx	r3
+ 712:	bf00      	nop
+	...
+
+00000724 <view_display_test_get_view>:
+
+View* view_display_test_get_view(ViewDisplayTest* instance) {
+ 724:	b508      	push	{r3, lr}
+    furi_assert(instance);
+ 726:	b108      	cbz	r0, 72c <view_display_test_get_view+0x8>
+    return instance->view;
+}
+ 728:	6800      	ldr	r0, [r0, #0]
+ 72a:	bd08      	pop	{r3, pc}
+    furi_assert(instance);
+ 72c:	f04f 0c01 	mov.w	ip, #1
+
+00000730 <sukima1166>:
+ 730:	4b00      	ldr	r3, [pc, #0]	@ (734 <sukima1166+0x4>)
+ 732:	4798      	blx	r3
+ 734:	00000000 	.word	0x00000000
+
+00000738 <u8x8_d_st756x_init>:
+        return 0;
+    }
+    return 1;
+}
+
+void u8x8_d_st756x_init(u8x8_t* u8x8, uint8_t contrast, uint8_t regulation_ratio, bool bias) {
+ 738:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 73a:	4604      	mov	r4, r0
+ 73c:	461f      	mov	r7, r3
+ 73e:	4615      	mov	r5, r2
+ 740:	460e      	mov	r6, r1
+    contrast = contrast & 0b00111111;
+    regulation_ratio = regulation_ratio & 0b111;
+
+    u8x8_cad_StartTransfer(u8x8);
+ 742:	f7ff fffe 	bl	7c6 <u8x8_cad_StartTransfer>
+    // Reset
+    u8x8_cad_SendCmd(u8x8, ST756X_CMD_RESET);
+ 746:	21e2      	movs	r1, #226	@ 0xe2
+ 748:	4620      	mov	r0, r4
+ 74a:	f7ff fffe 	bl	7a2 <u8x8_cad_SendCmd>
+    // Bias: 1/7(0b1) or 1/9(0b0)
+    u8x8_cad_SendCmd(u8x8, ST756X_CMD_BIAS_SELECT | bias);
+ 74e:	f047 01a2 	orr.w	r1, r7, #162	@ 0xa2
+ 752:	4620      	mov	r0, r4
+ 754:	f7ff fffe 	bl	7a2 <u8x8_cad_SendCmd>
+    // Page, Line and Segment config
+    u8x8_cad_SendCmd(u8x8, ST756X_CMD_SEG_DIRECTION);
+ 758:	21a0      	movs	r1, #160	@ 0xa0
+ 75a:	4620      	mov	r0, r4
+ 75c:	f7ff fffe 	bl	7a2 <u8x8_cad_SendCmd>
+    u8x8_cad_SendCmd(u8x8, ST756X_CMD_COM_DIRECTION | 0b1000);
+ 760:	21c8      	movs	r1, #200	@ 0xc8
+ 762:	4620      	mov	r0, r4
+ 764:	f7ff fffe 	bl	7a2 <u8x8_cad_SendCmd>
+    regulation_ratio = regulation_ratio & 0b111;
+ 768:	f005 0507 	and.w	r5, r5, #7
+    u8x8_cad_SendCmd(u8x8, ST756X_CMD_SET_LINE);
+ 76c:	2140      	movs	r1, #64	@ 0x40
+ 76e:	4620      	mov	r0, r4
+ 770:	f7ff fffe 	bl	7a2 <u8x8_cad_SendCmd>
+    // Set Regulation Ratio
+    u8x8_cad_SendCmd(u8x8, ST756X_CMD_REGULATION_RATIO | regulation_ratio);
+ 774:	f045 0120 	orr.w	r1, r5, #32
+ 778:	4620      	mov	r0, r4
+ 77a:	f7ff fffe 	bl	7a2 <u8x8_cad_SendCmd>
+    // Set EV
+    u8x8_cad_SendCmd(u8x8, ST756X_CMD_SET_EV);
+ 77e:	2181      	movs	r1, #129	@ 0x81
+ 780:	4620      	mov	r0, r4
+ 782:	f7ff fffe 	bl	7a2 <u8x8_cad_SendCmd>
+    u8x8_cad_SendArg(u8x8, contrast);
+ 786:	f006 013f 	and.w	r1, r6, #63	@ 0x3f
+ 78a:	4620      	mov	r0, r4
+ 78c:	f7ff fffe 	bl	7b4 <u8x8_cad_SendArg>
+    // Enable power
+    u8x8_cad_SendCmd(u8x8, ST756X_CMD_POWER_CONTROL | 0b111);
+ 790:	4620      	mov	r0, r4
+ 792:	212f      	movs	r1, #47	@ 0x2f
+ 794:	f7ff fffe 	bl	7a2 <u8x8_cad_SendCmd>
+
+    u8x8_cad_EndTransfer(u8x8);
+ 798:	4620      	mov	r0, r4
+}
+ 79a:	e8bd 40f8 	ldmia.w	sp!, {r3, r4, r5, r6, r7, lr}
+    u8x8_cad_EndTransfer(u8x8);
+ 79e:	f7ff bffe 	b.w	7d8 <u8x8_cad_EndTransfer>
+
+000007a2 <u8x8_cad_SendCmd>:
+
+*/
+
+#include "u8x8.h"
+
+uint8_t u8x8_cad_SendCmd(u8x8_t* u8x8, uint8_t cmd) {
+ 7a2:	b410      	push	{r4}
+    return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_SEND_CMD, cmd, NULL);
+ 7a4:	68c4      	ldr	r4, [r0, #12]
+uint8_t u8x8_cad_SendCmd(u8x8_t* u8x8, uint8_t cmd) {
+ 7a6:	460a      	mov	r2, r1
+    return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_SEND_CMD, cmd, NULL);
+ 7a8:	46a4      	mov	ip, r4
+ 7aa:	2300      	movs	r3, #0
+}
+ 7ac:	f85d 4b04 	ldr.w	r4, [sp], #4
+    return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_SEND_CMD, cmd, NULL);
+ 7b0:	2115      	movs	r1, #21
+ 7b2:	4760      	bx	ip
+
+000007b4 <u8x8_cad_SendArg>:
+
+uint8_t u8x8_cad_SendArg(u8x8_t* u8x8, uint8_t arg) {
+ 7b4:	b410      	push	{r4}
+    return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_SEND_ARG, arg, NULL);
+ 7b6:	68c4      	ldr	r4, [r0, #12]
+uint8_t u8x8_cad_SendArg(u8x8_t* u8x8, uint8_t arg) {
+ 7b8:	460a      	mov	r2, r1
+    return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_SEND_ARG, arg, NULL);
+ 7ba:	46a4      	mov	ip, r4
+ 7bc:	2300      	movs	r3, #0
+}
+ 7be:	f85d 4b04 	ldr.w	r4, [sp], #4
+    return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_SEND_ARG, arg, NULL);
+ 7c2:	2116      	movs	r1, #22
+ 7c4:	4760      	bx	ip
+
+000007c6 <u8x8_cad_StartTransfer>:
+
+uint8_t u8x8_cad_SendData(u8x8_t* u8x8, uint8_t cnt, uint8_t* data) {
+    return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_SEND_DATA, cnt, data);
+}
+
+uint8_t u8x8_cad_StartTransfer(u8x8_t* u8x8) {
+ 7c6:	b410      	push	{r4}
+    return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_START_TRANSFER, 0, NULL);
+ 7c8:	68c4      	ldr	r4, [r0, #12]
+ 7ca:	2300      	movs	r3, #0
+ 7cc:	46a4      	mov	ip, r4
+ 7ce:	461a      	mov	r2, r3
+}
+ 7d0:	f85d 4b04 	ldr.w	r4, [sp], #4
+    return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_START_TRANSFER, 0, NULL);
+ 7d4:	2118      	movs	r1, #24
+ 7d6:	4760      	bx	ip
+
+000007d8 <u8x8_cad_EndTransfer>:
+
+uint8_t u8x8_cad_EndTransfer(u8x8_t* u8x8) {
+ 7d8:	b410      	push	{r4}
+    return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_END_TRANSFER, 0, NULL);
+ 7da:	68c4      	ldr	r4, [r0, #12]
+ 7dc:	2300      	movs	r3, #0
+ 7de:	46a4      	mov	ip, r4
+ 7e0:	461a      	mov	r2, r3
+}
+ 7e2:	f85d 4b04 	ldr.w	r4, [sp], #4
+    return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_END_TRANSFER, 0, NULL);
+ 7e6:	2119      	movs	r1, #25
+ 7e8:	4760      	bx	ip

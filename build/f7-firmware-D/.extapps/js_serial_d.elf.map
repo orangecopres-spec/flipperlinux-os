@@ -1,0 +1,360 @@
+Archive member included to satisfy reference by file (symbol)
+
+/home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a(_arm_addsubdf3.o)
+                              build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o (__aeabi_i2d)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .data          0x00000000        0x0 /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a(_arm_addsubdf3.o)
+ .bss           0x00000000        0x0 /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a(_arm_addsubdf3.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libstdc++_nano.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libsupc++_nano.a
+
+.text           0x00000000     0x14fc
+ *(.text)
+ .text          0x00000000      0x378 /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a(_arm_addsubdf3.o)
+                0x00000000                __aeabi_drsub
+                0x00000008                __aeabi_dsub
+                0x00000008                __subdf3
+                0x0000000c                __adddf3
+                0x0000000c                __aeabi_dadd
+                0x00000284                __aeabi_ui2d
+                0x00000284                __floatunsidf
+                0x000002a4                __floatsidf
+                0x000002a4                __aeabi_i2d
+                0x000002c8                __extendsfdf2
+                0x000002c8                __aeabi_f2d
+                0x0000030c                __aeabi_ul2d
+                0x0000030c                __floatundidf
+                0x0000031c                __floatdidf
+                0x0000031c                __aeabi_l2d
+ *(.stub)
+ *(.text*)
+ .text.js_serial_expect_check_pattern_start
+                0x00000378       0x32 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ *fill*         0x000003aa        0x2 
+ .text.PatternArray_clear
+                0x000003ac       0x28 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .text.js_serial_deinit
+                0x000003d4       0x5c build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .text.js_serial_destroy
+                0x00000430       0x18 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .text.js_serial_create
+                0x00000448      0x188 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .text.js_serial_end
+                0x000005d0       0x7c build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .text.PatternArray_push_raw
+                0x0000064c       0x54 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .text.PatternArray_push_new
+                0x000006a0       0x1c build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .text.js_serial_expect_parse_string
+                0x000006bc       0x58 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .text.js_serial_expect_parse_array
+                0x00000714       0x98 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .text.js_serial_expect_parse_args
+                0x000007ac      0x144 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .text.js_serial_receive
+                0x000008f0       0x68 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .text.js_serial_expect
+                0x00000958      0x280 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .text.js_serial_read
+                0x00000bd8      0x134 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .text.js_serial_receive_any
+                0x00000d0c       0x64 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .text.js_serial_read_any
+                0x00000d70      0x124 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .text.js_serial_read_bytes
+                0x00000e94      0x134 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .text.js_serial_readln
+                0x00000fc8      0x150 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .text.js_serial_write
+                0x00001118      0x1e8 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .text.js_serial_setup
+                0x00001300      0x1a8 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .text.js_serial_on_async_rx
+                0x000014a8       0x4c build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .text.js_serial_ep
+                0x000014f4        0x8 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+                0x000014f4                js_serial_ep
+ *(.text.*)
+ *(.text._*)
+ *(.init)
+ *(.fini)
+
+.rodata         0x00001500      0x2f0
+ *(.rodata)
+ .rodata        0x00001500       0x20 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ *(.rodata1)
+ *(.rodata.*)
+ .rodata.js_serial_deinit.str1.4
+                0x00001520        0xa build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ *fill*         0x0000152a        0x2 
+ .rodata.js_serial_create.str1.4
+                0x0000152c       0x43 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ *fill*         0x0000156f        0x1 
+ .rodata.js_serial_end.str1.4
+                0x00001570       0x19 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ *fill*         0x00001589        0x3 
+ .rodata.js_serial_expect.str1.4
+                0x0000158c       0x1d build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ *fill*         0x000015a9        0x3 
+ .rodata.js_serial_setup.str1.4
+                0x000015ac       0x1d build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ *fill*         0x000015c9        0x3 
+ .rodata.str1.4
+                0x000015cc       0x6f build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ *fill*         0x0000163b        0x1 
+ .rodata.js_serial_id_variants.3
+                0x0000163c       0x10 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .rodata.js_serial_data_bit_variants.4
+                0x0000164c       0x20 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ *fill*         0x0000166c        0x4 
+ .rodata.js_serial_data_bits.5
+                0x00001670       0x18 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .rodata.js_serial_parity_variants.6
+                0x00001688       0x18 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .rodata.js_serial_parity.7
+                0x000016a0       0x18 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .rodata.js_serial_stop_bit_variants.8
+                0x000016b8       0x20 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .rodata.js_serial_stop_bits.9
+                0x000016d8       0x18 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .rodata.js_serial_framing_fields.10
+                0x000016f0       0x18 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .rodata.js_serial_setup_arg_list.11
+                0x00001708       0x48 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .rodata.js_serial_setup_args.2
+                0x00001750        0x8 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .rodata.js_serial_readln_arg_list.12
+                0x00001758       0x18 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .rodata.js_serial_readln_args.1
+                0x00001770        0x8 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .rodata.js_serial_read_any_arg_list.13
+                0x00001778       0x18 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .rodata.js_serial_read_any_args.0
+                0x00001790        0x8 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .rodata.plugin_descriptor
+                0x00001798        0xc build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .rodata.js_serial_desc
+                0x000017a4       0x10 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .rodata.js_serial_read_args
+                0x000017b4        0x8 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ *fill*         0x000017bc        0x4 
+ .rodata.js_serial_read_arg_list
+                0x000017c0       0x30 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+
+.data
+ *(.data)
+ *(.data1)
+ *(.data.*)
+
+.bss
+ *(.bss)
+ *(.bss*)
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0xc8
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0xc8 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x39bd
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000     0x39bd build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+
+.debug_abbrev   0x00000000      0x53c
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x53c build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+
+.debug_line     0x00000000     0x1556
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x4ad build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .debug_line.text.js_serial_expect_check_pattern_start
+                0x000004ad       0x7a build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .debug_line.text.PatternArray_clear
+                0x00000527       0x3b build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .debug_line.text.js_serial_deinit
+                0x00000562       0x44 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .debug_line.text.js_serial_destroy
+                0x000005a6       0x1f build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .debug_line.text.js_serial_create
+                0x000005c5       0x82 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .debug_line.text.js_serial_end
+                0x00000647       0x74 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .debug_line.text.PatternArray_push_raw
+                0x000006bb       0xa1 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .debug_line.text.PatternArray_push_new
+                0x0000075c       0x24 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .debug_line.text.js_serial_expect_parse_string
+                0x00000780       0x68 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .debug_line.text.js_serial_expect_parse_array
+                0x000007e8       0xc4 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .debug_line.text.js_serial_expect_parse_args
+                0x000008ac      0x130 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .debug_line.text.js_serial_receive
+                0x000009dc       0x7d build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .debug_line.text.js_serial_expect
+                0x00000a59      0x3a8 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .debug_line.text.js_serial_read
+                0x00000e01       0xe5 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .debug_line.text.js_serial_receive_any
+                0x00000ee6       0x6f build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .debug_line.text.js_serial_read_any
+                0x00000f55       0xf7 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .debug_line.text.js_serial_read_bytes
+                0x0000104c       0xe5 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .debug_line.text.js_serial_readln
+                0x00001131      0x11c build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .debug_line.text.js_serial_write
+                0x0000124d      0x1c5 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .debug_line.text.js_serial_setup
+                0x00001412       0xc5 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .debug_line.text.js_serial_on_async_rx
+                0x000014d7       0x66 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .debug_line.text.js_serial_ep
+                0x0000153d       0x19 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .debug_line_end
+                0x00001556        0x0 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+
+.debug_frame    0x00000000      0x354
+ *(.debug_frame)
+ .debug_frame   0x00000000      0x354 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+
+.debug_str      0x00000000     0x16ac
+ *(.debug_str)
+ .debug_str     0x00000000     0x16ac build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+                0x00000000       0xa8
+ *(.debug_line_str)
+ .debug_line_str
+                0x00000000       0xa8 /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a(_arm_addsubdf3.o)
+
+.debug_loclists
+                0x00000000     0x12de
+ *(.debug_loclists)
+ .debug_loclists
+                0x00000000     0x12de build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x00000000      0x148
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x00000000      0x148 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.ARM.attributes
+                0x00000000       0x34
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x34 build/f7-firmware-D/.extapps/js_serial/modules/js_serial.o
+ .ARM.attributes
+                0x00000034       0x22 /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a(_arm_addsubdf3.o)
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+
+/DISCARD/
+ *(.comment)
+ *(.comment.*)
+ *(.llvmbc)
+ *(.llvmcmd)
+OUTPUT(build/f7-firmware-D/.extapps/js_serial_d.elf elf32-littlearm)
+LOAD linker stubs

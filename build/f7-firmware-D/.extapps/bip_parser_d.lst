@@ -1,0 +1,939 @@
+
+build/f7-firmware-D/.extapps/bip_parser_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <bip_verify>:
+    0x0263de1278f3,
+    0x51284c3686a6,
+    0x6a470d54127c,
+};
+
+bool bip_verify(Nfc* nfc) {
+   0:	b5f0      	push	{r4, r5, r6, r7, lr}
+   2:	b08b      	sub	sp, #44	@ 0x2c
+   4:	4606      	mov	r6, r0
+    bool verified = true;
+
+    const uint8_t verify_sector = 0;
+    uint8_t block_num = mf_classic_get_first_block_num_of_sector(verify_sector);
+   6:	2000      	movs	r0, #0
+   8:	4b19      	ldr	r3, [pc, #100]	@ (70 <bip_verify+0x70>)
+   a:	4798      	blx	r3
+   c:	4605      	mov	r5, r0
+    FURI_LOG_D(TAG, "Verifying sector %u", verify_sector);
+   e:	2300      	movs	r3, #0
+  10:	4a18      	ldr	r2, [pc, #96]	@ (74 <bip_verify+0x74>)
+  12:	4919      	ldr	r1, [pc, #100]	@ (78 <bip_verify+0x78>)
+  14:	2005      	movs	r0, #5
+  16:	4c19      	ldr	r4, [pc, #100]	@ (7c <bip_verify+0x7c>)
+  18:	47a0      	blx	r4
+
+    MfClassicKey key_a_0 = {};
+  1a:	2400      	movs	r4, #0
+  1c:	9408      	str	r4, [sp, #32]
+  1e:	f8ad 4024 	strh.w	r4, [sp, #36]	@ 0x24
+    bit_lib_num_to_bytes_be(bip_keys_a[0], COUNT_OF(key_a_0.data), key_a_0.data);
+  22:	ab08      	add	r3, sp, #32
+  24:	2206      	movs	r2, #6
+  26:	a110      	add	r1, pc, #64	@ (adr r1, 68 <bip_verify+0x68>)
+  28:	e9d1 0100 	ldrd	r0, r1, [r1]
+  2c:	4f14      	ldr	r7, [pc, #80]	@ (80 <bip_verify+0x80>)
+  2e:	47b8      	blx	r7
+
+    MfClassicAuthContext auth_ctx = {};
+  30:	aa02      	add	r2, sp, #8
+  32:	9402      	str	r4, [sp, #8]
+  34:	9403      	str	r4, [sp, #12]
+  36:	9404      	str	r4, [sp, #16]
+  38:	9405      	str	r4, [sp, #20]
+  3a:	9406      	str	r4, [sp, #24]
+  3c:	9407      	str	r4, [sp, #28]
+    MfClassicError error =
+        mf_classic_poller_sync_auth(nfc, block_num, &key_a_0, MfClassicKeyTypeA, &auth_ctx);
+  3e:	9200      	str	r2, [sp, #0]
+  40:	4623      	mov	r3, r4
+  42:	aa08      	add	r2, sp, #32
+  44:	4629      	mov	r1, r5
+  46:	4630      	mov	r0, r6
+  48:	4c0e      	ldr	r4, [pc, #56]	@ (84 <bip_verify+0x84>)
+  4a:	47a0      	blx	r4
+
+    if(error != MfClassicErrorNone) {
+  4c:	b910      	cbnz	r0, 54 <bip_verify+0x54>
+    bool verified = true;
+  4e:	2001      	movs	r0, #1
+        FURI_LOG_D(TAG, "Failed to read block %u: %d", block_num, error);
+        verified = false;
+    }
+
+    return verified;
+}
+  50:	b00b      	add	sp, #44	@ 0x2c
+  52:	bdf0      	pop	{r4, r5, r6, r7, pc}
+        FURI_LOG_D(TAG, "Failed to read block %u: %d", block_num, error);
+  54:	9000      	str	r0, [sp, #0]
+  56:	462b      	mov	r3, r5
+  58:	4a0b      	ldr	r2, [pc, #44]	@ (88 <bip_verify+0x88>)
+  5a:	4907      	ldr	r1, [pc, #28]	@ (78 <bip_verify+0x78>)
+  5c:	2005      	movs	r0, #5
+  5e:	4c07      	ldr	r4, [pc, #28]	@ (7c <bip_verify+0x7c>)
+  60:	47a0      	blx	r4
+        verified = false;
+  62:	2000      	movs	r0, #0
+  64:	e7f4      	b.n	50 <bip_verify+0x50>
+  66:	bf00      	nop
+  68:	f33af429 	.word	0xf33af429
+  6c:	00003a42 	.word	0x00003a42
+	...
+  78:	00000014 	.word	0x00000014
+	...
+  88:	00000018 	.word	0x00000018
+
+0000008c <parse_uint32_le>:
+    furi_assert(value);
+
+    *value = (data[0]) | (data[1] << 8);
+}
+
+static void parse_uint32_le(const uint8_t* data, uint32_t* value) {
+  8c:	b508      	push	{r3, lr}
+    furi_assert(data);
+  8e:	b168      	cbz	r0, ac <parse_uint32_le+0x20>
+  90:	4602      	mov	r2, r0
+    furi_assert(value);
+  92:	b179      	cbz	r1, b4 <sukima174+0x4>
+
+    *value = (data[0]) | (data[1] << 8) | (data[2] << 16) | (data[3] << 24);
+  94:	7803      	ldrb	r3, [r0, #0]
+  96:	7840      	ldrb	r0, [r0, #1]
+  98:	ea43 2300 	orr.w	r3, r3, r0, lsl #8
+  9c:	7890      	ldrb	r0, [r2, #2]
+  9e:	ea43 4300 	orr.w	r3, r3, r0, lsl #16
+  a2:	78d2      	ldrb	r2, [r2, #3]
+  a4:	ea43 6302 	orr.w	r3, r3, r2, lsl #24
+  a8:	600b      	str	r3, [r1, #0]
+}
+  aa:	bd08      	pop	{r3, pc}
+    furi_assert(data);
+  ac:	f04f 0c01 	mov.w	ip, #1
+
+000000b0 <sukima174>:
+  b0:	4b02      	ldr	r3, [pc, #8]	@ (bc <sukima191+0x4>)
+  b2:	4798      	blx	r3
+    furi_assert(value);
+  b4:	f04f 0c01 	mov.w	ip, #1
+
+000000b8 <sukima191>:
+  b8:	4b00      	ldr	r3, [pc, #0]	@ (bc <sukima191+0x4>)
+  ba:	4798      	blx	r3
+  bc:	00000000 	.word	0x00000000
+
+000000c0 <parse_uint16_le>:
+static void parse_uint16_le(const uint8_t* data, uint16_t* value) {
+  c0:	b508      	push	{r3, lr}
+    furi_assert(data);
+  c2:	b130      	cbz	r0, d2 <parse_uint16_le+0x12>
+    furi_assert(value);
+  c4:	b149      	cbz	r1, da <sukima248+0x4>
+    *value = (data[0]) | (data[1] << 8);
+  c6:	7803      	ldrb	r3, [r0, #0]
+  c8:	7842      	ldrb	r2, [r0, #1]
+  ca:	ea43 2302 	orr.w	r3, r3, r2, lsl #8
+  ce:	800b      	strh	r3, [r1, #0]
+}
+  d0:	bd08      	pop	{r3, pc}
+    furi_assert(data);
+  d2:	f04f 0c01 	mov.w	ip, #1
+
+000000d6 <sukima248>:
+  d6:	4b03      	ldr	r3, [pc, #12]	@ (e4 <sukima265+0x6>)
+  d8:	4798      	blx	r3
+    furi_assert(value);
+  da:	f04f 0c01 	mov.w	ip, #1
+
+000000de <sukima265>:
+  de:	4b01      	ldr	r3, [pc, #4]	@ (e4 <sukima265+0x6>)
+  e0:	4798      	blx	r3
+  e2:	bf00      	nop
+  e4:	00000000 	.word	0x00000000
+
+000000e8 <is_bip_block_empty>:
+static bool is_bip_block_empty(const MfClassicBlock* block) {
+  e8:	b508      	push	{r3, lr}
+    furi_assert(block);
+  ea:	b138      	cbz	r0, fc <is_bip_block_empty+0x14>
+  ec:	4601      	mov	r1, r0
+    for(size_t i = 0; i < sizeof(block->data) - 1; i++) {
+  ee:	2300      	movs	r3, #0
+  f0:	2b0e      	cmp	r3, #14
+  f2:	d807      	bhi.n	104 <sukima325+0x4>
+        if(block->data[i] != 0) {
+  f4:	5cca      	ldrb	r2, [r1, r3]
+  f6:	b93a      	cbnz	r2, 108 <sukima325+0x8>
+    for(size_t i = 0; i < sizeof(block->data) - 1; i++) {
+  f8:	3301      	adds	r3, #1
+  fa:	e7f9      	b.n	f0 <is_bip_block_empty+0x8>
+    furi_assert(block);
+  fc:	f04f 0c01 	mov.w	ip, #1
+
+00000100 <sukima325>:
+ 100:	4b02      	ldr	r3, [pc, #8]	@ (10c <sukima325+0xc>)
+ 102:	4798      	blx	r3
+    return true;
+ 104:	2001      	movs	r0, #1
+}
+ 106:	bd08      	pop	{r3, pc}
+            return false;
+ 108:	2000      	movs	r0, #0
+ 10a:	e7fc      	b.n	106 <sukima325+0x6>
+ 10c:	00000000 	.word	0x00000000
+
+00000110 <parse_bip_timestamp>:
+static void parse_bip_timestamp(const MfClassicBlock* block, BipTimestamp* timestamp) {
+ 110:	b508      	push	{r3, lr}
+    furi_assert(block);
+ 112:	b340      	cbz	r0, 166 <parse_bip_timestamp+0x56>
+ 114:	4603      	mov	r3, r0
+    furi_assert(timestamp);
+ 116:	b351      	cbz	r1, 16e <sukima456+0x4>
+    timestamp->day = (((block->data[1] << 8) + block->data[0]) >> 6) & 0x1f;
+ 118:	7840      	ldrb	r0, [r0, #1]
+ 11a:	781a      	ldrb	r2, [r3, #0]
+ 11c:	eb02 2200 	add.w	r2, r2, r0, lsl #8
+ 120:	f3c2 1284 	ubfx	r2, r2, #6, #5
+ 124:	70ca      	strb	r2, [r1, #3]
+    timestamp->month = (((block->data[1] << 8) + block->data[0]) >> 11) & 0xf;
+ 126:	785a      	ldrb	r2, [r3, #1]
+ 128:	f3c2 02c3 	ubfx	r2, r2, #3, #4
+ 12c:	708a      	strb	r2, [r1, #2]
+    timestamp->year = 2000 + ((((block->data[2] << 8) + block->data[1]) >> 7) & 0x1f);
+ 12e:	7898      	ldrb	r0, [r3, #2]
+ 130:	785a      	ldrb	r2, [r3, #1]
+ 132:	eb02 2200 	add.w	r2, r2, r0, lsl #8
+ 136:	f3c2 12c4 	ubfx	r2, r2, #7, #5
+ 13a:	f502 62fa 	add.w	r2, r2, #2000	@ 0x7d0
+ 13e:	800a      	strh	r2, [r1, #0]
+    timestamp->hour = (((block->data[3] << 8) + block->data[2]) >> 4) & 0x1f;
+ 140:	78d8      	ldrb	r0, [r3, #3]
+ 142:	789a      	ldrb	r2, [r3, #2]
+ 144:	eb02 2200 	add.w	r2, r2, r0, lsl #8
+ 148:	f3c2 1204 	ubfx	r2, r2, #4, #5
+ 14c:	710a      	strb	r2, [r1, #4]
+    timestamp->minute = (((block->data[3] << 8) + block->data[2]) >> 9) & 0x3f;
+ 14e:	78da      	ldrb	r2, [r3, #3]
+ 150:	f3c2 0245 	ubfx	r2, r2, #1, #6
+ 154:	714a      	strb	r2, [r1, #5]
+    timestamp->second = (((block->data[4] << 8) + block->data[3]) >> 7) & 0x3f;
+ 156:	791a      	ldrb	r2, [r3, #4]
+ 158:	78db      	ldrb	r3, [r3, #3]
+ 15a:	eb03 2302 	add.w	r3, r3, r2, lsl #8
+ 15e:	f3c3 13c5 	ubfx	r3, r3, #7, #6
+ 162:	718b      	strb	r3, [r1, #6]
+}
+ 164:	bd08      	pop	{r3, pc}
+    furi_assert(block);
+ 166:	f04f 0c01 	mov.w	ip, #1
+
+0000016a <sukima456>:
+ 16a:	4b03      	ldr	r3, [pc, #12]	@ (178 <sukima473+0x6>)
+ 16c:	4798      	blx	r3
+    furi_assert(timestamp);
+ 16e:	f04f 0c01 	mov.w	ip, #1
+
+00000172 <sukima473>:
+ 172:	4b01      	ldr	r3, [pc, #4]	@ (178 <sukima473+0x6>)
+ 174:	4798      	blx	r3
+ 176:	bf00      	nop
+ 178:	00000000 	.word	0x00000000
+
+0000017c <parse_uint16_txn_amount>:
+
+static void parse_uint16_txn_amount(const uint8_t* data, uint16_t* value) {
+ 17c:	b510      	push	{r4, lr}
+    furi_assert(data);
+ 17e:	b138      	cbz	r0, 190 <parse_uint16_txn_amount+0x14>
+ 180:	460c      	mov	r4, r1
+    furi_assert(value);
+ 182:	b149      	cbz	r1, 198 <sukima535+0x4>
+
+    parse_uint16_le(data, value);
+ 184:	4b06      	ldr	r3, [pc, #24]	@ (1a0 <sukima552+0x4>)
+ 186:	4798      	blx	r3
+    *value = *value >> 2;
+ 188:	8823      	ldrh	r3, [r4, #0]
+ 18a:	089b      	lsrs	r3, r3, #2
+ 18c:	8023      	strh	r3, [r4, #0]
+}
+ 18e:	bd10      	pop	{r4, pc}
+    furi_assert(data);
+ 190:	f04f 0c01 	mov.w	ip, #1
+
+00000194 <sukima535>:
+ 194:	4b03      	ldr	r3, [pc, #12]	@ (1a4 <sukima552+0x8>)
+ 196:	4798      	blx	r3
+    furi_assert(value);
+ 198:	f04f 0c01 	mov.w	ip, #1
+
+0000019c <sukima552>:
+ 19c:	4b01      	ldr	r3, [pc, #4]	@ (1a4 <sukima552+0x8>)
+ 19e:	4798      	blx	r3
+	...
+
+000001a8 <compare_bip_timestamp>:
+static int compare_bip_timestamp(const BipTimestamp* t1, const BipTimestamp* t2) {
+ 1a8:	b508      	push	{r3, lr}
+    furi_assert(t1);
+ 1aa:	b138      	cbz	r0, 1bc <compare_bip_timestamp+0x14>
+ 1ac:	4603      	mov	r3, r0
+    furi_assert(t2);
+ 1ae:	b149      	cbz	r1, 1c4 <sukima617+0x4>
+    if(t1->year != t2->year) {
+ 1b0:	8800      	ldrh	r0, [r0, #0]
+ 1b2:	880a      	ldrh	r2, [r1, #0]
+ 1b4:	4290      	cmp	r0, r2
+ 1b6:	d009      	beq.n	1cc <sukima634+0x4>
+        return t1->year - t2->year;
+ 1b8:	1a80      	subs	r0, r0, r2
+}
+ 1ba:	bd08      	pop	{r3, pc}
+    furi_assert(t1);
+ 1bc:	f04f 0c01 	mov.w	ip, #1
+
+000001c0 <sukima617>:
+ 1c0:	4b12      	ldr	r3, [pc, #72]	@ (20c <sukima634+0x44>)
+ 1c2:	4798      	blx	r3
+    furi_assert(t2);
+ 1c4:	f04f 0c01 	mov.w	ip, #1
+
+000001c8 <sukima634>:
+ 1c8:	4b10      	ldr	r3, [pc, #64]	@ (20c <sukima634+0x44>)
+ 1ca:	4798      	blx	r3
+    if(t1->month != t2->month) {
+ 1cc:	7898      	ldrb	r0, [r3, #2]
+ 1ce:	788a      	ldrb	r2, [r1, #2]
+ 1d0:	4290      	cmp	r0, r2
+ 1d2:	d001      	beq.n	1d8 <sukima634+0x10>
+        return t1->month - t2->month;
+ 1d4:	1a80      	subs	r0, r0, r2
+ 1d6:	e7f0      	b.n	1ba <compare_bip_timestamp+0x12>
+    if(t1->day != t2->day) {
+ 1d8:	78d8      	ldrb	r0, [r3, #3]
+ 1da:	78ca      	ldrb	r2, [r1, #3]
+ 1dc:	4290      	cmp	r0, r2
+ 1de:	d001      	beq.n	1e4 <sukima634+0x1c>
+        return t1->day - t2->day;
+ 1e0:	1a80      	subs	r0, r0, r2
+ 1e2:	e7ea      	b.n	1ba <compare_bip_timestamp+0x12>
+    if(t1->hour != t2->hour) {
+ 1e4:	7918      	ldrb	r0, [r3, #4]
+ 1e6:	790a      	ldrb	r2, [r1, #4]
+ 1e8:	4290      	cmp	r0, r2
+ 1ea:	d001      	beq.n	1f0 <sukima634+0x28>
+        return t1->hour - t2->hour;
+ 1ec:	1a80      	subs	r0, r0, r2
+ 1ee:	e7e4      	b.n	1ba <compare_bip_timestamp+0x12>
+    if(t1->minute != t2->minute) {
+ 1f0:	7958      	ldrb	r0, [r3, #5]
+ 1f2:	794a      	ldrb	r2, [r1, #5]
+ 1f4:	4290      	cmp	r0, r2
+ 1f6:	d001      	beq.n	1fc <sukima634+0x34>
+        return t1->minute - t2->minute;
+ 1f8:	1a80      	subs	r0, r0, r2
+ 1fa:	e7de      	b.n	1ba <compare_bip_timestamp+0x12>
+    if(t1->second != t2->second) {
+ 1fc:	7998      	ldrb	r0, [r3, #6]
+ 1fe:	798b      	ldrb	r3, [r1, #6]
+ 200:	4298      	cmp	r0, r3
+ 202:	d001      	beq.n	208 <sukima634+0x40>
+        return t1->second - t2->second;
+ 204:	1ac0      	subs	r0, r0, r3
+ 206:	e7d8      	b.n	1ba <compare_bip_timestamp+0x12>
+    return 0;
+ 208:	2000      	movs	r0, #0
+ 20a:	e7d6      	b.n	1ba <compare_bip_timestamp+0x12>
+ 20c:	00000000 	.word	0x00000000
+
+00000210 <print_bip_timestamp>:
+static void print_bip_timestamp(const BipTimestamp* timestamp, FuriString* str) {
+ 210:	b530      	push	{r4, r5, lr}
+ 212:	b085      	sub	sp, #20
+ 214:	4603      	mov	r3, r0
+    furi_assert(timestamp);
+ 216:	b188      	cbz	r0, 23c <print_bip_timestamp+0x2c>
+ 218:	4608      	mov	r0, r1
+ 21a:	461a      	mov	r2, r3
+    furi_assert(str);
+ 21c:	b191      	cbz	r1, 244 <sukima787+0x4>
+        timestamp->day,
+ 21e:	78db      	ldrb	r3, [r3, #3]
+        timestamp->hour,
+ 220:	7911      	ldrb	r1, [r2, #4]
+        timestamp->minute,
+ 222:	7954      	ldrb	r4, [r2, #5]
+        timestamp->second);
+ 224:	7995      	ldrb	r5, [r2, #6]
+    furi_string_cat_printf(
+ 226:	9503      	str	r5, [sp, #12]
+ 228:	9402      	str	r4, [sp, #8]
+ 22a:	9101      	str	r1, [sp, #4]
+ 22c:	9300      	str	r3, [sp, #0]
+ 22e:	7893      	ldrb	r3, [r2, #2]
+ 230:	8812      	ldrh	r2, [r2, #0]
+ 232:	4906      	ldr	r1, [pc, #24]	@ (24c <sukima804+0x4>)
+ 234:	4c06      	ldr	r4, [pc, #24]	@ (250 <sukima804+0x8>)
+ 236:	47a0      	blx	r4
+}
+ 238:	b005      	add	sp, #20
+ 23a:	bd30      	pop	{r4, r5, pc}
+    furi_assert(timestamp);
+ 23c:	f04f 0c01 	mov.w	ip, #1
+
+00000240 <sukima787>:
+ 240:	4b04      	ldr	r3, [pc, #16]	@ (254 <sukima804+0xc>)
+ 242:	4798      	blx	r3
+    furi_assert(str);
+ 244:	f04f 0c01 	mov.w	ip, #1
+
+00000248 <sukima804>:
+ 248:	4b02      	ldr	r3, [pc, #8]	@ (254 <sukima804+0xc>)
+ 24a:	4798      	blx	r3
+ 24c:	00000034 	.word	0x00000034
+	...
+
+00000258 <bip_parse>:
+typedef struct {
+    BipTimestamp timestamp;
+    uint16_t amount;
+} BipTransaction;
+
+static bool bip_parse(const NfcDevice* device, FuriString* parsed_data) {
+ 258:	e92d 43f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, lr}
+ 25c:	b097      	sub	sp, #92	@ 0x5c
+    furi_assert(device);
+ 25e:	b1f0      	cbz	r0, 29e <bip_parse+0x46>
+ 260:	460c      	mov	r4, r1
+ 262:	4605      	mov	r5, r0
+    furi_assert(parsed_data);
+ 264:	b1f9      	cbz	r1, 2a6 <sukima931+0x4>
+        uint16_t balance;
+        uint16_t flags;
+        BipTimestamp trip_time_window;
+        BipTransaction top_ups[3];
+        BipTransaction charges[3];
+    } bip_data = {
+ 266:	224c      	movs	r2, #76	@ 0x4c
+ 268:	2100      	movs	r1, #0
+ 26a:	a803      	add	r0, sp, #12
+ 26c:	4b94      	ldr	r3, [pc, #592]	@ (4c0 <sukima948+0x216>)
+ 26e:	4798      	blx	r3
+                {{0, 0, 0, 0, 0, 0}, 0},
+                {{0, 0, 0, 0, 0, 0}, 0},
+            },
+    };
+
+    const MfClassicData* data = nfc_device_get_data(device, NfcProtocolMfClassic);
+ 270:	2107      	movs	r1, #7
+ 272:	4628      	mov	r0, r5
+ 274:	4b93      	ldr	r3, [pc, #588]	@ (4c4 <sukima948+0x21a>)
+ 276:	4798      	blx	r3
+ 278:	4605      	mov	r5, r0
+
+    do {
+        // verify first sector keys
+        MfClassicSectorTrailer* sec_tr = mf_classic_get_sector_trailer_by_sector(data, 0);
+ 27a:	2100      	movs	r1, #0
+ 27c:	4b92      	ldr	r3, [pc, #584]	@ (4c8 <sukima948+0x21e>)
+ 27e:	4798      	blx	r3
+ 280:	4606      	mov	r6, r0
+        uint64_t key = bit_lib_bytes_to_num_be(sec_tr->key_a.data, 6);
+ 282:	2106      	movs	r1, #6
+ 284:	4b91      	ldr	r3, [pc, #580]	@ (4cc <sukima948+0x222>)
+ 286:	4798      	blx	r3
+        if(key != bip_keys_a[0]) {
+ 288:	4a91      	ldr	r2, [pc, #580]	@ (4d0 <sukima948+0x226>)
+ 28a:	f643 2342 	movw	r3, #14914	@ 0x3a42
+ 28e:	4299      	cmp	r1, r3
+ 290:	bf08      	it	eq
+ 292:	4290      	cmpeq	r0, r2
+ 294:	d00b      	beq.n	2ae <sukima948+0x4>
+            parsed = false;
+ 296:	2000      	movs	r0, #0
+
+        parsed = true;
+    } while(false);
+
+    return parsed;
+}
+ 298:	b017      	add	sp, #92	@ 0x5c
+ 29a:	e8bd 83f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, pc}
+    furi_assert(device);
+ 29e:	f04f 0c01 	mov.w	ip, #1
+
+000002a2 <sukima931>:
+ 2a2:	4b8c      	ldr	r3, [pc, #560]	@ (4d4 <sukima948+0x22a>)
+ 2a4:	4798      	blx	r3
+    furi_assert(parsed_data);
+ 2a6:	f04f 0c01 	mov.w	ip, #1
+
+000002aa <sukima948>:
+ 2aa:	4b8a      	ldr	r3, [pc, #552]	@ (4d4 <sukima948+0x22a>)
+ 2ac:	4798      	blx	r3
+        key = bit_lib_bytes_to_num_be(sec_tr->key_b.data, 6);
+ 2ae:	2106      	movs	r1, #6
+ 2b0:	f106 000a 	add.w	r0, r6, #10
+ 2b4:	4b85      	ldr	r3, [pc, #532]	@ (4cc <sukima948+0x222>)
+ 2b6:	4798      	blx	r3
+        if(key != bip_keys_b[0]) {
+ 2b8:	4a87      	ldr	r2, [pc, #540]	@ (4d8 <sukima948+0x22e>)
+ 2ba:	f641 73c2 	movw	r3, #8130	@ 0x1fc2
+ 2be:	4299      	cmp	r1, r3
+ 2c0:	bf08      	it	eq
+ 2c2:	4290      	cmpeq	r0, r2
+ 2c4:	d001      	beq.n	2ca <sukima948+0x20>
+            parsed = false;
+ 2c6:	2000      	movs	r0, #0
+ 2c8:	e7e6      	b.n	298 <bip_parse+0x40>
+        parse_uint32_le(&data->block[SECTOR_BLOCK_OFFSET(0, 1)].data[4], &bip_data.card_id);
+ 2ca:	a903      	add	r1, sp, #12
+ 2cc:	f105 004c 	add.w	r0, r5, #76	@ 0x4c
+ 2d0:	4b82      	ldr	r3, [pc, #520]	@ (4dc <sukima948+0x232>)
+ 2d2:	4798      	blx	r3
+        parse_uint16_le(&data->block[SECTOR_BLOCK_OFFSET(8, 1)].data[0], &bip_data.balance);
+ 2d4:	a904      	add	r1, sp, #16
+ 2d6:	f505 7012 	add.w	r0, r5, #584	@ 0x248
+ 2da:	4e81      	ldr	r6, [pc, #516]	@ (4e0 <sukima948+0x236>)
+ 2dc:	47b0      	blx	r6
+        parse_uint16_le(&data->block[SECTOR_BLOCK_OFFSET(8, 1)].data[2], &bip_data.flags);
+ 2de:	f10d 0112 	add.w	r1, sp, #18
+ 2e2:	f205 204a 	addw	r0, r5, #586	@ 0x24a
+ 2e6:	47b0      	blx	r6
+        parse_bip_timestamp(&data->block[SECTOR_BLOCK_OFFSET(5, 1)], &bip_data.trip_time_window);
+ 2e8:	a905      	add	r1, sp, #20
+ 2ea:	f505 70c4 	add.w	r0, r5, #392	@ 0x188
+ 2ee:	4b7d      	ldr	r3, [pc, #500]	@ (4e4 <sukima948+0x23a>)
+ 2f0:	4798      	blx	r3
+        for(size_t i = 0; i < 3; i++) {
+ 2f2:	2600      	movs	r6, #0
+ 2f4:	e000      	b.n	2f8 <sukima948+0x4e>
+ 2f6:	3601      	adds	r6, #1
+ 2f8:	2e02      	cmp	r6, #2
+ 2fa:	d822      	bhi.n	342 <sukima948+0x98>
+            if(is_bip_block_empty(&data->block[SECTOR_BLOCK_OFFSET(10, i)])) {
+ 2fc:	f106 0828 	add.w	r8, r6, #40	@ 0x28
+ 300:	ea4f 1708 	mov.w	r7, r8, lsl #4
+ 304:	3738      	adds	r7, #56	@ 0x38
+ 306:	442f      	add	r7, r5
+ 308:	4638      	mov	r0, r7
+ 30a:	4b77      	ldr	r3, [pc, #476]	@ (4e8 <sukima948+0x23e>)
+ 30c:	4798      	blx	r3
+ 30e:	2800      	cmp	r0, #0
+ 310:	d1f1      	bne.n	2f6 <sukima948+0x4c>
+            parse_bip_timestamp(&data->block[SECTOR_BLOCK_OFFSET(10, i)], &top_up->timestamp);
+ 312:	ea4f 0986 	mov.w	r9, r6, lsl #2
+ 316:	eb06 0186 	add.w	r1, r6, r6, lsl #2
+ 31a:	0049      	lsls	r1, r1, #1
+ 31c:	3110      	adds	r1, #16
+ 31e:	ab03      	add	r3, sp, #12
+ 320:	4419      	add	r1, r3
+ 322:	4638      	mov	r0, r7
+ 324:	4b6f      	ldr	r3, [pc, #444]	@ (4e4 <sukima948+0x23a>)
+ 326:	4798      	blx	r3
+            parse_uint16_txn_amount(
+ 328:	4649      	mov	r1, r9
+ 32a:	4431      	add	r1, r6
+ 32c:	0049      	lsls	r1, r1, #1
+ 32e:	3118      	adds	r1, #24
+ 330:	ea4f 1008 	mov.w	r0, r8, lsl #4
+ 334:	3041      	adds	r0, #65	@ 0x41
+ 336:	ab03      	add	r3, sp, #12
+ 338:	4419      	add	r1, r3
+ 33a:	4428      	add	r0, r5
+ 33c:	4b6b      	ldr	r3, [pc, #428]	@ (4ec <sukima948+0x242>)
+ 33e:	4798      	blx	r3
+ 340:	e7d9      	b.n	2f6 <sukima948+0x4c>
+        for(size_t i = 0; i < 3; i++) {
+ 342:	2600      	movs	r6, #0
+ 344:	e000      	b.n	348 <sukima948+0x9e>
+ 346:	3601      	adds	r6, #1
+ 348:	2e02      	cmp	r6, #2
+ 34a:	d824      	bhi.n	396 <sukima948+0xec>
+            if(is_bip_block_empty(&data->block[SECTOR_BLOCK_OFFSET(11, i)])) {
+ 34c:	f106 092c 	add.w	r9, r6, #44	@ 0x2c
+ 350:	ea4f 1709 	mov.w	r7, r9, lsl #4
+ 354:	3738      	adds	r7, #56	@ 0x38
+ 356:	442f      	add	r7, r5
+ 358:	4638      	mov	r0, r7
+ 35a:	4b63      	ldr	r3, [pc, #396]	@ (4e8 <sukima948+0x23e>)
+ 35c:	4798      	blx	r3
+ 35e:	2800      	cmp	r0, #0
+ 360:	d1f1      	bne.n	346 <sukima948+0x9c>
+            parse_bip_timestamp(&data->block[SECTOR_BLOCK_OFFSET(11, i)], &charge->timestamp);
+ 362:	ea4f 0886 	mov.w	r8, r6, lsl #2
+ 366:	eb06 0186 	add.w	r1, r6, r6, lsl #2
+ 36a:	0049      	lsls	r1, r1, #1
+ 36c:	3128      	adds	r1, #40	@ 0x28
+ 36e:	ab03      	add	r3, sp, #12
+ 370:	4419      	add	r1, r3
+ 372:	3106      	adds	r1, #6
+ 374:	4638      	mov	r0, r7
+ 376:	4b5b      	ldr	r3, [pc, #364]	@ (4e4 <sukima948+0x23a>)
+ 378:	4798      	blx	r3
+            parse_uint16_txn_amount(
+ 37a:	eb08 0306 	add.w	r3, r8, r6
+ 37e:	005b      	lsls	r3, r3, #1
+ 380:	3330      	adds	r3, #48	@ 0x30
+ 382:	aa03      	add	r2, sp, #12
+ 384:	18d1      	adds	r1, r2, r3
+ 386:	ea4f 1009 	mov.w	r0, r9, lsl #4
+ 38a:	3042      	adds	r0, #66	@ 0x42
+ 38c:	3106      	adds	r1, #6
+ 38e:	4428      	add	r0, r5
+ 390:	4b56      	ldr	r3, [pc, #344]	@ (4ec <sukima948+0x242>)
+ 392:	4798      	blx	r3
+ 394:	e7d7      	b.n	346 <sukima948+0x9c>
+            bip_data.flags);
+ 396:	f8bd 3012 	ldrh.w	r3, [sp, #18]
+        furi_string_printf(
+ 39a:	9300      	str	r3, [sp, #0]
+ 39c:	f8bd 3010 	ldrh.w	r3, [sp, #16]
+ 3a0:	9a03      	ldr	r2, [sp, #12]
+ 3a2:	4953      	ldr	r1, [pc, #332]	@ (4f0 <sukima948+0x246>)
+ 3a4:	4620      	mov	r0, r4
+ 3a6:	4d53      	ldr	r5, [pc, #332]	@ (4f4 <sukima948+0x24a>)
+ 3a8:	47a8      	blx	r5
+        print_bip_timestamp(&bip_data.trip_time_window, parsed_data);
+ 3aa:	4621      	mov	r1, r4
+ 3ac:	a805      	add	r0, sp, #20
+ 3ae:	4b52      	ldr	r3, [pc, #328]	@ (4f8 <sukima948+0x24e>)
+ 3b0:	4798      	blx	r3
+        for(size_t i = 1; i < 3; i++) {
+ 3b2:	2501      	movs	r5, #1
+        size_t newest_top_up = 0;
+ 3b4:	f04f 0800 	mov.w	r8, #0
+        for(size_t i = 1; i < 3; i++) {
+ 3b8:	e000      	b.n	3bc <sukima948+0x112>
+ 3ba:	3501      	adds	r5, #1
+ 3bc:	2d02      	cmp	r5, #2
+ 3be:	d810      	bhi.n	3e2 <sukima948+0x138>
+            const BipTimestamp* newest = &bip_data.top_ups[newest_top_up].timestamp;
+ 3c0:	eb08 0188 	add.w	r1, r8, r8, lsl #2
+ 3c4:	0049      	lsls	r1, r1, #1
+ 3c6:	3110      	adds	r1, #16
+            const BipTimestamp* current = &bip_data.top_ups[i].timestamp;
+ 3c8:	eb05 0085 	add.w	r0, r5, r5, lsl #2
+ 3cc:	0040      	lsls	r0, r0, #1
+ 3ce:	3010      	adds	r0, #16
+            if(compare_bip_timestamp(current, newest) > 0) {
+ 3d0:	ab03      	add	r3, sp, #12
+ 3d2:	4419      	add	r1, r3
+ 3d4:	4418      	add	r0, r3
+ 3d6:	4b49      	ldr	r3, [pc, #292]	@ (4fc <sukima948+0x252>)
+ 3d8:	4798      	blx	r3
+ 3da:	2800      	cmp	r0, #0
+ 3dc:	dded      	ble.n	3ba <sukima948+0x110>
+                newest_top_up = i;
+ 3de:	46a8      	mov	r8, r5
+ 3e0:	e7eb      	b.n	3ba <sukima948+0x110>
+        furi_string_cat_printf(parsed_data, "\n\e#Last Top-ups");
+ 3e2:	4947      	ldr	r1, [pc, #284]	@ (500 <sukima948+0x256>)
+ 3e4:	4620      	mov	r0, r4
+ 3e6:	4b47      	ldr	r3, [pc, #284]	@ (504 <sukima948+0x25a>)
+ 3e8:	4798      	blx	r3
+        for(size_t i = 0; i < 3; i++) {
+ 3ea:	2700      	movs	r7, #0
+ 3ec:	e01f      	b.n	42e <sukima948+0x184>
+            const BipTransaction* top_up = &bip_data.top_ups[(3u + newest_top_up - i) % 3];
+ 3ee:	eba8 0507 	sub.w	r5, r8, r7
+ 3f2:	3503      	adds	r5, #3
+ 3f4:	4b44      	ldr	r3, [pc, #272]	@ (508 <sukima948+0x25e>)
+ 3f6:	fba3 2305 	umull	r2, r3, r3, r5
+ 3fa:	f023 0201 	bic.w	r2, r3, #1
+ 3fe:	eb02 0353 	add.w	r3, r2, r3, lsr #1
+ 402:	1aed      	subs	r5, r5, r3
+            furi_string_cat_printf(parsed_data, "\n+$%d\n  @", top_up->amount);
+ 404:	00ae      	lsls	r6, r5, #2
+ 406:	eb05 0385 	add.w	r3, r5, r5, lsl #2
+ 40a:	aa16      	add	r2, sp, #88	@ 0x58
+ 40c:	eb02 0343 	add.w	r3, r2, r3, lsl #1
+ 410:	f833 2c34 	ldrh.w	r2, [r3, #-52]
+ 414:	493d      	ldr	r1, [pc, #244]	@ (50c <sukima948+0x262>)
+ 416:	4620      	mov	r0, r4
+ 418:	4b3a      	ldr	r3, [pc, #232]	@ (504 <sukima948+0x25a>)
+ 41a:	4798      	blx	r3
+            print_bip_timestamp(&top_up->timestamp, parsed_data);
+ 41c:	1970      	adds	r0, r6, r5
+ 41e:	0040      	lsls	r0, r0, #1
+ 420:	3010      	adds	r0, #16
+ 422:	4621      	mov	r1, r4
+ 424:	ab03      	add	r3, sp, #12
+ 426:	4418      	add	r0, r3
+ 428:	4b33      	ldr	r3, [pc, #204]	@ (4f8 <sukima948+0x24e>)
+ 42a:	4798      	blx	r3
+        for(size_t i = 0; i < 3; i++) {
+ 42c:	3701      	adds	r7, #1
+ 42e:	2f02      	cmp	r7, #2
+ 430:	d9dd      	bls.n	3ee <sukima948+0x144>
+        for(size_t i = 1; i < 3; i++) {
+ 432:	2501      	movs	r5, #1
+        size_t newest_charge = 0;
+ 434:	f04f 0800 	mov.w	r8, #0
+ 438:	e000      	b.n	43c <sukima948+0x192>
+        for(size_t i = 1; i < 3; i++) {
+ 43a:	3501      	adds	r5, #1
+ 43c:	2d02      	cmp	r5, #2
+ 43e:	d813      	bhi.n	468 <sukima948+0x1be>
+            const BipTimestamp* newest = &bip_data.charges[newest_charge].timestamp;
+ 440:	eb08 0188 	add.w	r1, r8, r8, lsl #2
+ 444:	0049      	lsls	r1, r1, #1
+ 446:	3128      	adds	r1, #40	@ 0x28
+ 448:	ab03      	add	r3, sp, #12
+ 44a:	4419      	add	r1, r3
+            const BipTimestamp* current = &bip_data.charges[i].timestamp;
+ 44c:	eb05 0385 	add.w	r3, r5, r5, lsl #2
+ 450:	005b      	lsls	r3, r3, #1
+ 452:	3328      	adds	r3, #40	@ 0x28
+ 454:	aa03      	add	r2, sp, #12
+ 456:	18d0      	adds	r0, r2, r3
+            if(compare_bip_timestamp(current, newest) > 0) {
+ 458:	3106      	adds	r1, #6
+ 45a:	3006      	adds	r0, #6
+ 45c:	4b27      	ldr	r3, [pc, #156]	@ (4fc <sukima948+0x252>)
+ 45e:	4798      	blx	r3
+ 460:	2800      	cmp	r0, #0
+ 462:	ddea      	ble.n	43a <sukima948+0x190>
+                newest_charge = i;
+ 464:	46a8      	mov	r8, r5
+ 466:	e7e8      	b.n	43a <sukima948+0x190>
+        furi_string_cat_printf(parsed_data, "\n\e#Last Charges (Trips)");
+ 468:	4929      	ldr	r1, [pc, #164]	@ (510 <sukima948+0x266>)
+ 46a:	4620      	mov	r0, r4
+ 46c:	4b25      	ldr	r3, [pc, #148]	@ (504 <sukima948+0x25a>)
+ 46e:	4798      	blx	r3
+        for(size_t i = 0; i < 3; i++) {
+ 470:	2700      	movs	r7, #0
+ 472:	e020      	b.n	4b6 <sukima948+0x20c>
+            const BipTransaction* charge = &bip_data.charges[(3u + newest_charge - i) % 3];
+ 474:	eba8 0507 	sub.w	r5, r8, r7
+ 478:	3503      	adds	r5, #3
+ 47a:	4b23      	ldr	r3, [pc, #140]	@ (508 <sukima948+0x25e>)
+ 47c:	fba3 2305 	umull	r2, r3, r3, r5
+ 480:	f023 0201 	bic.w	r2, r3, #1
+ 484:	eb02 0353 	add.w	r3, r2, r3, lsr #1
+ 488:	1aed      	subs	r5, r5, r3
+            furi_string_cat_printf(parsed_data, "\n-$%d\n  @", charge->amount);
+ 48a:	00ae      	lsls	r6, r5, #2
+ 48c:	eb05 0385 	add.w	r3, r5, r5, lsl #2
+ 490:	aa16      	add	r2, sp, #88	@ 0x58
+ 492:	eb02 0343 	add.w	r3, r2, r3, lsl #1
+ 496:	f833 2c16 	ldrh.w	r2, [r3, #-22]
+ 49a:	491e      	ldr	r1, [pc, #120]	@ (514 <sukima948+0x26a>)
+ 49c:	4620      	mov	r0, r4
+ 49e:	4b19      	ldr	r3, [pc, #100]	@ (504 <sukima948+0x25a>)
+ 4a0:	4798      	blx	r3
+            print_bip_timestamp(&charge->timestamp, parsed_data);
+ 4a2:	442e      	add	r6, r5
+ 4a4:	0076      	lsls	r6, r6, #1
+ 4a6:	3628      	adds	r6, #40	@ 0x28
+ 4a8:	ab03      	add	r3, sp, #12
+ 4aa:	1998      	adds	r0, r3, r6
+ 4ac:	4621      	mov	r1, r4
+ 4ae:	3006      	adds	r0, #6
+ 4b0:	4b11      	ldr	r3, [pc, #68]	@ (4f8 <sukima948+0x24e>)
+ 4b2:	4798      	blx	r3
+        for(size_t i = 0; i < 3; i++) {
+ 4b4:	3701      	adds	r7, #1
+ 4b6:	2f02      	cmp	r7, #2
+ 4b8:	d9dc      	bls.n	474 <sukima948+0x1ca>
+        parsed = true;
+ 4ba:	2001      	movs	r0, #1
+ 4bc:	e6ec      	b.n	298 <bip_parse+0x40>
+ 4be:	bf00      	nop
+	...
+ 4d0:	f33af429 	.word	0xf33af429
+ 4d4:	00000000 	.word	0x00000000
+ 4d8:	35ac1309 	.word	0x35ac1309
+	...
+ 4f0:	00000054 	.word	0x00000054
+	...
+ 500:	000000ac 	.word	0x000000ac
+ 504:	00000000 	.word	0x00000000
+ 508:	aaaaaaab 	.word	0xaaaaaaab
+ 50c:	000000bc 	.word	0x000000bc
+ 510:	000000c8 	.word	0x000000c8
+ 514:	000000e0 	.word	0x000000e0
+
+00000518 <bip_read>:
+static bool bip_read(Nfc* nfc, NfcDevice* device) {
+ 518:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 51c:	f5ad 7d01 	sub.w	sp, sp, #516	@ 0x204
+    furi_assert(nfc);
+ 520:	9001      	str	r0, [sp, #4]
+ 522:	b300      	cbz	r0, 566 <bip_read+0x4e>
+ 524:	468a      	mov	sl, r1
+    furi_assert(device);
+ 526:	b311      	cbz	r1, 56e <sukima1620+0x4>
+    MfClassicData* data = mf_classic_alloc();
+ 528:	4b42      	ldr	r3, [pc, #264]	@ (634 <sukima1637+0xc2>)
+ 52a:	4798      	blx	r3
+ 52c:	4680      	mov	r8, r0
+    nfc_device_copy_data(device, NfcProtocolMfClassic, data);
+ 52e:	4602      	mov	r2, r0
+ 530:	2107      	movs	r1, #7
+ 532:	4650      	mov	r0, sl
+ 534:	4b40      	ldr	r3, [pc, #256]	@ (638 <sukima1637+0xc6>)
+ 536:	4798      	blx	r3
+        MfClassicType type = MfClassicType1k;
+ 538:	2301      	movs	r3, #1
+ 53a:	f88d 300f 	strb.w	r3, [sp, #15]
+        MfClassicError error = mf_classic_poller_sync_detect_type(nfc, &type);
+ 53e:	f10d 010f 	add.w	r1, sp, #15
+ 542:	9801      	ldr	r0, [sp, #4]
+ 544:	4b3d      	ldr	r3, [pc, #244]	@ (63c <sukima1637+0xca>)
+ 546:	4798      	blx	r3
+        if(error != MfClassicErrorNone) break;
+ 548:	b9d0      	cbnz	r0, 580 <sukima1637+0xe>
+        if(type != MfClassicType1k) {
+ 54a:	f89d 300f 	ldrb.w	r3, [sp, #15]
+ 54e:	2b01      	cmp	r3, #1
+ 550:	d111      	bne.n	576 <sukima1637+0x4>
+        data->type = type;
+ 552:	f888 3004 	strb.w	r3, [r8, #4]
+        MfClassicDeviceKeys keys = {};
+ 556:	f44f 72f8 	mov.w	r2, #496	@ 0x1f0
+ 55a:	2100      	movs	r1, #0
+ 55c:	a804      	add	r0, sp, #16
+ 55e:	4b38      	ldr	r3, [pc, #224]	@ (640 <sukima1637+0xce>)
+ 560:	4798      	blx	r3
+        for(size_t i = 0; i < mf_classic_get_total_sectors_num(data->type); i++) {
+ 562:	2400      	movs	r4, #0
+ 564:	e04b      	b.n	5fe <sukima1637+0x8c>
+    furi_assert(nfc);
+ 566:	f04f 0c01 	mov.w	ip, #1
+
+0000056a <sukima1620>:
+ 56a:	4b36      	ldr	r3, [pc, #216]	@ (644 <sukima1637+0xd2>)
+ 56c:	4798      	blx	r3
+    furi_assert(device);
+ 56e:	f04f 0c01 	mov.w	ip, #1
+
+00000572 <sukima1637>:
+ 572:	4b34      	ldr	r3, [pc, #208]	@ (644 <sukima1637+0xd2>)
+ 574:	4798      	blx	r3
+            FURI_LOG_W(TAG, "Card not MIFARE Classic 1k");
+ 576:	4a34      	ldr	r2, [pc, #208]	@ (648 <sukima1637+0xd6>)
+ 578:	4934      	ldr	r1, [pc, #208]	@ (64c <sukima1637+0xda>)
+ 57a:	2003      	movs	r0, #3
+ 57c:	4b34      	ldr	r3, [pc, #208]	@ (650 <sukima1637+0xde>)
+ 57e:	4798      	blx	r3
+    bool is_read = false;
+ 580:	2400      	movs	r4, #0
+    mf_classic_free(data);
+ 582:	4640      	mov	r0, r8
+ 584:	4b33      	ldr	r3, [pc, #204]	@ (654 <sukima1637+0xe2>)
+ 586:	4798      	blx	r3
+}
+ 588:	4620      	mov	r0, r4
+ 58a:	f50d 7d01 	add.w	sp, sp, #516	@ 0x204
+ 58e:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+            bit_lib_num_to_bytes_be(bip_keys_a[i], sizeof(MfClassicKey), keys.key_a[i].data);
+ 592:	ea4f 0bc4 	mov.w	fp, r4, lsl #3
+ 596:	4930      	ldr	r1, [pc, #192]	@ (658 <sukima1637+0xe6>)
+ 598:	eb01 01c4 	add.w	r1, r1, r4, lsl #3
+ 59c:	0067      	lsls	r7, r4, #1
+ 59e:	eb04 0344 	add.w	r3, r4, r4, lsl #1
+ 5a2:	005b      	lsls	r3, r3, #1
+ 5a4:	3308      	adds	r3, #8
+ 5a6:	aa04      	add	r2, sp, #16
+ 5a8:	4413      	add	r3, r2
+ 5aa:	2206      	movs	r2, #6
+ 5ac:	e9d1 0100 	ldrd	r0, r1, [r1]
+ 5b0:	f8df 90bc 	ldr.w	r9, [pc, #188]	@ 670 <sukima1637+0xfe>
+ 5b4:	47c8      	blx	r9
+            FURI_BIT_SET(keys.key_a_mask, i);
+ 5b6:	9a04      	ldr	r2, [sp, #16]
+ 5b8:	9b05      	ldr	r3, [sp, #20]
+ 5ba:	2601      	movs	r6, #1
+ 5bc:	f1a4 0520 	sub.w	r5, r4, #32
+ 5c0:	f1c4 0120 	rsb	r1, r4, #32
+ 5c4:	fa06 f505 	lsl.w	r5, r6, r5
+ 5c8:	fa26 f101 	lsr.w	r1, r6, r1
+ 5cc:	430d      	orrs	r5, r1
+ 5ce:	40a6      	lsls	r6, r4
+ 5d0:	4332      	orrs	r2, r6
+ 5d2:	432b      	orrs	r3, r5
+ 5d4:	9204      	str	r2, [sp, #16]
+ 5d6:	9305      	str	r3, [sp, #20]
+            bit_lib_num_to_bytes_be(bip_keys_b[i], sizeof(MfClassicKey), keys.key_b[i].data);
+ 5d8:	4920      	ldr	r1, [pc, #128]	@ (65c <sukima1637+0xea>)
+ 5da:	4459      	add	r1, fp
+ 5dc:	193b      	adds	r3, r7, r4
+ 5de:	005b      	lsls	r3, r3, #1
+ 5e0:	f503 7380 	add.w	r3, r3, #256	@ 0x100
+ 5e4:	aa04      	add	r2, sp, #16
+ 5e6:	4413      	add	r3, r2
+ 5e8:	2206      	movs	r2, #6
+ 5ea:	e9d1 0100 	ldrd	r0, r1, [r1]
+ 5ee:	47c8      	blx	r9
+            FURI_BIT_SET(keys.key_b_mask, i);
+ 5f0:	9a42      	ldr	r2, [sp, #264]	@ 0x108
+ 5f2:	9b43      	ldr	r3, [sp, #268]	@ 0x10c
+ 5f4:	4316      	orrs	r6, r2
+ 5f6:	431d      	orrs	r5, r3
+ 5f8:	9642      	str	r6, [sp, #264]	@ 0x108
+ 5fa:	9543      	str	r5, [sp, #268]	@ 0x10c
+        for(size_t i = 0; i < mf_classic_get_total_sectors_num(data->type); i++) {
+ 5fc:	3401      	adds	r4, #1
+ 5fe:	f898 0004 	ldrb.w	r0, [r8, #4]
+ 602:	4b17      	ldr	r3, [pc, #92]	@ (660 <sukima1637+0xee>)
+ 604:	4798      	blx	r3
+ 606:	42a0      	cmp	r0, r4
+ 608:	d8c3      	bhi.n	592 <sukima1637+0x20>
+        error = mf_classic_poller_sync_read(nfc, &keys, data);
+ 60a:	4642      	mov	r2, r8
+ 60c:	a904      	add	r1, sp, #16
+ 60e:	9801      	ldr	r0, [sp, #4]
+ 610:	4b14      	ldr	r3, [pc, #80]	@ (664 <sukima1637+0xf2>)
+ 612:	4798      	blx	r3
+        if(error == MfClassicErrorNotPresent) {
+ 614:	2801      	cmp	r0, #1
+ 616:	d006      	beq.n	626 <sukima1637+0xb4>
+        nfc_device_set_data(device, NfcProtocolMfClassic, data);
+ 618:	4642      	mov	r2, r8
+ 61a:	2107      	movs	r1, #7
+ 61c:	4650      	mov	r0, sl
+ 61e:	4b12      	ldr	r3, [pc, #72]	@ (668 <sukima1637+0xf6>)
+ 620:	4798      	blx	r3
+        is_read = true;
+ 622:	2401      	movs	r4, #1
+ 624:	e7ad      	b.n	582 <sukima1637+0x10>
+            FURI_LOG_W(TAG, "Failed to read data. Bad keys?");
+ 626:	4a11      	ldr	r2, [pc, #68]	@ (66c <sukima1637+0xfa>)
+ 628:	4908      	ldr	r1, [pc, #32]	@ (64c <sukima1637+0xda>)
+ 62a:	2003      	movs	r0, #3
+ 62c:	4b08      	ldr	r3, [pc, #32]	@ (650 <sukima1637+0xde>)
+ 62e:	4798      	blx	r3
+            break;
+ 630:	e7a6      	b.n	580 <sukima1637+0xe>
+ 632:	bf00      	nop
+	...
+ 648:	000000ec 	.word	0x000000ec
+ 64c:	00000014 	.word	0x00000014
+	...
+ 658:	000001e0 	.word	0x000001e0
+ 65c:	00000160 	.word	0x00000160
+	...
+ 66c:	00000108 	.word	0x00000108
+ 670:	00000000 	.word	0x00000000
+
+00000674 <bip_plugin_ep>:
+};
+
+/* Plugin entry point - must return a pointer to const descriptor  */
+const FlipperAppPluginDescriptor* bip_plugin_ep(void) {
+    return &bip_plugin_descriptor;
+}
+ 674:	4800      	ldr	r0, [pc, #0]	@ (678 <bip_plugin_ep+0x4>)
+ 676:	4770      	bx	lr
+ 678:	00000140 	.word	0x00000140

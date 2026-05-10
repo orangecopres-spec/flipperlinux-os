@@ -1,0 +1,2967 @@
+Archive member included to satisfy reference by file (symbol)
+
+build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                              build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o (I_iButtonKey_49x44)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_type.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_type.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_type.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_type.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_confirm.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_confirm.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_confirm.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_confirm.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_success.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_success.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_success.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_success.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_exit_confirm.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_exit_confirm.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_exit_confirm.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_exit_confirm.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_info.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_info.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_info.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_info.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_error.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_error.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_error.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_error.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_key_menu.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_key_menu.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_key_menu.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_key_menu.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_success.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_success.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_success.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_success.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_retry_confirm.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_retry_confirm.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_retry_confirm.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_retry_confirm.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_success.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_success.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_success.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_success.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_saved_key_menu.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_saved_key_menu.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_saved_key_menu.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_saved_key_menu.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_select_key.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_select_key.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_select_key.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_select_key.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_start.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_start.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_start.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_start.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_view_data.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_view_data.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_view_data.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_view_data.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write_success.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write_success.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write_success.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write_success.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .rodata.ibutton_cli_print_usage.str1.4
+                0x00000000      0x107 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .text.ibutton_cli_print_usage
+                0x00000000       0x54 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .text.ibutton_cli_worker_write_cb
+                0x00000000       0x20 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .text.ibutton_cli_worker_read_cb
+                0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .text.ibutton_cli_parse_key
+                0x00000000       0xb4 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .rodata.ibutton_cli_print_key.str1.4
+                0x00000000       0x1a build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .text.ibutton_cli_print_key
+                0x00000000       0x84 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .rodata.ibutton_cli_read.str1.4
+                0x00000000       0x2b build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .text.ibutton_cli_read
+                0x00000000       0xe0 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .rodata.ibutton_cli_write.str1.4
+                0x00000000       0x44 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .text.ibutton_cli_write
+                0x00000000      0x154 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .rodata.ibutton_cli_emulate.str1.4
+                0x00000000        0xf build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .text.ibutton_cli_emulate
+                0x00000000       0xd8 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .rodata.execute.str1.4
+                0x00000000       0x18 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .text.execute  0x00000000       0x94 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .text.cli_ikey_ep
+                0x00000000        0x8 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .rodata.str1.4
+                0x00000000        0x9 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .rodata.plugin_descriptor
+                0x00000000        0xc build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .rodata.cli_ikey_desc
+                0x00000000       0x10 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .debug_info    0x00000000     0x15eb build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .debug_abbrev  0x00000000      0x2c5 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .debug_loclists
+                0x00000000      0x3f5 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .debug_aranges
+                0x00000000       0x68 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .debug_rnglists
+                0x00000000       0x82 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .debug_line    0x00000000      0x38f build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .debug_str     0x00000000      0xb2d build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .debug_line.text.ibutton_cli_print_usage
+                0x00000000       0x20 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .debug_line.text.ibutton_cli_worker_write_cb
+                0x00000000       0x6c build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .debug_line.text.ibutton_cli_worker_read_cb
+                0x00000000       0x52 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .debug_line.text.ibutton_cli_parse_key
+                0x00000000       0x97 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .debug_line.text.ibutton_cli_print_key
+                0x00000000       0x6a build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .debug_line.text.ibutton_cli_read
+                0x00000000       0x76 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .debug_line.text.ibutton_cli_write
+                0x00000000       0xbc build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .debug_line.text.ibutton_cli_emulate
+                0x00000000       0x79 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .debug_line.text.execute
+                0x00000000       0x68 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .debug_line.text.cli_ikey_ep
+                0x00000000       0x13 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .debug_line_end
+                0x00000000        0x0 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .debug_frame   0x00000000      0x13c build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .text          0x00000000        0x0 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .data          0x00000000        0x0 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .bss           0x00000000        0x0 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Updating_32x40
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Error_62x31
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Drive_112x35
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Connected_62x31
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Connect_me_62x31
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Auth_62x31
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_SubGhz_Internal_ant
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_SubGhz_External_ant
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Unlock_7x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Scanning_short_96x52
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Quest_7x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_MHz_25x11
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Lock_7x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Internal_ant_1_9x11
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_External_ant_1_9x11
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_SDcardMounted_11x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_SDcardFail_11x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Rpc_active_7x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Muted_8x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Hidden_window_9x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_GameMode_11x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Exp_module_connected_12x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Charging_lightning_mask_9x10
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Charging_lightning_9x10
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Bluetooth_Idle_5x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Bluetooth_Connected_16x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Battery_26x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Background_128x11
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_BLE_beacon_7x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Attention_5x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Alert_9x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_Alarm_47x39
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_qr_benchmark_25x25
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_dolph_cry_49x54
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_LoadingHourglass_24x24
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_SDQuestion_35x43
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_RFIDDolphinSend_97x61
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_RFIDDolphinReceive_97x61
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_RFIDBigChip_37x36
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Voltage_16x16
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Unplug_bg_top_128x14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Unplug_bg_bottom_128x10
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Temperature_16x16
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Health_16x16
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_FaceNormal_29x14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_FaceNopower_29x14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_FaceConfused_29x14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_FaceCharging_29x14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Battery_16x16
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_BatteryBody_52x28
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_passport_okay3_46x49
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_passport_okay2_46x49
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_passport_okay1_46x49
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_passport_left_6x46
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_passport_happy3_46x49
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_passport_happy2_46x49
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_passport_happy1_46x49
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_passport_bottom_128x18
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_passport_bad3_46x49
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_passport_bad2_46x49
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_passport_bad1_46x49
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Pin_star_7x7
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Pin_pointer_5x3
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Pin_back_arrow_10x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Pin_attention_dpad_29x29
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Pin_arrow_up_7x9
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_check_big_20x17
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Release_arrow_18x15
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_NFC_manual_60x50
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_NFC_dolphin_emulation_51x64
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Move_flipper_26x39
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Modern_reader_18x34
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Medium_chip_22x21
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_MFKey_qr_25x25
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Keychain_39x36
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Detailed_chip_17x13
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ArrowC_1_36x36
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_iButton_14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_U2F_14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_Sub1ghz_14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_Settings_14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_Plugins_14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_NFC_14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_Infrared_14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_GPIO_14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_FileManager_14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_Debug_14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_BadUsb_14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_125khz_14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_err_09
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_err_07
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_err_06
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_err_05
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_err_04
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_err_03
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_err_02
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_err_01
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_KeySign_21x11
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_KeySignSelected_21x11
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_KeySave_24x11
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_KeySaveSelected_24x11
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_KeySaveBlocked_24x11
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_KeySaveBlockedSelected_24x11
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_KeyBackspace_16x9
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_KeyBackspaceSelected_16x9
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_SmallArrowUp_4x7
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_SmallArrowUp_3x5
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_SmallArrowDown_4x7
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_SmallArrowDown_3x5
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_DoorRight_70x55
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_DoorLeft_70x55
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_volup_hover_24x21
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_volup_24x21
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_voldown_hover_24x21
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_voldown_24x21
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_vol_tv_text_29x34
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_vol_ac_text_30x30
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_prev_text_19x5
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_prev_hover_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_prev_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_power_text_24x5
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_power_hover_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_power_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_play_text_19x5
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_play_hover_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_play_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_pause_text_23x5
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_pause_hover_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_pause_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_off_text_12x5
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_off_hover_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_off_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_next_text_19x6
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_next_hover_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_next_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_mute_text_19x5
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_mute_hover_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_mute_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_max_hover_24x23
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_max_24x23
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_hourglass6_24x24
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_hourglass5_24x24
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_hourglass4_24x24
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_hourglass3_24x24
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_hourglass2_24x24
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_hourglass1_24x24
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_hourglass0_24x24
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_heat_30x51
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_fahren_hover_24x23
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_fahren_24x23
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_dry_text_15x5
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_dry_hover_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_dry_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_cool_30x51
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ch_up_hover_24x21
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ch_up_24x21
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ch_text_31x34
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ch_down_hover_24x21
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ch_down_24x21
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_celsius_hover_24x23
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_celsius_24x23
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_back_btn_10x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_InfraredLearnShort_128x31
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_InfraredArrowUp_4x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_InfraredArrowDown_4x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ArrowUpFilled_14x15
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ArrowUpEmpty_14x15
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Erase_pin_128x64
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_WarningDolphin_45x42
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_WarningDolphinFlip_45x42
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_DolphinSuccess_91x55
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_DolphinReadingSuccess_59x63
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_DolphinDone_80x58
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_Round_loader_8x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_Loading_24
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_arrow_nano_up
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_arrow_nano_down
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Warning_30x23
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_More_data_placeholder_5x7
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Hashmark_7x7
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_DFU_128x50
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ButtonUp_7x4
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ButtonRight_4x7
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ButtonRightSmall_3x5
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ButtonLeft_4x7
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ButtonLeftSmall_3x5
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ButtonDown_7x4
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ButtonCenter_7x7
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ActiveConnection_50x64
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_UsbTree_48x22
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Smile_18x18
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Percent_10x14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_EviWaiting2_18x21
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_EviWaiting1_18x21
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_EviSmile2_18x21
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_EviSmile1_18x21
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Error_18x18
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Clock_18x18
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Bad_BLE_48x22
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Volup_8x6
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Voldwn_6x6
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Space_65x18
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Right_mouse_icon_9x9
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Pressed_Button_13x13
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Ok_btn_pressed_13x13
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Ok_btn_9x9
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Left_mouse_icon_9x9
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Circles_47x47
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Button_18x18
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Ble_disconnected_15x15
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Ble_connected_15x15
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_BLE_Pairing_128x64
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_update_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_unknown_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_u2f_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_sub1_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_settings_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_music_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_loading_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_keyboard_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_js_script_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ir_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_file_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_dir_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_badusb_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_back_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Nfc_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_125_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_Levelup2_128x64
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_Levelup1_128x64
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_CertificationTaiwan_33x32
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_CertificationMexico_98x41
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_CertificationChina1_124x47
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_CertificationChina0_121x41
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Certification2_46x33
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Certification1_103x56
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Updating_32x40
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Updating_32x40_0
+                0x00000000       0x5a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Error_62x31
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Error_62x31_0
+                0x00000000       0xa2 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Drive_112x35
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Drive_112x35_0
+                0x00000000       0x76 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Connected_62x31
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Connected_62x31_0
+                0x00000000       0xae build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Connect_me_62x31
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Connect_me_62x31_0
+                0x00000000       0xbb build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Auth_62x31
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Auth_62x31_0
+                0x00000000       0xb3 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_SubGhz_Internal_ant
+                0x00000000       0x10 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_SubGhz_Internal_ant_3
+                0x00000000       0x22 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_SubGhz_Internal_ant_2
+                0x00000000       0x22 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_SubGhz_Internal_ant_1
+                0x00000000       0x22 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_SubGhz_Internal_ant_0
+                0x00000000       0x22 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_SubGhz_External_ant
+                0x00000000       0x10 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_SubGhz_External_ant_3
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_SubGhz_External_ant_2
+                0x00000000       0x19 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_SubGhz_External_ant_1
+                0x00000000       0x21 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_SubGhz_External_ant_0
+                0x00000000       0x22 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Unlock_7x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Unlock_7x8_0
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Scanning_short_96x52
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Scanning_short_96x52_0
+                0x00000000      0x1ab build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Quest_7x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Quest_7x8_0
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_MHz_25x11
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_MHz_25x11_0
+                0x00000000       0x25 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Lock_7x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Lock_7x8_0
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Internal_ant_1_9x11
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Internal_ant_1_9x11_0
+                0x00000000       0x22 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_External_ant_1_9x11
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_External_ant_1_9x11_0
+                0x00000000       0x22 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SDcardMounted_11x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SDcardMounted_11x8_0
+                0x00000000        0xd build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SDcardFail_11x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SDcardFail_11x8_0
+                0x00000000       0x11 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Rpc_active_7x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Rpc_active_7x8_0
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Muted_8x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Muted_8x8_0
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Hidden_window_9x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Hidden_window_9x8_0
+                0x00000000       0x11 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_GameMode_11x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_GameMode_11x8_0
+                0x00000000       0x11 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Exp_module_connected_12x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Exp_module_connected_12x8_0
+                0x00000000       0x11 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Charging_lightning_mask_9x10
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Charging_lightning_mask_9x10_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Charging_lightning_9x10
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Charging_lightning_9x10_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Bluetooth_Idle_5x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Bluetooth_Idle_5x8_0
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Bluetooth_Connected_16x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Bluetooth_Connected_16x8_0
+                0x00000000       0x11 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Battery_26x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Battery_26x8_0
+                0x00000000       0x17 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Background_128x11
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Background_128x11_0
+                0x00000000       0x74 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_BLE_beacon_7x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_BLE_beacon_7x8_0
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Attention_5x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Attention_5x8_0
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Alert_9x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Alert_9x8_0
+                0x00000000       0x11 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Alarm_47x39
+                0x00000000       0x14 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Alarm_47x39_4
+                0x00000000       0xa9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Alarm_47x39_3
+                0x00000000       0xbd build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Alarm_47x39_2
+                0x00000000       0xc7 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Alarm_47x39_1
+                0x00000000       0xba build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Alarm_47x39_0
+                0x00000000       0xa9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_qr_benchmark_25x25
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_qr_benchmark_25x25_0
+                0x00000000       0x65 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_dolph_cry_49x54
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_dolph_cry_49x54_0
+                0x00000000       0xde build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_LoadingHourglass_24x24
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_LoadingHourglass_24x24_0
+                0x00000000       0x3b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SDQuestion_35x43
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SDQuestion_35x43_0
+                0x00000000       0x6e build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_RFIDDolphinSend_97x61
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_RFIDDolphinSend_97x61_0
+                0x00000000      0x191 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_RFIDDolphinReceive_97x61
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_RFIDDolphinReceive_97x61_0
+                0x00000000      0x18b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_RFIDBigChip_37x36
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_RFIDBigChip_37x36_0
+                0x00000000       0x72 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Voltage_16x16
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Voltage_16x16_0
+                0x00000000       0x1e build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Unplug_bg_top_128x14
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Unplug_bg_top_128x14_0
+                0x00000000       0x53 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Unplug_bg_bottom_128x10
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Unplug_bg_bottom_128x10_0
+                0x00000000       0x2b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Temperature_16x16
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Temperature_16x16_0
+                0x00000000       0x16 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Health_16x16
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Health_16x16_0
+                0x00000000       0x16 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_FaceNormal_29x14
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_FaceNormal_29x14_0
+                0x00000000       0x22 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_FaceNopower_29x14
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_FaceNopower_29x14_0
+                0x00000000       0x28 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_FaceConfused_29x14
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_FaceConfused_29x14_0
+                0x00000000       0x34 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_FaceCharging_29x14
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_FaceCharging_29x14_0
+                0x00000000       0x2c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Battery_16x16
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Battery_16x16_0
+                0x00000000       0x16 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_BatteryBody_52x28
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_BatteryBody_52x28_0
+                0x00000000       0x49 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_okay3_46x49
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_okay3_46x49_0
+                0x00000000      0x10a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_okay2_46x49
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_okay2_46x49_0
+                0x00000000       0xe9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_okay1_46x49
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_okay1_46x49_0
+                0x00000000       0xd0 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_left_6x46
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_left_6x46_0
+                0x00000000       0x1f build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_happy3_46x49
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_happy3_46x49_0
+                0x00000000      0x127 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_happy2_46x49
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_happy2_46x49_0
+                0x00000000      0x11a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_happy1_46x49
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_happy1_46x49_0
+                0x00000000      0x10d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_bottom_128x18
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_bottom_128x18_0
+                0x00000000       0x58 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_bad3_46x49
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_bad3_46x49_0
+                0x00000000      0x10b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_bad2_46x49
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_bad2_46x49_0
+                0x00000000       0xf2 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_bad1_46x49
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_bad1_46x49_0
+                0x00000000       0xd6 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Pin_star_7x7
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Pin_star_7x7_0
+                0x00000000        0x8 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Pin_pointer_5x3
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Pin_pointer_5x3_0
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Pin_back_arrow_10x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Pin_back_arrow_10x8_0
+                0x00000000       0x11 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Pin_attention_dpad_29x29
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Pin_attention_dpad_29x29_0
+                0x00000000       0x5a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Pin_arrow_up_7x9
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Pin_arrow_up_7x9_0
+                0x00000000        0xa build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_check_big_20x17
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_check_big_20x17_0
+                0x00000000       0x25 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Release_arrow_18x15
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Release_arrow_18x15_0
+                0x00000000       0x29 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_NFC_manual_60x50
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_NFC_manual_60x50_0
+                0x00000000       0xd5 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_NFC_dolphin_emulation_51x64
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_NFC_dolphin_emulation_51x64_0
+                0x00000000      0x146 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Move_flipper_26x39
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Move_flipper_26x39_0
+                0x00000000       0x6b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Modern_reader_18x34
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Modern_reader_18x34_0
+                0x00000000       0x45 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Medium_chip_22x21
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Medium_chip_22x21_0
+                0x00000000       0x39 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_MFKey_qr_25x25
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_MFKey_qr_25x25_0
+                0x00000000       0x65 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Keychain_39x36
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Keychain_39x36_0
+                0x00000000       0x86 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Detailed_chip_17x13
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Detailed_chip_17x13_0
+                0x00000000       0x22 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ArrowC_1_36x36
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ArrowC_1_36x36_0
+                0x00000000       0x7e build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_iButton_14
+                0x00000000       0x1c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_iButton_14_6
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_iButton_14_5
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_iButton_14_4
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_iButton_14_3
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_iButton_14_2
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_iButton_14_1
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_iButton_14_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_U2F_14
+                0x00000000       0x10 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_U2F_14_3
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_U2F_14_2
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_U2F_14_1
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_U2F_14_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Sub1ghz_14
+                0x00000000       0x18 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Sub1ghz_14_5
+                0x00000000       0x16 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Sub1ghz_14_4
+                0x00000000        0xe build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Sub1ghz_14_3
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Sub1ghz_14_2
+                0x00000000       0x1a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Sub1ghz_14_1
+                0x00000000       0x1c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Sub1ghz_14_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Settings_14
+                0x00000000       0x28 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Settings_14_9
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Settings_14_8
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Settings_14_7
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Settings_14_6
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Settings_14_5
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Settings_14_4
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Settings_14_3
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Settings_14_2
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Settings_14_1
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Settings_14_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Plugins_14
+                0x00000000       0x24 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Plugins_14_8
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Plugins_14_7
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Plugins_14_6
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Plugins_14_5
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Plugins_14_4
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Plugins_14_3
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Plugins_14_2
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Plugins_14_1
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Plugins_14_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_NFC_14
+                0x00000000       0x10 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_NFC_14_3
+                0x00000000       0x1a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_NFC_14_2
+                0x00000000       0x14 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_NFC_14_1
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_NFC_14_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Infrared_14
+                0x00000000       0x18 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Infrared_14_5
+                0x00000000       0x19 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Infrared_14_4
+                0x00000000       0x12 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Infrared_14_3
+                0x00000000       0x12 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Infrared_14_2
+                0x00000000       0x17 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Infrared_14_1
+                0x00000000       0x1b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Infrared_14_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_GPIO_14
+                0x00000000       0x20 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_GPIO_14_7
+                0x00000000       0x16 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_GPIO_14_6
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_GPIO_14_5
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_GPIO_14_4
+                0x00000000       0x11 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_GPIO_14_3
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_GPIO_14_2
+                0x00000000       0x16 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_GPIO_14_1
+                0x00000000       0x16 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_GPIO_14_0
+                0x00000000       0x19 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_FileManager_14
+                0x00000000       0x28 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_FileManager_14_9
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_FileManager_14_8
+                0x00000000       0x1b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_FileManager_14_7
+                0x00000000       0x1b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_FileManager_14_6
+                0x00000000       0x1b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_FileManager_14_5
+                0x00000000       0x13 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_FileManager_14_4
+                0x00000000       0x1b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_FileManager_14_3
+                0x00000000       0x1b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_FileManager_14_2
+                0x00000000       0x1b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_FileManager_14_1
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_FileManager_14_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Debug_14
+                0x00000000       0x10 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Debug_14_3
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Debug_14_2
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Debug_14_1
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Debug_14_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_BadUsb_14
+                0x00000000       0x2c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_BadUsb_14_10
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_BadUsb_14_9
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_BadUsb_14_8
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_BadUsb_14_7
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_BadUsb_14_6
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_BadUsb_14_5
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_BadUsb_14_4
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_BadUsb_14_3
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_BadUsb_14_2
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_BadUsb_14_1
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_BadUsb_14_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_125khz_14
+                0x00000000       0x10 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_125khz_14_3
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_125khz_14_2
+                0x00000000       0x1b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_125khz_14_1
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_125khz_14_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_09
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_09_0
+                0x00000000       0x65 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_07
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_07_0
+                0x00000000       0x65 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_06
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_06_0
+                0x00000000       0x65 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_05
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_05_0
+                0x00000000       0x65 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_04
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_04_0
+                0x00000000       0x65 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_03
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_03_0
+                0x00000000       0x65 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_02
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_02_0
+                0x00000000       0x65 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_01
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_01_0
+                0x00000000       0x65 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeySign_21x11
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeySign_21x11_0
+                0x00000000       0x20 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeySignSelected_21x11
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeySignSelected_21x11_0
+                0x00000000       0x20 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeySave_24x11
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeySave_24x11_0
+                0x00000000       0x21 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeySaveSelected_24x11
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeySaveSelected_24x11_0
+                0x00000000       0x1f build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeySaveBlocked_24x11
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeySaveBlocked_24x11_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeySaveBlockedSelected_24x11
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeySaveBlockedSelected_24x11_0
+                0x00000000       0x1b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeyBackspace_16x9
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeyBackspace_16x9_0
+                0x00000000       0x13 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeyBackspaceSelected_16x9
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeyBackspaceSelected_16x9_0
+                0x00000000       0x13 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SmallArrowUp_4x7
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SmallArrowUp_4x7_0
+                0x00000000        0x5 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SmallArrowUp_3x5
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SmallArrowUp_3x5_0
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SmallArrowDown_4x7
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SmallArrowDown_4x7_0
+                0x00000000        0x5 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SmallArrowDown_3x5
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SmallArrowDown_3x5_0
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DoorRight_70x55
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DoorRight_70x55_0
+                0x00000000      0x11a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DoorLeft_70x55
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DoorLeft_70x55_0
+                0x00000000      0x11d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_volup_hover_24x21
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_volup_hover_24x21_0
+                0x00000000       0x34 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_volup_24x21
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_volup_24x21_0
+                0x00000000       0x3a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_voldown_hover_24x21
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_voldown_hover_24x21_0
+                0x00000000       0x31 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_voldown_24x21
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_voldown_24x21_0
+                0x00000000       0x36 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_vol_tv_text_29x34
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_vol_tv_text_29x34_0
+                0x00000000       0x31 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_vol_ac_text_30x30
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_vol_ac_text_30x30_0
+                0x00000000       0x32 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_prev_text_19x5
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_prev_text_19x5_0
+                0x00000000       0x10 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_prev_hover_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_prev_hover_19x20_0
+                0x00000000       0x30 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_prev_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_prev_19x20_0
+                0x00000000       0x33 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_power_text_24x5
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_power_text_24x5_0
+                0x00000000       0x10 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_power_hover_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_power_hover_19x20_0
+                0x00000000       0x30 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_power_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_power_19x20_0
+                0x00000000       0x35 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_play_text_19x5
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_play_text_19x5_0
+                0x00000000       0x10 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_play_hover_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_play_hover_19x20_0
+                0x00000000       0x2f build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_play_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_play_19x20_0
+                0x00000000       0x32 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_pause_text_23x5
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_pause_text_23x5_0
+                0x00000000       0x10 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_pause_hover_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_pause_hover_19x20_0
+                0x00000000       0x1c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_pause_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_pause_19x20_0
+                0x00000000       0x20 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_off_text_12x5
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_off_text_12x5_0
+                0x00000000        0xb build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_off_hover_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_off_hover_19x20_0
+                0x00000000       0x2a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_off_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_off_19x20_0
+                0x00000000       0x2d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_next_text_19x6
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_next_text_19x6_0
+                0x00000000       0x10 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_next_hover_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_next_hover_19x20_0
+                0x00000000       0x2e build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_next_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_next_19x20_0
+                0x00000000       0x32 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_mute_text_19x5
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_mute_text_19x5_0
+                0x00000000       0x10 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_mute_hover_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_mute_hover_19x20_0
+                0x00000000       0x30 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_mute_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_mute_19x20_0
+                0x00000000       0x33 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_max_hover_24x23
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_max_hover_24x23_0
+                0x00000000       0x40 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_max_24x23
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_max_24x23_0
+                0x00000000       0x46 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass6_24x24
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass6_24x24_0
+                0x00000000       0x47 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass5_24x24
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass5_24x24_0
+                0x00000000       0x31 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass4_24x24
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass4_24x24_0
+                0x00000000       0x46 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass3_24x24
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass3_24x24_0
+                0x00000000       0x37 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass2_24x24
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass2_24x24_0
+                0x00000000       0x37 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass1_24x24
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass1_24x24_0
+                0x00000000       0x3a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass0_24x24
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass0_24x24_0
+                0x00000000       0x36 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_heat_30x51
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_heat_30x51_0
+                0x00000000       0x49 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_fahren_hover_24x23
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_fahren_hover_24x23_0
+                0x00000000       0x42 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_fahren_24x23
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_fahren_24x23_0
+                0x00000000       0x46 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_dry_text_15x5
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_dry_text_15x5_0
+                0x00000000        0xb build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_dry_hover_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_dry_hover_19x20_0
+                0x00000000       0x27 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_dry_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_dry_19x20_0
+                0x00000000       0x2c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_cool_30x51
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_cool_30x51_0
+                0x00000000       0x4b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ch_up_hover_24x21
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ch_up_hover_24x21_0
+                0x00000000       0x38 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ch_up_24x21
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ch_up_24x21_0
+                0x00000000       0x3d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ch_text_31x34
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ch_text_31x34_0
+                0x00000000       0x31 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ch_down_hover_24x21
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ch_down_hover_24x21_0
+                0x00000000       0x3a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ch_down_24x21
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ch_down_24x21_0
+                0x00000000       0x3e build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_celsius_hover_24x23
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_celsius_hover_24x23_0
+                0x00000000       0x44 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_celsius_24x23
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_celsius_24x23_0
+                0x00000000       0x46 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_back_btn_10x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_back_btn_10x8_0
+                0x00000000       0x11 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_InfraredLearnShort_128x31
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_InfraredLearnShort_128x31_0
+                0x00000000      0x114 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_InfraredArrowUp_4x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_InfraredArrowUp_4x8_0
+                0x00000000        0x5 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_InfraredArrowDown_4x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_InfraredArrowDown_4x8_0
+                0x00000000        0x5 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ArrowUpFilled_14x15
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ArrowUpFilled_14x15_0
+                0x00000000       0x1f build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ArrowUpEmpty_14x15
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ArrowUpEmpty_14x15_0
+                0x00000000       0x1c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Erase_pin_128x64
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Erase_pin_128x64_0
+                0x00000000      0x261 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_WarningDolphin_45x42
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_WarningDolphin_45x42_0
+                0x00000000       0xca build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_WarningDolphinFlip_45x42
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_WarningDolphinFlip_45x42_0
+                0x00000000       0xc4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DolphinSuccess_91x55
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DolphinSuccess_91x55_0
+                0x00000000      0x1b8 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DolphinReadingSuccess_59x63
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DolphinReadingSuccess_59x63_0
+                0x00000000      0x11d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DolphinDone_80x58
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DolphinDone_80x58_0
+                0x00000000      0x180 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Round_loader_8x8
+                0x00000000       0x14 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Round_loader_8x8_4
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Round_loader_8x8_3
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Round_loader_8x8_2
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Round_loader_8x8_1
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Round_loader_8x8_0
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Loading_24
+                0x00000000       0x1c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Loading_24_6
+                0x00000000       0x43 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Loading_24_5
+                0x00000000       0x2f build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Loading_24_4
+                0x00000000       0x49 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Loading_24_3
+                0x00000000       0x37 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Loading_24_2
+                0x00000000       0x3a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Loading_24_1
+                0x00000000       0x3c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Loading_24_0
+                0x00000000       0x3b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_arrow_nano_up
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_arrow_nano_up_0
+                0x00000000        0x3 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_arrow_nano_down
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_arrow_nano_down_0
+                0x00000000        0x3 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Warning_30x23
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Warning_30x23_0
+                0x00000000       0x4b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_More_data_placeholder_5x7
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_More_data_placeholder_5x7_0
+                0x00000000        0x7 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Hashmark_7x7
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Hashmark_7x7_0
+                0x00000000        0x8 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DFU_128x50
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DFU_128x50_0
+                0x00000000      0x232 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonUp_7x4
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonUp_7x4_0
+                0x00000000        0x5 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonRight_4x7
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonRight_4x7_0
+                0x00000000        0x8 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonRightSmall_3x5
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonRightSmall_3x5_0
+                0x00000000        0x6 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonLeft_4x7
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonLeft_4x7_0
+                0x00000000        0x8 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonLeftSmall_3x5
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonLeftSmall_3x5_0
+                0x00000000        0x6 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonDown_7x4
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonDown_7x4_0
+                0x00000000        0x5 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonCenter_7x7
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonCenter_7x7_0
+                0x00000000        0x8 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ActiveConnection_50x64
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ActiveConnection_50x64_0
+                0x00000000       0xf8 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_UsbTree_48x22
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_UsbTree_48x22_0
+                0x00000000       0x40 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Smile_18x18
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Smile_18x18_0
+                0x00000000       0x31 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Percent_10x14
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Percent_10x14_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_EviWaiting2_18x21
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_EviWaiting2_18x21_0
+                0x00000000       0x35 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_EviWaiting1_18x21
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_EviWaiting1_18x21_0
+                0x00000000       0x38 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_EviSmile2_18x21
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_EviSmile2_18x21_0
+                0x00000000       0x3b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_EviSmile1_18x21
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_EviSmile1_18x21_0
+                0x00000000       0x3d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Error_18x18
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Error_18x18_0
+                0x00000000       0x30 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Clock_18x18
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Clock_18x18_0
+                0x00000000       0x35 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Bad_BLE_48x22
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Bad_BLE_48x22_0
+                0x00000000       0x32 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Volup_8x6
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Volup_8x6_0
+                0x00000000        0x7 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Voldwn_6x6
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Voldwn_6x6_0
+                0x00000000        0x7 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Space_65x18
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Space_65x18_0
+                0x00000000       0x2a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Right_mouse_icon_9x9
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Right_mouse_icon_9x9_0
+                0x00000000       0x13 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Pressed_Button_13x13
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Pressed_Button_13x13_0
+                0x00000000       0x16 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Ok_btn_pressed_13x13
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Ok_btn_pressed_13x13_0
+                0x00000000       0x18 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Ok_btn_9x9
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Ok_btn_9x9_0
+                0x00000000       0x13 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Left_mouse_icon_9x9
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Left_mouse_icon_9x9_0
+                0x00000000       0x13 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Circles_47x47
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Circles_47x47_0
+                0x00000000       0x82 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Button_18x18
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Button_18x18_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Ble_disconnected_15x15
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Ble_disconnected_15x15_0
+                0x00000000       0x1f build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Ble_connected_15x15
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Ble_connected_15x15_0
+                0x00000000       0x1f build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_BLE_Pairing_128x64
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_BLE_Pairing_128x64_0
+                0x00000000      0x1bb build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_update_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_update_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_unknown_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_unknown_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_u2f_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_u2f_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_sub1_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_sub1_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_settings_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_settings_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_music_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_music_10px_0
+                0x00000000       0x14 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_loading_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_loading_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_keyboard_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_keyboard_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_js_script_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_js_script_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ir_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ir_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_file_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_file_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_dir_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_dir_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_badusb_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_badusb_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_back_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_back_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Nfc_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Nfc_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_125_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_125_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup2_128x64
+                0x00000000       0x2c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup2_128x64_10
+                0x00000000      0x20a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup2_128x64_9
+                0x00000000      0x1ff build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup2_128x64_8
+                0x00000000      0x206 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup2_128x64_7
+                0x00000000      0x1fb build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup2_128x64_6
+                0x00000000      0x258 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup2_128x64_5
+                0x00000000      0x2a0 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup2_128x64_4
+                0x00000000      0x294 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup2_128x64_3
+                0x00000000      0x331 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup2_128x64_2
+                0x00000000      0x2f1 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup2_128x64_1
+                0x00000000      0x21b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup2_128x64_0
+                0x00000000      0x138 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup1_128x64
+                0x00000000       0x2c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup1_128x64_10
+                0x00000000      0x1e2 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup1_128x64_9
+                0x00000000      0x1da build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup1_128x64_8
+                0x00000000      0x1ea build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup1_128x64_7
+                0x00000000      0x1d4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup1_128x64_6
+                0x00000000      0x23c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup1_128x64_5
+                0x00000000      0x27d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup1_128x64_4
+                0x00000000      0x282 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup1_128x64_3
+                0x00000000      0x30e build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup1_128x64_2
+                0x00000000      0x2c5 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup1_128x64_1
+                0x00000000      0x206 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup1_128x64_0
+                0x00000000      0x126 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_CertificationTaiwan_33x32
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_CertificationTaiwan_33x32_0
+                0x00000000       0x85 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_CertificationMexico_98x41
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_CertificationMexico_98x41_0
+                0x00000000      0x115 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_CertificationChina1_124x47
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_CertificationChina1_124x47_0
+                0x00000000      0x12f build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_CertificationChina0_121x41
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_CertificationChina0_121x41_0
+                0x00000000      0x169 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Certification2_46x33
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Certification2_46x33_0
+                0x00000000       0x89 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Certification1_103x56
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Certification1_103x56_0
+                0x00000000      0x19b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .comment       0x00000000       0x1c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene.o
+LOAD build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_type.o
+LOAD build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+LOAD build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_confirm.o
+LOAD build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_success.o
+LOAD build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o
+LOAD build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_exit_confirm.o
+LOAD build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_info.o
+LOAD build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read.o
+LOAD build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_error.o
+LOAD build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_key_menu.o
+LOAD build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_success.o
+LOAD build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_retry_confirm.o
+LOAD build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+LOAD build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+LOAD build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_success.o
+LOAD build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_saved_key_menu.o
+LOAD build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_select_key.o
+LOAD build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_start.o
+LOAD build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_view_data.o
+LOAD build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+LOAD build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write_success.o
+LOAD build/f7-firmware-D/.extapps/ibutton/ibutton.o
+LOAD build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libstdc++_nano.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libsupc++_nano.a
+LOAD build/f7-firmware-D/lib/libassets.a
+LOAD build/f7-firmware-D/lib/libassets.a
+
+.text           0x00000000     0x20b8
+ *(.text)
+ *(.stub)
+ *(.text*)
+ .text.ibutton_scene_add_type_on_enter
+                0x00000000       0xac build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_type.o
+                0x00000000                ibutton_scene_add_type_on_enter
+ .text.ibutton_scene_add_type_on_event
+                0x000000ac       0x5c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_type.o
+                0x000000ac                ibutton_scene_add_type_on_event
+ .text.ibutton_scene_add_type_on_exit
+                0x00000108       0x10 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_type.o
+                0x00000108                ibutton_scene_add_type_on_exit
+ .text.ibutton_scene_add_type_byte_changed_callback
+                0x00000118       0x10 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+ .text.ibutton_scene_add_type_byte_input_callback
+                0x00000128       0x10 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+ .text.ibutton_scene_add_value_on_enter
+                0x00000138       0x58 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+                0x00000138                ibutton_scene_add_value_on_enter
+ .text.ibutton_scene_add_value_on_event
+                0x00000190       0xf0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+                0x00000190                ibutton_scene_add_value_on_event
+ .text.ibutton_scene_add_value_on_exit
+                0x00000280       0x2c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+                0x00000280                ibutton_scene_add_value_on_exit
+ .text.ibutton_scene_delete_confirm_on_enter
+                0x000002ac      0x120 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_confirm.o
+                0x000002ac                ibutton_scene_delete_confirm_on_enter
+ .text.ibutton_scene_delete_confirm_on_event
+                0x000003cc       0x68 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_confirm.o
+                0x000003cc                ibutton_scene_delete_confirm_on_event
+ .text.ibutton_scene_delete_confirm_on_exit
+                0x00000434       0x10 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_confirm.o
+                0x00000434                ibutton_scene_delete_confirm_on_exit
+ .text.ibutton_scene_delete_success_popup_callback
+                0x00000444       0x10 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_success.o
+ .text.ibutton_scene_delete_success_on_enter
+                0x00000454       0x7c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_success.o
+                0x00000454                ibutton_scene_delete_success_on_enter
+ .text.ibutton_scene_delete_success_on_event
+                0x000004d0       0x30 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_success.o
+                0x000004d0                ibutton_scene_delete_success_on_event
+ .text.ibutton_scene_delete_success_on_exit
+                0x00000500       0x10 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_success.o
+                0x00000500                ibutton_scene_delete_success_on_exit
+ .text.ibutton_scene_emulate_callback
+                0x00000510       0x14 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o
+ .text.ibutton_scene_emulate_on_enter
+                0x00000524      0x114 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o
+                0x00000524                ibutton_scene_emulate_on_enter
+ .text.ibutton_scene_emulate_on_event
+                0x00000638       0x80 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o
+                0x00000638                ibutton_scene_emulate_on_event
+ .text.ibutton_scene_emulate_on_exit
+                0x000006b8       0x28 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o
+                0x000006b8                ibutton_scene_emulate_on_exit
+ .text.ibutton_scene_exit_confirm_widget_callback
+                0x000006e0       0x18 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_exit_confirm.o
+ .text.ibutton_scene_exit_confirm_on_enter
+                0x000006f8       0x7c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_exit_confirm.o
+                0x000006f8                ibutton_scene_exit_confirm_on_enter
+ .text.ibutton_scene_exit_confirm_on_event
+                0x00000774       0x48 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_exit_confirm.o
+                0x00000774                ibutton_scene_exit_confirm_on_event
+ .text.ibutton_scene_exit_confirm_on_exit
+                0x000007bc       0x10 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_exit_confirm.o
+                0x000007bc                ibutton_scene_exit_confirm_on_exit
+ .text.ibutton_scene_info_on_enter
+                0x000007cc      0x104 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_info.o
+                0x000007cc                ibutton_scene_info_on_enter
+ .text.ibutton_scene_info_on_event
+                0x000008d0       0x30 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_info.o
+                0x000008d0                ibutton_scene_info_on_event
+ .text.ibutton_scene_info_on_exit
+                0x00000900       0x10 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_info.o
+                0x00000900                ibutton_scene_info_on_exit
+ .text.ibutton_scene_read_callback
+                0x00000910       0x10 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read.o
+ .text.ibutton_scene_read_on_enter
+                0x00000920       0xa4 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read.o
+                0x00000920                ibutton_scene_read_on_enter
+ .text.ibutton_scene_read_on_event
+                0x000009c4       0x6c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read.o
+                0x000009c4                ibutton_scene_read_on_event
+ .text.ibutton_scene_read_on_exit
+                0x00000a30       0x60 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read.o
+                0x00000a30                ibutton_scene_read_on_exit
+ .text.ibutton_scene_read_error_on_enter
+                0x00000a90       0xb4 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_error.o
+                0x00000a90                ibutton_scene_read_error_on_enter
+ .text.ibutton_scene_read_error_on_event
+                0x00000b44       0x50 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_error.o
+                0x00000b44                ibutton_scene_read_error_on_event
+ .text.ibutton_scene_read_error_on_exit
+                0x00000b94       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_error.o
+                0x00000b94                ibutton_scene_read_error_on_exit
+ .text.ibutton_scene_read_key_menu_submenu_callback
+                0x00000bb0       0x10 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_key_menu.o
+                0x00000bb0                ibutton_scene_read_key_menu_submenu_callback
+ .text.ibutton_scene_read_key_menu_on_enter
+                0x00000bc0       0xc8 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_key_menu.o
+                0x00000bc0                ibutton_scene_read_key_menu_on_enter
+ .text.ibutton_scene_read_key_menu_on_event
+                0x00000c88       0xa4 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_key_menu.o
+                0x00000c88                ibutton_scene_read_key_menu_on_event
+ .text.ibutton_scene_read_key_menu_on_exit
+                0x00000d2c       0x10 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_key_menu.o
+                0x00000d2c                ibutton_scene_read_key_menu_on_exit
+ .text.ibutton_scene_read_success_on_enter
+                0x00000d3c      0x10c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_success.o
+                0x00000d3c                ibutton_scene_read_success_on_enter
+ .text.ibutton_scene_read_success_on_event
+                0x00000e48       0x4c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_success.o
+                0x00000e48                ibutton_scene_read_success_on_event
+ .text.ibutton_scene_read_success_on_exit
+                0x00000e94       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_success.o
+                0x00000e94                ibutton_scene_read_success_on_exit
+ .text.ibutton_scene_retry_confirm_widget_callback
+                0x00000eb0       0x18 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_retry_confirm.o
+ .text.ibutton_scene_retry_confirm_on_enter
+                0x00000ec8       0x7c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_retry_confirm.o
+                0x00000ec8                ibutton_scene_retry_confirm_on_enter
+ .text.ibutton_scene_retry_confirm_on_event
+                0x00000f44       0x48 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_retry_confirm.o
+                0x00000f44                ibutton_scene_retry_confirm_on_event
+ .text.ibutton_scene_retry_confirm_on_exit
+                0x00000f8c       0x10 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_retry_confirm.o
+                0x00000f8c                ibutton_scene_retry_confirm_on_exit
+ .text.ibutton_rpc_start_emulation
+                0x00000f9c       0x94 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+ .text.ibutton_scene_rpc_on_enter
+                0x00001030        0x2 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+                0x00001030                ibutton_scene_rpc_on_enter
+ *fill*         0x00001032        0x2 
+ .text.ibutton_scene_rpc_on_event
+                0x00001034       0xa0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+                0x00001034                ibutton_scene_rpc_on_event
+ .text.ibutton_scene_rpc_on_exit
+                0x000010d4       0x58 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+                0x000010d4                ibutton_scene_rpc_on_exit
+ .text.ibutton_scene_save_name_text_input_callback
+                0x0000112c       0x10 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+ .text.ibutton_scene_save_name_on_enter
+                0x0000113c       0x94 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+                0x0000113c                ibutton_scene_save_name_on_enter
+ .text.ibutton_scene_save_name_on_event
+                0x000011d0       0xf8 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+                0x000011d0                ibutton_scene_save_name_on_event
+ .text.ibutton_scene_save_name_on_exit
+                0x000012c8       0x34 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+                0x000012c8                ibutton_scene_save_name_on_exit
+ .text.ibutton_scene_save_success_popup_callback
+                0x000012fc       0x10 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_success.o
+ .text.ibutton_scene_save_success_on_enter
+                0x0000130c       0x7c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_success.o
+                0x0000130c                ibutton_scene_save_success_on_enter
+ .text.ibutton_scene_save_success_on_event
+                0x00001388       0x30 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_success.o
+                0x00001388                ibutton_scene_save_success_on_event
+ .text.ibutton_scene_save_success_on_exit
+                0x000013b8       0x10 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_success.o
+                0x000013b8                ibutton_scene_save_success_on_exit
+ .text.ibutton_scene_saved_key_menu_on_enter
+                0x000013c8       0xdc build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_saved_key_menu.o
+                0x000013c8                ibutton_scene_saved_key_menu_on_enter
+ .text.ibutton_scene_saved_key_menu_on_event
+                0x000014a4       0xbc build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_saved_key_menu.o
+                0x000014a4                ibutton_scene_saved_key_menu_on_event
+ .text.ibutton_scene_saved_key_menu_on_exit
+                0x00001560       0x10 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_saved_key_menu.o
+                0x00001560                ibutton_scene_saved_key_menu_on_exit
+ .text.ibutton_scene_select_key_on_enter
+                0x00001570       0x2c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_select_key.o
+                0x00001570                ibutton_scene_select_key_on_enter
+ .text.ibutton_scene_select_key_on_event
+                0x0000159c        0xe build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_select_key.o
+                0x0000159c                ibutton_scene_select_key_on_event
+ .text.ibutton_scene_select_key_on_exit
+                0x000015aa        0x2 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_select_key.o
+                0x000015aa                ibutton_scene_select_key_on_exit
+ .text.ibutton_scene_start_on_enter
+                0x000015ac       0x74 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_start.o
+                0x000015ac                ibutton_scene_start_on_enter
+ .text.ibutton_scene_start_on_event
+                0x00001620       0x68 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_start.o
+                0x00001620                ibutton_scene_start_on_event
+ .text.ibutton_scene_start_on_exit
+                0x00001688       0x10 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_start.o
+                0x00001688                ibutton_scene_start_on_exit
+ .text.ibutton_scene_view_data_on_enter
+                0x00001698       0x5c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_view_data.o
+                0x00001698                ibutton_scene_view_data_on_enter
+ .text.ibutton_scene_view_data_on_event
+                0x000016f4        0xe build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_view_data.o
+                0x000016f4                ibutton_scene_view_data_on_event
+ *fill*         0x00001702        0x2 
+ .text.ibutton_scene_view_data_on_exit
+                0x00001704       0x10 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_view_data.o
+                0x00001704                ibutton_scene_view_data_on_exit
+ .text.ibutton_scene_write_to_custom_event
+                0x00001714       0x2c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+ .text.ibutton_scene_write_callback
+                0x00001740       0x1c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+ .text.ibutton_scene_write_on_enter
+                0x0000175c      0x15c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+                0x0000175c                ibutton_scene_write_on_enter
+ .text.ibutton_scene_write_on_event
+                0x000018b8       0x58 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+                0x000018b8                ibutton_scene_write_on_event
+ .text.ibutton_scene_write_on_exit
+                0x00001910       0x2c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+                0x00001910                ibutton_scene_write_on_exit
+ .text.ibutton_scene_write_success_popup_callback
+                0x0000193c       0x20 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write_success.o
+ .text.ibutton_scene_write_success_on_enter
+                0x0000195c       0x90 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write_success.o
+                0x0000195c                ibutton_scene_write_success_on_enter
+ .text.ibutton_scene_write_success_on_event
+                0x000019ec       0x3c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write_success.o
+                0x000019ec                ibutton_scene_write_success_on_event
+ .text.ibutton_scene_write_success_on_exit
+                0x00001a28       0x10 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write_success.o
+                0x00001a28                ibutton_scene_write_success_on_exit
+ .text.ibutton_custom_event_callback
+                0x00001a38       0x1c build/f7-firmware-D/.extapps/ibutton/ibutton.o
+                0x00001a38                ibutton_custom_event_callback
+ .text.ibutton_back_event_callback
+                0x00001a54       0x1c build/f7-firmware-D/.extapps/ibutton/ibutton.o
+                0x00001a54                ibutton_back_event_callback
+ .text.ibutton_tick_event_callback
+                0x00001a70       0x1c build/f7-firmware-D/.extapps/ibutton/ibutton.o
+                0x00001a70                ibutton_tick_event_callback
+ .text.ibutton_make_app_folder
+                0x00001a8c       0x40 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .text.ibutton_rpc_command_callback
+                0x00001acc       0x7c build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .text.ibutton_alloc
+                0x00001b48      0x178 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+                0x00001b48                ibutton_alloc
+ .text.ibutton_free
+                0x00001cc0       0xf4 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+                0x00001cc0                ibutton_free
+ .text.ibutton_load_key
+                0x00001db4       0x84 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+                0x00001db4                ibutton_load_key
+ .text.ibutton_select_and_load_key
+                0x00001e38       0x6c build/f7-firmware-D/.extapps/ibutton/ibutton.o
+                0x00001e38                ibutton_select_and_load_key
+ .text.ibutton_save_key
+                0x00001ea4       0x50 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+                0x00001ea4                ibutton_save_key
+ .text.ibutton_reset_key
+                0x00001ef4       0x20 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+                0x00001ef4                ibutton_reset_key
+ .text.ibutton_delete_key
+                0x00001f14       0x48 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+                0x00001f14                ibutton_delete_key
+ .text.ibutton_notification_message
+                0x00001f5c       0x28 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+                0x00001f5c                ibutton_notification_message
+ .text.ibutton_submenu_callback
+                0x00001f84       0x10 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+                0x00001f84                ibutton_submenu_callback
+ .text.ibutton_widget_callback
+                0x00001f94       0x18 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+                0x00001f94                ibutton_widget_callback
+ .text.ibutton_app
+                0x00001fac      0x10c build/f7-firmware-D/.extapps/ibutton/ibutton.o
+                0x00001fac                ibutton_app
+ *(.text.*)
+ *(.text._*)
+ *(.init)
+ *(.fini)
+
+.rodata         0x000020b8      0xcd9
+ *(.rodata)
+ .rodata        0x000020b8        0xc build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+ .rodata        0x000020c4        0xc build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+ *(.rodata1)
+ *(.rodata.*)
+ .rodata.ibutton_scene_handlers
+                0x000020d0       0x10 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene.o
+                0x000020d0                ibutton_scene_handlers
+ .rodata.ibutton_on_exit_handlers
+                0x000020e0       0x54 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene.o
+                0x000020e0                ibutton_on_exit_handlers
+ .rodata.ibutton_on_event_handlers
+                0x00002134       0x54 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene.o
+                0x00002134                ibutton_on_event_handlers
+ .rodata.ibutton_on_enter_handlers
+                0x00002188       0x54 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene.o
+                0x00002188                ibutton_on_enter_handlers
+ .rodata.ibutton_scene_add_type_on_enter.str1.4
+                0x000021dc        0x6 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_type.o
+ *fill*         0x000021e2        0x2 
+ .rodata.ibutton_scene_add_value_on_enter.str1.4
+                0x000021e4        0xe build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+ *fill*         0x000021f2        0x2 
+ .rodata.ibutton_scene_add_value_on_event.str1.4
+                0x000021f4       0x1e build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+ *fill*         0x00002212        0x2 
+ .rodata.ibutton_scene_delete_confirm_on_enter.str1.4
+                0x00002214       0x27 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_confirm.o
+ *fill*         0x0000223b        0x1 
+ .rodata.ibutton_scene_delete_confirm_on_event.str1.4
+                0x0000223c       0x17 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_confirm.o
+ *fill*         0x00002253        0x1 
+ .rodata.ibutton_scene_delete_success_on_enter.str1.4
+                0x00002254        0x8 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_success.o
+ .rodata.ibutton_scene_emulate_on_enter.str1.4
+                0x0000225c       0x1a build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o
+ *fill*         0x00002276        0x2 
+ .rodata.ibutton_scene_exit_confirm_on_enter.str1.4
+                0x00002278       0x47 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_exit_confirm.o
+ *fill*         0x000022bf        0x1 
+ .rodata.ibutton_scene_info_on_enter.str1.4
+                0x000022c0       0x19 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_info.o
+ *fill*         0x000022d9        0x3 
+ .rodata.ibutton_scene_read_on_enter.str1.4
+                0x000022dc       0x23 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read.o
+ *fill*         0x000022ff        0x1 
+ .rodata.ibutton_scene_read_error_on_enter.str1.4
+                0x00002300        0xd build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_error.o
+ *fill*         0x0000230d        0x3 
+ .rodata.ibutton_scene_read_key_menu_on_enter.str1.4
+                0x00002310       0x3e build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_key_menu.o
+ *fill*         0x0000234e        0x2 
+ .rodata.ibutton_scene_read_success_on_enter.str1.4
+                0x00002350       0x16 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_success.o
+ *fill*         0x00002366        0x2 
+ .rodata.ibutton_scene_retry_confirm_on_enter.str1.4
+                0x00002368       0x3f build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_retry_confirm.o
+ *fill*         0x000023a7        0x1 
+ .rodata.ibutton_rpc_start_emulation.str1.4
+                0x000023a8        0x8 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+ .rodata.ibutton_scene_rpc_on_event.str1.4
+                0x000023b0       0x15 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+ *fill*         0x000023c5        0x3 
+ .rodata.ibutton_scene_save_name_on_enter.str1.4
+                0x000023c8       0x2d build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+ *fill*         0x000023f5        0x3 
+ .rodata.ibutton_scene_save_name_on_event.str1.4
+                0x000023f8       0x10 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+ .rodata.ibutton_scene_save_success_on_enter.str1.4
+                0x00002408        0x6 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_success.o
+ *fill*         0x0000240e        0x2 
+ .rodata.ibutton_scene_saved_key_menu_on_enter.str1.4
+                0x00002410       0x49 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_saved_key_menu.o
+ *fill*         0x00002459        0x3 
+ .rodata.ibutton_scene_start_on_enter.str1.4
+                0x0000245c       0x1d build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_start.o
+ *fill*         0x00002479        0x3 
+ .rodata.ibutton_scene_write_on_enter.str1.4
+                0x0000247c       0x29 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+ *fill*         0x000024a5        0x3 
+ .rodata.ibutton_scene_write_success_on_enter.str1.4
+                0x000024a8       0x16 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write_success.o
+ *fill*         0x000024be        0x2 
+ .rodata.ibutton_make_app_folder.str1.4
+                0x000024c0       0x31 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ *fill*         0x000024f1        0x3 
+ .rodata.ibutton_alloc.str1.4
+                0x000024f4       0x19 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ *fill*         0x0000250d        0x3 
+ .rodata.ibutton_load_key.str1.4
+                0x00002510       0x15 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ *fill*         0x00002525        0x3 
+ .rodata.ibutton_select_and_load_key.str1.4
+                0x00002528        0x6 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ *fill*         0x0000252e        0x2 
+ .rodata.ibutton_save_key.str1.4
+                0x00002530       0x15 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ *fill*         0x00002545        0x3 
+ .rodata.ibutton_app.str1.4
+                0x00002548       0x27 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ *fill*         0x0000256f        0x1 
+ .rodata.ibutton_notification_sequences
+                0x00002570       0x2c build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .rodata.sequence_blink_set_magenta
+                0x0000259c        0x8 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .rodata.sequence_blink_set_yellow
+                0x000025a4        0x8 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .rodata.I_iButtonKey_49x44
+                0x000025ac        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000025ac                I_iButtonKey_49x44
+ .rodata.I_iButtonDolphinVerySuccess_92x55
+                0x000025b8        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000025b8                I_iButtonDolphinVerySuccess_92x55
+ .rodata.I_DolphinWait_59x54
+                0x000025c4        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000025c4                I_DolphinWait_59x54
+ .rodata.I_DolphinSaved_92x58
+                0x000025d0        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000025d0                I_DolphinSaved_92x58
+ .rodata.I_DolphinMafia_119x62
+                0x000025dc        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000025dc                I_DolphinMafia_119x62
+ .rodata.I_ibutt_10px
+                0x000025e8        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000025e8                I_ibutt_10px
+ .rodata._I_iButtonKey_49x44
+                0x000025f4        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000025f4                _I_iButtonKey_49x44
+ .rodata._I_iButtonKey_49x44_0
+                0x000025f8       0xb8 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000025f8                _I_iButtonKey_49x44_0
+ .rodata._I_iButtonDolphinVerySuccess_92x55
+                0x000026b0        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000026b0                _I_iButtonDolphinVerySuccess_92x55
+ .rodata._I_iButtonDolphinVerySuccess_92x55_0
+                0x000026b4      0x1c4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000026b4                _I_iButtonDolphinVerySuccess_92x55_0
+ .rodata._I_DolphinWait_59x54
+                0x00002878        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00002878                _I_DolphinWait_59x54
+ .rodata._I_DolphinWait_59x54_0
+                0x0000287c      0x12f build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x0000287c                _I_DolphinWait_59x54_0
+ *fill*         0x000029ab        0x1 
+ .rodata._I_DolphinSaved_92x58
+                0x000029ac        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000029ac                _I_DolphinSaved_92x58
+ .rodata._I_DolphinSaved_92x58_0
+                0x000029b0      0x188 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000029b0                _I_DolphinSaved_92x58_0
+ .rodata._I_DolphinMafia_119x62
+                0x00002b38        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00002b38                _I_DolphinMafia_119x62
+ .rodata._I_DolphinMafia_119x62_0
+                0x00002b3c      0x23c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00002b3c                _I_DolphinMafia_119x62_0
+ .rodata._I_ibutt_10px
+                0x00002d78        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00002d78                _I_ibutt_10px
+ .rodata._I_ibutt_10px_0
+                0x00002d7c       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00002d7c                _I_ibutt_10px_0
+
+.data
+ *(.data)
+ *(.data1)
+ *(.data.*)
+
+.bss
+ *(.bss)
+ *(.bss*)
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x528
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x18 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene.o
+ .debug_aranges
+                0x00000018       0x30 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_type.o
+ .debug_aranges
+                0x00000048       0x40 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+ .debug_aranges
+                0x00000088       0x30 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_confirm.o
+ .debug_aranges
+                0x000000b8       0x38 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_success.o
+ .debug_aranges
+                0x000000f0       0x38 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o
+ .debug_aranges
+                0x00000128       0x38 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_exit_confirm.o
+ .debug_aranges
+                0x00000160       0x30 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_info.o
+ .debug_aranges
+                0x00000190       0x38 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read.o
+ .debug_aranges
+                0x000001c8       0x30 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_error.o
+ .debug_aranges
+                0x000001f8       0x38 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_key_menu.o
+ .debug_aranges
+                0x00000230       0x30 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_success.o
+ .debug_aranges
+                0x00000260       0x38 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_retry_confirm.o
+ .debug_aranges
+                0x00000298       0x38 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+ .debug_aranges
+                0x000002d0       0x38 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+ .debug_aranges
+                0x00000308       0x38 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_success.o
+ .debug_aranges
+                0x00000340       0x30 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_saved_key_menu.o
+ .debug_aranges
+                0x00000370       0x30 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_select_key.o
+ .debug_aranges
+                0x000003a0       0x30 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_start.o
+ .debug_aranges
+                0x000003d0       0x30 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_view_data.o
+ .debug_aranges
+                0x00000400       0x40 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+ .debug_aranges
+                0x00000440       0x38 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write_success.o
+ .debug_aranges
+                0x00000478       0x98 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .debug_aranges
+                0x00000510       0x18 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000    0x14615
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000      0x753 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene.o
+ .debug_info    0x00000753      0x93a build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_type.o
+ .debug_info    0x0000108d      0xa3b build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+ .debug_info    0x00001ac8      0xb12 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_confirm.o
+ .debug_info    0x000025da      0x8a0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_success.o
+ .debug_info    0x00002e7a      0xbfa build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o
+ .debug_info    0x00003a74      0x8ce build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_exit_confirm.o
+ .debug_info    0x00004342      0xa56 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_info.o
+ .debug_info    0x00004d98      0xb6d build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read.o
+ .debug_info    0x00005905      0x993 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_error.o
+ .debug_info    0x00006298      0xab9 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_key_menu.o
+ .debug_info    0x00006d51      0xb29 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_success.o
+ .debug_info    0x0000787a      0x8ce build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_retry_confirm.o
+ .debug_info    0x00008148      0xc3d build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+ .debug_info    0x00008d85      0xc84 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+ .debug_info    0x00009a09      0x8a0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_success.o
+ .debug_info    0x0000a2a9      0xae0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_saved_key_menu.o
+ .debug_info    0x0000ad89      0x56b build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_select_key.o
+ .debug_info    0x0000b2f4      0x8e4 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_start.o
+ .debug_info    0x0000bbd8      0x63e build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_view_data.o
+ .debug_info    0x0000c216      0xcf7 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+ .debug_info    0x0000cf0d      0x999 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write_success.o
+ .debug_info    0x0000d8a6     0x2119 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .debug_info    0x0000f9bf     0x4c56 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+
+.debug_abbrev   0x00000000     0x2f7e
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x137 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene.o
+ .debug_abbrev  0x00000137      0x219 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_type.o
+ .debug_abbrev  0x00000350      0x211 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+ .debug_abbrev  0x00000561      0x231 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_confirm.o
+ .debug_abbrev  0x00000792      0x1e8 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_success.o
+ .debug_abbrev  0x0000097a      0x220 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o
+ .debug_abbrev  0x00000b9a      0x1d7 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_exit_confirm.o
+ .debug_abbrev  0x00000d71      0x21a build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_info.o
+ .debug_abbrev  0x00000f8b      0x1fc build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read.o
+ .debug_abbrev  0x00001187      0x200 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_error.o
+ .debug_abbrev  0x00001387      0x1d7 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_key_menu.o
+ .debug_abbrev  0x0000155e      0x205 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_success.o
+ .debug_abbrev  0x00001763      0x1d7 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_retry_confirm.o
+ .debug_abbrev  0x0000193a      0x235 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+ .debug_abbrev  0x00001b6f      0x218 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+ .debug_abbrev  0x00001d87      0x1e8 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_success.o
+ .debug_abbrev  0x00001f6f      0x1ea build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_saved_key_menu.o
+ .debug_abbrev  0x00002159      0x1bd build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_select_key.o
+ .debug_abbrev  0x00002316      0x1ea build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_start.o
+ .debug_abbrev  0x00002500      0x1f7 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_view_data.o
+ .debug_abbrev  0x000026f7      0x274 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+ .debug_abbrev  0x0000296b      0x202 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write_success.o
+ .debug_abbrev  0x00002b6d      0x33f build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .debug_abbrev  0x00002eac       0xd2 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+
+.debug_line     0x00000000     0x7566
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x174 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene.o
+ .debug_line_end
+                0x00000174        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene.o
+ .debug_line    0x00000174      0x39a build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_type.o
+ .debug_line.text.ibutton_scene_add_type_on_enter
+                0x0000050e       0x67 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_type.o
+ .debug_line.text.ibutton_scene_add_type_on_event
+                0x00000575       0x50 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_type.o
+ .debug_line.text.ibutton_scene_add_type_on_exit
+                0x000005c5       0x1d build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_type.o
+ .debug_line_end
+                0x000005e2        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_type.o
+ .debug_line    0x000005e2      0x41e build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+ .debug_line.text.ibutton_scene_add_type_byte_changed_callback
+                0x00000a00       0x1b build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+ .debug_line.text.ibutton_scene_add_type_byte_input_callback
+                0x00000a1b       0x1b build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+ .debug_line.text.ibutton_scene_add_value_on_enter
+                0x00000a36       0x24 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+ .debug_line.text.ibutton_scene_add_value_on_event
+                0x00000a5a       0xba build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+ .debug_line.text.ibutton_scene_add_value_on_exit
+                0x00000b14       0x22 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+ .debug_line_end
+                0x00000b36        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+ .debug_line    0x00000b36      0x419 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_confirm.o
+ .debug_line.text.ibutton_scene_delete_confirm_on_enter
+                0x00000f4f       0x53 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_confirm.o
+ .debug_line.text.ibutton_scene_delete_confirm_on_event
+                0x00000fa2       0x6e build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_confirm.o
+ .debug_line.text.ibutton_scene_delete_confirm_on_exit
+                0x00001010       0x1d build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_confirm.o
+ .debug_line_end
+                0x0000102d        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_confirm.o
+ .debug_line    0x0000102d      0x3db build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_success.o
+ .debug_line.text.ibutton_scene_delete_success_popup_callback
+                0x00001408       0x1b build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_success.o
+ .debug_line.text.ibutton_scene_delete_success_on_enter
+                0x00001423       0x2c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_success.o
+ .debug_line.text.ibutton_scene_delete_success_on_event
+                0x0000144f       0x43 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_success.o
+ .debug_line.text.ibutton_scene_delete_success_on_exit
+                0x00001492       0x1e build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_success.o
+ .debug_line_end
+                0x000014b0        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_success.o
+ .debug_line    0x000014b0      0x3ff build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o
+ .debug_line.text.ibutton_scene_emulate_callback
+                0x000018af       0x24 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o
+ .debug_line.text.ibutton_scene_emulate_on_enter
+                0x000018d3       0x57 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o
+ .debug_line.text.ibutton_scene_emulate_on_event
+                0x0000192a       0x92 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o
+ .debug_line.text.ibutton_scene_emulate_on_exit
+                0x000019bc       0x23 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o
+ .debug_line_end
+                0x000019df        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o
+ .debug_line    0x000019df      0x3ec build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_exit_confirm.o
+ .debug_line.text.ibutton_scene_exit_confirm_widget_callback
+                0x00001dcb       0x24 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_exit_confirm.o
+ .debug_line.text.ibutton_scene_exit_confirm_on_enter
+                0x00001def       0x2c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_exit_confirm.o
+ .debug_line.text.ibutton_scene_exit_confirm_on_event
+                0x00001e1b       0x64 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_exit_confirm.o
+ .debug_line.text.ibutton_scene_exit_confirm_on_exit
+                0x00001e7f       0x1d build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_exit_confirm.o
+ .debug_line_end
+                0x00001e9c        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_exit_confirm.o
+ .debug_line    0x00001e9c      0x40f build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_info.o
+ .debug_line.text.ibutton_scene_info_on_enter
+                0x000022ab       0x6d build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_info.o
+ .debug_line.text.ibutton_scene_info_on_event
+                0x00002318       0x43 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_info.o
+ .debug_line.text.ibutton_scene_info_on_exit
+                0x0000235b       0x1d build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_info.o
+ .debug_line_end
+                0x00002378        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_info.o
+ .debug_line    0x00002378      0x434 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read.o
+ .debug_line.text.ibutton_scene_read_callback
+                0x000027ac       0x1b build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read.o
+ .debug_line.text.ibutton_scene_read_on_enter
+                0x000027c7       0x3f build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read.o
+ .debug_line.text.ibutton_scene_read_on_event
+                0x00002806       0x65 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read.o
+ .debug_line.text.ibutton_scene_read_on_exit
+                0x0000286b       0x2f build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read.o
+ .debug_line_end
+                0x0000289a        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read.o
+ .debug_line    0x0000289a      0x3ea build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_error.o
+ .debug_line.text.ibutton_scene_read_error_on_enter
+                0x00002c84       0x42 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_error.o
+ .debug_line.text.ibutton_scene_read_error_on_event
+                0x00002cc6       0x6e build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_error.o
+ .debug_line.text.ibutton_scene_read_error_on_exit
+                0x00002d34       0x1e build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_error.o
+ .debug_line_end
+                0x00002d52        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_error.o
+ .debug_line    0x00002d52      0x402 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_key_menu.o
+ .debug_line.text.ibutton_scene_read_key_menu_submenu_callback
+                0x00003154       0x1d build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_key_menu.o
+ .debug_line.text.ibutton_scene_read_key_menu_on_enter
+                0x00003171       0x69 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_key_menu.o
+ .debug_line.text.ibutton_scene_read_key_menu_on_event
+                0x000031da       0xad build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_key_menu.o
+ .debug_line.text.ibutton_scene_read_key_menu_on_exit
+                0x00003287       0x1e build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_key_menu.o
+ .debug_line_end
+                0x000032a5        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_key_menu.o
+ .debug_line    0x000032a5      0x417 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_success.o
+ .debug_line.text.ibutton_scene_read_success_on_enter
+                0x000036bc       0x4d build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_success.o
+ .debug_line.text.ibutton_scene_read_success_on_event
+                0x00003709       0x6e build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_success.o
+ .debug_line.text.ibutton_scene_read_success_on_exit
+                0x00003777       0x21 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_success.o
+ .debug_line_end
+                0x00003798        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_success.o
+ .debug_line    0x00003798      0x3ed build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_retry_confirm.o
+ .debug_line.text.ibutton_scene_retry_confirm_widget_callback
+                0x00003b85       0x24 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_retry_confirm.o
+ .debug_line.text.ibutton_scene_retry_confirm_on_enter
+                0x00003ba9       0x2c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_retry_confirm.o
+ .debug_line.text.ibutton_scene_retry_confirm_on_event
+                0x00003bd5       0x64 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_retry_confirm.o
+ .debug_line.text.ibutton_scene_retry_confirm_on_exit
+                0x00003c39       0x1d build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_retry_confirm.o
+ .debug_line_end
+                0x00003c56        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_retry_confirm.o
+ .debug_line    0x00003c56      0x3f2 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+ .debug_line.text.ibutton_rpc_start_emulation
+                0x00004048       0x2e build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+ .debug_line.text.ibutton_scene_rpc_on_enter
+                0x00004076       0x16 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+ .debug_line.text.ibutton_scene_rpc_on_event
+                0x0000408c       0x8e build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+ .debug_line.text.ibutton_scene_rpc_on_exit
+                0x0000411a       0x2e build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+ .debug_line_end
+                0x00004148        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+ .debug_line    0x00004148      0x492 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+ .debug_line.text.ibutton_scene_save_name_text_input_callback
+                0x000045da       0x1b build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+ .debug_line.text.ibutton_scene_save_name_on_enter
+                0x000045f5       0x53 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+ .debug_line.text.ibutton_scene_save_name_on_event
+                0x00004648       0xa9 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+ .debug_line.text.ibutton_scene_save_name_on_exit
+                0x000046f1       0x34 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+ .debug_line_end
+                0x00004725        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+ .debug_line    0x00004725      0x3d9 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_success.o
+ .debug_line.text.ibutton_scene_save_success_popup_callback
+                0x00004afe       0x1b build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_success.o
+ .debug_line.text.ibutton_scene_save_success_on_enter
+                0x00004b19       0x2c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_success.o
+ .debug_line.text.ibutton_scene_save_success_on_event
+                0x00004b45       0x43 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_success.o
+ .debug_line.text.ibutton_scene_save_success_on_exit
+                0x00004b88       0x1e build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_success.o
+ .debug_line_end
+                0x00004ba6        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_success.o
+ .debug_line    0x00004ba6      0x403 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_saved_key_menu.o
+ .debug_line.text.ibutton_scene_saved_key_menu_on_enter
+                0x00004fa9       0x51 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_saved_key_menu.o
+ .debug_line.text.ibutton_scene_saved_key_menu_on_event
+                0x00004ffa       0xc1 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_saved_key_menu.o
+ .debug_line.text.ibutton_scene_saved_key_menu_on_exit
+                0x000050bb       0x1e build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_saved_key_menu.o
+ .debug_line_end
+                0x000050d9        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_saved_key_menu.o
+ .debug_line    0x000050d9      0x371 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_select_key.o
+ .debug_line.text.ibutton_scene_select_key_on_enter
+                0x0000544a       0x2d build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_select_key.o
+ .debug_line.text.ibutton_scene_select_key_on_event
+                0x00005477       0x1e build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_select_key.o
+ .debug_line.text.ibutton_scene_select_key_on_exit
+                0x00005495       0x18 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_select_key.o
+ .debug_line_end
+                0x000054ad        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_select_key.o
+ .debug_line    0x000054ad      0x3cf build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_start.o
+ .debug_line.text.ibutton_scene_start_on_enter
+                0x0000587c       0x2a build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_start.o
+ .debug_line.text.ibutton_scene_start_on_event
+                0x000058a6       0x6b build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_start.o
+ .debug_line.text.ibutton_scene_start_on_exit
+                0x00005911       0x1d build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_start.o
+ .debug_line_end
+                0x0000592e        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_start.o
+ .debug_line    0x0000592e      0x332 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_view_data.o
+ .debug_line.text.ibutton_scene_view_data_on_enter
+                0x00005c60       0x3d build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_view_data.o
+ .debug_line.text.ibutton_scene_view_data_on_event
+                0x00005c9d       0x1e build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_view_data.o
+ .debug_line.text.ibutton_scene_view_data_on_exit
+                0x00005cbb       0x1d build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_view_data.o
+ .debug_line_end
+                0x00005cd8        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_view_data.o
+ .debug_line    0x00005cd8      0x408 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+ .debug_line.text.ibutton_scene_write_to_custom_event
+                0x000060e0       0x44 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+ .debug_line.text.ibutton_scene_write_callback
+                0x00006124       0x24 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+ .debug_line.text.ibutton_scene_write_on_enter
+                0x00006148       0xf2 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+ .debug_line.text.ibutton_scene_write_on_event
+                0x0000623a       0x74 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+ .debug_line.text.ibutton_scene_write_on_exit
+                0x000062ae       0x2b build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+ .debug_line_end
+                0x000062d9        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+ .debug_line    0x000062d9      0x443 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write_success.o
+ .debug_line.text.ibutton_scene_write_success_popup_callback
+                0x0000671c       0x1f build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write_success.o
+ .debug_line.text.ibutton_scene_write_success_on_enter
+                0x0000673b       0x31 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write_success.o
+ .debug_line.text.ibutton_scene_write_success_on_event
+                0x0000676c       0x4b build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write_success.o
+ .debug_line.text.ibutton_scene_write_success_on_exit
+                0x000067b7       0x1e build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write_success.o
+ .debug_line_end
+                0x000067d5        0x0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write_success.o
+ .debug_line    0x000067d5      0x5d6 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .debug_line.text.ibutton_custom_event_callback
+                0x00006dab       0x5d build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .debug_line.text.ibutton_back_event_callback
+                0x00006e08       0x5e build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .debug_line.text.ibutton_tick_event_callback
+                0x00006e66       0x57 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .debug_line.text.ibutton_make_app_folder
+                0x00006ebd       0x33 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .debug_line.text.ibutton_rpc_command_callback
+                0x00006ef0       0xcb build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .debug_line.text.ibutton_alloc
+                0x00006fbb       0xd2 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .debug_line.text.ibutton_free
+                0x0000708d       0xf4 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .debug_line.text.ibutton_load_key
+                0x00007181       0x58 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .debug_line.text.ibutton_select_and_load_key
+                0x000071d9       0x5b build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .debug_line.text.ibutton_save_key
+                0x00007234       0x3f build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .debug_line.text.ibutton_reset_key
+                0x00007273       0x29 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .debug_line.text.ibutton_delete_key
+                0x0000729c       0x32 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .debug_line.text.ibutton_notification_message
+                0x000072ce       0x57 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .debug_line.text.ibutton_submenu_callback
+                0x00007325       0x1e build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .debug_line.text.ibutton_widget_callback
+                0x00007343       0x27 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .debug_line.text.ibutton_app
+                0x0000736a       0x9e build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .debug_line_end
+                0x00007408        0x0 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .debug_line    0x00007408      0x15e build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .debug_line_end
+                0x00007566        0x0 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+
+.debug_frame    0x00000000      0xc38
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x74 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_type.o
+ .debug_frame   0x00000074       0xac build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+ .debug_frame   0x00000120       0x78 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_confirm.o
+ .debug_frame   0x00000198       0x80 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_success.o
+ .debug_frame   0x00000218       0x90 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o
+ .debug_frame   0x000002a8       0x84 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_exit_confirm.o
+ .debug_frame   0x0000032c       0x74 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_info.o
+ .debug_frame   0x000003a0       0x9c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read.o
+ .debug_frame   0x0000043c       0x6c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_error.o
+ .debug_frame   0x000004a8       0x8c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_key_menu.o
+ .debug_frame   0x00000534       0x70 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_success.o
+ .debug_frame   0x000005a4       0x84 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_retry_confirm.o
+ .debug_frame   0x00000628       0x8c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+ .debug_frame   0x000006b4       0x90 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+ .debug_frame   0x00000744       0x80 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_success.o
+ .debug_frame   0x000007c4       0x74 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_saved_key_menu.o
+ .debug_frame   0x00000838       0x50 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_select_key.o
+ .debug_frame   0x00000888       0x70 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_start.o
+ .debug_frame   0x000008f8       0x64 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_view_data.o
+ .debug_frame   0x0000095c       0xa4 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+ .debug_frame   0x00000a00       0x80 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write_success.o
+ .debug_frame   0x00000a80      0x1b8 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+
+.debug_str      0x00000000    0x15af8
+ *(.debug_str)
+ .debug_str     0x00000000      0xd75 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene.o
+ .debug_str     0x00000d75      0x90f build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_type.o
+ .debug_str     0x00001684      0xb25 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+ .debug_str     0x000021a9      0xa1e build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_confirm.o
+ .debug_str     0x00002bc7      0xa62 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_success.o
+ .debug_str     0x00003629      0xd3e build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o
+ .debug_str     0x00004367      0x960 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_exit_confirm.o
+ .debug_str     0x00004cc7      0xa26 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_info.o
+ .debug_str     0x000056ed      0xf46 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read.o
+ .debug_str     0x00006633      0xab2 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_error.o
+ .debug_str     0x000070e5      0xcc1 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_key_menu.o
+ .debug_str     0x00007da6      0xbbe build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_success.o
+ .debug_str     0x00008964      0x965 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_retry_confirm.o
+ .debug_str     0x000092c9      0xf4d build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+ .debug_str     0x0000a216      0xf07 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+ .debug_str     0x0000b11d      0xa56 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_success.o
+ .debug_str     0x0000bb73      0xcac build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_saved_key_menu.o
+ .debug_str     0x0000c81f      0x6ed build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_select_key.o
+ .debug_str     0x0000cf0c      0xb83 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_start.o
+ .debug_str     0x0000da8f      0x5d0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_view_data.o
+ .debug_str     0x0000e05f      0xe20 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+ .debug_str     0x0000ee7f      0xc26 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write_success.o
+ .debug_str     0x0000faa5     0x1f28 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .debug_str     0x000119cd     0x412b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+ *(.debug_line_str)
+
+.debug_loclists
+                0x00000000     0x2324
+ *(.debug_loclists)
+ .debug_loclists
+                0x00000000      0x145 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_type.o
+ .debug_loclists
+                0x00000145      0x1b5 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+ .debug_loclists
+                0x000002fa      0x15f build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_confirm.o
+ .debug_loclists
+                0x00000459      0x15c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_success.o
+ .debug_loclists
+                0x000005b5      0x1df build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o
+ .debug_loclists
+                0x00000794      0x173 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_exit_confirm.o
+ .debug_loclists
+                0x00000907      0x182 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_info.o
+ .debug_loclists
+                0x00000a89      0x182 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read.o
+ .debug_loclists
+                0x00000c0b      0x150 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_error.o
+ .debug_loclists
+                0x00000d5b      0x1ae build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_key_menu.o
+ .debug_loclists
+                0x00000f09      0x160 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_success.o
+ .debug_loclists
+                0x00001069      0x173 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_retry_confirm.o
+ .debug_loclists
+                0x000011dc      0x172 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+ .debug_loclists
+                0x0000134e      0x182 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+ .debug_loclists
+                0x000014d0      0x15c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_success.o
+ .debug_loclists
+                0x0000162c      0x15a build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_saved_key_menu.o
+ .debug_loclists
+                0x00001786       0x4b build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_select_key.o
+ .debug_loclists
+                0x000017d1       0xf0 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_start.o
+ .debug_loclists
+                0x000018c1       0xc7 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_view_data.o
+ .debug_loclists
+                0x00001988      0x2d4 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+ .debug_loclists
+                0x00001c5c      0x16c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write_success.o
+ .debug_loclists
+                0x00001dc8      0x55c build/f7-firmware-D/.extapps/ibutton/ibutton.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x00000000      0x37b
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x00000000       0x20 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_type.o
+ .debug_rnglists
+                0x00000020       0x2c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+ .debug_rnglists
+                0x0000004c       0x20 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_confirm.o
+ .debug_rnglists
+                0x0000006c       0x25 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_success.o
+ .debug_rnglists
+                0x00000091       0x33 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o
+ .debug_rnglists
+                0x000000c4       0x25 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_exit_confirm.o
+ .debug_rnglists
+                0x000000e9       0x20 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_info.o
+ .debug_rnglists
+                0x00000109       0x26 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read.o
+ .debug_rnglists
+                0x0000012f       0x20 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_error.o
+ .debug_rnglists
+                0x0000014f       0x27 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_key_menu.o
+ .debug_rnglists
+                0x00000176       0x20 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_success.o
+ .debug_rnglists
+                0x00000196       0x25 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_retry_confirm.o
+ .debug_rnglists
+                0x000001bb       0x33 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+ .debug_rnglists
+                0x000001ee       0x27 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+ .debug_rnglists
+                0x00000215       0x25 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_success.o
+ .debug_rnglists
+                0x0000023a       0x21 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_saved_key_menu.o
+ .debug_rnglists
+                0x0000025b       0x1f build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_select_key.o
+ .debug_rnglists
+                0x0000027a       0x1f build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_start.o
+ .debug_rnglists
+                0x00000299       0x1f build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_view_data.o
+ .debug_rnglists
+                0x000002b8       0x2c build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+ .debug_rnglists
+                0x000002e4       0x26 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write_success.o
+ .debug_rnglists
+                0x0000030a       0x71 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.ARM.attributes
+                0x00000000       0x34
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x34 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene.o
+ .ARM.attributes
+                0x00000034       0x34 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_type.o
+ .ARM.attributes
+                0x00000068       0x34 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_add_value.o
+ .ARM.attributes
+                0x0000009c       0x34 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_confirm.o
+ .ARM.attributes
+                0x000000d0       0x34 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_delete_success.o
+ .ARM.attributes
+                0x00000104       0x34 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_emulate.o
+ .ARM.attributes
+                0x00000138       0x34 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_exit_confirm.o
+ .ARM.attributes
+                0x0000016c       0x34 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_info.o
+ .ARM.attributes
+                0x000001a0       0x34 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read.o
+ .ARM.attributes
+                0x000001d4       0x34 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_error.o
+ .ARM.attributes
+                0x00000208       0x34 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_key_menu.o
+ .ARM.attributes
+                0x0000023c       0x34 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_read_success.o
+ .ARM.attributes
+                0x00000270       0x34 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_retry_confirm.o
+ .ARM.attributes
+                0x000002a4       0x34 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_rpc.o
+ .ARM.attributes
+                0x000002d8       0x34 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_name.o
+ .ARM.attributes
+                0x0000030c       0x34 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_save_success.o
+ .ARM.attributes
+                0x00000340       0x34 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_saved_key_menu.o
+ .ARM.attributes
+                0x00000374       0x34 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_select_key.o
+ .ARM.attributes
+                0x000003a8       0x34 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_start.o
+ .ARM.attributes
+                0x000003dc       0x34 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_view_data.o
+ .ARM.attributes
+                0x00000410       0x34 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write.o
+ .ARM.attributes
+                0x00000444       0x34 build/f7-firmware-D/.extapps/ibutton/scenes/ibutton_scene_write_success.o
+ .ARM.attributes
+                0x00000478       0x34 build/f7-firmware-D/.extapps/ibutton/ibutton.o
+ .ARM.attributes
+                0x000004ac       0x34 build/f7-firmware-D/.extapps/ibutton/ibutton_cli.o
+ .ARM.attributes
+                0x000004e0       0x34 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+
+/DISCARD/
+ *(.comment)
+ *(.comment.*)
+ *(.llvmbc)
+ *(.llvmcmd)
+OUTPUT(build/f7-firmware-D/.extapps/ibutton_d.elf elf32-littlearm)
+LOAD linker stubs

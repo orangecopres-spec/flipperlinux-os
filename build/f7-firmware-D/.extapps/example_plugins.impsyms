@@ -1,0 +1,12 @@
+__furi_crash_implementation U         
+firmware_api_interface U         
+flipper_application_alloc U         
+flipper_application_free U         
+flipper_application_is_plugin U         
+flipper_application_map_to_memory U         
+flipper_application_plugin_get_descriptor U         
+flipper_application_preload U         
+furi_log_print_format U         
+furi_record_close U         
+furi_record_open U         
+strcmp U         

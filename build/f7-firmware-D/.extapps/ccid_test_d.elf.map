@@ -1,0 +1,379 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_response.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_response.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_response.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_response.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_t0_apdu.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_t0_apdu.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_t0_apdu.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_t0_apdu.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+ .text.ccid_test_exit
+                0x00000000        0x6 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+ .debug_line.text.ccid_test_exit
+                0x00000000       0x1a build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+LOAD build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_response.o
+LOAD build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_t0_apdu.o
+LOAD build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+LOAD build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libstdc++_nano.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libsupc++_nano.a
+
+.text           0x00000000      0x5e8
+ *(.text)
+ *(.stub)
+ *(.text*)
+ .text.iso7816_icc_power_on_callback
+                0x00000000       0x44 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+                0x00000000                iso7816_icc_power_on_callback
+ .text.iso7816_xfr_datablock_callback
+                0x00000044       0x8c build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+                0x00000044                iso7816_xfr_datablock_callback
+ .text.iso7816_handler_alloc
+                0x000000d0       0x54 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+                0x000000d0                iso7816_handler_alloc
+ .text.iso7816_handler_set_usb_ccid_callbacks
+                0x00000124       0x1c build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+                0x00000124                iso7816_handler_set_usb_ccid_callbacks
+ .text.iso7816_handler_reset_usb_ccid_callbacks
+                0x00000140       0x10 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+                0x00000140                iso7816_handler_reset_usb_ccid_callbacks
+ .text.iso7816_handler_free
+                0x00000150       0x30 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+                0x00000150                iso7816_handler_free
+ .text.iso7816_set_response
+                0x00000180        0x8 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_response.o
+                0x00000180                iso7816_set_response
+ .text.iso7816_read_command_apdu
+                0x00000188       0x98 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_t0_apdu.o
+                0x00000188                iso7816_read_command_apdu
+ .text.iso7816_write_response_apdu
+                0x00000220       0x38 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_t0_apdu.o
+                0x00000220                iso7816_write_response_apdu
+ .text.ccid_test_app_input_callback
+                0x00000258       0x2c build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+ .text.ccid_test_app_render_callback
+                0x00000284       0x44 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+ .text.ccid_test_app_alloc
+                0x000002c8       0x94 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+                0x000002c8                ccid_test_app_alloc
+ .text.ccid_test_app_free
+                0x0000035c       0x5c build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+                0x0000035c                ccid_test_app_free
+ .text.ccid_test_app
+                0x000003b8       0xa4 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+                0x000003b8                ccid_test_app
+ .text.handle_instruction_01
+                0x0000045c       0x18 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+                0x0000045c                handle_instruction_01
+ .text.handle_instruction_02
+                0x00000474       0x44 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+                0x00000474                handle_instruction_02
+ .text.handle_instruction_03
+                0x000004b8       0x3c build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+                0x000004b8                handle_instruction_03
+ .text.handle_instruction_04
+                0x000004f4       0x4c build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+                0x000004f4                handle_instruction_04
+ .text.iso7816_answer_to_reset
+                0x00000540        0xa build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+                0x00000540                iso7816_answer_to_reset
+ *fill*         0x0000054a        0x2 
+ .text.iso7816_process_command
+                0x0000054c       0x9c build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+                0x0000054c                iso7816_process_command
+ *(.text.*)
+ *(.text._*)
+ *(.init)
+ *(.fini)
+
+.rodata         0x000005e8       0x28
+ *(.rodata)
+ *(.rodata1)
+ *(.rodata.*)
+ .rodata.ccid_test_app_render_callback.str1.4
+                0x000005e8       0x24 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+ .rodata.ccid_test_app_alloc.str1.4
+                0x0000060c        0x4 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+
+.data
+ *(.data)
+ *(.data1)
+ *(.data.*)
+
+.bss            0x00000610       0x10
+ *(.bss)
+ *(.bss*)
+ .bss.response_apdu_buffer
+                0x00000610        0x4 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+ .bss.command_apdu_buffer
+                0x00000614        0x4 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+ .bss.ccid_callbacks
+                0x00000618        0x4 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+ .bss.iso7816_handler
+                0x0000061c        0x4 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x120
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x48 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+ .debug_aranges
+                0x00000048       0x20 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_response.o
+ .debug_aranges
+                0x00000068       0x28 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_t0_apdu.o
+ .debug_aranges
+                0x00000090       0x48 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+ .debug_aranges
+                0x000000d8       0x48 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x26e9
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000      0x927 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+ .debug_info    0x00000927      0x12d build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_response.o
+ .debug_info    0x00000a54      0x2d9 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_t0_apdu.o
+ .debug_info    0x00000d2d     0x1483 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+ .debug_info    0x000021b0      0x539 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+
+.debug_abbrev   0x00000000      0x910
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x1f7 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+ .debug_abbrev  0x000001f7       0xb6 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_response.o
+ .debug_abbrev  0x000002ad      0x152 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_t0_apdu.o
+ .debug_abbrev  0x000003ff      0x3b1 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+ .debug_abbrev  0x000007b0      0x160 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+
+.debug_line     0x00000000     0x137f
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x2d3 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+ .debug_line.text.iso7816_icc_power_on_callback
+                0x000002d3       0xc2 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+ .debug_line.text.iso7816_xfr_datablock_callback
+                0x00000395       0xeb build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+ .debug_line.text.iso7816_handler_alloc
+                0x00000480       0x54 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+ .debug_line.text.iso7816_handler_set_usb_ccid_callbacks
+                0x000004d4       0x19 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+ .debug_line.text.iso7816_handler_reset_usb_ccid_callbacks
+                0x000004ed       0x19 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+ .debug_line.text.iso7816_handler_free
+                0x00000506       0x23 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+ .debug_line_end
+                0x00000529        0x0 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+ .debug_line    0x00000529      0x136 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_response.o
+ .debug_line.text.iso7816_set_response
+                0x0000065f       0x21 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_response.o
+ .debug_line_end
+                0x00000680        0x0 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_response.o
+ .debug_line    0x00000680      0x206 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_t0_apdu.o
+ .debug_line.text.iso7816_read_command_apdu
+                0x00000886      0x127 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_t0_apdu.o
+ .debug_line.text.iso7816_write_response_apdu
+                0x000009ad       0x72 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_t0_apdu.o
+ .debug_line_end
+                0x00000a1f        0x0 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_t0_apdu.o
+ .debug_line    0x00000a1f      0x3f5 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+ .debug_line.text.ccid_test_app_input_callback
+                0x00000e14       0x2e build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+ .debug_line.text.ccid_test_app_render_callback
+                0x00000e42       0x21 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+ .debug_line.text.ccid_test_app_alloc
+                0x00000e63       0x74 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+ .debug_line.text.ccid_test_app_free
+                0x00000ed7       0x7e build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+ .debug_line.text.ccid_test_app
+                0x00000f55       0xa0 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+ .debug_line_end
+                0x00000ff5        0x0 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+ .debug_line    0x00000ff5      0x180 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+ .debug_line.text.handle_instruction_01
+                0x00001175       0x21 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+ .debug_line.text.handle_instruction_02
+                0x00001196       0x74 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+ .debug_line.text.handle_instruction_03
+                0x0000120a       0x61 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+ .debug_line.text.handle_instruction_04
+                0x0000126b       0xa1 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+ .debug_line.text.iso7816_answer_to_reset
+                0x0000130c       0x24 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+ .debug_line.text.iso7816_process_command
+                0x00001330       0x4f build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+ .debug_line_end
+                0x0000137f        0x0 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+
+.debug_frame    0x00000000      0x268
+ *(.debug_frame)
+ .debug_frame   0x00000000       0xc0 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+ .debug_frame   0x000000c0       0x20 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_response.o
+ .debug_frame   0x000000e0       0x40 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_t0_apdu.o
+ .debug_frame   0x00000120       0xa8 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+ .debug_frame   0x000001c8       0xa0 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+
+.debug_str      0x00000000     0x1c8e
+ *(.debug_str)
+ .debug_str     0x00000000      0x5d3 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+ .debug_str     0x000005d3      0x24f build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_response.o
+ .debug_str     0x00000822      0x353 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_t0_apdu.o
+ .debug_str     0x00000b75      0xe00 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+ .debug_str     0x00001975      0x319 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+ *(.debug_line_str)
+
+.debug_loclists
+                0x00000000      0x878
+ *(.debug_loclists)
+ .debug_loclists
+                0x00000000      0x1f4 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+ .debug_loclists
+                0x000001f4      0x163 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_t0_apdu.o
+ .debug_loclists
+                0x00000357      0x140 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+ .debug_loclists
+                0x00000497      0x3e1 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x00000000       0xdc
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x00000000       0x32 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+ .debug_rnglists
+                0x00000032       0x13 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_response.o
+ .debug_rnglists
+                0x00000045       0x1a build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_t0_apdu.o
+ .debug_rnglists
+                0x0000005f       0x3f build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+ .debug_rnglists
+                0x0000009e       0x3e build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.ARM.attributes
+                0x00000000       0x34
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x34 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_handler.o
+ .ARM.attributes
+                0x00000034       0x34 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_response.o
+ .ARM.attributes
+                0x00000068       0x34 build/f7-firmware-D/.extapps/ccid_test/iso7816/iso7816_t0_apdu.o
+ .ARM.attributes
+                0x0000009c       0x34 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app.o
+ .ARM.attributes
+                0x000000d0       0x34 build/f7-firmware-D/.extapps/ccid_test/ccid_test_app_commands.o
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+
+/DISCARD/
+ *(.comment)
+ *(.comment.*)
+ *(.llvmbc)
+ *(.llvmcmd)
+OUTPUT(build/f7-firmware-D/.extapps/ccid_test_d.elf elf32-littlearm)
+LOAD linker stubs

@@ -1,0 +1,409 @@
+
+build/f7-firmware-D/.extapps/aime_parser_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <aime_verify>:
+
+#define TAG "Aime"
+
+static const uint64_t aime_key = 0x574343467632;
+
+bool aime_verify(Nfc* nfc) {
+   0:	b5f0      	push	{r4, r5, r6, r7, lr}
+   2:	b08b      	sub	sp, #44	@ 0x2c
+   4:	4606      	mov	r6, r0
+    bool verified = false;
+
+    do {
+        const uint8_t verify_sector = 0;
+        uint8_t block_num = mf_classic_get_first_block_num_of_sector(verify_sector);
+   6:	2000      	movs	r0, #0
+   8:	4b19      	ldr	r3, [pc, #100]	@ (70 <aime_verify+0x70>)
+   a:	4798      	blx	r3
+   c:	4605      	mov	r5, r0
+        FURI_LOG_D(TAG, "Verifying sector %u", verify_sector);
+   e:	2300      	movs	r3, #0
+  10:	4a18      	ldr	r2, [pc, #96]	@ (74 <aime_verify+0x74>)
+  12:	4919      	ldr	r1, [pc, #100]	@ (78 <aime_verify+0x78>)
+  14:	2005      	movs	r0, #5
+  16:	4c19      	ldr	r4, [pc, #100]	@ (7c <aime_verify+0x7c>)
+  18:	47a0      	blx	r4
+
+        MfClassicKey key = {};
+  1a:	2400      	movs	r4, #0
+  1c:	9402      	str	r4, [sp, #8]
+  1e:	f8ad 400c 	strh.w	r4, [sp, #12]
+        bit_lib_num_to_bytes_be(aime_key, COUNT_OF(key.data), key.data);
+  22:	ab02      	add	r3, sp, #8
+  24:	2206      	movs	r2, #6
+  26:	a110      	add	r1, pc, #64	@ (adr r1, 68 <aime_verify+0x68>)
+  28:	e9d1 0100 	ldrd	r0, r1, [r1]
+  2c:	4f14      	ldr	r7, [pc, #80]	@ (80 <aime_verify+0x80>)
+  2e:	47b8      	blx	r7
+
+        MfClassicAuthContext auth_ctx = {};
+  30:	aa04      	add	r2, sp, #16
+  32:	9404      	str	r4, [sp, #16]
+  34:	9405      	str	r4, [sp, #20]
+  36:	9406      	str	r4, [sp, #24]
+  38:	9407      	str	r4, [sp, #28]
+  3a:	9408      	str	r4, [sp, #32]
+  3c:	9409      	str	r4, [sp, #36]	@ 0x24
+        MfClassicError error =
+            mf_classic_poller_sync_auth(nfc, block_num, &key, MfClassicKeyTypeA, &auth_ctx);
+  3e:	9200      	str	r2, [sp, #0]
+  40:	4623      	mov	r3, r4
+  42:	aa02      	add	r2, sp, #8
+  44:	4629      	mov	r1, r5
+  46:	4630      	mov	r0, r6
+  48:	4c0e      	ldr	r4, [pc, #56]	@ (84 <aime_verify+0x84>)
+  4a:	47a0      	blx	r4
+
+        if(error != MfClassicErrorNone) {
+  4c:	b910      	cbnz	r0, 54 <aime_verify+0x54>
+            FURI_LOG_D(TAG, "Failed to read block %u: %d", block_num, error);
+            break;
+        }
+
+        verified = true;
+  4e:	2001      	movs	r0, #1
+    } while(false);
+
+    return verified;
+}
+  50:	b00b      	add	sp, #44	@ 0x2c
+  52:	bdf0      	pop	{r4, r5, r6, r7, pc}
+            FURI_LOG_D(TAG, "Failed to read block %u: %d", block_num, error);
+  54:	9000      	str	r0, [sp, #0]
+  56:	462b      	mov	r3, r5
+  58:	4a0b      	ldr	r2, [pc, #44]	@ (88 <aime_verify+0x88>)
+  5a:	4907      	ldr	r1, [pc, #28]	@ (78 <aime_verify+0x78>)
+  5c:	2005      	movs	r0, #5
+  5e:	4c07      	ldr	r4, [pc, #28]	@ (7c <aime_verify+0x7c>)
+  60:	47a0      	blx	r4
+    bool verified = false;
+  62:	2000      	movs	r0, #0
+  64:	e7f4      	b.n	50 <aime_verify+0x50>
+  66:	bf00      	nop
+  68:	43467632 	.word	0x43467632
+  6c:	00005743 	.word	0x00005743
+	...
+  78:	00000014 	.word	0x00000014
+	...
+  88:	0000001c 	.word	0x0000001c
+
+0000008c <aime_parse>:
+    mf_classic_free(data);
+
+    return is_read;
+}
+
+static bool aime_parse(const NfcDevice* device, FuriString* parsed_data) {
+  8c:	e92d 43f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, lr}
+  90:	b093      	sub	sp, #76	@ 0x4c
+    furi_assert(device);
+  92:	b1b0      	cbz	r0, c2 <aime_parse+0x36>
+  94:	460e      	mov	r6, r1
+
+    const MfClassicData* data = nfc_device_get_data(device, NfcProtocolMfClassic);
+  96:	2107      	movs	r1, #7
+  98:	4b38      	ldr	r3, [pc, #224]	@ (17c <sukima225+0xb6>)
+  9a:	4798      	blx	r3
+  9c:	4604      	mov	r4, r0
+
+    bool parsed = false;
+
+    do {
+        // verify key
+        MfClassicSectorTrailer* sec_tr = mf_classic_get_sector_trailer_by_sector(data, 0);
+  9e:	2100      	movs	r1, #0
+  a0:	4b37      	ldr	r3, [pc, #220]	@ (180 <sukima225+0xba>)
+  a2:	4798      	blx	r3
+        uint64_t key = bit_lib_bytes_to_num_be(sec_tr->key_a.data, 6);
+  a4:	2106      	movs	r1, #6
+  a6:	4b37      	ldr	r3, [pc, #220]	@ (184 <sukima225+0xbe>)
+  a8:	4798      	blx	r3
+        if(key != aime_key) break;
+  aa:	4a37      	ldr	r2, [pc, #220]	@ (188 <sukima225+0xc2>)
+  ac:	f245 7343 	movw	r3, #22339	@ 0x5743
+  b0:	4299      	cmp	r1, r3
+  b2:	bf08      	it	eq
+  b4:	4290      	cmpeq	r0, r2
+  b6:	d008      	beq.n	ca <sukima225+0x4>
+    bool parsed = false;
+  b8:	2500      	movs	r5, #0
+        parsed = true;
+
+    } while(false);
+
+    return parsed;
+}
+  ba:	4628      	mov	r0, r5
+  bc:	b013      	add	sp, #76	@ 0x4c
+  be:	e8bd 83f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, pc}
+    furi_assert(device);
+  c2:	f04f 0c01 	mov.w	ip, #1
+
+000000c6 <sukima225>:
+  c6:	4b31      	ldr	r3, [pc, #196]	@ (18c <sukima225+0xc6>)
+  c8:	4798      	blx	r3
+        if(aime_magic[0] != 'S' || aime_magic[1] != 'B' || aime_magic[2] != 'S' ||
+  ca:	f894 3048 	ldrb.w	r3, [r4, #72]	@ 0x48
+  ce:	2b53      	cmp	r3, #83	@ 0x53
+  d0:	d1f2      	bne.n	b8 <aime_parse+0x2c>
+  d2:	f894 3049 	ldrb.w	r3, [r4, #73]	@ 0x49
+  d6:	2b42      	cmp	r3, #66	@ 0x42
+  d8:	d1ee      	bne.n	b8 <aime_parse+0x2c>
+  da:	f894 304a 	ldrb.w	r3, [r4, #74]	@ 0x4a
+  de:	2b53      	cmp	r3, #83	@ 0x53
+  e0:	d1ea      	bne.n	b8 <aime_parse+0x2c>
+           aime_magic[3] != 'D')
+  e2:	f894 304b 	ldrb.w	r3, [r4, #75]	@ 0x4b
+        if(aime_magic[0] != 'S' || aime_magic[1] != 'B' || aime_magic[2] != 'S' ||
+  e6:	2b44      	cmp	r3, #68	@ 0x44
+  e8:	d1e6      	bne.n	b8 <aime_parse+0x2c>
+            aime_accesscode[0],
+  ea:	f894 305e 	ldrb.w	r3, [r4, #94]	@ 0x5e
+            aime_accesscode[1],
+  ee:	f894 205f 	ldrb.w	r2, [r4, #95]	@ 0x5f
+            aime_accesscode[2],
+  f2:	f894 1060 	ldrb.w	r1, [r4, #96]	@ 0x60
+            aime_accesscode[3],
+  f6:	f894 0061 	ldrb.w	r0, [r4, #97]	@ 0x61
+            aime_accesscode[4],
+  fa:	f894 5062 	ldrb.w	r5, [r4, #98]	@ 0x62
+            aime_accesscode[5],
+  fe:	f894 c063 	ldrb.w	ip, [r4, #99]	@ 0x63
+            aime_accesscode[6],
+ 102:	f894 e064 	ldrb.w	lr, [r4, #100]	@ 0x64
+            aime_accesscode[7],
+ 106:	f894 7065 	ldrb.w	r7, [r4, #101]	@ 0x65
+            aime_accesscode[8],
+ 10a:	f894 8066 	ldrb.w	r8, [r4, #102]	@ 0x66
+            aime_accesscode[9]);
+ 10e:	f894 9067 	ldrb.w	r9, [r4, #103]	@ 0x67
+        snprintf(
+ 112:	f8cd 9020 	str.w	r9, [sp, #32]
+ 116:	f8cd 801c 	str.w	r8, [sp, #28]
+ 11a:	9706      	str	r7, [sp, #24]
+ 11c:	f8cd e014 	str.w	lr, [sp, #20]
+ 120:	f8cd c010 	str.w	ip, [sp, #16]
+ 124:	9503      	str	r5, [sp, #12]
+ 126:	9002      	str	r0, [sp, #8]
+ 128:	9101      	str	r1, [sp, #4]
+ 12a:	9200      	str	r2, [sp, #0]
+ 12c:	4a18      	ldr	r2, [pc, #96]	@ (190 <sukima225+0xca>)
+ 12e:	2119      	movs	r1, #25
+ 130:	a80b      	add	r0, sp, #44	@ 0x2c
+ 132:	4d18      	ldr	r5, [pc, #96]	@ (194 <sukima225+0xce>)
+ 134:	47a8      	blx	r5
+        for(int i = 0; i < 24; i++) {
+ 136:	2200      	movs	r2, #0
+ 138:	e000      	b.n	13c <sukima225+0x76>
+ 13a:	3201      	adds	r2, #1
+ 13c:	2a17      	cmp	r2, #23
+ 13e:	dc1b      	bgt.n	178 <sukima225+0xb2>
+            if(aime_accesscode_str[i] == ' ') continue;
+ 140:	f102 0348 	add.w	r3, r2, #72	@ 0x48
+ 144:	446b      	add	r3, sp
+ 146:	f813 3c1c 	ldrb.w	r3, [r3, #-28]
+ 14a:	2b20      	cmp	r3, #32
+ 14c:	d0f5      	beq.n	13a <sukima225+0x74>
+            if(aime_accesscode_str[i] < '0' || aime_accesscode_str[i] > '9') {
+ 14e:	3b30      	subs	r3, #48	@ 0x30
+ 150:	b2db      	uxtb	r3, r3
+ 152:	2b09      	cmp	r3, #9
+ 154:	d9f1      	bls.n	13a <sukima225+0x74>
+                code_is_hex = false;
+ 156:	2500      	movs	r5, #0
+        if(!code_is_hex) break;
+ 158:	2d00      	cmp	r5, #0
+ 15a:	d0ad      	beq.n	b8 <aime_parse+0x2c>
+            aime_checksum[0],
+ 15c:	f894 3055 	ldrb.w	r3, [r4, #85]	@ 0x55
+            aime_checksum[1],
+ 160:	f894 2056 	ldrb.w	r2, [r4, #86]	@ 0x56
+            aime_checksum[2]);
+ 164:	f894 1057 	ldrb.w	r1, [r4, #87]	@ 0x57
+        furi_string_printf(
+ 168:	9101      	str	r1, [sp, #4]
+ 16a:	9200      	str	r2, [sp, #0]
+ 16c:	aa0b      	add	r2, sp, #44	@ 0x2c
+ 16e:	490a      	ldr	r1, [pc, #40]	@ (198 <sukima225+0xd2>)
+ 170:	4630      	mov	r0, r6
+ 172:	4c0a      	ldr	r4, [pc, #40]	@ (19c <sukima225+0xd6>)
+ 174:	47a0      	blx	r4
+        parsed = true;
+ 176:	e7a0      	b.n	ba <aime_parse+0x2e>
+        bool code_is_hex = true;
+ 178:	2501      	movs	r5, #1
+ 17a:	e7ed      	b.n	158 <sukima225+0x92>
+	...
+ 188:	43467632 	.word	0x43467632
+ 18c:	00000000 	.word	0x00000000
+ 190:	00000038 	.word	0x00000038
+ 194:	00000000 	.word	0x00000000
+ 198:	00000068 	.word	0x00000068
+ 19c:	00000000 	.word	0x00000000
+
+000001a0 <aime_read>:
+static bool aime_read(Nfc* nfc, NfcDevice* device) {
+ 1a0:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 1a4:	f5ad 7d01 	sub.w	sp, sp, #516	@ 0x204
+ 1a8:	9100      	str	r1, [sp, #0]
+    furi_assert(nfc);
+ 1aa:	9001      	str	r0, [sp, #4]
+ 1ac:	b1f8      	cbz	r0, 1ee <aime_read+0x4e>
+    furi_assert(device);
+ 1ae:	9b00      	ldr	r3, [sp, #0]
+ 1b0:	b30b      	cbz	r3, 1f6 <sukima498+0x4>
+    MfClassicData* data = mf_classic_alloc();
+ 1b2:	4b3f      	ldr	r3, [pc, #252]	@ (2b0 <sukima515+0xb6>)
+ 1b4:	4798      	blx	r3
+ 1b6:	4683      	mov	fp, r0
+    nfc_device_copy_data(device, NfcProtocolMfClassic, data);
+ 1b8:	4602      	mov	r2, r0
+ 1ba:	2107      	movs	r1, #7
+ 1bc:	9800      	ldr	r0, [sp, #0]
+ 1be:	4b3d      	ldr	r3, [pc, #244]	@ (2b4 <sukima515+0xba>)
+ 1c0:	4798      	blx	r3
+        MfClassicType type = MfClassicType1k;
+ 1c2:	2301      	movs	r3, #1
+ 1c4:	f88d 300f 	strb.w	r3, [sp, #15]
+        MfClassicError error = mf_classic_poller_sync_detect_type(nfc, &type);
+ 1c8:	f10d 010f 	add.w	r1, sp, #15
+ 1cc:	9801      	ldr	r0, [sp, #4]
+ 1ce:	4b3a      	ldr	r3, [pc, #232]	@ (2b8 <sukima515+0xbe>)
+ 1d0:	4798      	blx	r3
+        if(error != MfClassicErrorNone) break;
+ 1d2:	2800      	cmp	r0, #0
+ 1d4:	d15f      	bne.n	296 <sukima515+0x9c>
+        data->type = type;
+ 1d6:	f89d 300f 	ldrb.w	r3, [sp, #15]
+ 1da:	f88b 3004 	strb.w	r3, [fp, #4]
+        MfClassicDeviceKeys keys = {};
+ 1de:	f44f 72f8 	mov.w	r2, #496	@ 0x1f0
+ 1e2:	2100      	movs	r1, #0
+ 1e4:	a804      	add	r0, sp, #16
+ 1e6:	4b35      	ldr	r3, [pc, #212]	@ (2bc <sukima515+0xc2>)
+ 1e8:	4798      	blx	r3
+        for(size_t i = 0; i < mf_classic_get_total_sectors_num(data->type); i++) {
+ 1ea:	2400      	movs	r4, #0
+ 1ec:	e03a      	b.n	264 <sukima515+0x6a>
+    furi_assert(nfc);
+ 1ee:	f04f 0c01 	mov.w	ip, #1
+
+000001f2 <sukima498>:
+ 1f2:	4b33      	ldr	r3, [pc, #204]	@ (2c0 <sukima515+0xc6>)
+ 1f4:	4798      	blx	r3
+    furi_assert(device);
+ 1f6:	f04f 0c01 	mov.w	ip, #1
+
+000001fa <sukima515>:
+ 1fa:	4b31      	ldr	r3, [pc, #196]	@ (2c0 <sukima515+0xc6>)
+ 1fc:	4798      	blx	r3
+            bit_lib_num_to_bytes_be(aime_key, sizeof(MfClassicKey), keys.key_a[i].data);
+ 1fe:	0067      	lsls	r7, r4, #1
+ 200:	eb04 0344 	add.w	r3, r4, r4, lsl #1
+ 204:	005b      	lsls	r3, r3, #1
+ 206:	3308      	adds	r3, #8
+ 208:	f20f 099c 	addw	r9, pc, #156	@ 0x9c
+ 20c:	e9d9 8900 	ldrd	r8, r9, [r9]
+ 210:	aa04      	add	r2, sp, #16
+ 212:	4413      	add	r3, r2
+ 214:	2206      	movs	r2, #6
+ 216:	4640      	mov	r0, r8
+ 218:	4649      	mov	r1, r9
+ 21a:	f8df a0c4 	ldr.w	sl, [pc, #196]	@ 2e0 <sukima515+0xe6>
+ 21e:	47d0      	blx	sl
+            FURI_BIT_SET(keys.key_a_mask, i);
+ 220:	9a04      	ldr	r2, [sp, #16]
+ 222:	9b05      	ldr	r3, [sp, #20]
+ 224:	2601      	movs	r6, #1
+ 226:	f1a4 0520 	sub.w	r5, r4, #32
+ 22a:	f1c4 0120 	rsb	r1, r4, #32
+ 22e:	fa06 f505 	lsl.w	r5, r6, r5
+ 232:	fa26 f101 	lsr.w	r1, r6, r1
+ 236:	430d      	orrs	r5, r1
+ 238:	40a6      	lsls	r6, r4
+ 23a:	4332      	orrs	r2, r6
+ 23c:	432b      	orrs	r3, r5
+ 23e:	9204      	str	r2, [sp, #16]
+ 240:	9305      	str	r3, [sp, #20]
+            bit_lib_num_to_bytes_be(aime_key, sizeof(MfClassicKey), keys.key_b[i].data);
+ 242:	193b      	adds	r3, r7, r4
+ 244:	005b      	lsls	r3, r3, #1
+ 246:	f503 7380 	add.w	r3, r3, #256	@ 0x100
+ 24a:	aa04      	add	r2, sp, #16
+ 24c:	4413      	add	r3, r2
+ 24e:	2206      	movs	r2, #6
+ 250:	4640      	mov	r0, r8
+ 252:	4649      	mov	r1, r9
+ 254:	47d0      	blx	sl
+            FURI_BIT_SET(keys.key_b_mask, i);
+ 256:	9a42      	ldr	r2, [sp, #264]	@ 0x108
+ 258:	9b43      	ldr	r3, [sp, #268]	@ 0x10c
+ 25a:	4316      	orrs	r6, r2
+ 25c:	431d      	orrs	r5, r3
+ 25e:	9642      	str	r6, [sp, #264]	@ 0x108
+ 260:	9543      	str	r5, [sp, #268]	@ 0x10c
+        for(size_t i = 0; i < mf_classic_get_total_sectors_num(data->type); i++) {
+ 262:	3401      	adds	r4, #1
+ 264:	f89b 0004 	ldrb.w	r0, [fp, #4]
+ 268:	4b16      	ldr	r3, [pc, #88]	@ (2c4 <sukima515+0xca>)
+ 26a:	4798      	blx	r3
+ 26c:	42a0      	cmp	r0, r4
+ 26e:	d8c6      	bhi.n	1fe <sukima515+0x4>
+        error = mf_classic_poller_sync_read(nfc, &keys, data);
+ 270:	465a      	mov	r2, fp
+ 272:	a904      	add	r1, sp, #16
+ 274:	9801      	ldr	r0, [sp, #4]
+ 276:	4b14      	ldr	r3, [pc, #80]	@ (2c8 <sukima515+0xce>)
+ 278:	4798      	blx	r3
+        if(error == MfClassicErrorNotPresent) {
+ 27a:	2801      	cmp	r0, #1
+ 27c:	d006      	beq.n	28c <sukima515+0x92>
+        nfc_device_set_data(device, NfcProtocolMfClassic, data);
+ 27e:	465a      	mov	r2, fp
+ 280:	2107      	movs	r1, #7
+ 282:	9800      	ldr	r0, [sp, #0]
+ 284:	4b11      	ldr	r3, [pc, #68]	@ (2cc <sukima515+0xd2>)
+ 286:	4798      	blx	r3
+        is_read = true;
+ 288:	2401      	movs	r4, #1
+ 28a:	e005      	b.n	298 <sukima515+0x9e>
+            FURI_LOG_W(TAG, "Failed to read data");
+ 28c:	4a10      	ldr	r2, [pc, #64]	@ (2d0 <sukima515+0xd6>)
+ 28e:	4911      	ldr	r1, [pc, #68]	@ (2d4 <sukima515+0xda>)
+ 290:	2003      	movs	r0, #3
+ 292:	4b11      	ldr	r3, [pc, #68]	@ (2d8 <sukima515+0xde>)
+ 294:	4798      	blx	r3
+    bool is_read = false;
+ 296:	2400      	movs	r4, #0
+    mf_classic_free(data);
+ 298:	4658      	mov	r0, fp
+ 29a:	4b10      	ldr	r3, [pc, #64]	@ (2dc <sukima515+0xe2>)
+ 29c:	4798      	blx	r3
+}
+ 29e:	4620      	mov	r0, r4
+ 2a0:	f50d 7d01 	add.w	sp, sp, #516	@ 0x204
+ 2a4:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+ 2a8:	43467632 	.word	0x43467632
+ 2ac:	00005743 	.word	0x00005743
+	...
+ 2d0:	000000a0 	.word	0x000000a0
+ 2d4:	00000014 	.word	0x00000014
+	...
+
+000002e4 <aime_plugin_ep>:
+};
+
+/* Plugin entry point - must return a pointer to const descriptor  */
+const FlipperAppPluginDescriptor* aime_plugin_ep(void) {
+    return &aime_plugin_descriptor;
+}
+ 2e4:	4800      	ldr	r0, [pc, #0]	@ (2e8 <aime_plugin_ep+0x4>)
+ 2e6:	4770      	bx	lr
+ 2e8:	000000cc 	.word	0x000000cc

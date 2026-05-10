@@ -1,0 +1,3 @@
+app_api_accumulator_get U         
+app_api_accumulator_mul U         
+furi_log_print_format U         

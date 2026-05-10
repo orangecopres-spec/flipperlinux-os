@@ -1,0 +1,317 @@
+
+build/f7-firmware-D/.extapps/example_event_loop_stream_buffer_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <event_loop_stream_buffer_app_alloc>:
+
+    FURI_LOG_I(TAG, "Received data: %s", furi_string_get_cstr(tmp_str));
+    furi_string_free(tmp_str);
+}
+
+static EventLoopStreamBufferApp* event_loop_stream_buffer_app_alloc(void) {
+   0:	b530      	push	{r4, r5, lr}
+   2:	b083      	sub	sp, #12
+    EventLoopStreamBufferApp* app = malloc(sizeof(EventLoopStreamBufferApp));
+   4:	200c      	movs	r0, #12
+   6:	4b0e      	ldr	r3, [pc, #56]	@ (40 <event_loop_stream_buffer_app_alloc+0x40>)
+   8:	4798      	blx	r3
+   a:	4604      	mov	r4, r0
+
+    // Create an event loop instance.
+    app->event_loop = furi_event_loop_alloc();
+   c:	4b0d      	ldr	r3, [pc, #52]	@ (44 <event_loop_stream_buffer_app_alloc+0x44>)
+   e:	4798      	blx	r3
+  10:	6020      	str	r0, [r4, #0]
+    // Create a worker thread instance.
+    app->worker_thread = furi_thread_alloc_ex(
+  12:	4623      	mov	r3, r4
+  14:	4a0c      	ldr	r2, [pc, #48]	@ (48 <event_loop_stream_buffer_app_alloc+0x48>)
+  16:	f44f 6180 	mov.w	r1, #1024	@ 0x400
+  1a:	480c      	ldr	r0, [pc, #48]	@ (4c <event_loop_stream_buffer_app_alloc+0x4c>)
+  1c:	4d0c      	ldr	r5, [pc, #48]	@ (50 <event_loop_stream_buffer_app_alloc+0x50>)
+  1e:	47a8      	blx	r5
+  20:	6060      	str	r0, [r4, #4]
+        "EventLoopStreamBufferWorker", 1024, event_loop_stream_buffer_app_worker_thread, app);
+    // Create a stream_buffer instance.
+    app->stream_buffer = furi_stream_buffer_alloc(STREAM_BUFFER_SIZE, STREAM_BUFFER_TRIG_LEVEL);
+  22:	2110      	movs	r1, #16
+  24:	2020      	movs	r0, #32
+  26:	4b0b      	ldr	r3, [pc, #44]	@ (54 <event_loop_stream_buffer_app_alloc+0x54>)
+  28:	4798      	blx	r3
+  2a:	4601      	mov	r1, r0
+  2c:	60a0      	str	r0, [r4, #8]
+    // Subscribe for the stream buffer IN events in edge triggered mode.
+    furi_event_loop_subscribe_stream_buffer(
+  2e:	9400      	str	r4, [sp, #0]
+  30:	4b09      	ldr	r3, [pc, #36]	@ (58 <event_loop_stream_buffer_app_alloc+0x58>)
+  32:	2205      	movs	r2, #5
+  34:	6820      	ldr	r0, [r4, #0]
+  36:	4d09      	ldr	r5, [pc, #36]	@ (5c <event_loop_stream_buffer_app_alloc+0x5c>)
+  38:	47a8      	blx	r5
+        STREAM_BUFFER_EVENT_AND_FLAGS,
+        event_loop_stream_buffer_app_event_callback,
+        app);
+
+    return app;
+}
+  3a:	4620      	mov	r0, r4
+  3c:	b003      	add	sp, #12
+  3e:	bd30      	pop	{r4, r5, pc}
+	...
+
+00000060 <event_loop_stream_buffer_app_event_callback>:
+    event_loop_stream_buffer_app_event_callback(FuriEventLoopObject* object, void* context) {
+  60:	b530      	push	{r4, r5, lr}
+  62:	b085      	sub	sp, #20
+    furi_assert(context);
+  64:	b179      	cbz	r1, 86 <event_loop_stream_buffer_app_event_callback+0x26>
+  66:	4603      	mov	r3, r0
+    furi_assert(object == app->stream_buffer);
+  68:	6888      	ldr	r0, [r1, #8]
+  6a:	4298      	cmp	r0, r3
+  6c:	d10f      	bne.n	8e <sukima151+0x4>
+    furi_check(
+  6e:	2300      	movs	r3, #0
+  70:	2210      	movs	r2, #16
+  72:	4669      	mov	r1, sp
+  74:	4c17      	ldr	r4, [pc, #92]	@ (d4 <sukima185+0x3a>)
+  76:	47a0      	blx	r4
+  78:	2810      	cmp	r0, #16
+  7a:	d10c      	bne.n	96 <sukima169+0x4>
+    FuriString* tmp_str = furi_string_alloc();
+  7c:	4b16      	ldr	r3, [pc, #88]	@ (d8 <sukima185+0x3e>)
+  7e:	4798      	blx	r3
+  80:	4605      	mov	r5, r0
+    for(uint32_t i = 0; i < sizeof(data); ++i) {
+  82:	2400      	movs	r4, #0
+  84:	e015      	b.n	b2 <sukima185+0x18>
+    furi_assert(context);
+  86:	f04f 0c01 	mov.w	ip, #1
+
+0000008a <sukima151>:
+  8a:	4b14      	ldr	r3, [pc, #80]	@ (dc <sukima185+0x42>)
+  8c:	4798      	blx	r3
+    furi_assert(object == app->stream_buffer);
+  8e:	f04f 0c01 	mov.w	ip, #1
+
+00000092 <sukima169>:
+  92:	4b12      	ldr	r3, [pc, #72]	@ (dc <sukima185+0x42>)
+  94:	4798      	blx	r3
+    furi_check(
+  96:	f04f 0c02 	mov.w	ip, #2
+
+0000009a <sukima185>:
+  9a:	4b10      	ldr	r3, [pc, #64]	@ (dc <sukima185+0x42>)
+  9c:	4798      	blx	r3
+        furi_string_cat_printf(tmp_str, "%02X ", data[i]);
+  9e:	f104 0310 	add.w	r3, r4, #16
+  a2:	446b      	add	r3, sp
+  a4:	f813 2c10 	ldrb.w	r2, [r3, #-16]
+  a8:	490d      	ldr	r1, [pc, #52]	@ (e0 <sukima185+0x46>)
+  aa:	4628      	mov	r0, r5
+  ac:	4b0d      	ldr	r3, [pc, #52]	@ (e4 <sukima185+0x4a>)
+  ae:	4798      	blx	r3
+    for(uint32_t i = 0; i < sizeof(data); ++i) {
+  b0:	3401      	adds	r4, #1
+  b2:	2c0f      	cmp	r4, #15
+  b4:	d9f3      	bls.n	9e <sukima185+0x4>
+    FURI_LOG_I(TAG, "Received data: %s", furi_string_get_cstr(tmp_str));
+  b6:	4628      	mov	r0, r5
+  b8:	4b0b      	ldr	r3, [pc, #44]	@ (e8 <sukima185+0x4e>)
+  ba:	4798      	blx	r3
+  bc:	4603      	mov	r3, r0
+  be:	4a0b      	ldr	r2, [pc, #44]	@ (ec <sukima185+0x52>)
+  c0:	490b      	ldr	r1, [pc, #44]	@ (f0 <sukima185+0x56>)
+  c2:	2004      	movs	r0, #4
+  c4:	4c0b      	ldr	r4, [pc, #44]	@ (f4 <sukima185+0x5a>)
+  c6:	47a0      	blx	r4
+    furi_string_free(tmp_str);
+  c8:	4628      	mov	r0, r5
+  ca:	4b0b      	ldr	r3, [pc, #44]	@ (f8 <sukima185+0x5e>)
+  cc:	4798      	blx	r3
+}
+  ce:	b005      	add	sp, #20
+  d0:	bd30      	pop	{r4, r5, pc}
+  d2:	bf00      	nop
+	...
+  e0:	0000001c 	.word	0x0000001c
+	...
+  ec:	00000024 	.word	0x00000024
+  f0:	00000038 	.word	0x00000038
+	...
+
+000000fc <event_loop_stream_buffer_app_worker_thread>:
+static int32_t event_loop_stream_buffer_app_worker_thread(void* context) {
+  fc:	b5f0      	push	{r4, r5, r6, r7, lr}
+  fe:	b083      	sub	sp, #12
+    furi_assert(context);
+ 100:	b138      	cbz	r0, 112 <event_loop_stream_buffer_app_worker_thread+0x16>
+ 102:	4605      	mov	r5, r0
+    FURI_LOG_I(TAG, "Worker thread started");
+ 104:	4a22      	ldr	r2, [pc, #136]	@ (190 <sukima335+0x72>)
+ 106:	4923      	ldr	r1, [pc, #140]	@ (194 <sukima335+0x76>)
+ 108:	2004      	movs	r0, #4
+ 10a:	4b23      	ldr	r3, [pc, #140]	@ (198 <sukima335+0x7a>)
+ 10c:	4798      	blx	r3
+    for(uint32_t i = 0; i < WORKER_ITERATION_COUNT; ++i) {
+ 10e:	2600      	movs	r6, #0
+ 110:	e008      	b.n	124 <sukima335+0x6>
+    furi_assert(context);
+ 112:	f04f 0c01 	mov.w	ip, #1
+
+00000116 <sukima314>:
+ 116:	4b21      	ldr	r3, [pc, #132]	@ (19c <sukima335+0x7e>)
+ 118:	4798      	blx	r3
+            furi_check(
+ 11a:	f04f 0c02 	mov.w	ip, #2
+
+0000011e <sukima335>:
+ 11e:	4b1f      	ldr	r3, [pc, #124]	@ (19c <sukima335+0x7e>)
+ 120:	4798      	blx	r3
+    for(uint32_t i = 0; i < WORKER_ITERATION_COUNT; ++i) {
+ 122:	3601      	adds	r6, #1
+ 124:	2e09      	cmp	r6, #9
+ 126:	d827      	bhi.n	178 <sukima335+0x5a>
+        for(uint32_t j = 0; j < STREAM_BUFFER_SIZE; ++j) {
+ 128:	2400      	movs	r4, #0
+ 12a:	2c1f      	cmp	r4, #31
+ 12c:	d8f9      	bhi.n	122 <sukima335+0x4>
+            uint8_t data = furi_hal_random_get() % 0xFF;
+ 12e:	4b1c      	ldr	r3, [pc, #112]	@ (1a0 <sukima335+0x82>)
+ 130:	4798      	blx	r3
+ 132:	4b1c      	ldr	r3, [pc, #112]	@ (1a4 <sukima335+0x86>)
+ 134:	fba3 2300 	umull	r2, r3, r3, r0
+ 138:	09db      	lsrs	r3, r3, #7
+ 13a:	ebc3 2303 	rsb	r3, r3, r3, lsl #8
+ 13e:	1ac3      	subs	r3, r0, r3
+ 140:	f88d 3007 	strb.w	r3, [sp, #7]
+            furi_check(
+ 144:	f04f 33ff 	mov.w	r3, #4294967295	@ 0xffffffff
+ 148:	2201      	movs	r2, #1
+ 14a:	f10d 0107 	add.w	r1, sp, #7
+ 14e:	68a8      	ldr	r0, [r5, #8]
+ 150:	4f15      	ldr	r7, [pc, #84]	@ (1a8 <sukima335+0x8a>)
+ 152:	47b8      	blx	r7
+ 154:	2801      	cmp	r0, #1
+ 156:	d1e0      	bne.n	11a <sukima314+0x4>
+            furi_delay_ms(30 + furi_hal_random_get() % 20);
+ 158:	4b11      	ldr	r3, [pc, #68]	@ (1a0 <sukima335+0x82>)
+ 15a:	4798      	blx	r3
+ 15c:	4b13      	ldr	r3, [pc, #76]	@ (1ac <sukima335+0x8e>)
+ 15e:	fba3 2300 	umull	r2, r3, r3, r0
+ 162:	091b      	lsrs	r3, r3, #4
+ 164:	eb03 0383 	add.w	r3, r3, r3, lsl #2
+ 168:	eba0 0383 	sub.w	r3, r0, r3, lsl #2
+ 16c:	f103 001e 	add.w	r0, r3, #30
+ 170:	4b0f      	ldr	r3, [pc, #60]	@ (1b0 <sukima335+0x92>)
+ 172:	4798      	blx	r3
+        for(uint32_t j = 0; j < STREAM_BUFFER_SIZE; ++j) {
+ 174:	3401      	adds	r4, #1
+ 176:	e7d8      	b.n	12a <sukima335+0xc>
+    FURI_LOG_I(TAG, "All work done, worker thread out!");
+ 178:	4a0e      	ldr	r2, [pc, #56]	@ (1b4 <sukima335+0x96>)
+ 17a:	4906      	ldr	r1, [pc, #24]	@ (194 <sukima335+0x76>)
+ 17c:	2004      	movs	r0, #4
+ 17e:	4b06      	ldr	r3, [pc, #24]	@ (198 <sukima335+0x7a>)
+ 180:	4798      	blx	r3
+    furi_event_loop_stop(app->event_loop);
+ 182:	6828      	ldr	r0, [r5, #0]
+ 184:	4b0c      	ldr	r3, [pc, #48]	@ (1b8 <sukima335+0x9a>)
+ 186:	4798      	blx	r3
+}
+ 188:	2000      	movs	r0, #0
+ 18a:	b003      	add	sp, #12
+ 18c:	bdf0      	pop	{r4, r5, r6, r7, pc}
+ 18e:	bf00      	nop
+ 190:	00000058 	.word	0x00000058
+ 194:	00000038 	.word	0x00000038
+	...
+ 1a4:	80808081 	.word	0x80808081
+ 1a8:	00000000 	.word	0x00000000
+ 1ac:	cccccccd 	.word	0xcccccccd
+ 1b0:	00000000 	.word	0x00000000
+ 1b4:	00000070 	.word	0x00000070
+ 1b8:	00000000 	.word	0x00000000
+
+000001bc <event_loop_stream_buffer_app_run>:
+    furi_event_loop_free(app->event_loop);
+
+    free(app);
+}
+
+static void event_loop_stream_buffer_app_run(EventLoopStreamBufferApp* app) {
+ 1bc:	b510      	push	{r4, lr}
+ 1be:	4604      	mov	r4, r0
+    furi_thread_start(app->worker_thread);
+ 1c0:	6840      	ldr	r0, [r0, #4]
+ 1c2:	4b04      	ldr	r3, [pc, #16]	@ (1d4 <event_loop_stream_buffer_app_run+0x18>)
+ 1c4:	4798      	blx	r3
+    furi_event_loop_run(app->event_loop);
+ 1c6:	6820      	ldr	r0, [r4, #0]
+ 1c8:	4b03      	ldr	r3, [pc, #12]	@ (1d8 <event_loop_stream_buffer_app_run+0x1c>)
+ 1ca:	4798      	blx	r3
+    furi_thread_join(app->worker_thread);
+ 1cc:	6860      	ldr	r0, [r4, #4]
+ 1ce:	4b03      	ldr	r3, [pc, #12]	@ (1dc <event_loop_stream_buffer_app_run+0x20>)
+ 1d0:	4798      	blx	r3
+}
+ 1d2:	bd10      	pop	{r4, pc}
+	...
+
+000001e0 <event_loop_stream_buffer_app_free>:
+static void event_loop_stream_buffer_app_free(EventLoopStreamBufferApp* app) {
+ 1e0:	b510      	push	{r4, lr}
+ 1e2:	4604      	mov	r4, r0
+    furi_event_loop_unsubscribe(app->event_loop, app->stream_buffer);
+ 1e4:	6881      	ldr	r1, [r0, #8]
+ 1e6:	6800      	ldr	r0, [r0, #0]
+ 1e8:	4b07      	ldr	r3, [pc, #28]	@ (208 <event_loop_stream_buffer_app_free+0x28>)
+ 1ea:	4798      	blx	r3
+    furi_thread_free(app->worker_thread);
+ 1ec:	6860      	ldr	r0, [r4, #4]
+ 1ee:	4b07      	ldr	r3, [pc, #28]	@ (20c <event_loop_stream_buffer_app_free+0x2c>)
+ 1f0:	4798      	blx	r3
+    furi_stream_buffer_free(app->stream_buffer);
+ 1f2:	68a0      	ldr	r0, [r4, #8]
+ 1f4:	4b06      	ldr	r3, [pc, #24]	@ (210 <event_loop_stream_buffer_app_free+0x30>)
+ 1f6:	4798      	blx	r3
+    furi_event_loop_free(app->event_loop);
+ 1f8:	6820      	ldr	r0, [r4, #0]
+ 1fa:	4b06      	ldr	r3, [pc, #24]	@ (214 <event_loop_stream_buffer_app_free+0x34>)
+ 1fc:	4798      	blx	r3
+    free(app);
+ 1fe:	4620      	mov	r0, r4
+ 200:	4b05      	ldr	r3, [pc, #20]	@ (218 <event_loop_stream_buffer_app_free+0x38>)
+ 202:	4798      	blx	r3
+}
+ 204:	bd10      	pop	{r4, pc}
+ 206:	bf00      	nop
+	...
+
+0000021c <example_event_loop_stream_buffer_app>:
+
+// The application's entry point - referenced in application.fam
+int32_t example_event_loop_stream_buffer_app(void* arg) {
+ 21c:	b510      	push	{r4, lr}
+    UNUSED(arg);
+
+    EventLoopStreamBufferApp* app = event_loop_stream_buffer_app_alloc();
+ 21e:	4b05      	ldr	r3, [pc, #20]	@ (234 <example_event_loop_stream_buffer_app+0x18>)
+ 220:	4798      	blx	r3
+ 222:	4604      	mov	r4, r0
+    event_loop_stream_buffer_app_run(app);
+ 224:	4b04      	ldr	r3, [pc, #16]	@ (238 <example_event_loop_stream_buffer_app+0x1c>)
+ 226:	4798      	blx	r3
+    event_loop_stream_buffer_app_free(app);
+ 228:	4620      	mov	r0, r4
+ 22a:	4b04      	ldr	r3, [pc, #16]	@ (23c <example_event_loop_stream_buffer_app+0x20>)
+ 22c:	4798      	blx	r3
+
+    return 0;
+}
+ 22e:	2000      	movs	r0, #0
+ 230:	bd10      	pop	{r4, pc}
+ 232:	bf00      	nop
+	...

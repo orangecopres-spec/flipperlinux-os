@@ -1,0 +1,261 @@
+
+build/f7-firmware-D/.extapps/blink_test_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <blink_test_update>:
+    &blink_test_sequence_hw_blink_green,
+    &blink_test_sequence_hw_blink_blue,
+    &blink_test_sequence_hw_blink_stop,
+};
+
+static void blink_test_update(void* ctx) {
+   0:	b500      	push	{lr}
+   2:	b085      	sub	sp, #20
+    furi_assert(ctx);
+   4:	b148      	cbz	r0, 1a <blink_test_update+0x1a>
+    FuriMessageQueue* event_queue = ctx;
+    BlinkEvent event = {.type = BlinkEventTypeTick};
+   6:	2200      	movs	r2, #0
+   8:	9201      	str	r2, [sp, #4]
+   a:	9202      	str	r2, [sp, #8]
+   c:	9203      	str	r2, [sp, #12]
+    // It's OK to loose this event if system overloaded
+    furi_message_queue_put(event_queue, &event, 0);
+   e:	a901      	add	r1, sp, #4
+  10:	4b04      	ldr	r3, [pc, #16]	@ (24 <sukima50+0x6>)
+  12:	4798      	blx	r3
+}
+  14:	b005      	add	sp, #20
+  16:	f85d fb04 	ldr.w	pc, [sp], #4
+    furi_assert(ctx);
+  1a:	f04f 0c01 	mov.w	ip, #1
+
+0000001e <sukima50>:
+  1e:	4b02      	ldr	r3, [pc, #8]	@ (28 <sukima50+0xa>)
+  20:	4798      	blx	r3
+  22:	bf00      	nop
+	...
+
+0000002c <blink_test_input_callback>:
+    canvas_clear(canvas);
+    canvas_set_font(canvas, FontPrimary);
+    canvas_draw_str(canvas, 2, 10, "Blink application");
+}
+
+static void blink_test_input_callback(InputEvent* input_event, void* ctx) {
+  2c:	b500      	push	{lr}
+  2e:	b085      	sub	sp, #20
+    furi_assert(ctx);
+  30:	b181      	cbz	r1, 54 <blink_test_input_callback+0x28>
+  32:	460b      	mov	r3, r1
+    FuriMessageQueue* event_queue = ctx;
+
+    BlinkEvent event = {.type = BlinkEventTypeInput, .input = *input_event};
+  34:	2201      	movs	r2, #1
+  36:	f88d 2004 	strb.w	r2, [sp, #4]
+  3a:	c803      	ldmia	r0, {r0, r1}
+  3c:	aa04      	add	r2, sp, #16
+  3e:	e902 0003 	stmdb	r2, {r0, r1}
+    furi_message_queue_put(event_queue, &event, FuriWaitForever);
+  42:	f04f 32ff 	mov.w	r2, #4294967295	@ 0xffffffff
+  46:	a901      	add	r1, sp, #4
+  48:	4618      	mov	r0, r3
+  4a:	4b04      	ldr	r3, [pc, #16]	@ (5c <sukima126+0x4>)
+  4c:	4798      	blx	r3
+}
+  4e:	b005      	add	sp, #20
+  50:	f85d fb04 	ldr.w	pc, [sp], #4
+    furi_assert(ctx);
+  54:	f04f 0c01 	mov.w	ip, #1
+
+00000058 <sukima126>:
+  58:	4b01      	ldr	r3, [pc, #4]	@ (60 <sukima126+0x8>)
+  5a:	4798      	blx	r3
+	...
+
+00000064 <blink_test_draw_callback>:
+static void blink_test_draw_callback(Canvas* canvas, void* ctx) {
+  64:	b510      	push	{r4, lr}
+  66:	4604      	mov	r4, r0
+    canvas_clear(canvas);
+  68:	4b06      	ldr	r3, [pc, #24]	@ (84 <blink_test_draw_callback+0x20>)
+  6a:	4798      	blx	r3
+    canvas_set_font(canvas, FontPrimary);
+  6c:	2100      	movs	r1, #0
+  6e:	4620      	mov	r0, r4
+  70:	4b05      	ldr	r3, [pc, #20]	@ (88 <blink_test_draw_callback+0x24>)
+  72:	4798      	blx	r3
+    canvas_draw_str(canvas, 2, 10, "Blink application");
+  74:	4b05      	ldr	r3, [pc, #20]	@ (8c <blink_test_draw_callback+0x28>)
+  76:	220a      	movs	r2, #10
+  78:	2102      	movs	r1, #2
+  7a:	4620      	mov	r0, r4
+  7c:	4c04      	ldr	r4, [pc, #16]	@ (90 <blink_test_draw_callback+0x2c>)
+  7e:	47a0      	blx	r4
+}
+  80:	bd10      	pop	{r4, pc}
+  82:	bf00      	nop
+	...
+
+00000094 <blink_test_app>:
+
+int32_t blink_test_app(void* p) {
+  94:	e92d 43f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, lr}
+  98:	b085      	sub	sp, #20
+    UNUSED(p);
+    FuriMessageQueue* event_queue = furi_message_queue_alloc(8, sizeof(BlinkEvent));
+  9a:	210c      	movs	r1, #12
+  9c:	2008      	movs	r0, #8
+  9e:	4b31      	ldr	r3, [pc, #196]	@ (164 <sukima284+0x72>)
+  a0:	4798      	blx	r3
+  a2:	4605      	mov	r5, r0
+
+    // Configure view port
+    ViewPort* view_port = view_port_alloc();
+  a4:	4b30      	ldr	r3, [pc, #192]	@ (168 <sukima284+0x76>)
+  a6:	4798      	blx	r3
+  a8:	4607      	mov	r7, r0
+    view_port_draw_callback_set(view_port, blink_test_draw_callback, NULL);
+  aa:	2200      	movs	r2, #0
+  ac:	492f      	ldr	r1, [pc, #188]	@ (16c <sukima284+0x7a>)
+  ae:	4b30      	ldr	r3, [pc, #192]	@ (170 <sukima284+0x7e>)
+  b0:	4798      	blx	r3
+    view_port_input_callback_set(view_port, blink_test_input_callback, event_queue);
+  b2:	462a      	mov	r2, r5
+  b4:	492f      	ldr	r1, [pc, #188]	@ (174 <sukima284+0x82>)
+  b6:	4638      	mov	r0, r7
+  b8:	4b2f      	ldr	r3, [pc, #188]	@ (178 <sukima284+0x86>)
+  ba:	4798      	blx	r3
+    FuriTimer* timer = furi_timer_alloc(blink_test_update, FuriTimerTypePeriodic, event_queue);
+  bc:	462a      	mov	r2, r5
+  be:	2101      	movs	r1, #1
+  c0:	482e      	ldr	r0, [pc, #184]	@ (17c <sukima284+0x8a>)
+  c2:	4b2f      	ldr	r3, [pc, #188]	@ (180 <sukima284+0x8e>)
+  c4:	4798      	blx	r3
+  c6:	4680      	mov	r8, r0
+    furi_timer_start(timer, furi_kernel_get_tick_frequency());
+  c8:	4b2e      	ldr	r3, [pc, #184]	@ (184 <sukima284+0x92>)
+  ca:	4798      	blx	r3
+  cc:	4601      	mov	r1, r0
+  ce:	4640      	mov	r0, r8
+  d0:	4b2d      	ldr	r3, [pc, #180]	@ (188 <sukima284+0x96>)
+  d2:	4798      	blx	r3
+
+    // Register view port in GUI
+    Gui* gui = furi_record_open(RECORD_GUI);
+  d4:	482d      	ldr	r0, [pc, #180]	@ (18c <sukima284+0x9a>)
+  d6:	4c2e      	ldr	r4, [pc, #184]	@ (190 <sukima284+0x9e>)
+  d8:	47a0      	blx	r4
+  da:	4681      	mov	r9, r0
+    gui_add_view_port(gui, view_port, GuiLayerFullscreen);
+  dc:	2204      	movs	r2, #4
+  de:	4639      	mov	r1, r7
+  e0:	4b2c      	ldr	r3, [pc, #176]	@ (194 <sukima284+0xa2>)
+  e2:	4798      	blx	r3
+
+    NotificationApp* notifications = furi_record_open(RECORD_NOTIFICATION);
+  e4:	482c      	ldr	r0, [pc, #176]	@ (198 <sukima284+0xa6>)
+  e6:	47a0      	blx	r4
+  e8:	4606      	mov	r6, r0
+
+    uint8_t state = 0;
+  ea:	2400      	movs	r4, #0
+  ec:	e00e      	b.n	10c <sukima284+0x1a>
+    BlinkEvent event;
+
+    while(1) {
+        furi_check(furi_message_queue_get(event_queue, &event, FuriWaitForever) == FuriStatusOk);
+  ee:	f04f 0c02 	mov.w	ip, #2
+
+000000f2 <sukima284>:
+  f2:	4b2a      	ldr	r3, [pc, #168]	@ (19c <sukima284+0xaa>)
+  f4:	4798      	blx	r3
+        if(event.type == BlinkEventTypeInput) {
+            if((event.input.type == InputTypeShort) && (event.input.key == InputKeyBack)) {
+                break;
+            }
+        } else {
+            notification_message(notifications, blink_test_colors[state]);
+  f6:	4b2a      	ldr	r3, [pc, #168]	@ (1a0 <sukima284+0xae>)
+  f8:	f853 1024 	ldr.w	r1, [r3, r4, lsl #2]
+  fc:	4630      	mov	r0, r6
+  fe:	4b29      	ldr	r3, [pc, #164]	@ (1a4 <sukima284+0xb2>)
+ 100:	4798      	blx	r3
+            state++;
+ 102:	3401      	adds	r4, #1
+ 104:	b2e4      	uxtb	r4, r4
+            if(state >= COUNT_OF(blink_test_colors)) {
+ 106:	2c0a      	cmp	r4, #10
+ 108:	d900      	bls.n	10c <sukima284+0x1a>
+                state = 0;
+ 10a:	2400      	movs	r4, #0
+        furi_check(furi_message_queue_get(event_queue, &event, FuriWaitForever) == FuriStatusOk);
+ 10c:	f04f 32ff 	mov.w	r2, #4294967295	@ 0xffffffff
+ 110:	a901      	add	r1, sp, #4
+ 112:	4628      	mov	r0, r5
+ 114:	4b24      	ldr	r3, [pc, #144]	@ (1a8 <sukima284+0xb6>)
+ 116:	4798      	blx	r3
+ 118:	2800      	cmp	r0, #0
+ 11a:	d1e8      	bne.n	ee <blink_test_app+0x5a>
+        if(event.type == BlinkEventTypeInput) {
+ 11c:	f89d 3004 	ldrb.w	r3, [sp, #4]
+ 120:	2b01      	cmp	r3, #1
+ 122:	d1e8      	bne.n	f6 <sukima284+0x4>
+            if((event.input.type == InputTypeShort) && (event.input.key == InputKeyBack)) {
+ 124:	f8bd 200c 	ldrh.w	r2, [sp, #12]
+ 128:	f240 2305 	movw	r3, #517	@ 0x205
+ 12c:	429a      	cmp	r2, r3
+ 12e:	d1ed      	bne.n	10c <sukima284+0x1a>
+            }
+        }
+    }
+
+    notification_message(notifications, &blink_test_sequence_hw_blink_stop);
+ 130:	491e      	ldr	r1, [pc, #120]	@ (1ac <sukima284+0xba>)
+ 132:	4630      	mov	r0, r6
+ 134:	4b1b      	ldr	r3, [pc, #108]	@ (1a4 <sukima284+0xb2>)
+ 136:	4798      	blx	r3
+
+    furi_timer_free(timer);
+ 138:	4640      	mov	r0, r8
+ 13a:	4b1d      	ldr	r3, [pc, #116]	@ (1b0 <sukima284+0xbe>)
+ 13c:	4798      	blx	r3
+
+    gui_remove_view_port(gui, view_port);
+ 13e:	4639      	mov	r1, r7
+ 140:	4648      	mov	r0, r9
+ 142:	4b1c      	ldr	r3, [pc, #112]	@ (1b4 <sukima284+0xc2>)
+ 144:	4798      	blx	r3
+    view_port_free(view_port);
+ 146:	4638      	mov	r0, r7
+ 148:	4b1b      	ldr	r3, [pc, #108]	@ (1b8 <sukima284+0xc6>)
+ 14a:	4798      	blx	r3
+    furi_message_queue_free(event_queue);
+ 14c:	4628      	mov	r0, r5
+ 14e:	4b1b      	ldr	r3, [pc, #108]	@ (1bc <sukima284+0xca>)
+ 150:	4798      	blx	r3
+
+    furi_record_close(RECORD_NOTIFICATION);
+ 152:	4811      	ldr	r0, [pc, #68]	@ (198 <sukima284+0xa6>)
+ 154:	4c1a      	ldr	r4, [pc, #104]	@ (1c0 <sukima284+0xce>)
+ 156:	47a0      	blx	r4
+    furi_record_close(RECORD_GUI);
+ 158:	480c      	ldr	r0, [pc, #48]	@ (18c <sukima284+0x9a>)
+ 15a:	47a0      	blx	r4
+
+    return 0;
+}
+ 15c:	2000      	movs	r0, #0
+ 15e:	b005      	add	sp, #20
+ 160:	e8bd 83f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, pc}
+	...
+ 18c:	00000014 	.word	0x00000014
+	...
+ 198:	00000018 	.word	0x00000018
+ 19c:	00000000 	.word	0x00000000
+ 1a0:	00000028 	.word	0x00000028
+	...
+ 1ac:	00000054 	.word	0x00000054
+	...

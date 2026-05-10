@@ -1,0 +1,6 @@
+App(
+    appid="flipperlinux_themes",
+    name="FlipperLinux Themes",
+    apptype=FlipperAppType.METAPACKAGE,
+    provides=[],
+)

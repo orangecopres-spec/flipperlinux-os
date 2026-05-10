@@ -1,0 +1,452 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_beacon_data.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_beacon_data.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_beacon_data.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_beacon_data.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_mac_addr.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_mac_addr.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_mac_addr.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_mac_addr.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_menu.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_menu.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_menu.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_menu.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scenes.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scenes.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scenes.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scenes.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/example_ble_beacon_icons.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/example_ble_beacon_icons.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/example_ble_beacon_icons.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/example_ble_beacon/example_ble_beacon_icons.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_beacon_data.o
+LOAD build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_mac_addr.o
+LOAD build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_menu.o
+LOAD build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+LOAD build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scenes.o
+LOAD build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+LOAD build/f7-firmware-D/.extapps/example_ble_beacon/example_ble_beacon_icons.o
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libstdc++_nano.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libsupc++_nano.a
+
+.text           0x00000000      0x6c8
+ *(.text)
+ *(.stub)
+ *(.text*)
+ .text.ble_beacon_app_scene_add_type_byte_input_callback
+                0x00000000       0x10 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_beacon_data.o
+ .text.ble_beacon_app_scene_input_beacon_data_on_enter
+                0x00000010       0x44 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_beacon_data.o
+                0x00000010                ble_beacon_app_scene_input_beacon_data_on_enter
+ .text.ble_beacon_app_scene_input_beacon_data_on_event
+                0x00000054       0x38 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_beacon_data.o
+                0x00000054                ble_beacon_app_scene_input_beacon_data_on_event
+ .text.ble_beacon_app_scene_input_beacon_data_on_exit
+                0x0000008c       0x2c build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_beacon_data.o
+                0x0000008c                ble_beacon_app_scene_input_beacon_data_on_exit
+ .text.ble_beacon_app_scene_add_type_byte_input_callback
+                0x000000b8       0x10 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_mac_addr.o
+ .text.ble_beacon_app_scene_input_mac_addr_on_enter
+                0x000000c8       0x44 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_mac_addr.o
+                0x000000c8                ble_beacon_app_scene_input_mac_addr_on_enter
+ .text.ble_beacon_app_scene_input_mac_addr_on_event
+                0x0000010c       0x38 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_mac_addr.o
+                0x0000010c                ble_beacon_app_scene_input_mac_addr_on_event
+ .text.ble_beacon_app_scene_input_mac_addr_on_exit
+                0x00000144       0x2c build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_mac_addr.o
+                0x00000144                ble_beacon_app_scene_input_mac_addr_on_exit
+ .text.ble_beacon_app_scene_menu_submenu_callback
+                0x00000170       0x10 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_menu.o
+ .text.ble_beacon_app_scene_menu_on_enter
+                0x00000180       0x44 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_menu.o
+                0x00000180                ble_beacon_app_scene_menu_on_enter
+ .text.ble_beacon_app_scene_menu_on_event
+                0x000001c4       0x3c build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_menu.o
+                0x000001c4                ble_beacon_app_scene_menu_on_event
+ .text.ble_beacon_app_scene_menu_on_exit
+                0x00000200       0x10 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_menu.o
+                0x00000200                ble_beacon_app_scene_menu_on_exit
+ .text.update_status_text
+                0x00000210      0x124 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+ .text.ble_beacon_app_scene_run_beacon_confirm_dialog_callback
+                0x00000334       0x14 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+ .text.ble_beacon_app_scene_run_beacon_on_enter
+                0x00000348       0x1c build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+                0x00000348                ble_beacon_app_scene_run_beacon_on_enter
+ .text.ble_beacon_app_scene_run_beacon_on_event
+                0x00000364       0x58 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+                0x00000364                ble_beacon_app_scene_run_beacon_on_event
+ .text.ble_beacon_app_scene_run_beacon_on_exit
+                0x000003bc        0x2 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+                0x000003bc                ble_beacon_app_scene_run_beacon_on_exit
+ *fill*         0x000003be        0x2 
+ .text.ble_beacon_app_tick_event_callback
+                0x000003c0       0x1c build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .text.ble_beacon_app_back_event_callback
+                0x000003dc       0x1c build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .text.ble_beacon_app_custom_event_callback
+                0x000003f8       0x1c build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .text.ble_beacon_app_restore_beacon_state
+                0x00000414       0xa0 build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .text.ble_beacon_app_alloc
+                0x000004b4       0xf8 build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .text.ble_beacon_app_free
+                0x000005ac       0x5c build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .text.ble_beacon_app
+                0x00000608       0x30 build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+                0x00000608                ble_beacon_app
+ .text.ble_beacon_app_update_state
+                0x00000638       0x90 build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+                0x00000638                ble_beacon_app_update_state
+ *(.text.*)
+ *(.text._*)
+ *(.init)
+ *(.fini)
+
+.rodata         0x000006c8      0x1cb
+ *(.rodata)
+ *(.rodata1)
+ *(.rodata.*)
+ .rodata.ble_beacon_app_scene_input_beacon_data_on_enter.str1.4
+                0x000006c8       0x12 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_beacon_data.o
+ *fill*         0x000006da        0x2 
+ .rodata.ble_beacon_app_scene_input_mac_addr_on_enter.str1.4
+                0x000006dc       0x15 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_mac_addr.o
+ *fill*         0x000006f1        0x3 
+ .rodata.ble_beacon_app_scene_menu_on_enter.str1.4
+                0x000006f4       0x11 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_menu.o
+ *fill*         0x00000705        0x3 
+ .rodata.update_status_text.str1.4
+                0x00000708       0x6b build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+ *fill*         0x00000773        0x1 
+ .rodata.ble_beacon_app_scene_handlers
+                0x00000774       0x10 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scenes.o
+                0x00000774                ble_beacon_app_scene_handlers
+ .rodata.ble_beacon_app_on_exit_handlers
+                0x00000784       0x10 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scenes.o
+                0x00000784                ble_beacon_app_on_exit_handlers
+ .rodata.ble_beacon_app_on_event_handlers
+                0x00000794       0x10 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scenes.o
+                0x00000794                ble_beacon_app_on_event_handlers
+ .rodata.ble_beacon_app_on_enter_handlers
+                0x000007a4       0x10 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scenes.o
+                0x000007a4                ble_beacon_app_on_enter_handlers
+ .rodata.ble_beacon_app_alloc.str1.4
+                0x000007b4        0x4 build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .rodata.ble_beacon_app_free.str1.4
+                0x000007b8        0xd build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ *fill*         0x000007c5        0x3 
+ .rodata.ble_beacon_app_update_state.str1.4
+                0x000007c8       0x21 build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ *fill*         0x000007e9        0x3 
+ .rodata.I_lighthouse_35x44
+                0x000007ec        0xc build/f7-firmware-D/.extapps/example_ble_beacon/example_ble_beacon_icons.o
+                0x000007ec                I_lighthouse_35x44
+ .rodata._I_lighthouse_35x44
+                0x000007f8        0x4 build/f7-firmware-D/.extapps/example_ble_beacon/example_ble_beacon_icons.o
+                0x000007f8                _I_lighthouse_35x44
+ .rodata._I_lighthouse_35x44_0
+                0x000007fc       0x97 build/f7-firmware-D/.extapps/example_ble_beacon/example_ble_beacon_icons.o
+                0x000007fc                _I_lighthouse_35x44_0
+
+.data
+ *(.data)
+ *(.data1)
+ *(.data.*)
+
+.bss
+ *(.bss)
+ *(.bss*)
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x170
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x38 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_beacon_data.o
+ .debug_aranges
+                0x00000038       0x38 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_mac_addr.o
+ .debug_aranges
+                0x00000070       0x38 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_menu.o
+ .debug_aranges
+                0x000000a8       0x40 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+ .debug_aranges
+                0x000000e8       0x18 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scenes.o
+ .debug_aranges
+                0x00000100       0x58 build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .debug_aranges
+                0x00000158       0x18 build/f7-firmware-D/.extapps/example_ble_beacon/example_ble_beacon_icons.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x330e
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000      0x6e8 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_beacon_data.o
+ .debug_info    0x000006e8      0x6e8 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_mac_addr.o
+ .debug_info    0x00000dd0      0x741 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_menu.o
+ .debug_info    0x00001511      0xa6c build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+ .debug_info    0x00001f7d      0x324 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scenes.o
+ .debug_info    0x000022a1      0xef7 build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .debug_info    0x00003198      0x176 build/f7-firmware-D/.extapps/example_ble_beacon/example_ble_beacon_icons.o
+
+.debug_abbrev   0x00000000      0xc29
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x1c5 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_beacon_data.o
+ .debug_abbrev  0x000001c5      0x1c5 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_mac_addr.o
+ .debug_abbrev  0x0000038a      0x1c9 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_menu.o
+ .debug_abbrev  0x00000553      0x241 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+ .debug_abbrev  0x00000794      0x137 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scenes.o
+ .debug_abbrev  0x000008cb      0x2ad build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .debug_abbrev  0x00000b78       0xb1 build/f7-firmware-D/.extapps/example_ble_beacon/example_ble_beacon_icons.o
+
+.debug_line     0x00000000     0x178c
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x24f build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_beacon_data.o
+ .debug_line.text.ble_beacon_app_scene_add_type_byte_input_callback
+                0x0000024f       0x1b build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_beacon_data.o
+ .debug_line.text.ble_beacon_app_scene_input_beacon_data_on_enter
+                0x0000026a       0x28 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_beacon_data.o
+ .debug_line.text.ble_beacon_app_scene_input_beacon_data_on_event
+                0x00000292       0x46 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_beacon_data.o
+ .debug_line.text.ble_beacon_app_scene_input_beacon_data_on_exit
+                0x000002d8       0x21 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_beacon_data.o
+ .debug_line_end
+                0x000002f9        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_beacon_data.o
+ .debug_line    0x000002f9      0x24c build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_mac_addr.o
+ .debug_line.text.ble_beacon_app_scene_add_type_byte_input_callback
+                0x00000545       0x1b build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_mac_addr.o
+ .debug_line.text.ble_beacon_app_scene_input_mac_addr_on_enter
+                0x00000560       0x28 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_mac_addr.o
+ .debug_line.text.ble_beacon_app_scene_input_mac_addr_on_event
+                0x00000588       0x46 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_mac_addr.o
+ .debug_line.text.ble_beacon_app_scene_input_mac_addr_on_exit
+                0x000005ce       0x21 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_mac_addr.o
+ .debug_line_end
+                0x000005ef        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_mac_addr.o
+ .debug_line    0x000005ef      0x288 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_menu.o
+ .debug_line.text.ble_beacon_app_scene_menu_submenu_callback
+                0x00000877       0x1b build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_menu.o
+ .debug_line.text.ble_beacon_app_scene_menu_on_enter
+                0x00000892       0x2a build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_menu.o
+ .debug_line.text.ble_beacon_app_scene_menu_on_event
+                0x000008bc       0x61 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_menu.o
+ .debug_line.text.ble_beacon_app_scene_menu_on_exit
+                0x0000091d       0x1d build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_menu.o
+ .debug_line_end
+                0x0000093a        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_menu.o
+ .debug_line    0x0000093a      0x2f2 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+ .debug_line.text.update_status_text
+                0x00000c2c       0x99 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+ .debug_line.text.ble_beacon_app_scene_run_beacon_confirm_dialog_callback
+                0x00000cc5       0x1d build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+ .debug_line.text.ble_beacon_app_scene_run_beacon_on_enter
+                0x00000ce2       0x1e build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+ .debug_line.text.ble_beacon_app_scene_run_beacon_on_event
+                0x00000d00       0x68 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+ .debug_line.text.ble_beacon_app_scene_run_beacon_on_exit
+                0x00000d68       0x1a build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+ .debug_line_end
+                0x00000d82        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+ .debug_line    0x00000d82      0x16d build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scenes.o
+ .debug_line_end
+                0x00000eef        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scenes.o
+ .debug_line    0x00000eef      0x38f build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .debug_line.text.ble_beacon_app_tick_event_callback
+                0x0000127e       0x56 build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .debug_line.text.ble_beacon_app_back_event_callback
+                0x000012d4       0x5d build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .debug_line.text.ble_beacon_app_custom_event_callback
+                0x00001331       0x5d build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .debug_line.text.ble_beacon_app_restore_beacon_state
+                0x0000138e       0xd5 build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .debug_line.text.ble_beacon_app_alloc
+                0x00001463       0x78 build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .debug_line.text.ble_beacon_app_free
+                0x000014db       0x33 build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .debug_line.text.ble_beacon_app
+                0x0000150e       0x2d build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .debug_line.text.ble_beacon_app_update_state
+                0x0000153b       0xcf build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .debug_line_end
+                0x0000160a        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .debug_line    0x0000160a      0x182 build/f7-firmware-D/.extapps/example_ble_beacon/example_ble_beacon_icons.o
+ .debug_line_end
+                0x0000178c        0x0 build/f7-firmware-D/.extapps/example_ble_beacon/example_ble_beacon_icons.o
+
+.debug_frame    0x00000000      0x310
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x8c build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_beacon_data.o
+ .debug_frame   0x0000008c       0x8c build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_mac_addr.o
+ .debug_frame   0x00000118       0x80 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_menu.o
+ .debug_frame   0x00000198       0x98 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+ .debug_frame   0x00000230       0xe0 build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+
+.debug_str      0x00000000     0x4323
+ *(.debug_str)
+ .debug_str     0x00000000      0xa21 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_beacon_data.o
+ .debug_str     0x00000a21      0xa15 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_mac_addr.o
+ .debug_str     0x00001436      0xa4c build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_menu.o
+ .debug_str     0x00001e82      0xc59 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+ .debug_str     0x00002adb      0x615 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scenes.o
+ .debug_str     0x000030f0      0xfb6 build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .debug_str     0x000040a6      0x27d build/f7-firmware-D/.extapps/example_ble_beacon/example_ble_beacon_icons.o
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+ *(.debug_line_str)
+
+.debug_loclists
+                0x00000000      0x6cd
+ *(.debug_loclists)
+ .debug_loclists
+                0x00000000      0x12f build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_beacon_data.o
+ .debug_loclists
+                0x0000012f      0x12f build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_mac_addr.o
+ .debug_loclists
+                0x0000025e      0x17a build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_menu.o
+ .debug_loclists
+                0x000003d8      0x14c build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+ .debug_loclists
+                0x00000524      0x1a9 build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x00000000       0xe7
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x00000000       0x25 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_beacon_data.o
+ .debug_rnglists
+                0x00000025       0x25 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_mac_addr.o
+ .debug_rnglists
+                0x0000004a       0x31 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_menu.o
+ .debug_rnglists
+                0x0000007b       0x2c build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+ .debug_rnglists
+                0x000000a7       0x40 build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.ARM.attributes
+                0x00000000       0x34
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x34 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_beacon_data.o
+ .ARM.attributes
+                0x00000034       0x34 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_input_mac_addr.o
+ .ARM.attributes
+                0x00000068       0x34 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_menu.o
+ .ARM.attributes
+                0x0000009c       0x34 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scene_run_beacon.o
+ .ARM.attributes
+                0x000000d0       0x34 build/f7-firmware-D/.extapps/example_ble_beacon/scenes/scenes.o
+ .ARM.attributes
+                0x00000104       0x34 build/f7-firmware-D/.extapps/example_ble_beacon/ble_beacon_app.o
+ .ARM.attributes
+                0x00000138       0x34 build/f7-firmware-D/.extapps/example_ble_beacon/example_ble_beacon_icons.o
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+
+/DISCARD/
+ *(.comment)
+ *(.comment.*)
+ *(.llvmbc)
+ *(.llvmcmd)
+OUTPUT(build/f7-firmware-D/.extapps/example_ble_beacon_d.elf elf32-littlearm)
+LOAD linker stubs

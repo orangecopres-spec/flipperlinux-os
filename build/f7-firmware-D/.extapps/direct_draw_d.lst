@@ -1,0 +1,655 @@
+
+build/f7-firmware-D/.extapps/direct_draw_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <__aeabi_drsub>:
+   0:	f081 4100 	eor.w	r1, r1, #2147483648	@ 0x80000000
+   4:	e002      	b.n	c <__adddf3>
+   6:	bf00      	nop
+
+00000008 <__aeabi_dsub>:
+   8:	f083 4300 	eor.w	r3, r3, #2147483648	@ 0x80000000
+
+0000000c <__adddf3>:
+   c:	b530      	push	{r4, r5, lr}
+   e:	ea4f 0441 	mov.w	r4, r1, lsl #1
+  12:	ea4f 0543 	mov.w	r5, r3, lsl #1
+  16:	ea94 0f05 	teq	r4, r5
+  1a:	bf08      	it	eq
+  1c:	ea90 0f02 	teqeq	r0, r2
+  20:	bf1f      	itttt	ne
+  22:	ea54 0c00 	orrsne.w	ip, r4, r0
+  26:	ea55 0c02 	orrsne.w	ip, r5, r2
+  2a:	ea7f 5c64 	mvnsne.w	ip, r4, asr #21
+  2e:	ea7f 5c65 	mvnsne.w	ip, r5, asr #21
+  32:	f000 80e2 	beq.w	1fa <__adddf3+0x1ee>
+  36:	ea4f 5454 	mov.w	r4, r4, lsr #21
+  3a:	ebd4 5555 	rsbs	r5, r4, r5, lsr #21
+  3e:	bfb8      	it	lt
+  40:	426d      	neglt	r5, r5
+  42:	dd0c      	ble.n	5e <__adddf3+0x52>
+  44:	442c      	add	r4, r5
+  46:	ea80 0202 	eor.w	r2, r0, r2
+  4a:	ea81 0303 	eor.w	r3, r1, r3
+  4e:	ea82 0000 	eor.w	r0, r2, r0
+  52:	ea83 0101 	eor.w	r1, r3, r1
+  56:	ea80 0202 	eor.w	r2, r0, r2
+  5a:	ea81 0303 	eor.w	r3, r1, r3
+  5e:	2d36      	cmp	r5, #54	@ 0x36
+  60:	bf88      	it	hi
+  62:	bd30      	pophi	{r4, r5, pc}
+  64:	f011 4f00 	tst.w	r1, #2147483648	@ 0x80000000
+  68:	ea4f 3101 	mov.w	r1, r1, lsl #12
+  6c:	f44f 1c80 	mov.w	ip, #1048576	@ 0x100000
+  70:	ea4c 3111 	orr.w	r1, ip, r1, lsr #12
+  74:	d002      	beq.n	7c <__adddf3+0x70>
+  76:	4240      	negs	r0, r0
+  78:	eb61 0141 	sbc.w	r1, r1, r1, lsl #1
+  7c:	f013 4f00 	tst.w	r3, #2147483648	@ 0x80000000
+  80:	ea4f 3303 	mov.w	r3, r3, lsl #12
+  84:	ea4c 3313 	orr.w	r3, ip, r3, lsr #12
+  88:	d002      	beq.n	90 <__adddf3+0x84>
+  8a:	4252      	negs	r2, r2
+  8c:	eb63 0343 	sbc.w	r3, r3, r3, lsl #1
+  90:	ea94 0f05 	teq	r4, r5
+  94:	f000 80a7 	beq.w	1e6 <__adddf3+0x1da>
+  98:	f1a4 0401 	sub.w	r4, r4, #1
+  9c:	f1d5 0e20 	rsbs	lr, r5, #32
+  a0:	db0d      	blt.n	be <__adddf3+0xb2>
+  a2:	fa02 fc0e 	lsl.w	ip, r2, lr
+  a6:	fa22 f205 	lsr.w	r2, r2, r5
+  aa:	1880      	adds	r0, r0, r2
+  ac:	f141 0100 	adc.w	r1, r1, #0
+  b0:	fa03 f20e 	lsl.w	r2, r3, lr
+  b4:	1880      	adds	r0, r0, r2
+  b6:	fa43 f305 	asr.w	r3, r3, r5
+  ba:	4159      	adcs	r1, r3
+  bc:	e00e      	b.n	dc <__adddf3+0xd0>
+  be:	f1a5 0520 	sub.w	r5, r5, #32
+  c2:	f10e 0e20 	add.w	lr, lr, #32
+  c6:	2a01      	cmp	r2, #1
+  c8:	fa03 fc0e 	lsl.w	ip, r3, lr
+  cc:	bf28      	it	cs
+  ce:	f04c 0c02 	orrcs.w	ip, ip, #2
+  d2:	fa43 f305 	asr.w	r3, r3, r5
+  d6:	18c0      	adds	r0, r0, r3
+  d8:	eb51 71e3 	adcs.w	r1, r1, r3, asr #31
+  dc:	f001 4500 	and.w	r5, r1, #2147483648	@ 0x80000000
+  e0:	d507      	bpl.n	f2 <__adddf3+0xe6>
+  e2:	f04f 0e00 	mov.w	lr, #0
+  e6:	f1dc 0c00 	rsbs	ip, ip, #0
+  ea:	eb7e 0000 	sbcs.w	r0, lr, r0
+  ee:	eb6e 0101 	sbc.w	r1, lr, r1
+  f2:	f5b1 1f80 	cmp.w	r1, #1048576	@ 0x100000
+  f6:	d31b      	bcc.n	130 <__adddf3+0x124>
+  f8:	f5b1 1f00 	cmp.w	r1, #2097152	@ 0x200000
+  fc:	d30c      	bcc.n	118 <__adddf3+0x10c>
+  fe:	0849      	lsrs	r1, r1, #1
+ 100:	ea5f 0030 	movs.w	r0, r0, rrx
+ 104:	ea4f 0c3c 	mov.w	ip, ip, rrx
+ 108:	f104 0401 	add.w	r4, r4, #1
+ 10c:	ea4f 5244 	mov.w	r2, r4, lsl #21
+ 110:	f512 0f80 	cmn.w	r2, #4194304	@ 0x400000
+ 114:	f080 809a 	bcs.w	24c <__adddf3+0x240>
+ 118:	f1bc 4f00 	cmp.w	ip, #2147483648	@ 0x80000000
+ 11c:	bf08      	it	eq
+ 11e:	ea5f 0c50 	movseq.w	ip, r0, lsr #1
+ 122:	f150 0000 	adcs.w	r0, r0, #0
+ 126:	eb41 5104 	adc.w	r1, r1, r4, lsl #20
+ 12a:	ea41 0105 	orr.w	r1, r1, r5
+ 12e:	bd30      	pop	{r4, r5, pc}
+ 130:	ea5f 0c4c 	movs.w	ip, ip, lsl #1
+ 134:	4140      	adcs	r0, r0
+ 136:	eb41 0101 	adc.w	r1, r1, r1
+ 13a:	3c01      	subs	r4, #1
+ 13c:	bf28      	it	cs
+ 13e:	f5b1 1f80 	cmpcs.w	r1, #1048576	@ 0x100000
+ 142:	d2e9      	bcs.n	118 <__adddf3+0x10c>
+ 144:	f091 0f00 	teq	r1, #0
+ 148:	bf04      	itt	eq
+ 14a:	4601      	moveq	r1, r0
+ 14c:	2000      	moveq	r0, #0
+ 14e:	fab1 f381 	clz	r3, r1
+ 152:	bf08      	it	eq
+ 154:	3320      	addeq	r3, #32
+ 156:	f1a3 030b 	sub.w	r3, r3, #11
+ 15a:	f1b3 0220 	subs.w	r2, r3, #32
+ 15e:	da0c      	bge.n	17a <__adddf3+0x16e>
+ 160:	320c      	adds	r2, #12
+ 162:	dd08      	ble.n	176 <__adddf3+0x16a>
+ 164:	f102 0c14 	add.w	ip, r2, #20
+ 168:	f1c2 020c 	rsb	r2, r2, #12
+ 16c:	fa01 f00c 	lsl.w	r0, r1, ip
+ 170:	fa21 f102 	lsr.w	r1, r1, r2
+ 174:	e00c      	b.n	190 <__adddf3+0x184>
+ 176:	f102 0214 	add.w	r2, r2, #20
+ 17a:	bfd8      	it	le
+ 17c:	f1c2 0c20 	rsble	ip, r2, #32
+ 180:	fa01 f102 	lsl.w	r1, r1, r2
+ 184:	fa20 fc0c 	lsr.w	ip, r0, ip
+ 188:	bfdc      	itt	le
+ 18a:	ea41 010c 	orrle.w	r1, r1, ip
+ 18e:	4090      	lslle	r0, r2
+ 190:	1ae4      	subs	r4, r4, r3
+ 192:	bfa2      	ittt	ge
+ 194:	eb01 5104 	addge.w	r1, r1, r4, lsl #20
+ 198:	4329      	orrge	r1, r5
+ 19a:	bd30      	popge	{r4, r5, pc}
+ 19c:	ea6f 0404 	mvn.w	r4, r4
+ 1a0:	3c1f      	subs	r4, #31
+ 1a2:	da1c      	bge.n	1de <__adddf3+0x1d2>
+ 1a4:	340c      	adds	r4, #12
+ 1a6:	dc0e      	bgt.n	1c6 <__adddf3+0x1ba>
+ 1a8:	f104 0414 	add.w	r4, r4, #20
+ 1ac:	f1c4 0220 	rsb	r2, r4, #32
+ 1b0:	fa20 f004 	lsr.w	r0, r0, r4
+ 1b4:	fa01 f302 	lsl.w	r3, r1, r2
+ 1b8:	ea40 0003 	orr.w	r0, r0, r3
+ 1bc:	fa21 f304 	lsr.w	r3, r1, r4
+ 1c0:	ea45 0103 	orr.w	r1, r5, r3
+ 1c4:	bd30      	pop	{r4, r5, pc}
+ 1c6:	f1c4 040c 	rsb	r4, r4, #12
+ 1ca:	f1c4 0220 	rsb	r2, r4, #32
+ 1ce:	fa20 f002 	lsr.w	r0, r0, r2
+ 1d2:	fa01 f304 	lsl.w	r3, r1, r4
+ 1d6:	ea40 0003 	orr.w	r0, r0, r3
+ 1da:	4629      	mov	r1, r5
+ 1dc:	bd30      	pop	{r4, r5, pc}
+ 1de:	fa21 f004 	lsr.w	r0, r1, r4
+ 1e2:	4629      	mov	r1, r5
+ 1e4:	bd30      	pop	{r4, r5, pc}
+ 1e6:	f094 0f00 	teq	r4, #0
+ 1ea:	f483 1380 	eor.w	r3, r3, #1048576	@ 0x100000
+ 1ee:	bf06      	itte	eq
+ 1f0:	f481 1180 	eoreq.w	r1, r1, #1048576	@ 0x100000
+ 1f4:	3401      	addeq	r4, #1
+ 1f6:	3d01      	subne	r5, #1
+ 1f8:	e74e      	b.n	98 <__adddf3+0x8c>
+ 1fa:	ea7f 5c64 	mvns.w	ip, r4, asr #21
+ 1fe:	bf18      	it	ne
+ 200:	ea7f 5c65 	mvnsne.w	ip, r5, asr #21
+ 204:	d029      	beq.n	25a <__adddf3+0x24e>
+ 206:	ea94 0f05 	teq	r4, r5
+ 20a:	bf08      	it	eq
+ 20c:	ea90 0f02 	teqeq	r0, r2
+ 210:	d005      	beq.n	21e <__adddf3+0x212>
+ 212:	ea54 0c00 	orrs.w	ip, r4, r0
+ 216:	bf04      	itt	eq
+ 218:	4619      	moveq	r1, r3
+ 21a:	4610      	moveq	r0, r2
+ 21c:	bd30      	pop	{r4, r5, pc}
+ 21e:	ea91 0f03 	teq	r1, r3
+ 222:	bf1e      	ittt	ne
+ 224:	2100      	movne	r1, #0
+ 226:	2000      	movne	r0, #0
+ 228:	bd30      	popne	{r4, r5, pc}
+ 22a:	ea5f 5c54 	movs.w	ip, r4, lsr #21
+ 22e:	d105      	bne.n	23c <__adddf3+0x230>
+ 230:	0040      	lsls	r0, r0, #1
+ 232:	4149      	adcs	r1, r1
+ 234:	bf28      	it	cs
+ 236:	f041 4100 	orrcs.w	r1, r1, #2147483648	@ 0x80000000
+ 23a:	bd30      	pop	{r4, r5, pc}
+ 23c:	f514 0480 	adds.w	r4, r4, #4194304	@ 0x400000
+ 240:	bf3c      	itt	cc
+ 242:	f501 1180 	addcc.w	r1, r1, #1048576	@ 0x100000
+ 246:	bd30      	popcc	{r4, r5, pc}
+ 248:	f001 4500 	and.w	r5, r1, #2147483648	@ 0x80000000
+ 24c:	f045 41fe 	orr.w	r1, r5, #2130706432	@ 0x7f000000
+ 250:	f441 0170 	orr.w	r1, r1, #15728640	@ 0xf00000
+ 254:	f04f 0000 	mov.w	r0, #0
+ 258:	bd30      	pop	{r4, r5, pc}
+ 25a:	ea7f 5c64 	mvns.w	ip, r4, asr #21
+ 25e:	bf1a      	itte	ne
+ 260:	4619      	movne	r1, r3
+ 262:	4610      	movne	r0, r2
+ 264:	ea7f 5c65 	mvnseq.w	ip, r5, asr #21
+ 268:	bf1c      	itt	ne
+ 26a:	460b      	movne	r3, r1
+ 26c:	4602      	movne	r2, r0
+ 26e:	ea50 3401 	orrs.w	r4, r0, r1, lsl #12
+ 272:	bf06      	itte	eq
+ 274:	ea52 3503 	orrseq.w	r5, r2, r3, lsl #12
+ 278:	ea91 0f03 	teqeq	r1, r3
+ 27c:	f441 2100 	orrne.w	r1, r1, #524288	@ 0x80000
+ 280:	bd30      	pop	{r4, r5, pc}
+ 282:	bf00      	nop
+
+00000284 <__aeabi_ui2d>:
+ 284:	f090 0f00 	teq	r0, #0
+ 288:	bf04      	itt	eq
+ 28a:	2100      	moveq	r1, #0
+ 28c:	4770      	bxeq	lr
+ 28e:	b530      	push	{r4, r5, lr}
+ 290:	f44f 6480 	mov.w	r4, #1024	@ 0x400
+ 294:	f104 0432 	add.w	r4, r4, #50	@ 0x32
+ 298:	f04f 0500 	mov.w	r5, #0
+ 29c:	f04f 0100 	mov.w	r1, #0
+ 2a0:	e750      	b.n	144 <__adddf3+0x138>
+ 2a2:	bf00      	nop
+
+000002a4 <__aeabi_i2d>:
+ 2a4:	f090 0f00 	teq	r0, #0
+ 2a8:	bf04      	itt	eq
+ 2aa:	2100      	moveq	r1, #0
+ 2ac:	4770      	bxeq	lr
+ 2ae:	b530      	push	{r4, r5, lr}
+ 2b0:	f44f 6480 	mov.w	r4, #1024	@ 0x400
+ 2b4:	f104 0432 	add.w	r4, r4, #50	@ 0x32
+ 2b8:	f010 4500 	ands.w	r5, r0, #2147483648	@ 0x80000000
+ 2bc:	bf48      	it	mi
+ 2be:	4240      	negmi	r0, r0
+ 2c0:	f04f 0100 	mov.w	r1, #0
+ 2c4:	e73e      	b.n	144 <__adddf3+0x138>
+ 2c6:	bf00      	nop
+
+000002c8 <__aeabi_f2d>:
+ 2c8:	0042      	lsls	r2, r0, #1
+ 2ca:	ea4f 01e2 	mov.w	r1, r2, asr #3
+ 2ce:	ea4f 0131 	mov.w	r1, r1, rrx
+ 2d2:	ea4f 7002 	mov.w	r0, r2, lsl #28
+ 2d6:	bf1f      	itttt	ne
+ 2d8:	f012 437f 	andsne.w	r3, r2, #4278190080	@ 0xff000000
+ 2dc:	f093 4f7f 	teqne	r3, #4278190080	@ 0xff000000
+ 2e0:	f081 5160 	eorne.w	r1, r1, #939524096	@ 0x38000000
+ 2e4:	4770      	bxne	lr
+ 2e6:	f032 427f 	bics.w	r2, r2, #4278190080	@ 0xff000000
+ 2ea:	bf08      	it	eq
+ 2ec:	4770      	bxeq	lr
+ 2ee:	f093 4f7f 	teq	r3, #4278190080	@ 0xff000000
+ 2f2:	bf04      	itt	eq
+ 2f4:	f441 2100 	orreq.w	r1, r1, #524288	@ 0x80000
+ 2f8:	4770      	bxeq	lr
+ 2fa:	b530      	push	{r4, r5, lr}
+ 2fc:	f44f 7460 	mov.w	r4, #896	@ 0x380
+ 300:	f001 4500 	and.w	r5, r1, #2147483648	@ 0x80000000
+ 304:	f021 4100 	bic.w	r1, r1, #2147483648	@ 0x80000000
+ 308:	e71c      	b.n	144 <__adddf3+0x138>
+ 30a:	bf00      	nop
+
+0000030c <__aeabi_ul2d>:
+ 30c:	ea50 0201 	orrs.w	r2, r0, r1
+ 310:	bf08      	it	eq
+ 312:	4770      	bxeq	lr
+ 314:	b530      	push	{r4, r5, lr}
+ 316:	f04f 0500 	mov.w	r5, #0
+ 31a:	e00a      	b.n	332 <__aeabi_l2d+0x16>
+
+0000031c <__aeabi_l2d>:
+ 31c:	ea50 0201 	orrs.w	r2, r0, r1
+ 320:	bf08      	it	eq
+ 322:	4770      	bxeq	lr
+ 324:	b530      	push	{r4, r5, lr}
+ 326:	f011 4500 	ands.w	r5, r1, #2147483648	@ 0x80000000
+ 32a:	d502      	bpl.n	332 <__aeabi_l2d+0x16>
+ 32c:	4240      	negs	r0, r0
+ 32e:	eb61 0141 	sbc.w	r1, r1, r1, lsl #1
+ 332:	f44f 6480 	mov.w	r4, #1024	@ 0x400
+ 336:	f104 0432 	add.w	r4, r4, #50	@ 0x32
+ 33a:	ea5f 5c91 	movs.w	ip, r1, lsr #22
+ 33e:	f43f aed8 	beq.w	f2 <__adddf3+0xe6>
+ 342:	f04f 0203 	mov.w	r2, #3
+ 346:	ea5f 0cdc 	movs.w	ip, ip, lsr #3
+ 34a:	bf18      	it	ne
+ 34c:	3203      	addne	r2, #3
+ 34e:	ea5f 0cdc 	movs.w	ip, ip, lsr #3
+ 352:	bf18      	it	ne
+ 354:	3203      	addne	r2, #3
+ 356:	eb02 02dc 	add.w	r2, r2, ip, lsr #3
+ 35a:	f1c2 0320 	rsb	r3, r2, #32
+ 35e:	fa00 fc03 	lsl.w	ip, r0, r3
+ 362:	fa20 f002 	lsr.w	r0, r0, r2
+ 366:	fa01 fe03 	lsl.w	lr, r1, r3
+ 36a:	ea40 000e 	orr.w	r0, r0, lr
+ 36e:	fa21 f102 	lsr.w	r1, r1, r2
+ 372:	4414      	add	r4, r2
+ 374:	e6bd      	b.n	f2 <__adddf3+0xe6>
+ 376:	bf00      	nop
+
+00000378 <direct_draw_alloc>:
+    if(event->key == InputKeyBack && event->type == InputTypeShort) {
+        instance->stop = true;
+    }
+}
+
+static DirectDraw* direct_draw_alloc(void) {
+ 378:	b538      	push	{r3, r4, r5, lr}
+    DirectDraw* instance = malloc(sizeof(DirectDraw));
+ 37a:	2018      	movs	r0, #24
+ 37c:	4b0a      	ldr	r3, [pc, #40]	@ (3a8 <direct_draw_alloc+0x30>)
+ 37e:	4798      	blx	r3
+ 380:	4604      	mov	r4, r0
+
+    instance->input = furi_record_open(RECORD_INPUT_EVENTS);
+ 382:	480a      	ldr	r0, [pc, #40]	@ (3ac <direct_draw_alloc+0x34>)
+ 384:	4d0a      	ldr	r5, [pc, #40]	@ (3b0 <direct_draw_alloc+0x38>)
+ 386:	47a8      	blx	r5
+ 388:	6020      	str	r0, [r4, #0]
+    instance->gui = furi_record_open(RECORD_GUI);
+ 38a:	480a      	ldr	r0, [pc, #40]	@ (3b4 <direct_draw_alloc+0x3c>)
+ 38c:	47a8      	blx	r5
+ 38e:	60a0      	str	r0, [r4, #8]
+    instance->canvas = gui_direct_draw_acquire(instance->gui);
+ 390:	4b09      	ldr	r3, [pc, #36]	@ (3b8 <direct_draw_alloc+0x40>)
+ 392:	4798      	blx	r3
+ 394:	60e0      	str	r0, [r4, #12]
+
+    instance->input_subscription =
+        furi_pubsub_subscribe(instance->input, gui_input_events_callback, instance);
+ 396:	4622      	mov	r2, r4
+ 398:	4908      	ldr	r1, [pc, #32]	@ (3bc <direct_draw_alloc+0x44>)
+ 39a:	6820      	ldr	r0, [r4, #0]
+ 39c:	4b08      	ldr	r3, [pc, #32]	@ (3c0 <direct_draw_alloc+0x48>)
+ 39e:	4798      	blx	r3
+    instance->input_subscription =
+ 3a0:	6060      	str	r0, [r4, #4]
+
+    return instance;
+}
+ 3a2:	4620      	mov	r0, r4
+ 3a4:	bd38      	pop	{r3, r4, r5, pc}
+ 3a6:	bf00      	nop
+	...
+ 3b4:	00000010 	.word	0x00000010
+	...
+
+000003c4 <gui_input_events_callback>:
+static void gui_input_events_callback(const void* value, void* ctx) {
+ 3c4:	b508      	push	{r3, lr}
+    furi_assert(value);
+ 3c6:	b130      	cbz	r0, 3d6 <gui_input_events_callback+0x12>
+    furi_assert(ctx);
+ 3c8:	b149      	cbz	r1, 3de <sukima113+0x4>
+    if(event->key == InputKeyBack && event->type == InputTypeShort) {
+ 3ca:	8882      	ldrh	r2, [r0, #4]
+ 3cc:	f240 2305 	movw	r3, #517	@ 0x205
+ 3d0:	429a      	cmp	r2, r3
+ 3d2:	d008      	beq.n	3e6 <sukima130+0x4>
+}
+ 3d4:	bd08      	pop	{r3, pc}
+    furi_assert(value);
+ 3d6:	f04f 0c01 	mov.w	ip, #1
+
+000003da <sukima113>:
+ 3da:	4b04      	ldr	r3, [pc, #16]	@ (3ec <sukima130+0xa>)
+ 3dc:	4798      	blx	r3
+    furi_assert(ctx);
+ 3de:	f04f 0c01 	mov.w	ip, #1
+
+000003e2 <sukima130>:
+ 3e2:	4b02      	ldr	r3, [pc, #8]	@ (3ec <sukima130+0xa>)
+ 3e4:	4798      	blx	r3
+        instance->stop = true;
+ 3e6:	2301      	movs	r3, #1
+ 3e8:	740b      	strb	r3, [r1, #16]
+}
+ 3ea:	e7f3      	b.n	3d4 <gui_input_events_callback+0x10>
+ 3ec:	00000000 	.word	0x00000000
+
+000003f0 <direct_draw_block>:
+    furi_record_close(RECORD_INPUT_EVENTS);
+
+    free(instance);
+}
+
+static void direct_draw_block(Canvas* canvas, uint32_t size, uint32_t counter) {
+ 3f0:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+ 3f4:	b082      	sub	sp, #8
+ 3f6:	4606      	mov	r6, r0
+ 3f8:	4614      	mov	r4, r2
+    size += 16;
+ 3fa:	f101 0510 	add.w	r5, r1, #16
+    uint8_t width = canvas_width(canvas) - size;
+ 3fe:	4b17      	ldr	r3, [pc, #92]	@ (45c <direct_draw_block+0x6c>)
+ 400:	4798      	blx	r3
+ 402:	b2c7      	uxtb	r7, r0
+ 404:	fa5f f885 	uxtb.w	r8, r5
+ 408:	eba7 0708 	sub.w	r7, r7, r8
+ 40c:	b2ff      	uxtb	r7, r7
+    uint8_t height = canvas_height(canvas) - size;
+ 40e:	4630      	mov	r0, r6
+ 410:	4b13      	ldr	r3, [pc, #76]	@ (460 <direct_draw_block+0x70>)
+ 412:	4798      	blx	r3
+ 414:	fa5f fc80 	uxtb.w	ip, r0
+ 418:	ebac 0c08 	sub.w	ip, ip, r8
+ 41c:	fa5f fc8c 	uxtb.w	ip, ip
+
+    uint8_t x = counter % width;
+ 420:	fbb4 f3f7 	udiv	r3, r4, r7
+ 424:	fb07 4113 	mls	r1, r7, r3, r4
+ 428:	b2c9      	uxtb	r1, r1
+    if((counter / width) % 2) {
+ 42a:	f013 0f01 	tst.w	r3, #1
+ 42e:	d001      	beq.n	434 <direct_draw_block+0x44>
+        x = width - x;
+ 430:	1a79      	subs	r1, r7, r1
+ 432:	b2c9      	uxtb	r1, r1
+    }
+
+    uint8_t y = counter % height;
+ 434:	fbb4 f3fc 	udiv	r3, r4, ip
+ 438:	fb0c 4213 	mls	r2, ip, r3, r4
+ 43c:	b2d2      	uxtb	r2, r2
+    if((counter / height) % 2) {
+ 43e:	f013 0f01 	tst.w	r3, #1
+ 442:	d002      	beq.n	44a <direct_draw_block+0x5a>
+        y = height - y;
+ 444:	ebac 0202 	sub.w	r2, ip, r2
+ 448:	b2d2      	uxtb	r2, r2
+    }
+
+    canvas_draw_box(canvas, x, y, size, size);
+ 44a:	9500      	str	r5, [sp, #0]
+ 44c:	462b      	mov	r3, r5
+ 44e:	4630      	mov	r0, r6
+ 450:	4c04      	ldr	r4, [pc, #16]	@ (464 <direct_draw_block+0x74>)
+ 452:	47a0      	blx	r4
+}
+ 454:	b002      	add	sp, #8
+ 456:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+ 45a:	bf00      	nop
+	...
+
+00000468 <direct_draw_run>:
+
+static void direct_draw_run(DirectDraw* instance) {
+ 468:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+ 46c:	b08a      	sub	sp, #40	@ 0x28
+ 46e:	4604      	mov	r4, r0
+    size_t start = DWT->CYCCNT;
+ 470:	4b38      	ldr	r3, [pc, #224]	@ (554 <direct_draw_run+0xec>)
+ 472:	685f      	ldr	r7, [r3, #4]
+    size_t counter = 0;
+    float fps = 0;
+
+    furi_thread_set_current_priority(FuriThreadPriorityIdle);
+ 474:	2000      	movs	r0, #0
+ 476:	4b38      	ldr	r3, [pc, #224]	@ (558 <direct_draw_run+0xf0>)
+ 478:	4798      	blx	r3
+    float fps = 0;
+ 47a:	f04f 0800 	mov.w	r8, #0
+    size_t counter = 0;
+ 47e:	2600      	movs	r6, #0
+ 480:	e054      	b.n	52c <direct_draw_run+0xc4>
+    do {
+        size_t elapsed = DWT->CYCCNT - start;
+        char buffer[BUFFER_SIZE] = {0};
+
+        if(elapsed >= 64000000) {
+            fps = (float)counter / ((float)elapsed / 64000000.0f);
+ 482:	ee07 6a90 	vmov	s15, r6
+ 486:	eef8 6a67 	vcvt.f32.u32	s13, s15
+ 48a:	ee07 2a90 	vmov	s15, r2
+ 48e:	eef8 7a67 	vcvt.f32.u32	s15, s15
+ 492:	ed9f 6a32 	vldr	s12, [pc, #200]	@ 55c <direct_draw_run+0xf4>
+ 496:	ee87 7a86 	vdiv.f32	s14, s15, s12
+ 49a:	eec6 7a87 	vdiv.f32	s15, s13, s14
+ 49e:	ee17 8a90 	vmov	r8, s15
+
+            start = DWT->CYCCNT;
+ 4a2:	4b2c      	ldr	r3, [pc, #176]	@ (554 <direct_draw_run+0xec>)
+ 4a4:	685f      	ldr	r7, [r3, #4]
+            counter = 0;
+ 4a6:	2600      	movs	r6, #0
+        }
+        snprintf(buffer, BUFFER_SIZE, "FPS: %.1f", (double)fps);
+ 4a8:	4640      	mov	r0, r8
+ 4aa:	4b2d      	ldr	r3, [pc, #180]	@ (560 <direct_draw_run+0xf8>)
+ 4ac:	4798      	blx	r3
+ 4ae:	e9cd 0100 	strd	r0, r1, [sp]
+ 4b2:	4a2c      	ldr	r2, [pc, #176]	@ (564 <direct_draw_run+0xfc>)
+ 4b4:	2120      	movs	r1, #32
+ 4b6:	a802      	add	r0, sp, #8
+ 4b8:	4b2b      	ldr	r3, [pc, #172]	@ (568 <direct_draw_run+0x100>)
+ 4ba:	4798      	blx	r3
+
+        canvas_reset(instance->canvas);
+ 4bc:	68e0      	ldr	r0, [r4, #12]
+ 4be:	4b2b      	ldr	r3, [pc, #172]	@ (56c <direct_draw_run+0x104>)
+ 4c0:	4798      	blx	r3
+        canvas_set_color(instance->canvas, ColorXOR);
+ 4c2:	2102      	movs	r1, #2
+ 4c4:	68e0      	ldr	r0, [r4, #12]
+ 4c6:	4b2a      	ldr	r3, [pc, #168]	@ (570 <direct_draw_run+0x108>)
+ 4c8:	4798      	blx	r3
+        direct_draw_block(instance->canvas, instance->counter % 16, instance->counter);
+ 4ca:	6962      	ldr	r2, [r4, #20]
+ 4cc:	f002 010f 	and.w	r1, r2, #15
+ 4d0:	68e0      	ldr	r0, [r4, #12]
+ 4d2:	4d28      	ldr	r5, [pc, #160]	@ (574 <direct_draw_run+0x10c>)
+ 4d4:	47a8      	blx	r5
+        direct_draw_block(instance->canvas, instance->counter * 2 % 16, instance->counter * 2);
+ 4d6:	6962      	ldr	r2, [r4, #20]
+ 4d8:	0052      	lsls	r2, r2, #1
+ 4da:	f002 010e 	and.w	r1, r2, #14
+ 4de:	68e0      	ldr	r0, [r4, #12]
+ 4e0:	47a8      	blx	r5
+        direct_draw_block(instance->canvas, instance->counter * 3 % 16, instance->counter * 3);
+ 4e2:	6962      	ldr	r2, [r4, #20]
+ 4e4:	eb02 0242 	add.w	r2, r2, r2, lsl #1
+ 4e8:	f002 010f 	and.w	r1, r2, #15
+ 4ec:	68e0      	ldr	r0, [r4, #12]
+ 4ee:	47a8      	blx	r5
+        direct_draw_block(instance->canvas, instance->counter * 4 % 16, instance->counter * 4);
+ 4f0:	6962      	ldr	r2, [r4, #20]
+ 4f2:	0092      	lsls	r2, r2, #2
+ 4f4:	f002 010c 	and.w	r1, r2, #12
+ 4f8:	68e0      	ldr	r0, [r4, #12]
+ 4fa:	47a8      	blx	r5
+        direct_draw_block(instance->canvas, instance->counter * 5 % 16, instance->counter * 5);
+ 4fc:	6962      	ldr	r2, [r4, #20]
+ 4fe:	eb02 0282 	add.w	r2, r2, r2, lsl #2
+ 502:	f002 010f 	and.w	r1, r2, #15
+ 506:	68e0      	ldr	r0, [r4, #12]
+ 508:	47a8      	blx	r5
+        canvas_draw_str(instance->canvas, 10, 10, buffer);
+ 50a:	ab02      	add	r3, sp, #8
+ 50c:	220a      	movs	r2, #10
+ 50e:	4611      	mov	r1, r2
+ 510:	68e0      	ldr	r0, [r4, #12]
+ 512:	4d19      	ldr	r5, [pc, #100]	@ (578 <direct_draw_run+0x110>)
+ 514:	47a8      	blx	r5
+        canvas_commit(instance->canvas);
+ 516:	68e0      	ldr	r0, [r4, #12]
+ 518:	4b18      	ldr	r3, [pc, #96]	@ (57c <direct_draw_run+0x114>)
+ 51a:	4798      	blx	r3
+
+        counter++;
+ 51c:	3601      	adds	r6, #1
+        instance->counter++;
+ 51e:	6963      	ldr	r3, [r4, #20]
+ 520:	3301      	adds	r3, #1
+ 522:	6163      	str	r3, [r4, #20]
+        furi_thread_yield();
+ 524:	4b16      	ldr	r3, [pc, #88]	@ (580 <direct_draw_run+0x118>)
+ 526:	4798      	blx	r3
+    } while(!instance->stop);
+ 528:	7c23      	ldrb	r3, [r4, #16]
+ 52a:	b97b      	cbnz	r3, 54c <direct_draw_run+0xe4>
+        size_t elapsed = DWT->CYCCNT - start;
+ 52c:	4b09      	ldr	r3, [pc, #36]	@ (554 <direct_draw_run+0xec>)
+ 52e:	685a      	ldr	r2, [r3, #4]
+ 530:	1bd2      	subs	r2, r2, r7
+        char buffer[BUFFER_SIZE] = {0};
+ 532:	2300      	movs	r3, #0
+ 534:	9302      	str	r3, [sp, #8]
+ 536:	9303      	str	r3, [sp, #12]
+ 538:	9304      	str	r3, [sp, #16]
+ 53a:	9305      	str	r3, [sp, #20]
+ 53c:	9306      	str	r3, [sp, #24]
+ 53e:	9307      	str	r3, [sp, #28]
+ 540:	9308      	str	r3, [sp, #32]
+ 542:	9309      	str	r3, [sp, #36]	@ 0x24
+        if(elapsed >= 64000000) {
+ 544:	4b0f      	ldr	r3, [pc, #60]	@ (584 <direct_draw_run+0x11c>)
+ 546:	429a      	cmp	r2, r3
+ 548:	d3ae      	bcc.n	4a8 <direct_draw_run+0x40>
+ 54a:	e79a      	b.n	482 <direct_draw_run+0x1a>
+}
+ 54c:	b00a      	add	sp, #40	@ 0x28
+ 54e:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+ 552:	bf00      	nop
+ 554:	e0001000 	.word	0xe0001000
+ 558:	00000000 	.word	0x00000000
+ 55c:	4c742400 	.word	0x4c742400
+ 560:	00000000 	.word	0x00000000
+ 564:	00000014 	.word	0x00000014
+	...
+ 584:	03d09000 	.word	0x03d09000
+
+00000588 <direct_draw_free>:
+static void direct_draw_free(DirectDraw* instance) {
+ 588:	b538      	push	{r3, r4, r5, lr}
+ 58a:	4604      	mov	r4, r0
+    furi_pubsub_unsubscribe(instance->input, instance->input_subscription);
+ 58c:	6841      	ldr	r1, [r0, #4]
+ 58e:	6800      	ldr	r0, [r0, #0]
+ 590:	4b06      	ldr	r3, [pc, #24]	@ (5ac <direct_draw_free+0x24>)
+ 592:	4798      	blx	r3
+    gui_direct_draw_release(instance->gui);
+ 594:	68a0      	ldr	r0, [r4, #8]
+ 596:	4b06      	ldr	r3, [pc, #24]	@ (5b0 <direct_draw_free+0x28>)
+ 598:	4798      	blx	r3
+    furi_record_close(RECORD_GUI);
+ 59a:	4806      	ldr	r0, [pc, #24]	@ (5b4 <direct_draw_free+0x2c>)
+ 59c:	4d06      	ldr	r5, [pc, #24]	@ (5b8 <direct_draw_free+0x30>)
+ 59e:	47a8      	blx	r5
+    furi_record_close(RECORD_INPUT_EVENTS);
+ 5a0:	4806      	ldr	r0, [pc, #24]	@ (5bc <direct_draw_free+0x34>)
+ 5a2:	47a8      	blx	r5
+    free(instance);
+ 5a4:	4620      	mov	r0, r4
+ 5a6:	4b06      	ldr	r3, [pc, #24]	@ (5c0 <direct_draw_free+0x38>)
+ 5a8:	4798      	blx	r3
+}
+ 5aa:	bd38      	pop	{r3, r4, r5, pc}
+	...
+ 5b4:	00000010 	.word	0x00000010
+	...
+
+000005c4 <direct_draw_app>:
+
+int32_t direct_draw_app(void* p) {
+ 5c4:	b510      	push	{r4, lr}
+    UNUSED(p);
+
+    DirectDraw* instance = direct_draw_alloc();
+ 5c6:	4b05      	ldr	r3, [pc, #20]	@ (5dc <direct_draw_app+0x18>)
+ 5c8:	4798      	blx	r3
+ 5ca:	4604      	mov	r4, r0
+    direct_draw_run(instance);
+ 5cc:	4b04      	ldr	r3, [pc, #16]	@ (5e0 <direct_draw_app+0x1c>)
+ 5ce:	4798      	blx	r3
+    direct_draw_free(instance);
+ 5d0:	4620      	mov	r0, r4
+ 5d2:	4b04      	ldr	r3, [pc, #16]	@ (5e4 <direct_draw_app+0x20>)
+ 5d4:	4798      	blx	r3
+
+    return 0;
+}
+ 5d6:	2000      	movs	r0, #0
+ 5d8:	bd10      	pop	{r4, pc}
+ 5da:	bf00      	nop
+	...

@@ -1,0 +1,4299 @@
+
+build/f7-firmware-D/.extapps/cli_subghz_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <__aeabi_drsub>:
+       0:	f081 4100 	eor.w	r1, r1, #2147483648	@ 0x80000000
+       4:	e002      	b.n	c <__adddf3>
+       6:	bf00      	nop
+
+00000008 <__aeabi_dsub>:
+       8:	f083 4300 	eor.w	r3, r3, #2147483648	@ 0x80000000
+
+0000000c <__adddf3>:
+       c:	b530      	push	{r4, r5, lr}
+       e:	ea4f 0441 	mov.w	r4, r1, lsl #1
+      12:	ea4f 0543 	mov.w	r5, r3, lsl #1
+      16:	ea94 0f05 	teq	r4, r5
+      1a:	bf08      	it	eq
+      1c:	ea90 0f02 	teqeq	r0, r2
+      20:	bf1f      	itttt	ne
+      22:	ea54 0c00 	orrsne.w	ip, r4, r0
+      26:	ea55 0c02 	orrsne.w	ip, r5, r2
+      2a:	ea7f 5c64 	mvnsne.w	ip, r4, asr #21
+      2e:	ea7f 5c65 	mvnsne.w	ip, r5, asr #21
+      32:	f000 80e2 	beq.w	1fa <__adddf3+0x1ee>
+      36:	ea4f 5454 	mov.w	r4, r4, lsr #21
+      3a:	ebd4 5555 	rsbs	r5, r4, r5, lsr #21
+      3e:	bfb8      	it	lt
+      40:	426d      	neglt	r5, r5
+      42:	dd0c      	ble.n	5e <__adddf3+0x52>
+      44:	442c      	add	r4, r5
+      46:	ea80 0202 	eor.w	r2, r0, r2
+      4a:	ea81 0303 	eor.w	r3, r1, r3
+      4e:	ea82 0000 	eor.w	r0, r2, r0
+      52:	ea83 0101 	eor.w	r1, r3, r1
+      56:	ea80 0202 	eor.w	r2, r0, r2
+      5a:	ea81 0303 	eor.w	r3, r1, r3
+      5e:	2d36      	cmp	r5, #54	@ 0x36
+      60:	bf88      	it	hi
+      62:	bd30      	pophi	{r4, r5, pc}
+      64:	f011 4f00 	tst.w	r1, #2147483648	@ 0x80000000
+      68:	ea4f 3101 	mov.w	r1, r1, lsl #12
+      6c:	f44f 1c80 	mov.w	ip, #1048576	@ 0x100000
+      70:	ea4c 3111 	orr.w	r1, ip, r1, lsr #12
+      74:	d002      	beq.n	7c <__adddf3+0x70>
+      76:	4240      	negs	r0, r0
+      78:	eb61 0141 	sbc.w	r1, r1, r1, lsl #1
+      7c:	f013 4f00 	tst.w	r3, #2147483648	@ 0x80000000
+      80:	ea4f 3303 	mov.w	r3, r3, lsl #12
+      84:	ea4c 3313 	orr.w	r3, ip, r3, lsr #12
+      88:	d002      	beq.n	90 <__adddf3+0x84>
+      8a:	4252      	negs	r2, r2
+      8c:	eb63 0343 	sbc.w	r3, r3, r3, lsl #1
+      90:	ea94 0f05 	teq	r4, r5
+      94:	f000 80a7 	beq.w	1e6 <__adddf3+0x1da>
+      98:	f1a4 0401 	sub.w	r4, r4, #1
+      9c:	f1d5 0e20 	rsbs	lr, r5, #32
+      a0:	db0d      	blt.n	be <__adddf3+0xb2>
+      a2:	fa02 fc0e 	lsl.w	ip, r2, lr
+      a6:	fa22 f205 	lsr.w	r2, r2, r5
+      aa:	1880      	adds	r0, r0, r2
+      ac:	f141 0100 	adc.w	r1, r1, #0
+      b0:	fa03 f20e 	lsl.w	r2, r3, lr
+      b4:	1880      	adds	r0, r0, r2
+      b6:	fa43 f305 	asr.w	r3, r3, r5
+      ba:	4159      	adcs	r1, r3
+      bc:	e00e      	b.n	dc <__adddf3+0xd0>
+      be:	f1a5 0520 	sub.w	r5, r5, #32
+      c2:	f10e 0e20 	add.w	lr, lr, #32
+      c6:	2a01      	cmp	r2, #1
+      c8:	fa03 fc0e 	lsl.w	ip, r3, lr
+      cc:	bf28      	it	cs
+      ce:	f04c 0c02 	orrcs.w	ip, ip, #2
+      d2:	fa43 f305 	asr.w	r3, r3, r5
+      d6:	18c0      	adds	r0, r0, r3
+      d8:	eb51 71e3 	adcs.w	r1, r1, r3, asr #31
+      dc:	f001 4500 	and.w	r5, r1, #2147483648	@ 0x80000000
+      e0:	d507      	bpl.n	f2 <__adddf3+0xe6>
+      e2:	f04f 0e00 	mov.w	lr, #0
+      e6:	f1dc 0c00 	rsbs	ip, ip, #0
+      ea:	eb7e 0000 	sbcs.w	r0, lr, r0
+      ee:	eb6e 0101 	sbc.w	r1, lr, r1
+      f2:	f5b1 1f80 	cmp.w	r1, #1048576	@ 0x100000
+      f6:	d31b      	bcc.n	130 <__adddf3+0x124>
+      f8:	f5b1 1f00 	cmp.w	r1, #2097152	@ 0x200000
+      fc:	d30c      	bcc.n	118 <__adddf3+0x10c>
+      fe:	0849      	lsrs	r1, r1, #1
+     100:	ea5f 0030 	movs.w	r0, r0, rrx
+     104:	ea4f 0c3c 	mov.w	ip, ip, rrx
+     108:	f104 0401 	add.w	r4, r4, #1
+     10c:	ea4f 5244 	mov.w	r2, r4, lsl #21
+     110:	f512 0f80 	cmn.w	r2, #4194304	@ 0x400000
+     114:	f080 809a 	bcs.w	24c <__adddf3+0x240>
+     118:	f1bc 4f00 	cmp.w	ip, #2147483648	@ 0x80000000
+     11c:	bf08      	it	eq
+     11e:	ea5f 0c50 	movseq.w	ip, r0, lsr #1
+     122:	f150 0000 	adcs.w	r0, r0, #0
+     126:	eb41 5104 	adc.w	r1, r1, r4, lsl #20
+     12a:	ea41 0105 	orr.w	r1, r1, r5
+     12e:	bd30      	pop	{r4, r5, pc}
+     130:	ea5f 0c4c 	movs.w	ip, ip, lsl #1
+     134:	4140      	adcs	r0, r0
+     136:	eb41 0101 	adc.w	r1, r1, r1
+     13a:	3c01      	subs	r4, #1
+     13c:	bf28      	it	cs
+     13e:	f5b1 1f80 	cmpcs.w	r1, #1048576	@ 0x100000
+     142:	d2e9      	bcs.n	118 <__adddf3+0x10c>
+     144:	f091 0f00 	teq	r1, #0
+     148:	bf04      	itt	eq
+     14a:	4601      	moveq	r1, r0
+     14c:	2000      	moveq	r0, #0
+     14e:	fab1 f381 	clz	r3, r1
+     152:	bf08      	it	eq
+     154:	3320      	addeq	r3, #32
+     156:	f1a3 030b 	sub.w	r3, r3, #11
+     15a:	f1b3 0220 	subs.w	r2, r3, #32
+     15e:	da0c      	bge.n	17a <__adddf3+0x16e>
+     160:	320c      	adds	r2, #12
+     162:	dd08      	ble.n	176 <__adddf3+0x16a>
+     164:	f102 0c14 	add.w	ip, r2, #20
+     168:	f1c2 020c 	rsb	r2, r2, #12
+     16c:	fa01 f00c 	lsl.w	r0, r1, ip
+     170:	fa21 f102 	lsr.w	r1, r1, r2
+     174:	e00c      	b.n	190 <__adddf3+0x184>
+     176:	f102 0214 	add.w	r2, r2, #20
+     17a:	bfd8      	it	le
+     17c:	f1c2 0c20 	rsble	ip, r2, #32
+     180:	fa01 f102 	lsl.w	r1, r1, r2
+     184:	fa20 fc0c 	lsr.w	ip, r0, ip
+     188:	bfdc      	itt	le
+     18a:	ea41 010c 	orrle.w	r1, r1, ip
+     18e:	4090      	lslle	r0, r2
+     190:	1ae4      	subs	r4, r4, r3
+     192:	bfa2      	ittt	ge
+     194:	eb01 5104 	addge.w	r1, r1, r4, lsl #20
+     198:	4329      	orrge	r1, r5
+     19a:	bd30      	popge	{r4, r5, pc}
+     19c:	ea6f 0404 	mvn.w	r4, r4
+     1a0:	3c1f      	subs	r4, #31
+     1a2:	da1c      	bge.n	1de <__adddf3+0x1d2>
+     1a4:	340c      	adds	r4, #12
+     1a6:	dc0e      	bgt.n	1c6 <__adddf3+0x1ba>
+     1a8:	f104 0414 	add.w	r4, r4, #20
+     1ac:	f1c4 0220 	rsb	r2, r4, #32
+     1b0:	fa20 f004 	lsr.w	r0, r0, r4
+     1b4:	fa01 f302 	lsl.w	r3, r1, r2
+     1b8:	ea40 0003 	orr.w	r0, r0, r3
+     1bc:	fa21 f304 	lsr.w	r3, r1, r4
+     1c0:	ea45 0103 	orr.w	r1, r5, r3
+     1c4:	bd30      	pop	{r4, r5, pc}
+     1c6:	f1c4 040c 	rsb	r4, r4, #12
+     1ca:	f1c4 0220 	rsb	r2, r4, #32
+     1ce:	fa20 f002 	lsr.w	r0, r0, r2
+     1d2:	fa01 f304 	lsl.w	r3, r1, r4
+     1d6:	ea40 0003 	orr.w	r0, r0, r3
+     1da:	4629      	mov	r1, r5
+     1dc:	bd30      	pop	{r4, r5, pc}
+     1de:	fa21 f004 	lsr.w	r0, r1, r4
+     1e2:	4629      	mov	r1, r5
+     1e4:	bd30      	pop	{r4, r5, pc}
+     1e6:	f094 0f00 	teq	r4, #0
+     1ea:	f483 1380 	eor.w	r3, r3, #1048576	@ 0x100000
+     1ee:	bf06      	itte	eq
+     1f0:	f481 1180 	eoreq.w	r1, r1, #1048576	@ 0x100000
+     1f4:	3401      	addeq	r4, #1
+     1f6:	3d01      	subne	r5, #1
+     1f8:	e74e      	b.n	98 <__adddf3+0x8c>
+     1fa:	ea7f 5c64 	mvns.w	ip, r4, asr #21
+     1fe:	bf18      	it	ne
+     200:	ea7f 5c65 	mvnsne.w	ip, r5, asr #21
+     204:	d029      	beq.n	25a <__adddf3+0x24e>
+     206:	ea94 0f05 	teq	r4, r5
+     20a:	bf08      	it	eq
+     20c:	ea90 0f02 	teqeq	r0, r2
+     210:	d005      	beq.n	21e <__adddf3+0x212>
+     212:	ea54 0c00 	orrs.w	ip, r4, r0
+     216:	bf04      	itt	eq
+     218:	4619      	moveq	r1, r3
+     21a:	4610      	moveq	r0, r2
+     21c:	bd30      	pop	{r4, r5, pc}
+     21e:	ea91 0f03 	teq	r1, r3
+     222:	bf1e      	ittt	ne
+     224:	2100      	movne	r1, #0
+     226:	2000      	movne	r0, #0
+     228:	bd30      	popne	{r4, r5, pc}
+     22a:	ea5f 5c54 	movs.w	ip, r4, lsr #21
+     22e:	d105      	bne.n	23c <__adddf3+0x230>
+     230:	0040      	lsls	r0, r0, #1
+     232:	4149      	adcs	r1, r1
+     234:	bf28      	it	cs
+     236:	f041 4100 	orrcs.w	r1, r1, #2147483648	@ 0x80000000
+     23a:	bd30      	pop	{r4, r5, pc}
+     23c:	f514 0480 	adds.w	r4, r4, #4194304	@ 0x400000
+     240:	bf3c      	itt	cc
+     242:	f501 1180 	addcc.w	r1, r1, #1048576	@ 0x100000
+     246:	bd30      	popcc	{r4, r5, pc}
+     248:	f001 4500 	and.w	r5, r1, #2147483648	@ 0x80000000
+     24c:	f045 41fe 	orr.w	r1, r5, #2130706432	@ 0x7f000000
+     250:	f441 0170 	orr.w	r1, r1, #15728640	@ 0xf00000
+     254:	f04f 0000 	mov.w	r0, #0
+     258:	bd30      	pop	{r4, r5, pc}
+     25a:	ea7f 5c64 	mvns.w	ip, r4, asr #21
+     25e:	bf1a      	itte	ne
+     260:	4619      	movne	r1, r3
+     262:	4610      	movne	r0, r2
+     264:	ea7f 5c65 	mvnseq.w	ip, r5, asr #21
+     268:	bf1c      	itt	ne
+     26a:	460b      	movne	r3, r1
+     26c:	4602      	movne	r2, r0
+     26e:	ea50 3401 	orrs.w	r4, r0, r1, lsl #12
+     272:	bf06      	itte	eq
+     274:	ea52 3503 	orrseq.w	r5, r2, r3, lsl #12
+     278:	ea91 0f03 	teqeq	r1, r3
+     27c:	f441 2100 	orrne.w	r1, r1, #524288	@ 0x80000
+     280:	bd30      	pop	{r4, r5, pc}
+     282:	bf00      	nop
+
+00000284 <__aeabi_ui2d>:
+     284:	f090 0f00 	teq	r0, #0
+     288:	bf04      	itt	eq
+     28a:	2100      	moveq	r1, #0
+     28c:	4770      	bxeq	lr
+     28e:	b530      	push	{r4, r5, lr}
+     290:	f44f 6480 	mov.w	r4, #1024	@ 0x400
+     294:	f104 0432 	add.w	r4, r4, #50	@ 0x32
+     298:	f04f 0500 	mov.w	r5, #0
+     29c:	f04f 0100 	mov.w	r1, #0
+     2a0:	e750      	b.n	144 <__adddf3+0x138>
+     2a2:	bf00      	nop
+
+000002a4 <__aeabi_i2d>:
+     2a4:	f090 0f00 	teq	r0, #0
+     2a8:	bf04      	itt	eq
+     2aa:	2100      	moveq	r1, #0
+     2ac:	4770      	bxeq	lr
+     2ae:	b530      	push	{r4, r5, lr}
+     2b0:	f44f 6480 	mov.w	r4, #1024	@ 0x400
+     2b4:	f104 0432 	add.w	r4, r4, #50	@ 0x32
+     2b8:	f010 4500 	ands.w	r5, r0, #2147483648	@ 0x80000000
+     2bc:	bf48      	it	mi
+     2be:	4240      	negmi	r0, r0
+     2c0:	f04f 0100 	mov.w	r1, #0
+     2c4:	e73e      	b.n	144 <__adddf3+0x138>
+     2c6:	bf00      	nop
+
+000002c8 <__aeabi_f2d>:
+     2c8:	0042      	lsls	r2, r0, #1
+     2ca:	ea4f 01e2 	mov.w	r1, r2, asr #3
+     2ce:	ea4f 0131 	mov.w	r1, r1, rrx
+     2d2:	ea4f 7002 	mov.w	r0, r2, lsl #28
+     2d6:	bf1f      	itttt	ne
+     2d8:	f012 437f 	andsne.w	r3, r2, #4278190080	@ 0xff000000
+     2dc:	f093 4f7f 	teqne	r3, #4278190080	@ 0xff000000
+     2e0:	f081 5160 	eorne.w	r1, r1, #939524096	@ 0x38000000
+     2e4:	4770      	bxne	lr
+     2e6:	f032 427f 	bics.w	r2, r2, #4278190080	@ 0xff000000
+     2ea:	bf08      	it	eq
+     2ec:	4770      	bxeq	lr
+     2ee:	f093 4f7f 	teq	r3, #4278190080	@ 0xff000000
+     2f2:	bf04      	itt	eq
+     2f4:	f441 2100 	orreq.w	r1, r1, #524288	@ 0x80000
+     2f8:	4770      	bxeq	lr
+     2fa:	b530      	push	{r4, r5, lr}
+     2fc:	f44f 7460 	mov.w	r4, #896	@ 0x380
+     300:	f001 4500 	and.w	r5, r1, #2147483648	@ 0x80000000
+     304:	f021 4100 	bic.w	r1, r1, #2147483648	@ 0x80000000
+     308:	e71c      	b.n	144 <__adddf3+0x138>
+     30a:	bf00      	nop
+
+0000030c <__aeabi_ul2d>:
+     30c:	ea50 0201 	orrs.w	r2, r0, r1
+     310:	bf08      	it	eq
+     312:	4770      	bxeq	lr
+     314:	b530      	push	{r4, r5, lr}
+     316:	f04f 0500 	mov.w	r5, #0
+     31a:	e00a      	b.n	332 <__aeabi_l2d+0x16>
+
+0000031c <__aeabi_l2d>:
+     31c:	ea50 0201 	orrs.w	r2, r0, r1
+     320:	bf08      	it	eq
+     322:	4770      	bxeq	lr
+     324:	b530      	push	{r4, r5, lr}
+     326:	f011 4500 	ands.w	r5, r1, #2147483648	@ 0x80000000
+     32a:	d502      	bpl.n	332 <__aeabi_l2d+0x16>
+     32c:	4240      	negs	r0, r0
+     32e:	eb61 0141 	sbc.w	r1, r1, r1, lsl #1
+     332:	f44f 6480 	mov.w	r4, #1024	@ 0x400
+     336:	f104 0432 	add.w	r4, r4, #50	@ 0x32
+     33a:	ea5f 5c91 	movs.w	ip, r1, lsr #22
+     33e:	f43f aed8 	beq.w	f2 <__adddf3+0xe6>
+     342:	f04f 0203 	mov.w	r2, #3
+     346:	ea5f 0cdc 	movs.w	ip, ip, lsr #3
+     34a:	bf18      	it	ne
+     34c:	3203      	addne	r2, #3
+     34e:	ea5f 0cdc 	movs.w	ip, ip, lsr #3
+     352:	bf18      	it	ne
+     354:	3203      	addne	r2, #3
+     356:	eb02 02dc 	add.w	r2, r2, ip, lsr #3
+     35a:	f1c2 0320 	rsb	r3, r2, #32
+     35e:	fa00 fc03 	lsl.w	ip, r0, r3
+     362:	fa20 f002 	lsr.w	r0, r0, r2
+     366:	fa01 fe03 	lsl.w	lr, r1, r3
+     36a:	ea40 000e 	orr.w	r0, r0, lr
+     36e:	fa21 f102 	lsr.w	r1, r1, r2
+     372:	4414      	add	r4, r2
+     374:	e6bd      	b.n	f2 <__adddf3+0xe6>
+     376:	bf00      	nop
+
+00000378 <subghz_cli_radio_device_power_on>:
+#define SUBGHZ_FREQUENCY_RANGE_STR \
+    "299999755...348000000 or 386999938...464000000 or 778999847...928000000"
+
+#define TAG "SubGhzCli"
+
+static void subghz_cli_radio_device_power_on(void) {
+     378:	b510      	push	{r4, lr}
+    Power* power = furi_record_open(RECORD_POWER);
+     37a:	4c05      	ldr	r4, [pc, #20]	@ (390 <subghz_cli_radio_device_power_on+0x18>)
+     37c:	4620      	mov	r0, r4
+     37e:	4b05      	ldr	r3, [pc, #20]	@ (394 <subghz_cli_radio_device_power_on+0x1c>)
+     380:	4798      	blx	r3
+    power_enable_otg(power, true);
+     382:	2101      	movs	r1, #1
+     384:	4b04      	ldr	r3, [pc, #16]	@ (398 <subghz_cli_radio_device_power_on+0x20>)
+     386:	4798      	blx	r3
+    furi_record_close(RECORD_POWER);
+     388:	4620      	mov	r0, r4
+     38a:	4b04      	ldr	r3, [pc, #16]	@ (39c <subghz_cli_radio_device_power_on+0x24>)
+     38c:	4798      	blx	r3
+}
+     38e:	bd10      	pop	{r4, pc}
+	...
+
+000003a0 <subghz_cli_radio_device_power_off>:
+
+static void subghz_cli_radio_device_power_off(void) {
+     3a0:	b510      	push	{r4, lr}
+    Power* power = furi_record_open(RECORD_POWER);
+     3a2:	4c05      	ldr	r4, [pc, #20]	@ (3b8 <subghz_cli_radio_device_power_off+0x18>)
+     3a4:	4620      	mov	r0, r4
+     3a6:	4b05      	ldr	r3, [pc, #20]	@ (3bc <subghz_cli_radio_device_power_off+0x1c>)
+     3a8:	4798      	blx	r3
+    power_enable_otg(power, false);
+     3aa:	2100      	movs	r1, #0
+     3ac:	4b04      	ldr	r3, [pc, #16]	@ (3c0 <subghz_cli_radio_device_power_off+0x20>)
+     3ae:	4798      	blx	r3
+    furi_record_close(RECORD_POWER);
+     3b0:	4620      	mov	r0, r4
+     3b2:	4b04      	ldr	r3, [pc, #16]	@ (3c4 <subghz_cli_radio_device_power_off+0x24>)
+     3b4:	4798      	blx	r3
+}
+     3b6:	bd10      	pop	{r4, pc}
+	...
+
+000003c8 <subghz_cli_command_get_device>:
+
+    furi_hal_subghz_set_path(FuriHalSubGhzPathIsolate);
+    furi_hal_subghz_sleep();
+}
+
+static const SubGhzDevice* subghz_cli_command_get_device(uint32_t* device_ind) {
+     3c8:	b538      	push	{r3, r4, r5, lr}
+     3ca:	4605      	mov	r5, r0
+    const SubGhzDevice* device = NULL;
+    switch(*device_ind) {
+     3cc:	6803      	ldr	r3, [r0, #0]
+     3ce:	2b01      	cmp	r3, #1
+     3d0:	d009      	beq.n	3e6 <subghz_cli_command_get_device+0x1e>
+        subghz_cli_radio_device_power_on();
+        device = subghz_devices_get_by_name(SUBGHZ_DEVICE_CC1101_EXT_NAME);
+        break;
+
+    default:
+        device = subghz_devices_get_by_name(SUBGHZ_DEVICE_CC1101_INT_NAME);
+     3d2:	480d      	ldr	r0, [pc, #52]	@ (408 <subghz_cli_command_get_device+0x40>)
+     3d4:	4b0d      	ldr	r3, [pc, #52]	@ (40c <subghz_cli_command_get_device+0x44>)
+     3d6:	4798      	blx	r3
+     3d8:	4604      	mov	r4, r0
+        break;
+    }
+    //check if the device is connected
+    if(!subghz_devices_is_connect(device)) {
+     3da:	4620      	mov	r0, r4
+     3dc:	4b0c      	ldr	r3, [pc, #48]	@ (410 <subghz_cli_command_get_device+0x48>)
+     3de:	4798      	blx	r3
+     3e0:	b140      	cbz	r0, 3f4 <subghz_cli_command_get_device+0x2c>
+        subghz_cli_radio_device_power_off();
+        device = subghz_devices_get_by_name(SUBGHZ_DEVICE_CC1101_INT_NAME);
+        *device_ind = 0;
+    }
+    return device;
+}
+     3e2:	4620      	mov	r0, r4
+     3e4:	bd38      	pop	{r3, r4, r5, pc}
+        subghz_cli_radio_device_power_on();
+     3e6:	4b0b      	ldr	r3, [pc, #44]	@ (414 <subghz_cli_command_get_device+0x4c>)
+     3e8:	4798      	blx	r3
+        device = subghz_devices_get_by_name(SUBGHZ_DEVICE_CC1101_EXT_NAME);
+     3ea:	480b      	ldr	r0, [pc, #44]	@ (418 <subghz_cli_command_get_device+0x50>)
+     3ec:	4b07      	ldr	r3, [pc, #28]	@ (40c <subghz_cli_command_get_device+0x44>)
+     3ee:	4798      	blx	r3
+     3f0:	4604      	mov	r4, r0
+        break;
+     3f2:	e7f2      	b.n	3da <subghz_cli_command_get_device+0x12>
+        subghz_cli_radio_device_power_off();
+     3f4:	4b09      	ldr	r3, [pc, #36]	@ (41c <subghz_cli_command_get_device+0x54>)
+     3f6:	4798      	blx	r3
+        device = subghz_devices_get_by_name(SUBGHZ_DEVICE_CC1101_INT_NAME);
+     3f8:	4803      	ldr	r0, [pc, #12]	@ (408 <subghz_cli_command_get_device+0x40>)
+     3fa:	4b04      	ldr	r3, [pc, #16]	@ (40c <subghz_cli_command_get_device+0x44>)
+     3fc:	4798      	blx	r3
+     3fe:	4604      	mov	r4, r0
+        *device_ind = 0;
+     400:	2300      	movs	r3, #0
+     402:	602b      	str	r3, [r5, #0]
+    return device;
+     404:	e7ed      	b.n	3e2 <subghz_cli_command_get_device+0x1a>
+     406:	bf00      	nop
+     408:	00000014 	.word	0x00000014
+	...
+     418:	00000008 	.word	0x00000008
+     41c:	00000000 	.word	0x00000000
+
+00000420 <subghz_cli_command_rx_capture_callback>:
+    volatile bool overrun;
+    FuriStreamBuffer* stream;
+    size_t packet_count;
+} SubGhzCliCommandRx;
+
+static void subghz_cli_command_rx_capture_callback(bool level, uint32_t duration, void* context) {
+     420:	b530      	push	{r4, r5, lr}
+     422:	b083      	sub	sp, #12
+     424:	4614      	mov	r4, r2
+    uint8_t level     : 2;
+} LevelDuration;
+
+static inline LevelDuration level_duration_make(bool level, uint32_t duration) {
+    LevelDuration level_duration;
+    level_duration.level = level ? LEVEL_DURATION_LEVEL_HIGH : LEVEL_DURATION_LEVEL_LOW;
+     426:	b1d8      	cbz	r0, 460 <subghz_cli_command_rx_capture_callback+0x40>
+     428:	2202      	movs	r2, #2
+     42a:	2300      	movs	r3, #0
+     42c:	f362 739f 	bfi	r3, r2, #30, #2
+    level_duration.duration = duration;
+     430:	f361 031d 	bfi	r3, r1, #0, #30
+    SubGhzCliCommandRx* instance = context;
+
+    LevelDuration level_duration = level_duration_make(level, duration);
+     434:	9301      	str	r3, [sp, #4]
+    if(instance->overrun) {
+     436:	7823      	ldrb	r3, [r4, #0]
+     438:	b12b      	cbz	r3, 446 <subghz_cli_command_rx_capture_callback+0x26>
+        instance->overrun = false;
+     43a:	2200      	movs	r2, #0
+     43c:	7022      	strb	r2, [r4, #0]
+    return level_duration;
+}
+
+static inline LevelDuration level_duration_reset() {
+    LevelDuration level_duration;
+    level_duration.level = LEVEL_DURATION_RESET;
+     43e:	4613      	mov	r3, r2
+     440:	f362 739f 	bfi	r3, r2, #30, #2
+        level_duration = level_duration_reset();
+     444:	9301      	str	r3, [sp, #4]
+    }
+    size_t ret =
+        furi_stream_buffer_send(instance->stream, &level_duration, sizeof(LevelDuration), 0);
+     446:	2300      	movs	r3, #0
+     448:	2204      	movs	r2, #4
+     44a:	eb0d 0102 	add.w	r1, sp, r2
+     44e:	6860      	ldr	r0, [r4, #4]
+     450:	4d04      	ldr	r5, [pc, #16]	@ (464 <subghz_cli_command_rx_capture_callback+0x44>)
+     452:	47a8      	blx	r5
+    if(sizeof(LevelDuration) != ret) instance->overrun = true;
+     454:	2804      	cmp	r0, #4
+     456:	d001      	beq.n	45c <subghz_cli_command_rx_capture_callback+0x3c>
+     458:	2301      	movs	r3, #1
+     45a:	7023      	strb	r3, [r4, #0]
+}
+     45c:	b003      	add	sp, #12
+     45e:	bd30      	pop	{r4, r5, pc}
+    level_duration.level = level ? LEVEL_DURATION_LEVEL_HIGH : LEVEL_DURATION_LEVEL_LOW;
+     460:	2201      	movs	r2, #1
+     462:	e7e2      	b.n	42a <subghz_cli_command_rx_capture_callback+0xa>
+     464:	00000000 	.word	0x00000000
+
+00000468 <subghz_cli_command_rx_callback>:
+
+static void subghz_cli_command_rx_callback(
+    SubGhzReceiver* receiver,
+    SubGhzProtocolDecoderBase* decoder_base,
+    void* context) {
+     468:	b570      	push	{r4, r5, r6, lr}
+     46a:	4605      	mov	r5, r0
+     46c:	460e      	mov	r6, r1
+    SubGhzCliCommandRx* instance = context;
+    instance->packet_count++;
+     46e:	6893      	ldr	r3, [r2, #8]
+     470:	3301      	adds	r3, #1
+     472:	6093      	str	r3, [r2, #8]
+
+    FuriString* text;
+    text = furi_string_alloc();
+     474:	4b0a      	ldr	r3, [pc, #40]	@ (4a0 <subghz_cli_command_rx_callback+0x38>)
+     476:	4798      	blx	r3
+     478:	4604      	mov	r4, r0
+    subghz_protocol_decoder_base_get_string(decoder_base, text);
+     47a:	4601      	mov	r1, r0
+     47c:	4630      	mov	r0, r6
+     47e:	4b09      	ldr	r3, [pc, #36]	@ (4a4 <subghz_cli_command_rx_callback+0x3c>)
+     480:	4798      	blx	r3
+    subghz_receiver_reset(receiver);
+     482:	4628      	mov	r0, r5
+     484:	4b08      	ldr	r3, [pc, #32]	@ (4a8 <subghz_cli_command_rx_callback+0x40>)
+     486:	4798      	blx	r3
+    printf("%s", furi_string_get_cstr(text));
+     488:	4620      	mov	r0, r4
+     48a:	4b08      	ldr	r3, [pc, #32]	@ (4ac <subghz_cli_command_rx_callback+0x44>)
+     48c:	4798      	blx	r3
+     48e:	4601      	mov	r1, r0
+     490:	4807      	ldr	r0, [pc, #28]	@ (4b0 <subghz_cli_command_rx_callback+0x48>)
+     492:	4b08      	ldr	r3, [pc, #32]	@ (4b4 <subghz_cli_command_rx_callback+0x4c>)
+     494:	4798      	blx	r3
+    furi_string_free(text);
+     496:	4620      	mov	r0, r4
+     498:	4b07      	ldr	r3, [pc, #28]	@ (4b8 <subghz_cli_command_rx_callback+0x50>)
+     49a:	4798      	blx	r3
+}
+     49c:	bd70      	pop	{r4, r5, r6, pc}
+     49e:	bf00      	nop
+	...
+     4b0:	00000020 	.word	0x00000020
+	...
+
+000004bc <subghz_cli_environment_init>:
+static SubGhzEnvironment* subghz_cli_environment_init(void) {
+     4bc:	b510      	push	{r4, lr}
+    SubGhzEnvironment* environment = subghz_environment_alloc();
+     4be:	4b16      	ldr	r3, [pc, #88]	@ (518 <subghz_cli_environment_init+0x5c>)
+     4c0:	4798      	blx	r3
+     4c2:	4604      	mov	r4, r0
+    if(subghz_environment_load_keystore(environment, SUBGHZ_KEYSTORE_DIR_NAME)) {
+     4c4:	4915      	ldr	r1, [pc, #84]	@ (51c <subghz_cli_environment_init+0x60>)
+     4c6:	4b16      	ldr	r3, [pc, #88]	@ (520 <subghz_cli_environment_init+0x64>)
+     4c8:	4798      	blx	r3
+     4ca:	b1e0      	cbz	r0, 506 <subghz_cli_environment_init+0x4a>
+        printf("Load_keystore keeloq_mfcodes \033[0;32mOK\033[0m\r\n");
+     4cc:	4815      	ldr	r0, [pc, #84]	@ (524 <subghz_cli_environment_init+0x68>)
+     4ce:	4b16      	ldr	r3, [pc, #88]	@ (528 <subghz_cli_environment_init+0x6c>)
+     4d0:	4798      	blx	r3
+    if(subghz_environment_load_keystore(environment, SUBGHZ_KEYSTORE_DIR_USER_NAME)) {
+     4d2:	4916      	ldr	r1, [pc, #88]	@ (52c <subghz_cli_environment_init+0x70>)
+     4d4:	4620      	mov	r0, r4
+     4d6:	4b12      	ldr	r3, [pc, #72]	@ (520 <subghz_cli_environment_init+0x64>)
+     4d8:	4798      	blx	r3
+     4da:	b1c0      	cbz	r0, 50e <subghz_cli_environment_init+0x52>
+        printf("Load_keystore keeloq_mfcodes_user \033[0;32mOK\033[0m\r\n");
+     4dc:	4814      	ldr	r0, [pc, #80]	@ (530 <subghz_cli_environment_init+0x74>)
+     4de:	4b12      	ldr	r3, [pc, #72]	@ (528 <subghz_cli_environment_init+0x6c>)
+     4e0:	4798      	blx	r3
+    subghz_environment_set_came_atomo_rainbow_table_file_name(
+     4e2:	4914      	ldr	r1, [pc, #80]	@ (534 <subghz_cli_environment_init+0x78>)
+     4e4:	4620      	mov	r0, r4
+     4e6:	4b14      	ldr	r3, [pc, #80]	@ (538 <subghz_cli_environment_init+0x7c>)
+     4e8:	4798      	blx	r3
+    subghz_environment_set_alutech_at_4n_rainbow_table_file_name(
+     4ea:	4914      	ldr	r1, [pc, #80]	@ (53c <subghz_cli_environment_init+0x80>)
+     4ec:	4620      	mov	r0, r4
+     4ee:	4b14      	ldr	r3, [pc, #80]	@ (540 <subghz_cli_environment_init+0x84>)
+     4f0:	4798      	blx	r3
+    subghz_environment_set_nice_flor_s_rainbow_table_file_name(
+     4f2:	4914      	ldr	r1, [pc, #80]	@ (544 <subghz_cli_environment_init+0x88>)
+     4f4:	4620      	mov	r0, r4
+     4f6:	4b14      	ldr	r3, [pc, #80]	@ (548 <subghz_cli_environment_init+0x8c>)
+     4f8:	4798      	blx	r3
+    subghz_environment_set_protocol_registry(environment, (void*)&subghz_protocol_registry);
+     4fa:	4914      	ldr	r1, [pc, #80]	@ (54c <subghz_cli_environment_init+0x90>)
+     4fc:	4620      	mov	r0, r4
+     4fe:	4b14      	ldr	r3, [pc, #80]	@ (550 <subghz_cli_environment_init+0x94>)
+     500:	4798      	blx	r3
+}
+     502:	4620      	mov	r0, r4
+     504:	bd10      	pop	{r4, pc}
+        printf("Load_keystore keeloq_mfcodes \033[0;31mERROR\033[0m\r\n");
+     506:	4813      	ldr	r0, [pc, #76]	@ (554 <subghz_cli_environment_init+0x98>)
+     508:	4b07      	ldr	r3, [pc, #28]	@ (528 <subghz_cli_environment_init+0x6c>)
+     50a:	4798      	blx	r3
+     50c:	e7e1      	b.n	4d2 <subghz_cli_environment_init+0x16>
+        printf("Load_keystore keeloq_mfcodes_user \033[0;33mAbsent\033[0m\r\n");
+     50e:	4812      	ldr	r0, [pc, #72]	@ (558 <subghz_cli_environment_init+0x9c>)
+     510:	4b05      	ldr	r3, [pc, #20]	@ (528 <subghz_cli_environment_init+0x6c>)
+     512:	4798      	blx	r3
+     514:	e7e5      	b.n	4e2 <subghz_cli_environment_init+0x26>
+     516:	bf00      	nop
+     518:	00000000 	.word	0x00000000
+     51c:	00000024 	.word	0x00000024
+     520:	00000000 	.word	0x00000000
+     524:	00000048 	.word	0x00000048
+     528:	00000000 	.word	0x00000000
+     52c:	000000a4 	.word	0x000000a4
+     530:	000000cc 	.word	0x000000cc
+     534:	00000138 	.word	0x00000138
+     538:	00000000 	.word	0x00000000
+     53c:	00000158 	.word	0x00000158
+     540:	00000000 	.word	0x00000000
+     544:	0000017c 	.word	0x0000017c
+	...
+     554:	00000074 	.word	0x00000074
+     558:	00000100 	.word	0x00000100
+
+0000055c <subghz_cli_get_preset_name>:
+        free(instance);
+    }
+    furi_string_free(file_name);
+}
+
+static FuriHalSubGhzPreset subghz_cli_get_preset_name(const char* preset_name) {
+     55c:	b510      	push	{r4, lr}
+     55e:	4604      	mov	r4, r0
+    FuriHalSubGhzPreset preset = FuriHalSubGhzPresetIDLE;
+    if(!strcmp(preset_name, "FuriHalSubGhzPresetOok270Async")) {
+     560:	4913      	ldr	r1, [pc, #76]	@ (5b0 <subghz_cli_get_preset_name+0x54>)
+     562:	4b14      	ldr	r3, [pc, #80]	@ (5b4 <subghz_cli_get_preset_name+0x58>)
+     564:	4798      	blx	r3
+     566:	b1d0      	cbz	r0, 59e <subghz_cli_get_preset_name+0x42>
+        preset = FuriHalSubGhzPresetOok270Async;
+    } else if(!strcmp(preset_name, "FuriHalSubGhzPresetOok650Async")) {
+     568:	4913      	ldr	r1, [pc, #76]	@ (5b8 <subghz_cli_get_preset_name+0x5c>)
+     56a:	4620      	mov	r0, r4
+     56c:	4b11      	ldr	r3, [pc, #68]	@ (5b4 <subghz_cli_get_preset_name+0x58>)
+     56e:	4798      	blx	r3
+     570:	b1b8      	cbz	r0, 5a2 <subghz_cli_get_preset_name+0x46>
+        preset = FuriHalSubGhzPresetOok650Async;
+    } else if(!strcmp(preset_name, "FuriHalSubGhzPreset2FSKDev238Async")) {
+     572:	4912      	ldr	r1, [pc, #72]	@ (5bc <subghz_cli_get_preset_name+0x60>)
+     574:	4620      	mov	r0, r4
+     576:	4b0f      	ldr	r3, [pc, #60]	@ (5b4 <subghz_cli_get_preset_name+0x58>)
+     578:	4798      	blx	r3
+     57a:	b1a0      	cbz	r0, 5a6 <subghz_cli_get_preset_name+0x4a>
+        preset = FuriHalSubGhzPreset2FSKDev238Async;
+    } else if(!strcmp(preset_name, "FuriHalSubGhzPreset2FSKDev476Async")) {
+     57c:	4910      	ldr	r1, [pc, #64]	@ (5c0 <subghz_cli_get_preset_name+0x64>)
+     57e:	4620      	mov	r0, r4
+     580:	4b0c      	ldr	r3, [pc, #48]	@ (5b4 <subghz_cli_get_preset_name+0x58>)
+     582:	4798      	blx	r3
+     584:	b188      	cbz	r0, 5aa <subghz_cli_get_preset_name+0x4e>
+        preset = FuriHalSubGhzPreset2FSKDev476Async;
+    } else if(!strcmp(preset_name, "FuriHalSubGhzPresetCustom")) {
+     586:	490f      	ldr	r1, [pc, #60]	@ (5c4 <subghz_cli_get_preset_name+0x68>)
+     588:	4620      	mov	r0, r4
+     58a:	4b0a      	ldr	r3, [pc, #40]	@ (5b4 <subghz_cli_get_preset_name+0x58>)
+     58c:	4798      	blx	r3
+     58e:	b908      	cbnz	r0, 594 <subghz_cli_get_preset_name+0x38>
+        preset = FuriHalSubGhzPresetCustom;
+     590:	2007      	movs	r0, #7
+     592:	e005      	b.n	5a0 <subghz_cli_get_preset_name+0x44>
+    } else {
+        printf("subghz tx_from_file: unknown preset");
+     594:	480c      	ldr	r0, [pc, #48]	@ (5c8 <subghz_cli_get_preset_name+0x6c>)
+     596:	4b0d      	ldr	r3, [pc, #52]	@ (5cc <subghz_cli_get_preset_name+0x70>)
+     598:	4798      	blx	r3
+    FuriHalSubGhzPreset preset = FuriHalSubGhzPresetIDLE;
+     59a:	2000      	movs	r0, #0
+     59c:	e000      	b.n	5a0 <subghz_cli_get_preset_name+0x44>
+        preset = FuriHalSubGhzPresetOok270Async;
+     59e:	2001      	movs	r0, #1
+    }
+    return preset;
+}
+     5a0:	bd10      	pop	{r4, pc}
+        preset = FuriHalSubGhzPresetOok650Async;
+     5a2:	2002      	movs	r0, #2
+     5a4:	e7fc      	b.n	5a0 <subghz_cli_get_preset_name+0x44>
+        preset = FuriHalSubGhzPreset2FSKDev238Async;
+     5a6:	2003      	movs	r0, #3
+     5a8:	e7fa      	b.n	5a0 <subghz_cli_get_preset_name+0x44>
+        preset = FuriHalSubGhzPreset2FSKDev476Async;
+     5aa:	2004      	movs	r0, #4
+     5ac:	e7f8      	b.n	5a0 <subghz_cli_get_preset_name+0x44>
+     5ae:	bf00      	nop
+     5b0:	0000019c 	.word	0x0000019c
+     5b4:	00000000 	.word	0x00000000
+     5b8:	000001bc 	.word	0x000001bc
+     5bc:	000001dc 	.word	0x000001dc
+     5c0:	00000200 	.word	0x00000200
+     5c4:	00000224 	.word	0x00000224
+     5c8:	00000240 	.word	0x00000240
+     5cc:	00000000 	.word	0x00000000
+
+000005d0 <subghz_cli_command_print_usage>:
+    furi_string_free(temp_str);
+    subghz_devices_deinit();
+    subghz_environment_free(environment);
+}
+
+static void subghz_cli_command_print_usage(void) {
+     5d0:	b510      	push	{r4, lr}
+    printf("Usage:\r\n");
+     5d2:	4812      	ldr	r0, [pc, #72]	@ (61c <subghz_cli_command_print_usage+0x4c>)
+     5d4:	4c12      	ldr	r4, [pc, #72]	@ (620 <subghz_cli_command_print_usage+0x50>)
+     5d6:	47a0      	blx	r4
+    printf("subghz <cmd> <args>\r\n");
+     5d8:	4812      	ldr	r0, [pc, #72]	@ (624 <subghz_cli_command_print_usage+0x54>)
+     5da:	47a0      	blx	r4
+    printf("Cmd list:\r\n");
+     5dc:	4812      	ldr	r0, [pc, #72]	@ (628 <subghz_cli_command_print_usage+0x58>)
+     5de:	47a0      	blx	r4
+
+    printf(
+     5e0:	4812      	ldr	r0, [pc, #72]	@ (62c <subghz_cli_command_print_usage+0x5c>)
+     5e2:	47a0      	blx	r4
+        "\tchat <frequency:in Hz> <device: 0 - CC1101_INT, 1 - CC1101_EXT>\t - Chat with other Flippers\r\n");
+    printf(
+     5e4:	4812      	ldr	r0, [pc, #72]	@ (630 <subghz_cli_command_print_usage+0x60>)
+     5e6:	47a0      	blx	r4
+        "\ttx <3 byte Key: in hex> <frequency: in Hz> <te: us> <repeat: count> <device: 0 - CC1101_INT, 1 - CC1101_EXT>\t - Transmitting key\r\n");
+    printf("\trx <frequency:in Hz> <device: 0 - CC1101_INT, 1 - CC1101_EXT>\t - Receive\r\n");
+     5e8:	4812      	ldr	r0, [pc, #72]	@ (634 <subghz_cli_command_print_usage+0x64>)
+     5ea:	47a0      	blx	r4
+    printf("\trx_raw <frequency:in Hz>\t - Receive RAW\r\n");
+     5ec:	4812      	ldr	r0, [pc, #72]	@ (638 <subghz_cli_command_print_usage+0x68>)
+     5ee:	47a0      	blx	r4
+    printf("\tdecode_raw <file_name: path_RAW_file>\t - Testing\r\n");
+     5f0:	4812      	ldr	r0, [pc, #72]	@ (63c <subghz_cli_command_print_usage+0x6c>)
+     5f2:	47a0      	blx	r4
+    printf(
+     5f4:	4812      	ldr	r0, [pc, #72]	@ (640 <subghz_cli_command_print_usage+0x70>)
+     5f6:	47a0      	blx	r4
+        "\ttx_from_file <file_name: path_file> <repeat: count> <device: 0 - CC1101_INT, 1 - CC1101_EXT>\t - Transmitting from file\r\n");
+
+    if(furi_hal_rtc_is_flag_set(FuriHalRtcFlagDebug)) {
+     5f8:	2001      	movs	r0, #1
+     5fa:	4b12      	ldr	r3, [pc, #72]	@ (644 <subghz_cli_command_print_usage+0x74>)
+     5fc:	4798      	blx	r3
+     5fe:	b900      	cbnz	r0, 602 <subghz_cli_command_print_usage+0x32>
+        printf(
+            "\tencrypt_keeloq <path_decrypted_file> <path_encrypted_file> <IV:16 bytes in hex>\t - Encrypt keeloq manufacture keys\r\n");
+        printf(
+            "\tencrypt_raw <path_decrypted_file> <path_encrypted_file> <IV:16 bytes in hex>\t - Encrypt RAW data\r\n");
+    }
+}
+     600:	bd10      	pop	{r4, pc}
+        printf("\r\n");
+     602:	4811      	ldr	r0, [pc, #68]	@ (648 <subghz_cli_command_print_usage+0x78>)
+     604:	47a0      	blx	r4
+        printf("  debug cmd:\r\n");
+     606:	4811      	ldr	r0, [pc, #68]	@ (64c <subghz_cli_command_print_usage+0x7c>)
+     608:	47a0      	blx	r4
+        printf("\ttx_carrier <frequency:in Hz>\t - Transmitting carrier\r\n");
+     60a:	4811      	ldr	r0, [pc, #68]	@ (650 <subghz_cli_command_print_usage+0x80>)
+     60c:	47a0      	blx	r4
+        printf("\trx_carrier <frequency:in Hz>\t - Receive carrier\r\n");
+     60e:	4811      	ldr	r0, [pc, #68]	@ (654 <subghz_cli_command_print_usage+0x84>)
+     610:	47a0      	blx	r4
+        printf(
+     612:	4811      	ldr	r0, [pc, #68]	@ (658 <subghz_cli_command_print_usage+0x88>)
+     614:	47a0      	blx	r4
+        printf(
+     616:	4811      	ldr	r0, [pc, #68]	@ (65c <subghz_cli_command_print_usage+0x8c>)
+     618:	47a0      	blx	r4
+}
+     61a:	e7f1      	b.n	600 <subghz_cli_command_print_usage+0x30>
+     61c:	00000264 	.word	0x00000264
+     620:	00000000 	.word	0x00000000
+     624:	0000026c 	.word	0x0000026c
+     628:	00000284 	.word	0x00000284
+     62c:	00000290 	.word	0x00000290
+     630:	000002f0 	.word	0x000002f0
+     634:	00000374 	.word	0x00000374
+     638:	000003c0 	.word	0x000003c0
+     63c:	000003ec 	.word	0x000003ec
+     640:	00000420 	.word	0x00000420
+     644:	00000000 	.word	0x00000000
+     648:	0000049c 	.word	0x0000049c
+     64c:	000004a0 	.word	0x000004a0
+     650:	000004b0 	.word	0x000004b0
+     654:	000004e8 	.word	0x000004e8
+     658:	0000051c 	.word	0x0000051c
+     65c:	00000594 	.word	0x00000594
+
+00000660 <subghz_cli_command_chat>:
+
+    furi_string_free(destination);
+    furi_string_free(source);
+}
+
+static void subghz_cli_command_chat(PipeSide* pipe, FuriString* args) {
+     660:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+     664:	b09b      	sub	sp, #108	@ 0x6c
+     666:	4681      	mov	r9, r0
+     668:	460c      	mov	r4, r1
+    uint32_t frequency = 433920000;
+     66a:	4b83      	ldr	r3, [pc, #524]	@ (878 <subghz_cli_command_chat+0x218>)
+     66c:	9319      	str	r3, [sp, #100]	@ 0x64
+    uint32_t device_ind = 0; // 0 - CC1101_INT, 1 - CC1101_EXT
+     66e:	2300      	movs	r3, #0
+     670:	9318      	str	r3, [sp, #96]	@ 0x60
+
+    if(furi_string_size(args)) {
+     672:	4608      	mov	r0, r1
+     674:	4b81      	ldr	r3, [pc, #516]	@ (87c <subghz_cli_command_chat+0x21c>)
+     676:	4798      	blx	r3
+     678:	b190      	cbz	r0, 6a0 <subghz_cli_command_chat+0x40>
+        char* args_cstr = (char*)furi_string_get_cstr(args);
+     67a:	4620      	mov	r0, r4
+     67c:	4b80      	ldr	r3, [pc, #512]	@ (880 <subghz_cli_command_chat+0x220>)
+     67e:	4798      	blx	r3
+     680:	9006      	str	r0, [sp, #24]
+        StrintParseError parse_err = StrintParseNoError;
+        parse_err |= strint_to_uint32(args_cstr, &args_cstr, &frequency, 10);
+     682:	230a      	movs	r3, #10
+     684:	aa19      	add	r2, sp, #100	@ 0x64
+     686:	a906      	add	r1, sp, #24
+     688:	4e7e      	ldr	r6, [pc, #504]	@ (884 <subghz_cli_command_chat+0x224>)
+     68a:	47b0      	blx	r6
+     68c:	4605      	mov	r5, r0
+        parse_err |= strint_to_uint32(args_cstr, &args_cstr, &device_ind, 10);
+     68e:	230a      	movs	r3, #10
+     690:	aa18      	add	r2, sp, #96	@ 0x60
+     692:	a906      	add	r1, sp, #24
+     694:	9806      	ldr	r0, [sp, #24]
+     696:	47b0      	blx	r6
+     698:	4305      	orrs	r5, r0
+        if(parse_err) {
+     69a:	f015 0fff 	tst.w	r5, #255	@ 0xff
+     69e:	d152      	bne.n	746 <subghz_cli_command_chat+0xe6>
+                "<Frequency: in Hz> <Device: 0 - CC1101_INT, 1 - CC1101_EXT>",
+                furi_string_get_cstr(args));
+            return;
+        }
+    }
+    subghz_devices_init();
+     6a0:	4b79      	ldr	r3, [pc, #484]	@ (888 <subghz_cli_command_chat+0x228>)
+     6a2:	4798      	blx	r3
+    const SubGhzDevice* device = subghz_cli_command_get_device(&device_ind);
+     6a4:	a818      	add	r0, sp, #96	@ 0x60
+     6a6:	4b79      	ldr	r3, [pc, #484]	@ (88c <subghz_cli_command_chat+0x22c>)
+     6a8:	4798      	blx	r3
+     6aa:	4604      	mov	r4, r0
+    if(!subghz_devices_is_frequency_valid(device, frequency)) {
+     6ac:	9919      	ldr	r1, [sp, #100]	@ 0x64
+     6ae:	4b78      	ldr	r3, [pc, #480]	@ (890 <subghz_cli_command_chat+0x230>)
+     6b0:	4798      	blx	r3
+     6b2:	2800      	cmp	r0, #0
+     6b4:	d050      	beq.n	758 <subghz_cli_command_chat+0xf8>
+            "Frequency must be in " SUBGHZ_FREQUENCY_RANGE_STR " range, not %lu\r\n", frequency);
+        subghz_devices_deinit();
+        subghz_cli_radio_device_power_off();
+        return;
+    }
+    if(!furi_hal_region_is_frequency_allowed(frequency)) {
+     6b6:	9819      	ldr	r0, [sp, #100]	@ 0x64
+     6b8:	4b76      	ldr	r3, [pc, #472]	@ (894 <subghz_cli_command_chat+0x234>)
+     6ba:	4798      	blx	r3
+     6bc:	2800      	cmp	r0, #0
+     6be:	d056      	beq.n	76e <subghz_cli_command_chat+0x10e>
+            "the actual operation of the application is not possible\r\n ",
+            frequency);
+        return;
+    }
+
+    SubGhzChatWorker* subghz_chat = subghz_chat_worker_alloc(pipe);
+     6c0:	4648      	mov	r0, r9
+     6c2:	4b75      	ldr	r3, [pc, #468]	@ (898 <subghz_cli_command_chat+0x238>)
+     6c4:	4798      	blx	r3
+     6c6:	4607      	mov	r7, r0
+
+    if(!subghz_chat_worker_start(subghz_chat, device, frequency)) {
+     6c8:	9a19      	ldr	r2, [sp, #100]	@ 0x64
+     6ca:	4621      	mov	r1, r4
+     6cc:	4b73      	ldr	r3, [pc, #460]	@ (89c <subghz_cli_command_chat+0x23c>)
+     6ce:	4798      	blx	r3
+     6d0:	9002      	str	r0, [sp, #8]
+     6d2:	2800      	cmp	r0, #0
+     6d4:	d050      	beq.n	778 <subghz_cli_command_chat+0x118>
+            subghz_chat_worker_free(subghz_chat);
+        }
+        return;
+    }
+
+    printf("Receiving at frequency %lu Hz\r\n", frequency);
+     6d6:	9919      	ldr	r1, [sp, #100]	@ 0x64
+     6d8:	4871      	ldr	r0, [pc, #452]	@ (8a0 <subghz_cli_command_chat+0x240>)
+     6da:	4d72      	ldr	r5, [pc, #456]	@ (8a4 <subghz_cli_command_chat+0x244>)
+     6dc:	47a8      	blx	r5
+    printf("Press CTRL+C to stop\r\n");
+     6de:	4872      	ldr	r0, [pc, #456]	@ (8a8 <subghz_cli_command_chat+0x248>)
+     6e0:	4b72      	ldr	r3, [pc, #456]	@ (8ac <subghz_cli_command_chat+0x24c>)
+     6e2:	4798      	blx	r3
+
+    furi_hal_power_suppress_charge_enter();
+     6e4:	4b72      	ldr	r3, [pc, #456]	@ (8b0 <subghz_cli_command_chat+0x250>)
+     6e6:	4798      	blx	r3
+
+    size_t message_max_len = 64;
+    uint8_t message[64] = {0};
+     6e8:	2400      	movs	r4, #0
+     6ea:	9408      	str	r4, [sp, #32]
+     6ec:	223c      	movs	r2, #60	@ 0x3c
+     6ee:	4621      	mov	r1, r4
+     6f0:	a809      	add	r0, sp, #36	@ 0x24
+     6f2:	4b70      	ldr	r3, [pc, #448]	@ (8b4 <subghz_cli_command_chat+0x254>)
+     6f4:	4798      	blx	r3
+    FuriString* input;
+    input = furi_string_alloc();
+     6f6:	f8df 8234 	ldr.w	r8, [pc, #564]	@ 92c <subghz_cli_command_chat+0x2cc>
+     6fa:	47c0      	blx	r8
+     6fc:	4682      	mov	sl, r0
+    FuriString* name;
+    name = furi_string_alloc();
+     6fe:	47c0      	blx	r8
+     700:	9001      	str	r0, [sp, #4]
+    FuriString* output;
+    output = furi_string_alloc();
+     702:	47c0      	blx	r8
+     704:	4606      	mov	r6, r0
+    FuriString* sysmsg;
+    sysmsg = furi_string_alloc();
+     706:	47c0      	blx	r8
+     708:	4683      	mov	fp, r0
+    bool exit = false;
+    SubGhzChatEvent chat_event;
+
+    NotificationApp* notification = furi_record_open(RECORD_NOTIFICATION);
+     70a:	486b      	ldr	r0, [pc, #428]	@ (8b8 <subghz_cli_command_chat+0x258>)
+     70c:	4b6b      	ldr	r3, [pc, #428]	@ (8bc <subghz_cli_command_chat+0x25c>)
+     70e:	4798      	blx	r3
+     710:	9003      	str	r0, [sp, #12]
+
+    furi_string_printf(name, "\033[0;33m%s\033[0m: ", furi_hal_version_get_name_ptr());
+     712:	4b6b      	ldr	r3, [pc, #428]	@ (8c0 <subghz_cli_command_chat+0x260>)
+     714:	4798      	blx	r3
+     716:	4602      	mov	r2, r0
+     718:	496a      	ldr	r1, [pc, #424]	@ (8c4 <subghz_cli_command_chat+0x264>)
+     71a:	f8dd 8004 	ldr.w	r8, [sp, #4]
+     71e:	4640      	mov	r0, r8
+     720:	4b69      	ldr	r3, [pc, #420]	@ (8c8 <subghz_cli_command_chat+0x268>)
+     722:	4798      	blx	r3
+    furi_string_set(input, name);
+     724:	4641      	mov	r1, r8
+     726:	4650      	mov	r0, sl
+     728:	4b68      	ldr	r3, [pc, #416]	@ (8cc <subghz_cli_command_chat+0x26c>)
+     72a:	4798      	blx	r3
+    printf("%s", furi_string_get_cstr(input));
+     72c:	4650      	mov	r0, sl
+     72e:	4b54      	ldr	r3, [pc, #336]	@ (880 <subghz_cli_command_chat+0x220>)
+     730:	4798      	blx	r3
+     732:	4601      	mov	r1, r0
+     734:	4866      	ldr	r0, [pc, #408]	@ (8d0 <subghz_cli_command_chat+0x270>)
+     736:	47a8      	blx	r5
+    fflush(stdout);
+     738:	4b66      	ldr	r3, [pc, #408]	@ (8d4 <subghz_cli_command_chat+0x274>)
+     73a:	681b      	ldr	r3, [r3, #0]
+     73c:	6898      	ldr	r0, [r3, #8]
+     73e:	4b66      	ldr	r3, [pc, #408]	@ (8d8 <subghz_cli_command_chat+0x278>)
+     740:	4798      	blx	r3
+    bool exit = false;
+     742:	9400      	str	r4, [sp, #0]
+
+    while(!exit) {
+     744:	e165      	b.n	a12 <subghz_cli_command_chat+0x3b2>
+            cli_print_usage(
+     746:	4620      	mov	r0, r4
+     748:	4b4d      	ldr	r3, [pc, #308]	@ (880 <subghz_cli_command_chat+0x220>)
+     74a:	4798      	blx	r3
+     74c:	4602      	mov	r2, r0
+     74e:	4963      	ldr	r1, [pc, #396]	@ (8dc <subghz_cli_command_chat+0x27c>)
+     750:	4863      	ldr	r0, [pc, #396]	@ (8e0 <subghz_cli_command_chat+0x280>)
+     752:	4b64      	ldr	r3, [pc, #400]	@ (8e4 <subghz_cli_command_chat+0x284>)
+     754:	4798      	blx	r3
+            return;
+     756:	e007      	b.n	768 <subghz_cli_command_chat+0x108>
+        printf(
+     758:	9919      	ldr	r1, [sp, #100]	@ 0x64
+     75a:	4863      	ldr	r0, [pc, #396]	@ (8e8 <subghz_cli_command_chat+0x288>)
+     75c:	4b51      	ldr	r3, [pc, #324]	@ (8a4 <subghz_cli_command_chat+0x244>)
+     75e:	4798      	blx	r3
+        subghz_devices_deinit();
+     760:	4b62      	ldr	r3, [pc, #392]	@ (8ec <subghz_cli_command_chat+0x28c>)
+     762:	4798      	blx	r3
+        subghz_cli_radio_device_power_off();
+     764:	4b62      	ldr	r3, [pc, #392]	@ (8f0 <subghz_cli_command_chat+0x290>)
+     766:	4798      	blx	r3
+    if(subghz_chat_worker_is_running(subghz_chat)) {
+        subghz_chat_worker_stop(subghz_chat);
+        subghz_chat_worker_free(subghz_chat);
+    }
+    printf("\r\nExit chat\r\n");
+}
+     768:	b01b      	add	sp, #108	@ 0x6c
+     76a:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+        printf(
+     76e:	9919      	ldr	r1, [sp, #100]	@ 0x64
+     770:	4860      	ldr	r0, [pc, #384]	@ (8f4 <subghz_cli_command_chat+0x294>)
+     772:	4b4c      	ldr	r3, [pc, #304]	@ (8a4 <subghz_cli_command_chat+0x244>)
+     774:	4798      	blx	r3
+        return;
+     776:	e7f7      	b.n	768 <subghz_cli_command_chat+0x108>
+        printf("Startup error SubGhzChatWorker\r\n");
+     778:	485f      	ldr	r0, [pc, #380]	@ (8f8 <subghz_cli_command_chat+0x298>)
+     77a:	4b4c      	ldr	r3, [pc, #304]	@ (8ac <subghz_cli_command_chat+0x24c>)
+     77c:	4798      	blx	r3
+        if(subghz_chat_worker_is_running(subghz_chat)) {
+     77e:	4638      	mov	r0, r7
+     780:	4b5e      	ldr	r3, [pc, #376]	@ (8fc <subghz_cli_command_chat+0x29c>)
+     782:	4798      	blx	r3
+     784:	2800      	cmp	r0, #0
+     786:	d0ef      	beq.n	768 <subghz_cli_command_chat+0x108>
+            subghz_chat_worker_stop(subghz_chat);
+     788:	4638      	mov	r0, r7
+     78a:	4b5d      	ldr	r3, [pc, #372]	@ (900 <subghz_cli_command_chat+0x2a0>)
+     78c:	4798      	blx	r3
+            subghz_chat_worker_free(subghz_chat);
+     78e:	4638      	mov	r0, r7
+     790:	4b5c      	ldr	r3, [pc, #368]	@ (904 <subghz_cli_command_chat+0x2a4>)
+     792:	4798      	blx	r3
+        return;
+     794:	e7e8      	b.n	768 <subghz_cli_command_chat+0x108>
+            if(chat_event.c == CliKeyETX) {
+     796:	f89d 001d 	ldrb.w	r0, [sp, #29]
+     79a:	2803      	cmp	r0, #3
+     79c:	d017      	beq.n	7ce <subghz_cli_command_chat+0x16e>
+            } else if((chat_event.c == CliKeyBackspace) || (chat_event.c == CliKeyDEL)) {
+     79e:	2808      	cmp	r0, #8
+     7a0:	d020      	beq.n	7e4 <subghz_cli_command_chat+0x184>
+     7a2:	287f      	cmp	r0, #127	@ 0x7f
+     7a4:	d01e      	beq.n	7e4 <subghz_cli_command_chat+0x184>
+            } else if(chat_event.c == CliKeyCR) {
+     7a6:	280d      	cmp	r0, #13
+     7a8:	d05a      	beq.n	860 <subghz_cli_command_chat+0x200>
+            } else if(chat_event.c == CliKeyLF) {
+     7aa:	280a      	cmp	r0, #10
+     7ac:	f000 812c 	beq.w	a08 <subghz_cli_command_chat+0x3a8>
+                putc(chat_event.c, stdout);
+     7b0:	4c48      	ldr	r4, [pc, #288]	@ (8d4 <subghz_cli_command_chat+0x274>)
+     7b2:	6823      	ldr	r3, [r4, #0]
+     7b4:	6899      	ldr	r1, [r3, #8]
+     7b6:	4b54      	ldr	r3, [pc, #336]	@ (908 <subghz_cli_command_chat+0x2a8>)
+     7b8:	4798      	blx	r3
+                fflush(stdout);
+     7ba:	6823      	ldr	r3, [r4, #0]
+     7bc:	6898      	ldr	r0, [r3, #8]
+     7be:	4b46      	ldr	r3, [pc, #280]	@ (8d8 <subghz_cli_command_chat+0x278>)
+     7c0:	4798      	blx	r3
+                furi_string_push_back(input, chat_event.c);
+     7c2:	f89d 101d 	ldrb.w	r1, [sp, #29]
+     7c6:	4650      	mov	r0, sl
+     7c8:	4b50      	ldr	r3, [pc, #320]	@ (90c <subghz_cli_command_chat+0x2ac>)
+     7ca:	4798      	blx	r3
+                break;
+     7cc:	e11c      	b.n	a08 <subghz_cli_command_chat+0x3a8>
+                printf("\r\n");
+     7ce:	4850      	ldr	r0, [pc, #320]	@ (910 <subghz_cli_command_chat+0x2b0>)
+     7d0:	4b36      	ldr	r3, [pc, #216]	@ (8ac <subghz_cli_command_chat+0x24c>)
+     7d2:	4798      	blx	r3
+                chat_event.event = SubGhzChatEventUserExit;
+     7d4:	2302      	movs	r3, #2
+     7d6:	f88d 301c 	strb.w	r3, [sp, #28]
+                subghz_chat_worker_put_event_chat(subghz_chat, &chat_event);
+     7da:	a907      	add	r1, sp, #28
+     7dc:	4638      	mov	r0, r7
+     7de:	4b4d      	ldr	r3, [pc, #308]	@ (914 <subghz_cli_command_chat+0x2b4>)
+     7e0:	4798      	blx	r3
+                break;
+     7e2:	e111      	b.n	a08 <subghz_cli_command_chat+0x3a8>
+                size_t len = furi_string_utf8_length(input);
+     7e4:	4650      	mov	r0, sl
+     7e6:	4c4c      	ldr	r4, [pc, #304]	@ (918 <subghz_cli_command_chat+0x2b8>)
+     7e8:	47a0      	blx	r4
+     7ea:	4680      	mov	r8, r0
+                if(len > furi_string_utf8_length(name)) {
+     7ec:	9801      	ldr	r0, [sp, #4]
+     7ee:	47a0      	blx	r4
+     7f0:	4540      	cmp	r0, r8
+     7f2:	f080 8109 	bcs.w	a08 <subghz_cli_command_chat+0x3a8>
+                    printf("%s", "\e[D\e[1P");
+     7f6:	4949      	ldr	r1, [pc, #292]	@ (91c <subghz_cli_command_chat+0x2bc>)
+     7f8:	4835      	ldr	r0, [pc, #212]	@ (8d0 <subghz_cli_command_chat+0x270>)
+     7fa:	4b2a      	ldr	r3, [pc, #168]	@ (8a4 <subghz_cli_command_chat+0x244>)
+     7fc:	4798      	blx	r3
+                    fflush(stdout);
+     7fe:	4b35      	ldr	r3, [pc, #212]	@ (8d4 <subghz_cli_command_chat+0x274>)
+     800:	681b      	ldr	r3, [r3, #0]
+     802:	6898      	ldr	r0, [r3, #8]
+     804:	4b34      	ldr	r3, [pc, #208]	@ (8d8 <subghz_cli_command_chat+0x278>)
+     806:	4798      	blx	r3
+                    const char* str = furi_string_get_cstr(input);
+     808:	4650      	mov	r0, sl
+     80a:	4b1d      	ldr	r3, [pc, #116]	@ (880 <subghz_cli_command_chat+0x220>)
+     80c:	4798      	blx	r3
+     80e:	4605      	mov	r5, r0
+                    FuriStringUTF8State s = FuriStringUTF8StateStarting;
+     810:	2400      	movs	r4, #0
+     812:	f88d 4017 	strb.w	r4, [sp, #23]
+                    FuriStringUnicodeValue u = 0;
+     816:	9406      	str	r4, [sp, #24]
+                    furi_string_reset(sysmsg);
+     818:	4658      	mov	r0, fp
+     81a:	4b41      	ldr	r3, [pc, #260]	@ (920 <subghz_cli_command_chat+0x2c0>)
+     81c:	4798      	blx	r3
+                    while(*str) {
+     81e:	e00c      	b.n	83a <subghz_cli_command_chat+0x1da>
+                            furi_string_utf8_push(sysmsg, u);
+     820:	9906      	ldr	r1, [sp, #24]
+     822:	4658      	mov	r0, fp
+     824:	4b3f      	ldr	r3, [pc, #252]	@ (924 <subghz_cli_command_chat+0x2c4>)
+     826:	4798      	blx	r3
+                            if(++size >= len - 1) break;
+     828:	3401      	adds	r4, #1
+     82a:	f108 33ff 	add.w	r3, r8, #4294967295	@ 0xffffffff
+     82e:	42a3      	cmp	r3, r4
+     830:	d911      	bls.n	856 <subghz_cli_command_chat+0x1f6>
+                            s = FuriStringUTF8StateStarting;
+     832:	2300      	movs	r3, #0
+     834:	f88d 3017 	strb.w	r3, [sp, #23]
+                        str++;
+     838:	3501      	adds	r5, #1
+                    while(*str) {
+     83a:	7828      	ldrb	r0, [r5, #0]
+     83c:	b158      	cbz	r0, 856 <subghz_cli_command_chat+0x1f6>
+                        furi_string_utf8_decode(*str, &s, &u);
+     83e:	aa06      	add	r2, sp, #24
+     840:	f10d 0117 	add.w	r1, sp, #23
+     844:	4b38      	ldr	r3, [pc, #224]	@ (928 <subghz_cli_command_chat+0x2c8>)
+     846:	4798      	blx	r3
+                        if((s == FuriStringUTF8StateError) || s == FuriStringUTF8StateStarting) {
+     848:	f89d 3017 	ldrb.w	r3, [sp, #23]
+     84c:	2b04      	cmp	r3, #4
+     84e:	d0e7      	beq.n	820 <subghz_cli_command_chat+0x1c0>
+     850:	2b00      	cmp	r3, #0
+     852:	d1f1      	bne.n	838 <subghz_cli_command_chat+0x1d8>
+     854:	e7e4      	b.n	820 <subghz_cli_command_chat+0x1c0>
+                    furi_string_set(input, sysmsg);
+     856:	4659      	mov	r1, fp
+     858:	4650      	mov	r0, sl
+     85a:	4b1c      	ldr	r3, [pc, #112]	@ (8cc <subghz_cli_command_chat+0x26c>)
+     85c:	4798      	blx	r3
+     85e:	e0d3      	b.n	a08 <subghz_cli_command_chat+0x3a8>
+                printf("\r\n");
+     860:	482b      	ldr	r0, [pc, #172]	@ (910 <subghz_cli_command_chat+0x2b0>)
+     862:	4b12      	ldr	r3, [pc, #72]	@ (8ac <subghz_cli_command_chat+0x24c>)
+     864:	4798      	blx	r3
+                furi_string_push_back(input, '\r');
+     866:	210d      	movs	r1, #13
+     868:	4650      	mov	r0, sl
+     86a:	4c28      	ldr	r4, [pc, #160]	@ (90c <subghz_cli_command_chat+0x2ac>)
+     86c:	47a0      	blx	r4
+                furi_string_push_back(input, '\n');
+     86e:	210a      	movs	r1, #10
+     870:	4650      	mov	r0, sl
+     872:	47a0      	blx	r4
+                while(!subghz_chat_worker_write(
+     874:	e05f      	b.n	936 <subghz_cli_command_chat+0x2d6>
+     876:	bf00      	nop
+     878:	19dd1800 	.word	0x19dd1800
+	...
+     8a0:	00000750 	.word	0x00000750
+     8a4:	00000000 	.word	0x00000000
+     8a8:	00000770 	.word	0x00000770
+	...
+     8b8:	00000788 	.word	0x00000788
+	...
+     8c4:	00000798 	.word	0x00000798
+	...
+     8d0:	00000020 	.word	0x00000020
+	...
+     8dc:	000005f8 	.word	0x000005f8
+     8e0:	00000634 	.word	0x00000634
+     8e4:	00000000 	.word	0x00000000
+     8e8:	00000640 	.word	0x00000640
+	...
+     8f4:	000006b0 	.word	0x000006b0
+     8f8:	00000730 	.word	0x00000730
+	...
+     910:	0000049c 	.word	0x0000049c
+	...
+     91c:	000007a8 	.word	0x000007a8
+	...
+                    furi_delay_ms(10);
+     930:	200a      	movs	r0, #10
+     932:	4b78      	ldr	r3, [pc, #480]	@ (b14 <subghz_cli_command_chat+0x4b4>)
+     934:	4798      	blx	r3
+                    (uint8_t*)furi_string_get_cstr(input),
+     936:	4650      	mov	r0, sl
+     938:	4d77      	ldr	r5, [pc, #476]	@ (b18 <subghz_cli_command_chat+0x4b8>)
+     93a:	47a8      	blx	r5
+     93c:	4604      	mov	r4, r0
+                while(!subghz_chat_worker_write(
+     93e:	4650      	mov	r0, sl
+     940:	47a8      	blx	r5
+     942:	4b76      	ldr	r3, [pc, #472]	@ (b1c <subghz_cli_command_chat+0x4bc>)
+     944:	4798      	blx	r3
+     946:	4602      	mov	r2, r0
+     948:	4621      	mov	r1, r4
+     94a:	4638      	mov	r0, r7
+     94c:	4b74      	ldr	r3, [pc, #464]	@ (b20 <subghz_cli_command_chat+0x4c0>)
+     94e:	4798      	blx	r3
+     950:	2800      	cmp	r0, #0
+     952:	d0ed      	beq.n	930 <subghz_cli_command_chat+0x2d0>
+                furi_string_printf(input, "%s", furi_string_get_cstr(name));
+     954:	9801      	ldr	r0, [sp, #4]
+     956:	47a8      	blx	r5
+     958:	4602      	mov	r2, r0
+     95a:	4c72      	ldr	r4, [pc, #456]	@ (b24 <subghz_cli_command_chat+0x4c4>)
+     95c:	4621      	mov	r1, r4
+     95e:	4650      	mov	r0, sl
+     960:	4b71      	ldr	r3, [pc, #452]	@ (b28 <subghz_cli_command_chat+0x4c8>)
+     962:	4798      	blx	r3
+                printf("%s", furi_string_get_cstr(input));
+     964:	4650      	mov	r0, sl
+     966:	47a8      	blx	r5
+     968:	4601      	mov	r1, r0
+     96a:	4620      	mov	r0, r4
+     96c:	4b6f      	ldr	r3, [pc, #444]	@ (b2c <subghz_cli_command_chat+0x4cc>)
+     96e:	4798      	blx	r3
+                fflush(stdout);
+     970:	4b6f      	ldr	r3, [pc, #444]	@ (b30 <subghz_cli_command_chat+0x4d0>)
+     972:	681b      	ldr	r3, [r3, #0]
+     974:	6898      	ldr	r0, [r3, #8]
+     976:	4b6f      	ldr	r3, [pc, #444]	@ (b34 <subghz_cli_command_chat+0x4d4>)
+     978:	4798      	blx	r3
+     97a:	e045      	b.n	a08 <subghz_cli_command_chat+0x3a8>
+     97c:	46b8      	mov	r8, r7
+     97e:	e034      	b.n	9ea <subghz_cli_command_chat+0x38a>
+                                printf(" ");
+     980:	2020      	movs	r0, #32
+     982:	4b6d      	ldr	r3, [pc, #436]	@ (b38 <subghz_cli_command_chat+0x4d8>)
+     984:	4798      	blx	r3
+                            for(uint8_t i = 0; i < 80; i++) {
+     986:	3701      	adds	r7, #1
+     988:	b2ff      	uxtb	r7, r7
+     98a:	2f4f      	cmp	r7, #79	@ 0x4f
+     98c:	d9f8      	bls.n	980 <subghz_cli_command_chat+0x320>
+                            printf("\r %s", furi_string_get_cstr(output));
+     98e:	4630      	mov	r0, r6
+     990:	4f61      	ldr	r7, [pc, #388]	@ (b18 <subghz_cli_command_chat+0x4b8>)
+     992:	47b8      	blx	r7
+     994:	4601      	mov	r1, r0
+     996:	4869      	ldr	r0, [pc, #420]	@ (b3c <subghz_cli_command_chat+0x4dc>)
+     998:	4b64      	ldr	r3, [pc, #400]	@ (b2c <subghz_cli_command_chat+0x4cc>)
+     99a:	4798      	blx	r3
+                            printf("%s", furi_string_get_cstr(input));
+     99c:	4650      	mov	r0, sl
+     99e:	47b8      	blx	r7
+     9a0:	4601      	mov	r1, r0
+     9a2:	4860      	ldr	r0, [pc, #384]	@ (b24 <subghz_cli_command_chat+0x4c4>)
+     9a4:	4b61      	ldr	r3, [pc, #388]	@ (b2c <subghz_cli_command_chat+0x4cc>)
+     9a6:	4798      	blx	r3
+                            fflush(stdout);
+     9a8:	4b61      	ldr	r3, [pc, #388]	@ (b30 <subghz_cli_command_chat+0x4d0>)
+     9aa:	681b      	ldr	r3, [r3, #0]
+     9ac:	6898      	ldr	r0, [r3, #8]
+     9ae:	4b61      	ldr	r3, [pc, #388]	@ (b34 <subghz_cli_command_chat+0x4d4>)
+     9b0:	4798      	blx	r3
+                            furi_string_reset(output);
+     9b2:	4630      	mov	r0, r6
+     9b4:	4b62      	ldr	r3, [pc, #392]	@ (b40 <subghz_cli_command_chat+0x4e0>)
+     9b6:	4798      	blx	r3
+                    for(size_t i = 0; i < len; i++) {
+     9b8:	3401      	adds	r4, #1
+     9ba:	42ac      	cmp	r4, r5
+     9bc:	d211      	bcs.n	9e2 <subghz_cli_command_chat+0x382>
+                        furi_string_push_back(output, message[i]);
+     9be:	f104 0368 	add.w	r3, r4, #104	@ 0x68
+     9c2:	eb0d 0703 	add.w	r7, sp, r3
+     9c6:	f817 1c48 	ldrb.w	r1, [r7, #-72]
+     9ca:	4630      	mov	r0, r6
+     9cc:	4b5d      	ldr	r3, [pc, #372]	@ (b44 <subghz_cli_command_chat+0x4e4>)
+     9ce:	4798      	blx	r3
+                        if(message[i] == '\n') {
+     9d0:	f817 3c48 	ldrb.w	r3, [r7, #-72]
+     9d4:	2b0a      	cmp	r3, #10
+     9d6:	d1ef      	bne.n	9b8 <subghz_cli_command_chat+0x358>
+                            printf("\r");
+     9d8:	200d      	movs	r0, #13
+     9da:	4b57      	ldr	r3, [pc, #348]	@ (b38 <subghz_cli_command_chat+0x4d8>)
+     9dc:	4798      	blx	r3
+                            for(uint8_t i = 0; i < 80; i++) {
+     9de:	2700      	movs	r7, #0
+     9e0:	e7d3      	b.n	98a <subghz_cli_command_chat+0x32a>
+                } while(subghz_chat_worker_available(subghz_chat));
+     9e2:	4640      	mov	r0, r8
+     9e4:	4b58      	ldr	r3, [pc, #352]	@ (b48 <subghz_cli_command_chat+0x4e8>)
+     9e6:	4798      	blx	r3
+     9e8:	b168      	cbz	r0, a06 <subghz_cli_command_chat+0x3a6>
+                    memset(message, 0x00, message_max_len);
+     9ea:	2440      	movs	r4, #64	@ 0x40
+     9ec:	4622      	mov	r2, r4
+     9ee:	2100      	movs	r1, #0
+     9f0:	a808      	add	r0, sp, #32
+     9f2:	4b56      	ldr	r3, [pc, #344]	@ (b4c <subghz_cli_command_chat+0x4ec>)
+     9f4:	4798      	blx	r3
+                    size_t len = subghz_chat_worker_read(subghz_chat, message, message_max_len);
+     9f6:	4622      	mov	r2, r4
+     9f8:	a908      	add	r1, sp, #32
+     9fa:	4640      	mov	r0, r8
+     9fc:	4b54      	ldr	r3, [pc, #336]	@ (b50 <subghz_cli_command_chat+0x4f0>)
+     9fe:	4798      	blx	r3
+     a00:	4605      	mov	r5, r0
+                    for(size_t i = 0; i < len; i++) {
+     a02:	2400      	movs	r4, #0
+     a04:	e7d9      	b.n	9ba <subghz_cli_command_chat+0x35a>
+     a06:	4647      	mov	r7, r8
+        if(cli_is_pipe_broken_or_is_etx_next_char(pipe)) {
+     a08:	4648      	mov	r0, r9
+     a0a:	4b52      	ldr	r3, [pc, #328]	@ (b54 <subghz_cli_command_chat+0x4f4>)
+     a0c:	4798      	blx	r3
+     a0e:	2800      	cmp	r0, #0
+     a10:	d154      	bne.n	abc <subghz_cli_command_chat+0x45c>
+    while(!exit) {
+     a12:	9b00      	ldr	r3, [sp, #0]
+     a14:	2b00      	cmp	r3, #0
+     a16:	d15c      	bne.n	ad2 <subghz_cli_command_chat+0x472>
+        chat_event = subghz_chat_worker_get_event_chat(subghz_chat);
+     a18:	4638      	mov	r0, r7
+     a1a:	4b4f      	ldr	r3, [pc, #316]	@ (b58 <subghz_cli_command_chat+0x4f8>)
+     a1c:	4798      	blx	r3
+     a1e:	f8ad 001c 	strh.w	r0, [sp, #28]
+        switch(chat_event.event) {
+     a22:	f89d 301c 	ldrb.w	r3, [sp, #28]
+     a26:	3b01      	subs	r3, #1
+     a28:	2b04      	cmp	r3, #4
+     a2a:	d841      	bhi.n	ab0 <subghz_cli_command_chat+0x450>
+     a2c:	a201      	add	r2, pc, #4	@ (adr r2, a34 <subghz_cli_command_chat+0x3d4>)
+     a2e:	f852 f023 	ldr.w	pc, [r2, r3, lsl #2]
+     a32:	bf00      	nop
+     a34:	00000a53 	.word	0x00000a53
+     a38:	00000a7d 	.word	0x00000a7d
+     a3c:	00000797 	.word	0x00000797
+     a40:	0000097d 	.word	0x0000097d
+     a44:	00000a49 	.word	0x00000a49
+                notification_message(notification, &sequence_single_vibro);
+     a48:	4944      	ldr	r1, [pc, #272]	@ (b5c <subghz_cli_command_chat+0x4fc>)
+     a4a:	9803      	ldr	r0, [sp, #12]
+     a4c:	4b44      	ldr	r3, [pc, #272]	@ (b60 <subghz_cli_command_chat+0x500>)
+     a4e:	4798      	blx	r3
+                break;
+     a50:	e7da      	b.n	a08 <subghz_cli_command_chat+0x3a8>
+                furi_string_printf(
+     a52:	4b44      	ldr	r3, [pc, #272]	@ (b64 <subghz_cli_command_chat+0x504>)
+     a54:	4798      	blx	r3
+     a56:	4602      	mov	r2, r0
+     a58:	4943      	ldr	r1, [pc, #268]	@ (b68 <subghz_cli_command_chat+0x508>)
+     a5a:	4658      	mov	r0, fp
+     a5c:	4b32      	ldr	r3, [pc, #200]	@ (b28 <subghz_cli_command_chat+0x4c8>)
+     a5e:	4798      	blx	r3
+                    (uint8_t*)furi_string_get_cstr(sysmsg),
+     a60:	4658      	mov	r0, fp
+     a62:	4d2d      	ldr	r5, [pc, #180]	@ (b18 <subghz_cli_command_chat+0x4b8>)
+     a64:	47a8      	blx	r5
+     a66:	4604      	mov	r4, r0
+                subghz_chat_worker_write(
+     a68:	4658      	mov	r0, fp
+     a6a:	47a8      	blx	r5
+     a6c:	4b2b      	ldr	r3, [pc, #172]	@ (b1c <subghz_cli_command_chat+0x4bc>)
+     a6e:	4798      	blx	r3
+     a70:	4602      	mov	r2, r0
+     a72:	4621      	mov	r1, r4
+     a74:	4638      	mov	r0, r7
+     a76:	4b2a      	ldr	r3, [pc, #168]	@ (b20 <subghz_cli_command_chat+0x4c0>)
+     a78:	4798      	blx	r3
+                break;
+     a7a:	e7c5      	b.n	a08 <subghz_cli_command_chat+0x3a8>
+                furi_string_printf(
+     a7c:	4b39      	ldr	r3, [pc, #228]	@ (b64 <subghz_cli_command_chat+0x504>)
+     a7e:	4798      	blx	r3
+     a80:	4602      	mov	r2, r0
+     a82:	493a      	ldr	r1, [pc, #232]	@ (b6c <subghz_cli_command_chat+0x50c>)
+     a84:	4658      	mov	r0, fp
+     a86:	4b28      	ldr	r3, [pc, #160]	@ (b28 <subghz_cli_command_chat+0x4c8>)
+     a88:	4798      	blx	r3
+                    (uint8_t*)furi_string_get_cstr(sysmsg),
+     a8a:	4658      	mov	r0, fp
+     a8c:	4d22      	ldr	r5, [pc, #136]	@ (b18 <subghz_cli_command_chat+0x4b8>)
+     a8e:	47a8      	blx	r5
+     a90:	4604      	mov	r4, r0
+                subghz_chat_worker_write(
+     a92:	4658      	mov	r0, fp
+     a94:	47a8      	blx	r5
+     a96:	4b21      	ldr	r3, [pc, #132]	@ (b1c <subghz_cli_command_chat+0x4bc>)
+     a98:	4798      	blx	r3
+     a9a:	4602      	mov	r2, r0
+     a9c:	4621      	mov	r1, r4
+     a9e:	4638      	mov	r0, r7
+     aa0:	4b1f      	ldr	r3, [pc, #124]	@ (b20 <subghz_cli_command_chat+0x4c0>)
+     aa2:	4798      	blx	r3
+                furi_delay_ms(10);
+     aa4:	200a      	movs	r0, #10
+     aa6:	4b1b      	ldr	r3, [pc, #108]	@ (b14 <subghz_cli_command_chat+0x4b4>)
+     aa8:	4798      	blx	r3
+                exit = true;
+     aaa:	9b02      	ldr	r3, [sp, #8]
+     aac:	9300      	str	r3, [sp, #0]
+                break;
+     aae:	e7ab      	b.n	a08 <subghz_cli_command_chat+0x3a8>
+                FURI_LOG_W("SubGhzChat", "Error event");
+     ab0:	4a2f      	ldr	r2, [pc, #188]	@ (b70 <subghz_cli_command_chat+0x510>)
+     ab2:	4930      	ldr	r1, [pc, #192]	@ (b74 <subghz_cli_command_chat+0x514>)
+     ab4:	2003      	movs	r0, #3
+     ab6:	4b30      	ldr	r3, [pc, #192]	@ (b78 <subghz_cli_command_chat+0x518>)
+     ab8:	4798      	blx	r3
+                break;
+     aba:	e7a5      	b.n	a08 <subghz_cli_command_chat+0x3a8>
+            printf("\r\n");
+     abc:	482f      	ldr	r0, [pc, #188]	@ (b7c <subghz_cli_command_chat+0x51c>)
+     abe:	4b30      	ldr	r3, [pc, #192]	@ (b80 <subghz_cli_command_chat+0x520>)
+     ac0:	4798      	blx	r3
+            chat_event.event = SubGhzChatEventUserExit;
+     ac2:	2302      	movs	r3, #2
+     ac4:	f88d 301c 	strb.w	r3, [sp, #28]
+            subghz_chat_worker_put_event_chat(subghz_chat, &chat_event);
+     ac8:	a907      	add	r1, sp, #28
+     aca:	4638      	mov	r0, r7
+     acc:	4b2d      	ldr	r3, [pc, #180]	@ (b84 <subghz_cli_command_chat+0x524>)
+     ace:	4798      	blx	r3
+     ad0:	e79f      	b.n	a12 <subghz_cli_command_chat+0x3b2>
+    furi_string_free(input);
+     ad2:	4650      	mov	r0, sl
+     ad4:	4c2c      	ldr	r4, [pc, #176]	@ (b88 <subghz_cli_command_chat+0x528>)
+     ad6:	47a0      	blx	r4
+    furi_string_free(name);
+     ad8:	9801      	ldr	r0, [sp, #4]
+     ada:	47a0      	blx	r4
+    furi_string_free(output);
+     adc:	4630      	mov	r0, r6
+     ade:	47a0      	blx	r4
+    furi_string_free(sysmsg);
+     ae0:	4658      	mov	r0, fp
+     ae2:	47a0      	blx	r4
+    subghz_devices_deinit();
+     ae4:	4b29      	ldr	r3, [pc, #164]	@ (b8c <subghz_cli_command_chat+0x52c>)
+     ae6:	4798      	blx	r3
+    subghz_cli_radio_device_power_off();
+     ae8:	4b29      	ldr	r3, [pc, #164]	@ (b90 <subghz_cli_command_chat+0x530>)
+     aea:	4798      	blx	r3
+    furi_hal_power_suppress_charge_exit();
+     aec:	4b29      	ldr	r3, [pc, #164]	@ (b94 <subghz_cli_command_chat+0x534>)
+     aee:	4798      	blx	r3
+    furi_record_close(RECORD_NOTIFICATION);
+     af0:	4829      	ldr	r0, [pc, #164]	@ (b98 <subghz_cli_command_chat+0x538>)
+     af2:	4b2a      	ldr	r3, [pc, #168]	@ (b9c <subghz_cli_command_chat+0x53c>)
+     af4:	4798      	blx	r3
+    if(subghz_chat_worker_is_running(subghz_chat)) {
+     af6:	4638      	mov	r0, r7
+     af8:	4b29      	ldr	r3, [pc, #164]	@ (ba0 <subghz_cli_command_chat+0x540>)
+     afa:	4798      	blx	r3
+     afc:	b918      	cbnz	r0, b06 <subghz_cli_command_chat+0x4a6>
+    printf("\r\nExit chat\r\n");
+     afe:	4829      	ldr	r0, [pc, #164]	@ (ba4 <subghz_cli_command_chat+0x544>)
+     b00:	4b1f      	ldr	r3, [pc, #124]	@ (b80 <subghz_cli_command_chat+0x520>)
+     b02:	4798      	blx	r3
+     b04:	e630      	b.n	768 <subghz_cli_command_chat+0x108>
+        subghz_chat_worker_stop(subghz_chat);
+     b06:	4638      	mov	r0, r7
+     b08:	4b27      	ldr	r3, [pc, #156]	@ (ba8 <subghz_cli_command_chat+0x548>)
+     b0a:	4798      	blx	r3
+        subghz_chat_worker_free(subghz_chat);
+     b0c:	4638      	mov	r0, r7
+     b0e:	4b27      	ldr	r3, [pc, #156]	@ (bac <subghz_cli_command_chat+0x54c>)
+     b10:	4798      	blx	r3
+     b12:	e7f4      	b.n	afe <subghz_cli_command_chat+0x49e>
+	...
+     b24:	00000020 	.word	0x00000020
+	...
+     b3c:	000007b0 	.word	0x000007b0
+	...
+     b68:	000007b8 	.word	0x000007b8
+     b6c:	000007d8 	.word	0x000007d8
+     b70:	000007f4 	.word	0x000007f4
+     b74:	00000800 	.word	0x00000800
+     b78:	00000000 	.word	0x00000000
+     b7c:	0000049c 	.word	0x0000049c
+	...
+     b98:	00000788 	.word	0x00000788
+	...
+     ba4:	0000080c 	.word	0x0000080c
+	...
+
+00000bb0 <subghz_cli_command_encrypt_keeloq>:
+static void subghz_cli_command_encrypt_keeloq(PipeSide* pipe, FuriString* args) {
+     bb0:	b5f0      	push	{r4, r5, r6, r7, lr}
+     bb2:	b085      	sub	sp, #20
+     bb4:	460d      	mov	r5, r1
+    source = furi_string_alloc();
+     bb6:	4e22      	ldr	r6, [pc, #136]	@ (c40 <subghz_cli_command_encrypt_keeloq+0x90>)
+     bb8:	47b0      	blx	r6
+     bba:	4604      	mov	r4, r0
+    destination = furi_string_alloc();
+     bbc:	47b0      	blx	r6
+     bbe:	4606      	mov	r6, r0
+    SubGhzKeystore* keystore = subghz_keystore_alloc();
+     bc0:	4b20      	ldr	r3, [pc, #128]	@ (c44 <subghz_cli_command_encrypt_keeloq+0x94>)
+     bc2:	4798      	blx	r3
+     bc4:	4607      	mov	r7, r0
+        if(!args_read_string_and_trim(args, source)) {
+     bc6:	4621      	mov	r1, r4
+     bc8:	4628      	mov	r0, r5
+     bca:	4b1f      	ldr	r3, [pc, #124]	@ (c48 <subghz_cli_command_encrypt_keeloq+0x98>)
+     bcc:	4798      	blx	r3
+     bce:	b958      	cbnz	r0, be8 <subghz_cli_command_encrypt_keeloq+0x38>
+            subghz_cli_command_print_usage();
+     bd0:	4b1e      	ldr	r3, [pc, #120]	@ (c4c <subghz_cli_command_encrypt_keeloq+0x9c>)
+     bd2:	4798      	blx	r3
+    subghz_keystore_free(keystore);
+     bd4:	4638      	mov	r0, r7
+     bd6:	4b1e      	ldr	r3, [pc, #120]	@ (c50 <subghz_cli_command_encrypt_keeloq+0xa0>)
+     bd8:	4798      	blx	r3
+    furi_string_free(destination);
+     bda:	4630      	mov	r0, r6
+     bdc:	4d1d      	ldr	r5, [pc, #116]	@ (c54 <subghz_cli_command_encrypt_keeloq+0xa4>)
+     bde:	47a8      	blx	r5
+    furi_string_free(source);
+     be0:	4620      	mov	r0, r4
+     be2:	47a8      	blx	r5
+}
+     be4:	b005      	add	sp, #20
+     be6:	bdf0      	pop	{r4, r5, r6, r7, pc}
+        if(!args_read_string_and_trim(args, destination)) {
+     be8:	4631      	mov	r1, r6
+     bea:	4628      	mov	r0, r5
+     bec:	4b16      	ldr	r3, [pc, #88]	@ (c48 <subghz_cli_command_encrypt_keeloq+0x98>)
+     bee:	4798      	blx	r3
+     bf0:	b910      	cbnz	r0, bf8 <subghz_cli_command_encrypt_keeloq+0x48>
+            subghz_cli_command_print_usage();
+     bf2:	4b16      	ldr	r3, [pc, #88]	@ (c4c <subghz_cli_command_encrypt_keeloq+0x9c>)
+     bf4:	4798      	blx	r3
+            break;
+     bf6:	e7ed      	b.n	bd4 <subghz_cli_command_encrypt_keeloq+0x24>
+        if(!args_read_hex_bytes(args, iv, 16)) {
+     bf8:	2210      	movs	r2, #16
+     bfa:	4669      	mov	r1, sp
+     bfc:	4628      	mov	r0, r5
+     bfe:	4b16      	ldr	r3, [pc, #88]	@ (c58 <subghz_cli_command_encrypt_keeloq+0xa8>)
+     c00:	4798      	blx	r3
+     c02:	b910      	cbnz	r0, c0a <subghz_cli_command_encrypt_keeloq+0x5a>
+            subghz_cli_command_print_usage();
+     c04:	4b11      	ldr	r3, [pc, #68]	@ (c4c <subghz_cli_command_encrypt_keeloq+0x9c>)
+     c06:	4798      	blx	r3
+            break;
+     c08:	e7e4      	b.n	bd4 <subghz_cli_command_encrypt_keeloq+0x24>
+        if(!subghz_keystore_load(keystore, furi_string_get_cstr(source))) {
+     c0a:	4620      	mov	r0, r4
+     c0c:	4b13      	ldr	r3, [pc, #76]	@ (c5c <subghz_cli_command_encrypt_keeloq+0xac>)
+     c0e:	4798      	blx	r3
+     c10:	4601      	mov	r1, r0
+     c12:	4638      	mov	r0, r7
+     c14:	4b12      	ldr	r3, [pc, #72]	@ (c60 <subghz_cli_command_encrypt_keeloq+0xb0>)
+     c16:	4798      	blx	r3
+     c18:	b918      	cbnz	r0, c22 <subghz_cli_command_encrypt_keeloq+0x72>
+            printf("Failed to load Keystore");
+     c1a:	4812      	ldr	r0, [pc, #72]	@ (c64 <subghz_cli_command_encrypt_keeloq+0xb4>)
+     c1c:	4b12      	ldr	r3, [pc, #72]	@ (c68 <subghz_cli_command_encrypt_keeloq+0xb8>)
+     c1e:	4798      	blx	r3
+            break;
+     c20:	e7d8      	b.n	bd4 <subghz_cli_command_encrypt_keeloq+0x24>
+        if(!subghz_keystore_save(keystore, furi_string_get_cstr(destination), iv)) {
+     c22:	4630      	mov	r0, r6
+     c24:	4b0d      	ldr	r3, [pc, #52]	@ (c5c <subghz_cli_command_encrypt_keeloq+0xac>)
+     c26:	4798      	blx	r3
+     c28:	4601      	mov	r1, r0
+     c2a:	466a      	mov	r2, sp
+     c2c:	4638      	mov	r0, r7
+     c2e:	4b0f      	ldr	r3, [pc, #60]	@ (c6c <subghz_cli_command_encrypt_keeloq+0xbc>)
+     c30:	4798      	blx	r3
+     c32:	2800      	cmp	r0, #0
+     c34:	d1ce      	bne.n	bd4 <subghz_cli_command_encrypt_keeloq+0x24>
+            printf("Failed to save Keystore");
+     c36:	480e      	ldr	r0, [pc, #56]	@ (c70 <subghz_cli_command_encrypt_keeloq+0xc0>)
+     c38:	4b0b      	ldr	r3, [pc, #44]	@ (c68 <subghz_cli_command_encrypt_keeloq+0xb8>)
+     c3a:	4798      	blx	r3
+            break;
+     c3c:	e7ca      	b.n	bd4 <subghz_cli_command_encrypt_keeloq+0x24>
+     c3e:	bf00      	nop
+	...
+     c64:	0000081c 	.word	0x0000081c
+	...
+     c70:	00000834 	.word	0x00000834
+
+00000c74 <subghz_cli_command_encrypt_raw>:
+static void subghz_cli_command_encrypt_raw(PipeSide* pipe, FuriString* args) {
+     c74:	b5f0      	push	{r4, r5, r6, r7, lr}
+     c76:	b085      	sub	sp, #20
+     c78:	460e      	mov	r6, r1
+    source = furi_string_alloc();
+     c7a:	4d1a      	ldr	r5, [pc, #104]	@ (ce4 <subghz_cli_command_encrypt_raw+0x70>)
+     c7c:	47a8      	blx	r5
+     c7e:	4604      	mov	r4, r0
+    destination = furi_string_alloc();
+     c80:	47a8      	blx	r5
+     c82:	4605      	mov	r5, r0
+        if(!args_read_string_and_trim(args, source)) {
+     c84:	4621      	mov	r1, r4
+     c86:	4630      	mov	r0, r6
+     c88:	4b17      	ldr	r3, [pc, #92]	@ (ce8 <subghz_cli_command_encrypt_raw+0x74>)
+     c8a:	4798      	blx	r3
+     c8c:	b940      	cbnz	r0, ca0 <subghz_cli_command_encrypt_raw+0x2c>
+            subghz_cli_command_print_usage();
+     c8e:	4b17      	ldr	r3, [pc, #92]	@ (cec <subghz_cli_command_encrypt_raw+0x78>)
+     c90:	4798      	blx	r3
+    furi_string_free(destination);
+     c92:	4628      	mov	r0, r5
+     c94:	4d16      	ldr	r5, [pc, #88]	@ (cf0 <subghz_cli_command_encrypt_raw+0x7c>)
+     c96:	47a8      	blx	r5
+    furi_string_free(source);
+     c98:	4620      	mov	r0, r4
+     c9a:	47a8      	blx	r5
+}
+     c9c:	b005      	add	sp, #20
+     c9e:	bdf0      	pop	{r4, r5, r6, r7, pc}
+        if(!args_read_string_and_trim(args, destination)) {
+     ca0:	4629      	mov	r1, r5
+     ca2:	4630      	mov	r0, r6
+     ca4:	4b10      	ldr	r3, [pc, #64]	@ (ce8 <subghz_cli_command_encrypt_raw+0x74>)
+     ca6:	4798      	blx	r3
+     ca8:	b910      	cbnz	r0, cb0 <subghz_cli_command_encrypt_raw+0x3c>
+            subghz_cli_command_print_usage();
+     caa:	4b10      	ldr	r3, [pc, #64]	@ (cec <subghz_cli_command_encrypt_raw+0x78>)
+     cac:	4798      	blx	r3
+            break;
+     cae:	e7f0      	b.n	c92 <subghz_cli_command_encrypt_raw+0x1e>
+        if(!args_read_hex_bytes(args, iv, 16)) {
+     cb0:	2210      	movs	r2, #16
+     cb2:	4669      	mov	r1, sp
+     cb4:	4630      	mov	r0, r6
+     cb6:	4b0f      	ldr	r3, [pc, #60]	@ (cf4 <subghz_cli_command_encrypt_raw+0x80>)
+     cb8:	4798      	blx	r3
+     cba:	b910      	cbnz	r0, cc2 <subghz_cli_command_encrypt_raw+0x4e>
+            subghz_cli_command_print_usage();
+     cbc:	4b0b      	ldr	r3, [pc, #44]	@ (cec <subghz_cli_command_encrypt_raw+0x78>)
+     cbe:	4798      	blx	r3
+            break;
+     cc0:	e7e7      	b.n	c92 <subghz_cli_command_encrypt_raw+0x1e>
+        if(!subghz_keystore_raw_encrypted_save(
+     cc2:	4620      	mov	r0, r4
+     cc4:	4f0c      	ldr	r7, [pc, #48]	@ (cf8 <subghz_cli_command_encrypt_raw+0x84>)
+     cc6:	47b8      	blx	r7
+     cc8:	4606      	mov	r6, r0
+     cca:	4628      	mov	r0, r5
+     ccc:	47b8      	blx	r7
+     cce:	4601      	mov	r1, r0
+     cd0:	466a      	mov	r2, sp
+     cd2:	4630      	mov	r0, r6
+     cd4:	4b09      	ldr	r3, [pc, #36]	@ (cfc <subghz_cli_command_encrypt_raw+0x88>)
+     cd6:	4798      	blx	r3
+     cd8:	2800      	cmp	r0, #0
+     cda:	d1da      	bne.n	c92 <subghz_cli_command_encrypt_raw+0x1e>
+            printf("Failed to save Keystore");
+     cdc:	4808      	ldr	r0, [pc, #32]	@ (d00 <subghz_cli_command_encrypt_raw+0x8c>)
+     cde:	4b09      	ldr	r3, [pc, #36]	@ (d04 <subghz_cli_command_encrypt_raw+0x90>)
+     ce0:	4798      	blx	r3
+            break;
+     ce2:	e7d6      	b.n	c92 <subghz_cli_command_encrypt_raw+0x1e>
+	...
+     d00:	00000834 	.word	0x00000834
+     d04:	00000000 	.word	0x00000000
+
+00000d08 <subghz_cli_command_tx_carrier>:
+void subghz_cli_command_tx_carrier(PipeSide* pipe, FuriString* args, void* context) {
+     d08:	b570      	push	{r4, r5, r6, lr}
+     d0a:	b082      	sub	sp, #8
+     d0c:	4604      	mov	r4, r0
+     d0e:	460d      	mov	r5, r1
+    uint32_t frequency = 433920000;
+     d10:	4b2c      	ldr	r3, [pc, #176]	@ (dc4 <subghz_cli_command_tx_carrier+0xbc>)
+     d12:	9301      	str	r3, [sp, #4]
+    if(furi_string_size(args)) {
+     d14:	4608      	mov	r0, r1
+     d16:	4b2c      	ldr	r3, [pc, #176]	@ (dc8 <subghz_cli_command_tx_carrier+0xc0>)
+     d18:	4798      	blx	r3
+     d1a:	b170      	cbz	r0, d3a <subghz_cli_command_tx_carrier+0x32>
+        if(strint_to_uint32(furi_string_get_cstr(args), NULL, &frequency, 10) !=
+     d1c:	4628      	mov	r0, r5
+     d1e:	4b2b      	ldr	r3, [pc, #172]	@ (dcc <subghz_cli_command_tx_carrier+0xc4>)
+     d20:	4798      	blx	r3
+     d22:	230a      	movs	r3, #10
+     d24:	aa01      	add	r2, sp, #4
+     d26:	2100      	movs	r1, #0
+     d28:	4e29      	ldr	r6, [pc, #164]	@ (dd0 <subghz_cli_command_tx_carrier+0xc8>)
+     d2a:	47b0      	blx	r6
+     d2c:	2800      	cmp	r0, #0
+     d2e:	d125      	bne.n	d7c <subghz_cli_command_tx_carrier+0x74>
+        if(!furi_hal_subghz_is_frequency_valid(frequency)) {
+     d30:	9801      	ldr	r0, [sp, #4]
+     d32:	4b28      	ldr	r3, [pc, #160]	@ (dd4 <subghz_cli_command_tx_carrier+0xcc>)
+     d34:	4798      	blx	r3
+     d36:	2800      	cmp	r0, #0
+     d38:	d029      	beq.n	d8e <subghz_cli_command_tx_carrier+0x86>
+    furi_hal_subghz_reset();
+     d3a:	4b27      	ldr	r3, [pc, #156]	@ (dd8 <subghz_cli_command_tx_carrier+0xd0>)
+     d3c:	4798      	blx	r3
+    furi_hal_subghz_load_custom_preset(subghz_device_cc1101_preset_ook_650khz_async_regs);
+     d3e:	4827      	ldr	r0, [pc, #156]	@ (ddc <subghz_cli_command_tx_carrier+0xd4>)
+     d40:	4b27      	ldr	r3, [pc, #156]	@ (de0 <subghz_cli_command_tx_carrier+0xd8>)
+     d42:	4798      	blx	r3
+    frequency = furi_hal_subghz_set_frequency_and_path(frequency);
+     d44:	9801      	ldr	r0, [sp, #4]
+     d46:	4b27      	ldr	r3, [pc, #156]	@ (de4 <subghz_cli_command_tx_carrier+0xdc>)
+     d48:	4798      	blx	r3
+     d4a:	9001      	str	r0, [sp, #4]
+    furi_hal_gpio_init(&gpio_cc1101_g0, GpioModeOutputPushPull, GpioPullNo, GpioSpeedLow);
+     d4c:	4d26      	ldr	r5, [pc, #152]	@ (de8 <subghz_cli_command_tx_carrier+0xe0>)
+     d4e:	2300      	movs	r3, #0
+     d50:	461a      	mov	r2, r3
+     d52:	2101      	movs	r1, #1
+     d54:	4628      	mov	r0, r5
+     d56:	4e25      	ldr	r6, [pc, #148]	@ (dec <subghz_cli_command_tx_carrier+0xe4>)
+     d58:	47b0      	blx	r6
+ * @param state true / false
+ */
+static inline void furi_hal_gpio_write(const GpioPin* gpio, const bool state) {
+    // writing to BSSR is an atomic operation
+    if(state == true) {
+        gpio->port->BSRR = gpio->pin;
+     d5a:	682b      	ldr	r3, [r5, #0]
+     d5c:	88aa      	ldrh	r2, [r5, #4]
+     d5e:	619a      	str	r2, [r3, #24]
+    furi_hal_power_suppress_charge_enter();
+     d60:	4b23      	ldr	r3, [pc, #140]	@ (df0 <subghz_cli_command_tx_carrier+0xe8>)
+     d62:	4798      	blx	r3
+    if(furi_hal_subghz_tx()) {
+     d64:	4b23      	ldr	r3, [pc, #140]	@ (df4 <subghz_cli_command_tx_carrier+0xec>)
+     d66:	4798      	blx	r3
+     d68:	2800      	cmp	r0, #0
+     d6a:	d026      	beq.n	dba <subghz_cli_command_tx_carrier+0xb2>
+        printf("Transmitting at frequency %lu Hz\r\n", frequency);
+     d6c:	9901      	ldr	r1, [sp, #4]
+     d6e:	4822      	ldr	r0, [pc, #136]	@ (df8 <subghz_cli_command_tx_carrier+0xf0>)
+     d70:	4b22      	ldr	r3, [pc, #136]	@ (dfc <subghz_cli_command_tx_carrier+0xf4>)
+     d72:	4798      	blx	r3
+        printf("Press CTRL+C to stop\r\n");
+     d74:	4822      	ldr	r0, [pc, #136]	@ (e00 <subghz_cli_command_tx_carrier+0xf8>)
+     d76:	4b23      	ldr	r3, [pc, #140]	@ (e04 <subghz_cli_command_tx_carrier+0xfc>)
+     d78:	4798      	blx	r3
+        while(!cli_is_pipe_broken_or_is_etx_next_char(pipe)) {
+     d7a:	e010      	b.n	d9e <subghz_cli_command_tx_carrier+0x96>
+            cli_print_usage("subghz tx_carrier", "<Frequency: in Hz>", furi_string_get_cstr(args));
+     d7c:	4628      	mov	r0, r5
+     d7e:	4b13      	ldr	r3, [pc, #76]	@ (dcc <subghz_cli_command_tx_carrier+0xc4>)
+     d80:	4798      	blx	r3
+     d82:	4602      	mov	r2, r0
+     d84:	4920      	ldr	r1, [pc, #128]	@ (e08 <subghz_cli_command_tx_carrier+0x100>)
+     d86:	4821      	ldr	r0, [pc, #132]	@ (e0c <subghz_cli_command_tx_carrier+0x104>)
+     d88:	4b21      	ldr	r3, [pc, #132]	@ (e10 <subghz_cli_command_tx_carrier+0x108>)
+     d8a:	4798      	blx	r3
+            return;
+     d8c:	e013      	b.n	db6 <subghz_cli_command_tx_carrier+0xae>
+            printf(
+     d8e:	9901      	ldr	r1, [sp, #4]
+     d90:	4820      	ldr	r0, [pc, #128]	@ (e14 <subghz_cli_command_tx_carrier+0x10c>)
+     d92:	4b1a      	ldr	r3, [pc, #104]	@ (dfc <subghz_cli_command_tx_carrier+0xf4>)
+     d94:	4798      	blx	r3
+            return;
+     d96:	e00e      	b.n	db6 <subghz_cli_command_tx_carrier+0xae>
+            furi_delay_ms(250);
+     d98:	20fa      	movs	r0, #250	@ 0xfa
+     d9a:	4b1f      	ldr	r3, [pc, #124]	@ (e18 <subghz_cli_command_tx_carrier+0x110>)
+     d9c:	4798      	blx	r3
+        while(!cli_is_pipe_broken_or_is_etx_next_char(pipe)) {
+     d9e:	4620      	mov	r0, r4
+     da0:	4b1e      	ldr	r3, [pc, #120]	@ (e1c <subghz_cli_command_tx_carrier+0x114>)
+     da2:	4798      	blx	r3
+     da4:	2800      	cmp	r0, #0
+     da6:	d0f7      	beq.n	d98 <subghz_cli_command_tx_carrier+0x90>
+    furi_hal_subghz_set_path(FuriHalSubGhzPathIsolate);
+     da8:	2000      	movs	r0, #0
+     daa:	4b1d      	ldr	r3, [pc, #116]	@ (e20 <subghz_cli_command_tx_carrier+0x118>)
+     dac:	4798      	blx	r3
+    furi_hal_subghz_sleep();
+     dae:	4b1d      	ldr	r3, [pc, #116]	@ (e24 <subghz_cli_command_tx_carrier+0x11c>)
+     db0:	4798      	blx	r3
+    furi_hal_power_suppress_charge_exit();
+     db2:	4b1d      	ldr	r3, [pc, #116]	@ (e28 <subghz_cli_command_tx_carrier+0x120>)
+     db4:	4798      	blx	r3
+}
+     db6:	b002      	add	sp, #8
+     db8:	bd70      	pop	{r4, r5, r6, pc}
+        printf("This frequency can only be used for RX in your region\r\n");
+     dba:	481c      	ldr	r0, [pc, #112]	@ (e2c <subghz_cli_command_tx_carrier+0x124>)
+     dbc:	4b11      	ldr	r3, [pc, #68]	@ (e04 <subghz_cli_command_tx_carrier+0xfc>)
+     dbe:	4798      	blx	r3
+     dc0:	e7f2      	b.n	da8 <subghz_cli_command_tx_carrier+0xa0>
+     dc2:	bf00      	nop
+     dc4:	19dd1800 	.word	0x19dd1800
+	...
+     df8:	00000874 	.word	0x00000874
+     dfc:	00000000 	.word	0x00000000
+     e00:	00000770 	.word	0x00000770
+     e04:	00000000 	.word	0x00000000
+     e08:	0000084c 	.word	0x0000084c
+     e0c:	00000860 	.word	0x00000860
+     e10:	00000000 	.word	0x00000000
+     e14:	00000640 	.word	0x00000640
+	...
+     e2c:	00000898 	.word	0x00000898
+
+00000e30 <subghz_cli_command_rx_carrier>:
+void subghz_cli_command_rx_carrier(PipeSide* pipe, FuriString* args, void* context) {
+     e30:	b570      	push	{r4, r5, r6, lr}
+     e32:	b082      	sub	sp, #8
+     e34:	4604      	mov	r4, r0
+     e36:	460d      	mov	r5, r1
+    uint32_t frequency = 433920000;
+     e38:	4b2b      	ldr	r3, [pc, #172]	@ (ee8 <subghz_cli_command_rx_carrier+0xb8>)
+     e3a:	9301      	str	r3, [sp, #4]
+    if(furi_string_size(args)) {
+     e3c:	4608      	mov	r0, r1
+     e3e:	4b2b      	ldr	r3, [pc, #172]	@ (eec <subghz_cli_command_rx_carrier+0xbc>)
+     e40:	4798      	blx	r3
+     e42:	b160      	cbz	r0, e5e <subghz_cli_command_rx_carrier+0x2e>
+        if(strint_to_uint32(furi_string_get_cstr(args), NULL, &frequency, 10) !=
+     e44:	4628      	mov	r0, r5
+     e46:	4b2a      	ldr	r3, [pc, #168]	@ (ef0 <subghz_cli_command_rx_carrier+0xc0>)
+     e48:	4798      	blx	r3
+     e4a:	230a      	movs	r3, #10
+     e4c:	aa01      	add	r2, sp, #4
+     e4e:	2100      	movs	r1, #0
+     e50:	4e28      	ldr	r6, [pc, #160]	@ (ef4 <subghz_cli_command_rx_carrier+0xc4>)
+     e52:	47b0      	blx	r6
+     e54:	b9c0      	cbnz	r0, e88 <subghz_cli_command_rx_carrier+0x58>
+        if(!furi_hal_subghz_is_frequency_valid(frequency)) {
+     e56:	9801      	ldr	r0, [sp, #4]
+     e58:	4b27      	ldr	r3, [pc, #156]	@ (ef8 <subghz_cli_command_rx_carrier+0xc8>)
+     e5a:	4798      	blx	r3
+     e5c:	b1e8      	cbz	r0, e9a <subghz_cli_command_rx_carrier+0x6a>
+    furi_hal_subghz_reset();
+     e5e:	4b27      	ldr	r3, [pc, #156]	@ (efc <subghz_cli_command_rx_carrier+0xcc>)
+     e60:	4798      	blx	r3
+    furi_hal_subghz_load_custom_preset(subghz_device_cc1101_preset_ook_650khz_async_regs);
+     e62:	4827      	ldr	r0, [pc, #156]	@ (f00 <subghz_cli_command_rx_carrier+0xd0>)
+     e64:	4b27      	ldr	r3, [pc, #156]	@ (f04 <subghz_cli_command_rx_carrier+0xd4>)
+     e66:	4798      	blx	r3
+    frequency = furi_hal_subghz_set_frequency_and_path(frequency);
+     e68:	9801      	ldr	r0, [sp, #4]
+     e6a:	4b27      	ldr	r3, [pc, #156]	@ (f08 <subghz_cli_command_rx_carrier+0xd8>)
+     e6c:	4798      	blx	r3
+     e6e:	4601      	mov	r1, r0
+     e70:	9001      	str	r0, [sp, #4]
+    printf("Receiving at frequency %lu Hz\r\n", frequency);
+     e72:	4826      	ldr	r0, [pc, #152]	@ (f0c <subghz_cli_command_rx_carrier+0xdc>)
+     e74:	4b26      	ldr	r3, [pc, #152]	@ (f10 <subghz_cli_command_rx_carrier+0xe0>)
+     e76:	4798      	blx	r3
+    printf("Press CTRL+C to stop\r\n");
+     e78:	4826      	ldr	r0, [pc, #152]	@ (f14 <subghz_cli_command_rx_carrier+0xe4>)
+     e7a:	4b27      	ldr	r3, [pc, #156]	@ (f18 <subghz_cli_command_rx_carrier+0xe8>)
+     e7c:	4798      	blx	r3
+    furi_hal_power_suppress_charge_enter();
+     e7e:	4b27      	ldr	r3, [pc, #156]	@ (f1c <subghz_cli_command_rx_carrier+0xec>)
+     e80:	4798      	blx	r3
+    furi_hal_subghz_rx();
+     e82:	4b27      	ldr	r3, [pc, #156]	@ (f20 <subghz_cli_command_rx_carrier+0xf0>)
+     e84:	4798      	blx	r3
+    while(!cli_is_pipe_broken_or_is_etx_next_char(pipe)) {
+     e86:	e020      	b.n	eca <subghz_cli_command_rx_carrier+0x9a>
+            cli_print_usage("subghz rx_carrier", "<Frequency: in Hz>", furi_string_get_cstr(args));
+     e88:	4628      	mov	r0, r5
+     e8a:	4b19      	ldr	r3, [pc, #100]	@ (ef0 <subghz_cli_command_rx_carrier+0xc0>)
+     e8c:	4798      	blx	r3
+     e8e:	4602      	mov	r2, r0
+     e90:	4924      	ldr	r1, [pc, #144]	@ (f24 <subghz_cli_command_rx_carrier+0xf4>)
+     e92:	4825      	ldr	r0, [pc, #148]	@ (f28 <subghz_cli_command_rx_carrier+0xf8>)
+     e94:	4b25      	ldr	r3, [pc, #148]	@ (f2c <subghz_cli_command_rx_carrier+0xfc>)
+     e96:	4798      	blx	r3
+            return;
+     e98:	e023      	b.n	ee2 <subghz_cli_command_rx_carrier+0xb2>
+            printf(
+     e9a:	9901      	ldr	r1, [sp, #4]
+     e9c:	4824      	ldr	r0, [pc, #144]	@ (f30 <subghz_cli_command_rx_carrier+0x100>)
+     e9e:	4b1c      	ldr	r3, [pc, #112]	@ (f10 <subghz_cli_command_rx_carrier+0xe0>)
+     ea0:	4798      	blx	r3
+            return;
+     ea2:	e01e      	b.n	ee2 <subghz_cli_command_rx_carrier+0xb2>
+        furi_delay_ms(250);
+     ea4:	20fa      	movs	r0, #250	@ 0xfa
+     ea6:	4b23      	ldr	r3, [pc, #140]	@ (f34 <subghz_cli_command_rx_carrier+0x104>)
+     ea8:	4798      	blx	r3
+        printf("RSSI: %03.1fdbm\r", (double)furi_hal_subghz_get_rssi());
+     eaa:	4b23      	ldr	r3, [pc, #140]	@ (f38 <subghz_cli_command_rx_carrier+0x108>)
+     eac:	4798      	blx	r3
+     eae:	ee10 0a10 	vmov	r0, s0
+     eb2:	4b22      	ldr	r3, [pc, #136]	@ (f3c <subghz_cli_command_rx_carrier+0x10c>)
+     eb4:	4798      	blx	r3
+     eb6:	4602      	mov	r2, r0
+     eb8:	460b      	mov	r3, r1
+     eba:	4821      	ldr	r0, [pc, #132]	@ (f40 <subghz_cli_command_rx_carrier+0x110>)
+     ebc:	4914      	ldr	r1, [pc, #80]	@ (f10 <subghz_cli_command_rx_carrier+0xe0>)
+     ebe:	4788      	blx	r1
+        fflush(stdout);
+     ec0:	4b20      	ldr	r3, [pc, #128]	@ (f44 <subghz_cli_command_rx_carrier+0x114>)
+     ec2:	681b      	ldr	r3, [r3, #0]
+     ec4:	6898      	ldr	r0, [r3, #8]
+     ec6:	4b20      	ldr	r3, [pc, #128]	@ (f48 <subghz_cli_command_rx_carrier+0x118>)
+     ec8:	4798      	blx	r3
+    while(!cli_is_pipe_broken_or_is_etx_next_char(pipe)) {
+     eca:	4620      	mov	r0, r4
+     ecc:	4b1f      	ldr	r3, [pc, #124]	@ (f4c <subghz_cli_command_rx_carrier+0x11c>)
+     ece:	4798      	blx	r3
+     ed0:	2800      	cmp	r0, #0
+     ed2:	d0e7      	beq.n	ea4 <subghz_cli_command_rx_carrier+0x74>
+    furi_hal_power_suppress_charge_exit();
+     ed4:	4b1e      	ldr	r3, [pc, #120]	@ (f50 <subghz_cli_command_rx_carrier+0x120>)
+     ed6:	4798      	blx	r3
+    furi_hal_subghz_set_path(FuriHalSubGhzPathIsolate);
+     ed8:	2000      	movs	r0, #0
+     eda:	4b1e      	ldr	r3, [pc, #120]	@ (f54 <subghz_cli_command_rx_carrier+0x124>)
+     edc:	4798      	blx	r3
+    furi_hal_subghz_sleep();
+     ede:	4b1e      	ldr	r3, [pc, #120]	@ (f58 <subghz_cli_command_rx_carrier+0x128>)
+     ee0:	4798      	blx	r3
+}
+     ee2:	b002      	add	sp, #8
+     ee4:	bd70      	pop	{r4, r5, r6, pc}
+     ee6:	bf00      	nop
+     ee8:	19dd1800 	.word	0x19dd1800
+	...
+     f0c:	00000750 	.word	0x00000750
+     f10:	00000000 	.word	0x00000000
+     f14:	00000770 	.word	0x00000770
+	...
+     f24:	0000084c 	.word	0x0000084c
+     f28:	000008d0 	.word	0x000008d0
+     f2c:	00000000 	.word	0x00000000
+     f30:	00000640 	.word	0x00000640
+	...
+     f40:	000008e4 	.word	0x000008e4
+	...
+
+00000f5c <subghz_cli_command_tx>:
+void subghz_cli_command_tx(PipeSide* pipe, FuriString* args, void* context) {
+     f5c:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+     f60:	b088      	sub	sp, #32
+     f62:	4605      	mov	r5, r0
+     f64:	460e      	mov	r6, r1
+    uint32_t frequency = 433920000;
+     f66:	4b6b      	ldr	r3, [pc, #428]	@ (1114 <subghz_cli_command_tx+0x1b8>)
+     f68:	9307      	str	r3, [sp, #28]
+    uint32_t key = 0x0074BADE;
+     f6a:	4b6b      	ldr	r3, [pc, #428]	@ (1118 <subghz_cli_command_tx+0x1bc>)
+     f6c:	9306      	str	r3, [sp, #24]
+    uint32_t repeat = 10;
+     f6e:	230a      	movs	r3, #10
+     f70:	9305      	str	r3, [sp, #20]
+    uint32_t te = 403;
+     f72:	f240 1393 	movw	r3, #403	@ 0x193
+     f76:	9304      	str	r3, [sp, #16]
+    uint32_t device_ind = 0; // 0 - CC1101_INT, 1 - CC1101_EXT
+     f78:	2300      	movs	r3, #0
+     f7a:	9303      	str	r3, [sp, #12]
+    if(furi_string_size(args)) {
+     f7c:	4608      	mov	r0, r1
+     f7e:	4b67      	ldr	r3, [pc, #412]	@ (111c <subghz_cli_command_tx+0x1c0>)
+     f80:	4798      	blx	r3
+     f82:	2800      	cmp	r0, #0
+     f84:	d027      	beq.n	fd6 <subghz_cli_command_tx+0x7a>
+        char* args_cstr = (char*)furi_string_get_cstr(args);
+     f86:	4630      	mov	r0, r6
+     f88:	4b65      	ldr	r3, [pc, #404]	@ (1120 <subghz_cli_command_tx+0x1c4>)
+     f8a:	4798      	blx	r3
+     f8c:	9002      	str	r0, [sp, #8]
+        parse_err |= strint_to_uint32(args_cstr, &args_cstr, &key, 16);
+     f8e:	2310      	movs	r3, #16
+     f90:	aa06      	add	r2, sp, #24
+     f92:	a902      	add	r1, sp, #8
+     f94:	4f63      	ldr	r7, [pc, #396]	@ (1124 <subghz_cli_command_tx+0x1c8>)
+     f96:	47b8      	blx	r7
+     f98:	4604      	mov	r4, r0
+        parse_err |= strint_to_uint32(args_cstr, &args_cstr, &frequency, 10);
+     f9a:	230a      	movs	r3, #10
+     f9c:	aa07      	add	r2, sp, #28
+     f9e:	a902      	add	r1, sp, #8
+     fa0:	9802      	ldr	r0, [sp, #8]
+     fa2:	47b8      	blx	r7
+     fa4:	4304      	orrs	r4, r0
+     fa6:	b2e4      	uxtb	r4, r4
+        parse_err |= strint_to_uint32(args_cstr, &args_cstr, &te, 10);
+     fa8:	230a      	movs	r3, #10
+     faa:	aa04      	add	r2, sp, #16
+     fac:	a902      	add	r1, sp, #8
+     fae:	9802      	ldr	r0, [sp, #8]
+     fb0:	47b8      	blx	r7
+     fb2:	4304      	orrs	r4, r0
+     fb4:	b2e4      	uxtb	r4, r4
+        parse_err |= strint_to_uint32(args_cstr, &args_cstr, &repeat, 10);
+     fb6:	230a      	movs	r3, #10
+     fb8:	aa05      	add	r2, sp, #20
+     fba:	a902      	add	r1, sp, #8
+     fbc:	9802      	ldr	r0, [sp, #8]
+     fbe:	47b8      	blx	r7
+     fc0:	4304      	orrs	r4, r0
+     fc2:	b2e4      	uxtb	r4, r4
+        parse_err |= strint_to_uint32(args_cstr, &args_cstr, &device_ind, 10);
+     fc4:	230a      	movs	r3, #10
+     fc6:	aa03      	add	r2, sp, #12
+     fc8:	a902      	add	r1, sp, #8
+     fca:	9802      	ldr	r0, [sp, #8]
+     fcc:	47b8      	blx	r7
+     fce:	4304      	orrs	r4, r0
+        if(parse_err) {
+     fd0:	f014 0fff 	tst.w	r4, #255	@ 0xff
+     fd4:	d15b      	bne.n	108e <subghz_cli_command_tx+0x132>
+    subghz_devices_init();
+     fd6:	4b54      	ldr	r3, [pc, #336]	@ (1128 <subghz_cli_command_tx+0x1cc>)
+     fd8:	4798      	blx	r3
+    const SubGhzDevice* device = subghz_cli_command_get_device(&device_ind);
+     fda:	a803      	add	r0, sp, #12
+     fdc:	4b53      	ldr	r3, [pc, #332]	@ (112c <subghz_cli_command_tx+0x1d0>)
+     fde:	4798      	blx	r3
+     fe0:	4604      	mov	r4, r0
+    if(!subghz_devices_is_frequency_valid(device, frequency)) {
+     fe2:	9907      	ldr	r1, [sp, #28]
+     fe4:	4b52      	ldr	r3, [pc, #328]	@ (1130 <subghz_cli_command_tx+0x1d4>)
+     fe6:	4798      	blx	r3
+     fe8:	2800      	cmp	r0, #0
+     fea:	d059      	beq.n	10a0 <subghz_cli_command_tx+0x144>
+    printf(
+     fec:	9b03      	ldr	r3, [sp, #12]
+     fee:	9301      	str	r3, [sp, #4]
+     ff0:	9b05      	ldr	r3, [sp, #20]
+     ff2:	9300      	str	r3, [sp, #0]
+     ff4:	9b04      	ldr	r3, [sp, #16]
+     ff6:	9a06      	ldr	r2, [sp, #24]
+     ff8:	9907      	ldr	r1, [sp, #28]
+     ffa:	484e      	ldr	r0, [pc, #312]	@ (1134 <subghz_cli_command_tx+0x1d8>)
+     ffc:	4e4e      	ldr	r6, [pc, #312]	@ (1138 <subghz_cli_command_tx+0x1dc>)
+     ffe:	47b0      	blx	r6
+        (uint8_t)((key >> 16) & 0xFFU),
+    1000:	9906      	ldr	r1, [sp, #24]
+    FuriString* flipper_format_string = furi_string_alloc_printf(
+    1002:	9b05      	ldr	r3, [sp, #20]
+    1004:	9301      	str	r3, [sp, #4]
+    1006:	9b04      	ldr	r3, [sp, #16]
+    1008:	9300      	str	r3, [sp, #0]
+    100a:	b2cb      	uxtb	r3, r1
+    100c:	f3c1 2207 	ubfx	r2, r1, #8, #8
+    1010:	f3c1 4107 	ubfx	r1, r1, #16, #8
+    1014:	4849      	ldr	r0, [pc, #292]	@ (113c <subghz_cli_command_tx+0x1e0>)
+    1016:	4e4a      	ldr	r6, [pc, #296]	@ (1140 <subghz_cli_command_tx+0x1e4>)
+    1018:	47b0      	blx	r6
+    101a:	4607      	mov	r7, r0
+    FlipperFormat* flipper_format = flipper_format_string_alloc();
+    101c:	4b49      	ldr	r3, [pc, #292]	@ (1144 <subghz_cli_command_tx+0x1e8>)
+    101e:	4798      	blx	r3
+    1020:	4680      	mov	r8, r0
+    Stream* stream = flipper_format_get_raw_stream(flipper_format);
+    1022:	4b49      	ldr	r3, [pc, #292]	@ (1148 <subghz_cli_command_tx+0x1ec>)
+    1024:	4798      	blx	r3
+    1026:	4606      	mov	r6, r0
+    stream_clean(stream);
+    1028:	4b48      	ldr	r3, [pc, #288]	@ (114c <subghz_cli_command_tx+0x1f0>)
+    102a:	4798      	blx	r3
+    stream_write_cstring(stream, furi_string_get_cstr(flipper_format_string));
+    102c:	4638      	mov	r0, r7
+    102e:	4b3c      	ldr	r3, [pc, #240]	@ (1120 <subghz_cli_command_tx+0x1c4>)
+    1030:	4798      	blx	r3
+    1032:	4601      	mov	r1, r0
+    1034:	4630      	mov	r0, r6
+    1036:	4b46      	ldr	r3, [pc, #280]	@ (1150 <subghz_cli_command_tx+0x1f4>)
+    1038:	4798      	blx	r3
+    SubGhzEnvironment* environment = subghz_environment_alloc();
+    103a:	4b46      	ldr	r3, [pc, #280]	@ (1154 <subghz_cli_command_tx+0x1f8>)
+    103c:	4798      	blx	r3
+    103e:	4606      	mov	r6, r0
+    subghz_environment_set_protocol_registry(environment, (void*)&subghz_protocol_registry);
+    1040:	4945      	ldr	r1, [pc, #276]	@ (1158 <subghz_cli_command_tx+0x1fc>)
+    1042:	4b46      	ldr	r3, [pc, #280]	@ (115c <subghz_cli_command_tx+0x200>)
+    1044:	4798      	blx	r3
+    SubGhzTransmitter* transmitter = subghz_transmitter_alloc_init(environment, "Princeton");
+    1046:	4946      	ldr	r1, [pc, #280]	@ (1160 <subghz_cli_command_tx+0x204>)
+    1048:	4630      	mov	r0, r6
+    104a:	4b46      	ldr	r3, [pc, #280]	@ (1164 <subghz_cli_command_tx+0x208>)
+    104c:	4798      	blx	r3
+    104e:	4607      	mov	r7, r0
+    subghz_transmitter_deserialize(transmitter, flipper_format);
+    1050:	4641      	mov	r1, r8
+    1052:	4b45      	ldr	r3, [pc, #276]	@ (1168 <subghz_cli_command_tx+0x20c>)
+    1054:	4798      	blx	r3
+    subghz_devices_begin(device);
+    1056:	4620      	mov	r0, r4
+    1058:	4b44      	ldr	r3, [pc, #272]	@ (116c <subghz_cli_command_tx+0x210>)
+    105a:	4798      	blx	r3
+    subghz_devices_reset(device);
+    105c:	4620      	mov	r0, r4
+    105e:	4b44      	ldr	r3, [pc, #272]	@ (1170 <subghz_cli_command_tx+0x214>)
+    1060:	4798      	blx	r3
+    subghz_devices_load_preset(device, FuriHalSubGhzPresetOok650Async, NULL);
+    1062:	2200      	movs	r2, #0
+    1064:	2102      	movs	r1, #2
+    1066:	4620      	mov	r0, r4
+    1068:	4b42      	ldr	r3, [pc, #264]	@ (1174 <subghz_cli_command_tx+0x218>)
+    106a:	4798      	blx	r3
+    frequency = subghz_devices_set_frequency(device, frequency);
+    106c:	9907      	ldr	r1, [sp, #28]
+    106e:	4620      	mov	r0, r4
+    1070:	4b41      	ldr	r3, [pc, #260]	@ (1178 <subghz_cli_command_tx+0x21c>)
+    1072:	4798      	blx	r3
+    1074:	9007      	str	r0, [sp, #28]
+    furi_hal_power_suppress_charge_enter();
+    1076:	4b41      	ldr	r3, [pc, #260]	@ (117c <subghz_cli_command_tx+0x220>)
+    1078:	4798      	blx	r3
+    if(subghz_devices_start_async_tx(device, subghz_transmitter_yield, transmitter)) {
+    107a:	463a      	mov	r2, r7
+    107c:	4940      	ldr	r1, [pc, #256]	@ (1180 <subghz_cli_command_tx+0x224>)
+    107e:	4620      	mov	r0, r4
+    1080:	4b40      	ldr	r3, [pc, #256]	@ (1184 <subghz_cli_command_tx+0x228>)
+    1082:	4798      	blx	r3
+    1084:	bb08      	cbnz	r0, 10ca <subghz_cli_command_tx+0x16e>
+        printf("Transmission on this frequency is restricted in your region\r\n");
+    1086:	4840      	ldr	r0, [pc, #256]	@ (1188 <subghz_cli_command_tx+0x22c>)
+    1088:	4b40      	ldr	r3, [pc, #256]	@ (118c <subghz_cli_command_tx+0x230>)
+    108a:	4798      	blx	r3
+    108c:	e029      	b.n	10e2 <subghz_cli_command_tx+0x186>
+            cli_print_usage(
+    108e:	4630      	mov	r0, r6
+    1090:	4b23      	ldr	r3, [pc, #140]	@ (1120 <subghz_cli_command_tx+0x1c4>)
+    1092:	4798      	blx	r3
+    1094:	4602      	mov	r2, r0
+    1096:	493e      	ldr	r1, [pc, #248]	@ (1190 <subghz_cli_command_tx+0x234>)
+    1098:	483e      	ldr	r0, [pc, #248]	@ (1194 <subghz_cli_command_tx+0x238>)
+    109a:	4b3f      	ldr	r3, [pc, #252]	@ (1198 <subghz_cli_command_tx+0x23c>)
+    109c:	4798      	blx	r3
+            return;
+    109e:	e035      	b.n	110c <subghz_cli_command_tx+0x1b0>
+        printf(
+    10a0:	9907      	ldr	r1, [sp, #28]
+    10a2:	483e      	ldr	r0, [pc, #248]	@ (119c <subghz_cli_command_tx+0x240>)
+    10a4:	4b24      	ldr	r3, [pc, #144]	@ (1138 <subghz_cli_command_tx+0x1dc>)
+    10a6:	4798      	blx	r3
+        subghz_devices_deinit();
+    10a8:	4b3d      	ldr	r3, [pc, #244]	@ (11a0 <subghz_cli_command_tx+0x244>)
+    10aa:	4798      	blx	r3
+        subghz_cli_radio_device_power_off();
+    10ac:	4b3d      	ldr	r3, [pc, #244]	@ (11a4 <subghz_cli_command_tx+0x248>)
+    10ae:	4798      	blx	r3
+        return;
+    10b0:	e02c      	b.n	110c <subghz_cli_command_tx+0x1b0>
+            printf(".");
+    10b2:	202e      	movs	r0, #46	@ 0x2e
+    10b4:	4b3c      	ldr	r3, [pc, #240]	@ (11a8 <subghz_cli_command_tx+0x24c>)
+    10b6:	4798      	blx	r3
+            fflush(stdout);
+    10b8:	4b3c      	ldr	r3, [pc, #240]	@ (11ac <subghz_cli_command_tx+0x250>)
+    10ba:	681b      	ldr	r3, [r3, #0]
+    10bc:	6898      	ldr	r0, [r3, #8]
+    10be:	4b3c      	ldr	r3, [pc, #240]	@ (11b0 <subghz_cli_command_tx+0x254>)
+    10c0:	4798      	blx	r3
+            furi_delay_ms(333);
+    10c2:	f240 104d 	movw	r0, #333	@ 0x14d
+    10c6:	4b3b      	ldr	r3, [pc, #236]	@ (11b4 <subghz_cli_command_tx+0x258>)
+    10c8:	4798      	blx	r3
+            !(subghz_devices_is_async_complete_tx(device) ||
+    10ca:	4620      	mov	r0, r4
+    10cc:	4b3a      	ldr	r3, [pc, #232]	@ (11b8 <subghz_cli_command_tx+0x25c>)
+    10ce:	4798      	blx	r3
+    10d0:	b920      	cbnz	r0, 10dc <subghz_cli_command_tx+0x180>
+              cli_is_pipe_broken_or_is_etx_next_char(pipe))) {
+    10d2:	4628      	mov	r0, r5
+    10d4:	4b39      	ldr	r3, [pc, #228]	@ (11bc <subghz_cli_command_tx+0x260>)
+    10d6:	4798      	blx	r3
+            !(subghz_devices_is_async_complete_tx(device) ||
+    10d8:	2800      	cmp	r0, #0
+    10da:	d0ea      	beq.n	10b2 <subghz_cli_command_tx+0x156>
+        subghz_devices_stop_async_tx(device);
+    10dc:	4620      	mov	r0, r4
+    10de:	4b38      	ldr	r3, [pc, #224]	@ (11c0 <subghz_cli_command_tx+0x264>)
+    10e0:	4798      	blx	r3
+    subghz_devices_sleep(device);
+    10e2:	4620      	mov	r0, r4
+    10e4:	4b37      	ldr	r3, [pc, #220]	@ (11c4 <subghz_cli_command_tx+0x268>)
+    10e6:	4798      	blx	r3
+    subghz_devices_end(device);
+    10e8:	4620      	mov	r0, r4
+    10ea:	4b37      	ldr	r3, [pc, #220]	@ (11c8 <subghz_cli_command_tx+0x26c>)
+    10ec:	4798      	blx	r3
+    subghz_devices_deinit();
+    10ee:	4b2c      	ldr	r3, [pc, #176]	@ (11a0 <subghz_cli_command_tx+0x244>)
+    10f0:	4798      	blx	r3
+    subghz_cli_radio_device_power_off();
+    10f2:	4b2c      	ldr	r3, [pc, #176]	@ (11a4 <subghz_cli_command_tx+0x248>)
+    10f4:	4798      	blx	r3
+    furi_hal_power_suppress_charge_exit();
+    10f6:	4b35      	ldr	r3, [pc, #212]	@ (11cc <subghz_cli_command_tx+0x270>)
+    10f8:	4798      	blx	r3
+    flipper_format_free(flipper_format);
+    10fa:	4640      	mov	r0, r8
+    10fc:	4b34      	ldr	r3, [pc, #208]	@ (11d0 <subghz_cli_command_tx+0x274>)
+    10fe:	4798      	blx	r3
+    subghz_transmitter_free(transmitter);
+    1100:	4638      	mov	r0, r7
+    1102:	4b34      	ldr	r3, [pc, #208]	@ (11d4 <subghz_cli_command_tx+0x278>)
+    1104:	4798      	blx	r3
+    subghz_environment_free(environment);
+    1106:	4630      	mov	r0, r6
+    1108:	4b33      	ldr	r3, [pc, #204]	@ (11d8 <subghz_cli_command_tx+0x27c>)
+    110a:	4798      	blx	r3
+}
+    110c:	b008      	add	sp, #32
+    110e:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+    1112:	bf00      	nop
+    1114:	19dd1800 	.word	0x19dd1800
+    1118:	0074bade 	.word	0x0074bade
+	...
+    1134:	0000096c 	.word	0x0000096c
+    1138:	00000000 	.word	0x00000000
+    113c:	000009c0 	.word	0x000009c0
+	...
+    1160:	00000a14 	.word	0x00000a14
+	...
+    1188:	00000a20 	.word	0x00000a20
+    118c:	00000000 	.word	0x00000000
+    1190:	000008f8 	.word	0x000008f8
+    1194:	00000960 	.word	0x00000960
+    1198:	00000000 	.word	0x00000000
+    119c:	00000640 	.word	0x00000640
+	...
+
+000011dc <subghz_cli_command_rx>:
+void subghz_cli_command_rx(PipeSide* pipe, FuriString* args, void* context) {
+    11dc:	e92d 43f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, lr}
+    11e0:	b085      	sub	sp, #20
+    11e2:	4605      	mov	r5, r0
+    11e4:	460c      	mov	r4, r1
+    uint32_t frequency = 433920000;
+    11e6:	4b5b      	ldr	r3, [pc, #364]	@ (1354 <subghz_cli_command_rx+0x178>)
+    11e8:	9303      	str	r3, [sp, #12]
+    uint32_t device_ind = 0; // 0 - CC1101_INT, 1 - CC1101_EXT
+    11ea:	2300      	movs	r3, #0
+    11ec:	9302      	str	r3, [sp, #8]
+    if(furi_string_size(args)) {
+    11ee:	4608      	mov	r0, r1
+    11f0:	4b59      	ldr	r3, [pc, #356]	@ (1358 <subghz_cli_command_rx+0x17c>)
+    11f2:	4798      	blx	r3
+    11f4:	b190      	cbz	r0, 121c <subghz_cli_command_rx+0x40>
+        char* args_cstr = (char*)furi_string_get_cstr(args);
+    11f6:	4620      	mov	r0, r4
+    11f8:	4b58      	ldr	r3, [pc, #352]	@ (135c <subghz_cli_command_rx+0x180>)
+    11fa:	4798      	blx	r3
+    11fc:	9000      	str	r0, [sp, #0]
+        parse_err |= strint_to_uint32(args_cstr, &args_cstr, &frequency, 10);
+    11fe:	230a      	movs	r3, #10
+    1200:	aa03      	add	r2, sp, #12
+    1202:	4669      	mov	r1, sp
+    1204:	4f56      	ldr	r7, [pc, #344]	@ (1360 <subghz_cli_command_rx+0x184>)
+    1206:	47b8      	blx	r7
+    1208:	4606      	mov	r6, r0
+        parse_err |= strint_to_uint32(args_cstr, &args_cstr, &device_ind, 10);
+    120a:	230a      	movs	r3, #10
+    120c:	aa02      	add	r2, sp, #8
+    120e:	4669      	mov	r1, sp
+    1210:	9800      	ldr	r0, [sp, #0]
+    1212:	47b8      	blx	r7
+    1214:	4306      	orrs	r6, r0
+        if(parse_err) {
+    1216:	f016 0fff 	tst.w	r6, #255	@ 0xff
+    121a:	d157      	bne.n	12cc <subghz_cli_command_rx+0xf0>
+    subghz_devices_init();
+    121c:	4b51      	ldr	r3, [pc, #324]	@ (1364 <subghz_cli_command_rx+0x188>)
+    121e:	4798      	blx	r3
+    const SubGhzDevice* device = subghz_cli_command_get_device(&device_ind);
+    1220:	a802      	add	r0, sp, #8
+    1222:	4b51      	ldr	r3, [pc, #324]	@ (1368 <subghz_cli_command_rx+0x18c>)
+    1224:	4798      	blx	r3
+    1226:	4606      	mov	r6, r0
+    if(!subghz_devices_is_frequency_valid(device, frequency)) {
+    1228:	9903      	ldr	r1, [sp, #12]
+    122a:	4b50      	ldr	r3, [pc, #320]	@ (136c <subghz_cli_command_rx+0x190>)
+    122c:	4798      	blx	r3
+    122e:	2800      	cmp	r0, #0
+    1230:	d055      	beq.n	12de <subghz_cli_command_rx+0x102>
+    SubGhzCliCommandRx* instance = malloc(sizeof(SubGhzCliCommandRx));
+    1232:	200c      	movs	r0, #12
+    1234:	4b4e      	ldr	r3, [pc, #312]	@ (1370 <subghz_cli_command_rx+0x194>)
+    1236:	4798      	blx	r3
+    1238:	4604      	mov	r4, r0
+        furi_stream_buffer_alloc(sizeof(LevelDuration) * 1024, sizeof(LevelDuration));
+    123a:	2104      	movs	r1, #4
+    123c:	f44f 5080 	mov.w	r0, #4096	@ 0x1000
+    1240:	4b4c      	ldr	r3, [pc, #304]	@ (1374 <subghz_cli_command_rx+0x198>)
+    1242:	4798      	blx	r3
+    instance->stream =
+    1244:	6060      	str	r0, [r4, #4]
+    SubGhzEnvironment* environment = subghz_cli_environment_init();
+    1246:	4b4c      	ldr	r3, [pc, #304]	@ (1378 <subghz_cli_command_rx+0x19c>)
+    1248:	4798      	blx	r3
+    124a:	4680      	mov	r8, r0
+    SubGhzReceiver* receiver = subghz_receiver_alloc_init(environment);
+    124c:	4b4b      	ldr	r3, [pc, #300]	@ (137c <subghz_cli_command_rx+0x1a0>)
+    124e:	4798      	blx	r3
+    1250:	4681      	mov	r9, r0
+    subghz_receiver_set_filter(receiver, SubGhzProtocolFlag_Decodable);
+    1252:	2102      	movs	r1, #2
+    1254:	4b4a      	ldr	r3, [pc, #296]	@ (1380 <subghz_cli_command_rx+0x1a4>)
+    1256:	4798      	blx	r3
+    subghz_receiver_set_rx_callback(receiver, subghz_cli_command_rx_callback, instance);
+    1258:	4622      	mov	r2, r4
+    125a:	494a      	ldr	r1, [pc, #296]	@ (1384 <subghz_cli_command_rx+0x1a8>)
+    125c:	4648      	mov	r0, r9
+    125e:	4b4a      	ldr	r3, [pc, #296]	@ (1388 <subghz_cli_command_rx+0x1ac>)
+    1260:	4798      	blx	r3
+    subghz_devices_begin(device);
+    1262:	4630      	mov	r0, r6
+    1264:	4b49      	ldr	r3, [pc, #292]	@ (138c <subghz_cli_command_rx+0x1b0>)
+    1266:	4798      	blx	r3
+    subghz_devices_reset(device);
+    1268:	4630      	mov	r0, r6
+    126a:	4b49      	ldr	r3, [pc, #292]	@ (1390 <subghz_cli_command_rx+0x1b4>)
+    126c:	4798      	blx	r3
+    subghz_devices_load_preset(device, FuriHalSubGhzPresetOok650Async, NULL);
+    126e:	2200      	movs	r2, #0
+    1270:	2102      	movs	r1, #2
+    1272:	4630      	mov	r0, r6
+    1274:	4b47      	ldr	r3, [pc, #284]	@ (1394 <subghz_cli_command_rx+0x1b8>)
+    1276:	4798      	blx	r3
+    frequency = subghz_devices_set_frequency(device, frequency);
+    1278:	9903      	ldr	r1, [sp, #12]
+    127a:	4630      	mov	r0, r6
+    127c:	4b46      	ldr	r3, [pc, #280]	@ (1398 <subghz_cli_command_rx+0x1bc>)
+    127e:	4798      	blx	r3
+    1280:	9003      	str	r0, [sp, #12]
+    furi_hal_power_suppress_charge_enter();
+    1282:	4b46      	ldr	r3, [pc, #280]	@ (139c <subghz_cli_command_rx+0x1c0>)
+    1284:	4798      	blx	r3
+    subghz_devices_start_async_rx(device, subghz_cli_command_rx_capture_callback, instance);
+    1286:	4622      	mov	r2, r4
+    1288:	4945      	ldr	r1, [pc, #276]	@ (13a0 <subghz_cli_command_rx+0x1c4>)
+    128a:	4630      	mov	r0, r6
+    128c:	4b45      	ldr	r3, [pc, #276]	@ (13a4 <subghz_cli_command_rx+0x1c8>)
+    128e:	4798      	blx	r3
+    printf(
+    1290:	9a02      	ldr	r2, [sp, #8]
+    1292:	9903      	ldr	r1, [sp, #12]
+    1294:	4844      	ldr	r0, [pc, #272]	@ (13a8 <subghz_cli_command_rx+0x1cc>)
+    1296:	4b45      	ldr	r3, [pc, #276]	@ (13ac <subghz_cli_command_rx+0x1d0>)
+    1298:	4798      	blx	r3
+    while(!cli_is_pipe_broken_or_is_etx_next_char(pipe)) {
+    129a:	4628      	mov	r0, r5
+    129c:	4b44      	ldr	r3, [pc, #272]	@ (13b0 <subghz_cli_command_rx+0x1d4>)
+    129e:	4798      	blx	r3
+    12a0:	2800      	cmp	r0, #0
+    12a2:	d134      	bne.n	130e <subghz_cli_command_rx+0x132>
+        int ret = furi_stream_buffer_receive(
+    12a4:	230a      	movs	r3, #10
+    12a6:	2204      	movs	r2, #4
+    12a8:	eb0d 0102 	add.w	r1, sp, r2
+    12ac:	6860      	ldr	r0, [r4, #4]
+    12ae:	4f41      	ldr	r7, [pc, #260]	@ (13b4 <subghz_cli_command_rx+0x1d8>)
+    12b0:	47b8      	blx	r7
+        if(ret == sizeof(LevelDuration)) {
+    12b2:	2804      	cmp	r0, #4
+    12b4:	d1f1      	bne.n	129a <subghz_cli_command_rx+0xbe>
+    level_duration.level = LEVEL_DURATION_WAIT;
+    return level_duration;
+}
+
+static inline bool level_duration_is_reset(LevelDuration level_duration) {
+    return level_duration.level == LEVEL_DURATION_RESET;
+    12b6:	f89d 3007 	ldrb.w	r3, [sp, #7]
+            if(level_duration_is_reset(level_duration)) {
+    12ba:	2b3f      	cmp	r3, #63	@ 0x3f
+    12bc:	d818      	bhi.n	12f0 <subghz_cli_command_rx+0x114>
+                printf(".");
+    12be:	202e      	movs	r0, #46	@ 0x2e
+    12c0:	4b3d      	ldr	r3, [pc, #244]	@ (13b8 <subghz_cli_command_rx+0x1dc>)
+    12c2:	4798      	blx	r3
+                subghz_receiver_reset(receiver);
+    12c4:	4648      	mov	r0, r9
+    12c6:	4b3d      	ldr	r3, [pc, #244]	@ (13bc <subghz_cli_command_rx+0x1e0>)
+    12c8:	4798      	blx	r3
+    12ca:	e7e6      	b.n	129a <subghz_cli_command_rx+0xbe>
+            cli_print_usage(
+    12cc:	4620      	mov	r0, r4
+    12ce:	4b23      	ldr	r3, [pc, #140]	@ (135c <subghz_cli_command_rx+0x180>)
+    12d0:	4798      	blx	r3
+    12d2:	4602      	mov	r2, r0
+    12d4:	493a      	ldr	r1, [pc, #232]	@ (13c0 <subghz_cli_command_rx+0x1e4>)
+    12d6:	483b      	ldr	r0, [pc, #236]	@ (13c4 <subghz_cli_command_rx+0x1e8>)
+    12d8:	4b3b      	ldr	r3, [pc, #236]	@ (13c8 <subghz_cli_command_rx+0x1ec>)
+    12da:	4798      	blx	r3
+            return;
+    12dc:	e036      	b.n	134c <subghz_cli_command_rx+0x170>
+        printf(
+    12de:	9903      	ldr	r1, [sp, #12]
+    12e0:	483a      	ldr	r0, [pc, #232]	@ (13cc <subghz_cli_command_rx+0x1f0>)
+    12e2:	4b32      	ldr	r3, [pc, #200]	@ (13ac <subghz_cli_command_rx+0x1d0>)
+    12e4:	4798      	blx	r3
+        subghz_devices_deinit();
+    12e6:	4b3a      	ldr	r3, [pc, #232]	@ (13d0 <subghz_cli_command_rx+0x1f4>)
+    12e8:	4798      	blx	r3
+        subghz_cli_radio_device_power_off();
+    12ea:	4b3a      	ldr	r3, [pc, #232]	@ (13d4 <subghz_cli_command_rx+0x1f8>)
+    12ec:	4798      	blx	r3
+        return;
+    12ee:	e02d      	b.n	134c <subghz_cli_command_rx+0x170>
+                bool level = level_duration_get_level(level_duration);
+    12f0:	9a01      	ldr	r2, [sp, #4]
+static inline bool level_duration_is_wait(LevelDuration level_duration) {
+    return level_duration.level == LEVEL_DURATION_WAIT;
+}
+
+static inline bool level_duration_get_level(LevelDuration level_duration) {
+    return level_duration.level == LEVEL_DURATION_LEVEL_HIGH;
+    12f2:	f3c2 6107 	ubfx	r1, r2, #24, #8
+    12f6:	f001 01c0 	and.w	r1, r1, #192	@ 0xc0
+                subghz_receiver_decode(receiver, level, duration);
+    12fa:	f022 4240 	bic.w	r2, r2, #3221225472	@ 0xc0000000
+    12fe:	2980      	cmp	r1, #128	@ 0x80
+    1300:	bf14      	ite	ne
+    1302:	2100      	movne	r1, #0
+    1304:	2101      	moveq	r1, #1
+    1306:	4648      	mov	r0, r9
+    1308:	4b33      	ldr	r3, [pc, #204]	@ (13d8 <subghz_cli_command_rx+0x1fc>)
+    130a:	4798      	blx	r3
+    130c:	e7c5      	b.n	129a <subghz_cli_command_rx+0xbe>
+    subghz_devices_stop_async_rx(device);
+    130e:	4630      	mov	r0, r6
+    1310:	4b32      	ldr	r3, [pc, #200]	@ (13dc <subghz_cli_command_rx+0x200>)
+    1312:	4798      	blx	r3
+    subghz_devices_sleep(device);
+    1314:	4630      	mov	r0, r6
+    1316:	4b32      	ldr	r3, [pc, #200]	@ (13e0 <subghz_cli_command_rx+0x204>)
+    1318:	4798      	blx	r3
+    subghz_devices_end(device);
+    131a:	4630      	mov	r0, r6
+    131c:	4b31      	ldr	r3, [pc, #196]	@ (13e4 <subghz_cli_command_rx+0x208>)
+    131e:	4798      	blx	r3
+    subghz_devices_deinit();
+    1320:	4b2b      	ldr	r3, [pc, #172]	@ (13d0 <subghz_cli_command_rx+0x1f4>)
+    1322:	4798      	blx	r3
+    subghz_cli_radio_device_power_off();
+    1324:	4b2b      	ldr	r3, [pc, #172]	@ (13d4 <subghz_cli_command_rx+0x1f8>)
+    1326:	4798      	blx	r3
+    furi_hal_power_suppress_charge_exit();
+    1328:	4b2f      	ldr	r3, [pc, #188]	@ (13e8 <subghz_cli_command_rx+0x20c>)
+    132a:	4798      	blx	r3
+    printf("\r\nPackets received %zu\r\n", instance->packet_count);
+    132c:	68a1      	ldr	r1, [r4, #8]
+    132e:	482f      	ldr	r0, [pc, #188]	@ (13ec <subghz_cli_command_rx+0x210>)
+    1330:	4b1e      	ldr	r3, [pc, #120]	@ (13ac <subghz_cli_command_rx+0x1d0>)
+    1332:	4798      	blx	r3
+    subghz_receiver_free(receiver);
+    1334:	4648      	mov	r0, r9
+    1336:	4b2e      	ldr	r3, [pc, #184]	@ (13f0 <subghz_cli_command_rx+0x214>)
+    1338:	4798      	blx	r3
+    subghz_environment_free(environment);
+    133a:	4640      	mov	r0, r8
+    133c:	4b2d      	ldr	r3, [pc, #180]	@ (13f4 <subghz_cli_command_rx+0x218>)
+    133e:	4798      	blx	r3
+    furi_stream_buffer_free(instance->stream);
+    1340:	6860      	ldr	r0, [r4, #4]
+    1342:	4b2d      	ldr	r3, [pc, #180]	@ (13f8 <subghz_cli_command_rx+0x21c>)
+    1344:	4798      	blx	r3
+    free(instance);
+    1346:	4620      	mov	r0, r4
+    1348:	4b2c      	ldr	r3, [pc, #176]	@ (13fc <subghz_cli_command_rx+0x220>)
+    134a:	4798      	blx	r3
+}
+    134c:	b005      	add	sp, #20
+    134e:	e8bd 83f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, pc}
+    1352:	bf00      	nop
+    1354:	19dd1800 	.word	0x19dd1800
+	...
+    13a8:	00000a6c 	.word	0x00000a6c
+	...
+    13c0:	000005f8 	.word	0x000005f8
+    13c4:	00000a60 	.word	0x00000a60
+    13c8:	00000000 	.word	0x00000000
+    13cc:	00000640 	.word	0x00000640
+	...
+    13ec:	00000aac 	.word	0x00000aac
+	...
+
+00001400 <subghz_cli_command_rx_raw>:
+void subghz_cli_command_rx_raw(PipeSide* pipe, FuriString* args, void* context) {
+    1400:	b5f0      	push	{r4, r5, r6, r7, lr}
+    1402:	b083      	sub	sp, #12
+    1404:	4606      	mov	r6, r0
+    1406:	460c      	mov	r4, r1
+    uint32_t frequency = 433920000;
+    1408:	4b44      	ldr	r3, [pc, #272]	@ (151c <subghz_cli_command_rx_raw+0x11c>)
+    140a:	9301      	str	r3, [sp, #4]
+    if(furi_string_size(args)) {
+    140c:	4608      	mov	r0, r1
+    140e:	4b44      	ldr	r3, [pc, #272]	@ (1520 <subghz_cli_command_rx_raw+0x120>)
+    1410:	4798      	blx	r3
+    1412:	b170      	cbz	r0, 1432 <subghz_cli_command_rx_raw+0x32>
+        if(strint_to_uint32(furi_string_get_cstr(args), NULL, &frequency, 10) !=
+    1414:	4620      	mov	r0, r4
+    1416:	4b43      	ldr	r3, [pc, #268]	@ (1524 <subghz_cli_command_rx_raw+0x124>)
+    1418:	4798      	blx	r3
+    141a:	230a      	movs	r3, #10
+    141c:	aa01      	add	r2, sp, #4
+    141e:	2100      	movs	r1, #0
+    1420:	4d41      	ldr	r5, [pc, #260]	@ (1528 <subghz_cli_command_rx_raw+0x128>)
+    1422:	47a8      	blx	r5
+    1424:	2800      	cmp	r0, #0
+    1426:	d129      	bne.n	147c <subghz_cli_command_rx_raw+0x7c>
+        if(!furi_hal_subghz_is_frequency_valid(frequency)) {
+    1428:	9801      	ldr	r0, [sp, #4]
+    142a:	4b40      	ldr	r3, [pc, #256]	@ (152c <subghz_cli_command_rx_raw+0x12c>)
+    142c:	4798      	blx	r3
+    142e:	2800      	cmp	r0, #0
+    1430:	d02d      	beq.n	148e <subghz_cli_command_rx_raw+0x8e>
+    SubGhzCliCommandRx* instance = malloc(sizeof(SubGhzCliCommandRx));
+    1432:	200c      	movs	r0, #12
+    1434:	4b3e      	ldr	r3, [pc, #248]	@ (1530 <subghz_cli_command_rx_raw+0x130>)
+    1436:	4798      	blx	r3
+    1438:	4605      	mov	r5, r0
+        furi_stream_buffer_alloc(sizeof(LevelDuration) * 1024, sizeof(LevelDuration));
+    143a:	2104      	movs	r1, #4
+    143c:	f44f 5080 	mov.w	r0, #4096	@ 0x1000
+    1440:	4b3c      	ldr	r3, [pc, #240]	@ (1534 <subghz_cli_command_rx_raw+0x134>)
+    1442:	4798      	blx	r3
+    instance->stream =
+    1444:	6068      	str	r0, [r5, #4]
+    furi_hal_subghz_reset();
+    1446:	4b3c      	ldr	r3, [pc, #240]	@ (1538 <subghz_cli_command_rx_raw+0x138>)
+    1448:	4798      	blx	r3
+    furi_hal_subghz_load_custom_preset(subghz_device_cc1101_preset_ook_270khz_async_regs);
+    144a:	483c      	ldr	r0, [pc, #240]	@ (153c <subghz_cli_command_rx_raw+0x13c>)
+    144c:	4b3c      	ldr	r3, [pc, #240]	@ (1540 <subghz_cli_command_rx_raw+0x140>)
+    144e:	4798      	blx	r3
+    frequency = furi_hal_subghz_set_frequency_and_path(frequency);
+    1450:	9801      	ldr	r0, [sp, #4]
+    1452:	4b3c      	ldr	r3, [pc, #240]	@ (1544 <subghz_cli_command_rx_raw+0x144>)
+    1454:	4798      	blx	r3
+    1456:	9001      	str	r0, [sp, #4]
+    furi_hal_gpio_init(&gpio_cc1101_g0, GpioModeInput, GpioPullNo, GpioSpeedLow);
+    1458:	2300      	movs	r3, #0
+    145a:	461a      	mov	r2, r3
+    145c:	4619      	mov	r1, r3
+    145e:	483a      	ldr	r0, [pc, #232]	@ (1548 <subghz_cli_command_rx_raw+0x148>)
+    1460:	4c3a      	ldr	r4, [pc, #232]	@ (154c <subghz_cli_command_rx_raw+0x14c>)
+    1462:	47a0      	blx	r4
+    furi_hal_power_suppress_charge_enter();
+    1464:	4b3a      	ldr	r3, [pc, #232]	@ (1550 <subghz_cli_command_rx_raw+0x150>)
+    1466:	4798      	blx	r3
+    furi_hal_subghz_start_async_rx(subghz_cli_command_rx_capture_callback, instance);
+    1468:	4629      	mov	r1, r5
+    146a:	483a      	ldr	r0, [pc, #232]	@ (1554 <subghz_cli_command_rx_raw+0x154>)
+    146c:	4b3a      	ldr	r3, [pc, #232]	@ (1558 <subghz_cli_command_rx_raw+0x158>)
+    146e:	4798      	blx	r3
+    printf("Listening at %lu. Press CTRL+C to stop\r\n", frequency);
+    1470:	9901      	ldr	r1, [sp, #4]
+    1472:	483a      	ldr	r0, [pc, #232]	@ (155c <subghz_cli_command_rx_raw+0x15c>)
+    1474:	4b3a      	ldr	r3, [pc, #232]	@ (1560 <subghz_cli_command_rx_raw+0x160>)
+    1476:	4798      	blx	r3
+    size_t counter = 0;
+    1478:	2400      	movs	r4, #0
+    while(!cli_is_pipe_broken_or_is_etx_next_char(pipe)) {
+    147a:	e02b      	b.n	14d4 <subghz_cli_command_rx_raw+0xd4>
+            cli_print_usage("subghz rx", "<Frequency: in Hz>", furi_string_get_cstr(args));
+    147c:	4620      	mov	r0, r4
+    147e:	4b29      	ldr	r3, [pc, #164]	@ (1524 <subghz_cli_command_rx_raw+0x124>)
+    1480:	4798      	blx	r3
+    1482:	4602      	mov	r2, r0
+    1484:	4937      	ldr	r1, [pc, #220]	@ (1564 <subghz_cli_command_rx_raw+0x164>)
+    1486:	4838      	ldr	r0, [pc, #224]	@ (1568 <subghz_cli_command_rx_raw+0x168>)
+    1488:	4b38      	ldr	r3, [pc, #224]	@ (156c <subghz_cli_command_rx_raw+0x16c>)
+    148a:	4798      	blx	r3
+            return;
+    148c:	e013      	b.n	14b6 <subghz_cli_command_rx_raw+0xb6>
+            printf(
+    148e:	9901      	ldr	r1, [sp, #4]
+    1490:	4837      	ldr	r0, [pc, #220]	@ (1570 <subghz_cli_command_rx_raw+0x170>)
+    1492:	4b33      	ldr	r3, [pc, #204]	@ (1560 <subghz_cli_command_rx_raw+0x160>)
+    1494:	4798      	blx	r3
+            return;
+    1496:	e00e      	b.n	14b6 <subghz_cli_command_rx_raw+0xb6>
+            puts("stream corrupt");
+    1498:	4836      	ldr	r0, [pc, #216]	@ (1574 <subghz_cli_command_rx_raw+0x174>)
+    149a:	4b37      	ldr	r3, [pc, #220]	@ (1578 <subghz_cli_command_rx_raw+0x178>)
+    149c:	4798      	blx	r3
+    furi_hal_subghz_stop_async_rx();
+    149e:	4b37      	ldr	r3, [pc, #220]	@ (157c <subghz_cli_command_rx_raw+0x17c>)
+    14a0:	4798      	blx	r3
+    furi_hal_subghz_sleep();
+    14a2:	4b37      	ldr	r3, [pc, #220]	@ (1580 <subghz_cli_command_rx_raw+0x180>)
+    14a4:	4798      	blx	r3
+    furi_hal_power_suppress_charge_exit();
+    14a6:	4b37      	ldr	r3, [pc, #220]	@ (1584 <subghz_cli_command_rx_raw+0x184>)
+    14a8:	4798      	blx	r3
+    furi_stream_buffer_free(instance->stream);
+    14aa:	6868      	ldr	r0, [r5, #4]
+    14ac:	4b36      	ldr	r3, [pc, #216]	@ (1588 <subghz_cli_command_rx_raw+0x188>)
+    14ae:	4798      	blx	r3
+    free(instance);
+    14b0:	4628      	mov	r0, r5
+    14b2:	4b36      	ldr	r3, [pc, #216]	@ (158c <subghz_cli_command_rx_raw+0x18c>)
+    14b4:	4798      	blx	r3
+}
+    14b6:	b003      	add	sp, #12
+    14b8:	bdf0      	pop	{r4, r5, r6, r7, pc}
+            puts(". ");
+    14ba:	4835      	ldr	r0, [pc, #212]	@ (1590 <subghz_cli_command_rx_raw+0x190>)
+    14bc:	4b2e      	ldr	r3, [pc, #184]	@ (1578 <subghz_cli_command_rx_raw+0x178>)
+    14be:	4798      	blx	r3
+    14c0:	e003      	b.n	14ca <subghz_cli_command_rx_raw+0xca>
+            printf("%c%lu ", level ? '+' : '-', duration);
+    14c2:	212b      	movs	r1, #43	@ 0x2b
+    14c4:	4833      	ldr	r0, [pc, #204]	@ (1594 <subghz_cli_command_rx_raw+0x194>)
+    14c6:	4b26      	ldr	r3, [pc, #152]	@ (1560 <subghz_cli_command_rx_raw+0x160>)
+    14c8:	4798      	blx	r3
+        furi_thread_stdout_flush();
+    14ca:	4b33      	ldr	r3, [pc, #204]	@ (1598 <subghz_cli_command_rx_raw+0x198>)
+    14cc:	4798      	blx	r3
+        counter++;
+    14ce:	3401      	adds	r4, #1
+        if(counter > 255) {
+    14d0:	2cff      	cmp	r4, #255	@ 0xff
+    14d2:	d81d      	bhi.n	1510 <subghz_cli_command_rx_raw+0x110>
+    while(!cli_is_pipe_broken_or_is_etx_next_char(pipe)) {
+    14d4:	4630      	mov	r0, r6
+    14d6:	4b31      	ldr	r3, [pc, #196]	@ (159c <subghz_cli_command_rx_raw+0x19c>)
+    14d8:	4798      	blx	r3
+    14da:	2800      	cmp	r0, #0
+    14dc:	d1df      	bne.n	149e <subghz_cli_command_rx_raw+0x9e>
+        int ret = furi_stream_buffer_receive(
+    14de:	230a      	movs	r3, #10
+    14e0:	2204      	movs	r2, #4
+    14e2:	4669      	mov	r1, sp
+    14e4:	6868      	ldr	r0, [r5, #4]
+    14e6:	4f2e      	ldr	r7, [pc, #184]	@ (15a0 <subghz_cli_command_rx_raw+0x1a0>)
+    14e8:	47b8      	blx	r7
+        if(ret == 0) {
+    14ea:	2800      	cmp	r0, #0
+    14ec:	d0f2      	beq.n	14d4 <subghz_cli_command_rx_raw+0xd4>
+        if(ret != sizeof(LevelDuration)) {
+    14ee:	2804      	cmp	r0, #4
+    14f0:	d1d2      	bne.n	1498 <subghz_cli_command_rx_raw+0x98>
+    return level_duration.level == LEVEL_DURATION_RESET;
+    14f2:	f89d 3003 	ldrb.w	r3, [sp, #3]
+        if(level_duration_is_reset(level_duration)) {
+    14f6:	2b3f      	cmp	r3, #63	@ 0x3f
+    14f8:	d9df      	bls.n	14ba <subghz_cli_command_rx_raw+0xba>
+            bool level = level_duration_get_level(level_duration);
+    14fa:	9a00      	ldr	r2, [sp, #0]
+    return level_duration.level == LEVEL_DURATION_LEVEL_HIGH;
+    14fc:	f3c2 6307 	ubfx	r3, r2, #24, #8
+    1500:	f003 03c0 	and.w	r3, r3, #192	@ 0xc0
+}
+
+static inline uint32_t level_duration_get_duration(LevelDuration level_duration) {
+    return level_duration.duration;
+    1504:	f3c2 021d 	ubfx	r2, r2, #0, #30
+            printf("%c%lu ", level ? '+' : '-', duration);
+    1508:	2b80      	cmp	r3, #128	@ 0x80
+    150a:	d0da      	beq.n	14c2 <subghz_cli_command_rx_raw+0xc2>
+    150c:	212d      	movs	r1, #45	@ 0x2d
+    150e:	e7d9      	b.n	14c4 <subghz_cli_command_rx_raw+0xc4>
+            puts("\r\n");
+    1510:	4824      	ldr	r0, [pc, #144]	@ (15a4 <subghz_cli_command_rx_raw+0x1a4>)
+    1512:	4b19      	ldr	r3, [pc, #100]	@ (1578 <subghz_cli_command_rx_raw+0x178>)
+    1514:	4798      	blx	r3
+            counter = 0;
+    1516:	2400      	movs	r4, #0
+    1518:	e7dc      	b.n	14d4 <subghz_cli_command_rx_raw+0xd4>
+    151a:	bf00      	nop
+    151c:	19dd1800 	.word	0x19dd1800
+	...
+    155c:	00000ac8 	.word	0x00000ac8
+    1560:	00000000 	.word	0x00000000
+    1564:	0000084c 	.word	0x0000084c
+    1568:	00000a60 	.word	0x00000a60
+    156c:	00000000 	.word	0x00000000
+    1570:	00000640 	.word	0x00000640
+    1574:	00000af4 	.word	0x00000af4
+	...
+    1590:	00000b04 	.word	0x00000b04
+    1594:	00000b08 	.word	0x00000b08
+	...
+    15a4:	00000b10 	.word	0x00000b10
+
+000015a8 <subghz_cli_command_decode_raw>:
+void subghz_cli_command_decode_raw(PipeSide* pipe, FuriString* args, void* context) {
+    15a8:	e92d 43f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, lr}
+    15ac:	b083      	sub	sp, #12
+    15ae:	4605      	mov	r5, r0
+    15b0:	460f      	mov	r7, r1
+    file_name = furi_string_alloc();
+    15b2:	f8df 822c 	ldr.w	r8, [pc, #556]	@ 17e0 <subghz_cli_command_decode_raw+0x238>
+    15b6:	47c0      	blx	r8
+    15b8:	4604      	mov	r4, r0
+    furi_string_set(file_name, EXT_PATH("subghz/test.sub"));
+    15ba:	495d      	ldr	r1, [pc, #372]	@ (1730 <subghz_cli_command_decode_raw+0x188>)
+    15bc:	4b5d      	ldr	r3, [pc, #372]	@ (1734 <subghz_cli_command_decode_raw+0x18c>)
+    15be:	4798      	blx	r3
+    Storage* storage = furi_record_open(RECORD_STORAGE);
+    15c0:	485d      	ldr	r0, [pc, #372]	@ (1738 <subghz_cli_command_decode_raw+0x190>)
+    15c2:	4b5e      	ldr	r3, [pc, #376]	@ (173c <subghz_cli_command_decode_raw+0x194>)
+    15c4:	4798      	blx	r3
+    FlipperFormat* fff_data_file = flipper_format_file_alloc(storage);
+    15c6:	4b5e      	ldr	r3, [pc, #376]	@ (1740 <subghz_cli_command_decode_raw+0x198>)
+    15c8:	4798      	blx	r3
+    15ca:	4606      	mov	r6, r0
+    temp_str = furi_string_alloc();
+    15cc:	47c0      	blx	r8
+    15ce:	4680      	mov	r8, r0
+        if(furi_string_size(args)) {
+    15d0:	4638      	mov	r0, r7
+    15d2:	4b5c      	ldr	r3, [pc, #368]	@ (1744 <subghz_cli_command_decode_raw+0x19c>)
+    15d4:	4798      	blx	r3
+    15d6:	b128      	cbz	r0, 15e4 <subghz_cli_command_decode_raw+0x3c>
+            if(!args_read_string_and_trim(args, file_name)) {
+    15d8:	4621      	mov	r1, r4
+    15da:	4638      	mov	r0, r7
+    15dc:	4b5a      	ldr	r3, [pc, #360]	@ (1748 <subghz_cli_command_decode_raw+0x1a0>)
+    15de:	4798      	blx	r3
+    15e0:	4681      	mov	r9, r0
+    15e2:	b308      	cbz	r0, 1628 <subghz_cli_command_decode_raw+0x80>
+        if(!flipper_format_file_open_existing(fff_data_file, furi_string_get_cstr(file_name))) {
+    15e4:	4620      	mov	r0, r4
+    15e6:	4b59      	ldr	r3, [pc, #356]	@ (174c <subghz_cli_command_decode_raw+0x1a4>)
+    15e8:	4798      	blx	r3
+    15ea:	4601      	mov	r1, r0
+    15ec:	4630      	mov	r0, r6
+    15ee:	4b58      	ldr	r3, [pc, #352]	@ (1750 <subghz_cli_command_decode_raw+0x1a8>)
+    15f0:	4798      	blx	r3
+    15f2:	4681      	mov	r9, r0
+    15f4:	bb08      	cbnz	r0, 163a <subghz_cli_command_decode_raw+0x92>
+            printf(
+    15f6:	4620      	mov	r0, r4
+    15f8:	4b54      	ldr	r3, [pc, #336]	@ (174c <subghz_cli_command_decode_raw+0x1a4>)
+    15fa:	4798      	blx	r3
+    15fc:	4601      	mov	r1, r0
+    15fe:	4855      	ldr	r0, [pc, #340]	@ (1754 <subghz_cli_command_decode_raw+0x1ac>)
+    1600:	4b55      	ldr	r3, [pc, #340]	@ (1758 <subghz_cli_command_decode_raw+0x1b0>)
+    1602:	4798      	blx	r3
+    furi_string_free(temp_str);
+    1604:	4640      	mov	r0, r8
+    1606:	4b55      	ldr	r3, [pc, #340]	@ (175c <subghz_cli_command_decode_raw+0x1b4>)
+    1608:	4798      	blx	r3
+    flipper_format_free(fff_data_file);
+    160a:	4630      	mov	r0, r6
+    160c:	4b54      	ldr	r3, [pc, #336]	@ (1760 <subghz_cli_command_decode_raw+0x1b8>)
+    160e:	4798      	blx	r3
+    furi_record_close(RECORD_STORAGE);
+    1610:	4849      	ldr	r0, [pc, #292]	@ (1738 <subghz_cli_command_decode_raw+0x190>)
+    1612:	4b54      	ldr	r3, [pc, #336]	@ (1764 <subghz_cli_command_decode_raw+0x1bc>)
+    1614:	4798      	blx	r3
+    if(check_file) {
+    1616:	f1b9 0f00 	cmp.w	r9, #0
+    161a:	d129      	bne.n	1670 <subghz_cli_command_decode_raw+0xc8>
+    furi_string_free(file_name);
+    161c:	4620      	mov	r0, r4
+    161e:	4b4f      	ldr	r3, [pc, #316]	@ (175c <subghz_cli_command_decode_raw+0x1b4>)
+    1620:	4798      	blx	r3
+}
+    1622:	b003      	add	sp, #12
+    1624:	e8bd 83f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, pc}
+                cli_print_usage(
+    1628:	4638      	mov	r0, r7
+    162a:	4b48      	ldr	r3, [pc, #288]	@ (174c <subghz_cli_command_decode_raw+0x1a4>)
+    162c:	4798      	blx	r3
+    162e:	4602      	mov	r2, r0
+    1630:	494d      	ldr	r1, [pc, #308]	@ (1768 <subghz_cli_command_decode_raw+0x1c0>)
+    1632:	484e      	ldr	r0, [pc, #312]	@ (176c <subghz_cli_command_decode_raw+0x1c4>)
+    1634:	4b4e      	ldr	r3, [pc, #312]	@ (1770 <subghz_cli_command_decode_raw+0x1c8>)
+    1636:	4798      	blx	r3
+                break;
+    1638:	e7e4      	b.n	1604 <subghz_cli_command_decode_raw+0x5c>
+        if(!flipper_format_read_header(fff_data_file, temp_str, &temp_data32)) {
+    163a:	aa01      	add	r2, sp, #4
+    163c:	4641      	mov	r1, r8
+    163e:	4630      	mov	r0, r6
+    1640:	4b4c      	ldr	r3, [pc, #304]	@ (1774 <subghz_cli_command_decode_raw+0x1cc>)
+    1642:	4798      	blx	r3
+    1644:	4681      	mov	r9, r0
+    1646:	b918      	cbnz	r0, 1650 <subghz_cli_command_decode_raw+0xa8>
+            printf("subghz decode_raw \033[0;31mMissing or incorrect header\033[0m\r\n");
+    1648:	484b      	ldr	r0, [pc, #300]	@ (1778 <subghz_cli_command_decode_raw+0x1d0>)
+    164a:	4b4c      	ldr	r3, [pc, #304]	@ (177c <subghz_cli_command_decode_raw+0x1d4>)
+    164c:	4798      	blx	r3
+            break;
+    164e:	e7d9      	b.n	1604 <subghz_cli_command_decode_raw+0x5c>
+        if(!strcmp(furi_string_get_cstr(temp_str), SUBGHZ_RAW_FILE_TYPE) &&
+    1650:	4640      	mov	r0, r8
+    1652:	4b3e      	ldr	r3, [pc, #248]	@ (174c <subghz_cli_command_decode_raw+0x1a4>)
+    1654:	4798      	blx	r3
+    1656:	494a      	ldr	r1, [pc, #296]	@ (1780 <subghz_cli_command_decode_raw+0x1d8>)
+    1658:	4b4a      	ldr	r3, [pc, #296]	@ (1784 <subghz_cli_command_decode_raw+0x1dc>)
+    165a:	4798      	blx	r3
+    165c:	b910      	cbnz	r0, 1664 <subghz_cli_command_decode_raw+0xbc>
+           temp_data32 == SUBGHZ_KEY_FILE_VERSION) {
+    165e:	9b01      	ldr	r3, [sp, #4]
+        if(!strcmp(furi_string_get_cstr(temp_str), SUBGHZ_RAW_FILE_TYPE) &&
+    1660:	2b01      	cmp	r3, #1
+    1662:	d0cf      	beq.n	1604 <subghz_cli_command_decode_raw+0x5c>
+            printf("subghz decode_raw \033[0;31mType or version mismatch\033[0m\r\n");
+    1664:	4848      	ldr	r0, [pc, #288]	@ (1788 <subghz_cli_command_decode_raw+0x1e0>)
+    1666:	4b45      	ldr	r3, [pc, #276]	@ (177c <subghz_cli_command_decode_raw+0x1d4>)
+    1668:	4798      	blx	r3
+    bool check_file = false;
+    166a:	f04f 0900 	mov.w	r9, #0
+            break;
+    166e:	e7c9      	b.n	1604 <subghz_cli_command_decode_raw+0x5c>
+        SubGhzCliCommandRx* instance = malloc(sizeof(SubGhzCliCommandRx));
+    1670:	200c      	movs	r0, #12
+    1672:	4b46      	ldr	r3, [pc, #280]	@ (178c <subghz_cli_command_decode_raw+0x1e4>)
+    1674:	4798      	blx	r3
+    1676:	4680      	mov	r8, r0
+        SubGhzEnvironment* environment = subghz_cli_environment_init();
+    1678:	4b45      	ldr	r3, [pc, #276]	@ (1790 <subghz_cli_command_decode_raw+0x1e8>)
+    167a:	4798      	blx	r3
+    167c:	4681      	mov	r9, r0
+        SubGhzReceiver* receiver = subghz_receiver_alloc_init(environment);
+    167e:	4b45      	ldr	r3, [pc, #276]	@ (1794 <subghz_cli_command_decode_raw+0x1ec>)
+    1680:	4798      	blx	r3
+    1682:	4607      	mov	r7, r0
+        subghz_receiver_set_filter(receiver, SubGhzProtocolFlag_Decodable);
+    1684:	2102      	movs	r1, #2
+    1686:	4b44      	ldr	r3, [pc, #272]	@ (1798 <subghz_cli_command_decode_raw+0x1f0>)
+    1688:	4798      	blx	r3
+        subghz_receiver_set_rx_callback(receiver, subghz_cli_command_rx_callback, instance);
+    168a:	4642      	mov	r2, r8
+    168c:	4943      	ldr	r1, [pc, #268]	@ (179c <subghz_cli_command_decode_raw+0x1f4>)
+    168e:	4638      	mov	r0, r7
+    1690:	4b43      	ldr	r3, [pc, #268]	@ (17a0 <subghz_cli_command_decode_raw+0x1f8>)
+    1692:	4798      	blx	r3
+        SubGhzFileEncoderWorker* file_worker_encoder = subghz_file_encoder_worker_alloc();
+    1694:	4b43      	ldr	r3, [pc, #268]	@ (17a4 <subghz_cli_command_decode_raw+0x1fc>)
+    1696:	4798      	blx	r3
+    1698:	4606      	mov	r6, r0
+        if(subghz_file_encoder_worker_start(
+    169a:	4620      	mov	r0, r4
+    169c:	4b2b      	ldr	r3, [pc, #172]	@ (174c <subghz_cli_command_decode_raw+0x1a4>)
+    169e:	4798      	blx	r3
+    16a0:	4601      	mov	r1, r0
+    16a2:	2200      	movs	r2, #0
+    16a4:	4630      	mov	r0, r6
+    16a6:	4b40      	ldr	r3, [pc, #256]	@ (17a8 <subghz_cli_command_decode_raw+0x200>)
+    16a8:	4798      	blx	r3
+    16aa:	bb10      	cbnz	r0, 16f2 <subghz_cli_command_decode_raw+0x14a>
+        printf(
+    16ac:	4620      	mov	r0, r4
+    16ae:	4b27      	ldr	r3, [pc, #156]	@ (174c <subghz_cli_command_decode_raw+0x1a4>)
+    16b0:	4798      	blx	r3
+    16b2:	4601      	mov	r1, r0
+    16b4:	483d      	ldr	r0, [pc, #244]	@ (17ac <subghz_cli_command_decode_raw+0x204>)
+    16b6:	4b28      	ldr	r3, [pc, #160]	@ (1758 <subghz_cli_command_decode_raw+0x1b0>)
+    16b8:	4798      	blx	r3
+        while(!cli_is_pipe_broken_or_is_etx_next_char(pipe)) {
+    16ba:	4628      	mov	r0, r5
+    16bc:	4b3c      	ldr	r3, [pc, #240]	@ (17b0 <subghz_cli_command_decode_raw+0x208>)
+    16be:	4798      	blx	r3
+    16c0:	b9d8      	cbnz	r0, 16fa <subghz_cli_command_decode_raw+0x152>
+            furi_delay_us(500); //you need to have time to read from the file from the SD card
+    16c2:	f44f 70fa 	mov.w	r0, #500	@ 0x1f4
+    16c6:	4b3b      	ldr	r3, [pc, #236]	@ (17b4 <subghz_cli_command_decode_raw+0x20c>)
+    16c8:	4798      	blx	r3
+            level_duration = subghz_file_encoder_worker_get_level_duration(file_worker_encoder);
+    16ca:	4630      	mov	r0, r6
+    16cc:	4b3a      	ldr	r3, [pc, #232]	@ (17b8 <subghz_cli_command_decode_raw+0x210>)
+    16ce:	4798      	blx	r3
+            if(!level_duration_is_reset(level_duration)) {
+    16d0:	f1b0 4f80 	cmp.w	r0, #1073741824	@ 0x40000000
+    16d4:	d311      	bcc.n	16fa <subghz_cli_command_decode_raw+0x152>
+    return level_duration.level == LEVEL_DURATION_LEVEL_HIGH;
+    16d6:	f3c0 6107 	ubfx	r1, r0, #24, #8
+    16da:	f001 01c0 	and.w	r1, r1, #192	@ 0xc0
+                subghz_receiver_decode(receiver, level, duration);
+    16de:	f020 4240 	bic.w	r2, r0, #3221225472	@ 0xc0000000
+    16e2:	2980      	cmp	r1, #128	@ 0x80
+    16e4:	bf14      	ite	ne
+    16e6:	2100      	movne	r1, #0
+    16e8:	2101      	moveq	r1, #1
+    16ea:	4638      	mov	r0, r7
+    16ec:	4b33      	ldr	r3, [pc, #204]	@ (17bc <subghz_cli_command_decode_raw+0x214>)
+    16ee:	4798      	blx	r3
+    16f0:	e7e3      	b.n	16ba <subghz_cli_command_decode_raw+0x112>
+            furi_delay_ms(100);
+    16f2:	2064      	movs	r0, #100	@ 0x64
+    16f4:	4b32      	ldr	r3, [pc, #200]	@ (17c0 <subghz_cli_command_decode_raw+0x218>)
+    16f6:	4798      	blx	r3
+    16f8:	e7d8      	b.n	16ac <subghz_cli_command_decode_raw+0x104>
+        printf("\r\nPackets received \033[0;32m%zu\033[0m\r\n", instance->packet_count);
+    16fa:	f8d8 1008 	ldr.w	r1, [r8, #8]
+    16fe:	4831      	ldr	r0, [pc, #196]	@ (17c4 <subghz_cli_command_decode_raw+0x21c>)
+    1700:	4b15      	ldr	r3, [pc, #84]	@ (1758 <subghz_cli_command_decode_raw+0x1b0>)
+    1702:	4798      	blx	r3
+        subghz_receiver_free(receiver);
+    1704:	4638      	mov	r0, r7
+    1706:	4b30      	ldr	r3, [pc, #192]	@ (17c8 <subghz_cli_command_decode_raw+0x220>)
+    1708:	4798      	blx	r3
+        subghz_environment_free(environment);
+    170a:	4648      	mov	r0, r9
+    170c:	4b2f      	ldr	r3, [pc, #188]	@ (17cc <subghz_cli_command_decode_raw+0x224>)
+    170e:	4798      	blx	r3
+        if(subghz_file_encoder_worker_is_running(file_worker_encoder)) {
+    1710:	4630      	mov	r0, r6
+    1712:	4b2f      	ldr	r3, [pc, #188]	@ (17d0 <subghz_cli_command_decode_raw+0x228>)
+    1714:	4798      	blx	r3
+    1716:	b930      	cbnz	r0, 1726 <subghz_cli_command_decode_raw+0x17e>
+        subghz_file_encoder_worker_free(file_worker_encoder);
+    1718:	4630      	mov	r0, r6
+    171a:	4b2e      	ldr	r3, [pc, #184]	@ (17d4 <subghz_cli_command_decode_raw+0x22c>)
+    171c:	4798      	blx	r3
+        free(instance);
+    171e:	4640      	mov	r0, r8
+    1720:	4b2d      	ldr	r3, [pc, #180]	@ (17d8 <subghz_cli_command_decode_raw+0x230>)
+    1722:	4798      	blx	r3
+    1724:	e77a      	b.n	161c <subghz_cli_command_decode_raw+0x74>
+            subghz_file_encoder_worker_stop(file_worker_encoder);
+    1726:	4630      	mov	r0, r6
+    1728:	4b2c      	ldr	r3, [pc, #176]	@ (17dc <subghz_cli_command_decode_raw+0x234>)
+    172a:	4798      	blx	r3
+    172c:	e7f4      	b.n	1718 <subghz_cli_command_decode_raw+0x170>
+    172e:	bf00      	nop
+    1730:	00000b14 	.word	0x00000b14
+    1734:	00000000 	.word	0x00000000
+    1738:	00000b2c 	.word	0x00000b2c
+	...
+    1754:	00000b64 	.word	0x00000b64
+	...
+    1768:	00000b34 	.word	0x00000b34
+    176c:	00000b50 	.word	0x00000b50
+	...
+    1778:	00000b98 	.word	0x00000b98
+    177c:	00000000 	.word	0x00000000
+    1780:	00000bd4 	.word	0x00000bd4
+    1784:	00000000 	.word	0x00000000
+    1788:	00000bec 	.word	0x00000bec
+	...
+    17ac:	00000c24 	.word	0x00000c24
+	...
+    17c4:	00000c5c 	.word	0x00000c5c
+	...
+
+000017e4 <subghz_cli_command_tx_from_file>:
+void subghz_cli_command_tx_from_file(PipeSide* pipe, FuriString* args, void* context) { // -V524
+    17e4:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+    17e8:	b089      	sub	sp, #36	@ 0x24
+    17ea:	4604      	mov	r4, r0
+    17ec:	460d      	mov	r5, r1
+    file_name = furi_string_alloc();
+    17ee:	4e8c      	ldr	r6, [pc, #560]	@ (1a20 <subghz_cli_command_tx_from_file+0x23c>)
+    17f0:	47b0      	blx	r6
+    17f2:	4680      	mov	r8, r0
+    furi_string_set(file_name, EXT_PATH("subghz/test.sub"));
+    17f4:	498b      	ldr	r1, [pc, #556]	@ (1a24 <subghz_cli_command_tx_from_file+0x240>)
+    17f6:	4b8c      	ldr	r3, [pc, #560]	@ (1a28 <subghz_cli_command_tx_from_file+0x244>)
+    17f8:	4798      	blx	r3
+    uint32_t repeat = 10;
+    17fa:	230a      	movs	r3, #10
+    17fc:	9307      	str	r3, [sp, #28]
+    uint32_t device_ind = 0; // 0 - CC1101_INT, 1 - CC1101_EXT
+    17fe:	2700      	movs	r7, #0
+    1800:	9706      	str	r7, [sp, #24]
+    Storage* storage = furi_record_open(RECORD_STORAGE);
+    1802:	488a      	ldr	r0, [pc, #552]	@ (1a2c <subghz_cli_command_tx_from_file+0x248>)
+    1804:	4b8a      	ldr	r3, [pc, #552]	@ (1a30 <subghz_cli_command_tx_from_file+0x24c>)
+    1806:	4798      	blx	r3
+    FlipperFormat* fff_data_file = flipper_format_file_alloc(storage);
+    1808:	4b8a      	ldr	r3, [pc, #552]	@ (1a34 <subghz_cli_command_tx_from_file+0x250>)
+    180a:	4798      	blx	r3
+    180c:	4681      	mov	r9, r0
+    FlipperFormat* fff_data_raw = flipper_format_string_alloc();
+    180e:	4b8a      	ldr	r3, [pc, #552]	@ (1a38 <subghz_cli_command_tx_from_file+0x254>)
+    1810:	4798      	blx	r3
+    1812:	4683      	mov	fp, r0
+    temp_str = furi_string_alloc();
+    1814:	47b0      	blx	r6
+    1816:	4606      	mov	r6, r0
+    uint32_t frequency = 0;
+    1818:	9704      	str	r7, [sp, #16]
+    subghz_devices_init();
+    181a:	4b88      	ldr	r3, [pc, #544]	@ (1a3c <subghz_cli_command_tx_from_file+0x258>)
+    181c:	4798      	blx	r3
+    SubGhzEnvironment* environment = subghz_cli_environment_init();
+    181e:	4b88      	ldr	r3, [pc, #544]	@ (1a40 <subghz_cli_command_tx_from_file+0x25c>)
+    1820:	4798      	blx	r3
+    1822:	9000      	str	r0, [sp, #0]
+        if(furi_string_size(args)) {
+    1824:	4628      	mov	r0, r5
+    1826:	4b87      	ldr	r3, [pc, #540]	@ (1a44 <subghz_cli_command_tx_from_file+0x260>)
+    1828:	4798      	blx	r3
+    182a:	b130      	cbz	r0, 183a <subghz_cli_command_tx_from_file+0x56>
+            if(!args_read_string_and_trim(args, file_name)) {
+    182c:	4641      	mov	r1, r8
+    182e:	4628      	mov	r0, r5
+    1830:	4b85      	ldr	r3, [pc, #532]	@ (1a48 <subghz_cli_command_tx_from_file+0x264>)
+    1832:	4798      	blx	r3
+    1834:	4682      	mov	sl, r0
+    1836:	2800      	cmp	r0, #0
+    1838:	d049      	beq.n	18ce <subghz_cli_command_tx_from_file+0xea>
+        if(furi_string_size(args)) {
+    183a:	4628      	mov	r0, r5
+    183c:	4b81      	ldr	r3, [pc, #516]	@ (1a44 <subghz_cli_command_tx_from_file+0x260>)
+    183e:	4798      	blx	r3
+    1840:	b198      	cbz	r0, 186a <subghz_cli_command_tx_from_file+0x86>
+            char* args_cstr = (char*)furi_string_get_cstr(args);
+    1842:	4628      	mov	r0, r5
+    1844:	4b81      	ldr	r3, [pc, #516]	@ (1a4c <subghz_cli_command_tx_from_file+0x268>)
+    1846:	4798      	blx	r3
+    1848:	9003      	str	r0, [sp, #12]
+            parse_err |= strint_to_uint32(args_cstr, &args_cstr, &repeat, 10);
+    184a:	230a      	movs	r3, #10
+    184c:	aa07      	add	r2, sp, #28
+    184e:	a903      	add	r1, sp, #12
+    1850:	4f7f      	ldr	r7, [pc, #508]	@ (1a50 <subghz_cli_command_tx_from_file+0x26c>)
+    1852:	47b8      	blx	r7
+    1854:	4682      	mov	sl, r0
+            parse_err |= strint_to_uint32(args_cstr, &args_cstr, &device_ind, 10);
+    1856:	230a      	movs	r3, #10
+    1858:	aa06      	add	r2, sp, #24
+    185a:	a903      	add	r1, sp, #12
+    185c:	9803      	ldr	r0, [sp, #12]
+    185e:	47b8      	blx	r7
+    1860:	ea4a 0a00 	orr.w	sl, sl, r0
+            if(parse_err) {
+    1864:	f01a 0fff 	tst.w	sl, #255	@ 0xff
+    1868:	d13b      	bne.n	18e2 <subghz_cli_command_tx_from_file+0xfe>
+        device = subghz_cli_command_get_device(&device_ind);
+    186a:	a806      	add	r0, sp, #24
+    186c:	4b79      	ldr	r3, [pc, #484]	@ (1a54 <subghz_cli_command_tx_from_file+0x270>)
+    186e:	4798      	blx	r3
+        if(device == NULL) {
+    1870:	4605      	mov	r5, r0
+    1872:	2800      	cmp	r0, #0
+    1874:	d041      	beq.n	18fa <subghz_cli_command_tx_from_file+0x116>
+        if(!flipper_format_file_open_existing(fff_data_file, furi_string_get_cstr(file_name))) {
+    1876:	4640      	mov	r0, r8
+    1878:	4b74      	ldr	r3, [pc, #464]	@ (1a4c <subghz_cli_command_tx_from_file+0x268>)
+    187a:	4798      	blx	r3
+    187c:	4601      	mov	r1, r0
+    187e:	4648      	mov	r0, r9
+    1880:	4b75      	ldr	r3, [pc, #468]	@ (1a58 <subghz_cli_command_tx_from_file+0x274>)
+    1882:	4798      	blx	r3
+    1884:	4682      	mov	sl, r0
+    1886:	2800      	cmp	r0, #0
+    1888:	d13e      	bne.n	1908 <subghz_cli_command_tx_from_file+0x124>
+            printf(
+    188a:	4640      	mov	r0, r8
+    188c:	4b6f      	ldr	r3, [pc, #444]	@ (1a4c <subghz_cli_command_tx_from_file+0x268>)
+    188e:	4798      	blx	r3
+    1890:	4601      	mov	r1, r0
+    1892:	4872      	ldr	r0, [pc, #456]	@ (1a5c <subghz_cli_command_tx_from_file+0x278>)
+    1894:	4b72      	ldr	r3, [pc, #456]	@ (1a60 <subghz_cli_command_tx_from_file+0x27c>)
+    1896:	4798      	blx	r3
+    SubGhzTransmitter* transmitter = NULL;
+    1898:	2700      	movs	r7, #0
+    flipper_format_free(fff_data_file);
+    189a:	4648      	mov	r0, r9
+    189c:	4b71      	ldr	r3, [pc, #452]	@ (1a64 <subghz_cli_command_tx_from_file+0x280>)
+    189e:	4798      	blx	r3
+    furi_record_close(RECORD_STORAGE);
+    18a0:	4862      	ldr	r0, [pc, #392]	@ (1a2c <subghz_cli_command_tx_from_file+0x248>)
+    18a2:	4b71      	ldr	r3, [pc, #452]	@ (1a68 <subghz_cli_command_tx_from_file+0x284>)
+    18a4:	4798      	blx	r3
+    if(check_file) {
+    18a6:	f1ba 0f00 	cmp.w	sl, #0
+    18aa:	f040 819d 	bne.w	1be8 <subghz_cli_command_tx_from_file+0x404>
+    flipper_format_free(fff_data_raw);
+    18ae:	4658      	mov	r0, fp
+    18b0:	4b6c      	ldr	r3, [pc, #432]	@ (1a64 <subghz_cli_command_tx_from_file+0x280>)
+    18b2:	4798      	blx	r3
+    furi_string_free(file_name);
+    18b4:	4640      	mov	r0, r8
+    18b6:	4c6d      	ldr	r4, [pc, #436]	@ (1a6c <subghz_cli_command_tx_from_file+0x288>)
+    18b8:	47a0      	blx	r4
+    furi_string_free(temp_str);
+    18ba:	4630      	mov	r0, r6
+    18bc:	47a0      	blx	r4
+    subghz_devices_deinit();
+    18be:	4b6c      	ldr	r3, [pc, #432]	@ (1a70 <subghz_cli_command_tx_from_file+0x28c>)
+    18c0:	4798      	blx	r3
+    subghz_environment_free(environment);
+    18c2:	9800      	ldr	r0, [sp, #0]
+    18c4:	4b6b      	ldr	r3, [pc, #428]	@ (1a74 <subghz_cli_command_tx_from_file+0x290>)
+    18c6:	4798      	blx	r3
+}
+    18c8:	b009      	add	sp, #36	@ 0x24
+    18ca:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+                cli_print_usage(
+    18ce:	4628      	mov	r0, r5
+    18d0:	4b5e      	ldr	r3, [pc, #376]	@ (1a4c <subghz_cli_command_tx_from_file+0x268>)
+    18d2:	4798      	blx	r3
+    18d4:	4602      	mov	r2, r0
+    18d6:	4968      	ldr	r1, [pc, #416]	@ (1a78 <subghz_cli_command_tx_from_file+0x294>)
+    18d8:	4868      	ldr	r0, [pc, #416]	@ (1a7c <subghz_cli_command_tx_from_file+0x298>)
+    18da:	4b69      	ldr	r3, [pc, #420]	@ (1a80 <subghz_cli_command_tx_from_file+0x29c>)
+    18dc:	4798      	blx	r3
+    const SubGhzDevice* device = NULL;
+    18de:	463d      	mov	r5, r7
+                break;
+    18e0:	e7db      	b.n	189a <subghz_cli_command_tx_from_file+0xb6>
+                cli_print_usage(
+    18e2:	4628      	mov	r0, r5
+    18e4:	4b59      	ldr	r3, [pc, #356]	@ (1a4c <subghz_cli_command_tx_from_file+0x268>)
+    18e6:	4798      	blx	r3
+    18e8:	4602      	mov	r2, r0
+    18ea:	4963      	ldr	r1, [pc, #396]	@ (1a78 <subghz_cli_command_tx_from_file+0x294>)
+    18ec:	4865      	ldr	r0, [pc, #404]	@ (1a84 <subghz_cli_command_tx_from_file+0x2a0>)
+    18ee:	4b64      	ldr	r3, [pc, #400]	@ (1a80 <subghz_cli_command_tx_from_file+0x29c>)
+    18f0:	4798      	blx	r3
+    SubGhzTransmitter* transmitter = NULL;
+    18f2:	2700      	movs	r7, #0
+    const SubGhzDevice* device = NULL;
+    18f4:	463d      	mov	r5, r7
+    bool check_file = false;
+    18f6:	46ba      	mov	sl, r7
+    18f8:	e7cf      	b.n	189a <subghz_cli_command_tx_from_file+0xb6>
+            printf("subghz tx_from_file: \033[0;31mError device not found\033[0m\r\n");
+    18fa:	4863      	ldr	r0, [pc, #396]	@ (1a88 <subghz_cli_command_tx_from_file+0x2a4>)
+    18fc:	4b63      	ldr	r3, [pc, #396]	@ (1a8c <subghz_cli_command_tx_from_file+0x2a8>)
+    18fe:	4798      	blx	r3
+    SubGhzTransmitter* transmitter = NULL;
+    1900:	462f      	mov	r7, r5
+    bool check_file = false;
+    1902:	f04f 0a00 	mov.w	sl, #0
+            break;
+    1906:	e7c8      	b.n	189a <subghz_cli_command_tx_from_file+0xb6>
+        if(!flipper_format_read_header(fff_data_file, temp_str, &temp_data32)) {
+    1908:	aa05      	add	r2, sp, #20
+    190a:	4631      	mov	r1, r6
+    190c:	4648      	mov	r0, r9
+    190e:	4b60      	ldr	r3, [pc, #384]	@ (1a90 <subghz_cli_command_tx_from_file+0x2ac>)
+    1910:	4798      	blx	r3
+    1912:	4682      	mov	sl, r0
+    1914:	b920      	cbnz	r0, 1920 <subghz_cli_command_tx_from_file+0x13c>
+            printf("subghz tx_from_file: \033[0;31mMissing or incorrect header\033[0m\r\n");
+    1916:	485f      	ldr	r0, [pc, #380]	@ (1a94 <subghz_cli_command_tx_from_file+0x2b0>)
+    1918:	4b5c      	ldr	r3, [pc, #368]	@ (1a8c <subghz_cli_command_tx_from_file+0x2a8>)
+    191a:	4798      	blx	r3
+    SubGhzTransmitter* transmitter = NULL;
+    191c:	2700      	movs	r7, #0
+            break;
+    191e:	e7bc      	b.n	189a <subghz_cli_command_tx_from_file+0xb6>
+        if(((!strcmp(furi_string_get_cstr(temp_str), SUBGHZ_KEY_FILE_TYPE)) ||
+    1920:	4630      	mov	r0, r6
+    1922:	4b4a      	ldr	r3, [pc, #296]	@ (1a4c <subghz_cli_command_tx_from_file+0x268>)
+    1924:	4798      	blx	r3
+    1926:	495c      	ldr	r1, [pc, #368]	@ (1a98 <subghz_cli_command_tx_from_file+0x2b4>)
+    1928:	4b5c      	ldr	r3, [pc, #368]	@ (1a9c <subghz_cli_command_tx_from_file+0x2b8>)
+    192a:	4798      	blx	r3
+    192c:	b940      	cbnz	r0, 1940 <subghz_cli_command_tx_from_file+0x15c>
+           temp_data32 == SUBGHZ_KEY_FILE_VERSION) {
+    192e:	9b05      	ldr	r3, [sp, #20]
+            (!strcmp(furi_string_get_cstr(temp_str), SUBGHZ_RAW_FILE_TYPE))) &&
+    1930:	2b01      	cmp	r3, #1
+    1932:	d00e      	beq.n	1952 <subghz_cli_command_tx_from_file+0x16e>
+            printf("subghz tx_from_file: \033[0;31mType or version mismatch\033[0m\r\n");
+    1934:	485a      	ldr	r0, [pc, #360]	@ (1aa0 <subghz_cli_command_tx_from_file+0x2bc>)
+    1936:	4b55      	ldr	r3, [pc, #340]	@ (1a8c <subghz_cli_command_tx_from_file+0x2a8>)
+    1938:	4798      	blx	r3
+    SubGhzTransmitter* transmitter = NULL;
+    193a:	2700      	movs	r7, #0
+    bool check_file = false;
+    193c:	46ba      	mov	sl, r7
+            break;
+    193e:	e7ac      	b.n	189a <subghz_cli_command_tx_from_file+0xb6>
+            (!strcmp(furi_string_get_cstr(temp_str), SUBGHZ_RAW_FILE_TYPE))) &&
+    1940:	4630      	mov	r0, r6
+    1942:	4b42      	ldr	r3, [pc, #264]	@ (1a4c <subghz_cli_command_tx_from_file+0x268>)
+    1944:	4798      	blx	r3
+    1946:	4957      	ldr	r1, [pc, #348]	@ (1aa4 <subghz_cli_command_tx_from_file+0x2c0>)
+    1948:	4b54      	ldr	r3, [pc, #336]	@ (1a9c <subghz_cli_command_tx_from_file+0x2b8>)
+    194a:	4798      	blx	r3
+        if(((!strcmp(furi_string_get_cstr(temp_str), SUBGHZ_KEY_FILE_TYPE)) ||
+    194c:	2800      	cmp	r0, #0
+    194e:	d1f1      	bne.n	1934 <subghz_cli_command_tx_from_file+0x150>
+    1950:	e7ed      	b.n	192e <subghz_cli_command_tx_from_file+0x14a>
+        if(!flipper_format_read_uint32(fff_data_file, "Frequency", &frequency, 1)) {
+    1952:	2301      	movs	r3, #1
+    1954:	aa04      	add	r2, sp, #16
+    1956:	4954      	ldr	r1, [pc, #336]	@ (1aa8 <subghz_cli_command_tx_from_file+0x2c4>)
+    1958:	4648      	mov	r0, r9
+    195a:	4f54      	ldr	r7, [pc, #336]	@ (1aac <subghz_cli_command_tx_from_file+0x2c8>)
+    195c:	47b8      	blx	r7
+    195e:	4682      	mov	sl, r0
+    1960:	b920      	cbnz	r0, 196c <subghz_cli_command_tx_from_file+0x188>
+            printf("subghz tx_from_file: \033[0;31mMissing Frequency\033[0m\r\n");
+    1962:	4853      	ldr	r0, [pc, #332]	@ (1ab0 <subghz_cli_command_tx_from_file+0x2cc>)
+    1964:	4b49      	ldr	r3, [pc, #292]	@ (1a8c <subghz_cli_command_tx_from_file+0x2a8>)
+    1966:	4798      	blx	r3
+    SubGhzTransmitter* transmitter = NULL;
+    1968:	2700      	movs	r7, #0
+            break;
+    196a:	e796      	b.n	189a <subghz_cli_command_tx_from_file+0xb6>
+        if(!subghz_devices_is_frequency_valid(device, frequency)) {
+    196c:	9904      	ldr	r1, [sp, #16]
+    196e:	4628      	mov	r0, r5
+    1970:	4b50      	ldr	r3, [pc, #320]	@ (1ab4 <subghz_cli_command_tx_from_file+0x2d0>)
+    1972:	4798      	blx	r3
+    1974:	4682      	mov	sl, r0
+    1976:	b920      	cbnz	r0, 1982 <subghz_cli_command_tx_from_file+0x19e>
+            printf("subghz tx_from_file: \033[0;31mFrequency not supported\033[0m\r\n");
+    1978:	484f      	ldr	r0, [pc, #316]	@ (1ab8 <subghz_cli_command_tx_from_file+0x2d4>)
+    197a:	4b44      	ldr	r3, [pc, #272]	@ (1a8c <subghz_cli_command_tx_from_file+0x2a8>)
+    197c:	4798      	blx	r3
+    SubGhzTransmitter* transmitter = NULL;
+    197e:	2700      	movs	r7, #0
+            break;
+    1980:	e78b      	b.n	189a <subghz_cli_command_tx_from_file+0xb6>
+        if(!flipper_format_read_string(fff_data_file, "Preset", temp_str)) {
+    1982:	4632      	mov	r2, r6
+    1984:	494d      	ldr	r1, [pc, #308]	@ (1abc <subghz_cli_command_tx_from_file+0x2d8>)
+    1986:	4648      	mov	r0, r9
+    1988:	4b4d      	ldr	r3, [pc, #308]	@ (1ac0 <subghz_cli_command_tx_from_file+0x2dc>)
+    198a:	4798      	blx	r3
+    198c:	4682      	mov	sl, r0
+    198e:	b920      	cbnz	r0, 199a <subghz_cli_command_tx_from_file+0x1b6>
+            printf("subghz tx_from_file: \033[0;31mMissing Preset\033[0m\r\n");
+    1990:	484c      	ldr	r0, [pc, #304]	@ (1ac4 <subghz_cli_command_tx_from_file+0x2e0>)
+    1992:	4b3e      	ldr	r3, [pc, #248]	@ (1a8c <subghz_cli_command_tx_from_file+0x2a8>)
+    1994:	4798      	blx	r3
+    SubGhzTransmitter* transmitter = NULL;
+    1996:	2700      	movs	r7, #0
+            break;
+    1998:	e77f      	b.n	189a <subghz_cli_command_tx_from_file+0xb6>
+        subghz_devices_begin(device);
+    199a:	4628      	mov	r0, r5
+    199c:	4b4a      	ldr	r3, [pc, #296]	@ (1ac8 <subghz_cli_command_tx_from_file+0x2e4>)
+    199e:	4798      	blx	r3
+        subghz_devices_reset(device);
+    19a0:	4628      	mov	r0, r5
+    19a2:	4b4a      	ldr	r3, [pc, #296]	@ (1acc <subghz_cli_command_tx_from_file+0x2e8>)
+    19a4:	4798      	blx	r3
+        if(!strcmp(furi_string_get_cstr(temp_str), "FuriHalSubGhzPresetCustom")) {
+    19a6:	4630      	mov	r0, r6
+    19a8:	4b28      	ldr	r3, [pc, #160]	@ (1a4c <subghz_cli_command_tx_from_file+0x268>)
+    19aa:	4798      	blx	r3
+    19ac:	4948      	ldr	r1, [pc, #288]	@ (1ad0 <subghz_cli_command_tx_from_file+0x2ec>)
+    19ae:	4b3b      	ldr	r3, [pc, #236]	@ (1a9c <subghz_cli_command_tx_from_file+0x2b8>)
+    19b0:	4798      	blx	r3
+    19b2:	2800      	cmp	r0, #0
+    19b4:	f040 80a0 	bne.w	1af8 <subghz_cli_command_tx_from_file+0x314>
+            if(!flipper_format_get_value_count(fff_data_file, "Custom_preset_data", &temp_data32))
+    19b8:	aa05      	add	r2, sp, #20
+    19ba:	4946      	ldr	r1, [pc, #280]	@ (1ad4 <subghz_cli_command_tx_from_file+0x2f0>)
+    19bc:	4648      	mov	r0, r9
+    19be:	4b46      	ldr	r3, [pc, #280]	@ (1ad8 <subghz_cli_command_tx_from_file+0x2f4>)
+    19c0:	4798      	blx	r3
+    19c2:	4682      	mov	sl, r0
+    19c4:	2800      	cmp	r0, #0
+    19c6:	f000 810d 	beq.w	1be4 <subghz_cli_command_tx_from_file+0x400>
+            if(!temp_data32 || (temp_data32 % 2)) {
+    19ca:	9f05      	ldr	r7, [sp, #20]
+    19cc:	b117      	cbz	r7, 19d4 <subghz_cli_command_tx_from_file+0x1f0>
+    19ce:	f017 0f01 	tst.w	r7, #1
+    19d2:	d005      	beq.n	19e0 <subghz_cli_command_tx_from_file+0x1fc>
+                printf("subghz tx_from_file: \033[0;31mCustom_preset_data size error\033[0m\r\n");
+    19d4:	4841      	ldr	r0, [pc, #260]	@ (1adc <subghz_cli_command_tx_from_file+0x2f8>)
+    19d6:	4b2d      	ldr	r3, [pc, #180]	@ (1a8c <subghz_cli_command_tx_from_file+0x2a8>)
+    19d8:	4798      	blx	r3
+    SubGhzTransmitter* transmitter = NULL;
+    19da:	2700      	movs	r7, #0
+    bool check_file = false;
+    19dc:	46ba      	mov	sl, r7
+                break;
+    19de:	e75c      	b.n	189a <subghz_cli_command_tx_from_file+0xb6>
+            custom_preset_data = malloc(custom_preset_data_size);
+    19e0:	4638      	mov	r0, r7
+    19e2:	4b3f      	ldr	r3, [pc, #252]	@ (1ae0 <subghz_cli_command_tx_from_file+0x2fc>)
+    19e4:	4798      	blx	r3
+    19e6:	4602      	mov	r2, r0
+    19e8:	9001      	str	r0, [sp, #4]
+            if(!flipper_format_read_hex(
+    19ea:	b2bb      	uxth	r3, r7
+    19ec:	4939      	ldr	r1, [pc, #228]	@ (1ad4 <subghz_cli_command_tx_from_file+0x2f0>)
+    19ee:	4648      	mov	r0, r9
+    19f0:	4f3c      	ldr	r7, [pc, #240]	@ (1ae4 <subghz_cli_command_tx_from_file+0x300>)
+    19f2:	47b8      	blx	r7
+    19f4:	4682      	mov	sl, r0
+    19f6:	b920      	cbnz	r0, 1a02 <subghz_cli_command_tx_from_file+0x21e>
+                printf("subghz tx_from_file: \033[0;31mCustom_preset_data read error\033[0m\r\n");
+    19f8:	483b      	ldr	r0, [pc, #236]	@ (1ae8 <subghz_cli_command_tx_from_file+0x304>)
+    19fa:	4b24      	ldr	r3, [pc, #144]	@ (1a8c <subghz_cli_command_tx_from_file+0x2a8>)
+    19fc:	4798      	blx	r3
+    SubGhzTransmitter* transmitter = NULL;
+    19fe:	2700      	movs	r7, #0
+                break;
+    1a00:	e74b      	b.n	189a <subghz_cli_command_tx_from_file+0xb6>
+            subghz_devices_load_preset(
+    1a02:	4630      	mov	r0, r6
+    1a04:	4b11      	ldr	r3, [pc, #68]	@ (1a4c <subghz_cli_command_tx_from_file+0x268>)
+    1a06:	4798      	blx	r3
+    1a08:	4b38      	ldr	r3, [pc, #224]	@ (1aec <subghz_cli_command_tx_from_file+0x308>)
+    1a0a:	4798      	blx	r3
+    1a0c:	4601      	mov	r1, r0
+    1a0e:	9f01      	ldr	r7, [sp, #4]
+    1a10:	463a      	mov	r2, r7
+    1a12:	4628      	mov	r0, r5
+    1a14:	4b36      	ldr	r3, [pc, #216]	@ (1af0 <subghz_cli_command_tx_from_file+0x30c>)
+    1a16:	4798      	blx	r3
+            free(custom_preset_data);
+    1a18:	4638      	mov	r0, r7
+    1a1a:	4b36      	ldr	r3, [pc, #216]	@ (1af4 <subghz_cli_command_tx_from_file+0x310>)
+    1a1c:	4798      	blx	r3
+    1a1e:	e075      	b.n	1b0c <subghz_cli_command_tx_from_file+0x328>
+    1a20:	00000000 	.word	0x00000000
+    1a24:	00000b14 	.word	0x00000b14
+    1a28:	00000000 	.word	0x00000000
+    1a2c:	00000b2c 	.word	0x00000b2c
+	...
+    1a5c:	00000d38 	.word	0x00000d38
+	...
+    1a78:	00000c80 	.word	0x00000c80
+    1a7c:	00000cd0 	.word	0x00000cd0
+    1a80:	00000000 	.word	0x00000000
+    1a84:	00000ce8 	.word	0x00000ce8
+    1a88:	00000d00 	.word	0x00000d00
+	...
+    1a94:	00000d70 	.word	0x00000d70
+    1a98:	00000db0 	.word	0x00000db0
+    1a9c:	00000000 	.word	0x00000000
+    1aa0:	00000dc8 	.word	0x00000dc8
+    1aa4:	00000bd4 	.word	0x00000bd4
+    1aa8:	00000e04 	.word	0x00000e04
+    1aac:	00000000 	.word	0x00000000
+    1ab0:	00000e10 	.word	0x00000e10
+    1ab4:	00000000 	.word	0x00000000
+    1ab8:	00000e44 	.word	0x00000e44
+    1abc:	00000e80 	.word	0x00000e80
+    1ac0:	00000000 	.word	0x00000000
+    1ac4:	00000e88 	.word	0x00000e88
+	...
+    1ad0:	00000224 	.word	0x00000224
+    1ad4:	00000eb8 	.word	0x00000eb8
+    1ad8:	00000000 	.word	0x00000000
+    1adc:	00000ecc 	.word	0x00000ecc
+	...
+    1ae8:	00000f0c 	.word	0x00000f0c
+	...
+            subghz_devices_load_preset(
+    1af8:	4630      	mov	r0, r6
+    1afa:	4b73      	ldr	r3, [pc, #460]	@ (1cc8 <subghz_cli_command_tx_from_file+0x4e4>)
+    1afc:	4798      	blx	r3
+    1afe:	4b73      	ldr	r3, [pc, #460]	@ (1ccc <subghz_cli_command_tx_from_file+0x4e8>)
+    1b00:	4798      	blx	r3
+    1b02:	4601      	mov	r1, r0
+    1b04:	2200      	movs	r2, #0
+    1b06:	4628      	mov	r0, r5
+    1b08:	4b71      	ldr	r3, [pc, #452]	@ (1cd0 <subghz_cli_command_tx_from_file+0x4ec>)
+    1b0a:	4798      	blx	r3
+        subghz_devices_set_frequency(device, frequency);
+    1b0c:	9904      	ldr	r1, [sp, #16]
+    1b0e:	4628      	mov	r0, r5
+    1b10:	4b70      	ldr	r3, [pc, #448]	@ (1cd4 <subghz_cli_command_tx_from_file+0x4f0>)
+    1b12:	4798      	blx	r3
+        if(!flipper_format_read_string(fff_data_file, "Protocol", temp_str)) {
+    1b14:	4632      	mov	r2, r6
+    1b16:	4970      	ldr	r1, [pc, #448]	@ (1cd8 <subghz_cli_command_tx_from_file+0x4f4>)
+    1b18:	4648      	mov	r0, r9
+    1b1a:	4b70      	ldr	r3, [pc, #448]	@ (1cdc <subghz_cli_command_tx_from_file+0x4f8>)
+    1b1c:	4798      	blx	r3
+    1b1e:	4682      	mov	sl, r0
+    1b20:	b920      	cbnz	r0, 1b2c <subghz_cli_command_tx_from_file+0x348>
+            printf("subghz tx_from_file: \033[0;31mMissing protocol\033[0m\r\n");
+    1b22:	486f      	ldr	r0, [pc, #444]	@ (1ce0 <subghz_cli_command_tx_from_file+0x4fc>)
+    1b24:	4b6f      	ldr	r3, [pc, #444]	@ (1ce4 <subghz_cli_command_tx_from_file+0x500>)
+    1b26:	4798      	blx	r3
+    SubGhzTransmitter* transmitter = NULL;
+    1b28:	2700      	movs	r7, #0
+            break;
+    1b2a:	e6b6      	b.n	189a <subghz_cli_command_tx_from_file+0xb6>
+        if(!strcmp(furi_string_get_cstr(temp_str), "RAW")) { // if RAW protocol
+    1b2c:	4630      	mov	r0, r6
+    1b2e:	4b66      	ldr	r3, [pc, #408]	@ (1cc8 <subghz_cli_command_tx_from_file+0x4e4>)
+    1b30:	4798      	blx	r3
+    1b32:	496d      	ldr	r1, [pc, #436]	@ (1ce8 <subghz_cli_command_tx_from_file+0x504>)
+    1b34:	4b6d      	ldr	r3, [pc, #436]	@ (1cec <subghz_cli_command_tx_from_file+0x508>)
+    1b36:	4798      	blx	r3
+    1b38:	bb00      	cbnz	r0, 1b7c <subghz_cli_command_tx_from_file+0x398>
+            subghz_protocol_raw_gen_fff_data(
+    1b3a:	4640      	mov	r0, r8
+    1b3c:	4f62      	ldr	r7, [pc, #392]	@ (1cc8 <subghz_cli_command_tx_from_file+0x4e4>)
+    1b3e:	47b8      	blx	r7
+    1b40:	9001      	str	r0, [sp, #4]
+    1b42:	4628      	mov	r0, r5
+    1b44:	4b6a      	ldr	r3, [pc, #424]	@ (1cf0 <subghz_cli_command_tx_from_file+0x50c>)
+    1b46:	4798      	blx	r3
+    1b48:	4602      	mov	r2, r0
+    1b4a:	9901      	ldr	r1, [sp, #4]
+    1b4c:	4658      	mov	r0, fp
+    1b4e:	4b69      	ldr	r3, [pc, #420]	@ (1cf4 <subghz_cli_command_tx_from_file+0x510>)
+    1b50:	4798      	blx	r3
+                subghz_transmitter_alloc_init(environment, furi_string_get_cstr(temp_str));
+    1b52:	4630      	mov	r0, r6
+    1b54:	47b8      	blx	r7
+    1b56:	4601      	mov	r1, r0
+    1b58:	9800      	ldr	r0, [sp, #0]
+    1b5a:	4b67      	ldr	r3, [pc, #412]	@ (1cf8 <subghz_cli_command_tx_from_file+0x514>)
+    1b5c:	4798      	blx	r3
+            if(transmitter == NULL) {
+    1b5e:	4607      	mov	r7, r0
+    1b60:	b140      	cbz	r0, 1b74 <subghz_cli_command_tx_from_file+0x390>
+                status = subghz_transmitter_deserialize(transmitter, fff_data_raw);
+    1b62:	4659      	mov	r1, fp
+    1b64:	4b65      	ldr	r3, [pc, #404]	@ (1cfc <subghz_cli_command_tx_from_file+0x518>)
+    1b66:	4798      	blx	r3
+                if(status != SubGhzProtocolStatusOk) {
+    1b68:	4601      	mov	r1, r0
+    1b6a:	b1f8      	cbz	r0, 1bac <subghz_cli_command_tx_from_file+0x3c8>
+                    printf(
+    1b6c:	4864      	ldr	r0, [pc, #400]	@ (1d00 <subghz_cli_command_tx_from_file+0x51c>)
+    1b6e:	4b65      	ldr	r3, [pc, #404]	@ (1d04 <subghz_cli_command_tx_from_file+0x520>)
+    1b70:	4798      	blx	r3
+        if(is_init_protocol) {
+    1b72:	e01f      	b.n	1bb4 <subghz_cli_command_tx_from_file+0x3d0>
+                printf("subghz tx_from_file: \033[0;31mError transmitter\033[0m\r\n");
+    1b74:	4864      	ldr	r0, [pc, #400]	@ (1d08 <subghz_cli_command_tx_from_file+0x524>)
+    1b76:	4b5b      	ldr	r3, [pc, #364]	@ (1ce4 <subghz_cli_command_tx_from_file+0x500>)
+    1b78:	4798      	blx	r3
+        if(is_init_protocol) {
+    1b7a:	e01b      	b.n	1bb4 <subghz_cli_command_tx_from_file+0x3d0>
+            flipper_format_insert_or_update_uint32(fff_data_file, "Repeat", &repeat, 1);
+    1b7c:	2301      	movs	r3, #1
+    1b7e:	aa07      	add	r2, sp, #28
+    1b80:	4962      	ldr	r1, [pc, #392]	@ (1d0c <subghz_cli_command_tx_from_file+0x528>)
+    1b82:	4648      	mov	r0, r9
+    1b84:	4f62      	ldr	r7, [pc, #392]	@ (1d10 <subghz_cli_command_tx_from_file+0x52c>)
+    1b86:	47b8      	blx	r7
+                subghz_transmitter_alloc_init(environment, furi_string_get_cstr(temp_str));
+    1b88:	4630      	mov	r0, r6
+    1b8a:	4b4f      	ldr	r3, [pc, #316]	@ (1cc8 <subghz_cli_command_tx_from_file+0x4e4>)
+    1b8c:	4798      	blx	r3
+    1b8e:	4601      	mov	r1, r0
+    1b90:	9800      	ldr	r0, [sp, #0]
+    1b92:	4b59      	ldr	r3, [pc, #356]	@ (1cf8 <subghz_cli_command_tx_from_file+0x514>)
+    1b94:	4798      	blx	r3
+            if(transmitter == NULL) {
+    1b96:	4607      	mov	r7, r0
+    1b98:	b1c0      	cbz	r0, 1bcc <subghz_cli_command_tx_from_file+0x3e8>
+                status = subghz_transmitter_deserialize(transmitter, fff_data_file);
+    1b9a:	4649      	mov	r1, r9
+    1b9c:	4b57      	ldr	r3, [pc, #348]	@ (1cfc <subghz_cli_command_tx_from_file+0x518>)
+    1b9e:	4798      	blx	r3
+                if(status != SubGhzProtocolStatusOk) {
+    1ba0:	4601      	mov	r1, r0
+    1ba2:	b9c8      	cbnz	r0, 1bd8 <subghz_cli_command_tx_from_file+0x3f4>
+            flipper_format_delete_key(fff_data_file, "Repeat");
+    1ba4:	4959      	ldr	r1, [pc, #356]	@ (1d0c <subghz_cli_command_tx_from_file+0x528>)
+    1ba6:	4648      	mov	r0, r9
+    1ba8:	4b5a      	ldr	r3, [pc, #360]	@ (1d14 <subghz_cli_command_tx_from_file+0x530>)
+    1baa:	4798      	blx	r3
+        if(is_init_protocol) {
+    1bac:	f1ba 0f00 	cmp.w	sl, #0
+    1bb0:	f47f ae73 	bne.w	189a <subghz_cli_command_tx_from_file+0xb6>
+            subghz_devices_sleep(device);
+    1bb4:	4628      	mov	r0, r5
+    1bb6:	4b58      	ldr	r3, [pc, #352]	@ (1d18 <subghz_cli_command_tx_from_file+0x534>)
+    1bb8:	4798      	blx	r3
+            subghz_devices_end(device);
+    1bba:	4628      	mov	r0, r5
+    1bbc:	4b57      	ldr	r3, [pc, #348]	@ (1d1c <subghz_cli_command_tx_from_file+0x538>)
+    1bbe:	4798      	blx	r3
+            subghz_transmitter_free(transmitter);
+    1bc0:	4638      	mov	r0, r7
+    1bc2:	4b57      	ldr	r3, [pc, #348]	@ (1d20 <subghz_cli_command_tx_from_file+0x53c>)
+    1bc4:	4798      	blx	r3
+    bool check_file = false;
+    1bc6:	f04f 0a00 	mov.w	sl, #0
+    1bca:	e666      	b.n	189a <subghz_cli_command_tx_from_file+0xb6>
+                printf("subghz tx_from_file: \033[0;31mError transmitter\033[0m\r\n");
+    1bcc:	484e      	ldr	r0, [pc, #312]	@ (1d08 <subghz_cli_command_tx_from_file+0x524>)
+    1bce:	4b45      	ldr	r3, [pc, #276]	@ (1ce4 <subghz_cli_command_tx_from_file+0x500>)
+    1bd0:	4798      	blx	r3
+                is_init_protocol = false;
+    1bd2:	f04f 0a00 	mov.w	sl, #0
+    1bd6:	e7e5      	b.n	1ba4 <subghz_cli_command_tx_from_file+0x3c0>
+                    printf(
+    1bd8:	4849      	ldr	r0, [pc, #292]	@ (1d00 <subghz_cli_command_tx_from_file+0x51c>)
+    1bda:	4b4a      	ldr	r3, [pc, #296]	@ (1d04 <subghz_cli_command_tx_from_file+0x520>)
+    1bdc:	4798      	blx	r3
+                    is_init_protocol = false;
+    1bde:	f04f 0a00 	mov.w	sl, #0
+    1be2:	e7df      	b.n	1ba4 <subghz_cli_command_tx_from_file+0x3c0>
+    SubGhzTransmitter* transmitter = NULL;
+    1be4:	2700      	movs	r7, #0
+    1be6:	e658      	b.n	189a <subghz_cli_command_tx_from_file+0xb6>
+        furi_hal_power_suppress_charge_enter();
+    1be8:	4b4e      	ldr	r3, [pc, #312]	@ (1d24 <subghz_cli_command_tx_from_file+0x540>)
+    1bea:	4798      	blx	r3
+        printf(
+    1bec:	4640      	mov	r0, r8
+    1bee:	f8df a0d8 	ldr.w	sl, [pc, #216]	@ 1cc8 <subghz_cli_command_tx_from_file+0x4e4>
+    1bf2:	47d0      	blx	sl
+    1bf4:	9001      	str	r0, [sp, #4]
+    1bf6:	f8dd 9010 	ldr.w	r9, [sp, #16]
+    1bfa:	4630      	mov	r0, r6
+    1bfc:	47d0      	blx	sl
+    1bfe:	4603      	mov	r3, r0
+    1c00:	464a      	mov	r2, r9
+    1c02:	9901      	ldr	r1, [sp, #4]
+    1c04:	4848      	ldr	r0, [pc, #288]	@ (1d28 <subghz_cli_command_tx_from_file+0x544>)
+    1c06:	f8df 90fc 	ldr.w	r9, [pc, #252]	@ 1d04 <subghz_cli_command_tx_from_file+0x520>
+    1c0a:	47c8      	blx	r9
+    1c0c:	e02d      	b.n	1c6a <subghz_cli_command_tx_from_file+0x486>
+                    printf(".");
+    1c0e:	202e      	movs	r0, #46	@ 0x2e
+    1c10:	4b46      	ldr	r3, [pc, #280]	@ (1d2c <subghz_cli_command_tx_from_file+0x548>)
+    1c12:	4798      	blx	r3
+                    fflush(stdout);
+    1c14:	4b46      	ldr	r3, [pc, #280]	@ (1d30 <subghz_cli_command_tx_from_file+0x54c>)
+    1c16:	681b      	ldr	r3, [r3, #0]
+    1c18:	6898      	ldr	r0, [r3, #8]
+    1c1a:	4b46      	ldr	r3, [pc, #280]	@ (1d34 <subghz_cli_command_tx_from_file+0x550>)
+    1c1c:	4798      	blx	r3
+                    furi_delay_ms(333);
+    1c1e:	f240 104d 	movw	r0, #333	@ 0x14d
+    1c22:	4b45      	ldr	r3, [pc, #276]	@ (1d38 <subghz_cli_command_tx_from_file+0x554>)
+    1c24:	4798      	blx	r3
+                    !(subghz_devices_is_async_complete_tx(device) ||
+    1c26:	4628      	mov	r0, r5
+    1c28:	4b44      	ldr	r3, [pc, #272]	@ (1d3c <subghz_cli_command_tx_from_file+0x558>)
+    1c2a:	4798      	blx	r3
+    1c2c:	b920      	cbnz	r0, 1c38 <subghz_cli_command_tx_from_file+0x454>
+                      cli_is_pipe_broken_or_is_etx_next_char(pipe))) {
+    1c2e:	4620      	mov	r0, r4
+    1c30:	4b43      	ldr	r3, [pc, #268]	@ (1d40 <subghz_cli_command_tx_from_file+0x55c>)
+    1c32:	4798      	blx	r3
+                    !(subghz_devices_is_async_complete_tx(device) ||
+    1c34:	2800      	cmp	r0, #0
+    1c36:	d0ea      	beq.n	1c0e <subghz_cli_command_tx_from_file+0x42a>
+                subghz_devices_stop_async_tx(device);
+    1c38:	4628      	mov	r0, r5
+    1c3a:	4b42      	ldr	r3, [pc, #264]	@ (1d44 <subghz_cli_command_tx_from_file+0x560>)
+    1c3c:	4798      	blx	r3
+            if(!strcmp(furi_string_get_cstr(temp_str), "RAW")) {
+    1c3e:	4630      	mov	r0, r6
+    1c40:	4b21      	ldr	r3, [pc, #132]	@ (1cc8 <subghz_cli_command_tx_from_file+0x4e4>)
+    1c42:	4798      	blx	r3
+    1c44:	4928      	ldr	r1, [pc, #160]	@ (1ce8 <subghz_cli_command_tx_from_file+0x504>)
+    1c46:	4b29      	ldr	r3, [pc, #164]	@ (1cec <subghz_cli_command_tx_from_file+0x508>)
+    1c48:	4798      	blx	r3
+    1c4a:	b1e0      	cbz	r0, 1c86 <subghz_cli_command_tx_from_file+0x4a2>
+        } while(!cli_is_pipe_broken_or_is_etx_next_char(pipe) &&
+    1c4c:	4620      	mov	r0, r4
+    1c4e:	4b3c      	ldr	r3, [pc, #240]	@ (1d40 <subghz_cli_command_tx_from_file+0x55c>)
+    1c50:	4798      	blx	r3
+    1c52:	2800      	cmp	r0, #0
+    1c54:	d12a      	bne.n	1cac <subghz_cli_command_tx_from_file+0x4c8>
+                (repeat && !strcmp(furi_string_get_cstr(temp_str), "RAW")));
+    1c56:	9b07      	ldr	r3, [sp, #28]
+        } while(!cli_is_pipe_broken_or_is_etx_next_char(pipe) &&
+    1c58:	2b00      	cmp	r3, #0
+    1c5a:	d027      	beq.n	1cac <subghz_cli_command_tx_from_file+0x4c8>
+                (repeat && !strcmp(furi_string_get_cstr(temp_str), "RAW")));
+    1c5c:	4630      	mov	r0, r6
+    1c5e:	4b1a      	ldr	r3, [pc, #104]	@ (1cc8 <subghz_cli_command_tx_from_file+0x4e4>)
+    1c60:	4798      	blx	r3
+    1c62:	4921      	ldr	r1, [pc, #132]	@ (1ce8 <subghz_cli_command_tx_from_file+0x504>)
+    1c64:	4b21      	ldr	r3, [pc, #132]	@ (1cec <subghz_cli_command_tx_from_file+0x508>)
+    1c66:	4798      	blx	r3
+    1c68:	bb00      	cbnz	r0, 1cac <subghz_cli_command_tx_from_file+0x4c8>
+            furi_delay_ms(200);
+    1c6a:	20c8      	movs	r0, #200	@ 0xc8
+    1c6c:	4b32      	ldr	r3, [pc, #200]	@ (1d38 <subghz_cli_command_tx_from_file+0x554>)
+    1c6e:	4798      	blx	r3
+            if(subghz_devices_start_async_tx(device, subghz_transmitter_yield, transmitter)) {
+    1c70:	463a      	mov	r2, r7
+    1c72:	4935      	ldr	r1, [pc, #212]	@ (1d48 <subghz_cli_command_tx_from_file+0x564>)
+    1c74:	4628      	mov	r0, r5
+    1c76:	4b35      	ldr	r3, [pc, #212]	@ (1d4c <subghz_cli_command_tx_from_file+0x568>)
+    1c78:	4798      	blx	r3
+    1c7a:	2800      	cmp	r0, #0
+    1c7c:	d1d3      	bne.n	1c26 <subghz_cli_command_tx_from_file+0x442>
+                printf("Transmission on this frequency is restricted in your region\r\n");
+    1c7e:	4834      	ldr	r0, [pc, #208]	@ (1d50 <subghz_cli_command_tx_from_file+0x56c>)
+    1c80:	4b18      	ldr	r3, [pc, #96]	@ (1ce4 <subghz_cli_command_tx_from_file+0x500>)
+    1c82:	4798      	blx	r3
+    1c84:	e7db      	b.n	1c3e <subghz_cli_command_tx_from_file+0x45a>
+                subghz_transmitter_stop(transmitter);
+    1c86:	4638      	mov	r0, r7
+    1c88:	4b32      	ldr	r3, [pc, #200]	@ (1d54 <subghz_cli_command_tx_from_file+0x570>)
+    1c8a:	4798      	blx	r3
+                repeat--;
+    1c8c:	9b07      	ldr	r3, [sp, #28]
+    1c8e:	3b01      	subs	r3, #1
+    1c90:	9307      	str	r3, [sp, #28]
+                if(!cli_is_pipe_broken_or_is_etx_next_char(pipe) && repeat)
+    1c92:	4620      	mov	r0, r4
+    1c94:	4b2a      	ldr	r3, [pc, #168]	@ (1d40 <subghz_cli_command_tx_from_file+0x55c>)
+    1c96:	4798      	blx	r3
+    1c98:	2800      	cmp	r0, #0
+    1c9a:	d1d7      	bne.n	1c4c <subghz_cli_command_tx_from_file+0x468>
+    1c9c:	9b07      	ldr	r3, [sp, #28]
+    1c9e:	2b00      	cmp	r3, #0
+    1ca0:	d0d4      	beq.n	1c4c <subghz_cli_command_tx_from_file+0x468>
+                    subghz_transmitter_deserialize(transmitter, fff_data_raw);
+    1ca2:	4659      	mov	r1, fp
+    1ca4:	4638      	mov	r0, r7
+    1ca6:	4b15      	ldr	r3, [pc, #84]	@ (1cfc <subghz_cli_command_tx_from_file+0x518>)
+    1ca8:	4798      	blx	r3
+    1caa:	e7cf      	b.n	1c4c <subghz_cli_command_tx_from_file+0x468>
+        subghz_devices_sleep(device);
+    1cac:	4628      	mov	r0, r5
+    1cae:	4b1a      	ldr	r3, [pc, #104]	@ (1d18 <subghz_cli_command_tx_from_file+0x534>)
+    1cb0:	4798      	blx	r3
+        subghz_devices_end(device);
+    1cb2:	4628      	mov	r0, r5
+    1cb4:	4b19      	ldr	r3, [pc, #100]	@ (1d1c <subghz_cli_command_tx_from_file+0x538>)
+    1cb6:	4798      	blx	r3
+        subghz_cli_radio_device_power_off();
+    1cb8:	4b27      	ldr	r3, [pc, #156]	@ (1d58 <subghz_cli_command_tx_from_file+0x574>)
+    1cba:	4798      	blx	r3
+        furi_hal_power_suppress_charge_exit();
+    1cbc:	4b27      	ldr	r3, [pc, #156]	@ (1d5c <subghz_cli_command_tx_from_file+0x578>)
+    1cbe:	4798      	blx	r3
+        subghz_transmitter_free(transmitter);
+    1cc0:	4638      	mov	r0, r7
+    1cc2:	4b17      	ldr	r3, [pc, #92]	@ (1d20 <subghz_cli_command_tx_from_file+0x53c>)
+    1cc4:	4798      	blx	r3
+    1cc6:	e5f2      	b.n	18ae <subghz_cli_command_tx_from_file+0xca>
+	...
+    1cd8:	00000f4c 	.word	0x00000f4c
+    1cdc:	00000000 	.word	0x00000000
+    1ce0:	00000f58 	.word	0x00000f58
+    1ce4:	00000000 	.word	0x00000000
+    1ce8:	00000f8c 	.word	0x00000f8c
+	...
+    1d00:	00000fc4 	.word	0x00000fc4
+    1d04:	00000000 	.word	0x00000000
+    1d08:	00000f90 	.word	0x00000f90
+    1d0c:	00001004 	.word	0x00001004
+	...
+    1d28:	0000100c 	.word	0x0000100c
+	...
+    1d50:	00000a20 	.word	0x00000a20
+	...
+
+00001d60 <execute>:
+
+static void execute(PipeSide* pipe, FuriString* args, void* context) {
+    1d60:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+    1d62:	4606      	mov	r6, r0
+    1d64:	460d      	mov	r5, r1
+    1d66:	4617      	mov	r7, r2
+    FuriString* cmd;
+    cmd = furi_string_alloc();
+    1d68:	4b3f      	ldr	r3, [pc, #252]	@ (1e68 <execute+0x108>)
+    1d6a:	4798      	blx	r3
+    1d6c:	4604      	mov	r4, r0
+
+    do {
+        if(!args_read_string_and_trim(args, cmd)) {
+    1d6e:	4601      	mov	r1, r0
+    1d70:	4628      	mov	r0, r5
+    1d72:	4b3e      	ldr	r3, [pc, #248]	@ (1e6c <execute+0x10c>)
+    1d74:	4798      	blx	r3
+    1d76:	b928      	cbnz	r0, 1d84 <execute+0x24>
+            subghz_cli_command_print_usage();
+    1d78:	4b3d      	ldr	r3, [pc, #244]	@ (1e70 <execute+0x110>)
+    1d7a:	4798      	blx	r3
+        }
+
+        subghz_cli_command_print_usage();
+    } while(false);
+
+    furi_string_free(cmd);
+    1d7c:	4620      	mov	r0, r4
+    1d7e:	4b3d      	ldr	r3, [pc, #244]	@ (1e74 <execute+0x114>)
+    1d80:	4798      	blx	r3
+}
+    1d82:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
+        if(furi_string_cmp_str(cmd, "chat") == 0) {
+    1d84:	493c      	ldr	r1, [pc, #240]	@ (1e78 <execute+0x118>)
+    1d86:	4620      	mov	r0, r4
+    1d88:	4b3c      	ldr	r3, [pc, #240]	@ (1e7c <execute+0x11c>)
+    1d8a:	4798      	blx	r3
+    1d8c:	b920      	cbnz	r0, 1d98 <execute+0x38>
+            subghz_cli_command_chat(pipe, args);
+    1d8e:	4629      	mov	r1, r5
+    1d90:	4630      	mov	r0, r6
+    1d92:	4b3b      	ldr	r3, [pc, #236]	@ (1e80 <execute+0x120>)
+    1d94:	4798      	blx	r3
+            break;
+    1d96:	e7f1      	b.n	1d7c <execute+0x1c>
+        if(furi_string_cmp_str(cmd, "tx") == 0) {
+    1d98:	493a      	ldr	r1, [pc, #232]	@ (1e84 <execute+0x124>)
+    1d9a:	4620      	mov	r0, r4
+    1d9c:	4b37      	ldr	r3, [pc, #220]	@ (1e7c <execute+0x11c>)
+    1d9e:	4798      	blx	r3
+    1da0:	b928      	cbnz	r0, 1dae <execute+0x4e>
+            subghz_cli_command_tx(pipe, args, context);
+    1da2:	463a      	mov	r2, r7
+    1da4:	4629      	mov	r1, r5
+    1da6:	4630      	mov	r0, r6
+    1da8:	4b37      	ldr	r3, [pc, #220]	@ (1e88 <execute+0x128>)
+    1daa:	4798      	blx	r3
+            break;
+    1dac:	e7e6      	b.n	1d7c <execute+0x1c>
+        if(furi_string_cmp_str(cmd, "rx") == 0) {
+    1dae:	4937      	ldr	r1, [pc, #220]	@ (1e8c <execute+0x12c>)
+    1db0:	4620      	mov	r0, r4
+    1db2:	4b32      	ldr	r3, [pc, #200]	@ (1e7c <execute+0x11c>)
+    1db4:	4798      	blx	r3
+    1db6:	b928      	cbnz	r0, 1dc4 <execute+0x64>
+            subghz_cli_command_rx(pipe, args, context);
+    1db8:	463a      	mov	r2, r7
+    1dba:	4629      	mov	r1, r5
+    1dbc:	4630      	mov	r0, r6
+    1dbe:	4b34      	ldr	r3, [pc, #208]	@ (1e90 <execute+0x130>)
+    1dc0:	4798      	blx	r3
+            break;
+    1dc2:	e7db      	b.n	1d7c <execute+0x1c>
+        if(furi_string_cmp_str(cmd, "rx_raw") == 0) {
+    1dc4:	4933      	ldr	r1, [pc, #204]	@ (1e94 <execute+0x134>)
+    1dc6:	4620      	mov	r0, r4
+    1dc8:	4b2c      	ldr	r3, [pc, #176]	@ (1e7c <execute+0x11c>)
+    1dca:	4798      	blx	r3
+    1dcc:	b928      	cbnz	r0, 1dda <execute+0x7a>
+            subghz_cli_command_rx_raw(pipe, args, context);
+    1dce:	463a      	mov	r2, r7
+    1dd0:	4629      	mov	r1, r5
+    1dd2:	4630      	mov	r0, r6
+    1dd4:	4b30      	ldr	r3, [pc, #192]	@ (1e98 <execute+0x138>)
+    1dd6:	4798      	blx	r3
+            break;
+    1dd8:	e7d0      	b.n	1d7c <execute+0x1c>
+        if(furi_string_cmp_str(cmd, "decode_raw") == 0) {
+    1dda:	4930      	ldr	r1, [pc, #192]	@ (1e9c <execute+0x13c>)
+    1ddc:	4620      	mov	r0, r4
+    1dde:	4b27      	ldr	r3, [pc, #156]	@ (1e7c <execute+0x11c>)
+    1de0:	4798      	blx	r3
+    1de2:	b928      	cbnz	r0, 1df0 <execute+0x90>
+            subghz_cli_command_decode_raw(pipe, args, context);
+    1de4:	463a      	mov	r2, r7
+    1de6:	4629      	mov	r1, r5
+    1de8:	4630      	mov	r0, r6
+    1dea:	4b2d      	ldr	r3, [pc, #180]	@ (1ea0 <execute+0x140>)
+    1dec:	4798      	blx	r3
+            break;
+    1dee:	e7c5      	b.n	1d7c <execute+0x1c>
+        if(furi_string_cmp_str(cmd, "tx_from_file") == 0) {
+    1df0:	492c      	ldr	r1, [pc, #176]	@ (1ea4 <execute+0x144>)
+    1df2:	4620      	mov	r0, r4
+    1df4:	4b21      	ldr	r3, [pc, #132]	@ (1e7c <execute+0x11c>)
+    1df6:	4798      	blx	r3
+    1df8:	b928      	cbnz	r0, 1e06 <execute+0xa6>
+            subghz_cli_command_tx_from_file(pipe, args, context);
+    1dfa:	463a      	mov	r2, r7
+    1dfc:	4629      	mov	r1, r5
+    1dfe:	4630      	mov	r0, r6
+    1e00:	4b29      	ldr	r3, [pc, #164]	@ (1ea8 <execute+0x148>)
+    1e02:	4798      	blx	r3
+            break;
+    1e04:	e7ba      	b.n	1d7c <execute+0x1c>
+        if(furi_hal_rtc_is_flag_set(FuriHalRtcFlagDebug)) {
+    1e06:	2001      	movs	r0, #1
+    1e08:	4b28      	ldr	r3, [pc, #160]	@ (1eac <execute+0x14c>)
+    1e0a:	4798      	blx	r3
+    1e0c:	b318      	cbz	r0, 1e56 <execute+0xf6>
+            if(furi_string_cmp_str(cmd, "encrypt_keeloq") == 0) {
+    1e0e:	4928      	ldr	r1, [pc, #160]	@ (1eb0 <execute+0x150>)
+    1e10:	4620      	mov	r0, r4
+    1e12:	4b1a      	ldr	r3, [pc, #104]	@ (1e7c <execute+0x11c>)
+    1e14:	4798      	blx	r3
+    1e16:	b920      	cbnz	r0, 1e22 <execute+0xc2>
+                subghz_cli_command_encrypt_keeloq(pipe, args);
+    1e18:	4629      	mov	r1, r5
+    1e1a:	4630      	mov	r0, r6
+    1e1c:	4b25      	ldr	r3, [pc, #148]	@ (1eb4 <execute+0x154>)
+    1e1e:	4798      	blx	r3
+                break;
+    1e20:	e7ac      	b.n	1d7c <execute+0x1c>
+            if(furi_string_cmp_str(cmd, "encrypt_raw") == 0) {
+    1e22:	4925      	ldr	r1, [pc, #148]	@ (1eb8 <execute+0x158>)
+    1e24:	4620      	mov	r0, r4
+    1e26:	4b15      	ldr	r3, [pc, #84]	@ (1e7c <execute+0x11c>)
+    1e28:	4798      	blx	r3
+    1e2a:	b920      	cbnz	r0, 1e36 <execute+0xd6>
+                subghz_cli_command_encrypt_raw(pipe, args);
+    1e2c:	4629      	mov	r1, r5
+    1e2e:	4630      	mov	r0, r6
+    1e30:	4b22      	ldr	r3, [pc, #136]	@ (1ebc <execute+0x15c>)
+    1e32:	4798      	blx	r3
+                break;
+    1e34:	e7a2      	b.n	1d7c <execute+0x1c>
+            if(furi_string_cmp_str(cmd, "tx_carrier") == 0) {
+    1e36:	4922      	ldr	r1, [pc, #136]	@ (1ec0 <execute+0x160>)
+    1e38:	4620      	mov	r0, r4
+    1e3a:	4b10      	ldr	r3, [pc, #64]	@ (1e7c <execute+0x11c>)
+    1e3c:	4798      	blx	r3
+    1e3e:	b928      	cbnz	r0, 1e4c <execute+0xec>
+                subghz_cli_command_tx_carrier(pipe, args, context);
+    1e40:	463a      	mov	r2, r7
+    1e42:	4629      	mov	r1, r5
+    1e44:	4630      	mov	r0, r6
+    1e46:	4b1f      	ldr	r3, [pc, #124]	@ (1ec4 <execute+0x164>)
+    1e48:	4798      	blx	r3
+                break;
+    1e4a:	e797      	b.n	1d7c <execute+0x1c>
+            if(furi_string_cmp_str(cmd, "rx_carrier") == 0) {
+    1e4c:	491e      	ldr	r1, [pc, #120]	@ (1ec8 <execute+0x168>)
+    1e4e:	4620      	mov	r0, r4
+    1e50:	4b0a      	ldr	r3, [pc, #40]	@ (1e7c <execute+0x11c>)
+    1e52:	4798      	blx	r3
+    1e54:	b110      	cbz	r0, 1e5c <execute+0xfc>
+        subghz_cli_command_print_usage();
+    1e56:	4b06      	ldr	r3, [pc, #24]	@ (1e70 <execute+0x110>)
+    1e58:	4798      	blx	r3
+    1e5a:	e78f      	b.n	1d7c <execute+0x1c>
+                subghz_cli_command_rx_carrier(pipe, args, context);
+    1e5c:	463a      	mov	r2, r7
+    1e5e:	4629      	mov	r1, r5
+    1e60:	4630      	mov	r0, r6
+    1e62:	4b1a      	ldr	r3, [pc, #104]	@ (1ecc <execute+0x16c>)
+    1e64:	4798      	blx	r3
+                break;
+    1e66:	e789      	b.n	1d7c <execute+0x1c>
+	...
+    1e78:	00001060 	.word	0x00001060
+	...
+    1e84:	00001068 	.word	0x00001068
+    1e88:	00000000 	.word	0x00000000
+    1e8c:	0000106c 	.word	0x0000106c
+    1e90:	00000000 	.word	0x00000000
+    1e94:	00001070 	.word	0x00001070
+    1e98:	00000000 	.word	0x00000000
+    1e9c:	00001078 	.word	0x00001078
+    1ea0:	00000000 	.word	0x00000000
+    1ea4:	00001084 	.word	0x00001084
+	...
+    1eb0:	00001094 	.word	0x00001094
+    1eb4:	00000000 	.word	0x00000000
+    1eb8:	000010a4 	.word	0x000010a4
+    1ebc:	00000000 	.word	0x00000000
+    1ec0:	000010b0 	.word	0x000010b0
+    1ec4:	00000000 	.word	0x00000000
+    1ec8:	000010bc 	.word	0x000010bc
+    1ecc:	00000000 	.word	0x00000000
+
+00001ed0 <cli_subghz_ep>:
+
+CLI_COMMAND_INTERFACE(subghz, execute, CliCommandFlagDefault, 2048, CLI_APPID);
+    1ed0:	4800      	ldr	r0, [pc, #0]	@ (1ed4 <cli_subghz_ep+0x4>)
+    1ed2:	4770      	bx	lr
+    1ed4:	000010d4 	.word	0x000010d4
+
+00001ed8 <subghz_chat_worker_thread>:
+/** Worker thread
+ * 
+ * @param context 
+ * @return exit code 
+ */
+static int32_t subghz_chat_worker_thread(void* context) {
+    1ed8:	b510      	push	{r4, lr}
+    1eda:	b082      	sub	sp, #8
+    1edc:	4604      	mov	r4, r0
+    SubGhzChatWorker* instance = context;
+    FURI_LOG_I(TAG, "Worker start");
+    1ede:	4a16      	ldr	r2, [pc, #88]	@ (1f38 <subghz_chat_worker_thread+0x60>)
+    1ee0:	4916      	ldr	r1, [pc, #88]	@ (1f3c <subghz_chat_worker_thread+0x64>)
+    1ee2:	2004      	movs	r0, #4
+    1ee4:	4b16      	ldr	r3, [pc, #88]	@ (1f40 <subghz_chat_worker_thread+0x68>)
+    1ee6:	4798      	blx	r3
+    char c;
+    SubGhzChatEvent event;
+    event.event = SubGhzChatEventUserEntrance;
+    1ee8:	2301      	movs	r3, #1
+    1eea:	f88d 3004 	strb.w	r3, [sp, #4]
+    furi_message_queue_put(instance->event_queue, &event, 0);
+    1eee:	2200      	movs	r2, #0
+    1ef0:	a901      	add	r1, sp, #4
+    1ef2:	68e0      	ldr	r0, [r4, #12]
+    1ef4:	4b13      	ldr	r3, [pc, #76]	@ (1f44 <subghz_chat_worker_thread+0x6c>)
+    1ef6:	4798      	blx	r3
+    while(instance->worker_running) {
+    1ef8:	7a23      	ldrb	r3, [r4, #8]
+    1efa:	b1ab      	cbz	r3, 1f28 <subghz_chat_worker_thread+0x50>
+        if(pipe_receive(instance->pipe, (uint8_t*)&c, 1) == 1) {
+    1efc:	2201      	movs	r2, #1
+    1efe:	f10d 0107 	add.w	r1, sp, #7
+    1f02:	6960      	ldr	r0, [r4, #20]
+    1f04:	4b10      	ldr	r3, [pc, #64]	@ (1f48 <subghz_chat_worker_thread+0x70>)
+    1f06:	4798      	blx	r3
+    1f08:	2801      	cmp	r0, #1
+    1f0a:	d1f5      	bne.n	1ef8 <subghz_chat_worker_thread+0x20>
+            event.event = SubGhzChatEventInputData;
+    1f0c:	2303      	movs	r3, #3
+    1f0e:	f88d 3004 	strb.w	r3, [sp, #4]
+            event.c = c;
+    1f12:	f89d 3007 	ldrb.w	r3, [sp, #7]
+    1f16:	f88d 3005 	strb.w	r3, [sp, #5]
+            furi_message_queue_put(instance->event_queue, &event, FuriWaitForever);
+    1f1a:	f04f 32ff 	mov.w	r2, #4294967295	@ 0xffffffff
+    1f1e:	a901      	add	r1, sp, #4
+    1f20:	68e0      	ldr	r0, [r4, #12]
+    1f22:	4b08      	ldr	r3, [pc, #32]	@ (1f44 <subghz_chat_worker_thread+0x6c>)
+    1f24:	4798      	blx	r3
+    1f26:	e7e7      	b.n	1ef8 <subghz_chat_worker_thread+0x20>
+        }
+    }
+
+    FURI_LOG_I(TAG, "Worker stop");
+    1f28:	4a08      	ldr	r2, [pc, #32]	@ (1f4c <subghz_chat_worker_thread+0x74>)
+    1f2a:	4904      	ldr	r1, [pc, #16]	@ (1f3c <subghz_chat_worker_thread+0x64>)
+    1f2c:	2004      	movs	r0, #4
+    1f2e:	4b04      	ldr	r3, [pc, #16]	@ (1f40 <subghz_chat_worker_thread+0x68>)
+    1f30:	4798      	blx	r3
+    return 0;
+}
+    1f32:	2000      	movs	r0, #0
+    1f34:	b002      	add	sp, #8
+    1f36:	bd10      	pop	{r4, pc}
+    1f38:	000010f0 	.word	0x000010f0
+    1f3c:	00001100 	.word	0x00001100
+	...
+    1f4c:	0000110c 	.word	0x0000110c
+
+00001f50 <subghz_chat_worker_update_rx_event_chat>:
+
+static void subghz_chat_worker_update_rx_event_chat(void* context) {
+    1f50:	b510      	push	{r4, lr}
+    1f52:	b082      	sub	sp, #8
+    furi_assert(context);
+    1f54:	b1b0      	cbz	r0, 1f84 <subghz_chat_worker_update_rx_event_chat+0x34>
+    1f56:	4604      	mov	r4, r0
+    SubGhzChatWorker* instance = context;
+    SubGhzChatEvent event;
+    if((furi_get_tick() - instance->last_time_rx_data) >
+    1f58:	4b11      	ldr	r3, [pc, #68]	@ (1fa0 <sukima182+0x18>)
+    1f5a:	4798      	blx	r3
+    1f5c:	6923      	ldr	r3, [r4, #16]
+    1f5e:	1ac0      	subs	r0, r0, r3
+    1f60:	f5b0 7ffa 	cmp.w	r0, #500	@ 0x1f4
+    1f64:	d812      	bhi.n	1f8c <sukima182+0x4>
+       SUBGHZ_CHAT_WORKER_TIMEOUT_BETWEEN_MESSAGES) {
+        event.event = SubGhzChatEventNewMessage;
+        furi_message_queue_put(instance->event_queue, &event, FuriWaitForever);
+    }
+    instance->last_time_rx_data = furi_get_tick();
+    1f66:	4b0e      	ldr	r3, [pc, #56]	@ (1fa0 <sukima182+0x18>)
+    1f68:	4798      	blx	r3
+    1f6a:	6120      	str	r0, [r4, #16]
+    event.event = SubGhzChatEventRXData;
+    1f6c:	2304      	movs	r3, #4
+    1f6e:	f88d 3004 	strb.w	r3, [sp, #4]
+    furi_message_queue_put(instance->event_queue, &event, FuriWaitForever);
+    1f72:	f04f 32ff 	mov.w	r2, #4294967295	@ 0xffffffff
+    1f76:	eb0d 0103 	add.w	r1, sp, r3
+    1f7a:	68e0      	ldr	r0, [r4, #12]
+    1f7c:	4b09      	ldr	r3, [pc, #36]	@ (1fa4 <sukima182+0x1c>)
+    1f7e:	4798      	blx	r3
+}
+    1f80:	b002      	add	sp, #8
+    1f82:	bd10      	pop	{r4, pc}
+    furi_assert(context);
+    1f84:	f04f 0c01 	mov.w	ip, #1
+
+00001f88 <sukima182>:
+    1f88:	4b07      	ldr	r3, [pc, #28]	@ (1fa8 <sukima182+0x20>)
+    1f8a:	4798      	blx	r3
+        event.event = SubGhzChatEventNewMessage;
+    1f8c:	2305      	movs	r3, #5
+    1f8e:	f88d 3004 	strb.w	r3, [sp, #4]
+        furi_message_queue_put(instance->event_queue, &event, FuriWaitForever);
+    1f92:	f04f 32ff 	mov.w	r2, #4294967295	@ 0xffffffff
+    1f96:	a901      	add	r1, sp, #4
+    1f98:	68e0      	ldr	r0, [r4, #12]
+    1f9a:	4b02      	ldr	r3, [pc, #8]	@ (1fa4 <sukima182+0x1c>)
+    1f9c:	4798      	blx	r3
+    1f9e:	e7e2      	b.n	1f66 <subghz_chat_worker_update_rx_event_chat+0x16>
+	...
+
+00001fac <subghz_chat_worker_alloc>:
+
+SubGhzChatWorker* subghz_chat_worker_alloc(PipeSide* pipe) {
+    1fac:	b538      	push	{r3, r4, r5, lr}
+    1fae:	4605      	mov	r5, r0
+    SubGhzChatWorker* instance = malloc(sizeof(SubGhzChatWorker));
+    1fb0:	2018      	movs	r0, #24
+    1fb2:	4b0b      	ldr	r3, [pc, #44]	@ (1fe0 <subghz_chat_worker_alloc+0x34>)
+    1fb4:	4798      	blx	r3
+    1fb6:	4604      	mov	r4, r0
+
+    instance->pipe = pipe;
+    1fb8:	6145      	str	r5, [r0, #20]
+
+    instance->thread =
+        furi_thread_alloc_ex("SubGhzChat", 2048, subghz_chat_worker_thread, instance);
+    1fba:	4603      	mov	r3, r0
+    1fbc:	4a09      	ldr	r2, [pc, #36]	@ (1fe4 <subghz_chat_worker_alloc+0x38>)
+    1fbe:	f44f 6100 	mov.w	r1, #2048	@ 0x800
+    1fc2:	4809      	ldr	r0, [pc, #36]	@ (1fe8 <subghz_chat_worker_alloc+0x3c>)
+    1fc4:	4d09      	ldr	r5, [pc, #36]	@ (1fec <subghz_chat_worker_alloc+0x40>)
+    1fc6:	47a8      	blx	r5
+    instance->thread =
+    1fc8:	6020      	str	r0, [r4, #0]
+    instance->subghz_txrx = subghz_tx_rx_worker_alloc();
+    1fca:	4b09      	ldr	r3, [pc, #36]	@ (1ff0 <subghz_chat_worker_alloc+0x44>)
+    1fcc:	4798      	blx	r3
+    1fce:	6060      	str	r0, [r4, #4]
+    instance->event_queue = furi_message_queue_alloc(80, sizeof(SubGhzChatEvent));
+    1fd0:	2102      	movs	r1, #2
+    1fd2:	2050      	movs	r0, #80	@ 0x50
+    1fd4:	4b07      	ldr	r3, [pc, #28]	@ (1ff4 <subghz_chat_worker_alloc+0x48>)
+    1fd6:	4798      	blx	r3
+    1fd8:	60e0      	str	r0, [r4, #12]
+    return instance;
+}
+    1fda:	4620      	mov	r0, r4
+    1fdc:	bd38      	pop	{r3, r4, r5, pc}
+    1fde:	bf00      	nop
+	...
+    1fe8:	00001100 	.word	0x00001100
+	...
+
+00001ff8 <subghz_chat_worker_free>:
+
+void subghz_chat_worker_free(SubGhzChatWorker* instance) {
+    1ff8:	b510      	push	{r4, lr}
+    furi_assert(instance);
+    1ffa:	b178      	cbz	r0, 201c <subghz_chat_worker_free+0x24>
+    1ffc:	4604      	mov	r4, r0
+    furi_assert(!instance->worker_running);
+    1ffe:	7a03      	ldrb	r3, [r0, #8]
+    2000:	b983      	cbnz	r3, 2024 <sukima340+0x4>
+    furi_message_queue_free(instance->event_queue);
+    2002:	68c0      	ldr	r0, [r0, #12]
+    2004:	4b09      	ldr	r3, [pc, #36]	@ (202c <sukima355+0x4>)
+    2006:	4798      	blx	r3
+    subghz_tx_rx_worker_free(instance->subghz_txrx);
+    2008:	6860      	ldr	r0, [r4, #4]
+    200a:	4b09      	ldr	r3, [pc, #36]	@ (2030 <sukima355+0x8>)
+    200c:	4798      	blx	r3
+    furi_thread_free(instance->thread);
+    200e:	6820      	ldr	r0, [r4, #0]
+    2010:	4b08      	ldr	r3, [pc, #32]	@ (2034 <sukima355+0xc>)
+    2012:	4798      	blx	r3
+
+    free(instance);
+    2014:	4620      	mov	r0, r4
+    2016:	4b08      	ldr	r3, [pc, #32]	@ (2038 <sukima355+0x10>)
+    2018:	4798      	blx	r3
+}
+    201a:	bd10      	pop	{r4, pc}
+    furi_assert(instance);
+    201c:	f04f 0c01 	mov.w	ip, #1
+
+00002020 <sukima340>:
+    2020:	4b06      	ldr	r3, [pc, #24]	@ (203c <sukima355+0x14>)
+    2022:	4798      	blx	r3
+    furi_assert(!instance->worker_running);
+    2024:	f04f 0c01 	mov.w	ip, #1
+
+00002028 <sukima355>:
+    2028:	4b04      	ldr	r3, [pc, #16]	@ (203c <sukima355+0x14>)
+    202a:	4798      	blx	r3
+	...
+
+00002040 <subghz_chat_worker_start>:
+
+bool subghz_chat_worker_start(
+    SubGhzChatWorker* instance,
+    const SubGhzDevice* device,
+    uint32_t frequency) {
+    2040:	b538      	push	{r3, r4, r5, lr}
+    furi_assert(instance);
+    2042:	b148      	cbz	r0, 2058 <subghz_chat_worker_start+0x18>
+    2044:	4604      	mov	r4, r0
+    furi_assert(!instance->worker_running);
+    2046:	7a03      	ldrb	r3, [r0, #8]
+    2048:	b953      	cbnz	r3, 2060 <sukima439+0x4>
+    bool res = false;
+
+    if(subghz_tx_rx_worker_start(instance->subghz_txrx, device, frequency)) {
+    204a:	6840      	ldr	r0, [r0, #4]
+    204c:	4b0e      	ldr	r3, [pc, #56]	@ (2088 <sukima458+0x24>)
+    204e:	4798      	blx	r3
+    2050:	4605      	mov	r5, r0
+    2052:	b948      	cbnz	r0, 2068 <sukima458+0x4>
+        furi_thread_start(instance->thread);
+
+        res = true;
+    }
+    return res;
+}
+    2054:	4628      	mov	r0, r5
+    2056:	bd38      	pop	{r3, r4, r5, pc}
+    furi_assert(instance);
+    2058:	f04f 0c01 	mov.w	ip, #1
+
+0000205c <sukima439>:
+    205c:	4b0b      	ldr	r3, [pc, #44]	@ (208c <sukima458+0x28>)
+    205e:	4798      	blx	r3
+    furi_assert(!instance->worker_running);
+    2060:	f04f 0c01 	mov.w	ip, #1
+
+00002064 <sukima458>:
+    2064:	4b09      	ldr	r3, [pc, #36]	@ (208c <sukima458+0x28>)
+    2066:	4798      	blx	r3
+        furi_message_queue_reset(instance->event_queue);
+    2068:	68e0      	ldr	r0, [r4, #12]
+    206a:	4b09      	ldr	r3, [pc, #36]	@ (2090 <sukima458+0x2c>)
+    206c:	4798      	blx	r3
+        subghz_tx_rx_worker_set_callback_have_read(
+    206e:	4622      	mov	r2, r4
+    2070:	4908      	ldr	r1, [pc, #32]	@ (2094 <sukima458+0x30>)
+    2072:	6860      	ldr	r0, [r4, #4]
+    2074:	4b08      	ldr	r3, [pc, #32]	@ (2098 <sukima458+0x34>)
+    2076:	4798      	blx	r3
+        instance->worker_running = true;
+    2078:	2301      	movs	r3, #1
+    207a:	7223      	strb	r3, [r4, #8]
+        instance->last_time_rx_data = 0;
+    207c:	2300      	movs	r3, #0
+    207e:	6123      	str	r3, [r4, #16]
+        furi_thread_start(instance->thread);
+    2080:	6820      	ldr	r0, [r4, #0]
+    2082:	4b06      	ldr	r3, [pc, #24]	@ (209c <sukima458+0x38>)
+    2084:	4798      	blx	r3
+        res = true;
+    2086:	e7e5      	b.n	2054 <subghz_chat_worker_start+0x14>
+	...
+
+000020a0 <subghz_chat_worker_stop>:
+
+void subghz_chat_worker_stop(SubGhzChatWorker* instance) {
+    20a0:	b510      	push	{r4, lr}
+    furi_assert(instance);
+    20a2:	b160      	cbz	r0, 20be <subghz_chat_worker_stop+0x1e>
+    20a4:	4604      	mov	r4, r0
+    furi_assert(instance->worker_running);
+    20a6:	7a03      	ldrb	r3, [r0, #8]
+    20a8:	b16b      	cbz	r3, 20c6 <sukima567+0x4>
+    if(subghz_tx_rx_worker_is_running(instance->subghz_txrx)) {
+    20aa:	6840      	ldr	r0, [r0, #4]
+    20ac:	4b0a      	ldr	r3, [pc, #40]	@ (20d8 <sukima582+0xe>)
+    20ae:	4798      	blx	r3
+    20b0:	b968      	cbnz	r0, 20ce <sukima582+0x4>
+        subghz_tx_rx_worker_stop(instance->subghz_txrx);
+    }
+
+    instance->worker_running = false;
+    20b2:	2300      	movs	r3, #0
+    20b4:	7223      	strb	r3, [r4, #8]
+
+    furi_thread_join(instance->thread);
+    20b6:	6820      	ldr	r0, [r4, #0]
+    20b8:	4b08      	ldr	r3, [pc, #32]	@ (20dc <sukima582+0x12>)
+    20ba:	4798      	blx	r3
+}
+    20bc:	bd10      	pop	{r4, pc}
+    furi_assert(instance);
+    20be:	f04f 0c01 	mov.w	ip, #1
+
+000020c2 <sukima567>:
+    20c2:	4b07      	ldr	r3, [pc, #28]	@ (20e0 <sukima582+0x16>)
+    20c4:	4798      	blx	r3
+    furi_assert(instance->worker_running);
+    20c6:	f04f 0c01 	mov.w	ip, #1
+
+000020ca <sukima582>:
+    20ca:	4b05      	ldr	r3, [pc, #20]	@ (20e0 <sukima582+0x16>)
+    20cc:	4798      	blx	r3
+        subghz_tx_rx_worker_stop(instance->subghz_txrx);
+    20ce:	6860      	ldr	r0, [r4, #4]
+    20d0:	4b04      	ldr	r3, [pc, #16]	@ (20e4 <sukima582+0x1a>)
+    20d2:	4798      	blx	r3
+    20d4:	e7ed      	b.n	20b2 <subghz_chat_worker_stop+0x12>
+    20d6:	bf00      	nop
+	...
+
+000020e8 <subghz_chat_worker_is_running>:
+
+bool subghz_chat_worker_is_running(SubGhzChatWorker* instance) {
+    20e8:	b508      	push	{r3, lr}
+    furi_assert(instance);
+    20ea:	b108      	cbz	r0, 20f0 <subghz_chat_worker_is_running+0x8>
+    return instance->worker_running;
+    20ec:	7a00      	ldrb	r0, [r0, #8]
+}
+    20ee:	bd08      	pop	{r3, pc}
+    furi_assert(instance);
+    20f0:	f04f 0c01 	mov.w	ip, #1
+
+000020f4 <sukima640>:
+    20f4:	4b00      	ldr	r3, [pc, #0]	@ (20f8 <sukima640+0x4>)
+    20f6:	4798      	blx	r3
+    20f8:	00000000 	.word	0x00000000
+
+000020fc <subghz_chat_worker_get_event_chat>:
+
+SubGhzChatEvent subghz_chat_worker_get_event_chat(SubGhzChatWorker* instance) {
+    20fc:	b500      	push	{lr}
+    20fe:	b083      	sub	sp, #12
+    furi_assert(instance);
+    2100:	b1b0      	cbz	r0, 2130 <subghz_chat_worker_get_event_chat+0x34>
+    SubGhzChatEvent event;
+    if(furi_message_queue_get(instance->event_queue, &event, FuriWaitForever) == FuriStatusOk) {
+    2102:	f04f 32ff 	mov.w	r2, #4294967295	@ 0xffffffff
+    2106:	4669      	mov	r1, sp
+    2108:	68c0      	ldr	r0, [r0, #12]
+    210a:	4b0f      	ldr	r3, [pc, #60]	@ (2148 <sukima713+0x14>)
+    210c:	4798      	blx	r3
+    210e:	b998      	cbnz	r0, 2138 <sukima713+0x4>
+        return event;
+    2110:	f8bd 3000 	ldrh.w	r3, [sp]
+    2114:	f8ad 3004 	strh.w	r3, [sp, #4]
+    } else {
+        event.event = SubGhzChatEventNoEvent;
+        return event;
+    }
+}
+    2118:	2000      	movs	r0, #0
+    211a:	f89d 3004 	ldrb.w	r3, [sp, #4]
+    211e:	f363 0007 	bfi	r0, r3, #0, #8
+    2122:	f89d 3005 	ldrb.w	r3, [sp, #5]
+    2126:	f363 200f 	bfi	r0, r3, #8, #8
+    212a:	b003      	add	sp, #12
+    212c:	f85d fb04 	ldr.w	pc, [sp], #4
+    furi_assert(instance);
+    2130:	f04f 0c01 	mov.w	ip, #1
+
+00002134 <sukima713>:
+    2134:	4b05      	ldr	r3, [pc, #20]	@ (214c <sukima713+0x18>)
+    2136:	4798      	blx	r3
+        event.event = SubGhzChatEventNoEvent;
+    2138:	2300      	movs	r3, #0
+    213a:	f88d 3000 	strb.w	r3, [sp]
+        return event;
+    213e:	f8bd 3000 	ldrh.w	r3, [sp]
+    2142:	f8ad 3004 	strh.w	r3, [sp, #4]
+    2146:	e7e7      	b.n	2118 <subghz_chat_worker_get_event_chat+0x1c>
+	...
+
+00002150 <subghz_chat_worker_put_event_chat>:
+
+void subghz_chat_worker_put_event_chat(SubGhzChatWorker* instance, SubGhzChatEvent* event) {
+    2150:	b508      	push	{r3, lr}
+    furi_assert(instance);
+    2152:	b128      	cbz	r0, 2160 <subghz_chat_worker_put_event_chat+0x10>
+    furi_message_queue_put(instance->event_queue, event, FuriWaitForever);
+    2154:	f04f 32ff 	mov.w	r2, #4294967295	@ 0xffffffff
+    2158:	68c0      	ldr	r0, [r0, #12]
+    215a:	4b03      	ldr	r3, [pc, #12]	@ (2168 <sukima775+0x4>)
+    215c:	4798      	blx	r3
+}
+    215e:	bd08      	pop	{r3, pc}
+    furi_assert(instance);
+    2160:	f04f 0c01 	mov.w	ip, #1
+
+00002164 <sukima775>:
+    2164:	4b01      	ldr	r3, [pc, #4]	@ (216c <sukima775+0x8>)
+    2166:	4798      	blx	r3
+	...
+
+00002170 <subghz_chat_worker_available>:
+
+size_t subghz_chat_worker_available(SubGhzChatWorker* instance) {
+    2170:	b508      	push	{r3, lr}
+    furi_assert(instance);
+    2172:	b118      	cbz	r0, 217c <subghz_chat_worker_available+0xc>
+    return subghz_tx_rx_worker_available(instance->subghz_txrx);
+    2174:	6840      	ldr	r0, [r0, #4]
+    2176:	4b03      	ldr	r3, [pc, #12]	@ (2184 <sukima825+0x4>)
+    2178:	4798      	blx	r3
+}
+    217a:	bd08      	pop	{r3, pc}
+    furi_assert(instance);
+    217c:	f04f 0c01 	mov.w	ip, #1
+
+00002180 <sukima825>:
+    2180:	4b01      	ldr	r3, [pc, #4]	@ (2188 <sukima825+0x8>)
+    2182:	4798      	blx	r3
+	...
+
+0000218c <subghz_chat_worker_read>:
+
+size_t subghz_chat_worker_read(SubGhzChatWorker* instance, uint8_t* data, size_t size) {
+    218c:	b508      	push	{r3, lr}
+    furi_assert(instance);
+    218e:	b118      	cbz	r0, 2198 <subghz_chat_worker_read+0xc>
+    return subghz_tx_rx_worker_read(instance->subghz_txrx, data, size);
+    2190:	6840      	ldr	r0, [r0, #4]
+    2192:	4b03      	ldr	r3, [pc, #12]	@ (21a0 <sukima880+0x4>)
+    2194:	4798      	blx	r3
+}
+    2196:	bd08      	pop	{r3, pc}
+    furi_assert(instance);
+    2198:	f04f 0c01 	mov.w	ip, #1
+
+0000219c <sukima880>:
+    219c:	4b01      	ldr	r3, [pc, #4]	@ (21a4 <sukima880+0x8>)
+    219e:	4798      	blx	r3
+	...
+
+000021a8 <subghz_chat_worker_write>:
+
+bool subghz_chat_worker_write(SubGhzChatWorker* instance, uint8_t* data, size_t size) {
+    21a8:	b508      	push	{r3, lr}
+    furi_assert(instance);
+    21aa:	b118      	cbz	r0, 21b4 <subghz_chat_worker_write+0xc>
+    return subghz_tx_rx_worker_write(instance->subghz_txrx, data, size);
+    21ac:	6840      	ldr	r0, [r0, #4]
+    21ae:	4b03      	ldr	r3, [pc, #12]	@ (21bc <sukima937+0x4>)
+    21b0:	4798      	blx	r3
+}
+    21b2:	bd08      	pop	{r3, pc}
+    furi_assert(instance);
+    21b4:	f04f 0c01 	mov.w	ip, #1
+
+000021b8 <sukima937>:
+    21b8:	4b01      	ldr	r3, [pc, #4]	@ (21c0 <sukima937+0x8>)
+    21ba:	4798      	blx	r3
+	...

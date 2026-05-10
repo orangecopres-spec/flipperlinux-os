@@ -1,0 +1,402 @@
+
+build/f7-firmware-D/.extapps/example_event_loop_event_flags_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <event_loop_event_flags_app_alloc>:
+        FURI_LOG_I(TAG, "Exit App");
+        furi_event_loop_stop(app->event_loop);
+    }
+}
+
+static EventLoopEventFlagsApp* event_loop_event_flags_app_alloc(void) {
+   0:	b530      	push	{r4, r5, lr}
+   2:	b083      	sub	sp, #12
+    EventLoopEventFlagsApp* app = malloc(sizeof(EventLoopEventFlagsApp));
+   4:	2010      	movs	r0, #16
+   6:	4b11      	ldr	r3, [pc, #68]	@ (4c <event_loop_event_flags_app_alloc+0x4c>)
+   8:	4798      	blx	r3
+   a:	4604      	mov	r4, r0
+
+    // Create event loop instances.
+    app->event_loop = furi_event_loop_alloc();
+   c:	4b10      	ldr	r3, [pc, #64]	@ (50 <event_loop_event_flags_app_alloc+0x50>)
+   e:	4798      	blx	r3
+  10:	60a0      	str	r0, [r4, #8]
+    // Create event flag instances.
+    app->event_flag = furi_event_flag_alloc();
+  12:	4b10      	ldr	r3, [pc, #64]	@ (54 <event_loop_event_flags_app_alloc+0x54>)
+  14:	4798      	blx	r3
+  16:	60e0      	str	r0, [r4, #12]
+
+    // Create GUI instance.
+    app->gui = furi_record_open(RECORD_GUI);
+  18:	480f      	ldr	r0, [pc, #60]	@ (58 <event_loop_event_flags_app_alloc+0x58>)
+  1a:	4b10      	ldr	r3, [pc, #64]	@ (5c <event_loop_event_flags_app_alloc+0x5c>)
+  1c:	4798      	blx	r3
+  1e:	6020      	str	r0, [r4, #0]
+    app->view_port = view_port_alloc();
+  20:	4b0f      	ldr	r3, [pc, #60]	@ (60 <event_loop_event_flags_app_alloc+0x60>)
+  22:	4798      	blx	r3
+  24:	6060      	str	r0, [r4, #4]
+    // Gain exclusive access to the input events
+    view_port_input_callback_set(app->view_port, event_loop_event_flags_app_input_callback, app);
+  26:	4622      	mov	r2, r4
+  28:	490e      	ldr	r1, [pc, #56]	@ (64 <event_loop_event_flags_app_alloc+0x64>)
+  2a:	4b0f      	ldr	r3, [pc, #60]	@ (68 <event_loop_event_flags_app_alloc+0x68>)
+  2c:	4798      	blx	r3
+    gui_add_view_port(app->gui, app->view_port, GuiLayerFullscreen);
+  2e:	2204      	movs	r2, #4
+  30:	6861      	ldr	r1, [r4, #4]
+  32:	6820      	ldr	r0, [r4, #0]
+  34:	4b0d      	ldr	r3, [pc, #52]	@ (6c <event_loop_event_flags_app_alloc+0x6c>)
+  36:	4798      	blx	r3
+
+    // Notify the event loop about incoming messages in the event flag
+    furi_event_loop_subscribe_event_flag(
+  38:	9400      	str	r4, [sp, #0]
+  3a:	4b0d      	ldr	r3, [pc, #52]	@ (70 <event_loop_event_flags_app_alloc+0x70>)
+  3c:	2205      	movs	r2, #5
+  3e:	68e1      	ldr	r1, [r4, #12]
+  40:	68a0      	ldr	r0, [r4, #8]
+  42:	4d0c      	ldr	r5, [pc, #48]	@ (74 <event_loop_event_flags_app_alloc+0x74>)
+  44:	47a8      	blx	r5
+        FuriEventLoopEventIn | FuriEventLoopEventFlagEdge,
+        event_loop_event_flags_app_event_flags_callback,
+        app);
+
+    return app;
+}
+  46:	4620      	mov	r0, r4
+  48:	b003      	add	sp, #12
+  4a:	bd30      	pop	{r4, r5, pc}
+	...
+
+00000078 <event_loop_event_flags_app_event_flags_callback>:
+    event_loop_event_flags_app_event_flags_callback(FuriEventLoopObject* object, void* context) {
+  78:	b538      	push	{r3, r4, r5, lr}
+    furi_assert(context);
+  7a:	b319      	cbz	r1, c4 <event_loop_event_flags_app_event_flags_callback+0x4c>
+  7c:	4603      	mov	r3, r0
+  7e:	460d      	mov	r5, r1
+    furi_assert(object == app->event_flag);
+  80:	68c8      	ldr	r0, [r1, #12]
+  82:	4298      	cmp	r0, r3
+  84:	d122      	bne.n	cc <sukima204+0x4>
+        furi_event_flag_wait(app->event_flag, EVENT_LOOP_EVENT_FLAGS_MASK, FuriFlagWaitAny, 0);
+  86:	2300      	movs	r3, #0
+  88:	461a      	mov	r2, r3
+  8a:	217f      	movs	r1, #127	@ 0x7f
+  8c:	4c2a      	ldr	r4, [pc, #168]	@ (138 <sukima239+0x60>)
+  8e:	47a0      	blx	r4
+  90:	4604      	mov	r4, r0
+    furi_check((events) != 0);
+  92:	f010 0fff 	tst.w	r0, #255	@ 0xff
+  96:	d01d      	beq.n	d4 <sukima222+0x4>
+    if(events & EventLoopEventFlagsOk) {
+  98:	f010 0f01 	tst.w	r0, #1
+  9c:	d11e      	bne.n	dc <sukima239+0x4>
+    if(events & EventLoopEventFlagsUp) {
+  9e:	f014 0f02 	tst.w	r4, #2
+  a2:	d121      	bne.n	e8 <sukima239+0x10>
+    if(events & EventLoopEventFlagsDown) {
+  a4:	f014 0f04 	tst.w	r4, #4
+  a8:	d124      	bne.n	f4 <sukima239+0x1c>
+    if(events & EventLoopEventFlagsLeft) {
+  aa:	f014 0f08 	tst.w	r4, #8
+  ae:	d127      	bne.n	100 <sukima239+0x28>
+    if(events & EventLoopEventFlagsRight) {
+  b0:	f014 0f10 	tst.w	r4, #16
+  b4:	d12a      	bne.n	10c <sukima239+0x34>
+    if(events & EventLoopEventFlagsBack) {
+  b6:	f014 0f20 	tst.w	r4, #32
+  ba:	d12d      	bne.n	118 <sukima239+0x40>
+    if(events & EventLoopEventFlagsExit) {
+  bc:	f014 0f40 	tst.w	r4, #64	@ 0x40
+  c0:	d130      	bne.n	124 <sukima239+0x4c>
+}
+  c2:	bd38      	pop	{r3, r4, r5, pc}
+    furi_assert(context);
+  c4:	f04f 0c01 	mov.w	ip, #1
+
+000000c8 <sukima204>:
+  c8:	4b1c      	ldr	r3, [pc, #112]	@ (13c <sukima239+0x64>)
+  ca:	4798      	blx	r3
+    furi_assert(object == app->event_flag);
+  cc:	f04f 0c01 	mov.w	ip, #1
+
+000000d0 <sukima222>:
+  d0:	4b1a      	ldr	r3, [pc, #104]	@ (13c <sukima239+0x64>)
+  d2:	4798      	blx	r3
+    furi_check((events) != 0);
+  d4:	f04f 0c02 	mov.w	ip, #2
+
+000000d8 <sukima239>:
+  d8:	4b18      	ldr	r3, [pc, #96]	@ (13c <sukima239+0x64>)
+  da:	4798      	blx	r3
+        FURI_LOG_I(TAG, "Press \"Ok\"");
+  dc:	4a18      	ldr	r2, [pc, #96]	@ (140 <sukima239+0x68>)
+  de:	4919      	ldr	r1, [pc, #100]	@ (144 <sukima239+0x6c>)
+  e0:	2004      	movs	r0, #4
+  e2:	4b19      	ldr	r3, [pc, #100]	@ (148 <sukima239+0x70>)
+  e4:	4798      	blx	r3
+  e6:	e7da      	b.n	9e <event_loop_event_flags_app_event_flags_callback+0x26>
+        FURI_LOG_I(TAG, "Press \"Up\"");
+  e8:	4a18      	ldr	r2, [pc, #96]	@ (14c <sukima239+0x74>)
+  ea:	4916      	ldr	r1, [pc, #88]	@ (144 <sukima239+0x6c>)
+  ec:	2004      	movs	r0, #4
+  ee:	4b16      	ldr	r3, [pc, #88]	@ (148 <sukima239+0x70>)
+  f0:	4798      	blx	r3
+  f2:	e7d7      	b.n	a4 <event_loop_event_flags_app_event_flags_callback+0x2c>
+        FURI_LOG_I(TAG, "Press \"Down\"");
+  f4:	4a16      	ldr	r2, [pc, #88]	@ (150 <sukima239+0x78>)
+  f6:	4913      	ldr	r1, [pc, #76]	@ (144 <sukima239+0x6c>)
+  f8:	2004      	movs	r0, #4
+  fa:	4b13      	ldr	r3, [pc, #76]	@ (148 <sukima239+0x70>)
+  fc:	4798      	blx	r3
+  fe:	e7d4      	b.n	aa <event_loop_event_flags_app_event_flags_callback+0x32>
+        FURI_LOG_I(TAG, "Press \"Left\"");
+ 100:	4a14      	ldr	r2, [pc, #80]	@ (154 <sukima239+0x7c>)
+ 102:	4910      	ldr	r1, [pc, #64]	@ (144 <sukima239+0x6c>)
+ 104:	2004      	movs	r0, #4
+ 106:	4b10      	ldr	r3, [pc, #64]	@ (148 <sukima239+0x70>)
+ 108:	4798      	blx	r3
+ 10a:	e7d1      	b.n	b0 <event_loop_event_flags_app_event_flags_callback+0x38>
+        FURI_LOG_I(TAG, "Press \"Right\"");
+ 10c:	4a12      	ldr	r2, [pc, #72]	@ (158 <sukima239+0x80>)
+ 10e:	490d      	ldr	r1, [pc, #52]	@ (144 <sukima239+0x6c>)
+ 110:	2004      	movs	r0, #4
+ 112:	4b0d      	ldr	r3, [pc, #52]	@ (148 <sukima239+0x70>)
+ 114:	4798      	blx	r3
+ 116:	e7ce      	b.n	b6 <event_loop_event_flags_app_event_flags_callback+0x3e>
+        FURI_LOG_I(TAG, "Press \"Back\"");
+ 118:	4a10      	ldr	r2, [pc, #64]	@ (15c <sukima239+0x84>)
+ 11a:	490a      	ldr	r1, [pc, #40]	@ (144 <sukima239+0x6c>)
+ 11c:	2004      	movs	r0, #4
+ 11e:	4b0a      	ldr	r3, [pc, #40]	@ (148 <sukima239+0x70>)
+ 120:	4798      	blx	r3
+ 122:	e7cb      	b.n	bc <event_loop_event_flags_app_event_flags_callback+0x44>
+        FURI_LOG_I(TAG, "Exit App");
+ 124:	4a0e      	ldr	r2, [pc, #56]	@ (160 <sukima239+0x88>)
+ 126:	4907      	ldr	r1, [pc, #28]	@ (144 <sukima239+0x6c>)
+ 128:	2004      	movs	r0, #4
+ 12a:	4b07      	ldr	r3, [pc, #28]	@ (148 <sukima239+0x70>)
+ 12c:	4798      	blx	r3
+        furi_event_loop_stop(app->event_loop);
+ 12e:	68a8      	ldr	r0, [r5, #8]
+ 130:	4b0c      	ldr	r3, [pc, #48]	@ (164 <sukima239+0x8c>)
+ 132:	4798      	blx	r3
+}
+ 134:	e7c5      	b.n	c2 <event_loop_event_flags_app_event_flags_callback+0x4a>
+ 136:	bf00      	nop
+	...
+ 140:	00000004 	.word	0x00000004
+ 144:	00000010 	.word	0x00000010
+ 148:	00000000 	.word	0x00000000
+ 14c:	0000002c 	.word	0x0000002c
+ 150:	00000038 	.word	0x00000038
+ 154:	00000048 	.word	0x00000048
+ 158:	00000058 	.word	0x00000058
+ 15c:	00000068 	.word	0x00000068
+ 160:	00000078 	.word	0x00000078
+ 164:	00000000 	.word	0x00000000
+
+00000168 <event_loop_event_flags_app_input_callback>:
+static void event_loop_event_flags_app_input_callback(InputEvent* event, void* context) {
+ 168:	b508      	push	{r3, lr}
+    furi_assert(context);
+ 16a:	b169      	cbz	r1, 188 <event_loop_event_flags_app_input_callback+0x20>
+ 16c:	460a      	mov	r2, r1
+    if(event->type == InputTypePress) {
+ 16e:	7943      	ldrb	r3, [r0, #5]
+ 170:	2b00      	cmp	r3, #0
+ 172:	d12b      	bne.n	1cc <sukima402+0x40>
+        if(event->key == InputKeyOk) {
+ 174:	7903      	ldrb	r3, [r0, #4]
+ 176:	2b04      	cmp	r3, #4
+ 178:	d00a      	beq.n	190 <sukima402+0x4>
+        } else if(event->key == InputKeyUp) {
+ 17a:	2b05      	cmp	r3, #5
+ 17c:	d828      	bhi.n	1d0 <sukima402+0x44>
+ 17e:	e8df f003 	tbb	[pc, r3]
+ 182:	110c      	.short	0x110c
+ 184:	2027161b 	.word	0x2027161b
+    furi_assert(context);
+ 188:	f04f 0c01 	mov.w	ip, #1
+
+0000018c <sukima402>:
+ 18c:	4b15      	ldr	r3, [pc, #84]	@ (1e4 <sukima402+0x58>)
+ 18e:	4798      	blx	r3
+            furi_event_flag_set(app->event_flag, EventLoopEventFlagsOk);
+ 190:	2101      	movs	r1, #1
+ 192:	68d0      	ldr	r0, [r2, #12]
+ 194:	4b14      	ldr	r3, [pc, #80]	@ (1e8 <sukima402+0x5c>)
+ 196:	4798      	blx	r3
+ 198:	e01a      	b.n	1d0 <sukima402+0x44>
+            furi_event_flag_set(app->event_flag, EventLoopEventFlagsUp);
+ 19a:	2102      	movs	r1, #2
+ 19c:	68d0      	ldr	r0, [r2, #12]
+ 19e:	4b12      	ldr	r3, [pc, #72]	@ (1e8 <sukima402+0x5c>)
+ 1a0:	4798      	blx	r3
+ 1a2:	e015      	b.n	1d0 <sukima402+0x44>
+            furi_event_flag_set(app->event_flag, EventLoopEventFlagsDown);
+ 1a4:	2104      	movs	r1, #4
+ 1a6:	68d0      	ldr	r0, [r2, #12]
+ 1a8:	4b0f      	ldr	r3, [pc, #60]	@ (1e8 <sukima402+0x5c>)
+ 1aa:	4798      	blx	r3
+ 1ac:	e010      	b.n	1d0 <sukima402+0x44>
+            furi_event_flag_set(app->event_flag, EventLoopEventFlagsLeft);
+ 1ae:	2108      	movs	r1, #8
+ 1b0:	68d0      	ldr	r0, [r2, #12]
+ 1b2:	4b0d      	ldr	r3, [pc, #52]	@ (1e8 <sukima402+0x5c>)
+ 1b4:	4798      	blx	r3
+ 1b6:	e00b      	b.n	1d0 <sukima402+0x44>
+            furi_event_flag_set(app->event_flag, EventLoopEventFlagsRight);
+ 1b8:	2110      	movs	r1, #16
+ 1ba:	68d0      	ldr	r0, [r2, #12]
+ 1bc:	4b0a      	ldr	r3, [pc, #40]	@ (1e8 <sukima402+0x5c>)
+ 1be:	4798      	blx	r3
+ 1c0:	e006      	b.n	1d0 <sukima402+0x44>
+            furi_event_flag_set(app->event_flag, EventLoopEventFlagsBack);
+ 1c2:	2120      	movs	r1, #32
+ 1c4:	68d0      	ldr	r0, [r2, #12]
+ 1c6:	4b08      	ldr	r3, [pc, #32]	@ (1e8 <sukima402+0x5c>)
+ 1c8:	4798      	blx	r3
+ 1ca:	e001      	b.n	1d0 <sukima402+0x44>
+    } else if(event->type == InputTypeLong) {
+ 1cc:	2b03      	cmp	r3, #3
+ 1ce:	d000      	beq.n	1d2 <sukima402+0x46>
+}
+ 1d0:	bd08      	pop	{r3, pc}
+        if(event->key == InputKeyBack) {
+ 1d2:	7903      	ldrb	r3, [r0, #4]
+ 1d4:	2b05      	cmp	r3, #5
+ 1d6:	d1fb      	bne.n	1d0 <sukima402+0x44>
+            furi_event_flag_set(app->event_flag, EventLoopEventFlagsExit);
+ 1d8:	2140      	movs	r1, #64	@ 0x40
+ 1da:	68d0      	ldr	r0, [r2, #12]
+ 1dc:	4b02      	ldr	r3, [pc, #8]	@ (1e8 <sukima402+0x5c>)
+ 1de:	4798      	blx	r3
+}
+ 1e0:	e7f6      	b.n	1d0 <sukima402+0x44>
+ 1e2:	bf00      	nop
+	...
+
+000001ec <event_loop_event_flags_app_run>:
+    app->event_loop = NULL;
+
+    free(app);
+}
+
+static void event_loop_event_flags_app_run(EventLoopEventFlagsApp* app) {
+ 1ec:	b570      	push	{r4, r5, r6, lr}
+ 1ee:	4604      	mov	r4, r0
+    FURI_LOG_I(TAG, "Press keys to see them printed here.");
+ 1f0:	4e08      	ldr	r6, [pc, #32]	@ (214 <event_loop_event_flags_app_run+0x28>)
+ 1f2:	4a09      	ldr	r2, [pc, #36]	@ (218 <event_loop_event_flags_app_run+0x2c>)
+ 1f4:	4631      	mov	r1, r6
+ 1f6:	2004      	movs	r0, #4
+ 1f8:	4d08      	ldr	r5, [pc, #32]	@ (21c <event_loop_event_flags_app_run+0x30>)
+ 1fa:	47a8      	blx	r5
+    FURI_LOG_I(TAG, "Quickly press different keys to generate events.");
+ 1fc:	4a08      	ldr	r2, [pc, #32]	@ (220 <event_loop_event_flags_app_run+0x34>)
+ 1fe:	4631      	mov	r1, r6
+ 200:	2004      	movs	r0, #4
+ 202:	47a8      	blx	r5
+    FURI_LOG_I(TAG, "Long press \"Back\" to exit app.");
+ 204:	4a07      	ldr	r2, [pc, #28]	@ (224 <event_loop_event_flags_app_run+0x38>)
+ 206:	4631      	mov	r1, r6
+ 208:	2004      	movs	r0, #4
+ 20a:	47a8      	blx	r5
+
+    // Run the application event loop. This call will block until the application is about to exit.
+    furi_event_loop_run(app->event_loop);
+ 20c:	68a0      	ldr	r0, [r4, #8]
+ 20e:	4b06      	ldr	r3, [pc, #24]	@ (228 <event_loop_event_flags_app_run+0x3c>)
+ 210:	4798      	blx	r3
+}
+ 212:	bd70      	pop	{r4, r5, r6, pc}
+ 214:	00000010 	.word	0x00000010
+ 218:	00000084 	.word	0x00000084
+ 21c:	00000000 	.word	0x00000000
+ 220:	000000ac 	.word	0x000000ac
+ 224:	000000e0 	.word	0x000000e0
+ 228:	00000000 	.word	0x00000000
+
+0000022c <event_loop_event_flags_app_free>:
+static void event_loop_event_flags_app_free(EventLoopEventFlagsApp* app) {
+ 22c:	b538      	push	{r3, r4, r5, lr}
+ 22e:	4604      	mov	r4, r0
+    gui_remove_view_port(app->gui, app->view_port);
+ 230:	6841      	ldr	r1, [r0, #4]
+ 232:	6800      	ldr	r0, [r0, #0]
+ 234:	4b0d      	ldr	r3, [pc, #52]	@ (26c <event_loop_event_flags_app_free+0x40>)
+ 236:	4798      	blx	r3
+    furi_record_close(RECORD_GUI);
+ 238:	480d      	ldr	r0, [pc, #52]	@ (270 <event_loop_event_flags_app_free+0x44>)
+ 23a:	4b0e      	ldr	r3, [pc, #56]	@ (274 <event_loop_event_flags_app_free+0x48>)
+ 23c:	4798      	blx	r3
+    app->gui = NULL;
+ 23e:	2500      	movs	r5, #0
+ 240:	6025      	str	r5, [r4, #0]
+    view_port_free(app->view_port);
+ 242:	6860      	ldr	r0, [r4, #4]
+ 244:	4b0c      	ldr	r3, [pc, #48]	@ (278 <event_loop_event_flags_app_free+0x4c>)
+ 246:	4798      	blx	r3
+    app->view_port = NULL;
+ 248:	6065      	str	r5, [r4, #4]
+    furi_event_loop_unsubscribe(app->event_loop, app->event_flag);
+ 24a:	68e1      	ldr	r1, [r4, #12]
+ 24c:	68a0      	ldr	r0, [r4, #8]
+ 24e:	4b0b      	ldr	r3, [pc, #44]	@ (27c <event_loop_event_flags_app_free+0x50>)
+ 250:	4798      	blx	r3
+    furi_event_flag_free(app->event_flag);
+ 252:	68e0      	ldr	r0, [r4, #12]
+ 254:	4b0a      	ldr	r3, [pc, #40]	@ (280 <event_loop_event_flags_app_free+0x54>)
+ 256:	4798      	blx	r3
+    app->event_flag = NULL;
+ 258:	60e5      	str	r5, [r4, #12]
+    furi_event_loop_free(app->event_loop);
+ 25a:	68a0      	ldr	r0, [r4, #8]
+ 25c:	4b09      	ldr	r3, [pc, #36]	@ (284 <event_loop_event_flags_app_free+0x58>)
+ 25e:	4798      	blx	r3
+    app->event_loop = NULL;
+ 260:	60a5      	str	r5, [r4, #8]
+    free(app);
+ 262:	4620      	mov	r0, r4
+ 264:	4b08      	ldr	r3, [pc, #32]	@ (288 <event_loop_event_flags_app_free+0x5c>)
+ 266:	4798      	blx	r3
+}
+ 268:	bd38      	pop	{r3, r4, r5, pc}
+ 26a:	bf00      	nop
+	...
+
+0000028c <example_event_loop_event_flags_app>:
+/*******************************************************************
+ *                     vvv START HERE vvv
+ *
+ * The application's entry point - referenced in application.fam
+ *******************************************************************/
+int32_t example_event_loop_event_flags_app(void* arg) {
+ 28c:	b510      	push	{r4, lr}
+    UNUSED(arg);
+
+    EventLoopEventFlagsApp* app = event_loop_event_flags_app_alloc();
+ 28e:	4b05      	ldr	r3, [pc, #20]	@ (2a4 <example_event_loop_event_flags_app+0x18>)
+ 290:	4798      	blx	r3
+ 292:	4604      	mov	r4, r0
+    event_loop_event_flags_app_run(app);
+ 294:	4b04      	ldr	r3, [pc, #16]	@ (2a8 <example_event_loop_event_flags_app+0x1c>)
+ 296:	4798      	blx	r3
+    event_loop_event_flags_app_free(app);
+ 298:	4620      	mov	r0, r4
+ 29a:	4b04      	ldr	r3, [pc, #16]	@ (2ac <example_event_loop_event_flags_app+0x20>)
+ 29c:	4798      	blx	r3
+
+    return 0;
+}
+ 29e:	2000      	movs	r0, #0
+ 2a0:	bd10      	pop	{r4, pc}
+ 2a2:	bf00      	nop
+	...

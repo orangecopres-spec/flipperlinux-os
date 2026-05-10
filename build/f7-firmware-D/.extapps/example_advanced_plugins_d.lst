@@ -1,0 +1,217 @@
+
+build/f7-firmware-D/.extapps/example_advanced_plugins_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <app_api_accumulator_set>:
+/* Actual implementation of app's API and its private state */
+
+static uint32_t accumulator = 0;
+
+void app_api_accumulator_set(uint32_t value) {
+    accumulator = value;
+   0:	4b01      	ldr	r3, [pc, #4]	@ (8 <app_api_accumulator_set+0x8>)
+   2:	6018      	str	r0, [r3, #0]
+}
+   4:	4770      	bx	lr
+   6:	bf00      	nop
+   8:	00000000 	.word	0x00000000
+
+0000000c <app_api_accumulator_get>:
+
+uint32_t app_api_accumulator_get(void) {
+    return accumulator;
+}
+   c:	4b01      	ldr	r3, [pc, #4]	@ (14 <app_api_accumulator_get+0x8>)
+   e:	6818      	ldr	r0, [r3, #0]
+  10:	4770      	bx	lr
+  12:	bf00      	nop
+  14:	00000000 	.word	0x00000000
+
+00000018 <app_api_accumulator_add>:
+
+void app_api_accumulator_add(uint32_t value) {
+    accumulator += value;
+  18:	4a02      	ldr	r2, [pc, #8]	@ (24 <app_api_accumulator_add+0xc>)
+  1a:	6813      	ldr	r3, [r2, #0]
+  1c:	4403      	add	r3, r0
+  1e:	6013      	str	r3, [r2, #0]
+}
+  20:	4770      	bx	lr
+  22:	bf00      	nop
+  24:	00000000 	.word	0x00000000
+
+00000028 <app_api_accumulator_sub>:
+
+void app_api_accumulator_sub(uint32_t value) {
+    accumulator -= value;
+  28:	4a02      	ldr	r2, [pc, #8]	@ (34 <app_api_accumulator_sub+0xc>)
+  2a:	6813      	ldr	r3, [r2, #0]
+  2c:	1a1b      	subs	r3, r3, r0
+  2e:	6013      	str	r3, [r2, #0]
+}
+  30:	4770      	bx	lr
+  32:	bf00      	nop
+  34:	00000000 	.word	0x00000000
+
+00000038 <app_api_accumulator_mul>:
+
+void app_api_accumulator_mul(uint32_t value) {
+    accumulator *= value;
+  38:	4a02      	ldr	r2, [pc, #8]	@ (44 <app_api_accumulator_mul+0xc>)
+  3a:	6813      	ldr	r3, [r2, #0]
+  3c:	fb00 f303 	mul.w	r3, r0, r3
+  40:	6013      	str	r3, [r2, #0]
+}
+  42:	4770      	bx	lr
+  44:	00000000 	.word	0x00000000
+
+00000048 <example_advanced_plugins_app>:
+
+#include <loader/firmware_api/firmware_api.h>
+
+#define TAG "ExampleAdvancedPlugins"
+
+int32_t example_advanced_plugins_app(void* p) {
+  48:	e92d 47f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, lr}
+    UNUSED(p);
+
+    FURI_LOG_I(TAG, "Starting");
+  4c:	4a2b      	ldr	r2, [pc, #172]	@ (fc <example_advanced_plugins_app+0xb4>)
+  4e:	492c      	ldr	r1, [pc, #176]	@ (100 <example_advanced_plugins_app+0xb8>)
+  50:	2004      	movs	r0, #4
+  52:	4b2c      	ldr	r3, [pc, #176]	@ (104 <example_advanced_plugins_app+0xbc>)
+  54:	4798      	blx	r3
+
+    CompositeApiResolver* resolver = composite_api_resolver_alloc();
+  56:	4b2c      	ldr	r3, [pc, #176]	@ (108 <example_advanced_plugins_app+0xc0>)
+  58:	4798      	blx	r3
+  5a:	4682      	mov	sl, r0
+    composite_api_resolver_add(resolver, firmware_api_interface);
+  5c:	4b2b      	ldr	r3, [pc, #172]	@ (10c <example_advanced_plugins_app+0xc4>)
+  5e:	6819      	ldr	r1, [r3, #0]
+  60:	4c2b      	ldr	r4, [pc, #172]	@ (110 <example_advanced_plugins_app+0xc8>)
+  62:	47a0      	blx	r4
+    composite_api_resolver_add(resolver, application_api_interface);
+  64:	4b2b      	ldr	r3, [pc, #172]	@ (114 <example_advanced_plugins_app+0xcc>)
+  66:	6819      	ldr	r1, [r3, #0]
+  68:	4650      	mov	r0, sl
+  6a:	47a0      	blx	r4
+
+    PluginManager* manager = plugin_manager_alloc(
+  6c:	4650      	mov	r0, sl
+  6e:	4b2a      	ldr	r3, [pc, #168]	@ (118 <example_advanced_plugins_app+0xd0>)
+  70:	4798      	blx	r3
+  72:	4602      	mov	r2, r0
+  74:	2101      	movs	r1, #1
+  76:	4829      	ldr	r0, [pc, #164]	@ (11c <example_advanced_plugins_app+0xd4>)
+  78:	4b29      	ldr	r3, [pc, #164]	@ (120 <example_advanced_plugins_app+0xd8>)
+  7a:	4798      	blx	r3
+  7c:	4680      	mov	r8, r0
+        PLUGIN_APP_ID, PLUGIN_API_VERSION, composite_api_resolver_get(resolver));
+
+    do {
+        // For built-in .fals (fal_embedded==True), use APP_ASSETS_PATH
+        // Otherwise, use APP_DATA_PATH
+        if(plugin_manager_load_all(manager, APP_ASSETS_PATH("plugins")) !=
+  7e:	4929      	ldr	r1, [pc, #164]	@ (124 <example_advanced_plugins_app+0xdc>)
+  80:	4b29      	ldr	r3, [pc, #164]	@ (128 <example_advanced_plugins_app+0xe0>)
+  82:	4798      	blx	r3
+  84:	b190      	cbz	r0, ac <example_advanced_plugins_app+0x64>
+           PluginManagerErrorNone) {
+            FURI_LOG_E(TAG, "Failed to load all libs");
+  86:	4a29      	ldr	r2, [pc, #164]	@ (12c <example_advanced_plugins_app+0xe4>)
+  88:	491d      	ldr	r1, [pc, #116]	@ (100 <example_advanced_plugins_app+0xb8>)
+  8a:	2002      	movs	r0, #2
+  8c:	4b1d      	ldr	r3, [pc, #116]	@ (104 <example_advanced_plugins_app+0xbc>)
+  8e:	4798      	blx	r3
+            plugin->method2();
+            FURI_LOG_I(TAG, "Accumulator: %lu", app_api_accumulator_get());
+        }
+    } while(0);
+
+    plugin_manager_free(manager);
+  90:	4640      	mov	r0, r8
+  92:	4b27      	ldr	r3, [pc, #156]	@ (130 <example_advanced_plugins_app+0xe8>)
+  94:	4798      	blx	r3
+    composite_api_resolver_free(resolver);
+  96:	4650      	mov	r0, sl
+  98:	4b26      	ldr	r3, [pc, #152]	@ (134 <example_advanced_plugins_app+0xec>)
+  9a:	4798      	blx	r3
+    FURI_LOG_I(TAG, "Goodbye!");
+  9c:	4a26      	ldr	r2, [pc, #152]	@ (138 <example_advanced_plugins_app+0xf0>)
+  9e:	4918      	ldr	r1, [pc, #96]	@ (100 <example_advanced_plugins_app+0xb8>)
+  a0:	2004      	movs	r0, #4
+  a2:	4b18      	ldr	r3, [pc, #96]	@ (104 <example_advanced_plugins_app+0xbc>)
+  a4:	4798      	blx	r3
+
+    return 0;
+}
+  a6:	2000      	movs	r0, #0
+  a8:	e8bd 87f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, pc}
+        uint32_t plugin_count = plugin_manager_get_count(manager);
+  ac:	4640      	mov	r0, r8
+  ae:	4b23      	ldr	r3, [pc, #140]	@ (13c <example_advanced_plugins_app+0xf4>)
+  b0:	4798      	blx	r3
+  b2:	4681      	mov	r9, r0
+        FURI_LOG_I(TAG, "Loaded libs: %lu", plugin_count);
+  b4:	4603      	mov	r3, r0
+  b6:	4a22      	ldr	r2, [pc, #136]	@ (140 <example_advanced_plugins_app+0xf8>)
+  b8:	4911      	ldr	r1, [pc, #68]	@ (100 <example_advanced_plugins_app+0xb8>)
+  ba:	2004      	movs	r0, #4
+  bc:	4c11      	ldr	r4, [pc, #68]	@ (104 <example_advanced_plugins_app+0xbc>)
+  be:	47a0      	blx	r4
+        for(uint32_t i = 0; i < plugin_count; i++) {
+  c0:	2500      	movs	r5, #0
+  c2:	e018      	b.n	f6 <example_advanced_plugins_app+0xae>
+            const AdvancedPlugin* plugin = plugin_manager_get_ep(manager, i);
+  c4:	4629      	mov	r1, r5
+  c6:	4640      	mov	r0, r8
+  c8:	4b1e      	ldr	r3, [pc, #120]	@ (144 <example_advanced_plugins_app+0xfc>)
+  ca:	4798      	blx	r3
+  cc:	4604      	mov	r4, r0
+            FURI_LOG_I(TAG, "plugin name: %s. Calling methods", plugin->name);
+  ce:	4f0c      	ldr	r7, [pc, #48]	@ (100 <example_advanced_plugins_app+0xb8>)
+  d0:	6803      	ldr	r3, [r0, #0]
+  d2:	4a1d      	ldr	r2, [pc, #116]	@ (148 <example_advanced_plugins_app+0x100>)
+  d4:	4639      	mov	r1, r7
+  d6:	2004      	movs	r0, #4
+  d8:	4e0a      	ldr	r6, [pc, #40]	@ (104 <example_advanced_plugins_app+0xbc>)
+  da:	47b0      	blx	r6
+            plugin->method1(228);
+  dc:	6863      	ldr	r3, [r4, #4]
+  de:	20e4      	movs	r0, #228	@ 0xe4
+  e0:	4798      	blx	r3
+            plugin->method2();
+  e2:	68a3      	ldr	r3, [r4, #8]
+  e4:	4798      	blx	r3
+            FURI_LOG_I(TAG, "Accumulator: %lu", app_api_accumulator_get());
+  e6:	4b19      	ldr	r3, [pc, #100]	@ (14c <example_advanced_plugins_app+0x104>)
+  e8:	4798      	blx	r3
+  ea:	4603      	mov	r3, r0
+  ec:	4a18      	ldr	r2, [pc, #96]	@ (150 <example_advanced_plugins_app+0x108>)
+  ee:	4639      	mov	r1, r7
+  f0:	2004      	movs	r0, #4
+  f2:	47b0      	blx	r6
+        for(uint32_t i = 0; i < plugin_count; i++) {
+  f4:	3501      	adds	r5, #1
+  f6:	454d      	cmp	r5, r9
+  f8:	d3e4      	bcc.n	c4 <example_advanced_plugins_app+0x7c>
+  fa:	e7c9      	b.n	90 <example_advanced_plugins_app+0x48>
+  fc:	0000003c 	.word	0x0000003c
+ 100:	00000048 	.word	0x00000048
+	...
+ 11c:	00000060 	.word	0x00000060
+ 120:	00000000 	.word	0x00000000
+ 124:	0000007c 	.word	0x0000007c
+ 128:	00000000 	.word	0x00000000
+ 12c:	0000008c 	.word	0x0000008c
+	...
+ 138:	000000f0 	.word	0x000000f0
+ 13c:	00000000 	.word	0x00000000
+ 140:	000000a4 	.word	0x000000a4
+ 144:	00000000 	.word	0x00000000
+ 148:	000000b8 	.word	0x000000b8
+ 14c:	00000000 	.word	0x00000000
+ 150:	000000dc 	.word	0x000000dc

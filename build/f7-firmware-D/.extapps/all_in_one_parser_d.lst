@@ -1,0 +1,188 @@
+
+build/f7-firmware-D/.extapps/all_in_one_parser_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <all_in_one_get_layout>:
+    AllInOneLayoutTypeE5,
+    AllInOneLayoutType2,
+    AllInOneLayoutTypeUnknown,
+} AllInOneLayoutType;
+
+static AllInOneLayoutType all_in_one_get_layout(const MfUltralightData* data) {
+   0:	b570      	push	{r4, r5, r6, lr}
+    // Switch on the second half of the third byte of page 5
+    const uint8_t layout_byte = data->page[5].data[2];
+   2:	f890 3055 	ldrb.w	r3, [r0, #85]	@ 0x55
+    const uint8_t layout_half_byte = data->page[5].data[2] & 0x0F;
+   6:	f003 040f 	and.w	r4, r3, #15
+
+    FURI_LOG_I(TAG, "Layout byte: %02x", layout_byte);
+   a:	4e0f      	ldr	r6, [pc, #60]	@ (48 <all_in_one_get_layout+0x48>)
+   c:	4a0f      	ldr	r2, [pc, #60]	@ (4c <all_in_one_get_layout+0x4c>)
+   e:	4631      	mov	r1, r6
+  10:	2004      	movs	r0, #4
+  12:	4d0f      	ldr	r5, [pc, #60]	@ (50 <all_in_one_get_layout+0x50>)
+  14:	47a8      	blx	r5
+    FURI_LOG_I(TAG, "Layout half-byte: %02x", layout_half_byte);
+  16:	4623      	mov	r3, r4
+  18:	4a0e      	ldr	r2, [pc, #56]	@ (54 <all_in_one_get_layout+0x54>)
+  1a:	4631      	mov	r1, r6
+  1c:	2004      	movs	r0, #4
+  1e:	47a8      	blx	r5
+
+    switch(layout_half_byte) {
+  20:	2c0a      	cmp	r4, #10
+  22:	d00a      	beq.n	3a <all_in_one_get_layout+0x3a>
+  24:	2c0d      	cmp	r4, #13
+  26:	d00a      	beq.n	3e <all_in_one_get_layout+0x3e>
+  28:	2c02      	cmp	r4, #2
+  2a:	d00a      	beq.n	42 <all_in_one_get_layout+0x42>
+    case 0x0D:
+        return AllInOneLayoutTypeD;
+    case 0x02:
+        return AllInOneLayoutType2;
+    default:
+        FURI_LOG_I(TAG, "Unknown layout type: %d", layout_half_byte);
+  2c:	4623      	mov	r3, r4
+  2e:	4a0a      	ldr	r2, [pc, #40]	@ (58 <all_in_one_get_layout+0x58>)
+  30:	4631      	mov	r1, r6
+  32:	2004      	movs	r0, #4
+  34:	47a8      	blx	r5
+        return AllInOneLayoutTypeUnknown;
+  36:	2006      	movs	r0, #6
+  38:	e002      	b.n	40 <all_in_one_get_layout+0x40>
+    switch(layout_half_byte) {
+  3a:	2000      	movs	r0, #0
+  3c:	e000      	b.n	40 <all_in_one_get_layout+0x40>
+        return AllInOneLayoutTypeD;
+  3e:	2001      	movs	r0, #1
+    }
+}
+  40:	bd70      	pop	{r4, r5, r6, pc}
+        return AllInOneLayoutType2;
+  42:	2005      	movs	r0, #5
+  44:	e7fc      	b.n	40 <all_in_one_get_layout+0x40>
+  46:	bf00      	nop
+  48:	00000014 	.word	0x00000014
+	...
+  54:	00000020 	.word	0x00000020
+  58:	00000038 	.word	0x00000038
+
+0000005c <all_in_one_parse>:
+
+static bool all_in_one_parse(const NfcDevice* device, FuriString* parsed_data) {
+  5c:	b570      	push	{r4, r5, r6, lr}
+    furi_assert(device);
+  5e:	b1a0      	cbz	r0, 8a <all_in_one_parse+0x2e>
+  60:	460d      	mov	r5, r1
+    furi_assert(parsed_data);
+  62:	b1b1      	cbz	r1, 92 <sukima175+0x4>
+
+    const MfUltralightData* data = nfc_device_get_data(device, NfcProtocolMfUltralight);
+  64:	2106      	movs	r1, #6
+  66:	4b22      	ldr	r3, [pc, #136]	@ (f0 <sukima192+0x5a>)
+  68:	4798      	blx	r3
+  6a:	4604      	mov	r4, r0
+
+    bool parsed = false;
+
+    do {
+        if(data->page[4].data[0] != 0x45 || data->page[4].data[1] != 0xD9) {
+  6c:	f890 304f 	ldrb.w	r3, [r0, #79]	@ 0x4f
+  70:	2b45      	cmp	r3, #69	@ 0x45
+  72:	d103      	bne.n	7c <all_in_one_parse+0x20>
+  74:	f890 3050 	ldrb.w	r3, [r0, #80]	@ 0x50
+  78:	2bd9      	cmp	r3, #217	@ 0xd9
+  7a:	d00e      	beq.n	9a <sukima192+0x4>
+            FURI_LOG_I(TAG, "Pass not verified");
+  7c:	4a1d      	ldr	r2, [pc, #116]	@ (f4 <sukima192+0x5e>)
+  7e:	491e      	ldr	r1, [pc, #120]	@ (f8 <sukima192+0x62>)
+  80:	2004      	movs	r0, #4
+  82:	4b1e      	ldr	r3, [pc, #120]	@ (fc <sukima192+0x66>)
+  84:	4798      	blx	r3
+    bool parsed = false;
+  86:	2000      	movs	r0, #0
+
+        parsed = true;
+    } while(false);
+
+    return parsed;
+}
+  88:	bd70      	pop	{r4, r5, r6, pc}
+    furi_assert(device);
+  8a:	f04f 0c01 	mov.w	ip, #1
+
+0000008e <sukima175>:
+  8e:	4b1c      	ldr	r3, [pc, #112]	@ (100 <sukima192+0x6a>)
+  90:	4798      	blx	r3
+    furi_assert(parsed_data);
+  92:	f04f 0c01 	mov.w	ip, #1
+
+00000096 <sukima192>:
+  96:	4b1a      	ldr	r3, [pc, #104]	@ (100 <sukima192+0x6a>)
+  98:	4798      	blx	r3
+        const AllInOneLayoutType layout_type = all_in_one_get_layout(data);
+  9a:	4b1a      	ldr	r3, [pc, #104]	@ (104 <sukima192+0x6e>)
+  9c:	4798      	blx	r3
+        if(layout_type == AllInOneLayoutTypeA) {
+  9e:	4603      	mov	r3, r0
+  a0:	b9d0      	cbnz	r0, d8 <sukima192+0x42>
+            ride_count = data->page[8].data[0];
+  a2:	f894 305f 	ldrb.w	r3, [r4, #95]	@ 0x5f
+        serial = (serial_data_lo[2] & 0x0F) << 28 | serial_data_lo[3] << 20 |
+  a6:	f894 1051 	ldrb.w	r1, [r4, #81]	@ 0x51
+  aa:	f894 2052 	ldrb.w	r2, [r4, #82]	@ 0x52
+  ae:	0512      	lsls	r2, r2, #20
+  b0:	ea42 7201 	orr.w	r2, r2, r1, lsl #28
+                 serial_data_hi[0] << 12 | serial_data_hi[1] << 4 | serial_data_hi[2] >> 4;
+  b4:	f894 1053 	ldrb.w	r1, [r4, #83]	@ 0x53
+        serial = (serial_data_lo[2] & 0x0F) << 28 | serial_data_lo[3] << 20 |
+  b8:	ea42 3201 	orr.w	r2, r2, r1, lsl #12
+                 serial_data_hi[0] << 12 | serial_data_hi[1] << 4 | serial_data_hi[2] >> 4;
+  bc:	f894 1054 	ldrb.w	r1, [r4, #84]	@ 0x54
+  c0:	ea42 1201 	orr.w	r2, r2, r1, lsl #4
+  c4:	f894 1055 	ldrb.w	r1, [r4, #85]	@ 0x55
+        furi_string_printf(
+  c8:	ea42 1211 	orr.w	r2, r2, r1, lsr #4
+  cc:	490e      	ldr	r1, [pc, #56]	@ (108 <sukima192+0x72>)
+  ce:	4628      	mov	r0, r5
+  d0:	4c0e      	ldr	r4, [pc, #56]	@ (10c <sukima192+0x76>)
+  d2:	47a0      	blx	r4
+        parsed = true;
+  d4:	2001      	movs	r0, #1
+  d6:	e7d7      	b.n	88 <all_in_one_parse+0x2c>
+        } else if(layout_type == AllInOneLayoutTypeD) {
+  d8:	2801      	cmp	r0, #1
+  da:	d102      	bne.n	e2 <sukima192+0x4c>
+            ride_count = data->page[9].data[1];
+  dc:	f894 3064 	ldrb.w	r3, [r4, #100]	@ 0x64
+  e0:	e7e1      	b.n	a6 <sukima192+0x10>
+            FURI_LOG_I(TAG, "Unknown layout: %d", layout_type);
+  e2:	4a0b      	ldr	r2, [pc, #44]	@ (110 <sukima192+0x7a>)
+  e4:	4904      	ldr	r1, [pc, #16]	@ (f8 <sukima192+0x62>)
+  e6:	2004      	movs	r0, #4
+  e8:	4e04      	ldr	r6, [pc, #16]	@ (fc <sukima192+0x66>)
+  ea:	47b0      	blx	r6
+            ride_count = 137;
+  ec:	2389      	movs	r3, #137	@ 0x89
+  ee:	e7da      	b.n	a6 <sukima192+0x10>
+  f0:	00000000 	.word	0x00000000
+  f4:	00000050 	.word	0x00000050
+  f8:	00000014 	.word	0x00000014
+	...
+ 108:	00000078 	.word	0x00000078
+ 10c:	00000000 	.word	0x00000000
+ 110:	00000064 	.word	0x00000064
+
+00000114 <all_in_one_plugin_ep>:
+};
+
+/* Plugin entry point - must return a pointer to const descriptor  */
+const FlipperAppPluginDescriptor* all_in_one_plugin_ep(void) {
+    return &all_in_one_plugin_descriptor;
+}
+ 114:	4800      	ldr	r0, [pc, #0]	@ (118 <all_in_one_plugin_ep+0x4>)
+ 116:	4770      	bx	lr
+ 118:	000000b8 	.word	0x000000b8

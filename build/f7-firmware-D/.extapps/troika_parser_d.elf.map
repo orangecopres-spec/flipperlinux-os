@@ -1,0 +1,232 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libstdc++_nano.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libsupc++_nano.a
+
+.text           0x00000000      0x3fc
+ *(.text)
+ *(.stub)
+ *(.text*)
+ .text.troika_get_card_config
+                0x00000000       0x2c build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+ .text.troika_parse
+                0x0000002c      0x198 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+ .text.troika_read
+                0x000001c4      0x160 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+ .text.troika_verify_type
+                0x00000324       0xac build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+ .text.troika_verify
+                0x000003d0       0x24 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+ .text.troika_plugin_ep
+                0x000003f4        0x8 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+                0x000003f4                troika_plugin_ep
+ *(.text.*)
+ *(.text._*)
+ *(.init)
+ *(.fini)
+
+.rodata         0x00000400      0x448
+ *(.rodata)
+ .rodata        0x00000400        0x6 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+ *(.rodata1)
+ *(.rodata.*)
+ *fill*         0x00000406        0x2 
+ .rodata.troika_parse.str1.4
+                0x00000408       0x28 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+ .rodata.troika_read.str1.4
+                0x00000430       0x1b build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+ *fill*         0x0000044b        0x1 
+ .rodata.troika_verify_type.str1.4
+                0x0000044c       0x44 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+ .rodata.str1.4
+                0x00000490       0x17 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+ *fill*         0x000004a7        0x1 
+ .rodata.troika_plugin_descriptor
+                0x000004a8        0xc build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+ .rodata.troika_plugin
+                0x000004b4       0x10 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+ *fill*         0x000004c4        0x4 
+ .rodata.troika_4k_keys
+                0x000004c8      0x280 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+ .rodata.troika_1k_keys
+                0x00000748      0x100 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+
+.data
+ *(.data)
+ *(.data1)
+ *(.data.*)
+
+.bss
+ *(.bss)
+ *(.bss*)
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x48
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x48 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x128e
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000     0x128e build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+
+.debug_abbrev   0x00000000      0x2d4
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x2d4 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+
+.debug_line     0x00000000      0x7be
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x364 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+ .debug_line.text.troika_get_card_config
+                0x00000364       0x59 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+ .debug_line.text.troika_parse
+                0x000003bd      0x173 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+ .debug_line.text.troika_read
+                0x00000530      0x1c3 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+ .debug_line.text.troika_verify_type
+                0x000006f3       0x7d build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+ .debug_line.text.troika_verify
+                0x00000770       0x35 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+ .debug_line.text.troika_plugin_ep
+                0x000007a5       0x19 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+ .debug_line_end
+                0x000007be        0x0 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+
+.debug_frame    0x00000000       0xd0
+ *(.debug_frame)
+ .debug_frame   0x00000000       0xd0 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+
+.debug_str      0x00000000      0xaf8
+ *(.debug_str)
+ .debug_str     0x00000000      0xaf8 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+ *(.debug_line_str)
+
+.debug_loclists
+                0x00000000      0x36f
+ *(.debug_loclists)
+ .debug_loclists
+                0x00000000      0x36f build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x00000000       0x5b
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x00000000       0x5b build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.ARM.attributes
+                0x00000000       0x34
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x34 build/f7-firmware-D/.extapps/troika_parser/plugins/supported_cards/troika.o
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+
+/DISCARD/
+ *(.comment)
+ *(.comment.*)
+ *(.llvmbc)
+ *(.llvmcmd)
+OUTPUT(build/f7-firmware-D/.extapps/troika_parser_d.elf elf32-littlearm)
+LOAD linker stubs

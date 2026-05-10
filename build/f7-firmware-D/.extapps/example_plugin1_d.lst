@@ -1,0 +1,34 @@
+
+build/f7-firmware-D/.extapps/example_plugin1_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <example_plugin1_method1>:
+
+#include <flipper_application/flipper_application.h>
+
+static int example_plugin1_method1(void) {
+    return 42;
+}
+   0:	202a      	movs	r0, #42	@ 0x2a
+   2:	4770      	bx	lr
+
+00000004 <example_plugin1_method2>:
+
+static int example_plugin1_method2(int arg1, int arg2) {
+    return arg1 + arg2;
+}
+   4:	4408      	add	r0, r1
+   6:	4770      	bx	lr
+
+00000008 <example_plugin1_ep>:
+};
+
+/* Plugin entry point - must return a pointer to const descriptor  */
+const FlipperAppPluginDescriptor* example_plugin1_ep(void) {
+    return &example_plugin1_descriptor;
+}
+   8:	4800      	ldr	r0, [pc, #0]	@ (c <example_plugin1_ep+0x4>)
+   a:	4770      	bx	lr
+   c:	00000024 	.word	0x00000024

@@ -1,0 +1,3077 @@
+Archive member included to satisfy reference by file (symbol)
+
+build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                              build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o (I_SDQuestion_35x43)
+build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+                              build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o (ble_profile_hid)
+build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+                              build/f7-firmware-D/lib/libble_profile.a(hid_profile.o) (ble_svc_hid_start)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config_layout.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config_layout.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config_layout.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config_layout.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_confirm_unpair.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_confirm_unpair.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_confirm_unpair.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_confirm_unpair.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_file_select.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_file_select.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_file_select.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_file_select.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_unpair_done.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_unpair_done.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_unpair_done.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_unpair_done.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_work.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_work.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_work.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_work.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .text          0x00000000        0x0 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .data          0x00000000        0x0 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .bss           0x00000000        0x0 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_iButtonKey_49x44
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_iButtonDolphinVerySuccess_92x55
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Updating_32x40
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Error_62x31
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Drive_112x35
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Connected_62x31
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Connect_me_62x31
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Auth_62x31
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_SubGhz_Internal_ant
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_SubGhz_External_ant
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Unlock_7x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Scanning_short_96x52
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Quest_7x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_MHz_25x11
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Lock_7x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Internal_ant_1_9x11
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_External_ant_1_9x11
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_SDcardMounted_11x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_SDcardFail_11x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Rpc_active_7x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Muted_8x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Hidden_window_9x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_GameMode_11x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Exp_module_connected_12x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Charging_lightning_mask_9x10
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Charging_lightning_9x10
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Bluetooth_Idle_5x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Bluetooth_Connected_16x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Battery_26x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Background_128x11
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_BLE_beacon_7x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Attention_5x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Alert_9x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_Alarm_47x39
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_qr_benchmark_25x25
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_dolph_cry_49x54
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_LoadingHourglass_24x24
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_RFIDDolphinSend_97x61
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_RFIDDolphinReceive_97x61
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_RFIDBigChip_37x36
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Voltage_16x16
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Unplug_bg_top_128x14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Unplug_bg_bottom_128x10
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Temperature_16x16
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Health_16x16
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_FaceNormal_29x14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_FaceNopower_29x14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_FaceConfused_29x14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_FaceCharging_29x14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Battery_16x16
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_BatteryBody_52x28
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_passport_okay3_46x49
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_passport_okay2_46x49
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_passport_okay1_46x49
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_passport_left_6x46
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_passport_happy3_46x49
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_passport_happy2_46x49
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_passport_happy1_46x49
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_passport_bottom_128x18
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_passport_bad3_46x49
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_passport_bad2_46x49
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_passport_bad1_46x49
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Pin_star_7x7
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Pin_pointer_5x3
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Pin_back_arrow_10x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Pin_attention_dpad_29x29
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Pin_arrow_up_7x9
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_check_big_20x17
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Release_arrow_18x15
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_NFC_manual_60x50
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_NFC_dolphin_emulation_51x64
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Move_flipper_26x39
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Modern_reader_18x34
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Medium_chip_22x21
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_MFKey_qr_25x25
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Keychain_39x36
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Detailed_chip_17x13
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ArrowC_1_36x36
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_iButton_14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_U2F_14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_Sub1ghz_14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_Settings_14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_Plugins_14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_NFC_14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_Infrared_14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_GPIO_14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_FileManager_14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_Debug_14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_BadUsb_14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_125khz_14
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_err_09
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_err_07
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_err_06
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_err_05
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_err_04
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_err_03
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_err_02
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_err_01
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_KeySign_21x11
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_KeySignSelected_21x11
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_KeySave_24x11
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_KeySaveSelected_24x11
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_KeySaveBlocked_24x11
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_KeySaveBlockedSelected_24x11
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_KeyBackspace_16x9
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_KeyBackspaceSelected_16x9
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_SmallArrowUp_4x7
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_SmallArrowUp_3x5
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_SmallArrowDown_4x7
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_SmallArrowDown_3x5
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_DoorRight_70x55
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_DoorLeft_70x55
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_volup_hover_24x21
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_volup_24x21
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_voldown_hover_24x21
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_voldown_24x21
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_vol_tv_text_29x34
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_vol_ac_text_30x30
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_prev_text_19x5
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_prev_hover_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_prev_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_power_text_24x5
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_power_hover_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_power_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_play_text_19x5
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_play_hover_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_play_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_pause_text_23x5
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_pause_hover_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_pause_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_off_text_12x5
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_off_hover_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_off_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_next_text_19x6
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_next_hover_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_next_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_mute_text_19x5
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_mute_hover_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_mute_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_max_hover_24x23
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_max_24x23
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_hourglass6_24x24
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_hourglass5_24x24
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_hourglass4_24x24
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_hourglass3_24x24
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_hourglass2_24x24
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_hourglass1_24x24
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_hourglass0_24x24
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_heat_30x51
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_fahren_hover_24x23
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_fahren_24x23
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_dry_text_15x5
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_dry_hover_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_dry_19x20
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_cool_30x51
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ch_up_hover_24x21
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ch_up_24x21
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ch_text_31x34
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ch_down_hover_24x21
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ch_down_24x21
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_celsius_hover_24x23
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_celsius_24x23
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_back_btn_10x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_InfraredLearnShort_128x31
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_InfraredArrowUp_4x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_InfraredArrowDown_4x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ArrowUpFilled_14x15
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ArrowUpEmpty_14x15
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Erase_pin_128x64
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_WarningDolphin_45x42
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_WarningDolphinFlip_45x42
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_DolphinWait_59x54
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_DolphinSuccess_91x55
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_DolphinSaved_92x58
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_DolphinReadingSuccess_59x63
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_DolphinMafia_119x62
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_Round_loader_8x8
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_Loading_24
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_arrow_nano_up
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_arrow_nano_down
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Warning_30x23
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_More_data_placeholder_5x7
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Hashmark_7x7
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_DFU_128x50
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ButtonUp_7x4
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ButtonRight_4x7
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ButtonRightSmall_3x5
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ButtonLeft_4x7
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ButtonLeftSmall_3x5
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ButtonDown_7x4
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ButtonCenter_7x7
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Volup_8x6
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Voldwn_6x6
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Space_65x18
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Right_mouse_icon_9x9
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Pressed_Button_13x13
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Ok_btn_pressed_13x13
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Ok_btn_9x9
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Left_mouse_icon_9x9
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Circles_47x47
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Button_18x18
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Ble_disconnected_15x15
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Ble_connected_15x15
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_BLE_Pairing_128x64
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_update_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_unknown_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_u2f_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_sub1_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_settings_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_music_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_loading_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_js_script_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ir_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_ibutt_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_file_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_dir_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_back_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Nfc_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_125_10px
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_Levelup2_128x64
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.A_Levelup1_128x64
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_CertificationTaiwan_33x32
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_CertificationMexico_98x41
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_CertificationChina1_124x47
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_CertificationChina0_121x41
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Certification2_46x33
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata.I_Certification1_103x56
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_iButtonKey_49x44
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_iButtonKey_49x44_0
+                0x00000000       0xb8 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_iButtonDolphinVerySuccess_92x55
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_iButtonDolphinVerySuccess_92x55_0
+                0x00000000      0x1c4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Updating_32x40
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Updating_32x40_0
+                0x00000000       0x5a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Error_62x31
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Error_62x31_0
+                0x00000000       0xa2 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Drive_112x35
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Drive_112x35_0
+                0x00000000       0x76 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Connected_62x31
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Connected_62x31_0
+                0x00000000       0xae build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Connect_me_62x31
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Connect_me_62x31_0
+                0x00000000       0xbb build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Auth_62x31
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Auth_62x31_0
+                0x00000000       0xb3 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_SubGhz_Internal_ant
+                0x00000000       0x10 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_SubGhz_Internal_ant_3
+                0x00000000       0x22 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_SubGhz_Internal_ant_2
+                0x00000000       0x22 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_SubGhz_Internal_ant_1
+                0x00000000       0x22 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_SubGhz_Internal_ant_0
+                0x00000000       0x22 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_SubGhz_External_ant
+                0x00000000       0x10 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_SubGhz_External_ant_3
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_SubGhz_External_ant_2
+                0x00000000       0x19 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_SubGhz_External_ant_1
+                0x00000000       0x21 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_SubGhz_External_ant_0
+                0x00000000       0x22 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Unlock_7x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Unlock_7x8_0
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Scanning_short_96x52
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Scanning_short_96x52_0
+                0x00000000      0x1ab build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Quest_7x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Quest_7x8_0
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_MHz_25x11
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_MHz_25x11_0
+                0x00000000       0x25 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Lock_7x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Lock_7x8_0
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Internal_ant_1_9x11
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Internal_ant_1_9x11_0
+                0x00000000       0x22 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_External_ant_1_9x11
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_External_ant_1_9x11_0
+                0x00000000       0x22 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SDcardMounted_11x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SDcardMounted_11x8_0
+                0x00000000        0xd build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SDcardFail_11x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SDcardFail_11x8_0
+                0x00000000       0x11 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Rpc_active_7x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Rpc_active_7x8_0
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Muted_8x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Muted_8x8_0
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Hidden_window_9x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Hidden_window_9x8_0
+                0x00000000       0x11 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_GameMode_11x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_GameMode_11x8_0
+                0x00000000       0x11 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Exp_module_connected_12x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Exp_module_connected_12x8_0
+                0x00000000       0x11 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Charging_lightning_mask_9x10
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Charging_lightning_mask_9x10_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Charging_lightning_9x10
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Charging_lightning_9x10_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Bluetooth_Idle_5x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Bluetooth_Idle_5x8_0
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Bluetooth_Connected_16x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Bluetooth_Connected_16x8_0
+                0x00000000       0x11 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Battery_26x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Battery_26x8_0
+                0x00000000       0x17 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Background_128x11
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Background_128x11_0
+                0x00000000       0x74 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_BLE_beacon_7x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_BLE_beacon_7x8_0
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Attention_5x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Attention_5x8_0
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Alert_9x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Alert_9x8_0
+                0x00000000       0x11 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Alarm_47x39
+                0x00000000       0x14 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Alarm_47x39_4
+                0x00000000       0xa9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Alarm_47x39_3
+                0x00000000       0xbd build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Alarm_47x39_2
+                0x00000000       0xc7 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Alarm_47x39_1
+                0x00000000       0xba build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Alarm_47x39_0
+                0x00000000       0xa9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_qr_benchmark_25x25
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_qr_benchmark_25x25_0
+                0x00000000       0x65 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_dolph_cry_49x54
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_dolph_cry_49x54_0
+                0x00000000       0xde build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_LoadingHourglass_24x24
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_LoadingHourglass_24x24_0
+                0x00000000       0x3b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_RFIDDolphinSend_97x61
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_RFIDDolphinSend_97x61_0
+                0x00000000      0x191 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_RFIDDolphinReceive_97x61
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_RFIDDolphinReceive_97x61_0
+                0x00000000      0x18b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_RFIDBigChip_37x36
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_RFIDBigChip_37x36_0
+                0x00000000       0x72 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Voltage_16x16
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Voltage_16x16_0
+                0x00000000       0x1e build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Unplug_bg_top_128x14
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Unplug_bg_top_128x14_0
+                0x00000000       0x53 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Unplug_bg_bottom_128x10
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Unplug_bg_bottom_128x10_0
+                0x00000000       0x2b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Temperature_16x16
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Temperature_16x16_0
+                0x00000000       0x16 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Health_16x16
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Health_16x16_0
+                0x00000000       0x16 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_FaceNormal_29x14
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_FaceNormal_29x14_0
+                0x00000000       0x22 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_FaceNopower_29x14
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_FaceNopower_29x14_0
+                0x00000000       0x28 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_FaceConfused_29x14
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_FaceConfused_29x14_0
+                0x00000000       0x34 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_FaceCharging_29x14
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_FaceCharging_29x14_0
+                0x00000000       0x2c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Battery_16x16
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Battery_16x16_0
+                0x00000000       0x16 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_BatteryBody_52x28
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_BatteryBody_52x28_0
+                0x00000000       0x49 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_okay3_46x49
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_okay3_46x49_0
+                0x00000000      0x10a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_okay2_46x49
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_okay2_46x49_0
+                0x00000000       0xe9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_okay1_46x49
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_okay1_46x49_0
+                0x00000000       0xd0 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_left_6x46
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_left_6x46_0
+                0x00000000       0x1f build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_happy3_46x49
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_happy3_46x49_0
+                0x00000000      0x127 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_happy2_46x49
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_happy2_46x49_0
+                0x00000000      0x11a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_happy1_46x49
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_happy1_46x49_0
+                0x00000000      0x10d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_bottom_128x18
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_bottom_128x18_0
+                0x00000000       0x58 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_bad3_46x49
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_bad3_46x49_0
+                0x00000000      0x10b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_bad2_46x49
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_bad2_46x49_0
+                0x00000000       0xf2 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_bad1_46x49
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_passport_bad1_46x49_0
+                0x00000000       0xd6 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Pin_star_7x7
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Pin_star_7x7_0
+                0x00000000        0x8 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Pin_pointer_5x3
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Pin_pointer_5x3_0
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Pin_back_arrow_10x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Pin_back_arrow_10x8_0
+                0x00000000       0x11 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Pin_attention_dpad_29x29
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Pin_attention_dpad_29x29_0
+                0x00000000       0x5a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Pin_arrow_up_7x9
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Pin_arrow_up_7x9_0
+                0x00000000        0xa build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_check_big_20x17
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_check_big_20x17_0
+                0x00000000       0x25 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Release_arrow_18x15
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Release_arrow_18x15_0
+                0x00000000       0x29 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_NFC_manual_60x50
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_NFC_manual_60x50_0
+                0x00000000       0xd5 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_NFC_dolphin_emulation_51x64
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_NFC_dolphin_emulation_51x64_0
+                0x00000000      0x146 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Move_flipper_26x39
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Move_flipper_26x39_0
+                0x00000000       0x6b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Modern_reader_18x34
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Modern_reader_18x34_0
+                0x00000000       0x45 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Medium_chip_22x21
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Medium_chip_22x21_0
+                0x00000000       0x39 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_MFKey_qr_25x25
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_MFKey_qr_25x25_0
+                0x00000000       0x65 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Keychain_39x36
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Keychain_39x36_0
+                0x00000000       0x86 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Detailed_chip_17x13
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Detailed_chip_17x13_0
+                0x00000000       0x22 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ArrowC_1_36x36
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ArrowC_1_36x36_0
+                0x00000000       0x7e build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_iButton_14
+                0x00000000       0x1c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_iButton_14_6
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_iButton_14_5
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_iButton_14_4
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_iButton_14_3
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_iButton_14_2
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_iButton_14_1
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_iButton_14_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_U2F_14
+                0x00000000       0x10 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_U2F_14_3
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_U2F_14_2
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_U2F_14_1
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_U2F_14_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Sub1ghz_14
+                0x00000000       0x18 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Sub1ghz_14_5
+                0x00000000       0x16 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Sub1ghz_14_4
+                0x00000000        0xe build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Sub1ghz_14_3
+                0x00000000        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Sub1ghz_14_2
+                0x00000000       0x1a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Sub1ghz_14_1
+                0x00000000       0x1c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Sub1ghz_14_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Settings_14
+                0x00000000       0x28 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Settings_14_9
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Settings_14_8
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Settings_14_7
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Settings_14_6
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Settings_14_5
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Settings_14_4
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Settings_14_3
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Settings_14_2
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Settings_14_1
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Settings_14_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Plugins_14
+                0x00000000       0x24 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Plugins_14_8
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Plugins_14_7
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Plugins_14_6
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Plugins_14_5
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Plugins_14_4
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Plugins_14_3
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Plugins_14_2
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Plugins_14_1
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Plugins_14_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_NFC_14
+                0x00000000       0x10 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_NFC_14_3
+                0x00000000       0x1a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_NFC_14_2
+                0x00000000       0x14 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_NFC_14_1
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_NFC_14_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Infrared_14
+                0x00000000       0x18 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Infrared_14_5
+                0x00000000       0x19 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Infrared_14_4
+                0x00000000       0x12 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Infrared_14_3
+                0x00000000       0x12 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Infrared_14_2
+                0x00000000       0x17 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Infrared_14_1
+                0x00000000       0x1b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Infrared_14_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_GPIO_14
+                0x00000000       0x20 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_GPIO_14_7
+                0x00000000       0x16 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_GPIO_14_6
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_GPIO_14_5
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_GPIO_14_4
+                0x00000000       0x11 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_GPIO_14_3
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_GPIO_14_2
+                0x00000000       0x16 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_GPIO_14_1
+                0x00000000       0x16 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_GPIO_14_0
+                0x00000000       0x19 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_FileManager_14
+                0x00000000       0x28 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_FileManager_14_9
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_FileManager_14_8
+                0x00000000       0x1b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_FileManager_14_7
+                0x00000000       0x1b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_FileManager_14_6
+                0x00000000       0x1b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_FileManager_14_5
+                0x00000000       0x13 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_FileManager_14_4
+                0x00000000       0x1b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_FileManager_14_3
+                0x00000000       0x1b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_FileManager_14_2
+                0x00000000       0x1b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_FileManager_14_1
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_FileManager_14_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Debug_14
+                0x00000000       0x10 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Debug_14_3
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Debug_14_2
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Debug_14_1
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Debug_14_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_BadUsb_14
+                0x00000000       0x2c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_BadUsb_14_10
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_BadUsb_14_9
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_BadUsb_14_8
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_BadUsb_14_7
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_BadUsb_14_6
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_BadUsb_14_5
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_BadUsb_14_4
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_BadUsb_14_3
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_BadUsb_14_2
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_BadUsb_14_1
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_BadUsb_14_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_125khz_14
+                0x00000000       0x10 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_125khz_14_3
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_125khz_14_2
+                0x00000000       0x1b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_125khz_14_1
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_125khz_14_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_09
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_09_0
+                0x00000000       0x65 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_07
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_07_0
+                0x00000000       0x65 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_06
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_06_0
+                0x00000000       0x65 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_05
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_05_0
+                0x00000000       0x65 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_04
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_04_0
+                0x00000000       0x65 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_03
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_03_0
+                0x00000000       0x65 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_02
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_02_0
+                0x00000000       0x65 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_01
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_err_01_0
+                0x00000000       0x65 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeySign_21x11
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeySign_21x11_0
+                0x00000000       0x20 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeySignSelected_21x11
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeySignSelected_21x11_0
+                0x00000000       0x20 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeySave_24x11
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeySave_24x11_0
+                0x00000000       0x21 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeySaveSelected_24x11
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeySaveSelected_24x11_0
+                0x00000000       0x1f build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeySaveBlocked_24x11
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeySaveBlocked_24x11_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeySaveBlockedSelected_24x11
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeySaveBlockedSelected_24x11_0
+                0x00000000       0x1b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeyBackspace_16x9
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeyBackspace_16x9_0
+                0x00000000       0x13 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeyBackspaceSelected_16x9
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_KeyBackspaceSelected_16x9_0
+                0x00000000       0x13 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SmallArrowUp_4x7
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SmallArrowUp_4x7_0
+                0x00000000        0x5 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SmallArrowUp_3x5
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SmallArrowUp_3x5_0
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SmallArrowDown_4x7
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SmallArrowDown_4x7_0
+                0x00000000        0x5 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SmallArrowDown_3x5
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_SmallArrowDown_3x5_0
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DoorRight_70x55
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DoorRight_70x55_0
+                0x00000000      0x11a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DoorLeft_70x55
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DoorLeft_70x55_0
+                0x00000000      0x11d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_volup_hover_24x21
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_volup_hover_24x21_0
+                0x00000000       0x34 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_volup_24x21
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_volup_24x21_0
+                0x00000000       0x3a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_voldown_hover_24x21
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_voldown_hover_24x21_0
+                0x00000000       0x31 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_voldown_24x21
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_voldown_24x21_0
+                0x00000000       0x36 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_vol_tv_text_29x34
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_vol_tv_text_29x34_0
+                0x00000000       0x31 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_vol_ac_text_30x30
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_vol_ac_text_30x30_0
+                0x00000000       0x32 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_prev_text_19x5
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_prev_text_19x5_0
+                0x00000000       0x10 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_prev_hover_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_prev_hover_19x20_0
+                0x00000000       0x30 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_prev_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_prev_19x20_0
+                0x00000000       0x33 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_power_text_24x5
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_power_text_24x5_0
+                0x00000000       0x10 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_power_hover_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_power_hover_19x20_0
+                0x00000000       0x30 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_power_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_power_19x20_0
+                0x00000000       0x35 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_play_text_19x5
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_play_text_19x5_0
+                0x00000000       0x10 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_play_hover_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_play_hover_19x20_0
+                0x00000000       0x2f build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_play_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_play_19x20_0
+                0x00000000       0x32 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_pause_text_23x5
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_pause_text_23x5_0
+                0x00000000       0x10 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_pause_hover_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_pause_hover_19x20_0
+                0x00000000       0x1c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_pause_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_pause_19x20_0
+                0x00000000       0x20 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_off_text_12x5
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_off_text_12x5_0
+                0x00000000        0xb build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_off_hover_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_off_hover_19x20_0
+                0x00000000       0x2a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_off_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_off_19x20_0
+                0x00000000       0x2d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_next_text_19x6
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_next_text_19x6_0
+                0x00000000       0x10 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_next_hover_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_next_hover_19x20_0
+                0x00000000       0x2e build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_next_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_next_19x20_0
+                0x00000000       0x32 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_mute_text_19x5
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_mute_text_19x5_0
+                0x00000000       0x10 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_mute_hover_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_mute_hover_19x20_0
+                0x00000000       0x30 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_mute_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_mute_19x20_0
+                0x00000000       0x33 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_max_hover_24x23
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_max_hover_24x23_0
+                0x00000000       0x40 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_max_24x23
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_max_24x23_0
+                0x00000000       0x46 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass6_24x24
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass6_24x24_0
+                0x00000000       0x47 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass5_24x24
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass5_24x24_0
+                0x00000000       0x31 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass4_24x24
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass4_24x24_0
+                0x00000000       0x46 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass3_24x24
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass3_24x24_0
+                0x00000000       0x37 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass2_24x24
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass2_24x24_0
+                0x00000000       0x37 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass1_24x24
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass1_24x24_0
+                0x00000000       0x3a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass0_24x24
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_hourglass0_24x24_0
+                0x00000000       0x36 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_heat_30x51
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_heat_30x51_0
+                0x00000000       0x49 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_fahren_hover_24x23
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_fahren_hover_24x23_0
+                0x00000000       0x42 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_fahren_24x23
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_fahren_24x23_0
+                0x00000000       0x46 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_dry_text_15x5
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_dry_text_15x5_0
+                0x00000000        0xb build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_dry_hover_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_dry_hover_19x20_0
+                0x00000000       0x27 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_dry_19x20
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_dry_19x20_0
+                0x00000000       0x2c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_cool_30x51
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_cool_30x51_0
+                0x00000000       0x4b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ch_up_hover_24x21
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ch_up_hover_24x21_0
+                0x00000000       0x38 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ch_up_24x21
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ch_up_24x21_0
+                0x00000000       0x3d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ch_text_31x34
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ch_text_31x34_0
+                0x00000000       0x31 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ch_down_hover_24x21
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ch_down_hover_24x21_0
+                0x00000000       0x3a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ch_down_24x21
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ch_down_24x21_0
+                0x00000000       0x3e build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_celsius_hover_24x23
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_celsius_hover_24x23_0
+                0x00000000       0x44 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_celsius_24x23
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_celsius_24x23_0
+                0x00000000       0x46 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_back_btn_10x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_back_btn_10x8_0
+                0x00000000       0x11 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_InfraredLearnShort_128x31
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_InfraredLearnShort_128x31_0
+                0x00000000      0x114 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_InfraredArrowUp_4x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_InfraredArrowUp_4x8_0
+                0x00000000        0x5 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_InfraredArrowDown_4x8
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_InfraredArrowDown_4x8_0
+                0x00000000        0x5 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ArrowUpFilled_14x15
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ArrowUpFilled_14x15_0
+                0x00000000       0x1f build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ArrowUpEmpty_14x15
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ArrowUpEmpty_14x15_0
+                0x00000000       0x1c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Erase_pin_128x64
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Erase_pin_128x64_0
+                0x00000000      0x261 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_WarningDolphin_45x42
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_WarningDolphin_45x42_0
+                0x00000000       0xca build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_WarningDolphinFlip_45x42
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_WarningDolphinFlip_45x42_0
+                0x00000000       0xc4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DolphinWait_59x54
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DolphinWait_59x54_0
+                0x00000000      0x12f build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DolphinSuccess_91x55
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DolphinSuccess_91x55_0
+                0x00000000      0x1b8 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DolphinSaved_92x58
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DolphinSaved_92x58_0
+                0x00000000      0x188 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DolphinReadingSuccess_59x63
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DolphinReadingSuccess_59x63_0
+                0x00000000      0x11d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DolphinMafia_119x62
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DolphinMafia_119x62_0
+                0x00000000      0x23c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Round_loader_8x8
+                0x00000000       0x14 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Round_loader_8x8_4
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Round_loader_8x8_3
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Round_loader_8x8_2
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Round_loader_8x8_1
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Round_loader_8x8_0
+                0x00000000        0x9 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Loading_24
+                0x00000000       0x1c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Loading_24_6
+                0x00000000       0x43 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Loading_24_5
+                0x00000000       0x2f build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Loading_24_4
+                0x00000000       0x49 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Loading_24_3
+                0x00000000       0x37 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Loading_24_2
+                0x00000000       0x3a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Loading_24_1
+                0x00000000       0x3c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Loading_24_0
+                0x00000000       0x3b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_arrow_nano_up
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_arrow_nano_up_0
+                0x00000000        0x3 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_arrow_nano_down
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_arrow_nano_down_0
+                0x00000000        0x3 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Warning_30x23
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Warning_30x23_0
+                0x00000000       0x4b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_More_data_placeholder_5x7
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_More_data_placeholder_5x7_0
+                0x00000000        0x7 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Hashmark_7x7
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Hashmark_7x7_0
+                0x00000000        0x8 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DFU_128x50
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_DFU_128x50_0
+                0x00000000      0x232 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonUp_7x4
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonUp_7x4_0
+                0x00000000        0x5 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonRight_4x7
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonRight_4x7_0
+                0x00000000        0x8 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonRightSmall_3x5
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonRightSmall_3x5_0
+                0x00000000        0x6 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonLeft_4x7
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonLeft_4x7_0
+                0x00000000        0x8 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonLeftSmall_3x5
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonLeftSmall_3x5_0
+                0x00000000        0x6 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonDown_7x4
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonDown_7x4_0
+                0x00000000        0x5 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonCenter_7x7
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ButtonCenter_7x7_0
+                0x00000000        0x8 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Volup_8x6
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Volup_8x6_0
+                0x00000000        0x7 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Voldwn_6x6
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Voldwn_6x6_0
+                0x00000000        0x7 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Space_65x18
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Space_65x18_0
+                0x00000000       0x2a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Right_mouse_icon_9x9
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Right_mouse_icon_9x9_0
+                0x00000000       0x13 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Pressed_Button_13x13
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Pressed_Button_13x13_0
+                0x00000000       0x16 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Ok_btn_pressed_13x13
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Ok_btn_pressed_13x13_0
+                0x00000000       0x18 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Ok_btn_9x9
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Ok_btn_9x9_0
+                0x00000000       0x13 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Left_mouse_icon_9x9
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Left_mouse_icon_9x9_0
+                0x00000000       0x13 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Circles_47x47
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Circles_47x47_0
+                0x00000000       0x82 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Button_18x18
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Button_18x18_0
+                0x00000000       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Ble_disconnected_15x15
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Ble_disconnected_15x15_0
+                0x00000000       0x1f build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Ble_connected_15x15
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Ble_connected_15x15_0
+                0x00000000       0x1f build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_BLE_Pairing_128x64
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_BLE_Pairing_128x64_0
+                0x00000000      0x1bb build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_update_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_update_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_unknown_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_unknown_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_u2f_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_u2f_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_sub1_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_sub1_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_settings_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_settings_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_music_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_music_10px_0
+                0x00000000       0x14 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_loading_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_loading_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_js_script_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_js_script_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ir_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ir_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ibutt_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_ibutt_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_file_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_file_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_dir_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_dir_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_back_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_back_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Nfc_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Nfc_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_125_10px
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_125_10px_0
+                0x00000000       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup2_128x64
+                0x00000000       0x2c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup2_128x64_10
+                0x00000000      0x20a build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup2_128x64_9
+                0x00000000      0x1ff build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup2_128x64_8
+                0x00000000      0x206 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup2_128x64_7
+                0x00000000      0x1fb build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup2_128x64_6
+                0x00000000      0x258 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup2_128x64_5
+                0x00000000      0x2a0 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup2_128x64_4
+                0x00000000      0x294 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup2_128x64_3
+                0x00000000      0x331 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup2_128x64_2
+                0x00000000      0x2f1 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup2_128x64_1
+                0x00000000      0x21b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup2_128x64_0
+                0x00000000      0x138 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup1_128x64
+                0x00000000       0x2c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup1_128x64_10
+                0x00000000      0x1e2 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup1_128x64_9
+                0x00000000      0x1da build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup1_128x64_8
+                0x00000000      0x1ea build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup1_128x64_7
+                0x00000000      0x1d4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup1_128x64_6
+                0x00000000      0x23c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup1_128x64_5
+                0x00000000      0x27d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup1_128x64_4
+                0x00000000      0x282 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup1_128x64_3
+                0x00000000      0x30e build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup1_128x64_2
+                0x00000000      0x2c5 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup1_128x64_1
+                0x00000000      0x206 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._A_Levelup1_128x64_0
+                0x00000000      0x126 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_CertificationTaiwan_33x32
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_CertificationTaiwan_33x32_0
+                0x00000000       0x85 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_CertificationMexico_98x41
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_CertificationMexico_98x41_0
+                0x00000000      0x115 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_CertificationChina1_124x47
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_CertificationChina1_124x47_0
+                0x00000000      0x12f build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_CertificationChina0_121x41
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_CertificationChina0_121x41_0
+                0x00000000      0x169 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Certification2_46x33
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Certification2_46x33_0
+                0x00000000       0x89 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Certification1_103x56
+                0x00000000        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .rodata._I_Certification1_103x56_0
+                0x00000000      0x19b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .comment       0x00000000       0x1c build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .text          0x00000000        0x0 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .data          0x00000000        0x0 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .bss           0x00000000        0x0 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .comment       0x00000000       0x1c build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .text          0x00000000        0x0 build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+ .data          0x00000000        0x0 build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+ .bss           0x00000000        0x0 build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+ .comment       0x00000000       0x1c build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+LOAD build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+LOAD build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+LOAD build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+LOAD build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene.o
+LOAD build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+LOAD build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config_layout.o
+LOAD build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_confirm_unpair.o
+LOAD build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o
+LOAD build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_file_select.o
+LOAD build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_unpair_done.o
+LOAD build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_work.o
+LOAD build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+LOAD build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libstdc++_nano.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libsupc++_nano.a
+LOAD build/f7-firmware-D/lib/libassets.a
+LOAD build/f7-firmware-D/lib/libble_profile.a
+LOAD build/f7-firmware-D/lib/libassets.a
+LOAD build/f7-firmware-D/lib/libble_profile.a
+
+.text           0x00000000     0x34c4
+ *(.text)
+ *(.stub)
+ *(.text*)
+ .text.hid_usb_init
+                0x00000000       0x24 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x00000000                hid_usb_init
+ .text.hid_usb_deinit
+                0x00000024       0x20 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x00000024                hid_usb_deinit
+ .text.hid_ble_connection_status_callback
+                0x00000044       0x24 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .text.hid_ble_set_state_callback
+                0x00000068       0x18 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x00000068                hid_ble_set_state_callback
+ .text.hid_ble_is_connected
+                0x00000080       0x14 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x00000080                hid_ble_is_connected
+ .text.hid_usb_set_state_callback
+                0x00000094       0x10 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x00000094                hid_usb_set_state_callback
+ .text.hid_usb_is_connected
+                0x000000a4        0xc build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x000000a4                hid_usb_is_connected
+ .text.hid_usb_kb_press
+                0x000000b0       0x10 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x000000b0                hid_usb_kb_press
+ .text.hid_usb_kb_release
+                0x000000c0       0x10 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x000000c0                hid_usb_kb_release
+ .text.hid_usb_mouse_press
+                0x000000d0       0x10 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x000000d0                hid_usb_mouse_press
+ .text.hid_usb_mouse_release
+                0x000000e0       0x10 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x000000e0                hid_usb_mouse_release
+ .text.hid_usb_mouse_scroll
+                0x000000f0       0x10 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x000000f0                hid_usb_mouse_scroll
+ .text.hid_usb_mouse_move
+                0x00000100       0x10 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x00000100                hid_usb_mouse_move
+ .text.hid_usb_consumer_press
+                0x00000110       0x10 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x00000110                hid_usb_consumer_press
+ .text.hid_usb_consumer_release
+                0x00000120       0x10 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x00000120                hid_usb_consumer_release
+ .text.hid_usb_get_led_state
+                0x00000130        0xc build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x00000130                hid_usb_get_led_state
+ .text.hid_ble_init
+                0x0000013c       0x88 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x0000013c                hid_ble_init
+ .text.hid_ble_deinit
+                0x000001c4       0x6c build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x000001c4                hid_ble_deinit
+ .text.hid_ble_kb_press
+                0x00000230       0x1c build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x00000230                hid_ble_kb_press
+ .text.hid_ble_kb_release
+                0x0000024c       0x1c build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x0000024c                hid_ble_kb_release
+ .text.hid_ble_mouse_press
+                0x00000268       0x1c build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x00000268                hid_ble_mouse_press
+ .text.hid_ble_mouse_release
+                0x00000284       0x1c build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x00000284                hid_ble_mouse_release
+ .text.hid_ble_mouse_scroll
+                0x000002a0       0x1c build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x000002a0                hid_ble_mouse_scroll
+ .text.hid_ble_mouse_move
+                0x000002bc       0x1c build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x000002bc                hid_ble_mouse_move
+ .text.hid_ble_consumer_press
+                0x000002d8       0x1c build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x000002d8                hid_ble_consumer_press
+ .text.hid_ble_consumer_release
+                0x000002f4       0x1c build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x000002f4                hid_ble_consumer_release
+ .text.hid_ble_release_all
+                0x00000310       0x3c build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x00000310                hid_ble_release_all
+ .text.hid_ble_get_led_state
+                0x0000034c       0x1c build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x0000034c                hid_ble_get_led_state
+ .text.hid_usb_mouse_release_all
+                0x00000368       0x10 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x00000368                hid_usb_mouse_release_all
+ .text.hid_usb_release_all
+                0x00000378       0x28 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x00000378                hid_usb_release_all
+ .text.bad_usb_hid_get_interface
+                0x000003a0       0x14 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x000003a0                bad_usb_hid_get_interface
+ .text.bad_usb_hid_ble_remove_pairing
+                0x000003b4       0x78 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+                0x000003b4                bad_usb_hid_ble_remove_pairing
+ .text.bad_usb_hid_state_callback
+                0x0000042c       0x38 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .text.ducky_string_next
+                0x00000464       0x78 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .text.bad_usb_flags_get
+                0x000004dc       0x5c build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .text.bad_usb_script_set_default_keyboard_layout
+                0x00000538       0x3c build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .text.ducky_get_command_len
+                0x00000574       0x18 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+                0x00000574                ducky_get_command_len
+ .text.ducky_is_line_end
+                0x0000058c       0x28 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+                0x0000058c                ducky_is_line_end
+ .text.ducky_set_usb_id
+                0x000005b4       0x8c build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .text.ducky_script_preload
+                0x00000640       0xec build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .text.ducky_get_keycode
+                0x0000072c       0x44 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+                0x0000072c                ducky_get_keycode
+ .text.ducky_get_number
+                0x00000770       0x28 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+                0x00000770                ducky_get_number
+ .text.ducky_numlock_on
+                0x00000798       0x28 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+                0x00000798                ducky_numlock_on
+ .text.ducky_numpad_press
+                0x000007c0       0x34 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+                0x000007c0                ducky_numpad_press
+ .text.ducky_altchar
+                0x000007f4       0x54 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+                0x000007f4                ducky_altchar
+ .text.ducky_altstring
+                0x00000848       0x4c build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+                0x00000848                ducky_altstring
+ .text.ducky_error
+                0x00000894       0x28 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+                0x00000894                ducky_error
+ .text.ducky_parse_line
+                0x000008bc       0xec build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .text.ducky_script_execute_next
+                0x000009a8      0x1b0 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .text.bad_usb_worker
+                0x00000b58      0x4c4 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .text.ducky_string
+                0x0000101c       0x58 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+                0x0000101c                ducky_string
+ .text.bad_usb_script_open
+                0x00001074       0x80 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+                0x00001074                bad_usb_script_open
+ .text.bad_usb_script_close
+                0x000010f4       0x54 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+                0x000010f4                bad_usb_script_close
+ .text.bad_usb_script_set_keyboard_layout
+                0x00001148       0xb0 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+                0x00001148                bad_usb_script_set_keyboard_layout
+ .text.bad_usb_script_start_stop
+                0x000011f8       0x28 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+                0x000011f8                bad_usb_script_start_stop
+ .text.bad_usb_script_pause_resume
+                0x00001220       0x28 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+                0x00001220                bad_usb_script_pause_resume
+ .text.bad_usb_script_get_state
+                0x00001248       0x14 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+                0x00001248                bad_usb_script_get_state
+ .text.ducky_fnc_waitforbutton
+                0x0000125c        0x6 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ *fill*         0x00001262        0x2 
+ .text.ducky_fnc_mouse_scroll
+                0x00001264       0x58 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .text.ducky_fnc_mouse_move
+                0x000012bc       0x84 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .text.ducky_fnc_globe
+                0x00001340       0x6c build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .text.ducky_fnc_sysrq
+                0x000013ac       0x44 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .text.ducky_fnc_media
+                0x000013f0       0x50 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .text.ducky_fnc_release
+                0x00001440       0x88 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .text.ducky_fnc_hold
+                0x000014c8       0x8c build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .text.ducky_fnc_altstring
+                0x00001554       0x44 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .text.ducky_fnc_altchar
+                0x00001598       0x44 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .text.ducky_fnc_repeat
+                0x000015dc       0x44 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .text.ducky_fnc_defstrdelay
+                0x00001620       0x3c build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .text.ducky_fnc_strdelay
+                0x0000165c       0x3c build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .text.ducky_fnc_defdelay
+                0x00001698       0x3c build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .text.ducky_fnc_delay
+                0x000016d4       0x44 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .text.ducky_fnc_string
+                0x00001718       0x88 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .text.ducky_execute_cmd
+                0x000017a0       0x78 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+                0x000017a0                ducky_execute_cmd
+ .text.ducky_get_next_modifier_keycode_by_name
+                0x00001818       0x64 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+                0x00001818                ducky_get_next_modifier_keycode_by_name
+ .text.ducky_get_modifier_keycode_by_name
+                0x0000187c       0x54 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+                0x0000187c                ducky_get_modifier_keycode_by_name
+ .text.ducky_get_keycode_by_name
+                0x000018d0       0x54 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+                0x000018d0                ducky_get_keycode_by_name
+ .text.ducky_get_media_keycode_by_name
+                0x00001924       0x54 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+                0x00001924                ducky_get_media_keycode_by_name
+ .text.ducky_get_mouse_keycode_by_name
+                0x00001978       0x54 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+                0x00001978                ducky_get_mouse_keycode_by_name
+ .text.bad_usb_scene_config_select_callback
+                0x000019cc       0x10 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+                0x000019cc                bad_usb_scene_config_select_callback
+ .text.draw_menu
+                0x000019dc       0x3c build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+ .text.bad_usb_scene_config_on_enter
+                0x00001a18       0x3c build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+                0x00001a18                bad_usb_scene_config_on_enter
+ .text.bad_usb_scene_config_on_event
+                0x00001a54       0x4c build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+                0x00001a54                bad_usb_scene_config_on_event
+ .text.bad_usb_scene_config_on_exit
+                0x00001aa0       0x10 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+                0x00001aa0                bad_usb_scene_config_on_exit
+ .text.bad_usb_layout_select
+                0x00001ab0       0x8c build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config_layout.o
+ .text.bad_usb_scene_config_layout_on_enter
+                0x00001b3c       0x28 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config_layout.o
+                0x00001b3c                bad_usb_scene_config_layout_on_enter
+ .text.bad_usb_scene_config_layout_on_event
+                0x00001b64        0xe build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config_layout.o
+                0x00001b64                bad_usb_scene_config_layout_on_event
+ .text.bad_usb_scene_config_layout_on_exit
+                0x00001b72        0x2 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config_layout.o
+                0x00001b72                bad_usb_scene_config_layout_on_exit
+ .text.bad_usb_scene_confirm_unpair_on_enter
+                0x00001b74       0x6c build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_confirm_unpair.o
+                0x00001b74                bad_usb_scene_confirm_unpair_on_enter
+ .text.bad_usb_scene_confirm_unpair_on_event
+                0x00001be0       0x40 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_confirm_unpair.o
+                0x00001be0                bad_usb_scene_confirm_unpair_on_event
+ .text.bad_usb_scene_confirm_unpair_widget_callback
+                0x00001c20       0x24 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_confirm_unpair.o
+                0x00001c20                bad_usb_scene_confirm_unpair_widget_callback
+ .text.bad_usb_scene_confirm_unpair_on_exit
+                0x00001c44       0x10 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_confirm_unpair.o
+                0x00001c44                bad_usb_scene_confirm_unpair_on_exit
+ .text.bad_usb_scene_error_event_callback
+                0x00001c54       0x28 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o
+ .text.bad_usb_scene_error_on_enter
+                0x00001c7c       0xb8 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o
+                0x00001c7c                bad_usb_scene_error_on_enter
+ .text.bad_usb_scene_error_on_event
+                0x00001d34       0x2c build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o
+                0x00001d34                bad_usb_scene_error_on_event
+ .text.bad_usb_scene_error_on_exit
+                0x00001d60       0x10 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o
+                0x00001d60                bad_usb_scene_error_on_exit
+ .text.bad_usb_file_select
+                0x00001d70       0x4c build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_file_select.o
+ .text.bad_usb_scene_file_select_on_enter
+                0x00001dbc       0x3c build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_file_select.o
+                0x00001dbc                bad_usb_scene_file_select_on_enter
+ .text.bad_usb_scene_file_select_on_event
+                0x00001df8        0xe build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_file_select.o
+                0x00001df8                bad_usb_scene_file_select_on_event
+ .text.bad_usb_scene_file_select_on_exit
+                0x00001e06        0x2 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_file_select.o
+                0x00001e06                bad_usb_scene_file_select_on_exit
+ .text.bad_usb_scene_unpair_done_popup_callback
+                0x00001e08       0x10 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_unpair_done.o
+ .text.bad_usb_scene_unpair_done_on_enter
+                0x00001e18       0x84 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_unpair_done.o
+                0x00001e18                bad_usb_scene_unpair_done_on_enter
+ .text.bad_usb_scene_unpair_done_on_event
+                0x00001e9c        0xe build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_unpair_done.o
+                0x00001e9c                bad_usb_scene_unpair_done_on_event
+ *fill*         0x00001eaa        0x2 
+ .text.bad_usb_scene_unpair_done_on_exit
+                0x00001eac       0x10 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_unpair_done.o
+                0x00001eac                bad_usb_scene_unpair_done_on_exit
+ .text.bad_usb_scene_work_button_callback
+                0x00001ebc       0x20 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_work.o
+                0x00001ebc                bad_usb_scene_work_button_callback
+ .text.bad_usb_scene_work_on_event
+                0x00001edc       0xe0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_work.o
+                0x00001edc                bad_usb_scene_work_on_event
+ .text.bad_usb_scene_work_on_enter
+                0x00001fbc       0xcc build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_work.o
+                0x00001fbc                bad_usb_scene_work_on_enter
+ .text.bad_usb_scene_work_on_exit
+                0x00002088        0x2 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_work.o
+                0x00002088                bad_usb_scene_work_on_exit
+ *fill*         0x0000208a        0x2 
+ .text.bad_usb_input_callback
+                0x0000208c       0xb0 build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .text.bad_usb_draw_callback
+                0x0000213c      0x5c0 build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .text.bad_usb_view_alloc
+                0x000026fc       0x54 build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+                0x000026fc                bad_usb_view_alloc
+ .text.bad_usb_view_free
+                0x00002750       0x28 build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+                0x00002750                bad_usb_view_free
+ .text.bad_usb_view_get_view
+                0x00002778       0x14 build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+                0x00002778                bad_usb_view_get_view
+ .text.bad_usb_view_set_button_callback
+                0x0000278c       0x3c build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+                0x0000278c                bad_usb_view_set_button_callback
+ .text.bad_usb_view_set_file_name
+                0x000027c8       0x38 build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+                0x000027c8                bad_usb_view_set_file_name
+ .text.bad_usb_view_set_layout
+                0x00002800       0x3c build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+                0x00002800                bad_usb_view_set_layout
+ .text.bad_usb_view_set_state
+                0x0000283c       0x58 build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+                0x0000283c                bad_usb_view_set_state
+ .text.bad_usb_view_set_interface
+                0x00002894       0x24 build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+                0x00002894                bad_usb_view_set_interface
+ .text.bad_usb_view_is_idle_state
+                0x000028b8       0x3c build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+                0x000028b8                bad_usb_view_is_idle_state
+ .text.bad_usb_app_back_event_callback
+                0x000028f4       0x1c build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .text.bad_usb_app_custom_event_callback
+                0x00002910       0x1c build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .text.bad_usb_app_tick_event_callback
+                0x0000292c       0x1c build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .text.bad_usb_load_settings
+                0x00002948      0x148 build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .text.bad_usb_save_settings
+                0x00002a90       0x90 build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .text.bad_usb_set_interface
+                0x00002b20       0x14 build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+                0x00002b20                bad_usb_set_interface
+ .text.bad_usb_app_alloc
+                0x00002b34      0x1bc build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+                0x00002b34                bad_usb_app_alloc
+ .text.bad_usb_app_free
+                0x00002cf0       0xd8 build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+                0x00002cf0                bad_usb_app_free
+ .text.bad_usb_app
+                0x00002dc8       0x24 build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+                0x00002dc8                bad_usb_app
+ .text.ble_profile_hid_get_config
+                0x00002dec       0xe4 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .text.ble_profile_hid_stop
+                0x00002ed0       0x58 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .text.ble_profile_hid_start
+                0x00002f28       0x78 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .text.ble_profile_hid_kb_press
+                0x00002fa0       0x54 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+                0x00002fa0                ble_profile_hid_kb_press
+ .text.ble_profile_hid_kb_release
+                0x00002ff4       0x58 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+                0x00002ff4                ble_profile_hid_kb_release
+ .text.ble_profile_hid_kb_release_all
+                0x0000304c       0x44 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+                0x0000304c                ble_profile_hid_kb_release_all
+ .text.ble_profile_hid_consumer_key_press
+                0x00003090       0x3c build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+                0x00003090                ble_profile_hid_consumer_key_press
+ .text.ble_profile_hid_consumer_key_release
+                0x000030cc       0x40 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+                0x000030cc                ble_profile_hid_consumer_key_release
+ .text.ble_profile_hid_consumer_key_release_all
+                0x0000310c       0x3c build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+                0x0000310c                ble_profile_hid_consumer_key_release_all
+ .text.ble_profile_hid_mouse_move
+                0x00003148       0x3c build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+                0x00003148                ble_profile_hid_mouse_move
+ .text.ble_profile_hid_mouse_press
+                0x00003184       0x3c build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+                0x00003184                ble_profile_hid_mouse_press
+ .text.ble_profile_hid_mouse_release
+                0x000031c0       0x3c build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+                0x000031c0                ble_profile_hid_mouse_release
+ .text.ble_profile_hid_mouse_release_all
+                0x000031fc       0x38 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+                0x000031fc                ble_profile_hid_mouse_release_all
+ .text.ble_profile_hid_mouse_scroll
+                0x00003234       0x38 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+                0x00003234                ble_profile_hid_mouse_scroll
+ .text.ble_svc_hid_char_desc_data_callback
+                0x0000326c        0xc build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+ .text.ble_svc_hid_report_data_callback
+                0x00003278       0x12 build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+ .text.ble_svc_hid_event_handler
+                0x0000328a       0x26 build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+ .text.ble_svc_hid_start
+                0x000032b0      0x138 build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+                0x000032b0                ble_svc_hid_start
+ .text.ble_svc_hid_update_report_map
+                0x000033e8       0x20 build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+                0x000033e8                ble_svc_hid_update_report_map
+ .text.ble_svc_hid_update_input_report
+                0x00003408       0x20 build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+                0x00003408                ble_svc_hid_update_input_report
+ .text.ble_svc_hid_update_info
+                0x00003428       0x1c build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+                0x00003428                ble_svc_hid_update_info
+ .text.ble_svc_hid_stop
+                0x00003444       0x80 build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+                0x00003444                ble_svc_hid_stop
+ *(.text.*)
+ *(.text._*)
+ *(.init)
+ *(.fini)
+
+.rodata         0x000034c4     0x1640
+ *(.rodata)
+ *(.rodata1)
+ *(.rodata.*)
+ .rodata.hid_ble_init.str1.4
+                0x000034c4       0x17 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ *fill*         0x000034db        0x1 
+ .rodata.hid_ble_get_led_state.str1.4
+                0x000034dc       0x33 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ *fill*         0x0000350f        0x1 
+ .rodata.hid_api_ble
+                0x00003510       0x38 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .rodata.str1.4
+                0x00003548        0x7 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ *fill*         0x0000354f        0x1 
+ .rodata.ble_hid_params
+                0x00003550        0x8 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .rodata.hid_api_usb
+                0x00003558       0x38 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .rodata.ducky_set_usb_id.str1.4
+                0x00003590       0x51 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ *fill*         0x000035e1        0x3 
+ .rodata.ducky_altstring.str1.4
+                0x000035e4        0x3 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ *fill*         0x000035e7        0x1 
+ .rodata.ducky_parse_line.str1.4
+                0x000035e8       0x22 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ *fill*         0x0000360a        0x2 
+ .rodata.ducky_script_execute_next.str1.4
+                0x0000360c       0x22 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ *fill*         0x0000362e        0x2 
+ .rodata.bad_usb_worker.str1.4
+                0x00003630       0x24 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .rodata.numpad_keys
+                0x00003654        0xa build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ *fill*         0x0000365e        0x2 
+ .rodata.ducky_cmd_id
+                0x00003660        0x3 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ *fill*         0x00003663        0x1 
+ .rodata.hid_asciimap
+                0x00003664      0x100 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .rodata.ducky_fnc_mouse_scroll.str1.4
+                0x00003764       0x16 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ *fill*         0x0000377a        0x2 
+ .rodata.ducky_fnc_globe.str1.4
+                0x0000377c       0x1a build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ *fill*         0x00003796        0x2 
+ .rodata.ducky_fnc_release.str1.4
+                0x00003798       0x11 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ *fill*         0x000037a9        0x3 
+ .rodata.ducky_fnc_hold.str1.4
+                0x000037ac       0x2f build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ *fill*         0x000037db        0x1 
+ .rodata.ducky_fnc_altstring.str1.4
+                0x000037dc       0x15 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ *fill*         0x000037f1        0x3 
+ .rodata.ducky_fnc_altchar.str1.4
+                0x000037f4       0x13 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ *fill*         0x00003807        0x1 
+ .rodata.ducky_fnc_repeat.str1.4
+                0x00003808       0x12 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ *fill*         0x0000381a        0x2 
+ .rodata.ducky_fnc_string.str1.4
+                0x0000381c       0x16 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ *fill*         0x00003832        0x2 
+ .rodata.str1.4
+                0x00003834      0x121 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ *fill*         0x00003955        0x3 
+ .rodata.ducky_commands
+                0x00003958      0x12c build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .rodata.str1.4
+                0x00003a84      0x29c build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+ .rodata.ducky_mouse_keys
+                0x00003d20       0x40 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+ .rodata.ducky_media_keys
+                0x00003d60       0xb8 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+ .rodata.ducky_keys
+                0x00003e18      0x1a0 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+ .rodata.ducky_modifier_keys
+                0x00003fb8       0x30 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+ .rodata.bad_usb_scene_handlers
+                0x00003fe8       0x10 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene.o
+                0x00003fe8                bad_usb_scene_handlers
+ .rodata.bad_usb_scene_on_exit_handlers
+                0x00003ff8       0x1c build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene.o
+                0x00003ff8                bad_usb_scene_on_exit_handlers
+ .rodata.bad_usb_scene_on_event_handlers
+                0x00004014       0x1c build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene.o
+                0x00004014                bad_usb_scene_on_event_handlers
+ .rodata.bad_usb_scene_on_enter_handlers
+                0x00004030       0x1c build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene.o
+                0x00004030                bad_usb_scene_on_enter_handlers
+ .rodata.draw_menu.str1.4
+                0x0000404c       0x2b build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+ *fill*         0x00004077        0x1 
+ .rodata.bad_usb_scene_config_on_event.str1.4
+                0x00004078       0x11 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+ *fill*         0x00004089        0x3 
+ .rodata.bad_usb_layout_select.str1.4
+                0x0000408c       0x20 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config_layout.o
+ .rodata.bad_usb_scene_confirm_unpair_on_enter.str1.4
+                0x000040ac       0x28 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_confirm_unpair.o
+ .rodata.bad_usb_scene_error_on_enter.str1.4
+                0x000040d4       0xa2 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o
+ *fill*         0x00004176        0x2 
+ .rodata.bad_usb_file_select.str1.4
+                0x00004178       0x14 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_file_select.o
+ .rodata.bad_usb_scene_unpair_done_on_enter.str1.4
+                0x0000418c        0x5 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_unpair_done.o
+ *fill*         0x00004191        0x3 
+ .rodata.bad_usb_draw_callback.str1.4
+                0x00004194       0xd7 build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ *fill*         0x0000426b        0x1 
+ .rodata.bad_usb_load_settings.str1.4
+                0x0000426c       0x80 build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .rodata.bad_usb_app_alloc.str1.4
+                0x000042ec       0x28 build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .rodata.I_SDQuestion_35x43
+                0x00004314        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00004314                I_SDQuestion_35x43
+ .rodata.I_DolphinDone_80x58
+                0x00004320        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00004320                I_DolphinDone_80x58
+ .rodata.I_ActiveConnection_50x64
+                0x0000432c        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x0000432c                I_ActiveConnection_50x64
+ .rodata.I_UsbTree_48x22
+                0x00004338        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00004338                I_UsbTree_48x22
+ .rodata.I_Smile_18x18
+                0x00004344        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00004344                I_Smile_18x18
+ .rodata.I_Percent_10x14
+                0x00004350        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00004350                I_Percent_10x14
+ .rodata.I_EviWaiting2_18x21
+                0x0000435c        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x0000435c                I_EviWaiting2_18x21
+ .rodata.I_EviWaiting1_18x21
+                0x00004368        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00004368                I_EviWaiting1_18x21
+ .rodata.I_EviSmile2_18x21
+                0x00004374        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00004374                I_EviSmile2_18x21
+ .rodata.I_EviSmile1_18x21
+                0x00004380        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00004380                I_EviSmile1_18x21
+ .rodata.I_Error_18x18
+                0x0000438c        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x0000438c                I_Error_18x18
+ .rodata.I_Clock_18x18
+                0x00004398        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00004398                I_Clock_18x18
+ .rodata.I_Bad_BLE_48x22
+                0x000043a4        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000043a4                I_Bad_BLE_48x22
+ .rodata.I_keyboard_10px
+                0x000043b0        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000043b0                I_keyboard_10px
+ .rodata.I_badusb_10px
+                0x000043bc        0xc build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000043bc                I_badusb_10px
+ .rodata._I_SDQuestion_35x43
+                0x000043c8        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000043c8                _I_SDQuestion_35x43
+ .rodata._I_SDQuestion_35x43_0
+                0x000043cc       0x6e build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000043cc                _I_SDQuestion_35x43_0
+ *fill*         0x0000443a        0x2 
+ .rodata._I_DolphinDone_80x58
+                0x0000443c        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x0000443c                _I_DolphinDone_80x58
+ .rodata._I_DolphinDone_80x58_0
+                0x00004440      0x180 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00004440                _I_DolphinDone_80x58_0
+ .rodata._I_ActiveConnection_50x64
+                0x000045c0        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000045c0                _I_ActiveConnection_50x64
+ .rodata._I_ActiveConnection_50x64_0
+                0x000045c4       0xf8 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000045c4                _I_ActiveConnection_50x64_0
+ .rodata._I_UsbTree_48x22
+                0x000046bc        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000046bc                _I_UsbTree_48x22
+ .rodata._I_UsbTree_48x22_0
+                0x000046c0       0x40 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000046c0                _I_UsbTree_48x22_0
+ .rodata._I_Smile_18x18
+                0x00004700        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00004700                _I_Smile_18x18
+ .rodata._I_Smile_18x18_0
+                0x00004704       0x31 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00004704                _I_Smile_18x18_0
+ *fill*         0x00004735        0x3 
+ .rodata._I_Percent_10x14
+                0x00004738        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00004738                _I_Percent_10x14
+ .rodata._I_Percent_10x14_0
+                0x0000473c       0x1d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x0000473c                _I_Percent_10x14_0
+ *fill*         0x00004759        0x3 
+ .rodata._I_EviWaiting2_18x21
+                0x0000475c        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x0000475c                _I_EviWaiting2_18x21
+ .rodata._I_EviWaiting2_18x21_0
+                0x00004760       0x35 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00004760                _I_EviWaiting2_18x21_0
+ *fill*         0x00004795        0x3 
+ .rodata._I_EviWaiting1_18x21
+                0x00004798        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00004798                _I_EviWaiting1_18x21
+ .rodata._I_EviWaiting1_18x21_0
+                0x0000479c       0x38 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x0000479c                _I_EviWaiting1_18x21_0
+ .rodata._I_EviSmile2_18x21
+                0x000047d4        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000047d4                _I_EviSmile2_18x21
+ .rodata._I_EviSmile2_18x21_0
+                0x000047d8       0x3b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000047d8                _I_EviSmile2_18x21_0
+ *fill*         0x00004813        0x1 
+ .rodata._I_EviSmile1_18x21
+                0x00004814        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00004814                _I_EviSmile1_18x21
+ .rodata._I_EviSmile1_18x21_0
+                0x00004818       0x3d build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00004818                _I_EviSmile1_18x21_0
+ *fill*         0x00004855        0x3 
+ .rodata._I_Error_18x18
+                0x00004858        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00004858                _I_Error_18x18
+ .rodata._I_Error_18x18_0
+                0x0000485c       0x30 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x0000485c                _I_Error_18x18_0
+ .rodata._I_Clock_18x18
+                0x0000488c        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x0000488c                _I_Clock_18x18
+ .rodata._I_Clock_18x18_0
+                0x00004890       0x35 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00004890                _I_Clock_18x18_0
+ *fill*         0x000048c5        0x3 
+ .rodata._I_Bad_BLE_48x22
+                0x000048c8        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000048c8                _I_Bad_BLE_48x22
+ .rodata._I_Bad_BLE_48x22_0
+                0x000048cc       0x32 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x000048cc                _I_Bad_BLE_48x22_0
+ *fill*         0x000048fe        0x2 
+ .rodata._I_keyboard_10px
+                0x00004900        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00004900                _I_keyboard_10px
+ .rodata._I_keyboard_10px_0
+                0x00004904       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00004904                _I_keyboard_10px_0
+ *fill*         0x00004919        0x3 
+ .rodata._I_badusb_10px
+                0x0000491c        0x4 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x0000491c                _I_badusb_10px
+ .rodata._I_badusb_10px_0
+                0x00004920       0x15 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+                0x00004920                _I_badusb_10px_0
+ .rodata.ble_profile_hid_get_config.str1.1
+                0x00004935       0x10 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ *fill*         0x00004945        0x3 
+ .rodata.profile_callbacks
+                0x00004948        0xc build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .rodata.ble_profile_hid_report_map_data
+                0x00004954       0x8a build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .rodata.str1.1
+                0x000049de       0x42 build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+ .rodata.ble_svc_hid_report_template
+                0x00004a20       0x24 build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+ .rodata.ble_svc_hid_char_descr_template
+                0x00004a44       0x20 build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+ .rodata.ble_svc_hid_chars
+                0x00004a64       0x90 build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+ .rodata.ble_svc_hid_uuid
+                0x00004af4       0x10 build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+
+.data           0x00004b04       0x54
+ *(.data)
+ *(.data1)
+ *(.data.*)
+ .data.ble_profile_hid
+                0x00004b04        0x4 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+                0x00004b04                ble_profile_hid
+ .data.template_config
+                0x00004b08       0x50 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+
+.bss
+ *(.bss)
+ *(.bss*)
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x648
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000      0x118 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_aranges
+                0x00000118       0xe0 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_aranges
+                0x000001f8       0xa0 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_aranges
+                0x00000298       0x40 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+ .debug_aranges
+                0x000002d8       0x18 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene.o
+ .debug_aranges
+                0x000002f0       0x40 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+ .debug_aranges
+                0x00000330       0x38 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config_layout.o
+ .debug_aranges
+                0x00000368       0x38 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_confirm_unpair.o
+ .debug_aranges
+                0x000003a0       0x38 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o
+ .debug_aranges
+                0x000003d8       0x38 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_file_select.o
+ .debug_aranges
+                0x00000410       0x38 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_unpair_done.o
+ .debug_aranges
+                0x00000448       0x38 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_work.o
+ .debug_aranges
+                0x00000480       0x70 build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .debug_aranges
+                0x000004f0       0x60 build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .debug_aranges
+                0x00000550       0x18 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .debug_aranges
+                0x00000568       0x88 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .debug_aranges
+                0x000005f0       0x58 build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000    0x1805d
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000     0x20d0 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_info    0x000020d0     0x2552 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_info    0x00004622     0x179f build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_info    0x00005dc1      0x771 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+ .debug_info    0x00006532      0x3e1 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene.o
+ .debug_info    0x00006913      0xfe2 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+ .debug_info    0x000078f5      0xf84 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config_layout.o
+ .debug_info    0x00008879      0xfce build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_confirm_unpair.o
+ .debug_info    0x00009847     0x1054 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o
+ .debug_info    0x0000a89b      0xec0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_file_select.o
+ .debug_info    0x0000b75b      0xf80 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_unpair_done.o
+ .debug_info    0x0000c6db     0x1217 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_work.o
+ .debug_info    0x0000d8f2     0x1bef build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .debug_info    0x0000f4e1     0x1d0a build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .debug_info    0x000111eb     0x4c56 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .debug_info    0x00015e41     0x1469 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .debug_info    0x000172aa      0xdb3 build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+
+.debug_abbrev   0x00000000     0x3094
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x3aa build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_abbrev  0x000003aa      0x44f build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_abbrev  0x000007f9      0x300 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_abbrev  0x00000af9      0x1a7 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+ .debug_abbrev  0x00000ca0      0x137 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene.o
+ .debug_abbrev  0x00000dd7      0x2b8 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+ .debug_abbrev  0x0000108f      0x2ec build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config_layout.o
+ .debug_abbrev  0x0000137b      0x27c build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_confirm_unpair.o
+ .debug_abbrev  0x000015f7      0x2ae build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o
+ .debug_abbrev  0x000018a5      0x2d5 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_file_select.o
+ .debug_abbrev  0x00001b7a      0x2a0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_unpair_done.o
+ .debug_abbrev  0x00001e1a      0x2dd build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_work.o
+ .debug_abbrev  0x000020f7      0x37d build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .debug_abbrev  0x00002474      0x33b build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .debug_abbrev  0x000027af       0xd2 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .debug_abbrev  0x00002881      0x3b5 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .debug_abbrev  0x00002c36      0x45e build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+
+.debug_line     0x00000000     0x7fc4
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x38b build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_usb_init
+                0x0000038b       0x4a build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_usb_deinit
+                0x000003d5       0x35 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_ble_connection_status_callback
+                0x0000040a       0x80 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_ble_set_state_callback
+                0x0000048a       0x65 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_ble_is_connected
+                0x000004ef       0x53 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_usb_set_state_callback
+                0x00000542       0x1d build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_usb_is_connected
+                0x0000055f       0x1f build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_usb_kb_press
+                0x0000057e       0x20 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_usb_kb_release
+                0x0000059e       0x20 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_usb_mouse_press
+                0x000005be       0x20 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_usb_mouse_release
+                0x000005de       0x20 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_usb_mouse_scroll
+                0x000005fe       0x20 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_usb_mouse_move
+                0x0000061e       0x20 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_usb_consumer_press
+                0x0000063e       0x21 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_usb_consumer_release
+                0x0000065f       0x21 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_usb_get_led_state
+                0x00000680       0x20 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_ble_init
+                0x000006a0       0x77 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_ble_deinit
+                0x00000717       0x9b build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_ble_kb_press
+                0x000007b2       0x5a build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_ble_kb_release
+                0x0000080c       0x5a build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_ble_mouse_press
+                0x00000866       0x5a build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_ble_mouse_release
+                0x000008c0       0x5a build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_ble_mouse_scroll
+                0x0000091a       0x5a build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_ble_mouse_move
+                0x00000974       0x5a build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_ble_consumer_press
+                0x000009ce       0x5a build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_ble_consumer_release
+                0x00000a28       0x5a build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_ble_release_all
+                0x00000a82       0x8d build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_ble_get_led_state
+                0x00000b0f       0x21 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_usb_mouse_release_all
+                0x00000b30       0x20 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.hid_usb_release_all
+                0x00000b50       0x39 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.bad_usb_hid_get_interface
+                0x00000b89       0x21 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line.text.bad_usb_hid_ble_remove_pairing
+                0x00000baa       0x53 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line_end
+                0x00000bfd        0x0 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_line    0x00000bfd      0x3ae build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.bad_usb_hid_state_callback
+                0x00000fab       0x68 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.ducky_string_next
+                0x00001013       0xa8 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.bad_usb_flags_get
+                0x000010bb       0xb4 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.bad_usb_script_set_default_keyboard_layout
+                0x0000116f       0x7f build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.ducky_get_command_len
+                0x000011ee       0x31 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.ducky_is_line_end
+                0x0000121f       0x25 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.ducky_set_usb_id
+                0x00001244       0x68 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.ducky_script_preload
+                0x000012ac      0x118 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.ducky_get_keycode
+                0x000013c4       0x67 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.ducky_get_number
+                0x0000142b       0x3e build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.ducky_numlock_on
+                0x00001469       0x42 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.ducky_numpad_press
+                0x000014ab       0x54 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.ducky_altchar
+                0x000014ff       0x6b build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.ducky_altstring
+                0x0000156a       0x83 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.ducky_error
+                0x000015ed       0x23 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.ducky_parse_line
+                0x00001610      0x12c build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.ducky_script_execute_next
+                0x0000173c      0x206 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.bad_usb_worker
+                0x00001942      0x5fe build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.ducky_string
+                0x00001f40       0x9e build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.bad_usb_script_open
+                0x00001fde       0xdd build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.bad_usb_script_close
+                0x000020bb       0x6a build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.bad_usb_script_set_keyboard_layout
+                0x00002125       0xa4 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.bad_usb_script_start_stop
+                0x000021c9       0x52 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.bad_usb_script_pause_resume
+                0x0000221b       0x52 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line.text.bad_usb_script_get_state
+                0x0000226d       0x52 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line_end
+                0x000022bf        0x0 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_line    0x000022bf      0x2c0 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_line.text.ducky_fnc_waitforbutton
+                0x0000257f       0x1d build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_line.text.ducky_fnc_mouse_scroll
+                0x0000259c       0x58 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_line.text.ducky_fnc_mouse_move
+                0x000025f4       0x81 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_line.text.ducky_fnc_globe
+                0x00002675       0x7b build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_line.text.ducky_fnc_sysrq
+                0x000026f0       0x58 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_line.text.ducky_fnc_media
+                0x00002748       0x61 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_line.text.ducky_fnc_release
+                0x000027a9       0xaa build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_line.text.ducky_fnc_hold
+                0x00002853       0xaa build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_line.text.ducky_fnc_altstring
+                0x000028fd       0x44 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_line.text.ducky_fnc_altchar
+                0x00002941       0x44 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_line.text.ducky_fnc_repeat
+                0x00002985       0x51 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_line.text.ducky_fnc_defstrdelay
+                0x000029d6       0x42 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_line.text.ducky_fnc_strdelay
+                0x00002a18       0x42 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_line.text.ducky_fnc_defdelay
+                0x00002a5a       0x42 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_line.text.ducky_fnc_delay
+                0x00002a9c       0x55 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_line.text.ducky_fnc_string
+                0x00002af1       0x6c build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_line.text.ducky_execute_cmd
+                0x00002b5d       0x74 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_line_end
+                0x00002bd1        0x0 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_line    0x00002bd1      0x261 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+ .debug_line.text.ducky_get_next_modifier_keycode_by_name
+                0x00002e32       0x84 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+ .debug_line.text.ducky_get_modifier_keycode_by_name
+                0x00002eb6       0x65 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+ .debug_line.text.ducky_get_keycode_by_name
+                0x00002f1b       0x65 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+ .debug_line.text.ducky_get_media_keycode_by_name
+                0x00002f80       0x65 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+ .debug_line.text.ducky_get_mouse_keycode_by_name
+                0x00002fe5       0x65 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+ .debug_line_end
+                0x0000304a        0x0 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+ .debug_line    0x0000304a      0x174 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene.o
+ .debug_line_end
+                0x000031be        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene.o
+ .debug_line    0x000031be      0x3eb build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+ .debug_line.text.bad_usb_scene_config_select_callback
+                0x000035a9       0x1b build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+ .debug_line.text.draw_menu
+                0x000035c4       0x29 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+ .debug_line.text.bad_usb_scene_config_on_enter
+                0x000035ed       0x2b build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+ .debug_line.text.bad_usb_scene_config_on_event
+                0x00003618       0x5e build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+ .debug_line.text.bad_usb_scene_config_on_exit
+                0x00003676       0x1e build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+ .debug_line_end
+                0x00003694        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+ .debug_line    0x00003694      0x444 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config_layout.o
+ .debug_line.text.bad_usb_layout_select
+                0x00003ad8       0x9d build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config_layout.o
+ .debug_line.text.bad_usb_scene_config_layout_on_enter
+                0x00003b75       0x2f build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config_layout.o
+ .debug_line.text.bad_usb_scene_config_layout_on_event
+                0x00003ba4       0x1e build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config_layout.o
+ .debug_line.text.bad_usb_scene_config_layout_on_exit
+                0x00003bc2       0x18 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config_layout.o
+ .debug_line_end
+                0x00003bda        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config_layout.o
+ .debug_line    0x00003bda      0x461 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_confirm_unpair.o
+ .debug_line.text.bad_usb_scene_confirm_unpair_on_enter
+                0x0000403b       0x2e build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_confirm_unpair.o
+ .debug_line.text.bad_usb_scene_confirm_unpair_on_event
+                0x00004069       0x58 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_confirm_unpair.o
+ .debug_line.text.bad_usb_scene_confirm_unpair_widget_callback
+                0x000040c1       0x26 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_confirm_unpair.o
+ .debug_line.text.bad_usb_scene_confirm_unpair_on_exit
+                0x000040e7       0x1e build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_confirm_unpair.o
+ .debug_line_end
+                0x00004105        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_confirm_unpair.o
+ .debug_line    0x00004105      0x465 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o
+ .debug_line.text.bad_usb_scene_error_event_callback
+                0x0000456a       0x65 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o
+ .debug_line.text.bad_usb_scene_error_on_enter
+                0x000045cf       0x44 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o
+ .debug_line.text.bad_usb_scene_error_on_event
+                0x00004613       0x43 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o
+ .debug_line.text.bad_usb_scene_error_on_exit
+                0x00004656       0x1d build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o
+ .debug_line_end
+                0x00004673        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o
+ .debug_line    0x00004673      0x442 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_file_select.o
+ .debug_line.text.bad_usb_file_select
+                0x00004ab5       0x92 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_file_select.o
+ .debug_line.text.bad_usb_scene_file_select_on_enter
+                0x00004b47       0x43 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_file_select.o
+ .debug_line.text.bad_usb_scene_file_select_on_event
+                0x00004b8a       0x1e build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_file_select.o
+ .debug_line.text.bad_usb_scene_file_select_on_exit
+                0x00004ba8       0x18 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_file_select.o
+ .debug_line_end
+                0x00004bc0        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_file_select.o
+ .debug_line    0x00004bc0      0x431 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_unpair_done.o
+ .debug_line.text.bad_usb_scene_unpair_done_popup_callback
+                0x00004ff1       0x1b build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_unpair_done.o
+ .debug_line.text.bad_usb_scene_unpair_done_on_enter
+                0x0000500c       0x2a build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_unpair_done.o
+ .debug_line.text.bad_usb_scene_unpair_done_on_event
+                0x00005036       0x20 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_unpair_done.o
+ .debug_line.text.bad_usb_scene_unpair_done_on_exit
+                0x00005056       0x1f build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_unpair_done.o
+ .debug_line_end
+                0x00005075        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_unpair_done.o
+ .debug_line    0x00005075      0x494 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_work.o
+ .debug_line.text.bad_usb_scene_work_button_callback
+                0x00005509       0x5e build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_work.o
+ .debug_line.text.bad_usb_scene_work_on_event
+                0x00005567       0xc1 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_work.o
+ .debug_line.text.bad_usb_scene_work_on_enter
+                0x00005628       0x50 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_work.o
+ .debug_line.text.bad_usb_scene_work_on_exit
+                0x00005678       0x19 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_work.o
+ .debug_line_end
+                0x00005691        0x0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_work.o
+ .debug_line    0x00005691      0x3a0 build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .debug_line.text.bad_usb_input_callback
+                0x00005a31      0x17c build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .debug_line.text.bad_usb_draw_callback
+                0x00005bad      0x19b build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .debug_line.text.bad_usb_view_alloc
+                0x00005d48       0x31 build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .debug_line.text.bad_usb_view_free
+                0x00005d79       0x59 build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .debug_line.text.bad_usb_view_get_view
+                0x00005dd2       0x52 build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .debug_line.text.bad_usb_view_set_button_callback
+                0x00005e24       0xa5 build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .debug_line.text.bad_usb_view_set_file_name
+                0x00005ec9       0x6c build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .debug_line.text.bad_usb_view_set_layout
+                0x00005f35       0x73 build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .debug_line.text.bad_usb_view_set_state
+                0x00005fa8       0x8a build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .debug_line.text.bad_usb_view_set_interface
+                0x00006032       0x29 build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .debug_line.text.bad_usb_view_is_idle_state
+                0x0000605b       0x5d build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .debug_line_end
+                0x000060b8        0x0 build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .debug_line    0x000060b8      0x4fa build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .debug_line.text.bad_usb_app_back_event_callback
+                0x000065b2       0x5d build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .debug_line.text.bad_usb_app_custom_event_callback
+                0x0000660f       0x5d build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .debug_line.text.bad_usb_app_tick_event_callback
+                0x0000666c       0x56 build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .debug_line.text.bad_usb_load_settings
+                0x000066c2       0xf7 build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .debug_line.text.bad_usb_save_settings
+                0x000067b9       0x6e build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .debug_line.text.bad_usb_set_interface
+                0x00006827       0x25 build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .debug_line.text.bad_usb_app_alloc
+                0x0000684c      0x135 build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .debug_line.text.bad_usb_app_free
+                0x00006981       0xb1 build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .debug_line.text.bad_usb_app
+                0x00006a32       0x2b build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .debug_line_end
+                0x00006a5d        0x0 build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .debug_line    0x00006a5d      0x15e build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .debug_line_end
+                0x00006bbb        0x0 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .debug_line    0x00006bbb      0x333 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .debug_line.text.ble_profile_hid_get_config
+                0x00006eee       0xee build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .debug_line.text.ble_profile_hid_stop
+                0x00006fdc       0x9a build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .debug_line.text.ble_profile_hid_start
+                0x00007076       0x84 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .debug_line.text.ble_profile_hid_kb_press
+                0x000070fa       0xd2 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .debug_line.text.ble_profile_hid_kb_release
+                0x000071cc       0xdc build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .debug_line.text.ble_profile_hid_kb_release_all
+                0x000072a8      0x16c build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .debug_line.text.ble_profile_hid_consumer_key_press
+                0x00007414       0xac build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .debug_line.text.ble_profile_hid_consumer_key_release
+                0x000074c0       0xe4 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .debug_line.text.ble_profile_hid_consumer_key_release_all
+                0x000075a4       0xc6 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .debug_line.text.ble_profile_hid_mouse_move
+                0x0000766a       0xe4 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .debug_line.text.ble_profile_hid_mouse_press
+                0x0000774e       0xa8 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .debug_line.text.ble_profile_hid_mouse_release
+                0x000077f6       0xa8 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .debug_line.text.ble_profile_hid_mouse_release_all
+                0x0000789e       0xa3 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .debug_line.text.ble_profile_hid_mouse_scroll
+                0x00007941       0xbf build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .debug_line_end
+                0x00007a00        0x0 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .debug_line    0x00007a00      0x2a9 build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+ .debug_line.text.ble_svc_hid_char_desc_data_callback
+                0x00007ca9       0x32 build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+ .debug_line.text.ble_svc_hid_report_data_callback
+                0x00007cdb       0x39 build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+ .debug_line.text.ble_svc_hid_event_handler
+                0x00007d14       0x4a build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+ .debug_line.text.ble_svc_hid_start
+                0x00007d5e      0x11d build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+ .debug_line.text.ble_svc_hid_update_report_map
+                0x00007e7b       0x37 build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+ .debug_line.text.ble_svc_hid_update_input_report
+                0x00007eb2       0x3b build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+ .debug_line.text.ble_svc_hid_update_info
+                0x00007eed       0x2b build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+ .debug_line.text.ble_svc_hid_stop
+                0x00007f18       0xac build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+ .debug_line_end
+                0x00007fc4        0x0 build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+
+.debug_frame    0x00000000     0x1148
+ *(.debug_frame)
+ .debug_frame   0x00000000      0x314 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_frame   0x00000314      0x304 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_frame   0x00000618      0x1f8 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_frame   0x00000810       0xb0 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+ .debug_frame   0x000008c0       0x9c build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+ .debug_frame   0x0000095c       0x74 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config_layout.o
+ .debug_frame   0x000009d0       0x84 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_confirm_unpair.o
+ .debug_frame   0x00000a54       0x84 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o
+ .debug_frame   0x00000ad8       0x70 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_file_select.o
+ .debug_frame   0x00000b48       0x7c build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_unpair_done.o
+ .debug_frame   0x00000bc4       0x80 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_work.o
+ .debug_frame   0x00000c44      0x14c build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .debug_frame   0x00000d90      0x108 build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .debug_frame   0x00000e98      0x1cc build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .debug_frame   0x00001064       0xe4 build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+
+.debug_str      0x00000000    0x105fe
+ *(.debug_str)
+ .debug_str     0x00000000     0x12f7 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_str     0x000012f7     0x1452 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_str     0x00002749      0x9ed build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_str     0x00003136      0x4db build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+ .debug_str     0x00003611      0x6d4 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene.o
+ .debug_str     0x00003ce5      0xc19 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+ .debug_str     0x000048fe      0xc21 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config_layout.o
+ .debug_str     0x0000551f      0xc57 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_confirm_unpair.o
+ .debug_str     0x00006176      0xc52 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o
+ .debug_str     0x00006dc8      0xba0 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_file_select.o
+ .debug_str     0x00007968      0xbf9 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_unpair_done.o
+ .debug_str     0x00008561      0xe5e build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_work.o
+ .debug_str     0x000093bf      0xabb build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .debug_str     0x00009e7a     0x12ca build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .debug_str     0x0000b144     0x412b build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .debug_str     0x0000f26f      0xa32 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .debug_str     0x0000fca1      0x95d build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+ *(.debug_line_str)
+
+.debug_loclists
+                0x00000000     0x39a5
+ *(.debug_loclists)
+ .debug_loclists
+                0x00000000      0x8d3 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_loclists
+                0x000008d3      0xca3 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_loclists
+                0x00001576      0x5a6 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_loclists
+                0x00001b1c      0x1c4 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+ .debug_loclists
+                0x00001ce0      0x1c4 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+ .debug_loclists
+                0x00001ea4       0xa8 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config_layout.o
+ .debug_loclists
+                0x00001f4c      0x172 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_confirm_unpair.o
+ .debug_loclists
+                0x000020be      0x206 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o
+ .debug_loclists
+                0x000022c4       0x85 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_file_select.o
+ .debug_loclists
+                0x00002349       0xf3 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_unpair_done.o
+ .debug_loclists
+                0x0000243c      0x1d5 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_work.o
+ .debug_loclists
+                0x00002611      0x684 build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .debug_loclists
+                0x00002c95      0x2b8 build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .debug_loclists
+                0x00002f4d      0x72b build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .debug_loclists
+                0x00003678      0x32d build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x00000000      0x574
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x00000000       0xce build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .debug_rnglists
+                0x000000ce      0x113 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .debug_rnglists
+                0x000001e1       0x83 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .debug_rnglists
+                0x00000264       0x2b build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+ .debug_rnglists
+                0x0000028f       0x2b build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+ .debug_rnglists
+                0x000002ba       0x26 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config_layout.o
+ .debug_rnglists
+                0x000002e0       0x25 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_confirm_unpair.o
+ .debug_rnglists
+                0x00000305       0x26 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o
+ .debug_rnglists
+                0x0000032b       0x25 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_file_select.o
+ .debug_rnglists
+                0x00000350       0x26 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_unpair_done.o
+ .debug_rnglists
+                0x00000376       0x27 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_work.o
+ .debug_rnglists
+                0x0000039d       0x78 build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .debug_rnglists
+                0x00000415       0x47 build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .debug_rnglists
+                0x0000045c       0xa7 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .debug_rnglists
+                0x00000503       0x71 build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.ARM.attributes
+                0x00000000       0x34
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x34 build/f7-firmware-D/.extapps/bad_usb/helpers/bad_usb_hid.o
+ .ARM.attributes
+                0x00000034       0x34 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script.o
+ .ARM.attributes
+                0x00000068       0x34 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_commands.o
+ .ARM.attributes
+                0x0000009c       0x34 build/f7-firmware-D/.extapps/bad_usb/helpers/ducky_script_keycodes.o
+ .ARM.attributes
+                0x000000d0       0x34 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene.o
+ .ARM.attributes
+                0x00000104       0x34 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config.o
+ .ARM.attributes
+                0x00000138       0x34 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_config_layout.o
+ .ARM.attributes
+                0x0000016c       0x34 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_confirm_unpair.o
+ .ARM.attributes
+                0x000001a0       0x34 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_error.o
+ .ARM.attributes
+                0x000001d4       0x34 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_file_select.o
+ .ARM.attributes
+                0x00000208       0x34 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_unpair_done.o
+ .ARM.attributes
+                0x0000023c       0x34 build/f7-firmware-D/.extapps/bad_usb/scenes/bad_usb_scene_work.o
+ .ARM.attributes
+                0x00000270       0x34 build/f7-firmware-D/.extapps/bad_usb/views/bad_usb_view.o
+ .ARM.attributes
+                0x000002a4       0x34 build/f7-firmware-D/.extapps/bad_usb/bad_usb_app.o
+ .ARM.attributes
+                0x000002d8       0x34 build/f7-firmware-D/lib/libassets.a(assets_icons.o)
+ .ARM.attributes
+                0x0000030c       0x34 build/f7-firmware-D/lib/libble_profile.a(hid_profile.o)
+ .ARM.attributes
+                0x00000340       0x34 build/f7-firmware-D/lib/libble_profile.a(hid_service.o)
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+
+/DISCARD/
+ *(.comment)
+ *(.comment.*)
+ *(.llvmbc)
+ *(.llvmcmd)
+OUTPUT(build/f7-firmware-D/.extapps/bad_usb_d.elf elf32-littlearm)
+LOAD linker stubs

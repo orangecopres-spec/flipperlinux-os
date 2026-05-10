@@ -1,0 +1,216 @@
+
+build/f7-firmware-D/.extapps/cli_onewire_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <onewire_cli_print_usage>:
+#include <toolbox/cli/cli_command.h>
+#include <toolbox/args.h>
+
+#include <one_wire/one_wire_host.h>
+
+static void onewire_cli_print_usage(void) {
+   0:	b510      	push	{r4, lr}
+    printf("Usage:\r\n");
+   2:	4803      	ldr	r0, [pc, #12]	@ (10 <onewire_cli_print_usage+0x10>)
+   4:	4c03      	ldr	r4, [pc, #12]	@ (14 <onewire_cli_print_usage+0x14>)
+   6:	47a0      	blx	r4
+    printf("onewire search\r\n");
+   8:	4803      	ldr	r0, [pc, #12]	@ (18 <onewire_cli_print_usage+0x18>)
+   a:	47a0      	blx	r4
+}
+   c:	bd10      	pop	{r4, pc}
+   e:	bf00      	nop
+	...
+  18:	00000008 	.word	0x00000008
+
+0000001c <onewire_cli_search>:
+
+static void onewire_cli_search(PipeSide* pipe) {
+  1c:	b5f0      	push	{r4, r5, r6, r7, lr}
+  1e:	b083      	sub	sp, #12
+    UNUSED(pipe);
+    OneWireHost* onewire = onewire_host_alloc(&gpio_ibutton);
+  20:	4823      	ldr	r0, [pc, #140]	@ (b0 <onewire_cli_search+0x94>)
+  22:	4b24      	ldr	r3, [pc, #144]	@ (b4 <onewire_cli_search+0x98>)
+  24:	4798      	blx	r3
+  26:	4605      	mov	r5, r0
+    Power* power = furi_record_open(RECORD_POWER);
+  28:	4823      	ldr	r0, [pc, #140]	@ (b8 <onewire_cli_search+0x9c>)
+  2a:	4b24      	ldr	r3, [pc, #144]	@ (bc <onewire_cli_search+0xa0>)
+  2c:	4798      	blx	r3
+  2e:	4607      	mov	r7, r0
+    uint8_t address[8];
+    bool done = false;
+
+    printf("Search started\r\n");
+  30:	4823      	ldr	r0, [pc, #140]	@ (c0 <onewire_cli_search+0xa4>)
+  32:	4b24      	ldr	r3, [pc, #144]	@ (c4 <onewire_cli_search+0xa8>)
+  34:	4798      	blx	r3
+
+    onewire_host_start(onewire);
+  36:	4628      	mov	r0, r5
+  38:	4b23      	ldr	r3, [pc, #140]	@ (c8 <onewire_cli_search+0xac>)
+  3a:	4798      	blx	r3
+    power_enable_otg(power, true);
+  3c:	2101      	movs	r1, #1
+  3e:	4638      	mov	r0, r7
+  40:	4b22      	ldr	r3, [pc, #136]	@ (cc <onewire_cli_search+0xb0>)
+  42:	4798      	blx	r3
+    bool done = false;
+  44:	2600      	movs	r6, #0
+
+    while(!done) { //-V1044
+  46:	e016      	b.n	76 <onewire_cli_search+0x5a>
+        if(onewire_host_search(onewire, address, OneWireHostSearchModeNormal) != 1) {
+            printf("Search finished\r\n");
+            onewire_host_reset_search(onewire);
+            done = true;
+        } else {
+            printf("Found: ");
+  48:	4821      	ldr	r0, [pc, #132]	@ (d0 <onewire_cli_search+0xb4>)
+  4a:	4b22      	ldr	r3, [pc, #136]	@ (d4 <onewire_cli_search+0xb8>)
+  4c:	4798      	blx	r3
+            for(uint8_t i = 0; i < 8; i++) {
+  4e:	2400      	movs	r4, #0
+  50:	e009      	b.n	66 <onewire_cli_search+0x4a>
+                printf("%02X", address[i]);
+  52:	f104 0308 	add.w	r3, r4, #8
+  56:	446b      	add	r3, sp
+  58:	f813 1c08 	ldrb.w	r1, [r3, #-8]
+  5c:	481e      	ldr	r0, [pc, #120]	@ (d8 <onewire_cli_search+0xbc>)
+  5e:	4b1d      	ldr	r3, [pc, #116]	@ (d4 <onewire_cli_search+0xb8>)
+  60:	4798      	blx	r3
+            for(uint8_t i = 0; i < 8; i++) {
+  62:	3401      	adds	r4, #1
+  64:	b2e4      	uxtb	r4, r4
+  66:	2c07      	cmp	r4, #7
+  68:	d9f3      	bls.n	52 <onewire_cli_search+0x36>
+            }
+            printf("\r\n");
+  6a:	481c      	ldr	r0, [pc, #112]	@ (dc <onewire_cli_search+0xc0>)
+  6c:	4b15      	ldr	r3, [pc, #84]	@ (c4 <onewire_cli_search+0xa8>)
+  6e:	4798      	blx	r3
+        }
+        furi_delay_ms(100);
+  70:	2064      	movs	r0, #100	@ 0x64
+  72:	4b1b      	ldr	r3, [pc, #108]	@ (e0 <onewire_cli_search+0xc4>)
+  74:	4798      	blx	r3
+    while(!done) { //-V1044
+  76:	b976      	cbnz	r6, 96 <onewire_cli_search+0x7a>
+        if(onewire_host_search(onewire, address, OneWireHostSearchModeNormal) != 1) {
+  78:	2201      	movs	r2, #1
+  7a:	4669      	mov	r1, sp
+  7c:	4628      	mov	r0, r5
+  7e:	4b19      	ldr	r3, [pc, #100]	@ (e4 <onewire_cli_search+0xc8>)
+  80:	4798      	blx	r3
+  82:	2800      	cmp	r0, #0
+  84:	d1e0      	bne.n	48 <onewire_cli_search+0x2c>
+            printf("Search finished\r\n");
+  86:	4818      	ldr	r0, [pc, #96]	@ (e8 <onewire_cli_search+0xcc>)
+  88:	4b0e      	ldr	r3, [pc, #56]	@ (c4 <onewire_cli_search+0xa8>)
+  8a:	4798      	blx	r3
+            onewire_host_reset_search(onewire);
+  8c:	4628      	mov	r0, r5
+  8e:	4b17      	ldr	r3, [pc, #92]	@ (ec <onewire_cli_search+0xd0>)
+  90:	4798      	blx	r3
+            done = true;
+  92:	2601      	movs	r6, #1
+  94:	e7ec      	b.n	70 <onewire_cli_search+0x54>
+    }
+
+    power_enable_otg(power, false);
+  96:	2100      	movs	r1, #0
+  98:	4638      	mov	r0, r7
+  9a:	4b0c      	ldr	r3, [pc, #48]	@ (cc <onewire_cli_search+0xb0>)
+  9c:	4798      	blx	r3
+
+    onewire_host_free(onewire);
+  9e:	4628      	mov	r0, r5
+  a0:	4b13      	ldr	r3, [pc, #76]	@ (f0 <onewire_cli_search+0xd4>)
+  a2:	4798      	blx	r3
+    furi_record_close(RECORD_POWER);
+  a4:	4804      	ldr	r0, [pc, #16]	@ (b8 <onewire_cli_search+0x9c>)
+  a6:	4b13      	ldr	r3, [pc, #76]	@ (f4 <onewire_cli_search+0xd8>)
+  a8:	4798      	blx	r3
+}
+  aa:	b003      	add	sp, #12
+  ac:	bdf0      	pop	{r4, r5, r6, r7, pc}
+  ae:	bf00      	nop
+	...
+  b8:	00000018 	.word	0x00000018
+  bc:	00000000 	.word	0x00000000
+  c0:	00000020 	.word	0x00000020
+	...
+  d0:	00000044 	.word	0x00000044
+  d4:	00000000 	.word	0x00000000
+  d8:	0000004c 	.word	0x0000004c
+  dc:	00000054 	.word	0x00000054
+	...
+  e8:	00000030 	.word	0x00000030
+	...
+
+000000f8 <execute>:
+
+static void execute(PipeSide* pipe, FuriString* args, void* context) {
+  f8:	b570      	push	{r4, r5, r6, lr}
+  fa:	4606      	mov	r6, r0
+  fc:	460d      	mov	r5, r1
+    UNUSED(context);
+    FuriString* cmd;
+    cmd = furi_string_alloc();
+  fe:	4b0d      	ldr	r3, [pc, #52]	@ (134 <execute+0x3c>)
+ 100:	4798      	blx	r3
+ 102:	4604      	mov	r4, r0
+
+    if(!args_read_string_and_trim(args, cmd)) {
+ 104:	4601      	mov	r1, r0
+ 106:	4628      	mov	r0, r5
+ 108:	4b0b      	ldr	r3, [pc, #44]	@ (138 <execute+0x40>)
+ 10a:	4798      	blx	r3
+ 10c:	b140      	cbz	r0, 120 <execute+0x28>
+        furi_string_free(cmd);
+        onewire_cli_print_usage();
+        return;
+    }
+
+    if(furi_string_cmp_str(cmd, "search") == 0) {
+ 10e:	490b      	ldr	r1, [pc, #44]	@ (13c <execute+0x44>)
+ 110:	4620      	mov	r0, r4
+ 112:	4b0b      	ldr	r3, [pc, #44]	@ (140 <execute+0x48>)
+ 114:	4798      	blx	r3
+ 116:	b148      	cbz	r0, 12c <execute+0x34>
+        onewire_cli_search(pipe);
+    }
+
+    furi_string_free(cmd);
+ 118:	4620      	mov	r0, r4
+ 11a:	4b0a      	ldr	r3, [pc, #40]	@ (144 <execute+0x4c>)
+ 11c:	4798      	blx	r3
+}
+ 11e:	bd70      	pop	{r4, r5, r6, pc}
+        furi_string_free(cmd);
+ 120:	4620      	mov	r0, r4
+ 122:	4b08      	ldr	r3, [pc, #32]	@ (144 <execute+0x4c>)
+ 124:	4798      	blx	r3
+        onewire_cli_print_usage();
+ 126:	4b08      	ldr	r3, [pc, #32]	@ (148 <execute+0x50>)
+ 128:	4798      	blx	r3
+        return;
+ 12a:	e7f8      	b.n	11e <execute+0x26>
+        onewire_cli_search(pipe);
+ 12c:	4630      	mov	r0, r6
+ 12e:	4b07      	ldr	r3, [pc, #28]	@ (14c <execute+0x54>)
+ 130:	4798      	blx	r3
+ 132:	e7f1      	b.n	118 <execute+0x20>
+	...
+ 13c:	00000058 	.word	0x00000058
+	...
+
+00000150 <cli_onewire_ep>:
+
+CLI_COMMAND_INTERFACE(onewire, execute, CliCommandFlagDefault, 1024, CLI_APPID);
+ 150:	4800      	ldr	r0, [pc, #0]	@ (154 <cli_onewire_ep+0x4>)
+ 152:	4770      	bx	lr
+ 154:	0000006c 	.word	0x0000006c

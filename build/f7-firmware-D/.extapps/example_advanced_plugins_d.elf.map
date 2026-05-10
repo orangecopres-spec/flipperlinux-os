@@ -1,0 +1,260 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api_table.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api_table.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api_table.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/example_advanced_plugins/app_api_table.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/example_advanced_plugins/example_advanced_plugins.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/example_advanced_plugins/example_advanced_plugins.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/example_advanced_plugins/example_advanced_plugins.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/example_advanced_plugins/example_advanced_plugins.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+LOAD build/f7-firmware-D/.extapps/example_advanced_plugins/app_api_table.o
+LOAD build/f7-firmware-D/.extapps/example_advanced_plugins/example_advanced_plugins.o
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libstdc++_nano.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libsupc++_nano.a
+
+.text           0x00000000      0x154
+ *(.text)
+ *(.stub)
+ *(.text*)
+ .text.app_api_accumulator_set
+                0x00000000        0xc build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+                0x00000000                app_api_accumulator_set
+ .text.app_api_accumulator_get
+                0x0000000c        0xc build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+                0x0000000c                app_api_accumulator_get
+ .text.app_api_accumulator_add
+                0x00000018       0x10 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+                0x00000018                app_api_accumulator_add
+ .text.app_api_accumulator_sub
+                0x00000028       0x10 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+                0x00000028                app_api_accumulator_sub
+ .text.app_api_accumulator_mul
+                0x00000038       0x10 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+                0x00000038                app_api_accumulator_mul
+ .text.example_advanced_plugins_app
+                0x00000048      0x10c build/f7-firmware-D/.extapps/example_advanced_plugins/example_advanced_plugins.o
+                0x00000048                example_advanced_plugins_app
+ *(.text.*)
+ *(.text._*)
+ *(.init)
+ *(.fini)
+
+.rodata         0x00000154       0xf9
+ *(.rodata)
+ *(.rodata1)
+ *(.rodata.*)
+ .rodata.application_api_interface
+                0x00000154        0x4 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api_table.o
+                0x00000154                application_api_interface
+ .rodata._ZL34applicaton_hashtable_api_interface
+                0x00000158       0x10 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api_table.o
+ .rodata._ZL13app_api_table
+                0x00000168       0x28 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api_table.o
+ .rodata.example_advanced_plugins_app.str1.4
+                0x00000190       0xbd build/f7-firmware-D/.extapps/example_advanced_plugins/example_advanced_plugins.o
+
+.data
+ *(.data)
+ *(.data1)
+ *(.data.*)
+
+.bss            0x00000250        0x4
+ *(.bss)
+ *(.bss*)
+ .bss.accumulator
+                0x00000250        0x4 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x78
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x40 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+ .debug_aranges
+                0x00000040       0x18 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api_table.o
+ .debug_aranges
+                0x00000058       0x20 build/f7-firmware-D/.extapps/example_advanced_plugins/example_advanced_plugins.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x2dcd
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000      0x12f build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+ .debug_info    0x0000012f     0x26c0 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api_table.o
+ .debug_info    0x000027ef      0x5de build/f7-firmware-D/.extapps/example_advanced_plugins/example_advanced_plugins.o
+
+.debug_abbrev   0x00000000      0x703
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000       0xae build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+ .debug_abbrev  0x000000ae      0x483 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api_table.o
+ .debug_abbrev  0x00000531      0x1d2 build/f7-firmware-D/.extapps/example_advanced_plugins/example_advanced_plugins.o
+
+.debug_line     0x00000000      0xaea
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x122 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+ .debug_line.text.app_api_accumulator_set
+                0x00000122       0x19 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+ .debug_line.text.app_api_accumulator_get
+                0x0000013b       0x18 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+ .debug_line.text.app_api_accumulator_add
+                0x00000153       0x1b build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+ .debug_line.text.app_api_accumulator_sub
+                0x0000016e       0x1b build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+ .debug_line.text.app_api_accumulator_mul
+                0x00000189       0x1b build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+ .debug_line_end
+                0x000001a4        0x0 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+ .debug_line    0x000001a4      0x5ee build/f7-firmware-D/.extapps/example_advanced_plugins/app_api_table.o
+ .debug_line_end
+                0x00000792        0x0 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api_table.o
+ .debug_line    0x00000792      0x292 build/f7-firmware-D/.extapps/example_advanced_plugins/example_advanced_plugins.o
+ .debug_line.text.example_advanced_plugins_app
+                0x00000a24       0xc6 build/f7-firmware-D/.extapps/example_advanced_plugins/example_advanced_plugins.o
+ .debug_line_end
+                0x00000aea        0x0 build/f7-firmware-D/.extapps/example_advanced_plugins/example_advanced_plugins.o
+
+.debug_frame    0x00000000       0x94
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x60 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+ .debug_frame   0x00000060       0x34 build/f7-firmware-D/.extapps/example_advanced_plugins/example_advanced_plugins.o
+
+.debug_str      0x00000000     0x208c
+ *(.debug_str)
+ .debug_str     0x00000000      0x270 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+ .debug_str     0x00000270     0x18a4 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api_table.o
+ .debug_str     0x00001b14      0x578 build/f7-firmware-D/.extapps/example_advanced_plugins/example_advanced_plugins.o
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+ *(.debug_line_str)
+
+.debug_loclists
+                0x00000000       0x94
+ *(.debug_loclists)
+ .debug_loclists
+                0x00000000       0x94 build/f7-firmware-D/.extapps/example_advanced_plugins/example_advanced_plugins.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x00000000       0x4c
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x00000000       0x2b build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+ .debug_rnglists
+                0x0000002b       0x21 build/f7-firmware-D/.extapps/example_advanced_plugins/example_advanced_plugins.o
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.ARM.attributes
+                0x00000000       0x34
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x34 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api.o
+ .ARM.attributes
+                0x00000034       0x34 build/f7-firmware-D/.extapps/example_advanced_plugins/app_api_table.o
+ .ARM.attributes
+                0x00000068       0x34 build/f7-firmware-D/.extapps/example_advanced_plugins/example_advanced_plugins.o
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+
+/DISCARD/
+ *(.comment)
+ *(.comment.*)
+ *(.llvmbc)
+ *(.llvmcmd)
+OUTPUT(build/f7-firmware-D/.extapps/example_advanced_plugins_d.elf elf32-littlearm)
+LOAD linker stubs

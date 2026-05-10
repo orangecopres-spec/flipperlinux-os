@@ -1,0 +1,386 @@
+
+build/f7-firmware-D/.extapps/crash_test_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <crash_test_exit_callback>:
+}
+
+static uint32_t crash_test_exit_callback(void* context) {
+    UNUSED(context);
+    return VIEW_NONE;
+}
+   0:	f04f 30ff 	mov.w	r0, #4294967295	@ 0xffffffff
+   4:	4770      	bx	lr
+	...
+
+00000008 <crash_test_corrupt_heap_underflow>:
+static void crash_test_corrupt_heap_underflow(void) {
+   8:	b510      	push	{r4, lr}
+    uint8_t* block = malloc(block_size);
+   a:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
+   e:	4b07      	ldr	r3, [pc, #28]	@ (2c <sukima51+0x4>)
+  10:	4798      	blx	r3
+  12:	4604      	mov	r4, r0
+    memset(block - underflow_size, 0xDD, underflow_size); // -V769
+  14:	227b      	movs	r2, #123	@ 0x7b
+  16:	21dd      	movs	r1, #221	@ 0xdd
+  18:	387b      	subs	r0, #123	@ 0x7b
+  1a:	4b05      	ldr	r3, [pc, #20]	@ (30 <sukima51+0x8>)
+  1c:	4798      	blx	r3
+    free(block); // should crash here (if compiled with DEBUG=1)
+  1e:	4620      	mov	r0, r4
+  20:	4b04      	ldr	r3, [pc, #16]	@ (34 <sukima51+0xc>)
+  22:	4798      	blx	r3
+    furi_crash("Test failed, should've crashed with \"FreeRTOS Assert\" error");
+  24:	f8df c014 	ldr.w	ip, [pc, #20]	@ 3c <sukima51+0x14>
+
+00000028 <sukima51>:
+  28:	4b03      	ldr	r3, [pc, #12]	@ (38 <sukima51+0x10>)
+  2a:	4798      	blx	r3
+	...
+
+00000040 <crash_test_corrupt_heap_overflow>:
+static void crash_test_corrupt_heap_overflow(void) {
+  40:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+    uint8_t* block1 = malloc(block_size);
+  42:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
+  46:	4d11      	ldr	r5, [pc, #68]	@ (8c <sukima135+0x6>)
+  48:	47a8      	blx	r5
+  4a:	4604      	mov	r4, r0
+    uint8_t* block2 = malloc(block_size);
+  4c:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
+  50:	47a8      	blx	r5
+  52:	4606      	mov	r6, r0
+    memset(block2, 12, 34); // simulate use to avoid optimization // -V597 // -V1086
+  54:	2222      	movs	r2, #34	@ 0x22
+  56:	210c      	movs	r1, #12
+  58:	4f0d      	ldr	r7, [pc, #52]	@ (90 <sukima135+0xa>)
+  5a:	47b8      	blx	r7
+    memset(block1 + block_size, 0xDD, overflow_size); // -V769 // -V512
+  5c:	227b      	movs	r2, #123	@ 0x7b
+  5e:	21dd      	movs	r1, #221	@ 0xdd
+  60:	f504 707a 	add.w	r0, r4, #1000	@ 0x3e8
+  64:	47b8      	blx	r7
+    uint8_t* block3 = malloc(block_size);
+  66:	f44f 707a 	mov.w	r0, #1000	@ 0x3e8
+  6a:	47a8      	blx	r5
+  6c:	4605      	mov	r5, r0
+    memset(block3, 12, 34); // simulate use to avoid optimization // -V597 // -V1086
+  6e:	2222      	movs	r2, #34	@ 0x22
+  70:	210c      	movs	r1, #12
+  72:	47b8      	blx	r7
+    free(block3); // should crash here (if compiled with DEBUG=1)
+  74:	4628      	mov	r0, r5
+  76:	4d07      	ldr	r5, [pc, #28]	@ (94 <sukima135+0xe>)
+  78:	47a8      	blx	r5
+    free(block2);
+  7a:	4630      	mov	r0, r6
+  7c:	47a8      	blx	r5
+    free(block1);
+  7e:	4620      	mov	r0, r4
+  80:	47a8      	blx	r5
+    furi_crash("Test failed, should've crashed with \"FreeRTOS Assert\" error");
+  82:	f8df c018 	ldr.w	ip, [pc, #24]	@ 9c <sukima135+0x16>
+
+00000086 <sukima135>:
+  86:	4b04      	ldr	r3, [pc, #16]	@ (98 <sukima135+0x12>)
+  88:	4798      	blx	r3
+  8a:	bf00      	nop
+	...
+
+000000a0 <crash_test_submenu_callback>:
+static void crash_test_submenu_callback(void* context, uint32_t index) {
+  a0:	b508      	push	{r3, lr}
+    switch(index) {
+  a2:	2907      	cmp	r1, #7
+  a4:	d821      	bhi.n	ea <sukima281+0xc>
+  a6:	e8df f001 	tbb	[pc, r1]
+  aa:	0804      	.short	0x0804
+  ac:	1814100c 	.word	0x1814100c
+  b0:	1e1c      	.short	0x1e1c
+        furi_check(false);
+  b2:	f04f 0c02 	mov.w	ip, #2
+
+000000b6 <sukima180>:
+  b6:	4b0f      	ldr	r3, [pc, #60]	@ (f4 <sukima324+0x6>)
+  b8:	4798      	blx	r3
+        furi_check(false, "Crash test: furi_check with message");
+  ba:	f8df c048 	ldr.w	ip, [pc, #72]	@ 104 <sukima324+0x16>
+
+000000be <sukima201>:
+  be:	4b0d      	ldr	r3, [pc, #52]	@ (f4 <sukima324+0x6>)
+  c0:	4798      	blx	r3
+        furi_assert(false);
+  c2:	f04f 0c01 	mov.w	ip, #1
+
+000000c6 <sukima222>:
+  c6:	4b0b      	ldr	r3, [pc, #44]	@ (f4 <sukima324+0x6>)
+  c8:	4798      	blx	r3
+        furi_assert(false, "Crash test: furi_assert with message");
+  ca:	f8df c03c 	ldr.w	ip, [pc, #60]	@ 108 <sukima324+0x1a>
+
+000000ce <sukima243>:
+  ce:	4b09      	ldr	r3, [pc, #36]	@ (f4 <sukima324+0x6>)
+  d0:	4798      	blx	r3
+        furi_crash("Crash test: furi_crash");
+  d2:	f8df c038 	ldr.w	ip, [pc, #56]	@ 10c <sukima324+0x1e>
+
+000000d6 <sukima262>:
+  d6:	4b07      	ldr	r3, [pc, #28]	@ (f4 <sukima324+0x6>)
+  d8:	4798      	blx	r3
+        furi_halt("Crash test: furi_halt");
+  da:	f8df c034 	ldr.w	ip, [pc, #52]	@ 110 <sukima324+0x22>
+
+000000de <sukima281>:
+  de:	4b06      	ldr	r3, [pc, #24]	@ (f8 <sukima324+0xa>)
+  e0:	4798      	blx	r3
+        crash_test_corrupt_heap_underflow();
+  e2:	4b06      	ldr	r3, [pc, #24]	@ (fc <sukima324+0xe>)
+  e4:	4798      	blx	r3
+        crash_test_corrupt_heap_overflow();
+  e6:	4b06      	ldr	r3, [pc, #24]	@ (100 <sukima324+0x12>)
+  e8:	4798      	blx	r3
+        furi_crash();
+  ea:	f04f 0c00 	mov.w	ip, #0
+
+000000ee <sukima324>:
+  ee:	4b01      	ldr	r3, [pc, #4]	@ (f4 <sukima324+0x6>)
+  f0:	4798      	blx	r3
+  f2:	bf00      	nop
+	...
+ 104:	0000003c 	.word	0x0000003c
+ 108:	00000060 	.word	0x00000060
+ 10c:	00000088 	.word	0x00000088
+ 110:	000000a0 	.word	0x000000a0
+
+00000114 <crash_test_alloc>:
+
+CrashTest* crash_test_alloc(void) {
+ 114:	b570      	push	{r4, r5, r6, lr}
+ 116:	b082      	sub	sp, #8
+    CrashTest* instance = malloc(sizeof(CrashTest));
+ 118:	200c      	movs	r0, #12
+ 11a:	4b28      	ldr	r3, [pc, #160]	@ (1bc <crash_test_alloc+0xa8>)
+ 11c:	4798      	blx	r3
+ 11e:	4604      	mov	r4, r0
+
+    View* view = NULL;
+
+    instance->gui = furi_record_open(RECORD_GUI);
+ 120:	4827      	ldr	r0, [pc, #156]	@ (1c0 <crash_test_alloc+0xac>)
+ 122:	4b28      	ldr	r3, [pc, #160]	@ (1c4 <crash_test_alloc+0xb0>)
+ 124:	4798      	blx	r3
+ 126:	6020      	str	r0, [r4, #0]
+    instance->view_dispatcher = view_dispatcher_alloc();
+ 128:	4b27      	ldr	r3, [pc, #156]	@ (1c8 <crash_test_alloc+0xb4>)
+ 12a:	4798      	blx	r3
+ 12c:	6060      	str	r0, [r4, #4]
+    view_dispatcher_attach_to_gui(
+ 12e:	2202      	movs	r2, #2
+ 130:	6821      	ldr	r1, [r4, #0]
+ 132:	4b26      	ldr	r3, [pc, #152]	@ (1cc <crash_test_alloc+0xb8>)
+ 134:	4798      	blx	r3
+        instance->view_dispatcher, instance->gui, ViewDispatcherTypeFullscreen);
+
+    // Menu
+    instance->submenu = submenu_alloc();
+ 136:	4b26      	ldr	r3, [pc, #152]	@ (1d0 <crash_test_alloc+0xbc>)
+ 138:	4798      	blx	r3
+ 13a:	60a0      	str	r0, [r4, #8]
+    view = submenu_get_view(instance->submenu);
+ 13c:	4b25      	ldr	r3, [pc, #148]	@ (1d4 <crash_test_alloc+0xc0>)
+ 13e:	4798      	blx	r3
+ 140:	4605      	mov	r5, r0
+    view_set_previous_callback(view, crash_test_exit_callback);
+ 142:	4925      	ldr	r1, [pc, #148]	@ (1d8 <crash_test_alloc+0xc4>)
+ 144:	4b25      	ldr	r3, [pc, #148]	@ (1dc <crash_test_alloc+0xc8>)
+ 146:	4798      	blx	r3
+    view_dispatcher_add_view(instance->view_dispatcher, CrashTestViewSubmenu, view);
+ 148:	462a      	mov	r2, r5
+ 14a:	2100      	movs	r1, #0
+ 14c:	6860      	ldr	r0, [r4, #4]
+ 14e:	4b24      	ldr	r3, [pc, #144]	@ (1e0 <crash_test_alloc+0xcc>)
+ 150:	4798      	blx	r3
+    submenu_add_item(
+ 152:	4e24      	ldr	r6, [pc, #144]	@ (1e4 <crash_test_alloc+0xd0>)
+ 154:	9400      	str	r4, [sp, #0]
+ 156:	4633      	mov	r3, r6
+ 158:	2200      	movs	r2, #0
+ 15a:	4923      	ldr	r1, [pc, #140]	@ (1e8 <crash_test_alloc+0xd4>)
+ 15c:	68a0      	ldr	r0, [r4, #8]
+ 15e:	4d23      	ldr	r5, [pc, #140]	@ (1ec <crash_test_alloc+0xd8>)
+ 160:	47a8      	blx	r5
+        instance->submenu, "Check", CrashTestSubmenuCheck, crash_test_submenu_callback, instance);
+    submenu_add_item(
+ 162:	9400      	str	r4, [sp, #0]
+ 164:	4633      	mov	r3, r6
+ 166:	2201      	movs	r2, #1
+ 168:	4921      	ldr	r1, [pc, #132]	@ (1f0 <crash_test_alloc+0xdc>)
+ 16a:	68a0      	ldr	r0, [r4, #8]
+ 16c:	47a8      	blx	r5
+        instance->submenu,
+        "Check with message",
+        CrashTestSubmenuCheckMessage,
+        crash_test_submenu_callback,
+        instance);
+    submenu_add_item(
+ 16e:	9400      	str	r4, [sp, #0]
+ 170:	4633      	mov	r3, r6
+ 172:	2202      	movs	r2, #2
+ 174:	491f      	ldr	r1, [pc, #124]	@ (1f4 <crash_test_alloc+0xe0>)
+ 176:	68a0      	ldr	r0, [r4, #8]
+ 178:	47a8      	blx	r5
+        instance->submenu, "Assert", CrashTestSubmenuAssert, crash_test_submenu_callback, instance);
+    submenu_add_item(
+ 17a:	9400      	str	r4, [sp, #0]
+ 17c:	4633      	mov	r3, r6
+ 17e:	2203      	movs	r2, #3
+ 180:	491d      	ldr	r1, [pc, #116]	@ (1f8 <crash_test_alloc+0xe4>)
+ 182:	68a0      	ldr	r0, [r4, #8]
+ 184:	47a8      	blx	r5
+        instance->submenu,
+        "Assert with message",
+        CrashTestSubmenuAssertMessage,
+        crash_test_submenu_callback,
+        instance);
+    submenu_add_item(
+ 186:	9400      	str	r4, [sp, #0]
+ 188:	4633      	mov	r3, r6
+ 18a:	2204      	movs	r2, #4
+ 18c:	491b      	ldr	r1, [pc, #108]	@ (1fc <crash_test_alloc+0xe8>)
+ 18e:	68a0      	ldr	r0, [r4, #8]
+ 190:	47a8      	blx	r5
+        instance->submenu, "Crash", CrashTestSubmenuCrash, crash_test_submenu_callback, instance);
+    submenu_add_item(
+ 192:	9400      	str	r4, [sp, #0]
+ 194:	4633      	mov	r3, r6
+ 196:	2205      	movs	r2, #5
+ 198:	4919      	ldr	r1, [pc, #100]	@ (200 <crash_test_alloc+0xec>)
+ 19a:	68a0      	ldr	r0, [r4, #8]
+ 19c:	47a8      	blx	r5
+        instance->submenu, "Halt", CrashTestSubmenuHalt, crash_test_submenu_callback, instance);
+    submenu_add_item(
+ 19e:	9400      	str	r4, [sp, #0]
+ 1a0:	4633      	mov	r3, r6
+ 1a2:	2206      	movs	r2, #6
+ 1a4:	4917      	ldr	r1, [pc, #92]	@ (204 <crash_test_alloc+0xf0>)
+ 1a6:	68a0      	ldr	r0, [r4, #8]
+ 1a8:	47a8      	blx	r5
+        instance->submenu,
+        "Heap underflow",
+        CrashTestSubmenuHeapUnderflow,
+        crash_test_submenu_callback,
+        instance);
+    submenu_add_item(
+ 1aa:	9400      	str	r4, [sp, #0]
+ 1ac:	4633      	mov	r3, r6
+ 1ae:	2207      	movs	r2, #7
+ 1b0:	4915      	ldr	r1, [pc, #84]	@ (208 <crash_test_alloc+0xf4>)
+ 1b2:	68a0      	ldr	r0, [r4, #8]
+ 1b4:	47a8      	blx	r5
+        CrashTestSubmenuHeapOverflow,
+        crash_test_submenu_callback,
+        instance);
+
+    return instance;
+}
+ 1b6:	4620      	mov	r0, r4
+ 1b8:	b002      	add	sp, #8
+ 1ba:	bd70      	pop	{r4, r5, r6, pc}
+ 1bc:	00000000 	.word	0x00000000
+ 1c0:	000000b8 	.word	0x000000b8
+	...
+ 1e8:	000000bc 	.word	0x000000bc
+ 1ec:	00000000 	.word	0x00000000
+ 1f0:	000000c4 	.word	0x000000c4
+ 1f4:	000000d8 	.word	0x000000d8
+ 1f8:	000000e0 	.word	0x000000e0
+ 1fc:	000000f4 	.word	0x000000f4
+ 200:	000000fc 	.word	0x000000fc
+ 204:	00000104 	.word	0x00000104
+ 208:	00000114 	.word	0x00000114
+
+0000020c <crash_test_free>:
+
+void crash_test_free(CrashTest* instance) {
+ 20c:	b510      	push	{r4, lr}
+ 20e:	4604      	mov	r4, r0
+    view_dispatcher_remove_view(instance->view_dispatcher, CrashTestViewSubmenu);
+ 210:	2100      	movs	r1, #0
+ 212:	6840      	ldr	r0, [r0, #4]
+ 214:	4b07      	ldr	r3, [pc, #28]	@ (234 <crash_test_free+0x28>)
+ 216:	4798      	blx	r3
+    submenu_free(instance->submenu);
+ 218:	68a0      	ldr	r0, [r4, #8]
+ 21a:	4b07      	ldr	r3, [pc, #28]	@ (238 <crash_test_free+0x2c>)
+ 21c:	4798      	blx	r3
+
+    view_dispatcher_free(instance->view_dispatcher);
+ 21e:	6860      	ldr	r0, [r4, #4]
+ 220:	4b06      	ldr	r3, [pc, #24]	@ (23c <crash_test_free+0x30>)
+ 222:	4798      	blx	r3
+    furi_record_close(RECORD_GUI);
+ 224:	4806      	ldr	r0, [pc, #24]	@ (240 <crash_test_free+0x34>)
+ 226:	4b07      	ldr	r3, [pc, #28]	@ (244 <crash_test_free+0x38>)
+ 228:	4798      	blx	r3
+
+    free(instance);
+ 22a:	4620      	mov	r0, r4
+ 22c:	4b06      	ldr	r3, [pc, #24]	@ (248 <crash_test_free+0x3c>)
+ 22e:	4798      	blx	r3
+}
+ 230:	bd10      	pop	{r4, pc}
+ 232:	bf00      	nop
+	...
+ 240:	000000b8 	.word	0x000000b8
+	...
+
+0000024c <crash_test_run>:
+
+int32_t crash_test_run(CrashTest* instance) {
+ 24c:	b510      	push	{r4, lr}
+ 24e:	4604      	mov	r4, r0
+    view_dispatcher_switch_to_view(instance->view_dispatcher, CrashTestViewSubmenu);
+ 250:	2100      	movs	r1, #0
+ 252:	6840      	ldr	r0, [r0, #4]
+ 254:	4b03      	ldr	r3, [pc, #12]	@ (264 <crash_test_run+0x18>)
+ 256:	4798      	blx	r3
+    view_dispatcher_run(instance->view_dispatcher);
+ 258:	6860      	ldr	r0, [r4, #4]
+ 25a:	4b03      	ldr	r3, [pc, #12]	@ (268 <crash_test_run+0x1c>)
+ 25c:	4798      	blx	r3
+    return 0;
+}
+ 25e:	2000      	movs	r0, #0
+ 260:	bd10      	pop	{r4, pc}
+ 262:	bf00      	nop
+	...
+
+0000026c <crash_test_app>:
+
+int32_t crash_test_app(void* p) {
+ 26c:	b538      	push	{r3, r4, r5, lr}
+    UNUSED(p);
+
+    CrashTest* instance = crash_test_alloc();
+ 26e:	4b05      	ldr	r3, [pc, #20]	@ (284 <crash_test_app+0x18>)
+ 270:	4798      	blx	r3
+ 272:	4605      	mov	r5, r0
+
+    int32_t ret = crash_test_run(instance);
+ 274:	4b04      	ldr	r3, [pc, #16]	@ (288 <crash_test_app+0x1c>)
+ 276:	4798      	blx	r3
+ 278:	4604      	mov	r4, r0
+
+    crash_test_free(instance);
+ 27a:	4628      	mov	r0, r5
+ 27c:	4b03      	ldr	r3, [pc, #12]	@ (28c <crash_test_app+0x20>)
+ 27e:	4798      	blx	r3
+
+    return ret;
+}
+ 280:	4620      	mov	r0, r4
+ 282:	bd38      	pop	{r3, r4, r5, pc}
+	...

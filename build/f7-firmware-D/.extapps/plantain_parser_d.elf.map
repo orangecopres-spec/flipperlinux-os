@@ -1,0 +1,240 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libstdc++_nano.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libsupc++_nano.a
+
+.text           0x00000000      0x7ac
+ *(.text)
+ *(.stub)
+ *(.text*)
+ .text.plantain_get_card_config
+                0x00000000       0x2c build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ .text.plantain_verify_type
+                0x0000002c       0x9c build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ .text.plantain_verify
+                0x000000c8       0x24 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ *fill*         0x000000ec        0x4 
+ .text.plantain_read
+                0x000000f0      0x1bc build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ .text.from_minutes_to_datetime
+                0x000002ac       0x44 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+                0x000002ac                from_minutes_to_datetime
+ .text.plantain_parse
+                0x000002f0      0x4b4 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ .text.plantain_plugin_ep
+                0x000007a4        0x8 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+                0x000007a4                plantain_plugin_ep
+ *(.text.*)
+ *(.text._*)
+ *(.init)
+ *(.fini)
+
+.rodata         0x000007b0      0x7a8
+ *(.rodata)
+ .rodata        0x000007b0        0x6 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ *(.rodata1)
+ *(.rodata.*)
+ *fill*         0x000007b6        0x2 
+ .rodata.plantain_verify_type.str1.4
+                0x000007b8       0x40 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ .rodata.plantain_read.str1.4
+                0x000007f8       0x2c build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ .rodata.plantain_parse.str1.4
+                0x00000824       0xfb build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ *fill*         0x0000091f        0x1 
+ .rodata.str1.4
+                0x00000920       0x17 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ *fill*         0x00000937        0x1 
+ .rodata.plantain_plugin_descriptor
+                0x00000938        0xc build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ .rodata.plantain_plugin
+                0x00000944       0x10 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ *fill*         0x00000954        0x4 
+ .rodata.plantain_4k_keys_legacy
+                0x00000958      0x280 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ .rodata.plantain_4k_keys
+                0x00000bd8      0x280 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ .rodata.plantain_1k_keys
+                0x00000e58      0x100 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+
+.data
+ *(.data)
+ *(.data1)
+ *(.data.*)
+
+.bss
+ *(.bss)
+ *(.bss*)
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x50
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x50 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x19b2
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000     0x19b2 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+
+.debug_abbrev   0x00000000      0x355
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x355 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+
+.debug_line     0x00000000      0xc02
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x327 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ .debug_line.text.plantain_get_card_config
+                0x00000327       0x59 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ .debug_line.text.plantain_verify_type
+                0x00000380       0x74 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ .debug_line.text.plantain_verify
+                0x000003f4       0x35 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ .debug_line.text.plantain_read
+                0x00000429      0x1f3 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ .debug_line.text.from_minutes_to_datetime
+                0x0000061c       0x51 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ .debug_line.text.plantain_parse
+                0x0000066d      0x57c build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ .debug_line.text.plantain_plugin_ep
+                0x00000be9       0x19 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ .debug_line_end
+                0x00000c02        0x0 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+
+.debug_frame    0x00000000       0xf8
+ *(.debug_frame)
+ .debug_frame   0x00000000       0xf8 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+
+.debug_str      0x00000000      0xc9a
+ *(.debug_str)
+ .debug_str     0x00000000      0xc9a build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+ *(.debug_line_str)
+
+.debug_loclists
+                0x00000000      0x7a1
+ *(.debug_loclists)
+ .debug_loclists
+                0x00000000      0x7a1 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x00000000       0xd4
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x00000000       0xd4 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.ARM.attributes
+                0x00000000       0x34
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x34 build/f7-firmware-D/.extapps/plantain_parser/plugins/supported_cards/plantain.o
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+
+/DISCARD/
+ *(.comment)
+ *(.comment.*)
+ *(.llvmbc)
+ *(.llvmcmd)
+OUTPUT(build/f7-firmware-D/.extapps/plantain_parser_d.elf elf32-littlearm)
+LOAD linker stubs

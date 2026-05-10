@@ -1,0 +1,15 @@
+furi_event_flag_alloc U         
+furi_event_flag_free U         
+furi_event_flag_set U         
+furi_event_flag_wait U         
+furi_record_close U         
+furi_record_open U         
+text_box_alloc U         
+text_box_free U         
+text_box_get_view U         
+text_box_set_text U         
+view_holder_alloc U         
+view_holder_attach_to_gui U         
+view_holder_free U         
+view_holder_set_back_callback U         
+view_holder_set_view U         

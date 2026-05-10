@@ -1,0 +1,6 @@
+__furi_crash_implementation U         
+furi_string_cat_printf U         
+furi_string_cat_str U         
+furi_string_printf U         
+nfc_device_get_data U         
+nfc_device_get_protocol U         

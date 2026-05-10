@@ -1,0 +1,349 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+LOAD build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+LOAD build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal.o
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libstdc++_nano.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libsupc++_nano.a
+
+.text           0x00000000      0x954
+ *(.text)
+ *(.stub)
+ *(.text*)
+ .text.terminal_view_input_callback
+                0x00000000       0x60 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+ .text.terminal_view_draw_callback
+                0x00000060      0x170 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+ .text.terminal_view_alloc
+                0x000001d0       0x68 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+                0x000001d0                terminal_view_alloc
+ .text.terminal_view_free
+                0x00000238       0x20 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+                0x00000238                terminal_view_free
+ .text.terminal_view_get_view
+                0x00000258        0x4 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+                0x00000258                terminal_view_get_view
+ .text.cat_file
+                0x0000025c       0xf8 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .text.nano_file
+                0x00000354      0x118 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .text.save_nano_file
+                0x0000046c       0xa8 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .text.terminal_app_alloc
+                0x00000514       0xa4 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+                0x00000514                terminal_app_alloc
+ .text.terminal_app_free
+                0x000005b8       0x2c build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+                0x000005b8                terminal_app_free
+ .text.terminal_app_get_output
+                0x000005e4        0x2 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+                0x000005e4                terminal_app_get_output
+ *fill*         0x000005e6        0x2 
+ .text.terminal_app_clear_output
+                0x000005e8       0x14 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+                0x000005e8                terminal_app_clear_output
+ .text.terminal_app_set_theme
+                0x000005fc        0xa build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+                0x000005fc                terminal_app_set_theme
+ *fill*         0x00000606        0x2 
+ .text.fbt_install
+                0x00000608       0x90 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .text.terminal_app_get_active_theme
+                0x00000698        0xa build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+                0x00000698                terminal_app_get_active_theme
+ *fill*         0x000006a2        0x2 
+ .text.terminal_app_process_command
+                0x000006a4      0x1b4 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+                0x000006a4                terminal_app_process_command
+ .text.terminal_exit_callback
+                0x00000858        0x6 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal.o
+ *fill*         0x0000085e        0x2 
+ .text.app_alloc
+                0x00000860       0x88 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal.o
+ .text.app_free
+                0x000008e8       0x48 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal.o
+ .text.flipperlinux_terminal_app
+                0x00000930       0x24 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal.o
+                0x00000930                flipperlinux_terminal_app
+ *(.text.*)
+ *(.text._*)
+ *(.init)
+ *(.fini)
+
+.rodata         0x00000954      0x1c0
+ *(.rodata)
+ *(.rodata1)
+ *(.rodata.*)
+ .rodata.terminal_view_draw_callback.str1.4
+                0x00000954       0x22 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+ *fill*         0x00000976        0x2 
+ .rodata.cat_file.str1.4
+                0x00000978       0x36 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ *fill*         0x000009ae        0x2 
+ .rodata.nano_file.str1.4
+                0x000009b0       0x17 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ *fill*         0x000009c7        0x1 
+ .rodata.save_nano_file.str1.4
+                0x000009c8       0x1b build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ *fill*         0x000009e3        0x1 
+ .rodata.terminal_app_alloc.str1.4
+                0x000009e4       0x1f build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ *fill*         0x00000a03        0x1 
+ .rodata.fbt_install.str1.4
+                0x00000a04       0x19 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ *fill*         0x00000a1d        0x3 
+ .rodata.terminal_app_process_command.str1.4
+                0x00000a20       0x79 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ *fill*         0x00000a99        0x3 
+ .rodata.str1.4
+                0x00000a9c       0x36 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ *fill*         0x00000ad2        0x2 
+ .rodata.PACKAGE_REGISTRY
+                0x00000ad4       0x3c build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .rodata.app_alloc.str1.4
+                0x00000b10        0x4 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal.o
+
+.data
+ *(.data)
+ *(.data1)
+ *(.data.*)
+
+.bss
+ *(.bss)
+ *(.bss*)
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0xe8
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x40 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+ .debug_aranges
+                0x00000040       0x70 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .debug_aranges
+                0x000000b0       0x38 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x206a
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000      0xa9e build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+ .debug_info    0x00000a9e      0xed5 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .debug_info    0x00001973      0x6f7 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal.o
+
+.debug_abbrev   0x00000000      0x6ed
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x28a build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+ .debug_abbrev  0x0000028a      0x24f build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .debug_abbrev  0x000004d9      0x214 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal.o
+
+.debug_line     0x00000000      0xdbc
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x295 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+ .debug_line.text.terminal_view_input_callback
+                0x00000295       0x82 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+ .debug_line.text.terminal_view_draw_callback
+                0x00000317       0x89 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+ .debug_line.text.terminal_view_alloc
+                0x000003a0       0x45 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+ .debug_line.text.terminal_view_free
+                0x000003e5       0x29 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+ .debug_line.text.terminal_view_get_view
+                0x0000040e       0x1a build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+ .debug_line_end
+                0x00000428        0x0 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+ .debug_line    0x00000428      0x279 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .debug_line.text.cat_file
+                0x000006a1       0x48 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .debug_line.text.nano_file
+                0x000006e9       0x57 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .debug_line.text.save_nano_file
+                0x00000740       0x48 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .debug_line.text.terminal_app_alloc
+                0x00000788       0x42 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .debug_line.text.terminal_app_free
+                0x000007ca       0x3d build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .debug_line.text.terminal_app_get_output
+                0x00000807       0x18 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .debug_line.text.terminal_app_clear_output
+                0x0000081f       0x1b build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .debug_line.text.terminal_app_set_theme
+                0x0000083a       0x1c build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .debug_line.text.fbt_install
+                0x00000856       0x87 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .debug_line.text.terminal_app_get_active_theme
+                0x000008dd       0x1c build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .debug_line.text.terminal_app_process_command
+                0x000008f9      0x156 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .debug_line_end
+                0x00000a4f        0x0 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .debug_line    0x00000a4f      0x2b2 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal.o
+ .debug_line.text.terminal_exit_callback
+                0x00000d01       0x1a build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal.o
+ .debug_line.text.app_alloc
+                0x00000d1b       0x52 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal.o
+ .debug_line.text.app_free
+                0x00000d6d       0x24 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal.o
+ .debug_line.text.flipperlinux_terminal_app
+                0x00000d91       0x2b build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal.o
+ .debug_line_end
+                0x00000dbc        0x0 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal.o
+
+.debug_frame    0x00000000      0x250
+ *(.debug_frame)
+ .debug_frame   0x00000000       0xa0 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+ .debug_frame   0x000000a0      0x144 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .debug_frame   0x000001e4       0x6c build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal.o
+
+.debug_str      0x00000000     0x11b3
+ *(.debug_str)
+ .debug_str     0x00000000      0x675 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+ .debug_str     0x00000675      0x5f3 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .debug_str     0x00000c68      0x54b build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal.o
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+ *(.debug_line_str)
+
+.debug_loclists
+                0x00000000      0x475
+ *(.debug_loclists)
+ .debug_loclists
+                0x00000000      0x1ae build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+ .debug_loclists
+                0x000001ae      0x240 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .debug_loclists
+                0x000003ee       0x87 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x00000000       0xa7
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x00000000       0x2c build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+ .debug_rnglists
+                0x0000002c       0x55 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .debug_rnglists
+                0x00000081       0x26 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal.o
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.ARM.attributes
+                0x00000000       0x34
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x34 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_view.o
+ .ARM.attributes
+                0x00000034       0x34 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal_app.o
+ .ARM.attributes
+                0x00000068       0x34 build/f7-firmware-D/.extapps/flipperlinux_terminal/terminal.o
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+
+/DISCARD/
+ *(.comment)
+ *(.comment.*)
+ *(.llvmbc)
+ *(.llvmcmd)
+OUTPUT(build/f7-firmware-D/.extapps/flipperlinux_terminal_d.elf elf32-littlearm)
+LOAD linker stubs

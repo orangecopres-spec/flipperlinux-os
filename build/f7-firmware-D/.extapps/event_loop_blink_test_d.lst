@@ -1,0 +1,429 @@
+
+build/f7-firmware-D/.extapps/event_loop_blink_test_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <blink_timer_callback>:
+        }
+    }
+}
+
+static void blink_timer_callback(void* context) {
+    const GpioPin* gpio = blink_gpio_pins[(size_t)context];
+   0:	4b08      	ldr	r3, [pc, #32]	@ (24 <blink_timer_callback+0x24>)
+   2:	f853 3020 	ldr.w	r3, [r3, r0, lsl #2]
+ * GPIO read pin
+ * @param gpio GpioPin
+ * @return true / false
+ */
+static inline bool furi_hal_gpio_read(const GpioPin* gpio) {
+    if((gpio->port->IDR & gpio->pin) != 0x00U) {
+   6:	681a      	ldr	r2, [r3, #0]
+   8:	6911      	ldr	r1, [r2, #16]
+   a:	889b      	ldrh	r3, [r3, #4]
+   c:	4219      	tst	r1, r3
+   e:	d003      	beq.n	18 <blink_timer_callback+0x18>
+        return true;
+  10:	2101      	movs	r1, #1
+    if(state == true) {
+  12:	b919      	cbnz	r1, 1c <blink_timer_callback+0x1c>
+        gpio->port->BSRR = gpio->pin;
+  14:	6193      	str	r3, [r2, #24]
+  16:	4770      	bx	lr
+    } else {
+        return false;
+  18:	2100      	movs	r1, #0
+  1a:	e7fa      	b.n	12 <blink_timer_callback+0x12>
+        gpio->port->BSRR = (uint32_t)gpio->pin << GPIO_NUMBER;
+  1c:	041b      	lsls	r3, r3, #16
+  1e:	6193      	str	r3, [r2, #24]
+    furi_hal_gpio_write(gpio, !furi_hal_gpio_read(gpio));
+}
+  20:	4770      	bx	lr
+  22:	bf00      	nop
+  24:	00000080 	.word	0x00000080
+
+00000028 <event_loop_tick_callback>:
+    if((gpio->port->IDR & gpio->pin) != 0x00U) {
+  28:	4b07      	ldr	r3, [pc, #28]	@ (48 <event_loop_tick_callback+0x20>)
+  2a:	681a      	ldr	r2, [r3, #0]
+  2c:	6911      	ldr	r1, [r2, #16]
+  2e:	889b      	ldrh	r3, [r3, #4]
+  30:	4219      	tst	r1, r3
+  32:	d003      	beq.n	3c <event_loop_tick_callback+0x14>
+        return true;
+  34:	2101      	movs	r1, #1
+    if(state == true) {
+  36:	b919      	cbnz	r1, 40 <event_loop_tick_callback+0x18>
+        gpio->port->BSRR = gpio->pin;
+  38:	6193      	str	r3, [r2, #24]
+  3a:	4770      	bx	lr
+        return false;
+  3c:	2100      	movs	r1, #0
+  3e:	e7fa      	b.n	36 <event_loop_tick_callback+0xe>
+        gpio->port->BSRR = (uint32_t)gpio->pin << GPIO_NUMBER;
+  40:	041b      	lsls	r3, r3, #16
+  42:	6193      	str	r3, [r2, #24]
+
+static void event_loop_tick_callback(void* context) {
+    UNUSED(context);
+    furi_hal_gpio_write(&gpio_ext_pc0, !furi_hal_gpio_read(&gpio_ext_pc0));
+}
+  44:	4770      	bx	lr
+  46:	bf00      	nop
+  48:	00000000 	.word	0x00000000
+
+0000004c <input_queue_callback>:
+static void input_queue_callback(FuriEventLoopObject* object, void* context) {
+  4c:	b510      	push	{r4, lr}
+  4e:	b082      	sub	sp, #8
+  50:	460c      	mov	r4, r1
+    FuriStatus status = furi_message_queue_get(queue, &event, 0);
+  52:	2200      	movs	r2, #0
+  54:	4669      	mov	r1, sp
+  56:	4b17      	ldr	r3, [pc, #92]	@ (b4 <sukima288+0x1e>)
+  58:	4798      	blx	r3
+    furi_assert(status == FuriStatusOk);
+  5a:	b938      	cbnz	r0, 6c <input_queue_callback+0x20>
+    if(event.type == InputTypeShort) {
+  5c:	f89d 3005 	ldrb.w	r3, [sp, #5]
+  60:	2b02      	cmp	r3, #2
+  62:	d007      	beq.n	74 <sukima231+0x4>
+    } else if(event.type == InputTypeLong) {
+  64:	2b03      	cmp	r3, #3
+  66:	d01c      	beq.n	a2 <sukima288+0xc>
+}
+  68:	b002      	add	sp, #8
+  6a:	bd10      	pop	{r4, pc}
+    furi_assert(status == FuriStatusOk);
+  6c:	f04f 0c01 	mov.w	ip, #1
+
+00000070 <sukima231>:
+  70:	4b11      	ldr	r3, [pc, #68]	@ (b8 <sukima288+0x22>)
+  72:	4798      	blx	r3
+        const size_t timer_idx = event.key;
+  74:	f89d 3004 	ldrb.w	r3, [sp, #4]
+        furi_assert(timer_idx < TIMER_COUNT);
+  78:	2b05      	cmp	r3, #5
+  7a:	d80a      	bhi.n	92 <sukima231+0x22>
+        FuriEventLoopTimer* timer = app->timers[timer_idx];
+  7c:	3302      	adds	r3, #2
+  7e:	f854 4023 	ldr.w	r4, [r4, r3, lsl #2]
+        if(furi_event_loop_timer_is_running(timer)) {
+  82:	4620      	mov	r0, r4
+  84:	4b0d      	ldr	r3, [pc, #52]	@ (bc <sukima288+0x26>)
+  86:	4798      	blx	r3
+  88:	b138      	cbz	r0, 9a <sukima288+0x4>
+            furi_event_loop_timer_stop(timer);
+  8a:	4620      	mov	r0, r4
+  8c:	4b0c      	ldr	r3, [pc, #48]	@ (c0 <sukima288+0x2a>)
+  8e:	4798      	blx	r3
+  90:	e7ea      	b.n	68 <input_queue_callback+0x1c>
+        furi_assert(timer_idx < TIMER_COUNT);
+  92:	f04f 0c01 	mov.w	ip, #1
+
+00000096 <sukima288>:
+  96:	4b08      	ldr	r3, [pc, #32]	@ (b8 <sukima288+0x22>)
+  98:	4798      	blx	r3
+            furi_event_loop_timer_restart(timer);
+  9a:	4620      	mov	r0, r4
+  9c:	4b09      	ldr	r3, [pc, #36]	@ (c4 <sukima288+0x2e>)
+  9e:	4798      	blx	r3
+  a0:	e7e2      	b.n	68 <input_queue_callback+0x1c>
+        if(event.key == InputKeyBack) {
+  a2:	f89d 3004 	ldrb.w	r3, [sp, #4]
+  a6:	2b05      	cmp	r3, #5
+  a8:	d1de      	bne.n	68 <input_queue_callback+0x1c>
+            furi_event_loop_stop(app->event_loop);
+  aa:	6820      	ldr	r0, [r4, #0]
+  ac:	4b06      	ldr	r3, [pc, #24]	@ (c8 <sukima288+0x32>)
+  ae:	4798      	blx	r3
+}
+  b0:	e7da      	b.n	68 <input_queue_callback+0x1c>
+  b2:	bf00      	nop
+	...
+
+000000cc <view_port_input_callback>:
+static void view_port_input_callback(InputEvent* input_event, void* context) {
+  cc:	b508      	push	{r3, lr}
+  ce:	460b      	mov	r3, r1
+    furi_message_queue_put(app->input_queue, input_event, 0);
+  d0:	2200      	movs	r2, #0
+  d2:	4601      	mov	r1, r0
+  d4:	6858      	ldr	r0, [r3, #4]
+  d6:	4b01      	ldr	r3, [pc, #4]	@ (dc <view_port_input_callback+0x10>)
+  d8:	4798      	blx	r3
+}
+  da:	bd08      	pop	{r3, pc}
+  dc:	00000000 	.word	0x00000000
+
+000000e0 <view_port_draw_callback>:
+static void view_port_draw_callback(Canvas* canvas, void* context) {
+  e0:	b530      	push	{r4, r5, lr}
+  e2:	b087      	sub	sp, #28
+  e4:	4604      	mov	r4, r0
+    canvas_clear(canvas);
+  e6:	4b0c      	ldr	r3, [pc, #48]	@ (118 <view_port_draw_callback+0x38>)
+  e8:	4798      	blx	r3
+    elements_text_box(
+  ea:	4620      	mov	r0, r4
+  ec:	4b0b      	ldr	r3, [pc, #44]	@ (11c <view_port_draw_callback+0x3c>)
+  ee:	4798      	blx	r3
+  f0:	4605      	mov	r5, r0
+  f2:	4620      	mov	r0, r4
+  f4:	4b0a      	ldr	r3, [pc, #40]	@ (120 <view_port_draw_callback+0x40>)
+  f6:	4798      	blx	r3
+  f8:	2100      	movs	r1, #0
+  fa:	9104      	str	r1, [sp, #16]
+  fc:	4b09      	ldr	r3, [pc, #36]	@ (124 <view_port_draw_callback+0x44>)
+  fe:	9303      	str	r3, [sp, #12]
+ 100:	2304      	movs	r3, #4
+ 102:	9302      	str	r3, [sp, #8]
+ 104:	9301      	str	r3, [sp, #4]
+ 106:	9000      	str	r0, [sp, #0]
+ 108:	462b      	mov	r3, r5
+ 10a:	460a      	mov	r2, r1
+ 10c:	4620      	mov	r0, r4
+ 10e:	4c06      	ldr	r4, [pc, #24]	@ (128 <view_port_draw_callback+0x48>)
+ 110:	47a0      	blx	r4
+}
+ 112:	b007      	add	sp, #28
+ 114:	bd30      	pop	{r4, r5, pc}
+ 116:	bf00      	nop
+	...
+
+0000012c <blink_gpio_init>:
+static void blink_gpio_init(void) {
+ 12c:	b538      	push	{r3, r4, r5, lr}
+    for(size_t i = 0; i < TIMER_COUNT; ++i) {
+ 12e:	2400      	movs	r4, #0
+ 130:	e00b      	b.n	14a <blink_gpio_init+0x1e>
+        furi_hal_gpio_init_simple(blink_gpio_pins[i], GpioModeOutputPushPull);
+ 132:	4b0c      	ldr	r3, [pc, #48]	@ (164 <blink_gpio_init+0x38>)
+ 134:	f853 5024 	ldr.w	r5, [r3, r4, lsl #2]
+ 138:	2101      	movs	r1, #1
+ 13a:	4628      	mov	r0, r5
+ 13c:	4b0a      	ldr	r3, [pc, #40]	@ (168 <blink_gpio_init+0x3c>)
+ 13e:	4798      	blx	r3
+ 140:	88ab      	ldrh	r3, [r5, #4]
+ 142:	682a      	ldr	r2, [r5, #0]
+ 144:	041b      	lsls	r3, r3, #16
+ 146:	6193      	str	r3, [r2, #24]
+    for(size_t i = 0; i < TIMER_COUNT; ++i) {
+ 148:	3401      	adds	r4, #1
+ 14a:	2c05      	cmp	r4, #5
+ 14c:	d9f1      	bls.n	132 <blink_gpio_init+0x6>
+    furi_hal_gpio_init_simple(&gpio_ext_pc0, GpioModeOutputPushPull);
+ 14e:	4c07      	ldr	r4, [pc, #28]	@ (16c <blink_gpio_init+0x40>)
+ 150:	2101      	movs	r1, #1
+ 152:	4620      	mov	r0, r4
+ 154:	4b04      	ldr	r3, [pc, #16]	@ (168 <blink_gpio_init+0x3c>)
+ 156:	4798      	blx	r3
+ 158:	88a3      	ldrh	r3, [r4, #4]
+ 15a:	6822      	ldr	r2, [r4, #0]
+ 15c:	041b      	lsls	r3, r3, #16
+ 15e:	6193      	str	r3, [r2, #24]
+}
+ 160:	bd38      	pop	{r3, r4, r5, pc}
+ 162:	bf00      	nop
+ 164:	00000080 	.word	0x00000080
+	...
+
+00000170 <blink_gpio_deinit>:
+static void blink_gpio_deinit(void) {
+ 170:	b510      	push	{r4, lr}
+    for(size_t i = 0; i < TIMER_COUNT; ++i) {
+ 172:	2400      	movs	r4, #0
+ 174:	e00a      	b.n	18c <blink_gpio_deinit+0x1c>
+        furi_hal_gpio_write(blink_gpio_pins[i], false);
+ 176:	4b0b      	ldr	r3, [pc, #44]	@ (1a4 <blink_gpio_deinit+0x34>)
+ 178:	f853 0024 	ldr.w	r0, [r3, r4, lsl #2]
+ 17c:	8883      	ldrh	r3, [r0, #4]
+ 17e:	6802      	ldr	r2, [r0, #0]
+ 180:	041b      	lsls	r3, r3, #16
+ 182:	6193      	str	r3, [r2, #24]
+        furi_hal_gpio_init_simple(blink_gpio_pins[i], GpioModeAnalog);
+ 184:	2105      	movs	r1, #5
+ 186:	4b08      	ldr	r3, [pc, #32]	@ (1a8 <blink_gpio_deinit+0x38>)
+ 188:	4798      	blx	r3
+    for(size_t i = 0; i < TIMER_COUNT; ++i) {
+ 18a:	3401      	adds	r4, #1
+ 18c:	2c05      	cmp	r4, #5
+ 18e:	d9f2      	bls.n	176 <blink_gpio_deinit+0x6>
+ 190:	4806      	ldr	r0, [pc, #24]	@ (1ac <blink_gpio_deinit+0x3c>)
+ 192:	8883      	ldrh	r3, [r0, #4]
+ 194:	6802      	ldr	r2, [r0, #0]
+ 196:	041b      	lsls	r3, r3, #16
+ 198:	6193      	str	r3, [r2, #24]
+    furi_hal_gpio_init_simple(&gpio_ext_pc0, GpioModeAnalog);
+ 19a:	2105      	movs	r1, #5
+ 19c:	4b02      	ldr	r3, [pc, #8]	@ (1a8 <blink_gpio_deinit+0x38>)
+ 19e:	4798      	blx	r3
+}
+ 1a0:	bd10      	pop	{r4, pc}
+ 1a2:	bf00      	nop
+ 1a4:	00000080 	.word	0x00000080
+	...
+
+000001b0 <event_loop_blink_test_app>:
+
+int32_t event_loop_blink_test_app(void* arg) {
+ 1b0:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+ 1b4:	b08a      	sub	sp, #40	@ 0x28
+    UNUSED(arg);
+
+    blink_gpio_init();
+ 1b6:	4b37      	ldr	r3, [pc, #220]	@ (294 <event_loop_blink_test_app+0xe4>)
+ 1b8:	4798      	blx	r3
+
+    EventLoopBlinkTestApp app;
+
+    app.event_loop = furi_event_loop_alloc();
+ 1ba:	4b37      	ldr	r3, [pc, #220]	@ (298 <event_loop_blink_test_app+0xe8>)
+ 1bc:	4798      	blx	r3
+ 1be:	9002      	str	r0, [sp, #8]
+    app.input_queue = furi_message_queue_alloc(3, sizeof(InputEvent));
+ 1c0:	2108      	movs	r1, #8
+ 1c2:	2003      	movs	r0, #3
+ 1c4:	4b35      	ldr	r3, [pc, #212]	@ (29c <event_loop_blink_test_app+0xec>)
+ 1c6:	4798      	blx	r3
+ 1c8:	9003      	str	r0, [sp, #12]
+
+    for(size_t i = 0; i < TIMER_COUNT; ++i) {
+ 1ca:	2400      	movs	r4, #0
+ 1cc:	e011      	b.n	1f2 <event_loop_blink_test_app+0x42>
+        app.timers[i] = furi_event_loop_timer_alloc(
+ 1ce:	4623      	mov	r3, r4
+ 1d0:	2201      	movs	r2, #1
+ 1d2:	4933      	ldr	r1, [pc, #204]	@ (2a0 <event_loop_blink_test_app+0xf0>)
+ 1d4:	9802      	ldr	r0, [sp, #8]
+ 1d6:	4d33      	ldr	r5, [pc, #204]	@ (2a4 <event_loop_blink_test_app+0xf4>)
+ 1d8:	47a8      	blx	r5
+ 1da:	1ca3      	adds	r3, r4, #2
+ 1dc:	aa0a      	add	r2, sp, #40	@ 0x28
+ 1de:	eb02 0383 	add.w	r3, r2, r3, lsl #2
+ 1e2:	f843 0c20 	str.w	r0, [r3, #-32]
+            app.event_loop, blink_timer_callback, FuriEventLoopTimerTypePeriodic, (void*)i);
+        furi_event_loop_timer_start(app.timers[i], timer_intervals[i]);
+ 1e6:	4b30      	ldr	r3, [pc, #192]	@ (2a8 <event_loop_blink_test_app+0xf8>)
+ 1e8:	f853 1024 	ldr.w	r1, [r3, r4, lsl #2]
+ 1ec:	4b2f      	ldr	r3, [pc, #188]	@ (2ac <event_loop_blink_test_app+0xfc>)
+ 1ee:	4798      	blx	r3
+    for(size_t i = 0; i < TIMER_COUNT; ++i) {
+ 1f0:	3401      	adds	r4, #1
+ 1f2:	2c05      	cmp	r4, #5
+ 1f4:	d9eb      	bls.n	1ce <event_loop_blink_test_app+0x1e>
+    }
+
+    ViewPort* view_port = view_port_alloc();
+ 1f6:	4b2e      	ldr	r3, [pc, #184]	@ (2b0 <event_loop_blink_test_app+0x100>)
+ 1f8:	4798      	blx	r3
+ 1fa:	4604      	mov	r4, r0
+    view_port_draw_callback_set(view_port, view_port_draw_callback, &app);
+ 1fc:	ad02      	add	r5, sp, #8
+ 1fe:	462a      	mov	r2, r5
+ 200:	492c      	ldr	r1, [pc, #176]	@ (2b4 <event_loop_blink_test_app+0x104>)
+ 202:	4b2d      	ldr	r3, [pc, #180]	@ (2b8 <event_loop_blink_test_app+0x108>)
+ 204:	4798      	blx	r3
+    view_port_input_callback_set(view_port, view_port_input_callback, &app);
+ 206:	462a      	mov	r2, r5
+ 208:	492c      	ldr	r1, [pc, #176]	@ (2bc <event_loop_blink_test_app+0x10c>)
+ 20a:	4620      	mov	r0, r4
+ 20c:	4b2c      	ldr	r3, [pc, #176]	@ (2c0 <event_loop_blink_test_app+0x110>)
+ 20e:	4798      	blx	r3
+
+    Gui* gui = furi_record_open(RECORD_GUI);
+ 210:	4f2c      	ldr	r7, [pc, #176]	@ (2c4 <event_loop_blink_test_app+0x114>)
+ 212:	4638      	mov	r0, r7
+ 214:	4b2c      	ldr	r3, [pc, #176]	@ (2c8 <event_loop_blink_test_app+0x118>)
+ 216:	4798      	blx	r3
+ 218:	4606      	mov	r6, r0
+    gui_add_view_port(gui, view_port, GuiLayerFullscreen);
+ 21a:	2204      	movs	r2, #4
+ 21c:	4621      	mov	r1, r4
+ 21e:	4b2b      	ldr	r3, [pc, #172]	@ (2cc <event_loop_blink_test_app+0x11c>)
+ 220:	4798      	blx	r3
+
+    furi_event_loop_tick_set(app.event_loop, 500, event_loop_tick_callback, &app);
+ 222:	462b      	mov	r3, r5
+ 224:	4a2a      	ldr	r2, [pc, #168]	@ (2d0 <event_loop_blink_test_app+0x120>)
+ 226:	f44f 71fa 	mov.w	r1, #500	@ 0x1f4
+ 22a:	9802      	ldr	r0, [sp, #8]
+ 22c:	f8df 80d0 	ldr.w	r8, [pc, #208]	@ 300 <event_loop_blink_test_app+0x150>
+ 230:	47c0      	blx	r8
+    furi_event_loop_subscribe_message_queue(
+ 232:	9500      	str	r5, [sp, #0]
+ 234:	4b27      	ldr	r3, [pc, #156]	@ (2d4 <event_loop_blink_test_app+0x124>)
+ 236:	2201      	movs	r2, #1
+ 238:	9903      	ldr	r1, [sp, #12]
+ 23a:	9802      	ldr	r0, [sp, #8]
+ 23c:	4d26      	ldr	r5, [pc, #152]	@ (2d8 <event_loop_blink_test_app+0x128>)
+ 23e:	47a8      	blx	r5
+        app.event_loop, app.input_queue, FuriEventLoopEventIn, input_queue_callback, &app);
+
+    furi_event_loop_run(app.event_loop);
+ 240:	9802      	ldr	r0, [sp, #8]
+ 242:	4b26      	ldr	r3, [pc, #152]	@ (2dc <event_loop_blink_test_app+0x12c>)
+ 244:	4798      	blx	r3
+
+    gui_remove_view_port(gui, view_port);
+ 246:	4621      	mov	r1, r4
+ 248:	4630      	mov	r0, r6
+ 24a:	4b25      	ldr	r3, [pc, #148]	@ (2e0 <event_loop_blink_test_app+0x130>)
+ 24c:	4798      	blx	r3
+    view_port_free(view_port);
+ 24e:	4620      	mov	r0, r4
+ 250:	4b24      	ldr	r3, [pc, #144]	@ (2e4 <event_loop_blink_test_app+0x134>)
+ 252:	4798      	blx	r3
+
+    furi_record_close(RECORD_GUI);
+ 254:	4638      	mov	r0, r7
+ 256:	4b24      	ldr	r3, [pc, #144]	@ (2e8 <event_loop_blink_test_app+0x138>)
+ 258:	4798      	blx	r3
+
+    furi_event_loop_unsubscribe(app.event_loop, app.input_queue);
+ 25a:	9903      	ldr	r1, [sp, #12]
+ 25c:	9802      	ldr	r0, [sp, #8]
+ 25e:	4b23      	ldr	r3, [pc, #140]	@ (2ec <event_loop_blink_test_app+0x13c>)
+ 260:	4798      	blx	r3
+    furi_message_queue_free(app.input_queue);
+ 262:	9803      	ldr	r0, [sp, #12]
+ 264:	4b22      	ldr	r3, [pc, #136]	@ (2f0 <event_loop_blink_test_app+0x140>)
+ 266:	4798      	blx	r3
+
+    for(size_t i = 0; i < TIMER_COUNT; ++i) {
+ 268:	2400      	movs	r4, #0
+ 26a:	e008      	b.n	27e <event_loop_blink_test_app+0xce>
+        furi_event_loop_timer_free(app.timers[i]);
+ 26c:	1ca3      	adds	r3, r4, #2
+ 26e:	aa0a      	add	r2, sp, #40	@ 0x28
+ 270:	eb02 0383 	add.w	r3, r2, r3, lsl #2
+ 274:	f853 0c20 	ldr.w	r0, [r3, #-32]
+ 278:	4b1e      	ldr	r3, [pc, #120]	@ (2f4 <event_loop_blink_test_app+0x144>)
+ 27a:	4798      	blx	r3
+    for(size_t i = 0; i < TIMER_COUNT; ++i) {
+ 27c:	3401      	adds	r4, #1
+ 27e:	2c05      	cmp	r4, #5
+ 280:	d9f4      	bls.n	26c <event_loop_blink_test_app+0xbc>
+    }
+
+    furi_event_loop_free(app.event_loop);
+ 282:	9802      	ldr	r0, [sp, #8]
+ 284:	4b1c      	ldr	r3, [pc, #112]	@ (2f8 <event_loop_blink_test_app+0x148>)
+ 286:	4798      	blx	r3
+
+    blink_gpio_deinit();
+ 288:	4b1c      	ldr	r3, [pc, #112]	@ (2fc <event_loop_blink_test_app+0x14c>)
+ 28a:	4798      	blx	r3
+
+    return 0;
+}
+ 28c:	2000      	movs	r0, #0
+ 28e:	b00a      	add	sp, #40	@ 0x28
+ 290:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+	...
+ 2a8:	00000068 	.word	0x00000068
+	...
+ 2c4:	00000064 	.word	0x00000064
+	...

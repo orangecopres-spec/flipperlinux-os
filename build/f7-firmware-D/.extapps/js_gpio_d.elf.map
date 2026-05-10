@@ -1,0 +1,340 @@
+Archive member included to satisfy reference by file (symbol)
+
+/home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a(_arm_addsubdf3.o)
+                              build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o (__aeabi_ui2d)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .data          0x00000000        0x0 /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a(_arm_addsubdf3.o)
+ .bss           0x00000000        0x0 /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a(_arm_addsubdf3.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libstdc++_nano.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libsupc++_nano.a
+
+.text           0x00000000      0xea8
+ *(.text)
+ .text          0x00000000      0x378 /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a(_arm_addsubdf3.o)
+                0x00000000                __aeabi_drsub
+                0x00000008                __aeabi_dsub
+                0x00000008                __subdf3
+                0x0000000c                __adddf3
+                0x0000000c                __aeabi_dadd
+                0x00000284                __aeabi_ui2d
+                0x00000284                __floatunsidf
+                0x000002a4                __floatsidf
+                0x000002a4                __aeabi_i2d
+                0x000002c8                __extendsfdf2
+                0x000002c8                __aeabi_f2d
+                0x0000030c                __aeabi_ul2d
+                0x0000030c                __floatundidf
+                0x0000031c                __floatdidf
+                0x0000031c                __aeabi_l2d
+ *(.stub)
+ *(.text*)
+ .text.ManagedPinsArray_clear
+                0x00000378       0x28 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .text.furi_event_loop_maybe_unsubscribe
+                0x000003a0       0x20 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .text.js_gpio_destroy
+                0x000003c0       0xd8 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .text.js_gpio_create
+                0x00000498       0xcc build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .text.js_gpio_pwm_stop
+                0x00000564       0x70 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .text.js_gpio_write
+                0x000005d4       0xc8 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .text.js_gpio_init
+                0x0000069c      0x100 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .text.js_gpio_is_pwm_running
+                0x0000079c       0x84 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .text.js_gpio_is_pwm_supported
+                0x00000820       0x5c build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .text.js_gpio_read
+                0x0000087c       0x68 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .text.js_gpio_pwm_write
+                0x000008e4      0x104 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .text.js_gpio_interrupt
+                0x000009e8       0xac build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .text.js_gpio_int_cb
+                0x00000a94       0x1c build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .text.js_gpio_read_analog
+                0x00000ab0       0x70 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .text.ManagedPinsArray_push_raw
+                0x00000b20       0x54 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .text.js_gpio_get
+                0x00000b74      0x32c build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .text.js_gpio_ep
+                0x00000ea0        0x8 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+                0x00000ea0                js_gpio_ep
+ *(.text.*)
+ *(.text._*)
+ *(.init)
+ *(.fini)
+
+.rodata         0x00000ea8      0x37c
+ *(.rodata)
+ .rodata        0x00000ea8       0x20 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ *(.rodata1)
+ *(.rodata.*)
+ .rodata.js_gpio_create.str1.4
+                0x00000ec8       0x14 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .rodata.js_gpio_pwm_stop.str1.4
+                0x00000edc       0x21 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ *fill*         0x00000efd        0x3 
+ .rodata.js_gpio_get.str1.4
+                0x00000f00       0xbc build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .rodata.str1.4
+                0x00000fbc       0x99 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ *fill*         0x00001055        0x3 
+ .rodata.js_gpio_direction_variants.4
+                0x00001058       0x10 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .rodata.js_gpio_direction.5
+                0x00001068       0x18 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .rodata.js_gpio_in_mode_variants.6
+                0x00001080       0x20 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .rodata.js_gpio_in_mode.7
+                0x000010a0       0x18 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .rodata.js_gpio_out_mode_variants.8
+                0x000010b8       0x10 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .rodata.js_gpio_out_mode.9
+                0x000010c8       0x18 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .rodata.js_gpio_edge_variants.10
+                0x000010e0       0x18 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .rodata.js_gpio_edge.11
+                0x000010f8       0x18 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .rodata.js_gpio_pull_variants.12
+                0x00001110       0x10 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .rodata.js_gpio_pull.13
+                0x00001120       0x18 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .rodata.js_gpio_mode_object_fields.14
+                0x00001138       0x28 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .rodata.js_gpio_init_arg_list.15
+                0x00001160       0x18 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .rodata.js_gpio_init_args.3
+                0x00001178        0x8 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .rodata.js_gpio_in_mode_lut.16
+                0x00001180        0xc build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .rodata.js_gpio_out_mode_lut.17
+                0x0000118c        0x2 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ *fill*         0x0000118e        0x2 
+ .rodata.js_gpio_write_arg_list.18
+                0x00001190       0x18 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .rodata.js_gpio_write_args.2
+                0x000011a8        0x8 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .rodata.js_gpio_pwm_write_arg_list.19
+                0x000011b0       0x30 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .rodata.js_gpio_pwm_write_args.1
+                0x000011e0        0x8 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .rodata.js_gpio_get_arg_list.20
+                0x000011e8       0x18 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .rodata.js_gpio_get_args.0
+                0x00001200        0x8 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .rodata.plugin_descriptor
+                0x00001208        0xc build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .rodata.js_gpio_desc
+                0x00001214       0x10 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+
+.data
+ *(.data)
+ *(.data1)
+ *(.data.*)
+
+.bss
+ *(.bss)
+ *(.bss*)
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0xa0
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0xa0 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x2bbe
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000     0x2bbe build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+
+.debug_abbrev   0x00000000      0x55a
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x55a build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+
+.debug_line     0x00000000      0xc8c
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x453 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .debug_line.text.ManagedPinsArray_clear
+                0x00000453       0x3b build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .debug_line.text.furi_event_loop_maybe_unsubscribe
+                0x0000048e       0x2c build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .debug_line.text.js_gpio_destroy
+                0x000004ba      0x158 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .debug_line.text.js_gpio_create
+                0x00000612       0x88 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .debug_line.text.js_gpio_pwm_stop
+                0x0000069a       0x3a build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .debug_line.text.js_gpio_write
+                0x000006d4       0xa4 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .debug_line.text.js_gpio_init
+                0x00000778       0x90 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .debug_line.text.js_gpio_is_pwm_running
+                0x00000808       0x40 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .debug_line.text.js_gpio_is_pwm_supported
+                0x00000848       0x2d build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .debug_line.text.js_gpio_read
+                0x00000875       0x56 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .debug_line.text.js_gpio_pwm_write
+                0x000008cb       0x88 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .debug_line.text.js_gpio_interrupt
+                0x00000953       0x5e build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .debug_line.text.js_gpio_int_cb
+                0x000009b1       0x51 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .debug_line.text.js_gpio_read_analog
+                0x00000a02       0x30 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .debug_line.text.ManagedPinsArray_push_raw
+                0x00000a32       0xa1 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .debug_line.text.js_gpio_get
+                0x00000ad3      0x1a0 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .debug_line.text.js_gpio_ep
+                0x00000c73       0x19 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .debug_line_end
+                0x00000c8c        0x0 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+
+.debug_frame    0x00000000      0x278
+ *(.debug_frame)
+ .debug_frame   0x00000000      0x278 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+
+.debug_str      0x00000000     0x1a20
+ *(.debug_str)
+ .debug_str     0x00000000     0x1a20 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+                0x00000000       0xa8
+ *(.debug_line_str)
+ .debug_line_str
+                0x00000000       0xa8 /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a(_arm_addsubdf3.o)
+
+.debug_loclists
+                0x00000000      0x7e1
+ *(.debug_loclists)
+ .debug_loclists
+                0x00000000      0x7e1 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x00000000       0xd1
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x00000000       0xd1 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.ARM.attributes
+                0x00000000       0x34
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x34 build/f7-firmware-D/.extapps/js_gpio/modules/js_gpio.o
+ .ARM.attributes
+                0x00000034       0x22 /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a(_arm_addsubdf3.o)
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+
+/DISCARD/
+ *(.comment)
+ *(.comment.*)
+ *(.llvmbc)
+ *(.llvmcmd)
+OUTPUT(build/f7-firmware-D/.extapps/js_gpio_d.elf elf32-littlearm)
+LOAD linker stubs

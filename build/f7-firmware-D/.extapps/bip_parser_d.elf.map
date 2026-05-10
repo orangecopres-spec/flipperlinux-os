@@ -1,0 +1,255 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libstdc++_nano.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libsupc++_nano.a
+
+.text           0x00000000      0x67c
+ *(.text)
+ *(.stub)
+ *(.text*)
+ .text.bip_verify
+                0x00000000       0x8c build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+                0x00000000                bip_verify
+ .text.parse_uint32_le
+                0x0000008c       0x34 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .text.parse_uint16_le
+                0x000000c0       0x28 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .text.is_bip_block_empty
+                0x000000e8       0x28 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .text.parse_bip_timestamp
+                0x00000110       0x6c build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .text.parse_uint16_txn_amount
+                0x0000017c       0x2c build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .text.compare_bip_timestamp
+                0x000001a8       0x68 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .text.print_bip_timestamp
+                0x00000210       0x48 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .text.bip_parse
+                0x00000258      0x2c0 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .text.bip_read
+                0x00000518      0x15c build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .text.bip_plugin_ep
+                0x00000674        0x8 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+                0x00000674                bip_plugin_ep
+ *(.text.*)
+ *(.text._*)
+ *(.init)
+ *(.fini)
+
+.rodata         0x00000680      0x260
+ *(.rodata)
+ *(.rodata1)
+ *(.rodata.*)
+ .rodata.bip_verify.str1.4
+                0x00000680       0x34 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .rodata.print_bip_timestamp.str1.4
+                0x000006b4       0x1e build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ *fill*         0x000006d2        0x2 
+ .rodata.bip_parse.str1.4
+                0x000006d4       0x96 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ *fill*         0x0000076a        0x2 
+ .rodata.bip_read.str1.4
+                0x0000076c       0x3b build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ *fill*         0x000007a7        0x1 
+ .rodata.str1.4
+                0x000007a8       0x17 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ *fill*         0x000007bf        0x1 
+ .rodata.bip_plugin_descriptor
+                0x000007c0        0xc build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .rodata.bip_plugin
+                0x000007cc       0x10 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ *fill*         0x000007dc        0x4 
+ .rodata.bip_keys_b
+                0x000007e0       0x80 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .rodata.bip_keys_a
+                0x00000860       0x80 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+
+.data
+ *(.data)
+ *(.data1)
+ *(.data.*)
+
+.bss
+ *(.bss)
+ *(.bss*)
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x70
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x70 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x17c8
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000     0x17c8 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+
+.debug_abbrev   0x00000000      0x352
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x352 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+
+.debug_line     0x00000000      0xd25
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x307 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .debug_line.text.bip_verify
+                0x00000307       0x5b build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .debug_line.text.parse_uint32_le
+                0x00000362       0xb4 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .debug_line.text.parse_uint16_le
+                0x00000416       0x98 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .debug_line.text.is_bip_block_empty
+                0x000004ae       0x69 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .debug_line.text.parse_bip_timestamp
+                0x00000517      0x168 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .debug_line.text.parse_uint16_txn_amount
+                0x0000067f       0x8f build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .debug_line.text.compare_bip_timestamp
+                0x0000070e      0x108 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .debug_line.text.print_bip_timestamp
+                0x00000816       0xa7 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .debug_line.text.bip_parse
+                0x000008bd      0x29a build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .debug_line.text.bip_read
+                0x00000b57      0x1b5 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .debug_line.text.bip_plugin_ep
+                0x00000d0c       0x19 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ .debug_line_end
+                0x00000d25        0x0 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+
+.debug_frame    0x00000000      0x158
+ *(.debug_frame)
+ .debug_frame   0x00000000      0x158 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+
+.debug_str      0x00000000      0xb17
+ *(.debug_str)
+ .debug_str     0x00000000      0xb17 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+ *(.debug_line_str)
+
+.debug_loclists
+                0x00000000      0x749
+ *(.debug_loclists)
+ .debug_loclists
+                0x00000000      0x749 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x00000000       0xad
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x00000000       0xad build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.ARM.attributes
+                0x00000000       0x34
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x34 build/f7-firmware-D/.extapps/bip_parser/plugins/supported_cards/bip.o
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+
+/DISCARD/
+ *(.comment)
+ *(.comment.*)
+ *(.llvmbc)
+ *(.llvmcmd)
+OUTPUT(build/f7-firmware-D/.extapps/bip_parser_d.elf elf32-littlearm)
+LOAD linker stubs

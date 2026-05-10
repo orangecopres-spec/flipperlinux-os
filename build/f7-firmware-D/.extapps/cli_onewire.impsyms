@@ -1,0 +1,16 @@
+__wrap_printf U         
+__wrap_puts U         
+args_read_string_and_trim U         
+furi_delay_ms U         
+furi_record_close U         
+furi_record_open U         
+furi_string_alloc U         
+furi_string_cmp_str U         
+furi_string_free U         
+gpio_ibutton U         
+onewire_host_alloc U         
+onewire_host_free U         
+onewire_host_reset_search U         
+onewire_host_search U         
+onewire_host_start U         
+power_enable_otg U         

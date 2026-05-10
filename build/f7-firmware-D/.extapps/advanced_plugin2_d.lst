@@ -1,0 +1,50 @@
+
+build/f7-firmware-D/.extapps/advanced_plugin2_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <advanced_plugin2_method2>:
+static void advanced_plugin2_method1(int arg1) {
+    /* This function is implemented inside host application */
+    app_api_accumulator_mul(arg1);
+}
+
+static void advanced_plugin2_method2(void) {
+   0:	b510      	push	{r4, lr}
+    /* Accumulator value is stored inside host application */
+    FURI_LOG_I("TEST", "Plugin 2, accumulator: %lu", app_api_accumulator_get());
+   2:	4b04      	ldr	r3, [pc, #16]	@ (14 <advanced_plugin2_method2+0x14>)
+   4:	4798      	blx	r3
+   6:	4603      	mov	r3, r0
+   8:	4a03      	ldr	r2, [pc, #12]	@ (18 <advanced_plugin2_method2+0x18>)
+   a:	4904      	ldr	r1, [pc, #16]	@ (1c <advanced_plugin2_method2+0x1c>)
+   c:	2004      	movs	r0, #4
+   e:	4c04      	ldr	r4, [pc, #16]	@ (20 <advanced_plugin2_method2+0x20>)
+  10:	47a0      	blx	r4
+}
+  12:	bd10      	pop	{r4, pc}
+	...
+  1c:	0000001c 	.word	0x0000001c
+  20:	00000000 	.word	0x00000000
+
+00000024 <advanced_plugin2_method1>:
+static void advanced_plugin2_method1(int arg1) {
+  24:	b508      	push	{r3, lr}
+    app_api_accumulator_mul(arg1);
+  26:	4b01      	ldr	r3, [pc, #4]	@ (2c <advanced_plugin2_method1+0x8>)
+  28:	4798      	blx	r3
+}
+  2a:	bd08      	pop	{r3, pc}
+  2c:	00000000 	.word	0x00000000
+
+00000030 <advanced_plugin2_ep>:
+};
+
+/* Plugin entry point - must return a pointer to const descriptor */
+const FlipperAppPluginDescriptor* advanced_plugin2_ep(void) {
+    return &advanced_plugin2_descriptor;
+}
+  30:	4800      	ldr	r0, [pc, #0]	@ (34 <advanced_plugin2_ep+0x4>)
+  32:	4770      	bx	lr
+  34:	00000054 	.word	0x00000054

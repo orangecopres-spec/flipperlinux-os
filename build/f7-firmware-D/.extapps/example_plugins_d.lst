@@ -1,0 +1,203 @@
+
+build/f7-firmware-D/.extapps/example_plugins_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <example_plugins_app>:
+#include <loader/firmware_api/firmware_api.h>
+#include <storage/storage.h>
+
+#define TAG "ExamplePlugins"
+
+int32_t example_plugins_app(void* p) {
+   0:	b5f0      	push	{r4, r5, r6, r7, lr}
+   2:	b083      	sub	sp, #12
+    UNUSED(p);
+
+    FURI_LOG_I(TAG, "Starting");
+   4:	4a3b      	ldr	r2, [pc, #236]	@ (f4 <sukima264+0x6>)
+   6:	493c      	ldr	r1, [pc, #240]	@ (f8 <sukima264+0xa>)
+   8:	2004      	movs	r0, #4
+   a:	4b3c      	ldr	r3, [pc, #240]	@ (fc <sukima264+0xe>)
+   c:	4798      	blx	r3
+
+    Storage* storage = furi_record_open(RECORD_STORAGE);
+   e:	483c      	ldr	r0, [pc, #240]	@ (100 <sukima264+0x12>)
+  10:	4b3c      	ldr	r3, [pc, #240]	@ (104 <sukima264+0x16>)
+  12:	4798      	blx	r3
+
+    FlipperApplication* app = flipper_application_alloc(storage, firmware_api_interface);
+  14:	4b3c      	ldr	r3, [pc, #240]	@ (108 <sukima264+0x1a>)
+  16:	6819      	ldr	r1, [r3, #0]
+  18:	4b3c      	ldr	r3, [pc, #240]	@ (10c <sukima264+0x1e>)
+  1a:	4798      	blx	r3
+  1c:	4604      	mov	r4, r0
+
+    do {
+        FlipperApplicationPreloadStatus preload_res =
+            flipper_application_preload(app, APP_DATA_PATH("plugins/example_plugin1.fal"));
+  1e:	493c      	ldr	r1, [pc, #240]	@ (110 <sukima264+0x22>)
+  20:	4b3c      	ldr	r3, [pc, #240]	@ (114 <sukima264+0x26>)
+  22:	4798      	blx	r3
+
+        if(preload_res != FlipperApplicationPreloadStatusSuccess) {
+  24:	b190      	cbz	r0, 4c <example_plugins_app+0x4c>
+            FURI_LOG_E(TAG, "Failed to preload plugin");
+  26:	4a3c      	ldr	r2, [pc, #240]	@ (118 <sukima264+0x2a>)
+  28:	4933      	ldr	r1, [pc, #204]	@ (f8 <sukima264+0xa>)
+  2a:	2002      	movs	r0, #2
+  2c:	4b33      	ldr	r3, [pc, #204]	@ (fc <sukima264+0xe>)
+  2e:	4798      	blx	r3
+        FURI_LOG_I(TAG, "Plugin name: %s", plugin->name);
+        FURI_LOG_I(TAG, "Plugin method1: %d", plugin->method1());
+        FURI_LOG_I(TAG, "Plugin method2(7,8): %d", plugin->method2(7, 8));
+        FURI_LOG_I(TAG, "Plugin method2(1337,228): %d", plugin->method2(1337, 228));
+    } while(false);
+    flipper_application_free(app);
+  30:	4620      	mov	r0, r4
+  32:	4b3a      	ldr	r3, [pc, #232]	@ (11c <sukima264+0x2e>)
+  34:	4798      	blx	r3
+
+    furi_record_close(RECORD_STORAGE);
+  36:	4832      	ldr	r0, [pc, #200]	@ (100 <sukima264+0x12>)
+  38:	4b39      	ldr	r3, [pc, #228]	@ (120 <sukima264+0x32>)
+  3a:	4798      	blx	r3
+    FURI_LOG_I(TAG, "Goodbye!");
+  3c:	4a39      	ldr	r2, [pc, #228]	@ (124 <sukima264+0x36>)
+  3e:	492e      	ldr	r1, [pc, #184]	@ (f8 <sukima264+0xa>)
+  40:	2004      	movs	r0, #4
+  42:	4b2e      	ldr	r3, [pc, #184]	@ (fc <sukima264+0xe>)
+  44:	4798      	blx	r3
+
+    return 0;
+}
+  46:	2000      	movs	r0, #0
+  48:	b003      	add	sp, #12
+  4a:	bdf0      	pop	{r4, r5, r6, r7, pc}
+        if(!flipper_application_is_plugin(app)) {
+  4c:	4620      	mov	r0, r4
+  4e:	4b36      	ldr	r3, [pc, #216]	@ (128 <sukima264+0x3a>)
+  50:	4798      	blx	r3
+  52:	b928      	cbnz	r0, 60 <example_plugins_app+0x60>
+            FURI_LOG_E(TAG, "Plugin file is not a library");
+  54:	4a35      	ldr	r2, [pc, #212]	@ (12c <sukima264+0x3e>)
+  56:	4928      	ldr	r1, [pc, #160]	@ (f8 <sukima264+0xa>)
+  58:	2002      	movs	r0, #2
+  5a:	4b28      	ldr	r3, [pc, #160]	@ (fc <sukima264+0xe>)
+  5c:	4798      	blx	r3
+            break;
+  5e:	e7e7      	b.n	30 <example_plugins_app+0x30>
+        FlipperApplicationLoadStatus load_status = flipper_application_map_to_memory(app);
+  60:	4620      	mov	r0, r4
+  62:	4b33      	ldr	r3, [pc, #204]	@ (130 <sukima264+0x42>)
+  64:	4798      	blx	r3
+        if(load_status != FlipperApplicationLoadStatusSuccess) {
+  66:	b128      	cbz	r0, 74 <example_plugins_app+0x74>
+            FURI_LOG_E(TAG, "Failed to load plugin file");
+  68:	4a32      	ldr	r2, [pc, #200]	@ (134 <sukima264+0x46>)
+  6a:	4923      	ldr	r1, [pc, #140]	@ (f8 <sukima264+0xa>)
+  6c:	2002      	movs	r0, #2
+  6e:	4b23      	ldr	r3, [pc, #140]	@ (fc <sukima264+0xe>)
+  70:	4798      	blx	r3
+            break;
+  72:	e7dd      	b.n	30 <example_plugins_app+0x30>
+            flipper_application_plugin_get_descriptor(app);
+  74:	4620      	mov	r0, r4
+  76:	4b30      	ldr	r3, [pc, #192]	@ (138 <sukima264+0x4a>)
+  78:	4798      	blx	r3
+  7a:	4605      	mov	r5, r0
+        FURI_LOG_I(
+  7c:	6803      	ldr	r3, [r0, #0]
+  7e:	6842      	ldr	r2, [r0, #4]
+  80:	9200      	str	r2, [sp, #0]
+  82:	4a2e      	ldr	r2, [pc, #184]	@ (13c <sukima264+0x4e>)
+  84:	491c      	ldr	r1, [pc, #112]	@ (f8 <sukima264+0xa>)
+  86:	2004      	movs	r0, #4
+  88:	4e1c      	ldr	r6, [pc, #112]	@ (fc <sukima264+0xe>)
+  8a:	47b0      	blx	r6
+        furi_check(app_descriptor->ep_api_version == PLUGIN_API_VERSION);
+  8c:	686b      	ldr	r3, [r5, #4]
+  8e:	2b01      	cmp	r3, #1
+  90:	d127      	bne.n	e2 <example_plugins_app+0xe2>
+        furi_check(strcmp(app_descriptor->appid, PLUGIN_APP_ID) == 0);
+  92:	492b      	ldr	r1, [pc, #172]	@ (140 <sukima264+0x52>)
+  94:	6828      	ldr	r0, [r5, #0]
+  96:	4b2b      	ldr	r3, [pc, #172]	@ (144 <sukima264+0x56>)
+  98:	4798      	blx	r3
+  9a:	bb30      	cbnz	r0, ea <sukima251+0x4>
+        const ExamplePlugin* plugin = app_descriptor->entry_point;
+  9c:	68af      	ldr	r7, [r5, #8]
+        FURI_LOG_I(TAG, "Plugin name: %s", plugin->name);
+  9e:	4e16      	ldr	r6, [pc, #88]	@ (f8 <sukima264+0xa>)
+  a0:	683b      	ldr	r3, [r7, #0]
+  a2:	4a29      	ldr	r2, [pc, #164]	@ (148 <sukima264+0x5a>)
+  a4:	4631      	mov	r1, r6
+  a6:	2004      	movs	r0, #4
+  a8:	4d14      	ldr	r5, [pc, #80]	@ (fc <sukima264+0xe>)
+  aa:	47a8      	blx	r5
+        FURI_LOG_I(TAG, "Plugin method1: %d", plugin->method1());
+  ac:	687b      	ldr	r3, [r7, #4]
+  ae:	4798      	blx	r3
+  b0:	4603      	mov	r3, r0
+  b2:	4a26      	ldr	r2, [pc, #152]	@ (14c <sukima264+0x5e>)
+  b4:	4631      	mov	r1, r6
+  b6:	2004      	movs	r0, #4
+  b8:	47a8      	blx	r5
+        FURI_LOG_I(TAG, "Plugin method2(7,8): %d", plugin->method2(7, 8));
+  ba:	68bb      	ldr	r3, [r7, #8]
+  bc:	2108      	movs	r1, #8
+  be:	2007      	movs	r0, #7
+  c0:	4798      	blx	r3
+  c2:	4603      	mov	r3, r0
+  c4:	4a22      	ldr	r2, [pc, #136]	@ (150 <sukima264+0x62>)
+  c6:	4631      	mov	r1, r6
+  c8:	2004      	movs	r0, #4
+  ca:	47a8      	blx	r5
+        FURI_LOG_I(TAG, "Plugin method2(1337,228): %d", plugin->method2(1337, 228));
+  cc:	68bb      	ldr	r3, [r7, #8]
+  ce:	21e4      	movs	r1, #228	@ 0xe4
+  d0:	f240 5039 	movw	r0, #1337	@ 0x539
+  d4:	4798      	blx	r3
+  d6:	4603      	mov	r3, r0
+  d8:	4a1e      	ldr	r2, [pc, #120]	@ (154 <sukima264+0x66>)
+  da:	4631      	mov	r1, r6
+  dc:	2004      	movs	r0, #4
+  de:	47a8      	blx	r5
+  e0:	e7a6      	b.n	30 <example_plugins_app+0x30>
+        furi_check(app_descriptor->ep_api_version == PLUGIN_API_VERSION);
+  e2:	f04f 0c02 	mov.w	ip, #2
+
+000000e6 <sukima251>:
+  e6:	4b1c      	ldr	r3, [pc, #112]	@ (158 <sukima264+0x6a>)
+  e8:	4798      	blx	r3
+        furi_check(strcmp(app_descriptor->appid, PLUGIN_APP_ID) == 0);
+  ea:	f04f 0c02 	mov.w	ip, #2
+
+000000ee <sukima264>:
+  ee:	4b1a      	ldr	r3, [pc, #104]	@ (158 <sukima264+0x6a>)
+  f0:	4798      	blx	r3
+  f2:	bf00      	nop
+  f4:	00000000 	.word	0x00000000
+  f8:	0000000c 	.word	0x0000000c
+  fc:	00000000 	.word	0x00000000
+ 100:	0000001c 	.word	0x0000001c
+	...
+ 110:	00000024 	.word	0x00000024
+ 114:	00000000 	.word	0x00000000
+ 118:	00000048 	.word	0x00000048
+	...
+ 124:	00000134 	.word	0x00000134
+ 128:	00000000 	.word	0x00000000
+ 12c:	00000064 	.word	0x00000064
+ 130:	00000000 	.word	0x00000000
+ 134:	00000084 	.word	0x00000084
+ 138:	00000000 	.word	0x00000000
+ 13c:	000000a0 	.word	0x000000a0
+ 140:	000000c8 	.word	0x000000c8
+ 144:	00000000 	.word	0x00000000
+ 148:	000000d8 	.word	0x000000d8
+ 14c:	000000e8 	.word	0x000000e8
+ 150:	000000fc 	.word	0x000000fc
+ 154:	00000114 	.word	0x00000114
+ 158:	00000000 	.word	0x00000000

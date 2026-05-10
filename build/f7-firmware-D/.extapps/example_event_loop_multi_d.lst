@@ -1,0 +1,749 @@
+
+build/f7-firmware-D/.extapps/example_event_loop_multi_d.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <event_loop_multi_app_alloc>:
+    } else {
+        app->exit_countdown_value -= 1;
+    }
+}
+
+static EventLoopMultiApp* event_loop_multi_app_alloc(void) {
+   0:	b570      	push	{r4, r5, r6, lr}
+   2:	b082      	sub	sp, #8
+    EventLoopMultiApp* app = malloc(sizeof(EventLoopMultiApp));
+   4:	2020      	movs	r0, #32
+   6:	4b21      	ldr	r3, [pc, #132]	@ (8c <event_loop_multi_app_alloc+0x8c>)
+   8:	4798      	blx	r3
+   a:	4604      	mov	r4, r0
+    // Create event loop instances.
+    app->event_loop = furi_event_loop_alloc();
+   c:	4b20      	ldr	r3, [pc, #128]	@ (90 <event_loop_multi_app_alloc+0x90>)
+   e:	4798      	blx	r3
+  10:	60e0      	str	r0, [r4, #12]
+
+    // Create a worker thread instance. The worker event loop will execute inside it.
+    app->worker_thread = furi_thread_alloc_ex(
+  12:	4623      	mov	r3, r4
+  14:	4a1f      	ldr	r2, [pc, #124]	@ (94 <event_loop_multi_app_alloc+0x94>)
+  16:	f44f 6180 	mov.w	r1, #1024	@ 0x400
+  1a:	481f      	ldr	r0, [pc, #124]	@ (98 <event_loop_multi_app_alloc+0x98>)
+  1c:	4d1f      	ldr	r5, [pc, #124]	@ (9c <event_loop_multi_app_alloc+0x9c>)
+  1e:	47a8      	blx	r5
+  20:	60a0      	str	r0, [r4, #8]
+        "EventLoopMultiWorker", 1024, event_loop_multi_app_worker_thread, app);
+    // Create a message queue to receive the input events.
+    app->input_queue = furi_message_queue_alloc(INPUT_QUEUE_SIZE, sizeof(InputEvent));
+  22:	2108      	movs	r1, #8
+  24:	4608      	mov	r0, r1
+  26:	4b1e      	ldr	r3, [pc, #120]	@ (a0 <event_loop_multi_app_alloc+0xa0>)
+  28:	4798      	blx	r3
+  2a:	6120      	str	r0, [r4, #16]
+    // Create a stream buffer to receive the generated data.
+    app->stream_buffer = furi_stream_buffer_alloc(STREAM_BUFFER_SIZE, STREAM_BUFFER_SIZE);
+  2c:	2110      	movs	r1, #16
+  2e:	4608      	mov	r0, r1
+  30:	4b1c      	ldr	r3, [pc, #112]	@ (a4 <event_loop_multi_app_alloc+0xa4>)
+  32:	4798      	blx	r3
+  34:	61a0      	str	r0, [r4, #24]
+    // Create a timer to run the countdown.
+    app->exit_timer = furi_event_loop_timer_alloc(
+  36:	4623      	mov	r3, r4
+  38:	2201      	movs	r2, #1
+  3a:	491b      	ldr	r1, [pc, #108]	@ (a8 <event_loop_multi_app_alloc+0xa8>)
+  3c:	68e0      	ldr	r0, [r4, #12]
+  3e:	4d1b      	ldr	r5, [pc, #108]	@ (ac <event_loop_multi_app_alloc+0xac>)
+  40:	47a8      	blx	r5
+  42:	6160      	str	r0, [r4, #20]
+        app->event_loop,
+        event_loop_multi_app_exit_timer_callback,
+        FuriEventLoopTimerTypePeriodic,
+        app);
+
+    app->gui = furi_record_open(RECORD_GUI);
+  44:	481a      	ldr	r0, [pc, #104]	@ (b0 <event_loop_multi_app_alloc+0xb0>)
+  46:	4b1b      	ldr	r3, [pc, #108]	@ (b4 <event_loop_multi_app_alloc+0xb4>)
+  48:	4798      	blx	r3
+  4a:	6020      	str	r0, [r4, #0]
+    app->view_port = view_port_alloc();
+  4c:	4b1a      	ldr	r3, [pc, #104]	@ (b8 <event_loop_multi_app_alloc+0xb8>)
+  4e:	4798      	blx	r3
+  50:	6060      	str	r0, [r4, #4]
+    // Start the countdown from this value
+    app->exit_countdown_value = COUNTDOWN_START_VALUE;
+  52:	2505      	movs	r5, #5
+  54:	61e5      	str	r5, [r4, #28]
+    // Gain exclusive access to the input events
+    view_port_input_callback_set(app->view_port, event_loop_multi_app_input_callback, app);
+  56:	4622      	mov	r2, r4
+  58:	4918      	ldr	r1, [pc, #96]	@ (bc <event_loop_multi_app_alloc+0xbc>)
+  5a:	4b19      	ldr	r3, [pc, #100]	@ (c0 <event_loop_multi_app_alloc+0xc0>)
+  5c:	4798      	blx	r3
+    gui_add_view_port(app->gui, app->view_port, GuiLayerFullscreen);
+  5e:	2204      	movs	r2, #4
+  60:	6861      	ldr	r1, [r4, #4]
+  62:	6820      	ldr	r0, [r4, #0]
+  64:	4b17      	ldr	r3, [pc, #92]	@ (c4 <event_loop_multi_app_alloc+0xc4>)
+  66:	4798      	blx	r3
+    // Notify the event loop about incoming messages in the queue
+    furi_event_loop_subscribe_message_queue(
+  68:	9400      	str	r4, [sp, #0]
+  6a:	4b17      	ldr	r3, [pc, #92]	@ (c8 <event_loop_multi_app_alloc+0xc8>)
+  6c:	2201      	movs	r2, #1
+  6e:	6921      	ldr	r1, [r4, #16]
+  70:	68e0      	ldr	r0, [r4, #12]
+  72:	4e16      	ldr	r6, [pc, #88]	@ (cc <event_loop_multi_app_alloc+0xcc>)
+  74:	47b0      	blx	r6
+        app->input_queue,
+        FuriEventLoopEventIn,
+        event_loop_multi_app_input_queue_callback,
+        app);
+    // Notify the event loop about new data in the stream buffer
+    furi_event_loop_subscribe_stream_buffer(
+  76:	9400      	str	r4, [sp, #0]
+  78:	4b15      	ldr	r3, [pc, #84]	@ (d0 <event_loop_multi_app_alloc+0xd0>)
+  7a:	462a      	mov	r2, r5
+  7c:	69a1      	ldr	r1, [r4, #24]
+  7e:	68e0      	ldr	r0, [r4, #12]
+  80:	4d14      	ldr	r5, [pc, #80]	@ (d4 <event_loop_multi_app_alloc+0xd4>)
+  82:	47a8      	blx	r5
+        FuriEventLoopEventIn | FuriEventLoopEventFlagEdge,
+        event_loop_multi_app_stream_buffer_callback,
+        app);
+
+    return app;
+}
+  84:	4620      	mov	r0, r4
+  86:	b002      	add	sp, #8
+  88:	bd70      	pop	{r4, r5, r6, pc}
+  8a:	bf00      	nop
+	...
+  b0:	00000018 	.word	0x00000018
+	...
+
+000000d8 <event_loop_multi_app_worker_alloc>:
+    event_loop_multi_app_worker_alloc(FuriStreamBuffer* stream_buffer) {
+  d8:	b570      	push	{r4, r5, r6, lr}
+  da:	b082      	sub	sp, #8
+  dc:	4605      	mov	r5, r0
+    EventLoopMultiAppWorker* worker = malloc(sizeof(EventLoopMultiAppWorker));
+  de:	200c      	movs	r0, #12
+  e0:	4b0b      	ldr	r3, [pc, #44]	@ (110 <event_loop_multi_app_worker_alloc+0x38>)
+  e2:	4798      	blx	r3
+  e4:	4604      	mov	r4, r0
+    worker->event_loop = furi_event_loop_alloc();
+  e6:	4b0b      	ldr	r3, [pc, #44]	@ (114 <event_loop_multi_app_worker_alloc+0x3c>)
+  e8:	4798      	blx	r3
+  ea:	6020      	str	r0, [r4, #0]
+    worker->timer = furi_event_loop_timer_alloc(
+  ec:	4623      	mov	r3, r4
+  ee:	2200      	movs	r2, #0
+  f0:	4909      	ldr	r1, [pc, #36]	@ (118 <event_loop_multi_app_worker_alloc+0x40>)
+  f2:	4e0a      	ldr	r6, [pc, #40]	@ (11c <event_loop_multi_app_worker_alloc+0x44>)
+  f4:	47b0      	blx	r6
+  f6:	6060      	str	r0, [r4, #4]
+    worker->stream_buffer = stream_buffer;
+  f8:	60a5      	str	r5, [r4, #8]
+    furi_event_loop_subscribe_stream_buffer(
+  fa:	9400      	str	r4, [sp, #0]
+  fc:	4b08      	ldr	r3, [pc, #32]	@ (120 <event_loop_multi_app_worker_alloc+0x48>)
+  fe:	2206      	movs	r2, #6
+ 100:	4629      	mov	r1, r5
+ 102:	6820      	ldr	r0, [r4, #0]
+ 104:	4d07      	ldr	r5, [pc, #28]	@ (124 <event_loop_multi_app_worker_alloc+0x4c>)
+ 106:	47a8      	blx	r5
+}
+ 108:	4620      	mov	r0, r4
+ 10a:	b002      	add	sp, #8
+ 10c:	bd70      	pop	{r4, r5, r6, pc}
+ 10e:	bf00      	nop
+	...
+
+00000128 <event_loop_multi_app_stream_buffer_callback>:
+    event_loop_multi_app_stream_buffer_callback(FuriEventLoopObject* object, void* context) {
+ 128:	b530      	push	{r4, r5, lr}
+ 12a:	b085      	sub	sp, #20
+    furi_assert(context);
+ 12c:	b179      	cbz	r1, 14e <event_loop_multi_app_stream_buffer_callback+0x26>
+ 12e:	4603      	mov	r3, r0
+    furi_assert(object == app->stream_buffer);
+ 130:	6988      	ldr	r0, [r1, #24]
+ 132:	4298      	cmp	r0, r3
+ 134:	d10f      	bne.n	156 <sukima296+0x4>
+    furi_check(
+ 136:	2300      	movs	r3, #0
+ 138:	2210      	movs	r2, #16
+ 13a:	4669      	mov	r1, sp
+ 13c:	4c17      	ldr	r4, [pc, #92]	@ (19c <sukima330+0x3a>)
+ 13e:	47a0      	blx	r4
+ 140:	2810      	cmp	r0, #16
+ 142:	d10c      	bne.n	15e <sukima314+0x4>
+    FuriString* tmp_str = furi_string_alloc();
+ 144:	4b16      	ldr	r3, [pc, #88]	@ (1a0 <sukima330+0x3e>)
+ 146:	4798      	blx	r3
+ 148:	4605      	mov	r5, r0
+    for(uint32_t i = 0; i < sizeof(data); ++i) {
+ 14a:	2400      	movs	r4, #0
+ 14c:	e015      	b.n	17a <sukima330+0x18>
+    furi_assert(context);
+ 14e:	f04f 0c01 	mov.w	ip, #1
+
+00000152 <sukima296>:
+ 152:	4b14      	ldr	r3, [pc, #80]	@ (1a4 <sukima330+0x42>)
+ 154:	4798      	blx	r3
+    furi_assert(object == app->stream_buffer);
+ 156:	f04f 0c01 	mov.w	ip, #1
+
+0000015a <sukima314>:
+ 15a:	4b12      	ldr	r3, [pc, #72]	@ (1a4 <sukima330+0x42>)
+ 15c:	4798      	blx	r3
+    furi_check(
+ 15e:	f04f 0c02 	mov.w	ip, #2
+
+00000162 <sukima330>:
+ 162:	4b10      	ldr	r3, [pc, #64]	@ (1a4 <sukima330+0x42>)
+ 164:	4798      	blx	r3
+        furi_string_cat_printf(tmp_str, "%02X ", data[i]);
+ 166:	f104 0310 	add.w	r3, r4, #16
+ 16a:	446b      	add	r3, sp
+ 16c:	f813 2c10 	ldrb.w	r2, [r3, #-16]
+ 170:	490d      	ldr	r1, [pc, #52]	@ (1a8 <sukima330+0x46>)
+ 172:	4628      	mov	r0, r5
+ 174:	4b0d      	ldr	r3, [pc, #52]	@ (1ac <sukima330+0x4a>)
+ 176:	4798      	blx	r3
+    for(uint32_t i = 0; i < sizeof(data); ++i) {
+ 178:	3401      	adds	r4, #1
+ 17a:	2c0f      	cmp	r4, #15
+ 17c:	d9f3      	bls.n	166 <sukima330+0x4>
+    FURI_LOG_I(TAG, "Received data: %s", furi_string_get_cstr(tmp_str));
+ 17e:	4628      	mov	r0, r5
+ 180:	4b0b      	ldr	r3, [pc, #44]	@ (1b0 <sukima330+0x4e>)
+ 182:	4798      	blx	r3
+ 184:	4603      	mov	r3, r0
+ 186:	4a0b      	ldr	r2, [pc, #44]	@ (1b4 <sukima330+0x52>)
+ 188:	490b      	ldr	r1, [pc, #44]	@ (1b8 <sukima330+0x56>)
+ 18a:	2004      	movs	r0, #4
+ 18c:	4c0b      	ldr	r4, [pc, #44]	@ (1bc <sukima330+0x5a>)
+ 18e:	47a0      	blx	r4
+    furi_string_free(tmp_str);
+ 190:	4628      	mov	r0, r5
+ 192:	4b0b      	ldr	r3, [pc, #44]	@ (1c0 <sukima330+0x5e>)
+ 194:	4798      	blx	r3
+}
+ 196:	b005      	add	sp, #20
+ 198:	bd30      	pop	{r4, r5, pc}
+ 19a:	bf00      	nop
+	...
+ 1a8:	0000001c 	.word	0x0000001c
+	...
+ 1b4:	00000024 	.word	0x00000024
+ 1b8:	00000038 	.word	0x00000038
+	...
+
+000001c4 <event_loop_multi_app_stream_buffer_worker_callback>:
+    event_loop_multi_app_stream_buffer_worker_callback(FuriEventLoopObject* object, void* context) {
+ 1c4:	b510      	push	{r4, lr}
+    furi_assert(context);
+ 1c6:	b171      	cbz	r1, 1e6 <event_loop_multi_app_stream_buffer_worker_callback+0x22>
+ 1c8:	460c      	mov	r4, r1
+    furi_assert(object == worker->stream_buffer);
+ 1ca:	688b      	ldr	r3, [r1, #8]
+ 1cc:	4283      	cmp	r3, r0
+ 1ce:	d10e      	bne.n	1ee <sukima467+0x4>
+    FURI_LOG_I(TAG, "Data was removed from buffer");
+ 1d0:	4a09      	ldr	r2, [pc, #36]	@ (1f8 <sukima485+0x6>)
+ 1d2:	490a      	ldr	r1, [pc, #40]	@ (1fc <sukima485+0xa>)
+ 1d4:	2004      	movs	r0, #4
+ 1d6:	4b0a      	ldr	r3, [pc, #40]	@ (200 <sukima485+0xe>)
+ 1d8:	4798      	blx	r3
+    furi_event_loop_timer_start(worker->timer, WORKER_DATA_INTERVAL_MS);
+ 1da:	f240 51dc 	movw	r1, #1500	@ 0x5dc
+ 1de:	6860      	ldr	r0, [r4, #4]
+ 1e0:	4b08      	ldr	r3, [pc, #32]	@ (204 <sukima485+0x12>)
+ 1e2:	4798      	blx	r3
+}
+ 1e4:	bd10      	pop	{r4, pc}
+    furi_assert(context);
+ 1e6:	f04f 0c01 	mov.w	ip, #1
+
+000001ea <sukima467>:
+ 1ea:	4b07      	ldr	r3, [pc, #28]	@ (208 <sukima485+0x16>)
+ 1ec:	4798      	blx	r3
+    furi_assert(object == worker->stream_buffer);
+ 1ee:	f04f 0c01 	mov.w	ip, #1
+
+000001f2 <sukima485>:
+ 1f2:	4b05      	ldr	r3, [pc, #20]	@ (208 <sukima485+0x16>)
+ 1f4:	4798      	blx	r3
+ 1f6:	bf00      	nop
+ 1f8:	00000050 	.word	0x00000050
+ 1fc:	00000038 	.word	0x00000038
+	...
+
+0000020c <event_loop_multi_app_input_queue_callback>:
+static void event_loop_multi_app_input_queue_callback(FuriEventLoopObject* object, void* context) {
+ 20c:	b510      	push	{r4, lr}
+ 20e:	b082      	sub	sp, #8
+    furi_assert(context);
+ 210:	b189      	cbz	r1, 236 <event_loop_multi_app_input_queue_callback+0x2a>
+ 212:	4603      	mov	r3, r0
+ 214:	460c      	mov	r4, r1
+    furi_assert(object == app->input_queue);
+ 216:	6908      	ldr	r0, [r1, #16]
+ 218:	4298      	cmp	r0, r3
+ 21a:	d110      	bne.n	23e <sukima585+0x4>
+    furi_check(furi_message_queue_get(app->input_queue, &event, 0) == FuriStatusOk);
+ 21c:	2200      	movs	r2, #0
+ 21e:	4669      	mov	r1, sp
+ 220:	4b2d      	ldr	r3, [pc, #180]	@ (2d8 <sukima619+0x8e>)
+ 222:	4798      	blx	r3
+ 224:	b978      	cbnz	r0, 246 <sukima603+0x4>
+    if(event.type == InputTypeLong) {
+ 226:	f89d 3005 	ldrb.w	r3, [sp, #5]
+ 22a:	2b03      	cmp	r3, #3
+ 22c:	d00f      	beq.n	24e <sukima619+0x4>
+    } else if(event.type == InputTypeShort) {
+ 22e:	2b02      	cmp	r3, #2
+ 230:	d046      	beq.n	2c0 <sukima619+0x76>
+}
+ 232:	b002      	add	sp, #8
+ 234:	bd10      	pop	{r4, pc}
+    furi_assert(context);
+ 236:	f04f 0c01 	mov.w	ip, #1
+
+0000023a <sukima585>:
+ 23a:	4b28      	ldr	r3, [pc, #160]	@ (2dc <sukima619+0x92>)
+ 23c:	4798      	blx	r3
+    furi_assert(object == app->input_queue);
+ 23e:	f04f 0c01 	mov.w	ip, #1
+
+00000242 <sukima603>:
+ 242:	4b26      	ldr	r3, [pc, #152]	@ (2dc <sukima619+0x92>)
+ 244:	4798      	blx	r3
+    furi_check(furi_message_queue_get(app->input_queue, &event, 0) == FuriStatusOk);
+ 246:	f04f 0c02 	mov.w	ip, #2
+
+0000024a <sukima619>:
+ 24a:	4b24      	ldr	r3, [pc, #144]	@ (2dc <sukima619+0x92>)
+ 24c:	4798      	blx	r3
+        if(event.key == InputKeyBack) {
+ 24e:	f89d 0004 	ldrb.w	r0, [sp, #4]
+ 252:	2805      	cmp	r0, #5
+ 254:	d00a      	beq.n	26c <sukima619+0x22>
+        } else if(event.key == InputKeyOk) {
+ 256:	2804      	cmp	r0, #4
+ 258:	d01d      	beq.n	296 <sukima619+0x4c>
+            FURI_LOG_I(TAG, "Long press: %s", input_get_key_name(event.key));
+ 25a:	4b21      	ldr	r3, [pc, #132]	@ (2e0 <sukima619+0x96>)
+ 25c:	4798      	blx	r3
+ 25e:	4603      	mov	r3, r0
+ 260:	4a20      	ldr	r2, [pc, #128]	@ (2e4 <sukima619+0x9a>)
+ 262:	4921      	ldr	r1, [pc, #132]	@ (2e8 <sukima619+0x9e>)
+ 264:	2004      	movs	r0, #4
+ 266:	4c21      	ldr	r4, [pc, #132]	@ (2ec <sukima619+0xa2>)
+ 268:	47a0      	blx	r4
+ 26a:	e7e2      	b.n	232 <event_loop_multi_app_input_queue_callback+0x26>
+            if(!furi_event_loop_timer_is_running(app->exit_timer)) {
+ 26c:	6960      	ldr	r0, [r4, #20]
+ 26e:	4b20      	ldr	r3, [pc, #128]	@ (2f0 <sukima619+0xa6>)
+ 270:	4798      	blx	r3
+ 272:	b950      	cbnz	r0, 28a <sukima619+0x40>
+                FURI_LOG_I(TAG, "Starting exit countdown!");
+ 274:	4a1f      	ldr	r2, [pc, #124]	@ (2f4 <sukima619+0xaa>)
+ 276:	491c      	ldr	r1, [pc, #112]	@ (2e8 <sukima619+0x9e>)
+ 278:	2004      	movs	r0, #4
+ 27a:	4b1c      	ldr	r3, [pc, #112]	@ (2ec <sukima619+0xa2>)
+ 27c:	4798      	blx	r3
+                furi_event_loop_timer_start(app->exit_timer, COUNTDOWN_INTERVAL_MS);
+ 27e:	f44f 717a 	mov.w	r1, #1000	@ 0x3e8
+ 282:	6960      	ldr	r0, [r4, #20]
+ 284:	4b1c      	ldr	r3, [pc, #112]	@ (2f8 <sukima619+0xae>)
+ 286:	4798      	blx	r3
+ 288:	e7d3      	b.n	232 <event_loop_multi_app_input_queue_callback+0x26>
+                FURI_LOG_W(TAG, "Countdown has already been started");
+ 28a:	4a1c      	ldr	r2, [pc, #112]	@ (2fc <sukima619+0xb2>)
+ 28c:	4916      	ldr	r1, [pc, #88]	@ (2e8 <sukima619+0x9e>)
+ 28e:	2003      	movs	r0, #3
+ 290:	4b16      	ldr	r3, [pc, #88]	@ (2ec <sukima619+0xa2>)
+ 292:	4798      	blx	r3
+ 294:	e7cd      	b.n	232 <event_loop_multi_app_input_queue_callback+0x26>
+            if(furi_event_loop_timer_is_running(app->exit_timer)) {
+ 296:	6960      	ldr	r0, [r4, #20]
+ 298:	4b15      	ldr	r3, [pc, #84]	@ (2f0 <sukima619+0xa6>)
+ 29a:	4798      	blx	r3
+ 29c:	b150      	cbz	r0, 2b4 <sukima619+0x6a>
+                FURI_LOG_I(TAG, "Exit countdown cancelled!");
+ 29e:	4a18      	ldr	r2, [pc, #96]	@ (300 <sukima619+0xb6>)
+ 2a0:	4911      	ldr	r1, [pc, #68]	@ (2e8 <sukima619+0x9e>)
+ 2a2:	2004      	movs	r0, #4
+ 2a4:	4b11      	ldr	r3, [pc, #68]	@ (2ec <sukima619+0xa2>)
+ 2a6:	4798      	blx	r3
+                app->exit_countdown_value = COUNTDOWN_START_VALUE;
+ 2a8:	2305      	movs	r3, #5
+ 2aa:	61e3      	str	r3, [r4, #28]
+                furi_event_loop_timer_stop(app->exit_timer);
+ 2ac:	6960      	ldr	r0, [r4, #20]
+ 2ae:	4b15      	ldr	r3, [pc, #84]	@ (304 <sukima619+0xba>)
+ 2b0:	4798      	blx	r3
+ 2b2:	e7be      	b.n	232 <event_loop_multi_app_input_queue_callback+0x26>
+                FURI_LOG_W(TAG, "Countdown has not been started yet");
+ 2b4:	4a14      	ldr	r2, [pc, #80]	@ (308 <sukima619+0xbe>)
+ 2b6:	490c      	ldr	r1, [pc, #48]	@ (2e8 <sukima619+0x9e>)
+ 2b8:	2003      	movs	r0, #3
+ 2ba:	4b0c      	ldr	r3, [pc, #48]	@ (2ec <sukima619+0xa2>)
+ 2bc:	4798      	blx	r3
+ 2be:	e7b8      	b.n	232 <event_loop_multi_app_input_queue_callback+0x26>
+        FURI_LOG_I(TAG, "Short press: %s", input_get_key_name(event.key));
+ 2c0:	f89d 0004 	ldrb.w	r0, [sp, #4]
+ 2c4:	4b06      	ldr	r3, [pc, #24]	@ (2e0 <sukima619+0x96>)
+ 2c6:	4798      	blx	r3
+ 2c8:	4603      	mov	r3, r0
+ 2ca:	4a10      	ldr	r2, [pc, #64]	@ (30c <sukima619+0xc2>)
+ 2cc:	4906      	ldr	r1, [pc, #24]	@ (2e8 <sukima619+0x9e>)
+ 2ce:	2004      	movs	r0, #4
+ 2d0:	4c06      	ldr	r4, [pc, #24]	@ (2ec <sukima619+0xa2>)
+ 2d2:	47a0      	blx	r4
+}
+ 2d4:	e7ad      	b.n	232 <event_loop_multi_app_input_queue_callback+0x26>
+ 2d6:	bf00      	nop
+	...
+ 2e4:	000000f0 	.word	0x000000f0
+ 2e8:	00000038 	.word	0x00000038
+	...
+ 2f4:	00000070 	.word	0x00000070
+ 2f8:	00000000 	.word	0x00000000
+ 2fc:	0000008c 	.word	0x0000008c
+ 300:	000000b0 	.word	0x000000b0
+ 304:	00000000 	.word	0x00000000
+ 308:	000000cc 	.word	0x000000cc
+ 30c:	00000100 	.word	0x00000100
+
+00000310 <event_loop_multi_app_input_callback>:
+static void event_loop_multi_app_input_callback(InputEvent* event, void* context) {
+ 310:	b508      	push	{r3, lr}
+    furi_assert(context);
+ 312:	b141      	cbz	r1, 326 <event_loop_multi_app_input_callback+0x16>
+ 314:	460b      	mov	r3, r1
+    furi_check(furi_message_queue_put(app->input_queue, event, FuriWaitForever) == FuriStatusOk);
+ 316:	f04f 32ff 	mov.w	r2, #4294967295	@ 0xffffffff
+ 31a:	4601      	mov	r1, r0
+ 31c:	6918      	ldr	r0, [r3, #16]
+ 31e:	4b06      	ldr	r3, [pc, #24]	@ (338 <sukima845+0x6>)
+ 320:	4798      	blx	r3
+ 322:	b920      	cbnz	r0, 32e <sukima829+0x4>
+}
+ 324:	bd08      	pop	{r3, pc}
+    furi_assert(context);
+ 326:	f04f 0c01 	mov.w	ip, #1
+
+0000032a <sukima829>:
+ 32a:	4b04      	ldr	r3, [pc, #16]	@ (33c <sukima845+0xa>)
+ 32c:	4798      	blx	r3
+    furi_check(furi_message_queue_put(app->input_queue, event, FuriWaitForever) == FuriStatusOk);
+ 32e:	f04f 0c02 	mov.w	ip, #2
+
+00000332 <sukima845>:
+ 332:	4b02      	ldr	r3, [pc, #8]	@ (33c <sukima845+0xa>)
+ 334:	4798      	blx	r3
+ 336:	bf00      	nop
+	...
+
+00000340 <event_loop_multi_app_exit_timer_callback>:
+static void event_loop_multi_app_exit_timer_callback(void* context) {
+ 340:	b538      	push	{r3, r4, r5, lr}
+    furi_assert(context);
+ 342:	b158      	cbz	r0, 35c <event_loop_multi_app_exit_timer_callback+0x1c>
+ 344:	4604      	mov	r4, r0
+    FURI_LOG_I(TAG, "Exiting in %lu ...", app->exit_countdown_value);
+ 346:	69c3      	ldr	r3, [r0, #28]
+ 348:	4a0d      	ldr	r2, [pc, #52]	@ (380 <sukima916+0x20>)
+ 34a:	490e      	ldr	r1, [pc, #56]	@ (384 <sukima916+0x24>)
+ 34c:	2004      	movs	r0, #4
+ 34e:	4d0e      	ldr	r5, [pc, #56]	@ (388 <sukima916+0x28>)
+ 350:	47a8      	blx	r5
+    if(app->exit_countdown_value == 0) {
+ 352:	69e3      	ldr	r3, [r4, #28]
+ 354:	b133      	cbz	r3, 364 <sukima916+0x4>
+        app->exit_countdown_value -= 1;
+ 356:	3b01      	subs	r3, #1
+ 358:	61e3      	str	r3, [r4, #28]
+}
+ 35a:	bd38      	pop	{r3, r4, r5, pc}
+    furi_assert(context);
+ 35c:	f04f 0c01 	mov.w	ip, #1
+
+00000360 <sukima916>:
+ 360:	4b0a      	ldr	r3, [pc, #40]	@ (38c <sukima916+0x2c>)
+ 362:	4798      	blx	r3
+        FURI_LOG_I(TAG, "Exiting NOW!");
+ 364:	4a0a      	ldr	r2, [pc, #40]	@ (390 <sukima916+0x30>)
+ 366:	4907      	ldr	r1, [pc, #28]	@ (384 <sukima916+0x24>)
+ 368:	2004      	movs	r0, #4
+ 36a:	47a8      	blx	r5
+        furi_thread_signal(app->worker_thread, FuriSignalExit, NULL);
+ 36c:	2200      	movs	r2, #0
+ 36e:	4611      	mov	r1, r2
+ 370:	68a0      	ldr	r0, [r4, #8]
+ 372:	4b08      	ldr	r3, [pc, #32]	@ (394 <sukima916+0x34>)
+ 374:	4798      	blx	r3
+        furi_event_loop_stop(app->event_loop);
+ 376:	68e0      	ldr	r0, [r4, #12]
+ 378:	4b07      	ldr	r3, [pc, #28]	@ (398 <sukima916+0x38>)
+ 37a:	4798      	blx	r3
+ 37c:	e7ed      	b.n	35a <event_loop_multi_app_exit_timer_callback+0x1a>
+ 37e:	bf00      	nop
+ 380:	00000110 	.word	0x00000110
+ 384:	00000038 	.word	0x00000038
+	...
+ 390:	00000124 	.word	0x00000124
+	...
+
+0000039c <event_loop_multi_app_worker_timer_callback>:
+static void event_loop_multi_app_worker_timer_callback(void* context) {
+ 39c:	b510      	push	{r4, lr}
+ 39e:	b084      	sub	sp, #16
+    furi_assert(context);
+ 3a0:	b170      	cbz	r0, 3c0 <event_loop_multi_app_worker_timer_callback+0x24>
+ 3a2:	4604      	mov	r4, r0
+    furi_hal_random_fill_buf(data, sizeof(data));
+ 3a4:	2110      	movs	r1, #16
+ 3a6:	4668      	mov	r0, sp
+ 3a8:	4b09      	ldr	r3, [pc, #36]	@ (3d0 <sukima1039+0x4>)
+ 3aa:	4798      	blx	r3
+    furi_check(
+ 3ac:	2300      	movs	r3, #0
+ 3ae:	2210      	movs	r2, #16
+ 3b0:	4669      	mov	r1, sp
+ 3b2:	68a0      	ldr	r0, [r4, #8]
+ 3b4:	4c07      	ldr	r4, [pc, #28]	@ (3d4 <sukima1039+0x8>)
+ 3b6:	47a0      	blx	r4
+ 3b8:	2810      	cmp	r0, #16
+ 3ba:	d105      	bne.n	3c8 <sukima1024+0x4>
+}
+ 3bc:	b004      	add	sp, #16
+ 3be:	bd10      	pop	{r4, pc}
+    furi_assert(context);
+ 3c0:	f04f 0c01 	mov.w	ip, #1
+
+000003c4 <sukima1024>:
+ 3c4:	4b04      	ldr	r3, [pc, #16]	@ (3d8 <sukima1039+0xc>)
+ 3c6:	4798      	blx	r3
+    furi_check(
+ 3c8:	f04f 0c02 	mov.w	ip, #2
+
+000003cc <sukima1039>:
+ 3cc:	4b02      	ldr	r3, [pc, #8]	@ (3d8 <sukima1039+0xc>)
+ 3ce:	4798      	blx	r3
+	...
+
+000003dc <event_loop_multi_app_worker_run>:
+static void event_loop_multi_app_worker_run(EventLoopMultiAppWorker* worker) {
+ 3dc:	b510      	push	{r4, lr}
+ 3de:	4604      	mov	r4, r0
+    furi_event_loop_timer_start(worker->timer, WORKER_DATA_INTERVAL_MS);
+ 3e0:	f240 51dc 	movw	r1, #1500	@ 0x5dc
+ 3e4:	6840      	ldr	r0, [r0, #4]
+ 3e6:	4b03      	ldr	r3, [pc, #12]	@ (3f4 <event_loop_multi_app_worker_run+0x18>)
+ 3e8:	4798      	blx	r3
+    furi_event_loop_run(worker->event_loop);
+ 3ea:	6820      	ldr	r0, [r4, #0]
+ 3ec:	4b02      	ldr	r3, [pc, #8]	@ (3f8 <event_loop_multi_app_worker_run+0x1c>)
+ 3ee:	4798      	blx	r3
+}
+ 3f0:	bd10      	pop	{r4, pc}
+ 3f2:	bf00      	nop
+	...
+
+000003fc <event_loop_multi_app_worker_free>:
+static void event_loop_multi_app_worker_free(EventLoopMultiAppWorker* worker) {
+ 3fc:	b510      	push	{r4, lr}
+ 3fe:	4604      	mov	r4, r0
+    furi_event_loop_unsubscribe(worker->event_loop, worker->stream_buffer);
+ 400:	6881      	ldr	r1, [r0, #8]
+ 402:	6800      	ldr	r0, [r0, #0]
+ 404:	4b05      	ldr	r3, [pc, #20]	@ (41c <event_loop_multi_app_worker_free+0x20>)
+ 406:	4798      	blx	r3
+    furi_event_loop_timer_free(worker->timer);
+ 408:	6860      	ldr	r0, [r4, #4]
+ 40a:	4b05      	ldr	r3, [pc, #20]	@ (420 <event_loop_multi_app_worker_free+0x24>)
+ 40c:	4798      	blx	r3
+    furi_event_loop_free(worker->event_loop);
+ 40e:	6820      	ldr	r0, [r4, #0]
+ 410:	4b04      	ldr	r3, [pc, #16]	@ (424 <event_loop_multi_app_worker_free+0x28>)
+ 412:	4798      	blx	r3
+    free(worker);
+ 414:	4620      	mov	r0, r4
+ 416:	4b04      	ldr	r3, [pc, #16]	@ (428 <event_loop_multi_app_worker_free+0x2c>)
+ 418:	4798      	blx	r3
+}
+ 41a:	bd10      	pop	{r4, pc}
+	...
+
+0000042c <event_loop_multi_app_worker_thread>:
+static int32_t event_loop_multi_app_worker_thread(void* context) {
+ 42c:	b510      	push	{r4, lr}
+    furi_assert(context);
+ 42e:	b150      	cbz	r0, 446 <event_loop_multi_app_worker_thread+0x1a>
+    EventLoopMultiAppWorker* worker = event_loop_multi_app_worker_alloc(app->stream_buffer);
+ 430:	6980      	ldr	r0, [r0, #24]
+ 432:	4b07      	ldr	r3, [pc, #28]	@ (450 <sukima1187+0x6>)
+ 434:	4798      	blx	r3
+ 436:	4604      	mov	r4, r0
+    event_loop_multi_app_worker_run(worker);
+ 438:	4b06      	ldr	r3, [pc, #24]	@ (454 <sukima1187+0xa>)
+ 43a:	4798      	blx	r3
+    event_loop_multi_app_worker_free(worker);
+ 43c:	4620      	mov	r0, r4
+ 43e:	4b06      	ldr	r3, [pc, #24]	@ (458 <sukima1187+0xe>)
+ 440:	4798      	blx	r3
+}
+ 442:	2000      	movs	r0, #0
+ 444:	bd10      	pop	{r4, pc}
+    furi_assert(context);
+ 446:	f04f 0c01 	mov.w	ip, #1
+
+0000044a <sukima1187>:
+ 44a:	4b04      	ldr	r3, [pc, #16]	@ (45c <sukima1187+0x12>)
+ 44c:	4798      	blx	r3
+ 44e:	bf00      	nop
+	...
+
+00000460 <event_loop_multi_app_run>:
+    furi_event_loop_free(app->event_loop);
+
+    free(app);
+}
+
+static void event_loop_multi_app_run(EventLoopMultiApp* app) {
+ 460:	b570      	push	{r4, r5, r6, lr}
+ 462:	4604      	mov	r4, r0
+    FURI_LOG_I(TAG, "Press keys to see them printed here.");
+ 464:	4e0c      	ldr	r6, [pc, #48]	@ (498 <event_loop_multi_app_run+0x38>)
+ 466:	4a0d      	ldr	r2, [pc, #52]	@ (49c <event_loop_multi_app_run+0x3c>)
+ 468:	4631      	mov	r1, r6
+ 46a:	2004      	movs	r0, #4
+ 46c:	4d0c      	ldr	r5, [pc, #48]	@ (4a0 <event_loop_multi_app_run+0x40>)
+ 46e:	47a8      	blx	r5
+    FURI_LOG_I(TAG, "Long press \"Back\" to exit after %lu seconds.", COUNTDOWN_START_VALUE);
+ 470:	2305      	movs	r3, #5
+ 472:	4a0c      	ldr	r2, [pc, #48]	@ (4a4 <event_loop_multi_app_run+0x44>)
+ 474:	4631      	mov	r1, r6
+ 476:	2004      	movs	r0, #4
+ 478:	47a8      	blx	r5
+    FURI_LOG_I(TAG, "Long press \"Ok\" to cancel the countdown.");
+ 47a:	4a0b      	ldr	r2, [pc, #44]	@ (4a8 <event_loop_multi_app_run+0x48>)
+ 47c:	4631      	mov	r1, r6
+ 47e:	2004      	movs	r0, #4
+ 480:	47a8      	blx	r5
+
+    // Start the worker thread
+    furi_thread_start(app->worker_thread);
+ 482:	68a0      	ldr	r0, [r4, #8]
+ 484:	4b09      	ldr	r3, [pc, #36]	@ (4ac <event_loop_multi_app_run+0x4c>)
+ 486:	4798      	blx	r3
+    // Run the application event loop. This call will block until the application is about to exit.
+    furi_event_loop_run(app->event_loop);
+ 488:	68e0      	ldr	r0, [r4, #12]
+ 48a:	4b09      	ldr	r3, [pc, #36]	@ (4b0 <event_loop_multi_app_run+0x50>)
+ 48c:	4798      	blx	r3
+    // Wait for the worker thread to finish.
+    furi_thread_join(app->worker_thread);
+ 48e:	68a0      	ldr	r0, [r4, #8]
+ 490:	4b08      	ldr	r3, [pc, #32]	@ (4b4 <event_loop_multi_app_run+0x54>)
+ 492:	4798      	blx	r3
+}
+ 494:	bd70      	pop	{r4, r5, r6, pc}
+ 496:	bf00      	nop
+ 498:	00000038 	.word	0x00000038
+ 49c:	00000134 	.word	0x00000134
+ 4a0:	00000000 	.word	0x00000000
+ 4a4:	0000015c 	.word	0x0000015c
+ 4a8:	0000018c 	.word	0x0000018c
+	...
+
+000004b8 <event_loop_multi_app_free>:
+static void event_loop_multi_app_free(EventLoopMultiApp* app) {
+ 4b8:	b538      	push	{r3, r4, r5, lr}
+ 4ba:	4604      	mov	r4, r0
+    gui_remove_view_port(app->gui, app->view_port);
+ 4bc:	6841      	ldr	r1, [r0, #4]
+ 4be:	6800      	ldr	r0, [r0, #0]
+ 4c0:	4b10      	ldr	r3, [pc, #64]	@ (504 <event_loop_multi_app_free+0x4c>)
+ 4c2:	4798      	blx	r3
+    furi_record_close(RECORD_GUI);
+ 4c4:	4810      	ldr	r0, [pc, #64]	@ (508 <event_loop_multi_app_free+0x50>)
+ 4c6:	4b11      	ldr	r3, [pc, #68]	@ (50c <event_loop_multi_app_free+0x54>)
+ 4c8:	4798      	blx	r3
+    furi_event_loop_unsubscribe(app->event_loop, app->input_queue);
+ 4ca:	6921      	ldr	r1, [r4, #16]
+ 4cc:	68e0      	ldr	r0, [r4, #12]
+ 4ce:	4d10      	ldr	r5, [pc, #64]	@ (510 <event_loop_multi_app_free+0x58>)
+ 4d0:	47a8      	blx	r5
+    furi_event_loop_unsubscribe(app->event_loop, app->stream_buffer);
+ 4d2:	69a1      	ldr	r1, [r4, #24]
+ 4d4:	68e0      	ldr	r0, [r4, #12]
+ 4d6:	47a8      	blx	r5
+    view_port_free(app->view_port);
+ 4d8:	6860      	ldr	r0, [r4, #4]
+ 4da:	4b0e      	ldr	r3, [pc, #56]	@ (514 <event_loop_multi_app_free+0x5c>)
+ 4dc:	4798      	blx	r3
+    furi_message_queue_free(app->input_queue);
+ 4de:	6920      	ldr	r0, [r4, #16]
+ 4e0:	4b0d      	ldr	r3, [pc, #52]	@ (518 <event_loop_multi_app_free+0x60>)
+ 4e2:	4798      	blx	r3
+    furi_stream_buffer_free(app->stream_buffer);
+ 4e4:	69a0      	ldr	r0, [r4, #24]
+ 4e6:	4b0d      	ldr	r3, [pc, #52]	@ (51c <event_loop_multi_app_free+0x64>)
+ 4e8:	4798      	blx	r3
+    furi_event_loop_timer_free(app->exit_timer);
+ 4ea:	6960      	ldr	r0, [r4, #20]
+ 4ec:	4b0c      	ldr	r3, [pc, #48]	@ (520 <event_loop_multi_app_free+0x68>)
+ 4ee:	4798      	blx	r3
+    furi_thread_free(app->worker_thread);
+ 4f0:	68a0      	ldr	r0, [r4, #8]
+ 4f2:	4b0c      	ldr	r3, [pc, #48]	@ (524 <event_loop_multi_app_free+0x6c>)
+ 4f4:	4798      	blx	r3
+    furi_event_loop_free(app->event_loop);
+ 4f6:	68e0      	ldr	r0, [r4, #12]
+ 4f8:	4b0b      	ldr	r3, [pc, #44]	@ (528 <event_loop_multi_app_free+0x70>)
+ 4fa:	4798      	blx	r3
+    free(app);
+ 4fc:	4620      	mov	r0, r4
+ 4fe:	4b0b      	ldr	r3, [pc, #44]	@ (52c <event_loop_multi_app_free+0x74>)
+ 500:	4798      	blx	r3
+}
+ 502:	bd38      	pop	{r3, r4, r5, pc}
+ 504:	00000000 	.word	0x00000000
+ 508:	00000018 	.word	0x00000018
+	...
+
+00000530 <example_event_loop_multi_app>:
+/*******************************************************************
+ *                     vvv START HERE vvv
+ *
+ * The application's entry point - referenced in application.fam
+ *******************************************************************/
+int32_t example_event_loop_multi_app(void* arg) {
+ 530:	b510      	push	{r4, lr}
+    UNUSED(arg);
+
+    EventLoopMultiApp* app = event_loop_multi_app_alloc();
+ 532:	4b05      	ldr	r3, [pc, #20]	@ (548 <example_event_loop_multi_app+0x18>)
+ 534:	4798      	blx	r3
+ 536:	4604      	mov	r4, r0
+    event_loop_multi_app_run(app);
+ 538:	4b04      	ldr	r3, [pc, #16]	@ (54c <example_event_loop_multi_app+0x1c>)
+ 53a:	4798      	blx	r3
+    event_loop_multi_app_free(app);
+ 53c:	4620      	mov	r0, r4
+ 53e:	4b04      	ldr	r3, [pc, #16]	@ (550 <example_event_loop_multi_app+0x20>)
+ 540:	4798      	blx	r3
+
+    return 0;
+}
+ 542:	2000      	movs	r0, #0
+ 544:	bd10      	pop	{r4, pc}
+ 546:	bf00      	nop
+	...

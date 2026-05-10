@@ -1,0 +1,227 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/example_images/example_images.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/example_images/example_images.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/example_images/example_images.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/example_images/example_images.o
+ .text          0x00000000        0x0 build/f7-firmware-D/.extapps/example_images/example_images_icons.o
+ .data          0x00000000        0x0 build/f7-firmware-D/.extapps/example_images/example_images_icons.o
+ .bss           0x00000000        0x0 build/f7-firmware-D/.extapps/example_images/example_images_icons.o
+ .comment       0x00000000       0x1c build/f7-firmware-D/.extapps/example_images/example_images_icons.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD build/f7-firmware-D/.extapps/example_images/example_images.o
+LOAD build/f7-firmware-D/.extapps/example_images/example_images_icons.o
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+fp/hard/libgcc.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libstdc++_nano.a
+LOAD /home/arjun/flipperzero-firmware/toolchain/x86_64-linux/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libsupc++_nano.a
+
+.text           0x00000000      0x15c
+ *(.text)
+ *(.stub)
+ *(.text*)
+ .text.app_input_callback
+                0x00000000       0x24 build/f7-firmware-D/.extapps/example_images/example_images.o
+ .text.app_draw_callback
+                0x00000024       0x28 build/f7-firmware-D/.extapps/example_images/example_images.o
+ .text.example_images_main
+                0x0000004c      0x110 build/f7-firmware-D/.extapps/example_images/example_images.o
+                0x0000004c                example_images_main
+ *(.text.*)
+ *(.text._*)
+ *(.init)
+ *(.fini)
+
+.rodata         0x0000015c       0x9b
+ *(.rodata)
+ *(.rodata1)
+ *(.rodata.*)
+ .rodata.example_images_main.str1.4
+                0x0000015c        0x4 build/f7-firmware-D/.extapps/example_images/example_images.o
+ .rodata.I_dolphin_71x25
+                0x00000160        0xc build/f7-firmware-D/.extapps/example_images/example_images_icons.o
+                0x00000160                I_dolphin_71x25
+ .rodata._I_dolphin_71x25
+                0x0000016c        0x4 build/f7-firmware-D/.extapps/example_images/example_images_icons.o
+                0x0000016c                _I_dolphin_71x25
+ .rodata._I_dolphin_71x25_0
+                0x00000170       0x87 build/f7-firmware-D/.extapps/example_images/example_images_icons.o
+                0x00000170                _I_dolphin_71x25_0
+
+.data
+ *(.data)
+ *(.data1)
+ *(.data.*)
+
+.bss            0x000001f8        0x8
+ *(.bss)
+ *(.bss*)
+ .bss.image_position
+                0x000001f8        0x8 build/f7-firmware-D/.extapps/example_images/example_images.o
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x48
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x30 build/f7-firmware-D/.extapps/example_images/example_images.o
+ .debug_aranges
+                0x00000030       0x18 build/f7-firmware-D/.extapps/example_images/example_images_icons.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000      0xae6
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000      0x970 build/f7-firmware-D/.extapps/example_images/example_images.o
+ .debug_info    0x00000970      0x176 build/f7-firmware-D/.extapps/example_images/example_images_icons.o
+
+.debug_abbrev   0x00000000      0x385
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x2d4 build/f7-firmware-D/.extapps/example_images/example_images.o
+ .debug_abbrev  0x000002d4       0xb1 build/f7-firmware-D/.extapps/example_images/example_images_icons.o
+
+.debug_line     0x00000000      0x550
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x2a7 build/f7-firmware-D/.extapps/example_images/example_images.o
+ .debug_line.text.app_input_callback
+                0x000002a7       0x5b build/f7-firmware-D/.extapps/example_images/example_images.o
+ .debug_line.text.app_draw_callback
+                0x00000302       0x1e build/f7-firmware-D/.extapps/example_images/example_images.o
+ .debug_line.text.example_images_main
+                0x00000320       0xba build/f7-firmware-D/.extapps/example_images/example_images.o
+ .debug_line_end
+                0x000003da        0x0 build/f7-firmware-D/.extapps/example_images/example_images.o
+ .debug_line    0x000003da      0x176 build/f7-firmware-D/.extapps/example_images/example_images_icons.o
+ .debug_line_end
+                0x00000550        0x0 build/f7-firmware-D/.extapps/example_images/example_images_icons.o
+
+.debug_frame    0x00000000       0x64
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x64 build/f7-firmware-D/.extapps/example_images/example_images.o
+
+.debug_str      0x00000000      0x985
+ *(.debug_str)
+ .debug_str     0x00000000      0x719 build/f7-firmware-D/.extapps/example_images/example_images.o
+ .debug_str     0x00000719      0x26c build/f7-firmware-D/.extapps/example_images/example_images_icons.o
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_addr
+ *(.debug_addr)
+
+.debug_line_str
+ *(.debug_line_str)
+
+.debug_loclists
+                0x00000000      0x13f
+ *(.debug_loclists)
+ .debug_loclists
+                0x00000000      0x13f build/f7-firmware-D/.extapps/example_images/example_images.o
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_names
+ *(.debug_names)
+
+.debug_rnglists
+                0x00000000       0x20
+ *(.debug_rnglists)
+ .debug_rnglists
+                0x00000000       0x20 build/f7-firmware-D/.extapps/example_images/example_images.o
+
+.debug_str_offsets
+ *(.debug_str_offsets)
+
+.debug_sup
+ *(.debug_sup)
+
+.ARM.attributes
+                0x00000000       0x34
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x34 build/f7-firmware-D/.extapps/example_images/example_images.o
+ .ARM.attributes
+                0x00000034       0x34 build/f7-firmware-D/.extapps/example_images/example_images_icons.o
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+
+/DISCARD/
+ *(.comment)
+ *(.comment.*)
+ *(.llvmbc)
+ *(.llvmcmd)
+OUTPUT(build/f7-firmware-D/.extapps/example_images_d.elf elf32-littlearm)
+LOAD linker stubs
